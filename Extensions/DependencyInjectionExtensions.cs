@@ -1,7 +1,8 @@
-﻿using Conductor.Client.Client;
+﻿using Conductor.Client;
 using Conductor.Client.Interfaces;
 using Conductor.Client.Worker;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Net.Http;
 
@@ -17,13 +18,16 @@ namespace Conductor.Client.Extensions
             return services;
         }
 
-        public static IServiceCollection AddConductorWorker(this IServiceCollection services, Action<IServiceProvider, HttpClient> configure = null)
+        public static IServiceCollection AddConductorWorker(this IServiceCollection services, Action<ConductorClientSettings> configureSettings = null, Action<IServiceProvider, HttpClient> configureHttpClient = null)
         {
+            services.AddHttpClient();
+            services.AddOptions();
+            services.Configure(configureSettings ?? ((config) => new ConductorClientSettings()));
             services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
             services.AddTransient<IConductorRestClient, ConductorRestClient>();
             services.AddTransient<IWorkflowTaskExecutor, WorkflowTaskExecutor>();
 
-            return services.AddConductorClient(configure);
+            return services.AddConductorClient(configureHttpClient);
         }
 
         public static IServiceCollection AddConductorClient(this IServiceCollection services, Func<IServiceProvider, string> serverUrl)

@@ -22,7 +22,7 @@ namespace Conductor.Client.Worker
         private readonly static int epoch = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
 
         //TODO: better worker ids?
-        private readonly string workerId = Environment.MachineName + new Random(epoch).Next();
+        private readonly string workerId = Environment.MachineName + "_" + new Random(epoch).Next();
 
         public WorkflowTaskExecutor(
             IConductorRestClient taskClient,
