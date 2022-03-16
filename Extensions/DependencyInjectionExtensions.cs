@@ -1,8 +1,6 @@
-﻿using Conductor.Client;
-using Conductor.Client.Interfaces;
+﻿using Conductor.Client.Interfaces;
 using Conductor.Client.Worker;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System;
 using System.Net.Http;
 
