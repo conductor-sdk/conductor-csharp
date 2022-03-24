@@ -5,8 +5,8 @@ ARG NUGET_SRC
 ARG NUGET_API_KEY
 
 # Assert All variables are assigned
-RUN [ ! -z "${PROGET_USR}" ] & \
-    [ ! -z "${PROGET_PSW}" ] & \
+RUN [ ! -z "${NUGET_SRC}" ] & \
+    [ ! -z "${NUGET_API_KEY}" ] & \
     [ ! -z "${PKG_VER}" ]
 
 WORKDIR  /package
