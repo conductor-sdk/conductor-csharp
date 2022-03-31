@@ -17,9 +17,8 @@ namespace Conductor.Client
     {
         private readonly HttpClient httpClient;
         private readonly ConductorClientSettings settings;
-
-        public ConductorRestClient(HttpClient httpClient, IOptions<ConductorClientSettings> options)
-        {
+        public ConductorRestClient(HttpClient httpClient, IOptions<ConductorClientSettings> options) 
+        { 
             httpClient.BaseAddress = options.Value.ServerUrl;
             this.httpClient = httpClient;
             this.settings = options.Value;
@@ -30,7 +29,7 @@ namespace Conductor.Client
             return PollAsync(taskType, workerId, domain, System.Threading.CancellationToken.None);
         }
 
-        public async Task<Models.Task> PollAsync(string tasktype, string workerid, string domain, System.Threading.CancellationToken cancellationToken)
+        public async Task<Models.Task> PollAsync(string tasktype, string workerid, string domain, System.Threading.CancellationToken cancellationToken, Dictionary<string,string> securityHeaders= null)
         {
             if (tasktype == null)
                 throw new ArgumentNullException("tasktype");
@@ -52,7 +51,13 @@ namespace Conductor.Client
             using (var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+                if(securityHeaders != null)
+                {
+                    foreach (var item in securityHeaders)
+                    {
+                        request.Headers.Add(item.Key, item.Value);
+                    }
+                }
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                 try
                 {
