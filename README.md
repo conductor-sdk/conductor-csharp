@@ -68,7 +68,7 @@ namespace SimpleConductorWorker
     {
         public MyWorkflowTask(){}
 
-        public string TaskType => "my_task";
+        public string TaskType => "test_ctask";
         public int? Priority => null;
 
         public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)

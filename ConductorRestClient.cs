@@ -51,9 +51,9 @@ namespace Conductor.Client
             using (var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-                if(securityHeaders != null)
+                if(this.settings != null)
                 {
-                    foreach (var item in securityHeaders)
+                    foreach (var item in this.settings.Headers)
                     {
                         request.Headers.Add(item.Key, item.Value);
                     }

@@ -7,7 +7,7 @@ namespace Conductor.Client.Interfaces
 {
     public interface IWorkflowTaskCoordinator
     {
-        Task Start();
+        Task Start(string test =null);
         void RegisterWorker<T>(T task) where T : IWorkflowTask;
     }
 }

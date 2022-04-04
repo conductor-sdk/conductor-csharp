@@ -24,7 +24,7 @@ namespace Conductor.Client.Worker
             concurrentWorkers = conductorClientSettings.Value.ConcurrentWorkers;
         }
 
-        public async Task Start()
+        public async Task Start(string test=null)
         {
             logger.LogInformation("Starting WorkflowCoordinator");
 

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace Conductor.Client
 {
@@ -10,5 +11,7 @@ namespace Conductor.Client
         public string Domain { get; set; }
         public int ConcurrentWorkers { get; set; } = 1;
         public JsonSerializerSettings JsonSerializerSettings { get; set; }
+
+        public Dictionary<string,string> Headers { get; set; }
     }
 }
