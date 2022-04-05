@@ -103,6 +103,13 @@ namespace Conductor.Client
             using (var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8))
             using (var request = new HttpRequestMessage { Method = HttpMethod.Post, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
+                if (this.settings != null)
+                {
+                    foreach (var item in this.settings.Headers)
+                    {
+                        request.Headers.Add(item.Key, item.Value);
+                    }
+                }
                 request.Content = content;
                 content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
