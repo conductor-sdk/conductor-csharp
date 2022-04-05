@@ -3,10 +3,12 @@ using Conductor.Client.Interfaces;
 using Conductor.Client.Models;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +31,7 @@ namespace Conductor.Client
             return PollAsync(taskType, workerId, domain, System.Threading.CancellationToken.None);
         }
 
-        public async Task<Models.Task> PollAsync(string tasktype, string workerid, string domain, System.Threading.CancellationToken cancellationToken, Dictionary<string,string> securityHeaders= null)
+        public async Task<Models.Task> PollAsync(string tasktype, string workerid, string domain, System.Threading.CancellationToken cancellationToken)
         {
             if (tasktype == null)
                 throw new ArgumentNullException("tasktype");
@@ -51,12 +53,9 @@ namespace Conductor.Client
             using (var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-                if(this.settings != null)
+                if(!string.IsNullOrEmpty(this.settings.Token))
                 {
-                    foreach (var item in this.settings.Headers)
-                    {
-                        request.Headers.Add(item.Key, item.Value);
-                    }
+                    request.Headers.Add("X-AUTHORIZATION", this.settings.Token);
                 }
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                 try
@@ -103,17 +102,13 @@ namespace Conductor.Client
             using (var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8))
             using (var request = new HttpRequestMessage { Method = HttpMethod.Post, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
-                if (this.settings != null)
-                {
-                    foreach (var item in this.settings.Headers)
-                    {
-                        request.Headers.Add(item.Key, item.Value);
-                    }
-                }
                 request.Content = content;
                 content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+                if (!string.IsNullOrEmpty(this.settings.Token))
+                {
+                    request.Headers.Add("X-AUTHORIZATION", this.settings.Token);
+                }
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                 try
                 {
