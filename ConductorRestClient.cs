@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,9 +16,8 @@ namespace Conductor.Client
     {
         private readonly HttpClient httpClient;
         private readonly ConductorClientSettings settings;
-
-        public ConductorRestClient(HttpClient httpClient, IOptions<ConductorClientSettings> options)
-        {
+        public ConductorRestClient(HttpClient httpClient, IOptions<ConductorClientSettings> options) 
+        { 
             httpClient.BaseAddress = options.Value.ServerUrl;
             this.httpClient = httpClient;
             this.settings = options.Value;
@@ -52,7 +50,10 @@ namespace Conductor.Client
             using (var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+                if(!string.IsNullOrEmpty(this.settings.Token))
+                {
+                    request.Headers.Add("X-AUTHORIZATION", this.settings.Token);
+                }
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                 try
                 {
@@ -101,7 +102,10 @@ namespace Conductor.Client
                 request.Content = content;
                 content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+                if (!string.IsNullOrEmpty(this.settings.Token))
+                {
+                    request.Headers.Add("X-AUTHORIZATION", this.settings.Token);
+                }
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                 try
                 {
