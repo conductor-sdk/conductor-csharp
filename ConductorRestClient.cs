@@ -3,13 +3,10 @@ using Conductor.Client.Interfaces;
 using Conductor.Client.Models;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
