@@ -60,7 +60,7 @@ namespace Conductor.Client.Worker
             HttpClient httpClient = new HttpClient();
             var urlBuilder = new StringBuilder("https://play.orkes.io/api/token");
 
-            using (var request = new HttpRequestMessage { Method = HttpMethod.Post, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
+            using (var request = new HttpRequestMessage { Method = System.Net.Http.HttpMethod.Post, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
                 request.Content = JsonContent.Create(new

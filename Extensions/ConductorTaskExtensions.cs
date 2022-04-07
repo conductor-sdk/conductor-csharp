@@ -19,7 +19,7 @@ namespace Conductor.Client.Extensions
                 {
                     new TaskExecLog { TaskId = task.TaskId, Log = log, CreatedTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() }
                 },
-                CallbackAfterSeconds = callbackAfterSeconds
+                CallbackAfterSeconds = callbackAfterSeconds.Value
             };
         }
 
