@@ -47,7 +47,7 @@ namespace Conductor.Client
             }
             urlBuilder.Length--;
 
-            using (var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
+            using (var request = new HttpRequestMessage { Method = System.Net.Http.HttpMethod.Get, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
                 if(!string.IsNullOrEmpty(this.settings.Token))
@@ -97,7 +97,7 @@ namespace Conductor.Client
             urlBuilder.Append("/tasks");
 
             using (var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8))
-            using (var request = new HttpRequestMessage { Method = HttpMethod.Post, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
+            using (var request = new HttpRequestMessage { Method = System.Net.Http.HttpMethod.Post, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Content = content;
                 content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
