@@ -18,7 +18,7 @@ using Conductor.Client;
 
 using EventHandler = Conductor.Client.Models.EventHandler;
 
-namespace Org.OpenAPITools.Api
+namespace Conductor.Api
 {
 
     /// <summary>

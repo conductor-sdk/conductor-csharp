@@ -1,4 +1,4 @@
-﻿using Conductor.Client.Exceptions;
+﻿using Conductor.Exceptions;
 using Conductor.Client.Interfaces;
 using Conductor.Client.Models;
 using Microsoft.Extensions.Options;

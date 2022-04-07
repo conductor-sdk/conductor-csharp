@@ -16,7 +16,7 @@ using System.Net;
 using System.Net.Mime;
 using Conductor.Client;
 
-namespace Org.OpenAPITools.Api
+namespace Conductor.Api
 {
 
     /// <summary>

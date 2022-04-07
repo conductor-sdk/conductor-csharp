@@ -18,7 +18,7 @@ using Conductor.Client.Models;
 using Conductor.Client;
 
 
-namespace Org.OpenAPITools.Api
+namespace Conductor.Api
 {
 
     /// <summary>
