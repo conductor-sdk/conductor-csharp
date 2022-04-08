@@ -65,8 +65,8 @@ namespace Conductor.Client.Worker
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
                 request.Content = JsonContent.Create(new
                 {
-                    keyId = "45b5c4ad-a758-45b7-9f65-3721d9371b47",
-                    keySecret = "MjsJCFHTrs5RRCj7W1soEYecLbaOUT5ZCOSq6sHxWXqsAvLY"
+                    keyId = "keyId",
+                    keySecret = "Secret"
                 });
                 var response = httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).Result;
 
