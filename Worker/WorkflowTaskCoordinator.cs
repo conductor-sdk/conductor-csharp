@@ -39,7 +39,8 @@ namespace Conductor.Client.Worker
                 && !string.IsNullOrEmpty(this.conductorClientSetting.AuthenticationClient.keyId)
                 && !string.IsNullOrEmpty(this.conductorClientSetting.AuthenticationClient.keySecret))
             {
-                this.conductorClientSetting.Token = PostForToken().Result;
+                this.conductorClientSetting.Token = PostForToken(this.conductorClientSetting.AuthenticationClient.keyId,
+                                                                 this.conductorClientSetting.AuthenticationClient.keySecret).Result;
             }
             var pollers = new List<Task>();
             for (var i = 0; i < concurrentWorkers; i++)
@@ -55,18 +56,18 @@ namespace Conductor.Client.Worker
         {
             workerDefinitions.Add(task.GetType());
         }
-        public async Task<string> PostForToken()
+        public async Task<string> PostForToken(String keyId, String keySecret)
         {
             HttpClient httpClient = new HttpClient();
-            var urlBuilder = new StringBuilder("https://play.orkes.io/api/token");
+            var urlBuilder = new StringBuilder( this.conductorClientSetting.ServerUrl + "/token");
 
             using (var request = new HttpRequestMessage { Method = System.Net.Http.HttpMethod.Post, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
                 request.Content = JsonContent.Create(new
                 {
-                    keyId = "keyId",
-                    keySecret = "Secret"
+                    keyId = keyId,
+                    keySecret = keySecret,
                 });
                 var response = httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).Result;
 

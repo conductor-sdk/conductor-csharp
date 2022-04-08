@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>0.0.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIcon>avatar.jpg</PackageIcon>
+    <PackageIcon>Orkes.jpg</PackageIcon>
     <PackageIconUrl />
   </PropertyGroup>
 
@@ -12,7 +12,7 @@
     <Compile Remove="conductor-csharp.Test\**" />
     <EmbeddedResource Remove="conductor-csharp.Test\**" />
     <None Remove="conductor-csharp.Test\**" />
-    <None Include="..\..\avatar.jpg">
+    <None Include="..\..\Users\manan\Downloads\Orkes.jpg">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
