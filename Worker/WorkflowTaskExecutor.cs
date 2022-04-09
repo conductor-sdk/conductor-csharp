@@ -16,8 +16,8 @@ namespace Conductor.Client.Worker
     {
         private List<Type> workers;
         private ILogger<WorkflowTaskExecutor> logger;
-        private readonly ConductorClientSettings conductorClientSettings;
-        private readonly IConductorRestClient taskClient;
+        private readonly ConductorWorkerClientConfiguration conductorClientSettings;
+        private readonly IConductorWorkerRestClient taskClient;
         private readonly IServiceProvider serviceProvider;
         private readonly static int epoch = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
 
@@ -25,10 +25,10 @@ namespace Conductor.Client.Worker
         private readonly string workerId = Environment.MachineName + "_" + new Random(epoch).Next();
 
         public WorkflowTaskExecutor(
-            IConductorRestClient taskClient,
+            IConductorWorkerRestClient taskClient,
             IServiceProvider serviceProvider,
             ILogger<WorkflowTaskExecutor> logger,
-            IOptions<ConductorClientSettings> conductorClientSettings)
+            IOptions<ConductorWorkerClientConfiguration> conductorClientSettings)
         {
             this.taskClient = taskClient;
             this.serviceProvider = serviceProvider;

@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace Conductor.Client
 {
-    public class ConductorRestClient : IConductorRestClient
+    public class ConductorWorkerRestClient : IConductorWorkerRestClient
     {
         private readonly HttpClient httpClient;
-        private readonly ConductorClientSettings settings;
-        public ConductorRestClient(HttpClient httpClient, IOptions<ConductorClientSettings> options) 
+        private readonly ConductorWorkerClientConfiguration settings;
+        public ConductorWorkerRestClient(HttpClient httpClient, IOptions<ConductorWorkerClientConfiguration> options) 
         { 
             httpClient.BaseAddress = options.Value.ServerUrl;
             this.httpClient = httpClient;

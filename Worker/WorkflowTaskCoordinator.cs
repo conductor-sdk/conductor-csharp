@@ -20,11 +20,11 @@ namespace Conductor.Client.Worker
         private IServiceProvider serviceProvider;
         private ILogger<WorkflowTaskCoordinator> logger;
         private HashSet<Type> workerDefinitions = new HashSet<Type>();
-        private ConductorClientSettings conductorClientSetting;
+        private ConductorWorkerClientConfiguration conductorClientSetting;
 
         public WorkflowTaskCoordinator(IServiceProvider serviceProvider,
             ILogger<WorkflowTaskCoordinator> logger,
-            IOptions<ConductorClientSettings> conductorClientSettings)
+            IOptions<ConductorWorkerClientConfiguration> conductorClientSettings)
          {
             this.serviceProvider = serviceProvider;
             this.logger = logger;
