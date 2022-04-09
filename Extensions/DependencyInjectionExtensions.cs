@@ -20,6 +20,7 @@ namespace Conductor.Client.Extensions
         {
             services.AddHttpClient();
             services.AddOptions();
+            services.AddSingleton(new ConductorAuthTokenClient());
             services.Configure(configureSettings ?? ((config) => new ConductorWorkerClientConfiguration()));
             services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
             services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();

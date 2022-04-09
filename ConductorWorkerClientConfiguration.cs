@@ -11,7 +11,7 @@ namespace Conductor.Client
         public int ConcurrentWorkers { get; set; } = 1;
         public JsonSerializerSettings JsonSerializerSettings { get; set; } = new JsonSerializerSettings();
 
-        public AuthenticationConfiguration AuthenticationClient { get; set; }
+        public AuthenticationConfiguration AuthenticationConfiguration { get; set; }
         internal string Token { get; set; }
     }
 
