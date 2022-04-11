@@ -15,8 +15,8 @@ namespace Conductor.Client
     public class ConductorWorkerRestClient : IConductorWorkerRestClient
     {
         private readonly HttpClient httpClient;
-        private readonly ConductorWorkerClientConfiguration settings;
-        public ConductorWorkerRestClient(HttpClient httpClient, IOptions<ConductorWorkerClientConfiguration> options) 
+        private readonly ConductorClientConfiguration settings;
+        public ConductorWorkerRestClient(HttpClient httpClient, IOptions<ConductorClientConfiguration> options) 
         { 
             httpClient.BaseAddress = options.Value.ServerUrl;
             this.httpClient = httpClient;

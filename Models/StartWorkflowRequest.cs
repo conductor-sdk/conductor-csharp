@@ -34,7 +34,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="StartWorkflowRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
+        [JsonConstructor]
         protected StartWorkflowRequest() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="StartWorkflowRequest" /> class.
@@ -248,18 +248,18 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             // Priority (int) maximum
             if (this.Priority > (int)99)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Priority, must be a value less than or equal to 99.", new [] { "Priority" });
+                yield return new ValidationResult("Invalid value for Priority, must be a value less than or equal to 99.", new [] { "Priority" });
             }
 
             // Priority (int) minimum
             if (this.Priority < (int)0)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Priority, must be a value greater than or equal to 0.", new [] { "Priority" });
+                yield return new ValidationResult("Invalid value for Priority, must be a value greater than or equal to 0.", new [] { "Priority" });
             }
 
             yield break;

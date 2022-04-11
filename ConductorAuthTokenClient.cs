@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
@@ -12,6 +13,8 @@ namespace Conductor.Client
 {
     public class ConductorAuthTokenClient
     {
+
+        private MemoryCache memoryCache;
 
         public async Task<string> PostForToken(String uri, String keyId, String keySecret)
         {
@@ -34,6 +37,26 @@ namespace Conductor.Client
                 return result["token"].Value<string>();
 
             }
+        }
+
+        public string getToken(string uri, string keyId, string keySecret)
+        {
+            string token = memoryCache.Get(new AuthenticationConfiguration(keyId, keySecret)).ToString();
+            if (!String.IsNullOrEmpty(token))
+            {
+                return token;
+            }
+
+            token = PostForToken(uri, keyId, keySecret).Result;
+            memoryCache.Set(new AuthenticationConfiguration(keyId, keySecret), token, DateTimeOffset.Now.AddHours(4));
+            return token;
+        }
+
+        public string refreshToken(string uri, string keyId, string keySecret)
+        {
+            string token = PostForToken(uri, keyId, keySecret).Result;
+            memoryCache.Set(new AuthenticationConfiguration(keyId, keySecret), token, DateTimeOffset.Now.AddHours(4));
+            return token;
         }
     }
 }

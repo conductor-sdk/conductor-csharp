@@ -29,139 +29,14 @@ using RestSharp;
 using RestSharp.Deserializers;
 using RestSharpMethod = RestSharp.Method;
 using Polly;
-using Microsoft.Extensions.Caching.Memory;
 
 namespace Conductor.Client
 {
     /// <summary>
-    /// Allows RestSharp to Serialize/Deserialize JSON using our custom logic, but only when ContentType is JSON.
-    /// </summary>
-    internal class CustomJsonCodec : RestSharp.Serializers.ISerializer, IDeserializer
-    {
-        private readonly IReadableConfiguration _configuration;
-        private static readonly string _contentType = "application/json";
-        private readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
-        {
-            // OpenAPI generated types generally hide default constructors.
-            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
-            ContractResolver = new DefaultContractResolver
-            {
-                NamingStrategy = new CamelCaseNamingStrategy
-                {
-                    OverrideSpecifiedNames = false
-                }
-            }
-        };
-
-        public CustomJsonCodec(IReadableConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
-        public CustomJsonCodec(JsonSerializerSettings serializerSettings, IReadableConfiguration configuration)
-        {
-            _serializerSettings = serializerSettings;
-            _configuration = configuration;
-        }
-
-        /// <summary>
-        /// Serialize the object into a JSON string.
-        /// </summary>
-        /// <param name="obj">Object to be serialized.</param>
-        /// <returns>A JSON string.</returns>
-        public string Serialize(object obj)
-        {
-            if (obj != null && obj is Models.AbstractOpenAPISchema)
-            {
-                // the object to be serialized is an oneOf/anyOf schema
-                return ((Models.AbstractOpenAPISchema)obj).ToJson();
-            }
-            else
-            {
-                return JsonConvert.SerializeObject(obj, _serializerSettings);
-            }
-        }
-
-        public T Deserialize<T>(IRestResponse response)
-        {
-            var result = (T)Deserialize(response, typeof(T));
-            return result;
-        }
-
-        /// <summary>
-        /// Deserialize the JSON string into a proper object.
-        /// </summary>
-        /// <param name="response">The HTTP response.</param>
-        /// <param name="type">Object type.</param>
-        /// <returns>Object representation of the JSON string.</returns>
-        internal object Deserialize(IRestResponse response, Type type)
-        {
-            if (type == typeof(byte[])) // return byte array
-            {
-                return response.RawBytes;
-            }
-
-            // TODO: ? if (type.IsAssignableFrom(typeof(Stream)))
-            if (type == typeof(Stream))
-            {
-                var bytes = response.RawBytes;
-                if (response.Headers != null)
-                {
-                    var filePath = string.IsNullOrEmpty(_configuration.TempFolderPath)
-                        ? Path.GetTempPath()
-                        : _configuration.TempFolderPath;
-                    var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
-                    foreach (var header in response.Headers)
-                    {
-                        var match = regex.Match(header.ToString());
-                        if (match.Success)
-                        {
-                            string fileName = filePath + ClientUtils.SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
-                            File.WriteAllBytes(fileName, bytes);
-                            return new FileStream(fileName, FileMode.Open);
-                        }
-                    }
-                }
-                var stream = new MemoryStream(bytes);
-                return stream;
-            }
-
-            if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
-            {
-                return DateTime.Parse(response.Content, null, System.Globalization.DateTimeStyles.RoundtripKind);
-            }
-
-            if (type == typeof(string) || type.Name.StartsWith("System.Nullable")) // return primitive type
-            {
-                return Convert.ChangeType(response.Content, type);
-            }
-
-            // at this point, it must be a model (json)
-            try
-            {
-                return JsonConvert.DeserializeObject(response.Content, type, _serializerSettings);
-            }
-            catch (Exception e)
-            {
-                throw new ApiException(500, e.Message);
-            }
-        }
-
-        public string RootElement { get; set; }
-        public string Namespace { get; set; }
-        public string DateFormat { get; set; }
-
-        public string ContentType
-        {
-            get { return _contentType; }
-            set { throw new InvalidOperationException("Not allowed to set content type."); }
-        }
-    }
-    /// <summary>
     /// Provides a default implementation of an Api client (both synchronous and asynchronous implementations),
     /// encapsulating general REST accessor use cases.
     /// </summary>
-    public partial class ApiClient : ISynchronousClient, IAsynchronousClient
+    public partial class OrkesApiClient : ApiClient, ISynchronousClient, IAsynchronousClient
     {
         private readonly string _baseUrl;
 
@@ -198,7 +73,7 @@ namespace Conductor.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" />, defaulting to the global configurations' base url.
         /// </summary>
-        public ApiClient()
+        public OrkesApiClient()
         {
             _baseUrl = Conductor.Client.GlobalConfiguration.Instance.BasePath;
         }
@@ -208,7 +83,7 @@ namespace Conductor.Client
         /// </summary>
         /// <param name="basePath">The target service's base path in URL format.</param>
         /// <exception cref="ArgumentException"></exception>
-        public ApiClient(string basePath)
+        public OrkesApiClient(string basePath)
         {
             if (string.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");

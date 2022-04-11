@@ -30,7 +30,7 @@ namespace Conductor.Api
         /// <summary>
         /// Add a new event handler.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <returns></returns>
         void AddEventHandler(EventHandler eventHandler);
@@ -41,14 +41,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> AddEventHandlerWithHttpInfo(EventHandler eventHandler);
         /// <summary>
         /// Get all the event handlers
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;EventHandler&gt;</returns>
         List<EventHandler> GetEventHandlers();
 
@@ -58,13 +58,13 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
         ApiResponse<List<EventHandler>> GetEventHandlersWithHttpInfo();
         /// <summary>
         /// Get event handlers for a given event
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>List&lt;EventHandler&gt;</returns>
@@ -76,7 +76,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
@@ -84,7 +84,7 @@ namespace Conductor.Api
         /// <summary>
         /// Remove an event handler
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns></returns>
         void RemoveEventHandlerStatus(string name);
@@ -95,14 +95,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> RemoveEventHandlerStatusWithHttpInfo(string name);
         /// <summary>
         /// Update an existing event handler.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <returns></returns>
         void UpdateEventHandler(EventHandler eventHandler);
@@ -113,7 +113,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateEventHandlerWithHttpInfo(EventHandler eventHandler);
@@ -132,7 +132,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -144,7 +144,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -155,7 +155,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;EventHandler&gt;</returns>
         System.Threading.Tasks.Task<List<EventHandler>> GetEventHandlersAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -166,7 +166,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;EventHandler&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<EventHandler>>> GetEventHandlersWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -176,7 +176,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -189,7 +189,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -201,7 +201,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -213,7 +213,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -224,7 +224,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -236,7 +236,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -257,7 +257,7 @@ namespace Conductor.Api
     /// </summary>
     public partial class EventResourceApi : IEventResourceApi
     {
-        private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EventResourceApi"/> class.
@@ -275,10 +275,10 @@ namespace Conductor.Api
         {
             this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
                 Conductor.Client.GlobalConfiguration.Instance,
-                new Conductor.Client.Configuration { BasePath = basePath }
+                new Configuration { BasePath = basePath }
             );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new ApiClient(this.Configuration.BasePath);
+            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -288,7 +288,7 @@ namespace Conductor.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public EventResourceApi(Conductor.Client.Configuration configuration)
+        public EventResourceApi(Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -296,8 +296,8 @@ namespace Conductor.Api
                 Conductor.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new ApiClient(this.Configuration.BasePath);
+            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -308,7 +308,7 @@ namespace Conductor.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public EventResourceApi(Conductor.Client.ISynchronousClient client, Conductor.Client.IAsynchronousClient asyncClient, Conductor.Client.IReadableConfiguration configuration)
+        public EventResourceApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -323,12 +323,12 @@ namespace Conductor.Api
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
         /// </summary>
-        public Conductor.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        public IAsynchronousClient AsynchronousClient { get; set; }
 
         /// <summary>
         /// The client for accessing this underlying API synchronously.
         /// </summary>
-        public Conductor.Client.ISynchronousClient Client { get; set; }
+        public ISynchronousClient Client { get; set; }
 
         /// <summary>
         /// Gets the base path of the API client.
@@ -343,12 +343,12 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.IReadableConfiguration Configuration { get; set; }
+        public IReadableConfiguration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
         /// </summary>
-        public Conductor.Client.ExceptionFactory ExceptionFactory
+        public ExceptionFactory ExceptionFactory
         {
             get
             {
@@ -364,7 +364,7 @@ namespace Conductor.Api
         /// <summary>
         /// Add a new event handler. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <returns></returns>
         public void AddEventHandler(EventHandler eventHandler)
@@ -375,18 +375,18 @@ namespace Conductor.Api
         /// <summary>
         /// Add a new event handler. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> AddEventHandlerWithHttpInfo(EventHandler eventHandler)
+        public ApiResponse<object> AddEventHandlerWithHttpInfo(EventHandler eventHandler)
         {
             // verify the required parameter 'eventHandler' is set
             if (eventHandler == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'eventHandler' when calling EventResourceApi->AddEventHandler");
+                throw new ApiException(400, "Missing required parameter 'eventHandler' when calling EventResourceApi->AddEventHandler");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -433,7 +433,7 @@ namespace Conductor.Api
         /// <summary>
         /// Add a new event handler. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -445,20 +445,20 @@ namespace Conductor.Api
         /// <summary>
         /// Add a new event handler. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> AddEventHandlerWithHttpInfoAsync(EventHandler eventHandler, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> AddEventHandlerWithHttpInfoAsync(EventHandler eventHandler, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'eventHandler' is set
             if (eventHandler == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'eventHandler' when calling EventResourceApi->AddEventHandler");
+                throw new ApiException(400, "Missing required parameter 'eventHandler' when calling EventResourceApi->AddEventHandler");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -506,22 +506,22 @@ namespace Conductor.Api
         /// <summary>
         /// Get all the event handlers 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;EventHandler&gt;</returns>
         public List<EventHandler> GetEventHandlers()
         {
-            Conductor.Client.ApiResponse<List<EventHandler>> localVarResponse = GetEventHandlersWithHttpInfo();
+            ApiResponse<List<EventHandler>> localVarResponse = GetEventHandlersWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get all the event handlers 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
-        public Conductor.Client.ApiResponse<List<EventHandler>> GetEventHandlersWithHttpInfo()
+        public ApiResponse<List<EventHandler>> GetEventHandlersWithHttpInfo()
         {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -567,25 +567,25 @@ namespace Conductor.Api
         /// <summary>
         /// Get all the event handlers 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;EventHandler&gt;</returns>
         public async System.Threading.Tasks.Task<List<EventHandler>> GetEventHandlersAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<List<EventHandler>> localVarResponse = await GetEventHandlersWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            ApiResponse<List<EventHandler>> localVarResponse = await GetEventHandlersWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get all the event handlers 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;EventHandler&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<List<EventHandler>>> GetEventHandlersWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<List<EventHandler>>> GetEventHandlersWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -632,32 +632,32 @@ namespace Conductor.Api
         /// <summary>
         /// Get event handlers for a given event 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>List&lt;EventHandler&gt;</returns>
         public List<EventHandler> GetEventHandlersForEvent(string _event, bool? activeOnly = default(bool?))
         {
-            Conductor.Client.ApiResponse<List<EventHandler>> localVarResponse = GetEventHandlersForEventWithHttpInfo(_event, activeOnly);
+            ApiResponse<List<EventHandler>> localVarResponse = GetEventHandlersForEventWithHttpInfo(_event, activeOnly);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get event handlers for a given event 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
-        public Conductor.Client.ApiResponse<List<EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = default(bool?))
+        public ApiResponse<List<EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = default(bool?))
         {
             // verify the required parameter '_event' is set
             if (_event == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter '_event' when calling EventResourceApi->GetEventHandlersForEvent");
+                throw new ApiException(400, "Missing required parameter '_event' when calling EventResourceApi->GetEventHandlersForEvent");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -708,35 +708,35 @@ namespace Conductor.Api
         /// <summary>
         /// Get event handlers for a given event 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;EventHandler&gt;</returns>
         public async System.Threading.Tasks.Task<List<EventHandler>> GetEventHandlersForEventAsync(string _event, bool? activeOnly = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<List<EventHandler>> localVarResponse = await GetEventHandlersForEventWithHttpInfoAsync(_event, activeOnly, cancellationToken).ConfigureAwait(false);
+            ApiResponse<List<EventHandler>> localVarResponse = await GetEventHandlersForEventWithHttpInfoAsync(_event, activeOnly, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get event handlers for a given event 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;EventHandler&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<List<EventHandler>>> GetEventHandlersForEventWithHttpInfoAsync(string _event, bool? activeOnly = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<List<EventHandler>>> GetEventHandlersForEventWithHttpInfoAsync(string _event, bool? activeOnly = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter '_event' is set
             if (_event == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter '_event' when calling EventResourceApi->GetEventHandlersForEvent");
+                throw new ApiException(400, "Missing required parameter '_event' when calling EventResourceApi->GetEventHandlersForEvent");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -788,7 +788,7 @@ namespace Conductor.Api
         /// <summary>
         /// Remove an event handler 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns></returns>
         public void RemoveEventHandlerStatus(string name)
@@ -799,18 +799,18 @@ namespace Conductor.Api
         /// <summary>
         /// Remove an event handler 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> RemoveEventHandlerStatusWithHttpInfo(string name)
+        public ApiResponse<object> RemoveEventHandlerStatusWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling EventResourceApi->RemoveEventHandlerStatus");
+                throw new ApiException(400, "Missing required parameter 'name' when calling EventResourceApi->RemoveEventHandlerStatus");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -856,7 +856,7 @@ namespace Conductor.Api
         /// <summary>
         /// Remove an event handler 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -868,20 +868,20 @@ namespace Conductor.Api
         /// <summary>
         /// Remove an event handler 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> RemoveEventHandlerStatusWithHttpInfoAsync(string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> RemoveEventHandlerStatusWithHttpInfoAsync(string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling EventResourceApi->RemoveEventHandlerStatus");
+                throw new ApiException(400, "Missing required parameter 'name' when calling EventResourceApi->RemoveEventHandlerStatus");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -928,7 +928,7 @@ namespace Conductor.Api
         /// <summary>
         /// Update an existing event handler. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <returns></returns>
         public void UpdateEventHandler(EventHandler eventHandler)
@@ -939,18 +939,18 @@ namespace Conductor.Api
         /// <summary>
         /// Update an existing event handler. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> UpdateEventHandlerWithHttpInfo(EventHandler eventHandler)
+        public ApiResponse<object> UpdateEventHandlerWithHttpInfo(EventHandler eventHandler)
         {
             // verify the required parameter 'eventHandler' is set
             if (eventHandler == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'eventHandler' when calling EventResourceApi->UpdateEventHandler");
+                throw new ApiException(400, "Missing required parameter 'eventHandler' when calling EventResourceApi->UpdateEventHandler");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -997,7 +997,7 @@ namespace Conductor.Api
         /// <summary>
         /// Update an existing event handler. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1009,20 +1009,20 @@ namespace Conductor.Api
         /// <summary>
         /// Update an existing event handler. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> UpdateEventHandlerWithHttpInfoAsync(EventHandler eventHandler, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> UpdateEventHandlerWithHttpInfoAsync(EventHandler eventHandler, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'eventHandler' is set
             if (eventHandler == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'eventHandler' when calling EventResourceApi->UpdateEventHandler");
+                throw new ApiException(400, "Missing required parameter 'eventHandler' when calling EventResourceApi->UpdateEventHandler");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"

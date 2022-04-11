@@ -28,7 +28,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="ParserEnumValueOptions" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
+        [JsonConstructor]
         public ParserEnumValueOptions()
         {
         }
@@ -95,7 +95,7 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

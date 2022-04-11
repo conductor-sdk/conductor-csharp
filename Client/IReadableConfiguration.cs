@@ -30,13 +30,13 @@ namespace Conductor.Client
         /// Gets the API key.
         /// </summary>
         /// <value>API key.</value>
-        IDictionary<string, string> ApiKey { get; }
+        string keyId { set; }
 
         /// <summary>
         /// Gets the API key prefix.
         /// </summary>
         /// <value>API key prefix.</value>
-        IDictionary<string, string> ApiKeyPrefix { get; }
+        string keySecret { set; }
 
         /// <summary>
         /// Gets the base path.
@@ -98,13 +98,6 @@ namespace Conductor.Client
         /// </summary>
         /// <value>Password.</value>
         string Password { get; }
-
-        /// <summary>
-        /// Gets the API key with prefix.
-        /// </summary>
-        /// <param name="apiKeyIdentifier">API key identifier (authentication scheme).</param>
-        /// <returns>API key with prefix.</returns>
-        string GetApiKeyWithPrefix(string apiKeyIdentifier);
 
         /// <summary>
         /// Gets certificate collection to be sent with requests.

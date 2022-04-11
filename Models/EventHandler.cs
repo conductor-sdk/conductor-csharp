@@ -34,7 +34,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="EventHandler" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
+        [JsonConstructor]
         protected EventHandler() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="EventHandler" /> class.
@@ -223,7 +223,7 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

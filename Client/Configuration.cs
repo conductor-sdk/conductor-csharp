@@ -69,12 +69,8 @@ namespace Conductor.Client
         /// </summary>
         private string _basePath;
 
-        /// <summary>
-        /// Gets or sets the API key based on the authentication name.
-        /// This is the key and value comprising the "secret" for accessing an API.
-        /// </summary>
-        /// <value>The API key.</value>
-        private IDictionary<string, string> _apiKey;
+        private string keyId;
+        private string keySecret;
 
         /// <summary>
         /// Gets or sets the prefix (e.g. Token) of the API key based on the authentication name.
@@ -102,15 +98,15 @@ namespace Conductor.Client
         {
             Proxy = null;
             UserAgent = "OpenAPI-Generator/1.0.0/csharp";
-            BasePath = "http://localhost:8080";
+            BasePath = "http://play.orkes.io/api/";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
-            ApiKey = new ConcurrentDictionary<string, string>();
-            ApiKeyPrefix = new ConcurrentDictionary<string, string>();
+            keyId = null;
+            keySecret = null;
             Servers = new List<IReadOnlyDictionary<string, object>>()
             {
                 {
                     new Dictionary<string, object> {
-                        {"url", "http://localhost:8080"},
+                        {"url", "http://play.orkes.io/api/"},
                         {"description", "Conductor API Server"},
                     }
                 }
@@ -126,17 +122,17 @@ namespace Conductor.Client
         [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration(
             IDictionary<string, string> defaultHeaders,
-            IDictionary<string, string> apiKey,
-            IDictionary<string, string> apiKeyPrefix,
-            string basePath = "http://localhost:8080") : this()
+            string keyId,
+            string keySecret,
+            string basePath = "http://play.orkes.io/api/") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");
             if (defaultHeaders == null)
                 throw new ArgumentNullException("defaultHeaders");
-            if (apiKey == null)
+            if (keyId == null)
                 throw new ArgumentNullException("apiKey");
-            if (apiKeyPrefix == null)
+            if (keySecret == null)
                 throw new ArgumentNullException("apiKeyPrefix");
 
             BasePath = basePath;
@@ -144,16 +140,6 @@ namespace Conductor.Client
             foreach (var keyValuePair in defaultHeaders)
             {
                 DefaultHeaders.Add(keyValuePair);
-            }
-
-            foreach (var keyValuePair in apiKey)
-            {
-                ApiKey.Add(keyValuePair);
-            }
-
-            foreach (var keyValuePair in apiKeyPrefix)
-            {
-                ApiKeyPrefix.Add(keyValuePair);
             }
         }
 
@@ -218,24 +204,6 @@ namespace Conductor.Client
         /// </summary>
         /// <value>The password.</value>
         public virtual string Password { get; set; }
-
-        /// <summary>
-        /// Gets the API key with prefix.
-        /// </summary>
-        /// <param name="apiKeyIdentifier">API key identifier (authentication scheme).</param>
-        /// <returns>API key with prefix.</returns>
-        public string GetApiKeyWithPrefix(string apiKeyIdentifier)
-        {
-            string apiKeyValue;
-            ApiKey.TryGetValue(apiKeyIdentifier, out apiKeyValue);
-            string apiKeyPrefix;
-            if (ApiKeyPrefix.TryGetValue(apiKeyIdentifier, out apiKeyPrefix))
-            {
-                return apiKeyPrefix + " " + apiKeyValue;
-            }
-
-            return apiKeyValue;
-        }
 
         /// <summary>
         /// Gets or sets certificate collection to be sent with requests.
@@ -312,52 +280,6 @@ namespace Conductor.Client
         }
 
         /// <summary>
-        /// Gets or sets the prefix (e.g. Token) of the API key based on the authentication name.
-        ///
-        /// Whatever you set here will be prepended to the value defined in AddApiKey.
-        ///
-        /// An example invocation here might be:
-        /// <example>
-        /// ApiKeyPrefix["Authorization"] = "Bearer";
-        /// </example>
-        /// … where ApiKey["Authorization"] would then be used to set the value of your bearer token.
-        ///
-        /// <remarks>
-        /// OAuth2 workflows should set tokens via AccessToken.
-        /// </remarks>
-        /// </summary>
-        /// <value>The prefix of the API key.</value>
-        public virtual IDictionary<string, string> ApiKeyPrefix
-        {
-            get { return _apiKeyPrefix; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new InvalidOperationException("ApiKeyPrefix collection may not be null.");
-                }
-                _apiKeyPrefix = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the API key based on the authentication name.
-        /// </summary>
-        /// <value>The API key.</value>
-        public virtual IDictionary<string, string> ApiKey
-        {
-            get { return _apiKey; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new InvalidOperationException("ApiKey collection may not be null.");
-                }
-                _apiKey = value;
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the servers.
         /// </summary>
         /// <value>The servers.</value>
@@ -373,6 +295,9 @@ namespace Conductor.Client
                 _servers = value;
             }
         }
+
+        string IReadableConfiguration.keyId { set => throw new NotImplementedException(); }
+        string IReadableConfiguration.keySecret { set => throw new NotImplementedException(); }
 
         /// <summary>
         /// Returns URL based on server settings without providing values
@@ -451,27 +376,6 @@ namespace Conductor.Client
             return report;
         }
 
-        /// <summary>
-        /// Add Api Key Header.
-        /// </summary>
-        /// <param name="key">Api Key name.</param>
-        /// <param name="value">Api Key value.</param>
-        /// <returns></returns>
-        public void AddApiKey(string key, string value)
-        {
-            ApiKey[key] = value;
-        }
-
-        /// <summary>
-        /// Sets the API key prefix.
-        /// </summary>
-        /// <param name="key">Api Key name.</param>
-        /// <param name="value">Api Key value.</param>
-        public void AddApiKeyPrefix(string key, string value)
-        {
-            ApiKeyPrefix[key] = value;
-        }
-
         #endregion Methods
 
         #region Static Members
@@ -485,18 +389,14 @@ namespace Conductor.Client
         {
             if (second == null) return first ?? GlobalConfiguration.Instance;
 
-            Dictionary<string, string> apiKey = first.ApiKey.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-            Dictionary<string, string> apiKeyPrefix = first.ApiKeyPrefix.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
             Dictionary<string, string> defaultHeaders = first.DefaultHeaders.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
-            foreach (var kvp in second.ApiKey) apiKey[kvp.Key] = kvp.Value;
-            foreach (var kvp in second.ApiKeyPrefix) apiKeyPrefix[kvp.Key] = kvp.Value;
             foreach (var kvp in second.DefaultHeaders) defaultHeaders[kvp.Key] = kvp.Value;
 
             var config = new Configuration
             {
-                ApiKey = apiKey,
-                ApiKeyPrefix = apiKeyPrefix,
+                keyId = first.keyId,
+                keySecret = first.keySecret,
                 DefaultHeaders = defaultHeaders,
                 BasePath = second.BasePath ?? first.BasePath,
                 Timeout = second.Timeout,

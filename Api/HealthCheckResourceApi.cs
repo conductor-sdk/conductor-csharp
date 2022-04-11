@@ -28,7 +28,7 @@ namespace Conductor.Api
         /// <summary>
         /// 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
         Dictionary<string, Object> DoCheck();
 
@@ -38,7 +38,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
         ApiResponse<Dictionary<string, Object>> DoCheckWithHttpInfo();
         #endregion Synchronous Operations
@@ -56,7 +56,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
         System.Threading.Tasks.Task<Dictionary<string, Object>> DoCheckAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -67,7 +67,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> DoCheckWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
@@ -87,7 +87,7 @@ namespace Conductor.Api
     /// </summary>
     public partial class HealthCheckResourceApi : IHealthCheckResourceApi
     {
-        private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HealthCheckResourceApi"/> class.
@@ -105,10 +105,10 @@ namespace Conductor.Api
         {
             this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
                 Conductor.Client.GlobalConfiguration.Instance,
-                new Conductor.Client.Configuration { BasePath = basePath }
+                new Configuration { BasePath = basePath }
             );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new ApiClient(this.Configuration.BasePath);
+            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -118,7 +118,7 @@ namespace Conductor.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public HealthCheckResourceApi(Conductor.Client.Configuration configuration)
+        public HealthCheckResourceApi(Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -126,8 +126,8 @@ namespace Conductor.Api
                 Conductor.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new ApiClient(this.Configuration.BasePath);
+            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -138,7 +138,7 @@ namespace Conductor.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public HealthCheckResourceApi(Conductor.Client.ISynchronousClient client, Conductor.Client.IAsynchronousClient asyncClient, Conductor.Client.IReadableConfiguration configuration)
+        public HealthCheckResourceApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -153,12 +153,12 @@ namespace Conductor.Api
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
         /// </summary>
-        public Conductor.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        public IAsynchronousClient AsynchronousClient { get; set; }
 
         /// <summary>
         /// The client for accessing this underlying API synchronously.
         /// </summary>
-        public Conductor.Client.ISynchronousClient Client { get; set; }
+        public ISynchronousClient Client { get; set; }
 
         /// <summary>
         /// Gets the base path of the API client.
@@ -173,12 +173,12 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.IReadableConfiguration Configuration { get; set; }
+        public IReadableConfiguration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
         /// </summary>
-        public Conductor.Client.ExceptionFactory ExceptionFactory
+        public ExceptionFactory ExceptionFactory
         {
             get
             {
@@ -194,22 +194,22 @@ namespace Conductor.Api
         /// <summary>
         ///  
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
         public Dictionary<string, Object> DoCheck()
         {
-            Conductor.Client.ApiResponse<Dictionary<string, Object>> localVarResponse = DoCheckWithHttpInfo();
+            ApiResponse<Dictionary<string, object>> localVarResponse = DoCheckWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
         ///  
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        public Conductor.Client.ApiResponse<Dictionary<string, Object>> DoCheckWithHttpInfo()
+        public ApiResponse<Dictionary<string, object>> DoCheckWithHttpInfo()
         {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -255,25 +255,25 @@ namespace Conductor.Api
         /// <summary>
         ///  
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
         public async System.Threading.Tasks.Task<Dictionary<string, Object>> DoCheckAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<Dictionary<string, Object>> localVarResponse = await DoCheckWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            ApiResponse<Dictionary<string, object>> localVarResponse = await DoCheckWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         ///  
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Dictionary<string, Object>>> DoCheckWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, object>>> DoCheckWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };

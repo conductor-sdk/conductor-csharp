@@ -30,7 +30,7 @@ namespace Conductor.Api
         /// <summary>
         /// Create a new workflow definition
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns></returns>
         void Create(WorkflowDef workflowDef);
@@ -41,14 +41,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CreateWithHttpInfo(WorkflowDef workflowDef);
         /// <summary>
         /// Retrieves workflow definition along with blueprint
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional)</param>
         /// <returns>WorkflowDef</returns>
@@ -60,7 +60,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional)</param>
         /// <returns>ApiResponse of WorkflowDef</returns>
@@ -68,7 +68,7 @@ namespace Conductor.Api
         /// <summary>
         /// Retrieves all workflow definition along with blueprint
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <returns>List&lt;WorkflowDef&gt;</returns>
         List<WorkflowDef> GetAllWorkflows(string access = default(string));
@@ -79,14 +79,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <returns>ApiResponse of List&lt;WorkflowDef&gt;</returns>
         ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = default(string));
         /// <summary>
         /// Gets the task definition
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>TaskDef</returns>
         TaskDef GetTaskDef(string tasktype);
@@ -97,14 +97,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>ApiResponse of TaskDef</returns>
         ApiResponse<TaskDef> GetTaskDefWithHttpInfo(string tasktype);
         /// <summary>
         /// Gets all task definition
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <returns>List&lt;TaskDef&gt;</returns>
         List<TaskDef> GetTaskDefs(string access = default(string));
@@ -115,14 +115,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <returns>ApiResponse of List&lt;TaskDef&gt;</returns>
         ApiResponse<List<TaskDef>> GetTaskDefsWithHttpInfo(string access = default(string));
         /// <summary>
         /// Create or update task definition(s)
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <returns></returns>
         void RegisterTaskDef(List<TaskDef> taskDef);
@@ -133,14 +133,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> RegisterTaskDefWithHttpInfo(List<TaskDef> taskDef);
         /// <summary>
         /// Remove a task definition
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns></returns>
         void UnregisterTaskDef(string tasktype);
@@ -151,14 +151,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UnregisterTaskDefWithHttpInfo(string tasktype);
         /// <summary>
         /// Removes workflow definition. It does not remove workflows associated with the definition.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns></returns>
@@ -170,7 +170,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -178,7 +178,7 @@ namespace Conductor.Api
         /// <summary>
         /// Create or update workflow definition(s)
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns></returns>
         void Update1(List<WorkflowDef> workflowDef);
@@ -189,14 +189,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> Update1WithHttpInfo(List<WorkflowDef> workflowDef);
         /// <summary>
         /// Update an existing task
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <returns></returns>
         void UpdateTaskDef(TaskDef taskDef);
@@ -207,7 +207,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateTaskDefWithHttpInfo(TaskDef taskDef);
@@ -226,7 +226,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -238,7 +238,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -249,7 +249,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -262,7 +262,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -274,7 +274,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;WorkflowDef&gt;</returns>
@@ -286,7 +286,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;WorkflowDef&gt;)</returns>
@@ -297,7 +297,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TaskDef</returns>
@@ -309,7 +309,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TaskDef)</returns>
@@ -320,7 +320,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;TaskDef&gt;</returns>
@@ -332,7 +332,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;TaskDef&gt;)</returns>
@@ -343,7 +343,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -355,7 +355,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -366,7 +366,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -378,7 +378,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -389,7 +389,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -402,7 +402,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -414,7 +414,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -426,7 +426,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -437,7 +437,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -449,7 +449,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -470,7 +470,7 @@ namespace Conductor.Api
     /// </summary>
     public partial class MetadataResourceApi : IMetadataResourceApi
     {
-        private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MetadataResourceApi"/> class.
@@ -488,10 +488,10 @@ namespace Conductor.Api
         {
             this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
                 Conductor.Client.GlobalConfiguration.Instance,
-                new Conductor.Client.Configuration { BasePath = basePath }
+                new Configuration { BasePath = basePath }
             );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new ApiClient(this.Configuration.BasePath);
+            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -501,7 +501,7 @@ namespace Conductor.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public MetadataResourceApi(Conductor.Client.Configuration configuration)
+        public MetadataResourceApi(Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -509,8 +509,8 @@ namespace Conductor.Api
                 Conductor.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new ApiClient(this.Configuration.BasePath);
+            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -521,7 +521,7 @@ namespace Conductor.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public MetadataResourceApi(Conductor.Client.ISynchronousClient client, Conductor.Client.IAsynchronousClient asyncClient, Conductor.Client.IReadableConfiguration configuration)
+        public MetadataResourceApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -536,12 +536,12 @@ namespace Conductor.Api
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
         /// </summary>
-        public Conductor.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        public IAsynchronousClient AsynchronousClient { get; set; }
 
         /// <summary>
         /// The client for accessing this underlying API synchronously.
         /// </summary>
-        public Conductor.Client.ISynchronousClient Client { get; set; }
+        public ISynchronousClient Client { get; set; }
 
         /// <summary>
         /// Gets the base path of the API client.
@@ -556,12 +556,12 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.IReadableConfiguration Configuration { get; set; }
+        public IReadableConfiguration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
         /// </summary>
-        public Conductor.Client.ExceptionFactory ExceptionFactory
+        public ExceptionFactory ExceptionFactory
         {
             get
             {
@@ -577,7 +577,7 @@ namespace Conductor.Api
         /// <summary>
         /// Create a new workflow definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns></returns>
         public void Create(WorkflowDef workflowDef)
@@ -588,18 +588,18 @@ namespace Conductor.Api
         /// <summary>
         /// Create a new workflow definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> CreateWithHttpInfo(WorkflowDef workflowDef)
+        public ApiResponse<object> CreateWithHttpInfo(WorkflowDef workflowDef)
         {
             // verify the required parameter 'workflowDef' is set
             if (workflowDef == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Create");
+                throw new ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Create");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -646,7 +646,7 @@ namespace Conductor.Api
         /// <summary>
         /// Create a new workflow definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -658,20 +658,20 @@ namespace Conductor.Api
         /// <summary>
         /// Create a new workflow definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> CreateWithHttpInfoAsync(WorkflowDef workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> CreateWithHttpInfoAsync(WorkflowDef workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowDef' is set
             if (workflowDef == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Create");
+                throw new ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Create");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -719,32 +719,32 @@ namespace Conductor.Api
         /// <summary>
         /// Retrieves workflow definition along with blueprint 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional)</param>
         /// <returns>WorkflowDef</returns>
         public WorkflowDef Get(string name, int? version = default(int?))
         {
-            Conductor.Client.ApiResponse<WorkflowDef> localVarResponse = GetWithHttpInfo(name, version);
+            ApiResponse<WorkflowDef> localVarResponse = GetWithHttpInfo(name, version);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Retrieves workflow definition along with blueprint 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional)</param>
         /// <returns>ApiResponse of WorkflowDef</returns>
-        public Conductor.Client.ApiResponse<WorkflowDef> GetWithHttpInfo(string name, int? version = default(int?))
+        public ApiResponse<WorkflowDef> GetWithHttpInfo(string name, int? version = default(int?))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->Get");
+                throw new ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->Get");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -795,35 +795,35 @@ namespace Conductor.Api
         /// <summary>
         /// Retrieves workflow definition along with blueprint 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorkflowDef</returns>
         public async System.Threading.Tasks.Task<WorkflowDef> GetAsync(string name, int? version = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<WorkflowDef> localVarResponse = await GetWithHttpInfoAsync(name, version, cancellationToken).ConfigureAwait(false);
+            ApiResponse<WorkflowDef> localVarResponse = await GetWithHttpInfoAsync(name, version, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Retrieves workflow definition along with blueprint 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorkflowDef)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<WorkflowDef>> GetWithHttpInfoAsync(string name, int? version = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<WorkflowDef>> GetWithHttpInfoAsync(string name, int? version = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->Get");
+                throw new ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->Get");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -875,24 +875,24 @@ namespace Conductor.Api
         /// <summary>
         /// Retrieves all workflow definition along with blueprint 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <returns>List&lt;WorkflowDef&gt;</returns>
         public List<WorkflowDef> GetAllWorkflows(string access = default(string))
         {
-            Conductor.Client.ApiResponse<List<WorkflowDef>> localVarResponse = GetAllWorkflowsWithHttpInfo(access);
+            ApiResponse<List<WorkflowDef>> localVarResponse = GetAllWorkflowsWithHttpInfo(access);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Retrieves all workflow definition along with blueprint 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <returns>ApiResponse of List&lt;WorkflowDef&gt;</returns>
-        public Conductor.Client.ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = default(string))
+        public ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = default(string))
         {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -942,27 +942,27 @@ namespace Conductor.Api
         /// <summary>
         /// Retrieves all workflow definition along with blueprint 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;WorkflowDef&gt;</returns>
         public async System.Threading.Tasks.Task<List<WorkflowDef>> GetAllWorkflowsAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<List<WorkflowDef>> localVarResponse = await GetAllWorkflowsWithHttpInfoAsync(access, cancellationToken).ConfigureAwait(false);
+            ApiResponse<List<WorkflowDef>> localVarResponse = await GetAllWorkflowsWithHttpInfoAsync(access, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Retrieves all workflow definition along with blueprint 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;WorkflowDef&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<List<WorkflowDef>>> GetAllWorkflowsWithHttpInfoAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<List<WorkflowDef>>> GetAllWorkflowsWithHttpInfoAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1013,30 +1013,30 @@ namespace Conductor.Api
         /// <summary>
         /// Gets the task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>TaskDef</returns>
         public TaskDef GetTaskDef(string tasktype)
         {
-            Conductor.Client.ApiResponse<TaskDef> localVarResponse = GetTaskDefWithHttpInfo(tasktype);
+            ApiResponse<TaskDef> localVarResponse = GetTaskDefWithHttpInfo(tasktype);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Gets the task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>ApiResponse of TaskDef</returns>
-        public Conductor.Client.ApiResponse<TaskDef> GetTaskDefWithHttpInfo(string tasktype)
+        public ApiResponse<TaskDef> GetTaskDefWithHttpInfo(string tasktype)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->GetTaskDef");
+                throw new ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->GetTaskDef");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1083,33 +1083,33 @@ namespace Conductor.Api
         /// <summary>
         /// Gets the task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TaskDef</returns>
         public async System.Threading.Tasks.Task<TaskDef> GetTaskDefAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<TaskDef> localVarResponse = await GetTaskDefWithHttpInfoAsync(tasktype, cancellationToken).ConfigureAwait(false);
+            ApiResponse<TaskDef> localVarResponse = await GetTaskDefWithHttpInfoAsync(tasktype, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Gets the task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TaskDef)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<TaskDef>> GetTaskDefWithHttpInfoAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<TaskDef>> GetTaskDefWithHttpInfoAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->GetTaskDef");
+                throw new ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->GetTaskDef");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1157,24 +1157,24 @@ namespace Conductor.Api
         /// <summary>
         /// Gets all task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <returns>List&lt;TaskDef&gt;</returns>
         public List<TaskDef> GetTaskDefs(string access = default(string))
         {
-            Conductor.Client.ApiResponse<List<TaskDef>> localVarResponse = GetTaskDefsWithHttpInfo(access);
+            ApiResponse<List<TaskDef>> localVarResponse = GetTaskDefsWithHttpInfo(access);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Gets all task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <returns>ApiResponse of List&lt;TaskDef&gt;</returns>
-        public Conductor.Client.ApiResponse<List<TaskDef>> GetTaskDefsWithHttpInfo(string access = default(string))
+        public ApiResponse<List<TaskDef>> GetTaskDefsWithHttpInfo(string access = default(string))
         {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1224,27 +1224,27 @@ namespace Conductor.Api
         /// <summary>
         /// Gets all task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;TaskDef&gt;</returns>
         public async System.Threading.Tasks.Task<List<TaskDef>> GetTaskDefsAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<List<TaskDef>> localVarResponse = await GetTaskDefsWithHttpInfoAsync(access, cancellationToken).ConfigureAwait(false);
+            ApiResponse<List<TaskDef>> localVarResponse = await GetTaskDefsWithHttpInfoAsync(access, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Gets all task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;TaskDef&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<List<TaskDef>>> GetTaskDefsWithHttpInfoAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<List<TaskDef>>> GetTaskDefsWithHttpInfoAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1295,7 +1295,7 @@ namespace Conductor.Api
         /// <summary>
         /// Create or update task definition(s) 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <returns></returns>
         public void RegisterTaskDef(List<TaskDef> taskDef)
@@ -1306,18 +1306,18 @@ namespace Conductor.Api
         /// <summary>
         /// Create or update task definition(s) 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> RegisterTaskDefWithHttpInfo(List<TaskDef> taskDef)
+        public ApiResponse<object> RegisterTaskDefWithHttpInfo(List<TaskDef> taskDef)
         {
             // verify the required parameter 'taskDef' is set
             if (taskDef == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'taskDef' when calling MetadataResourceApi->RegisterTaskDef");
+                throw new ApiException(400, "Missing required parameter 'taskDef' when calling MetadataResourceApi->RegisterTaskDef");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -1364,7 +1364,7 @@ namespace Conductor.Api
         /// <summary>
         /// Create or update task definition(s) 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1376,20 +1376,20 @@ namespace Conductor.Api
         /// <summary>
         /// Create or update task definition(s) 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> RegisterTaskDefWithHttpInfoAsync(List<TaskDef> taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> RegisterTaskDefWithHttpInfoAsync(List<TaskDef> taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'taskDef' is set
             if (taskDef == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'taskDef' when calling MetadataResourceApi->RegisterTaskDef");
+                throw new ApiException(400, "Missing required parameter 'taskDef' when calling MetadataResourceApi->RegisterTaskDef");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -1437,7 +1437,7 @@ namespace Conductor.Api
         /// <summary>
         /// Remove a task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns></returns>
         public void UnregisterTaskDef(string tasktype)
@@ -1448,18 +1448,18 @@ namespace Conductor.Api
         /// <summary>
         /// Remove a task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> UnregisterTaskDefWithHttpInfo(string tasktype)
+        public ApiResponse<object> UnregisterTaskDefWithHttpInfo(string tasktype)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->UnregisterTaskDef");
+                throw new ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->UnregisterTaskDef");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1505,7 +1505,7 @@ namespace Conductor.Api
         /// <summary>
         /// Remove a task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1517,20 +1517,20 @@ namespace Conductor.Api
         /// <summary>
         /// Remove a task definition 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> UnregisterTaskDefWithHttpInfoAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> UnregisterTaskDefWithHttpInfoAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->UnregisterTaskDef");
+                throw new ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->UnregisterTaskDef");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1577,7 +1577,7 @@ namespace Conductor.Api
         /// <summary>
         /// Removes workflow definition. It does not remove workflows associated with the definition. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns></returns>
@@ -1589,19 +1589,19 @@ namespace Conductor.Api
         /// <summary>
         /// Removes workflow definition. It does not remove workflows associated with the definition. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> UnregisterWorkflowDefWithHttpInfo(string name, int version)
+        public ApiResponse<object> UnregisterWorkflowDefWithHttpInfo(string name, int version)
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->UnregisterWorkflowDef");
+                throw new ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->UnregisterWorkflowDef");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1648,7 +1648,7 @@ namespace Conductor.Api
         /// <summary>
         /// Removes workflow definition. It does not remove workflows associated with the definition. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1661,21 +1661,21 @@ namespace Conductor.Api
         /// <summary>
         /// Removes workflow definition. It does not remove workflows associated with the definition. 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> UnregisterWorkflowDefWithHttpInfoAsync(string name, int version, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> UnregisterWorkflowDefWithHttpInfoAsync(string name, int version, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->UnregisterWorkflowDef");
+                throw new ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->UnregisterWorkflowDef");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1723,7 +1723,7 @@ namespace Conductor.Api
         /// <summary>
         /// Create or update workflow definition(s) 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns></returns>
         public void Update1(List<WorkflowDef> workflowDef)
@@ -1734,18 +1734,18 @@ namespace Conductor.Api
         /// <summary>
         /// Create or update workflow definition(s) 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> Update1WithHttpInfo(List<WorkflowDef> workflowDef)
+        public ApiResponse<object> Update1WithHttpInfo(List<WorkflowDef> workflowDef)
         {
             // verify the required parameter 'workflowDef' is set
             if (workflowDef == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Update1");
+                throw new ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Update1");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -1792,7 +1792,7 @@ namespace Conductor.Api
         /// <summary>
         /// Create or update workflow definition(s) 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1804,20 +1804,20 @@ namespace Conductor.Api
         /// <summary>
         /// Create or update workflow definition(s) 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> Update1WithHttpInfoAsync(List<WorkflowDef> workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> Update1WithHttpInfoAsync(List<WorkflowDef> workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowDef' is set
             if (workflowDef == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Update1");
+                throw new ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Update1");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -1865,7 +1865,7 @@ namespace Conductor.Api
         /// <summary>
         /// Update an existing task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <returns></returns>
         public void UpdateTaskDef(TaskDef taskDef)
@@ -1876,18 +1876,18 @@ namespace Conductor.Api
         /// <summary>
         /// Update an existing task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> UpdateTaskDefWithHttpInfo(TaskDef taskDef)
+        public ApiResponse<object> UpdateTaskDefWithHttpInfo(TaskDef taskDef)
         {
             // verify the required parameter 'taskDef' is set
             if (taskDef == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'taskDef' when calling MetadataResourceApi->UpdateTaskDef");
+                throw new ApiException(400, "Missing required parameter 'taskDef' when calling MetadataResourceApi->UpdateTaskDef");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -1934,7 +1934,7 @@ namespace Conductor.Api
         /// <summary>
         /// Update an existing task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1946,20 +1946,20 @@ namespace Conductor.Api
         /// <summary>
         /// Update an existing task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> UpdateTaskDefWithHttpInfoAsync(TaskDef taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> UpdateTaskDefWithHttpInfoAsync(TaskDef taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'taskDef' is set
             if (taskDef == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'taskDef' when calling MetadataResourceApi->UpdateTaskDef");
+                throw new ApiException(400, "Missing required parameter 'taskDef' when calling MetadataResourceApi->UpdateTaskDef");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"

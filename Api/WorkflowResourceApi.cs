@@ -30,7 +30,7 @@ namespace Conductor.Api
         /// <summary>
         /// Starts the decision task for a workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void Decide(string workflowId);
@@ -41,14 +41,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DecideWithHttpInfo(string workflowId);
         /// <summary>
         /// Removes the workflow from the system
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns></returns>
@@ -60,7 +60,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -68,7 +68,7 @@ namespace Conductor.Api
         /// <summary>
         /// Gets the workflow by workflow id
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <returns>Workflow</returns>
@@ -80,7 +80,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <returns>ApiResponse of Workflow</returns>
@@ -88,7 +88,7 @@ namespace Conductor.Api
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="path"></param>
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
@@ -101,7 +101,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="path"></param>
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
@@ -110,7 +110,7 @@ namespace Conductor.Api
         /// <summary>
         /// Retrieve all the running workflows
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional, default to 1)</param>
         /// <param name="startTime"> (optional)</param>
@@ -124,7 +124,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional, default to 1)</param>
         /// <param name="startTime"> (optional)</param>
@@ -134,7 +134,7 @@ namespace Conductor.Api
         /// <summary>
         /// Lists workflows for the given correlation id list
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -148,7 +148,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -158,7 +158,7 @@ namespace Conductor.Api
         /// <summary>
         /// Lists workflows for the given correlation id
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="correlationId"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -172,7 +172,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="correlationId"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -182,7 +182,7 @@ namespace Conductor.Api
         /// <summary>
         /// Pauses the workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void PauseWorkflow1(string workflowId);
@@ -193,14 +193,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PauseWorkflow1WithHttpInfo(string workflowId);
         /// <summary>
         /// Reruns the workflow from a specific task
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="rerunWorkflowRequest"></param>
         /// <returns>string</returns>
@@ -212,7 +212,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="rerunWorkflowRequest"></param>
         /// <returns>ApiResponse of string</returns>
@@ -220,7 +220,7 @@ namespace Conductor.Api
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void ResetWorkflow(string workflowId);
@@ -231,14 +231,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> ResetWorkflowWithHttpInfo(string workflowId);
         /// <summary>
         /// Restarts a completed workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns></returns>
@@ -250,7 +250,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -258,7 +258,7 @@ namespace Conductor.Api
         /// <summary>
         /// Resumes the workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void ResumeWorkflow1(string workflowId);
@@ -269,14 +269,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> ResumeWorkflow1WithHttpInfo(string workflowId);
         /// <summary>
         /// Retries the last failed task
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns></returns>
@@ -288,7 +288,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -299,7 +299,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -314,7 +314,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -328,7 +328,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -343,7 +343,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -357,7 +357,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -372,7 +372,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -386,7 +386,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -401,7 +401,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -412,7 +412,7 @@ namespace Conductor.Api
         /// <summary>
         /// Skips a given task from a current running workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"> (optional)</param>
@@ -425,7 +425,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"> (optional)</param>
@@ -434,7 +434,7 @@ namespace Conductor.Api
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="version"> (optional)</param>
@@ -449,7 +449,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="version"> (optional)</param>
@@ -460,7 +460,7 @@ namespace Conductor.Api
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <returns>string</returns>
         string StartWorkflow1(StartWorkflowRequest startWorkflowRequest);
@@ -471,14 +471,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> StartWorkflow1WithHttpInfo(StartWorkflowRequest startWorkflowRequest);
         /// <summary>
         /// Terminate workflow execution
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns></returns>
@@ -490,7 +490,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -510,7 +510,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -522,7 +522,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -533,7 +533,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -546,7 +546,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -558,7 +558,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -571,7 +571,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -583,7 +583,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="path"></param>
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
@@ -597,7 +597,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="path"></param>
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
@@ -610,7 +610,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional, default to 1)</param>
         /// <param name="startTime"> (optional)</param>
@@ -625,7 +625,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional, default to 1)</param>
         /// <param name="startTime"> (optional)</param>
@@ -639,7 +639,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -654,7 +654,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -668,7 +668,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="correlationId"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -683,7 +683,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="correlationId"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -697,7 +697,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -709,7 +709,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -720,7 +720,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="rerunWorkflowRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -733,7 +733,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="rerunWorkflowRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -745,7 +745,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -757,7 +757,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -768,7 +768,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -781,7 +781,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -793,7 +793,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -805,7 +805,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -816,7 +816,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -829,7 +829,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -841,7 +841,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -857,7 +857,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -872,7 +872,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -888,7 +888,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -903,7 +903,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -919,7 +919,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -934,7 +934,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -950,7 +950,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -965,7 +965,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"> (optional)</param>
@@ -979,7 +979,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"> (optional)</param>
@@ -992,7 +992,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="version"> (optional)</param>
@@ -1008,7 +1008,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="version"> (optional)</param>
@@ -1023,7 +1023,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
@@ -1035,7 +1035,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
@@ -1046,7 +1046,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1059,7 +1059,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1081,7 +1081,7 @@ namespace Conductor.Api
     /// </summary>
     public partial class WorkflowResourceApi : IWorkflowResourceApi
     {
-        private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowResourceApi"/> class.
@@ -1099,10 +1099,10 @@ namespace Conductor.Api
         {
             this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
                 Conductor.Client.GlobalConfiguration.Instance,
-                new Conductor.Client.Configuration { BasePath = basePath }
+                new Configuration { BasePath = basePath }
             );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new ApiClient(this.Configuration.BasePath);
+            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -1112,7 +1112,7 @@ namespace Conductor.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public WorkflowResourceApi(Conductor.Client.Configuration configuration)
+        public WorkflowResourceApi(Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -1120,8 +1120,8 @@ namespace Conductor.Api
                 Conductor.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new ApiClient(this.Configuration.BasePath);
+            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -1132,7 +1132,7 @@ namespace Conductor.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public WorkflowResourceApi(Conductor.Client.ISynchronousClient client, Conductor.Client.IAsynchronousClient asyncClient, Conductor.Client.IReadableConfiguration configuration)
+        public WorkflowResourceApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -1147,12 +1147,12 @@ namespace Conductor.Api
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
         /// </summary>
-        public Conductor.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        public IAsynchronousClient AsynchronousClient { get; set; }
 
         /// <summary>
         /// The client for accessing this underlying API synchronously.
         /// </summary>
-        public Conductor.Client.ISynchronousClient Client { get; set; }
+        public ISynchronousClient Client { get; set; }
 
         /// <summary>
         /// Gets the base path of the API client.
@@ -1167,12 +1167,12 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.IReadableConfiguration Configuration { get; set; }
+        public IReadableConfiguration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
         /// </summary>
-        public Conductor.Client.ExceptionFactory ExceptionFactory
+        public ExceptionFactory ExceptionFactory
         {
             get
             {
@@ -1188,7 +1188,7 @@ namespace Conductor.Api
         /// <summary>
         /// Starts the decision task for a workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         public void Decide(string workflowId)
@@ -1199,18 +1199,18 @@ namespace Conductor.Api
         /// <summary>
         /// Starts the decision task for a workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> DecideWithHttpInfo(string workflowId)
+        public ApiResponse<object> DecideWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Decide");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Decide");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1256,7 +1256,7 @@ namespace Conductor.Api
         /// <summary>
         /// Starts the decision task for a workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1268,20 +1268,20 @@ namespace Conductor.Api
         /// <summary>
         /// Starts the decision task for a workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> DecideWithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> DecideWithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Decide");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Decide");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1328,7 +1328,7 @@ namespace Conductor.Api
         /// <summary>
         /// Removes the workflow from the system 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns></returns>
@@ -1340,19 +1340,19 @@ namespace Conductor.Api
         /// <summary>
         /// Removes the workflow from the system 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> DeleteWithHttpInfo(string workflowId, bool? archiveWorkflow = default(bool?))
+        public ApiResponse<object> DeleteWithHttpInfo(string workflowId, bool? archiveWorkflow = default(bool?))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Delete");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Delete");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1402,7 +1402,7 @@ namespace Conductor.Api
         /// <summary>
         /// Removes the workflow from the system 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1415,21 +1415,21 @@ namespace Conductor.Api
         /// <summary>
         /// Removes the workflow from the system 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> DeleteWithHttpInfoAsync(string workflowId, bool? archiveWorkflow = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> DeleteWithHttpInfoAsync(string workflowId, bool? archiveWorkflow = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Delete");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Delete");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1480,32 +1480,32 @@ namespace Conductor.Api
         /// <summary>
         /// Gets the workflow by workflow id 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <returns>Workflow</returns>
         public Workflow GetExecutionStatus(string workflowId, bool? includeTasks = default(bool?))
         {
-            Conductor.Client.ApiResponse<Workflow> localVarResponse = GetExecutionStatusWithHttpInfo(workflowId, includeTasks);
+            ApiResponse<Workflow> localVarResponse = GetExecutionStatusWithHttpInfo(workflowId, includeTasks);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Gets the workflow by workflow id 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <returns>ApiResponse of Workflow</returns>
-        public Conductor.Client.ApiResponse<Workflow> GetExecutionStatusWithHttpInfo(string workflowId, bool? includeTasks = default(bool?))
+        public ApiResponse<Workflow> GetExecutionStatusWithHttpInfo(string workflowId, bool? includeTasks = default(bool?))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatus");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatus");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1556,35 +1556,35 @@ namespace Conductor.Api
         /// <summary>
         /// Gets the workflow by workflow id 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Workflow</returns>
         public async System.Threading.Tasks.Task<Workflow> GetExecutionStatusAsync(string workflowId, bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<Workflow> localVarResponse = await GetExecutionStatusWithHttpInfoAsync(workflowId, includeTasks, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Workflow> localVarResponse = await GetExecutionStatusWithHttpInfoAsync(workflowId, includeTasks, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Gets the workflow by workflow id 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Workflow)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Workflow>> GetExecutionStatusWithHttpInfoAsync(string workflowId, bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Workflow>> GetExecutionStatusWithHttpInfoAsync(string workflowId, bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatus");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatus");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1636,46 +1636,46 @@ namespace Conductor.Api
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="path"></param>
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ExternalStorageLocation</returns>
         public ExternalStorageLocation GetExternalStorageLocation1(string path, string operation, string payloadType)
         {
-            Conductor.Client.ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocation1WithHttpInfo(path, operation, payloadType);
+            ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocation1WithHttpInfo(path, operation, payloadType);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="path"></param>
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        public Conductor.Client.ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo(string path, string operation, string payloadType)
+        public ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo(string path, string operation, string payloadType)
         {
             // verify the required parameter 'path' is set
             if (path == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'path' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'path' when calling WorkflowResourceApi->GetExternalStorageLocation1");
             }
 
             // verify the required parameter 'operation' is set
             if (operation == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'operation' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'operation' when calling WorkflowResourceApi->GetExternalStorageLocation1");
             }
 
             // verify the required parameter 'payloadType' is set
             if (payloadType == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation1");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1724,7 +1724,7 @@ namespace Conductor.Api
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="path"></param>
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
@@ -1732,41 +1732,41 @@ namespace Conductor.Api
         /// <returns>Task of ExternalStorageLocation</returns>
         public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocation1Async(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocation1WithHttpInfoAsync(path, operation, payloadType, cancellationToken).ConfigureAwait(false);
+            ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocation1WithHttpInfoAsync(path, operation, payloadType, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="path"></param>
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1WithHttpInfoAsync(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1WithHttpInfoAsync(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'path' is set
             if (path == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'path' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'path' when calling WorkflowResourceApi->GetExternalStorageLocation1");
             }
 
             // verify the required parameter 'operation' is set
             if (operation == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'operation' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'operation' when calling WorkflowResourceApi->GetExternalStorageLocation1");
             }
 
             // verify the required parameter 'payloadType' is set
             if (payloadType == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation1");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1816,7 +1816,7 @@ namespace Conductor.Api
         /// <summary>
         /// Retrieve all the running workflows 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional, default to 1)</param>
         /// <param name="startTime"> (optional)</param>
@@ -1824,28 +1824,28 @@ namespace Conductor.Api
         /// <returns>List&lt;string&gt;</returns>
         public List<string> GetRunningWorkflow(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?))
         {
-            Conductor.Client.ApiResponse<List<string>> localVarResponse = GetRunningWorkflowWithHttpInfo(name, version, startTime, endTime);
+            ApiResponse<List<string>> localVarResponse = GetRunningWorkflowWithHttpInfo(name, version, startTime, endTime);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Retrieve all the running workflows 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional, default to 1)</param>
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public Conductor.Client.ApiResponse<List<string>> GetRunningWorkflowWithHttpInfo(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?))
+        public ApiResponse<List<string>> GetRunningWorkflowWithHttpInfo(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetRunningWorkflow");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetRunningWorkflow");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1904,7 +1904,7 @@ namespace Conductor.Api
         /// <summary>
         /// Retrieve all the running workflows 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional, default to 1)</param>
         /// <param name="startTime"> (optional)</param>
@@ -1913,30 +1913,30 @@ namespace Conductor.Api
         /// <returns>Task of List&lt;string&gt;</returns>
         public async System.Threading.Tasks.Task<List<string>> GetRunningWorkflowAsync(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<List<string>> localVarResponse = await GetRunningWorkflowWithHttpInfoAsync(name, version, startTime, endTime, cancellationToken).ConfigureAwait(false);
+            ApiResponse<List<string>> localVarResponse = await GetRunningWorkflowWithHttpInfoAsync(name, version, startTime, endTime, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Retrieve all the running workflows 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional, default to 1)</param>
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<List<string>>> GetRunningWorkflowWithHttpInfoAsync(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> GetRunningWorkflowWithHttpInfoAsync(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetRunningWorkflow");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetRunningWorkflow");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -1996,7 +1996,7 @@ namespace Conductor.Api
         /// <summary>
         /// Lists workflows for the given correlation id list 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -2004,34 +2004,34 @@ namespace Conductor.Api
         /// <returns>Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
         public Dictionary<string, List<Workflow>> GetWorkflows(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
         {
-            Conductor.Client.ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = GetWorkflowsWithHttpInfo(name, requestBody, includeClosed, includeTasks);
+            ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = GetWorkflowsWithHttpInfo(name, requestBody, includeClosed, includeTasks);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Lists workflows for the given correlation id list 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        public Conductor.Client.ApiResponse<Dictionary<string, List<Workflow>>> GetWorkflowsWithHttpInfo(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
+        public ApiResponse<Dictionary<string, List<Workflow>>> GetWorkflowsWithHttpInfo(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
             }
 
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->GetWorkflows");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->GetWorkflows");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -2088,7 +2088,7 @@ namespace Conductor.Api
         /// <summary>
         /// Lists workflows for the given correlation id list 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -2097,36 +2097,36 @@ namespace Conductor.Api
         /// <returns>Task of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
         public async System.Threading.Tasks.Task<Dictionary<string, List<Workflow>>> GetWorkflowsAsync(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = await GetWorkflowsWithHttpInfoAsync(name, requestBody, includeClosed, includeTasks, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = await GetWorkflowsWithHttpInfoAsync(name, requestBody, includeClosed, includeTasks, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Lists workflows for the given correlation id list 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, List&lt;Workflow&gt;&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Dictionary<string, List<Workflow>>>> GetWorkflowsWithHttpInfoAsync(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, List<Workflow>>>> GetWorkflowsWithHttpInfoAsync(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
             }
 
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->GetWorkflows");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->GetWorkflows");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -2184,7 +2184,7 @@ namespace Conductor.Api
         /// <summary>
         /// Lists workflows for the given correlation id 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="correlationId"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -2192,34 +2192,34 @@ namespace Conductor.Api
         /// <returns>List&lt;Workflow&gt;</returns>
         public List<Workflow> GetWorkflows1(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
         {
-            Conductor.Client.ApiResponse<List<Workflow>> localVarResponse = GetWorkflows1WithHttpInfo(name, correlationId, includeClosed, includeTasks);
+            ApiResponse<List<Workflow>> localVarResponse = GetWorkflows1WithHttpInfo(name, correlationId, includeClosed, includeTasks);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Lists workflows for the given correlation id 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="correlationId"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-        public Conductor.Client.ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
+        public ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows1");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows1");
             }
 
             // verify the required parameter 'correlationId' is set
             if (correlationId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
+                throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -2275,7 +2275,7 @@ namespace Conductor.Api
         /// <summary>
         /// Lists workflows for the given correlation id 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="correlationId"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -2284,36 +2284,36 @@ namespace Conductor.Api
         /// <returns>Task of List&lt;Workflow&gt;</returns>
         public async System.Threading.Tasks.Task<List<Workflow>> GetWorkflows1Async(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<List<Workflow>> localVarResponse = await GetWorkflows1WithHttpInfoAsync(name, correlationId, includeClosed, includeTasks, cancellationToken).ConfigureAwait(false);
+            ApiResponse<List<Workflow>> localVarResponse = await GetWorkflows1WithHttpInfoAsync(name, correlationId, includeClosed, includeTasks, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Lists workflows for the given correlation id 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="correlationId"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Workflow&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<List<Workflow>>> GetWorkflows1WithHttpInfoAsync(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflows1WithHttpInfoAsync(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows1");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows1");
             }
 
             // verify the required parameter 'correlationId' is set
             if (correlationId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
+                throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -2370,7 +2370,7 @@ namespace Conductor.Api
         /// <summary>
         /// Pauses the workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         public void PauseWorkflow1(string workflowId)
@@ -2381,18 +2381,18 @@ namespace Conductor.Api
         /// <summary>
         /// Pauses the workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> PauseWorkflow1WithHttpInfo(string workflowId)
+        public ApiResponse<object> PauseWorkflow1WithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow1");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -2438,7 +2438,7 @@ namespace Conductor.Api
         /// <summary>
         /// Pauses the workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -2450,20 +2450,20 @@ namespace Conductor.Api
         /// <summary>
         /// Pauses the workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> PauseWorkflow1WithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> PauseWorkflow1WithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow1");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -2510,38 +2510,38 @@ namespace Conductor.Api
         /// <summary>
         /// Reruns the workflow from a specific task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="rerunWorkflowRequest"></param>
         /// <returns>string</returns>
         public string Rerun(string workflowId, RerunWorkflowRequest rerunWorkflowRequest)
         {
-            Conductor.Client.ApiResponse<string> localVarResponse = RerunWithHttpInfo(workflowId, rerunWorkflowRequest);
+            ApiResponse<string> localVarResponse = RerunWithHttpInfo(workflowId, rerunWorkflowRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Reruns the workflow from a specific task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="rerunWorkflowRequest"></param>
         /// <returns>ApiResponse of string</returns>
-        public Conductor.Client.ApiResponse<string> RerunWithHttpInfo(string workflowId, RerunWorkflowRequest rerunWorkflowRequest)
+        public ApiResponse<string> RerunWithHttpInfo(string workflowId, RerunWorkflowRequest rerunWorkflowRequest)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Rerun");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Rerun");
             }
 
             // verify the required parameter 'rerunWorkflowRequest' is set
             if (rerunWorkflowRequest == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'rerunWorkflowRequest' when calling WorkflowResourceApi->Rerun");
+                throw new ApiException(400, "Missing required parameter 'rerunWorkflowRequest' when calling WorkflowResourceApi->Rerun");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -2590,41 +2590,41 @@ namespace Conductor.Api
         /// <summary>
         /// Reruns the workflow from a specific task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="rerunWorkflowRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
         public async System.Threading.Tasks.Task<string> RerunAsync(string workflowId, RerunWorkflowRequest rerunWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<string> localVarResponse = await RerunWithHttpInfoAsync(workflowId, rerunWorkflowRequest, cancellationToken).ConfigureAwait(false);
+            ApiResponse<string> localVarResponse = await RerunWithHttpInfoAsync(workflowId, rerunWorkflowRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Reruns the workflow from a specific task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="rerunWorkflowRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<string>> RerunWithHttpInfoAsync(string workflowId, RerunWorkflowRequest rerunWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<string>> RerunWithHttpInfoAsync(string workflowId, RerunWorkflowRequest rerunWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Rerun");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Rerun");
             }
 
             // verify the required parameter 'rerunWorkflowRequest' is set
             if (rerunWorkflowRequest == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'rerunWorkflowRequest' when calling WorkflowResourceApi->Rerun");
+                throw new ApiException(400, "Missing required parameter 'rerunWorkflowRequest' when calling WorkflowResourceApi->Rerun");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -2674,7 +2674,7 @@ namespace Conductor.Api
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         public void ResetWorkflow(string workflowId)
@@ -2685,18 +2685,18 @@ namespace Conductor.Api
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> ResetWorkflowWithHttpInfo(string workflowId)
+        public ApiResponse<object> ResetWorkflowWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResetWorkflow");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResetWorkflow");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -2742,7 +2742,7 @@ namespace Conductor.Api
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -2754,20 +2754,20 @@ namespace Conductor.Api
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> ResetWorkflowWithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> ResetWorkflowWithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResetWorkflow");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResetWorkflow");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -2814,7 +2814,7 @@ namespace Conductor.Api
         /// <summary>
         /// Restarts a completed workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns></returns>
@@ -2826,19 +2826,19 @@ namespace Conductor.Api
         /// <summary>
         /// Restarts a completed workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> RestartWithHttpInfo(string workflowId, bool? useLatestDefinitions = default(bool?))
+        public ApiResponse<object> RestartWithHttpInfo(string workflowId, bool? useLatestDefinitions = default(bool?))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Restart");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Restart");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -2888,7 +2888,7 @@ namespace Conductor.Api
         /// <summary>
         /// Restarts a completed workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2901,21 +2901,21 @@ namespace Conductor.Api
         /// <summary>
         /// Restarts a completed workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> RestartWithHttpInfoAsync(string workflowId, bool? useLatestDefinitions = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> RestartWithHttpInfoAsync(string workflowId, bool? useLatestDefinitions = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Restart");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Restart");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -2966,7 +2966,7 @@ namespace Conductor.Api
         /// <summary>
         /// Resumes the workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         public void ResumeWorkflow1(string workflowId)
@@ -2977,18 +2977,18 @@ namespace Conductor.Api
         /// <summary>
         /// Resumes the workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> ResumeWorkflow1WithHttpInfo(string workflowId)
+        public ApiResponse<object> ResumeWorkflow1WithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow1");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3034,7 +3034,7 @@ namespace Conductor.Api
         /// <summary>
         /// Resumes the workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -3046,20 +3046,20 @@ namespace Conductor.Api
         /// <summary>
         /// Resumes the workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> ResumeWorkflow1WithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> ResumeWorkflow1WithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow1");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3106,7 +3106,7 @@ namespace Conductor.Api
         /// <summary>
         /// Retries the last failed task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns></returns>
@@ -3118,19 +3118,19 @@ namespace Conductor.Api
         /// <summary>
         /// Retries the last failed task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> Retry1WithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
+        public ApiResponse<object> Retry1WithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry1");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry1");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3180,7 +3180,7 @@ namespace Conductor.Api
         /// <summary>
         /// Retries the last failed task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -3193,21 +3193,21 @@ namespace Conductor.Api
         /// <summary>
         /// Retries the last failed task 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> Retry1WithHttpInfoAsync(string workflowId, bool? resumeSubworkflowTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> Retry1WithHttpInfoAsync(string workflowId, bool? resumeSubworkflowTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry1");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry1");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3258,7 +3258,7 @@ namespace Conductor.Api
         /// <summary>
         /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3267,23 +3267,23 @@ namespace Conductor.Api
         /// <returns>SearchResultWorkflowSummary</returns>
         public SearchResultWorkflowSummary Search(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
-            Conductor.Client.ApiResponse<SearchResultWorkflowSummary> localVarResponse = SearchWithHttpInfo(start, size, sort, freeText, query);
+            ApiResponse<SearchResultWorkflowSummary> localVarResponse = SearchWithHttpInfo(start, size, sort, freeText, query);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
-        public Conductor.Client.ApiResponse<SearchResultWorkflowSummary> SearchWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+        public ApiResponse<SearchResultWorkflowSummary> SearchWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3349,7 +3349,7 @@ namespace Conductor.Api
         /// <summary>
         /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3359,14 +3359,14 @@ namespace Conductor.Api
         /// <returns>Task of SearchResultWorkflowSummary</returns>
         public async System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<SearchResultWorkflowSummary> localVarResponse = await SearchWithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
+            ApiResponse<SearchResultWorkflowSummary> localVarResponse = await SearchWithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3374,10 +3374,10 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflowSummary)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<SearchResultWorkflowSummary>> SearchWithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowSummary>> SearchWithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3444,7 +3444,7 @@ namespace Conductor.Api
         /// <summary>
         /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3453,23 +3453,23 @@ namespace Conductor.Api
         /// <returns>SearchResultWorkflow</returns>
         public SearchResultWorkflow SearchV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
-            Conductor.Client.ApiResponse<SearchResultWorkflow> localVarResponse = SearchV2WithHttpInfo(start, size, sort, freeText, query);
+            ApiResponse<SearchResultWorkflow> localVarResponse = SearchV2WithHttpInfo(start, size, sort, freeText, query);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflow</returns>
-        public Conductor.Client.ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+        public ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3535,7 +3535,7 @@ namespace Conductor.Api
         /// <summary>
         /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3545,14 +3545,14 @@ namespace Conductor.Api
         /// <returns>Task of SearchResultWorkflow</returns>
         public async System.Threading.Tasks.Task<SearchResultWorkflow> SearchV2Async(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<SearchResultWorkflow> localVarResponse = await SearchV2WithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
+            ApiResponse<SearchResultWorkflow> localVarResponse = await SearchV2WithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3560,10 +3560,10 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<SearchResultWorkflow>> SearchV2WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchV2WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3630,7 +3630,7 @@ namespace Conductor.Api
         /// <summary>
         /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3639,23 +3639,23 @@ namespace Conductor.Api
         /// <returns>SearchResultWorkflowSummary</returns>
         public SearchResultWorkflowSummary SearchWorkflowsByTasks(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
-            Conductor.Client.ApiResponse<SearchResultWorkflowSummary> localVarResponse = SearchWorkflowsByTasksWithHttpInfo(start, size, sort, freeText, query);
+            ApiResponse<SearchResultWorkflowSummary> localVarResponse = SearchWorkflowsByTasksWithHttpInfo(start, size, sort, freeText, query);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
-        public Conductor.Client.ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+        public ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3721,7 +3721,7 @@ namespace Conductor.Api
         /// <summary>
         /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3731,14 +3731,14 @@ namespace Conductor.Api
         /// <returns>Task of SearchResultWorkflowSummary</returns>
         public async System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchWorkflowsByTasksAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<SearchResultWorkflowSummary> localVarResponse = await SearchWorkflowsByTasksWithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
+            ApiResponse<SearchResultWorkflowSummary> localVarResponse = await SearchWorkflowsByTasksWithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3746,10 +3746,10 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflowSummary)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<SearchResultWorkflowSummary>> SearchWorkflowsByTasksWithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowSummary>> SearchWorkflowsByTasksWithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3816,7 +3816,7 @@ namespace Conductor.Api
         /// <summary>
         /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3825,23 +3825,23 @@ namespace Conductor.Api
         /// <returns>SearchResultWorkflow</returns>
         public SearchResultWorkflow SearchWorkflowsByTasksV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
-            Conductor.Client.ApiResponse<SearchResultWorkflow> localVarResponse = SearchWorkflowsByTasksV2WithHttpInfo(start, size, sort, freeText, query);
+            ApiResponse<SearchResultWorkflow> localVarResponse = SearchWorkflowsByTasksV2WithHttpInfo(start, size, sort, freeText, query);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflow</returns>
-        public Conductor.Client.ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+        public ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -3907,7 +3907,7 @@ namespace Conductor.Api
         /// <summary>
         /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3917,14 +3917,14 @@ namespace Conductor.Api
         /// <returns>Task of SearchResultWorkflow</returns>
         public async System.Threading.Tasks.Task<SearchResultWorkflow> SearchWorkflowsByTasksV2Async(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<SearchResultWorkflow> localVarResponse = await SearchWorkflowsByTasksV2WithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
+            ApiResponse<SearchResultWorkflow> localVarResponse = await SearchWorkflowsByTasksV2WithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -3932,10 +3932,10 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<SearchResultWorkflow>> SearchWorkflowsByTasksV2WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchWorkflowsByTasksV2WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -4002,7 +4002,7 @@ namespace Conductor.Api
         /// <summary>
         /// Skips a given task from a current running workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"> (optional)</param>
@@ -4015,26 +4015,26 @@ namespace Conductor.Api
         /// <summary>
         /// Skips a given task from a current running workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> SkipTaskFromWorkflowWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest))
+        public ApiResponse<object> SkipTaskFromWorkflowWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
             }
 
             // verify the required parameter 'taskReferenceName' is set
             if (taskReferenceName == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'taskReferenceName' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
+                throw new ApiException(400, "Missing required parameter 'taskReferenceName' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -4083,7 +4083,7 @@ namespace Conductor.Api
         /// <summary>
         /// Skips a given task from a current running workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"> (optional)</param>
@@ -4097,28 +4097,28 @@ namespace Conductor.Api
         /// <summary>
         /// Skips a given task from a current running workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> SkipTaskFromWorkflowWithHttpInfoAsync(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> SkipTaskFromWorkflowWithHttpInfoAsync(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
             }
 
             // verify the required parameter 'taskReferenceName' is set
             if (taskReferenceName == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'taskReferenceName' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
+                throw new ApiException(400, "Missing required parameter 'taskReferenceName' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -4168,7 +4168,7 @@ namespace Conductor.Api
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="version"> (optional)</param>
@@ -4177,35 +4177,35 @@ namespace Conductor.Api
         /// <returns>string</returns>
         public string StartWorkflow(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?))
         {
-            Conductor.Client.ApiResponse<string> localVarResponse = StartWorkflowWithHttpInfo(name, requestBody, version, correlationId, priority);
+            ApiResponse<string> localVarResponse = StartWorkflowWithHttpInfo(name, requestBody, version, correlationId, priority);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="version"> (optional)</param>
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>ApiResponse of string</returns>
-        public Conductor.Client.ApiResponse<string> StartWorkflowWithHttpInfo(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?))
+        public ApiResponse<string> StartWorkflowWithHttpInfo(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow");
             }
 
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->StartWorkflow");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->StartWorkflow");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -4266,7 +4266,7 @@ namespace Conductor.Api
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="version"> (optional)</param>
@@ -4276,14 +4276,14 @@ namespace Conductor.Api
         /// <returns>Task of string</returns>
         public async System.Threading.Tasks.Task<string> StartWorkflowAsync(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<string> localVarResponse = await StartWorkflowWithHttpInfoAsync(name, requestBody, version, correlationId, priority, cancellationToken).ConfigureAwait(false);
+            ApiResponse<string> localVarResponse = await StartWorkflowWithHttpInfoAsync(name, requestBody, version, correlationId, priority, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="version"> (optional)</param>
@@ -4291,22 +4291,22 @@ namespace Conductor.Api
         /// <param name="priority"> (optional, default to 0)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<string>> StartWorkflowWithHttpInfoAsync(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflowWithHttpInfoAsync(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow");
             }
 
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->StartWorkflow");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->StartWorkflow");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -4368,30 +4368,30 @@ namespace Conductor.Api
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <returns>string</returns>
         public string StartWorkflow1(StartWorkflowRequest startWorkflowRequest)
         {
-            Conductor.Client.ApiResponse<string> localVarResponse = StartWorkflow1WithHttpInfo(startWorkflowRequest);
+            ApiResponse<string> localVarResponse = StartWorkflow1WithHttpInfo(startWorkflowRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <returns>ApiResponse of string</returns>
-        public Conductor.Client.ApiResponse<string> StartWorkflow1WithHttpInfo(StartWorkflowRequest startWorkflowRequest)
+        public ApiResponse<string> StartWorkflow1WithHttpInfo(StartWorkflowRequest startWorkflowRequest)
         {
             // verify the required parameter 'startWorkflowRequest' is set
             if (startWorkflowRequest == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'startWorkflowRequest' when calling WorkflowResourceApi->StartWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'startWorkflowRequest' when calling WorkflowResourceApi->StartWorkflow1");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -4439,33 +4439,33 @@ namespace Conductor.Api
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
         public async System.Threading.Tasks.Task<string> StartWorkflow1Async(StartWorkflowRequest startWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Conductor.Client.ApiResponse<string> localVarResponse = await StartWorkflow1WithHttpInfoAsync(startWorkflowRequest, cancellationToken).ConfigureAwait(false);
+            ApiResponse<string> localVarResponse = await StartWorkflow1WithHttpInfoAsync(startWorkflowRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<string>> StartWorkflow1WithHttpInfoAsync(StartWorkflowRequest startWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflow1WithHttpInfoAsync(StartWorkflowRequest startWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'startWorkflowRequest' is set
             if (startWorkflowRequest == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'startWorkflowRequest' when calling WorkflowResourceApi->StartWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'startWorkflowRequest' when calling WorkflowResourceApi->StartWorkflow1");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -4514,7 +4514,7 @@ namespace Conductor.Api
         /// <summary>
         /// Terminate workflow execution 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns></returns>
@@ -4526,19 +4526,19 @@ namespace Conductor.Api
         /// <summary>
         /// Terminate workflow execution 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = default(string))
+        public ApiResponse<object> TerminateWithHttpInfo(string workflowId, string reason = default(string))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
@@ -4588,7 +4588,7 @@ namespace Conductor.Api
         /// <summary>
         /// Terminate workflow execution 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -4601,21 +4601,21 @@ namespace Conductor.Api
         /// <summary>
         /// Terminate workflow execution 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> TerminateWithHttpInfoAsync(string workflowId, string reason = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<object>> TerminateWithHttpInfoAsync(string workflowId, string reason = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate");
             }
 
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
             };
