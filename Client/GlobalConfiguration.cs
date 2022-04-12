@@ -38,7 +38,7 @@ namespace Conductor.Client
         }
 
         /// <inheritdoc />
-        public GlobalConfiguration(IDictionary<string, string> defaultHeader, string keyId, string keySecret, string basePath = null) : base(defaultHeader, keyId, keySecret, basePath)
+        public GlobalConfiguration(IDictionary<string, string> defaultHeader, string keyId = null, string keySecret = null, string basePath = null) : base(defaultHeader, keyId, keySecret, basePath)
         {
         }
 

@@ -40,10 +40,10 @@ namespace Conductor.Client
         /// Defines the base path of the target API server.
         /// Example: http://localhost:3000/v1/
         /// </summary>
-        public string _basePath { get; set; } = "https://play.orkes.io/api/";
+        public string _basePath { get; set; }
 
-        public string keyId { get; set; } = null;
-        public string keySecret { get; set; } = null;
+        public string keyId { get; set; }
+        public string keySecret { get; set; }
 
         #region Constructors
 
@@ -63,7 +63,7 @@ namespace Conductor.Client
             IDictionary<string, string> defaultHeaders,
             string keyId,
             string keySecret,
-            string basePath = "https://play.orkes.io/api") : this()
+            string basePath = "https://play.orkes.io/") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath.ToString()))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");
@@ -80,6 +80,7 @@ namespace Conductor.Client
             }
 
             this.keyId = keyId;
+            this.BasePath = basePath;
             this.keySecret = keySecret;
         }
 
@@ -140,8 +141,8 @@ namespace Conductor.Client
 
             var config = new Configuration
             {
-                keyId = first.keyId,
-                keySecret = first.keySecret,
+                keyId = first.keyId ?? second.keyId,
+                keySecret = first.keySecret ?? second.keySecret,
                 DefaultHeaders = defaultHeaders,
                 BasePath = second.BasePath ?? first.BasePath,
             };

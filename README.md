@@ -3,7 +3,7 @@ conductor-csharp
 
 To find out more about Conductor visit: [https://github.com/Netflix/conductor](https://github.com/Netflix/conductor)
 
-`conductor-csharp` repository provides the client SDKs to build Task Workers in C#
+`conductor-csharp` repository provides the client SDKs to build Task Workers and Clients in C#
 
 ## Quick Start
 

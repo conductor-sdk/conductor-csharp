@@ -252,7 +252,7 @@ namespace Conductor.Client
             //Authentication block
             if (configuration.keyId != null && configuration.keySecret != null)
             {
-                request.AddHeader("X-Authorization", conductorAuthTokenClient.getToken(configuration.BasePath + "/token", configuration.keyId, configuration.keySecret));
+                request.AddHeader("X-Authorization", conductorAuthTokenClient.getToken(configuration.BasePath + "/api/token", configuration.keyId, configuration.keySecret));
             }
 
             if (options.PathParameters != null)
