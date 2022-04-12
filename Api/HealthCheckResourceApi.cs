@@ -10,10 +10,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
 using Conductor.Client;
 
 namespace Conductor.Api
@@ -47,37 +43,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IHealthCheckResourceApiAsync : IApiAccessor
-    {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Object>> DoCheckAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> DoCheckWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
-    }
-
-    /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
-    /// </summary>
-    public interface IHealthCheckResourceApi : IHealthCheckResourceApiSync, IHealthCheckResourceApiAsync
+    public interface IHealthCheckResourceApi : IHealthCheckResourceApiSync
     {
 
     }
@@ -108,7 +74,6 @@ namespace Conductor.Api
                 new Configuration { BasePath = basePath }
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -127,7 +92,6 @@ namespace Conductor.Api
                 configuration
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -136,24 +100,16 @@ namespace Conductor.Api
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public HealthCheckResourceApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
+        public HealthCheckResourceApi(ISynchronousClient client, IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
             if (configuration == null) throw new ArgumentNullException("configuration");
 
             this.Client = client;
-            this.AsynchronousClient = asyncClient;
             this.Configuration = configuration;
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
-
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public IAsynchronousClient AsynchronousClient { get; set; }
 
         /// <summary>
         /// The client for accessing this underlying API synchronously.
@@ -232,79 +188,10 @@ namespace Conductor.Api
             }
 
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Dictionary<string, Object>>("/health", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("DoCheck", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, Object>> DoCheckAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<Dictionary<string, object>> localVarResponse = await DoCheckWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, object>>> DoCheckWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Dictionary<string, Object>>("/health", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DoCheck", localVarResponse);

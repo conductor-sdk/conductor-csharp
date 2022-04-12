@@ -14,9 +14,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace Conductor.Client
 {
@@ -296,8 +294,8 @@ namespace Conductor.Client
             }
         }
 
-        string IReadableConfiguration.keyId { set => throw new NotImplementedException(); }
-        string IReadableConfiguration.keySecret { set => throw new NotImplementedException(); }
+        string IReadableConfiguration.keyId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        string IReadableConfiguration.keySecret { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         /// <summary>
         /// Returns URL based on server settings without providing values

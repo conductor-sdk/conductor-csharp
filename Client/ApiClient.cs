@@ -9,27 +9,17 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters;
-using System.Text;
-using System.Threading;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs;
 using RestSharp;
 using RestSharp.Deserializers;
 using RestSharpMethod = RestSharp.Method;
 using Polly;
-using Microsoft.Extensions.Caching.Memory;
 
 namespace Conductor.Client
 {
@@ -161,9 +151,10 @@ namespace Conductor.Client
     /// Provides a default implementation of an Api client (both synchronous and asynchronous implementations),
     /// encapsulating general REST accessor use cases.
     /// </summary>
-    public partial class ApiClient : ISynchronousClient, IAsynchronousClient
+    public partial class ApiClient : ISynchronousClient
     {
         private readonly string _baseUrl;
+        private readonly ConductorAuthTokenClient conductorAuthTokenClient = new ConductorAuthTokenClient();
 
         /// <summary>
         /// Specifies the settings on a <see cref="JsonSerializer" /> object.
@@ -282,6 +273,12 @@ namespace Conductor.Client
                 Resource = path,
                 JsonSerializer = new CustomJsonCodec(SerializerSettings, configuration)
             };
+
+            //Authentication block
+            if (configuration.keyId != null && configuration.keySecret != null)
+            {
+                request.AddHeader("X-Authorization", conductorAuthTokenClient.getToken(configuration.BasePath + "/token", configuration.keyId, configuration.keySecret));
+            }
 
             if (options.PathParameters != null)
             {
@@ -548,225 +545,6 @@ namespace Conductor.Client
             }
             return result;
         }
-
-        private async Task<ApiResponse<T>> ExecAsync<T>(RestRequest req, IReadableConfiguration configuration, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            RestClient client = new RestClient(_baseUrl);
-
-            client.ClearHandlers();
-            var existingDeserializer = req.JsonSerializer as IDeserializer;
-            if (existingDeserializer != null)
-            {
-                client.AddHandler("application/json", () => existingDeserializer);
-                client.AddHandler("text/json", () => existingDeserializer);
-                client.AddHandler("text/x-json", () => existingDeserializer);
-                client.AddHandler("text/javascript", () => existingDeserializer);
-                client.AddHandler("*+json", () => existingDeserializer);
-            }
-            else
-            {
-                var customDeserializer = new CustomJsonCodec(SerializerSettings, configuration);
-                client.AddHandler("application/json", () => customDeserializer);
-                client.AddHandler("text/json", () => customDeserializer);
-                client.AddHandler("text/x-json", () => customDeserializer);
-                client.AddHandler("text/javascript", () => customDeserializer);
-                client.AddHandler("*+json", () => customDeserializer);
-            }
-
-            var xmlDeserializer = new XmlDeserializer();
-            client.AddHandler("application/xml", () => xmlDeserializer);
-            client.AddHandler("text/xml", () => xmlDeserializer);
-            client.AddHandler("*+xml", () => xmlDeserializer);
-            client.AddHandler("*", () => xmlDeserializer);
-
-            client.Timeout = configuration.Timeout;
-
-            if (configuration.Proxy != null)
-            {
-                client.Proxy = configuration.Proxy;
-            }
-
-            if (configuration.UserAgent != null)
-            {
-                client.UserAgent = configuration.UserAgent;
-            }
-
-            if (configuration.ClientCertificates != null)
-            {
-                client.ClientCertificates = configuration.ClientCertificates;
-            }
-
-            InterceptRequest(req);
-
-            IRestResponse<T> response;
-            if (RetryConfiguration.AsyncRetryPolicy != null)
-            {
-                var policy = RetryConfiguration.AsyncRetryPolicy;
-                var policyResult = await policy.ExecuteAndCaptureAsync((ct) => client.ExecuteAsync(req, ct), cancellationToken).ConfigureAwait(false);
-                response = (policyResult.Outcome == OutcomeType.Successful) ? client.Deserialize<T>(policyResult.Result) : new RestResponse<T>
-                {
-                    Request = req,
-                    ErrorException = policyResult.FinalException
-                };
-            }
-            else
-            {
-                response = await client.ExecuteAsync<T>(req, cancellationToken).ConfigureAwait(false);
-            }
-
-            // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
-            if (typeof(Models.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
-            {
-                response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
-            }
-            else if (typeof(T).Name == "Stream") // for binary response
-            {
-                response.Data = (T)(object)new MemoryStream(response.RawBytes);
-            }
-
-            InterceptResponse(req, response);
-
-            var result = ToApiResponse(response);
-            if (response.ErrorMessage != null)
-            {
-                result.ErrorText = response.ErrorMessage;
-            }
-
-            if (response.Cookies != null && response.Cookies.Count > 0)
-            {
-                if (result.Cookies == null) result.Cookies = new List<Cookie>();
-                foreach (var restResponseCookie in response.Cookies)
-                {
-                    var cookie = new Cookie(
-                        restResponseCookie.Name,
-                        restResponseCookie.Value,
-                        restResponseCookie.Path,
-                        restResponseCookie.Domain
-                    )
-                    {
-                        Comment = restResponseCookie.Comment,
-                        CommentUri = restResponseCookie.CommentUri,
-                        Discard = restResponseCookie.Discard,
-                        Expired = restResponseCookie.Expired,
-                        Expires = restResponseCookie.Expires,
-                        HttpOnly = restResponseCookie.HttpOnly,
-                        Port = restResponseCookie.Port,
-                        Secure = restResponseCookie.Secure,
-                        Version = restResponseCookie.Version
-                    };
-
-                    result.Cookies.Add(cookie);
-                }
-            }
-            return result;
-        }
-
-        #region IAsynchronousClient
-        /// <summary>
-        /// Make a HTTP GET request (async).
-        /// </summary>
-        /// <param name="path">The target path (or resource).</param>
-        /// <param name="options">The additional request options.</param>
-        /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
-        /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
-        /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> GetAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Get, path, options, config), config, cancellationToken);
-        }
-
-        /// <summary>
-        /// Make a HTTP POST request (async).
-        /// </summary>
-        /// <param name="path">The target path (or resource).</param>
-        /// <param name="options">The additional request options.</param>
-        /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
-        /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
-        /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> PostAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Post, path, options, config), config, cancellationToken);
-        }
-
-        /// <summary>
-        /// Make a HTTP PUT request (async).
-        /// </summary>
-        /// <param name="path">The target path (or resource).</param>
-        /// <param name="options">The additional request options.</param>
-        /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
-        /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
-        /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> PutAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Put, path, options, config), config, cancellationToken);
-        }
-
-        /// <summary>
-        /// Make a HTTP DELETE request (async).
-        /// </summary>
-        /// <param name="path">The target path (or resource).</param>
-        /// <param name="options">The additional request options.</param>
-        /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
-        /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
-        /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> DeleteAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Delete, path, options, config), config, cancellationToken);
-        }
-
-        /// <summary>
-        /// Make a HTTP HEAD request (async).
-        /// </summary>
-        /// <param name="path">The target path (or resource).</param>
-        /// <param name="options">The additional request options.</param>
-        /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
-        /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
-        /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> HeadAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Head, path, options, config), config, cancellationToken);
-        }
-
-        /// <summary>
-        /// Make a HTTP OPTION request (async).
-        /// </summary>
-        /// <param name="path">The target path (or resource).</param>
-        /// <param name="options">The additional request options.</param>
-        /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
-        /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
-        /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> OptionsAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Options, path, options, config), config, cancellationToken);
-        }
-
-        /// <summary>
-        /// Make a HTTP PATCH request (async).
-        /// </summary>
-        /// <param name="path">The target path (or resource).</param>
-        /// <param name="options">The additional request options.</param>
-        /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
-        /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
-        /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> PatchAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Patch, path, options, config), config, cancellationToken);
-        }
-        #endregion IAsynchronousClient
 
         #region ISynchronousClient
         /// <summary>

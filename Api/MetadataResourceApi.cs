@@ -10,10 +10,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
 using Conductor.Client.Models;
 using Conductor.Client;
 
@@ -217,250 +213,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IMetadataResourceApiAsync : IApiAccessor
-    {
-        #region Asynchronous Operations
-        /// <summary>
-        /// Create a new workflow definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CreateAsync(WorkflowDef workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Create a new workflow definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CreateWithHttpInfoAsync(WorkflowDef workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Retrieves workflow definition along with blueprint
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of WorkflowDef</returns>
-        System.Threading.Tasks.Task<WorkflowDef> GetAsync(string name, int? version = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves workflow definition along with blueprint
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (WorkflowDef)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorkflowDef>> GetWithHttpInfoAsync(string name, int? version = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Retrieves all workflow definition along with blueprint
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;WorkflowDef&gt;</returns>
-        System.Threading.Tasks.Task<List<WorkflowDef>> GetAllWorkflowsAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves all workflow definition along with blueprint
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;WorkflowDef&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<WorkflowDef>>> GetAllWorkflowsWithHttpInfoAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Gets the task definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TaskDef</returns>
-        System.Threading.Tasks.Task<TaskDef> GetTaskDefAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets the task definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TaskDef)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TaskDef>> GetTaskDefWithHttpInfoAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Gets all task definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;TaskDef&gt;</returns>
-        System.Threading.Tasks.Task<List<TaskDef>> GetTaskDefsAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets all task definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;TaskDef&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<TaskDef>>> GetTaskDefsWithHttpInfoAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Create or update task definition(s)
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RegisterTaskDefAsync(List<TaskDef> taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Create or update task definition(s)
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RegisterTaskDefWithHttpInfoAsync(List<TaskDef> taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Remove a task definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UnregisterTaskDefAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Remove a task definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterTaskDefWithHttpInfoAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Removes workflow definition. It does not remove workflows associated with the definition.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UnregisterWorkflowDefAsync(string name, int version, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Removes workflow definition. It does not remove workflows associated with the definition.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterWorkflowDefWithHttpInfoAsync(string name, int version, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Create or update workflow definition(s)
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task Update1Async(List<WorkflowDef> workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Create or update workflow definition(s)
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> Update1WithHttpInfoAsync(List<WorkflowDef> workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Update an existing task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateTaskDefAsync(TaskDef taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Update an existing task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateTaskDefWithHttpInfoAsync(TaskDef taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
-    }
-
-    /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
-    /// </summary>
-    public interface IMetadataResourceApi : IMetadataResourceApiSync, IMetadataResourceApiAsync
+    public interface IMetadataResourceApi : IMetadataResourceApiSync
     {
 
     }
@@ -491,7 +244,6 @@ namespace Conductor.Api
                 new Configuration { BasePath = basePath }
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -510,7 +262,6 @@ namespace Conductor.Api
                 configuration
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -519,24 +270,16 @@ namespace Conductor.Api
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public MetadataResourceApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
+        public MetadataResourceApi(ISynchronousClient client, IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
             if (configuration == null) throw new ArgumentNullException("configuration");
 
             this.Client = client;
-            this.AsynchronousClient = asyncClient;
             this.Configuration = configuration;
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
-
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public IAsynchronousClient AsynchronousClient { get; set; }
 
         /// <summary>
         /// The client for accessing this underlying API synchronously.
@@ -623,87 +366,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.Data = workflowDef;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Object>("/api/metadata/workflow", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Create", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Create a new workflow definition 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CreateAsync(WorkflowDef workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await CreateWithHttpInfoAsync(workflowDef, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Create a new workflow definition 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<object>> CreateWithHttpInfoAsync(WorkflowDef workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowDef' is set
-            if (workflowDef == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Create");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.Data = workflowDef;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/metadata/workflow", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Create", localVarResponse);
@@ -772,94 +438,10 @@ namespace Conductor.Api
                 localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
             }
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<WorkflowDef>("/api/metadata/workflow/{name}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Get", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Retrieves workflow definition along with blueprint 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of WorkflowDef</returns>
-        public async System.Threading.Tasks.Task<WorkflowDef> GetAsync(string name, int? version = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<WorkflowDef> localVarResponse = await GetWithHttpInfoAsync(name, version, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieves workflow definition along with blueprint 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (WorkflowDef)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WorkflowDef>> GetWithHttpInfoAsync(string name, int? version = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'name' is set
-            if (name == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->Get");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            if (version != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<WorkflowDef>("/api/metadata/workflow/{name}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Get", localVarResponse);
@@ -919,85 +501,10 @@ namespace Conductor.Api
                 localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "access", access));
             }
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<WorkflowDef>>("/api/metadata/workflow", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetAllWorkflows", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Retrieves all workflow definition along with blueprint 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;WorkflowDef&gt;</returns>
-        public async System.Threading.Tasks.Task<List<WorkflowDef>> GetAllWorkflowsAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<List<WorkflowDef>> localVarResponse = await GetAllWorkflowsWithHttpInfoAsync(access, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieves all workflow definition along with blueprint 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;WorkflowDef&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<WorkflowDef>>> GetAllWorkflowsWithHttpInfoAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (access != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "access", access));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<WorkflowDef>>("/api/metadata/workflow", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAllWorkflows", localVarResponse);
@@ -1060,88 +567,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.PathParameters.Add("tasktype", Conductor.Client.ClientUtils.ParameterToString(tasktype)); // path parameter
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<TaskDef>("/api/metadata/taskdefs/{tasktype}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetTaskDef", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Gets the task definition 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TaskDef</returns>
-        public async System.Threading.Tasks.Task<TaskDef> GetTaskDefAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<TaskDef> localVarResponse = await GetTaskDefWithHttpInfoAsync(tasktype, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Gets the task definition 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TaskDef)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TaskDef>> GetTaskDefWithHttpInfoAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'tasktype' is set
-            if (tasktype == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->GetTaskDef");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("tasktype", Conductor.Client.ClientUtils.ParameterToString(tasktype)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<TaskDef>("/api/metadata/taskdefs/{tasktype}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetTaskDef", localVarResponse);
@@ -1201,85 +630,10 @@ namespace Conductor.Api
                 localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "access", access));
             }
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<TaskDef>>("/api/metadata/taskdefs", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetTaskDefs", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Gets all task definition 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;TaskDef&gt;</returns>
-        public async System.Threading.Tasks.Task<List<TaskDef>> GetTaskDefsAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<List<TaskDef>> localVarResponse = await GetTaskDefsWithHttpInfoAsync(access, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Gets all task definition 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;TaskDef&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<TaskDef>>> GetTaskDefsWithHttpInfoAsync(string access = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (access != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "access", access));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<TaskDef>>("/api/metadata/taskdefs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetTaskDefs", localVarResponse);
@@ -1341,87 +695,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.Data = taskDef;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Object>("/api/metadata/taskdefs", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("RegisterTaskDef", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Create or update task definition(s) 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RegisterTaskDefAsync(List<TaskDef> taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await RegisterTaskDefWithHttpInfoAsync(taskDef, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Create or update task definition(s) 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<object>> RegisterTaskDefWithHttpInfoAsync(List<TaskDef> taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'taskDef' is set
-            if (taskDef == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'taskDef' when calling MetadataResourceApi->RegisterTaskDef");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.Data = taskDef;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/metadata/taskdefs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RegisterTaskDef", localVarResponse);
@@ -1482,86 +759,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.PathParameters.Add("tasktype", Conductor.Client.ClientUtils.ParameterToString(tasktype)); // path parameter
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Delete<Object>("/api/metadata/taskdefs/{tasktype}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("UnregisterTaskDef", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Remove a task definition 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UnregisterTaskDefAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await UnregisterTaskDefWithHttpInfoAsync(tasktype, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Remove a task definition 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<object>> UnregisterTaskDefWithHttpInfoAsync(string tasktype, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'tasktype' is set
-            if (tasktype == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->UnregisterTaskDef");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("tasktype", Conductor.Client.ClientUtils.ParameterToString(tasktype)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/api/metadata/taskdefs/{tasktype}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UnregisterTaskDef", localVarResponse);
@@ -1625,89 +826,10 @@ namespace Conductor.Api
             localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
             localVarRequestOptions.PathParameters.Add("version", Conductor.Client.ClientUtils.ParameterToString(version)); // path parameter
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Delete<Object>("/api/metadata/workflow/{name}/{version}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("UnregisterWorkflowDef", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Removes workflow definition. It does not remove workflows associated with the definition. 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UnregisterWorkflowDefAsync(string name, int version, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await UnregisterWorkflowDefWithHttpInfoAsync(name, version, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Removes workflow definition. It does not remove workflows associated with the definition. 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<object>> UnregisterWorkflowDefWithHttpInfoAsync(string name, int version, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'name' is set
-            if (name == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->UnregisterWorkflowDef");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            localVarRequestOptions.PathParameters.Add("version", Conductor.Client.ClientUtils.ParameterToString(version)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/api/metadata/workflow/{name}/{version}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UnregisterWorkflowDef", localVarResponse);
@@ -1769,87 +891,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.Data = workflowDef;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Put<Object>("/api/metadata/workflow", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Update1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Create or update workflow definition(s) 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task Update1Async(List<WorkflowDef> workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await Update1WithHttpInfoAsync(workflowDef, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Create or update workflow definition(s) 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<object>> Update1WithHttpInfoAsync(List<WorkflowDef> workflowDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowDef' is set
-            if (workflowDef == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Update1");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.Data = workflowDef;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/metadata/workflow", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Update1", localVarResponse);
@@ -1911,87 +956,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.Data = taskDef;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Put<Object>("/api/metadata/taskdefs", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("UpdateTaskDef", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Update an existing task 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateTaskDefAsync(TaskDef taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await UpdateTaskDefWithHttpInfoAsync(taskDef, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Update an existing task 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskDef"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<object>> UpdateTaskDefWithHttpInfoAsync(TaskDef taskDef, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'taskDef' is set
-            if (taskDef == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'taskDef' when calling MetadataResourceApi->UpdateTaskDef");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.Data = taskDef;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/metadata/taskdefs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateTaskDef", localVarResponse);

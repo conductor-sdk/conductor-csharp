@@ -10,10 +10,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
 using Conductor.Client;
 using Conductor.Client.Models;
 
@@ -360,418 +356,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ITaskResourceApiAsync : IApiAccessor
-    {
-        #region Asynchronous Operations
-        /// <summary>
-        /// Get the details about each queue
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, long&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, long>> AllAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get the details about each queue
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, long&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, long>>> AllWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Get the details about each queue
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long&gt;&gt;&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, Dictionary<string, long>>>> AllVerboseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get the details about each queue
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long&gt;&gt;&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long>>>>> AllVerboseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Batch poll for a task of a certain type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="count"> (optional, default to 1)</param>
-        /// <param name="timeout"> (optional, default to 100)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;Task&gt;</returns>
-        System.Threading.Tasks.Task<List<Task>> BatchPollAsync(string tasktype, string workerid = default(string), string domain = default(string), int? count = default(int?), int? timeout = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Batch poll for a task of a certain type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="count"> (optional, default to 1)</param>
-        /// <param name="timeout"> (optional, default to 100)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;Task&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Task>>> BatchPollWithHttpInfoAsync(string tasktype, string workerid = default(string), string domain = default(string), int? count = default(int?), int? timeout = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Get the last poll data for all task types
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;PollData&gt;</returns>
-        System.Threading.Tasks.Task<List<PollData>> GetAllPollDataAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get the last poll data for all task types
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;PollData&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetAllPollDataWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Get the external uri where the task payload is to be stored
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ExternalStorageLocation</returns>
-        System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocationAsync(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get the external uri where the task payload is to be stored
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocationWithHttpInfoAsync(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Get the last poll data for a given task type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;PollData&gt;</returns>
-        System.Threading.Tasks.Task<List<PollData>> GetPollDataAsync(string taskType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get the last poll data for a given task type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;PollData&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetPollDataWithHttpInfoAsync(string taskType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Get task by Id
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Task</returns>
-        System.Threading.Tasks.Task<Task> GetTaskAsync(string taskId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get task by Id
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Task)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Task>> GetTaskWithHttpInfoAsync(string taskId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Get Task Execution Logs
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;TaskExecLog&gt;</returns>
-        System.Threading.Tasks.Task<List<TaskExecLog>> GetTaskLogsAsync(string taskId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get Task Execution Logs
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;TaskExecLog&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<TaskExecLog>>> GetTaskLogsWithHttpInfoAsync(string taskId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Log Task Execution Details
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task LogAsync(string taskId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Log Task Execution Details
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> LogWithHttpInfoAsync(string taskId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Poll for a task of a certain type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Task</returns>
-        System.Threading.Tasks.Task<Task> PollAsync(string tasktype, string workerid = default(string), string domain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Poll for a task of a certain type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Task)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Task>> PollWithHttpInfoAsync(string tasktype, string workerid = default(string), string domain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Requeue pending tasks
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> RequeuePendingTaskAsync(string taskType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Requeue pending tasks
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> RequeuePendingTaskWithHttpInfoAsync(string taskType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Search for tasks based in payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultTaskSummary</returns>
-        System.Threading.Tasks.Task<SearchResultTaskSummary> Search1Async(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Search for tasks based in payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultTaskSummary)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> Search1WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Search for tasks based in payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultTask</returns>
-        System.Threading.Tasks.Task<SearchResultTask> SearchV21Async(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Search for tasks based in payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultTask)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> SearchV21WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Get Task type queue sizes
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, int&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, int>> Size1Async(List<string> taskType = default(List<string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get Task type queue sizes
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, int&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, int>>> Size1WithHttpInfoAsync(List<string> taskType = default(List<string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Update a task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskResult"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> UpdateTaskAsync(TaskResult taskResult, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Update a task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskResult"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskWithHttpInfoAsync(TaskResult taskResult, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Update a task By Ref Name
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskRefName"></param>
-        /// <param name="status"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> UpdateTask1Async(string workflowId, string taskRefName, string status, Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Update a task By Ref Name
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskRefName"></param>
-        /// <param name="status"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> UpdateTask1WithHttpInfoAsync(string workflowId, string taskRefName, string status, Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
-    }
-
-    /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
-    /// </summary>
-    public interface ITaskResourceApi : ITaskResourceApiSync, ITaskResourceApiAsync
+    public interface ITaskResourceApi : ITaskResourceApiSync
     {
 
     }
@@ -802,7 +387,6 @@ namespace Conductor.Api
                 new Configuration { BasePath = basePath }
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -821,7 +405,6 @@ namespace Conductor.Api
                 configuration
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new ApiClient(this.Configuration.BasePath);
             ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -830,24 +413,16 @@ namespace Conductor.Api
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public TaskResourceApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
+        public TaskResourceApi(ISynchronousClient client, IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
             if (configuration == null) throw new ArgumentNullException("configuration");
 
             this.Client = client;
-            this.AsynchronousClient = asyncClient;
             this.Configuration = configuration;
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
-
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public IAsynchronousClient AsynchronousClient { get; set; }
 
         /// <summary>
         /// The client for accessing this underlying API synchronously.
@@ -926,79 +501,10 @@ namespace Conductor.Api
             }
 
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Dictionary<string, long>>("/api/tasks/queue/all", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("All", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get the details about each queue 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, long&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, long>> AllAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<Dictionary<string, long>> localVarResponse = await AllWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get the details about each queue 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, long&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, long>>> AllWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Dictionary<string, long>>("/api/tasks/queue/all", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("All", localVarResponse);
@@ -1052,79 +558,10 @@ namespace Conductor.Api
             }
 
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Dictionary<string, Dictionary<string, Dictionary<string, long>>>>("/api/tasks/queue/all/verbose", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AllVerbose", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get the details about each queue 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long&gt;&gt;&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, Dictionary<string, long>>>> AllVerboseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long>>>> localVarResponse = await AllVerboseWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get the details about each queue 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long&gt;&gt;&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long>>>>> AllVerboseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Dictionary<string, Dictionary<string, Dictionary<string, long>>>>("/api/tasks/queue/all/verbose", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("AllVerbose", localVarResponse);
@@ -1211,112 +648,10 @@ namespace Conductor.Api
                 localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "timeout", timeout));
             }
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<Task>>("/api/tasks/poll/batch/{tasktype}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("BatchPoll", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Batch poll for a task of a certain type 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="count"> (optional, default to 1)</param>
-        /// <param name="timeout"> (optional, default to 100)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;Task&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Task>> BatchPollAsync(string tasktype, string workerid = default(string), string domain = default(string), int? count = default(int?), int? timeout = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<List<Task>> localVarResponse = await BatchPollWithHttpInfoAsync(tasktype, workerid, domain, count, timeout, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Batch poll for a task of a certain type 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="count"> (optional, default to 1)</param>
-        /// <param name="timeout"> (optional, default to 100)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;Task&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Task>>> BatchPollWithHttpInfoAsync(string tasktype, string workerid = default(string), string domain = default(string), int? count = default(int?), int? timeout = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'tasktype' is set
-            if (tasktype == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'tasktype' when calling TaskResourceApi->BatchPoll");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("tasktype", Conductor.Client.ClientUtils.ParameterToString(tasktype)); // path parameter
-            if (workerid != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "workerid", workerid));
-            }
-            if (domain != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "domain", domain));
-            }
-            if (count != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "count", count));
-            }
-            if (timeout != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "timeout", timeout));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<Task>>("/api/tasks/poll/batch/{tasktype}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("BatchPoll", localVarResponse);
@@ -1370,79 +705,10 @@ namespace Conductor.Api
             }
 
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<PollData>>("/api/tasks/queue/polldata/all", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetAllPollData", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get the last poll data for all task types 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;PollData&gt;</returns>
-        public async System.Threading.Tasks.Task<List<PollData>> GetAllPollDataAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<List<PollData>> localVarResponse = await GetAllPollDataWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get the last poll data for all task types 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;PollData&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetAllPollDataWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<PollData>>("/api/tasks/queue/polldata/all", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAllPollData", localVarResponse);
@@ -1523,106 +789,10 @@ namespace Conductor.Api
             localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "operation", operation));
             localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "payloadType", payloadType));
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<ExternalStorageLocation>("/api/tasks/externalstoragelocation", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetExternalStorageLocation", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get the external uri where the task payload is to be stored 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ExternalStorageLocation</returns>
-        public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocationAsync(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocationWithHttpInfoAsync(path, operation, payloadType, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get the external uri where the task payload is to be stored 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocationWithHttpInfoAsync(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'path' is set
-            if (path == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'path' when calling TaskResourceApi->GetExternalStorageLocation");
-            }
-
-            // verify the required parameter 'operation' is set
-            if (operation == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'operation' when calling TaskResourceApi->GetExternalStorageLocation");
-            }
-
-            // verify the required parameter 'payloadType' is set
-            if (payloadType == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'payloadType' when calling TaskResourceApi->GetExternalStorageLocation");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "path", path));
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "operation", operation));
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "payloadType", payloadType));
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ExternalStorageLocation>("/api/tasks/externalstoragelocation", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetExternalStorageLocation", localVarResponse);
@@ -1685,88 +855,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "taskType", taskType));
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<PollData>>("/api/tasks/queue/polldata", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetPollData", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get the last poll data for a given task type 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;PollData&gt;</returns>
-        public async System.Threading.Tasks.Task<List<PollData>> GetPollDataAsync(string taskType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<List<PollData>> localVarResponse = await GetPollDataWithHttpInfoAsync(taskType, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get the last poll data for a given task type 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;PollData&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetPollDataWithHttpInfoAsync(string taskType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'taskType' is set
-            if (taskType == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'taskType' when calling TaskResourceApi->GetPollData");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "taskType", taskType));
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<PollData>>("/api/tasks/queue/polldata", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetPollData", localVarResponse);
@@ -1829,88 +921,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.PathParameters.Add("taskId", Conductor.Client.ClientUtils.ParameterToString(taskId)); // path parameter
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Task>("/api/tasks/{taskId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetTask", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get task by Id 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Task</returns>
-        public async System.Threading.Tasks.Task<Task> GetTaskAsync(string taskId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<Task> localVarResponse = await GetTaskWithHttpInfoAsync(taskId, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get task by Id 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Task)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Task>> GetTaskWithHttpInfoAsync(string taskId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'taskId' is set
-            if (taskId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'taskId' when calling TaskResourceApi->GetTask");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("taskId", Conductor.Client.ClientUtils.ParameterToString(taskId)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Task>("/api/tasks/{taskId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetTask", localVarResponse);
@@ -1973,88 +987,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.PathParameters.Add("taskId", Conductor.Client.ClientUtils.ParameterToString(taskId)); // path parameter
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<TaskExecLog>>("/api/tasks/{taskId}/log", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetTaskLogs", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get Task Execution Logs 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;TaskExecLog&gt;</returns>
-        public async System.Threading.Tasks.Task<List<TaskExecLog>> GetTaskLogsAsync(string taskId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<List<TaskExecLog>> localVarResponse = await GetTaskLogsWithHttpInfoAsync(taskId, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get Task Execution Logs 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;TaskExecLog&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<TaskExecLog>>> GetTaskLogsWithHttpInfoAsync(string taskId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'taskId' is set
-            if (taskId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'taskId' when calling TaskResourceApi->GetTaskLogs");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("taskId", Conductor.Client.ClientUtils.ParameterToString(taskId)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<TaskExecLog>>("/api/tasks/{taskId}/log", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetTaskLogs", localVarResponse);
@@ -2125,96 +1061,10 @@ namespace Conductor.Api
             localVarRequestOptions.PathParameters.Add("taskId", Conductor.Client.ClientUtils.ParameterToString(taskId)); // path parameter
             localVarRequestOptions.Data = body;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Object>("/api/tasks/{taskId}/log", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Log", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Log Task Execution Details 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task LogAsync(string taskId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await LogWithHttpInfoAsync(taskId, body, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Log Task Execution Details 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<object>> LogWithHttpInfoAsync(string taskId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'taskId' is set
-            if (taskId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'taskId' when calling TaskResourceApi->Log");
-            }
-
-            // verify the required parameter 'body' is set
-            if (body == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'body' when calling TaskResourceApi->Log");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("taskId", Conductor.Client.ClientUtils.ParameterToString(taskId)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/tasks/{taskId}/log", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Log", localVarResponse);
@@ -2289,100 +1139,10 @@ namespace Conductor.Api
                 localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "domain", domain));
             }
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Task>("/api/tasks/poll/{tasktype}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Poll", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Poll for a task of a certain type 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Task</returns>
-        public async System.Threading.Tasks.Task<Task> PollAsync(string tasktype, string workerid = default(string), string domain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<Task> localVarResponse = await PollWithHttpInfoAsync(tasktype, workerid, domain, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Poll for a task of a certain type 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Task)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Task>> PollWithHttpInfoAsync(string tasktype, string workerid = default(string), string domain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'tasktype' is set
-            if (tasktype == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'tasktype' when calling TaskResourceApi->Poll");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("tasktype", Conductor.Client.ClientUtils.ParameterToString(tasktype)); // path parameter
-            if (workerid != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "workerid", workerid));
-            }
-            if (domain != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "domain", domain));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Task>("/api/tasks/poll/{tasktype}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Poll", localVarResponse);
@@ -2445,88 +1205,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.PathParameters.Add("taskType", Conductor.Client.ClientUtils.ParameterToString(taskType)); // path parameter
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<string>("/api/tasks/queue/requeue/{taskType}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("RequeuePendingTask", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Requeue pending tasks 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> RequeuePendingTaskAsync(string taskType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<string> localVarResponse = await RequeuePendingTaskWithHttpInfoAsync(taskType, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Requeue pending tasks 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> RequeuePendingTaskWithHttpInfoAsync(string taskType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'taskType' is set
-            if (taskType == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'taskType' when calling TaskResourceApi->RequeuePendingTask");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("taskType", Conductor.Client.ClientUtils.ParameterToString(taskType)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<string>("/api/tasks/queue/requeue/{taskType}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RequeuePendingTask", localVarResponse);
@@ -2610,109 +1292,10 @@ namespace Conductor.Api
                 localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<SearchResultTaskSummary>("/api/tasks/search", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Search1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Search for tasks based in payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultTaskSummary</returns>
-        public async System.Threading.Tasks.Task<SearchResultTaskSummary> Search1Async(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<SearchResultTaskSummary> localVarResponse = await Search1WithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Search for tasks based in payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultTaskSummary)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> Search1WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (size != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
-            }
-            if (sort != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
-            }
-            if (freeText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
-            }
-            if (query != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<SearchResultTaskSummary>("/api/tasks/search", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Search1", localVarResponse);
@@ -2796,109 +1379,10 @@ namespace Conductor.Api
                 localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<SearchResultTask>("/api/tasks/search-v2", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SearchV21", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Search for tasks based in payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultTask</returns>
-        public async System.Threading.Tasks.Task<SearchResultTask> SearchV21Async(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<SearchResultTask> localVarResponse = await SearchV21WithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Search for tasks based in payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultTask)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> SearchV21WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (size != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
-            }
-            if (sort != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
-            }
-            if (freeText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
-            }
-            if (query != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<SearchResultTask>("/api/tasks/search-v2", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SearchV21", localVarResponse);
@@ -2958,85 +1442,10 @@ namespace Conductor.Api
                 localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("multi", "taskType", taskType));
             }
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Dictionary<string, int>>("/api/tasks/queue/sizes", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Size1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get Task type queue sizes 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, int&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, int>> Size1Async(List<string> taskType = default(List<string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<Dictionary<string, int>> localVarResponse = await Size1WithHttpInfoAsync(taskType, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get Task type queue sizes 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, int&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, int>>> Size1WithHttpInfoAsync(List<string> taskType = default(List<string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (taskType != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("multi", "taskType", taskType));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Dictionary<string, int>>("/api/tasks/queue/sizes", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Size1", localVarResponse);
@@ -3100,89 +1509,10 @@ namespace Conductor.Api
 
             localVarRequestOptions.Data = taskResult;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<string>("/api/tasks", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("UpdateTask", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Update a task 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskResult"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> UpdateTaskAsync(TaskResult taskResult, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<string> localVarResponse = await UpdateTaskWithHttpInfoAsync(taskResult, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Update a task 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskResult"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskWithHttpInfoAsync(TaskResult taskResult, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'taskResult' is set
-            if (taskResult == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'taskResult' when calling TaskResourceApi->UpdateTask");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.Data = taskResult;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<string>("/api/tasks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateTask", localVarResponse);
@@ -3273,11 +1603,7 @@ namespace Conductor.Api
             localVarRequestOptions.PathParameters.Add("status", Conductor.Client.ClientUtils.ParameterToString(status)); // path parameter
             localVarRequestOptions.Data = requestBody;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<string>("/api/tasks/{workflowId}/{taskRefName}/{status}", localVarRequestOptions, this.Configuration);
@@ -3292,108 +1618,5 @@ namespace Conductor.Api
 
             return localVarResponse;
         }
-
-        /// <summary>
-        /// Update a task By Ref Name 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskRefName"></param>
-        /// <param name="status"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> UpdateTask1Async(string workflowId, string taskRefName, string status, Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            ApiResponse<string> localVarResponse = await UpdateTask1WithHttpInfoAsync(workflowId, taskRefName, status, requestBody, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Update a task By Ref Name 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskRefName"></param>
-        /// <param name="status"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTask1WithHttpInfoAsync(string workflowId, string taskRefName, string status, Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'workflowId' when calling TaskResourceApi->UpdateTask1");
-            }
-
-            // verify the required parameter 'taskRefName' is set
-            if (taskRefName == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'taskRefName' when calling TaskResourceApi->UpdateTask1");
-            }
-
-            // verify the required parameter 'status' is set
-            if (status == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'status' when calling TaskResourceApi->UpdateTask1");
-            }
-
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'requestBody' when calling TaskResourceApi->UpdateTask1");
-            }
-
-
-            RequestOptions localVarRequestOptions = new RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("taskRefName", Conductor.Client.ClientUtils.ParameterToString(taskRefName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("status", Conductor.Client.ClientUtils.ParameterToString(status)); // path parameter
-            localVarRequestOptions.Data = requestBody;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<string>("/api/tasks/{workflowId}/{taskRefName}/{status}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("UpdateTask1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
     }
 }

@@ -30,13 +30,13 @@ namespace Conductor.Client
         /// Gets the API key.
         /// </summary>
         /// <value>API key.</value>
-        string keyId { set; }
+        string keyId { set; get; }
 
         /// <summary>
         /// Gets the API key prefix.
         /// </summary>
         /// <value>API key prefix.</value>
-        string keySecret { set; }
+        string keySecret { set; get; }
 
         /// <summary>
         /// Gets the base path.
