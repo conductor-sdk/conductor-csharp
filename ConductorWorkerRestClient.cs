@@ -1,7 +1,6 @@
 ﻿using Conductor.Exceptions;
 using Conductor.Client.Interfaces;
 using Conductor.Client.Models;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,11 +17,11 @@ namespace Conductor.Client
         private readonly Configuration configuration;
         private readonly ConductorAuthTokenClient conductorAuthTokenClient;
         public JsonSerializerSettings JsonSerializerSettings { get; set; } = new JsonSerializerSettings();
-        public ConductorWorkerRestClient(HttpClient httpClient, IOptions<Configuration> configuration, ConductorAuthTokenClient conductorAuthTokenClient) 
+        public ConductorWorkerRestClient(HttpClient httpClient, Configuration configuration, ConductorAuthTokenClient conductorAuthTokenClient) 
         { 
-            httpClient.BaseAddress = new Uri(configuration.Value.BasePath);
+            httpClient.BaseAddress = new Uri(configuration.BasePath);
             this.httpClient = httpClient;
-            this.configuration = configuration.Value;
+            this.configuration = configuration;
             this.conductorAuthTokenClient = conductorAuthTokenClient;
         }
 

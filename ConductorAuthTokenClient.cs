@@ -15,9 +15,9 @@ namespace Conductor.Client
     public class ConductorAuthTokenClient
     {
 
-        private MemoryCache memoryCache;
+        private MemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
 
-        public async Task<string> PostForToken(String uri, String keyId, String keySecret)
+        public Task<string> PostForToken(String uri, String keyId, String keySecret)
         {
             HttpClient httpClient = new HttpClient();
             var urlBuilder = new StringBuilder(uri);
@@ -35,22 +35,23 @@ namespace Conductor.Client
 
                 var result = (JObject)JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
 
-                return result["token"].Value<string>();
+                return Task.FromResult(result["token"].Value<string>());
 
             }
         }
 
         public string getToken(string uri, string keyId, string keySecret)
         {
-            string token = memoryCache.Get(new AuthenticationConfiguration(keyId, keySecret)).ToString();
-            if (!String.IsNullOrEmpty(token))
-            {
-                return token;
-            }
 
+            Object token = memoryCache.Get(new AuthenticationConfiguration(keyId, keySecret));
+            if (token != null)
+            {
+                return token.ToString();
+            }
             token = PostForToken(uri, keyId, keySecret).Result;
             memoryCache.Set(new AuthenticationConfiguration(keyId, keySecret), token, DateTimeOffset.Now.AddHours(4));
-            return token;
+
+            return token.ToString();
         }
 
         public string refreshToken(string uri, string keyId, string keySecret)

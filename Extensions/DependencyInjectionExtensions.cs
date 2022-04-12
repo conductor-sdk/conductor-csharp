@@ -16,12 +16,12 @@ namespace Conductor.Client.Extensions
             return services;
         }
 
-        public static IServiceCollection AddConductorWorker(this IServiceCollection services, Action<Configuration> configuration = null, Action<IServiceProvider, HttpClient> configureHttpClient = null)
+        public static IServiceCollection AddConductorWorker(this IServiceCollection services, Configuration configuration = null, Action<IServiceProvider, HttpClient> configureHttpClient = null)
         {
             services.AddHttpClient();
             services.AddOptions();
             services.AddSingleton(new ConductorAuthTokenClient());
-            services.Configure(configuration ?? ((config) => new Configuration()));
+            services.AddSingleton(configuration != null ? configuration : new Configuration());
             services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
             services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
             services.AddTransient<IWorkflowTaskExecutor, WorkflowTaskExecutor>();

@@ -40,10 +40,10 @@ namespace Conductor.Client
         /// Defines the base path of the target API server.
         /// Example: http://localhost:3000/v1/
         /// </summary>
-        public string _basePath { get; set; }
+        public string _basePath { get; set; } = "https://play.orkes.io/api/";
 
-        public string keyId { get; set; }
-        public string  keySecret { get; set; }
+        public string keyId { get; set; } = null;
+        public string keySecret { get; set; } = null;
 
         #region Constructors
 
@@ -53,12 +53,6 @@ namespace Conductor.Client
         [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration()
         {
-            Proxy = null;
-            UserAgent = "OpenAPI-Generator/1.0.0/csharp";
-            BasePath = "http://play.orkes.io/api/";
-            DefaultHeaders = new ConcurrentDictionary<string, string>();
-            keyId = null;
-            keySecret = null;
         }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace Conductor.Client
             IDictionary<string, string> defaultHeaders,
             string keyId,
             string keySecret,
-            string basePath = "http://play.orkes.io/api") : this()
+            string basePath = "https://play.orkes.io/api") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath.ToString()))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");
@@ -84,6 +78,9 @@ namespace Conductor.Client
             {
                 DefaultHeaders.Add(keyValuePair);
             }
+
+            this.keyId = keyId;
+            this.keySecret = keySecret;
         }
 
         #endregion Constructors
@@ -101,7 +98,7 @@ namespace Conductor.Client
         public int ConcurrentWorkers { get; set; } = 1;
 
         public int SleepInterval { get; set; } = 1_000;
-        public string Domain { get; set; }
+        public string Domain { get; set; } = "";
 
         /// <summary>
         /// Gets or sets the default header.
@@ -122,56 +119,9 @@ namespace Conductor.Client
         /// <summary>
         /// Gets or sets the default headers.
         /// </summary>
-        public virtual IDictionary<string, string> DefaultHeaders { get; set; }
-
-        /// <summary>
-        /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
-        /// </summary>
-        public virtual int Timeout { get; set; }
-
-        /// <summary>
-        /// Gets or sets the proxy
-        /// </summary>
-        /// <value>Proxy.</value>
-        public virtual WebProxy Proxy { get; set; }
-
-        /// <summary>
-        /// Gets or sets the HTTP user agent.
-        /// </summary>
-        /// <value>Http user agent.</value>
-        public virtual string UserAgent { get; set; }
-
-        /// <summary>
-        /// Gets or sets the username (HTTP basic authentication).
-        /// </summary>
-        /// <value>The username.</value>
-        public virtual string Username { get; set; }
-
-        /// <summary>
-        /// Gets or sets the password (HTTP basic authentication).
-        /// </summary>
-        /// <value>The password.</value>
-        public virtual string Password { get; set; }
+        public virtual IDictionary<string, string> DefaultHeaders { get; set; } = new ConcurrentDictionary<string, string>();
 
         #endregion Properties
-
-        #region Methods
-
-        /// <summary>
-        /// Returns a string with essential information for debugging.
-        /// </summary>
-        public static string ToDebugReport()
-        {
-            string report = "C# SDK (Org.OpenAPITools) Debug Report:\n";
-            report += "    OS: " + System.Environment.OSVersion + "\n";
-            report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
-            report += "    Version of the API: v0\n";
-            report += "    SDK Package Version: 1.0.0\n";
-
-            return report;
-        }
-
-        #endregion Methods
 
         #region Static Members
         /// <summary>
