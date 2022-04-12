@@ -10,6 +10,7 @@ To find out more about Conductor visit: [https://github.com/Netflix/conductor](h
 1. [Write workers](#Write-workers)
 2. [Run workers](#Run-workers)
 3. [Worker Configurations](#Worker-Configurations)
+4. [Starting workflow](#Starting-workflow)
 
 
 ### Write workers  
@@ -118,6 +119,21 @@ namespace SimpleConductorWorker
 ```
 Save above code with workers code in Program.cs and run it using consoleApplication.
 Alternatively it can also be hosted as windows service.
+
+### Worker Configurations
+Worker configuration is handled via Configuraiton object passed when initializing TaskHandler
+
+### Starting workflow
+Below is the code snippet in order to start the workflow,
+```
+//Optional headers clients wants to pass.
+Dictionary<string, Object> optionalHeaders = new Dictionary<string, Object>();
+ Configuration configuration = new Configuration(optionalHeaders, "keyId", "keySecret", "https://play.orkes.io/");
+            WorkflowResourceApi workflowResourceApi = new WorkflowResourceApi(configuration);
+            Dictionary<string, Object> input = new Dictionary<string, Object>();
+            //Fill the input map which workflow consumes.
+            workflowResourceApi.StartWorkflow("Stack_overflow_sequential_manan", input, 1);
+```
 
 ### Running Conductor server locally in 2-minute
 More details on how to run Conductor see https://netflix.github.io/conductor/server/ 
