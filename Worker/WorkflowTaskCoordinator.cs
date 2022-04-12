@@ -13,12 +13,12 @@ namespace Conductor.Client.Worker
         private IServiceProvider serviceProvider;
         private ILogger<WorkflowTaskCoordinator> logger;
         private HashSet<Type> workerDefinitions = new HashSet<Type>();
-        private IReadableConfiguration configuration;
+        private Configuration configuration;
         private ConductorAuthTokenClient conductorAuthTokenClient;
 
         public WorkflowTaskCoordinator(IServiceProvider serviceProvider,
             ILogger<WorkflowTaskCoordinator> logger,
-            IReadableConfiguration configuration,
+            Configuration configuration,
             ConductorAuthTokenClient conductorAuthTokenClient)
          {
             this.serviceProvider = serviceProvider;
@@ -32,11 +32,6 @@ namespace Conductor.Client.Worker
         public async Task Start()
         {
             logger.LogInformation("Starting WorkflowCoordinator");
-            if ( !string.IsNullOrEmpty(this.configuration.keyId) && !string.IsNullOrEmpty(this.configuration.keySecret))
-            {
-                this.configuration.AccessToken = this.conductorAuthTokenClient.getToken(this.configuration.BasePath + "/token", this.configuration.keyId,
-                                                                 this.configuration.keySecret);
-            }
             var pollers = new List<Task>();
             for (var i = 0; i < concurrentWorkers; i++)
             {

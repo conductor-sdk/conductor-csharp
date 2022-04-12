@@ -16,7 +16,7 @@ namespace Conductor.Client.Extensions
             return services;
         }
 
-        public static IServiceCollection AddConductorWorker(this IServiceCollection services, Action<IReadableConfiguration> configuration = null, Action<IServiceProvider, HttpClient> configureHttpClient = null)
+        public static IServiceCollection AddConductorWorker(this IServiceCollection services, Action<Configuration> configuration = null, Action<IServiceProvider, HttpClient> configureHttpClient = null)
         {
             services.AddHttpClient();
             services.AddOptions();

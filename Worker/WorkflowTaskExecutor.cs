@@ -15,7 +15,7 @@ namespace Conductor.Client.Worker
     {
         private List<Type> workers;
         private ILogger<WorkflowTaskExecutor> logger;
-        private readonly IReadableConfiguration configuration;
+        private readonly Configuration configuration;
         private readonly IConductorWorkerRestClient taskClient;
         private readonly IServiceProvider serviceProvider;
         private readonly static int epoch = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
@@ -27,7 +27,7 @@ namespace Conductor.Client.Worker
             IConductorWorkerRestClient taskClient,
             IServiceProvider serviceProvider,
             ILogger<WorkflowTaskExecutor> logger,
-            IOptions<IReadableConfiguration> configuration)
+            IOptions<Configuration> configuration)
         {
             this.taskClient = taskClient;
             this.serviceProvider = serviceProvider;

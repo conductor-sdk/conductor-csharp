@@ -8,6 +8,7 @@
  */
 
 
+using System;
 using System.Collections.Generic;
 
 namespace Conductor.Client
@@ -25,7 +26,7 @@ namespace Conductor.Client
         #region Private Members
 
         private static readonly object GlobalConfigSync = new { };
-        private static IReadableConfiguration _globalConfiguration;
+        private static Configuration _globalConfiguration;
 
         #endregion Private Members
 
@@ -37,7 +38,7 @@ namespace Conductor.Client
         }
 
         /// <inheritdoc />
-        public GlobalConfiguration(IDictionary<string, string> defaultHeader, IDictionary<string, string> apiKey, IDictionary<string, string> apiKeyPrefix, string basePath = "http://localhost:3000/api") : base(defaultHeader, apiKey, apiKeyPrefix, basePath)
+        public GlobalConfiguration(IDictionary<string, string> defaultHeader, string keyId, string keySecret, string basePath = null) : base(defaultHeader, keyId, keySecret, basePath)
         {
         }
 
@@ -52,7 +53,7 @@ namespace Conductor.Client
         /// Gets or sets the default Configuration.
         /// </summary>
         /// <value>Configuration.</value>
-        public static IReadableConfiguration Instance
+        public static Configuration Instance
         {
             get { return _globalConfiguration; }
             set

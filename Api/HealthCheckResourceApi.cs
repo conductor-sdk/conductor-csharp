@@ -101,7 +101,7 @@ namespace Conductor.Api
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public HealthCheckResourceApi(ISynchronousClient client, IReadableConfiguration configuration)
+        public HealthCheckResourceApi(ISynchronousClient client, Configuration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (configuration == null) throw new ArgumentNullException("configuration");
@@ -129,7 +129,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public IReadableConfiguration Configuration { get; set; }
+        public Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.

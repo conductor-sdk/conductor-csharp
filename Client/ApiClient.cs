@@ -28,7 +28,7 @@ namespace Conductor.Client
     /// </summary>
     internal class CustomJsonCodec : RestSharp.Serializers.ISerializer, IDeserializer
     {
-        private readonly IReadableConfiguration _configuration;
+        private readonly Configuration _configuration;
         private static readonly string _contentType = "application/json";
         private readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
         {
@@ -43,12 +43,12 @@ namespace Conductor.Client
             }
         };
 
-        public CustomJsonCodec(IReadableConfiguration configuration)
+        public CustomJsonCodec(Configuration configuration)
         {
             _configuration = configuration;
         }
 
-        public CustomJsonCodec(JsonSerializerSettings serializerSettings, IReadableConfiguration configuration)
+        public CustomJsonCodec(JsonSerializerSettings serializerSettings, Configuration configuration)
         {
             _serializerSettings = serializerSettings;
             _configuration = configuration;
@@ -89,31 +89,6 @@ namespace Conductor.Client
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
-            }
-
-            // TODO: ? if (type.IsAssignableFrom(typeof(Stream)))
-            if (type == typeof(Stream))
-            {
-                var bytes = response.RawBytes;
-                if (response.Headers != null)
-                {
-                    var filePath = string.IsNullOrEmpty(_configuration.TempFolderPath)
-                        ? Path.GetTempPath()
-                        : _configuration.TempFolderPath;
-                    var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
-                    foreach (var header in response.Headers)
-                    {
-                        var match = regex.Match(header.ToString());
-                        if (match.Success)
-                        {
-                            string fileName = filePath + ClientUtils.SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
-                            File.WriteAllBytes(fileName, bytes);
-                            return new FileStream(fileName, FileMode.Open);
-                        }
-                    }
-                }
-                var stream = new MemoryStream(bytes);
-                return stream;
             }
 
             if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
@@ -262,7 +237,7 @@ namespace Conductor.Client
             HttpMethod method,
             string path,
             RequestOptions options,
-            IReadableConfiguration configuration)
+            Configuration configuration)
         {
             if (path == null) throw new ArgumentNullException("path");
             if (options == null) throw new ArgumentNullException("options");
@@ -427,7 +402,7 @@ namespace Conductor.Client
             return transformed;
         }
 
-        private ApiResponse<T> Exec<T>(RestRequest req, IReadableConfiguration configuration)
+        private ApiResponse<T> Exec<T>(RestRequest req, Configuration configuration)
         {
             RestClient client = new RestClient(_baseUrl);
 
@@ -456,23 +431,6 @@ namespace Conductor.Client
             client.AddHandler("text/xml", () => xmlDeserializer);
             client.AddHandler("*+xml", () => xmlDeserializer);
             client.AddHandler("*", () => xmlDeserializer);
-
-            client.Timeout = configuration.Timeout;
-
-            if (configuration.Proxy != null)
-            {
-                client.Proxy = configuration.Proxy;
-            }
-
-            if (configuration.UserAgent != null)
-            {
-                client.UserAgent = configuration.UserAgent;
-            }
-
-            if (configuration.ClientCertificates != null)
-            {
-                client.ClientCertificates = configuration.ClientCertificates;
-            }
 
             InterceptRequest(req);
 
@@ -555,7 +513,7 @@ namespace Conductor.Client
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Get<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Get<T>(string path, RequestOptions options, Configuration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
             return Exec<T>(NewRequest(HttpMethod.Get, path, options, config), config);
@@ -569,7 +527,7 @@ namespace Conductor.Client
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Post<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Post<T>(string path, RequestOptions options, Configuration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
             return Exec<T>(NewRequest(HttpMethod.Post, path, options, config), config);
@@ -583,7 +541,7 @@ namespace Conductor.Client
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Put<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Put<T>(string path, RequestOptions options, Configuration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
             return Exec<T>(NewRequest(HttpMethod.Put, path, options, config), config);
@@ -597,7 +555,7 @@ namespace Conductor.Client
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Delete<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Delete<T>(string path, RequestOptions options, Configuration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
             return Exec<T>(NewRequest(HttpMethod.Delete, path, options, config), config);
@@ -611,7 +569,7 @@ namespace Conductor.Client
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Head<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Head<T>(string path, RequestOptions options, Configuration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
             return Exec<T>(NewRequest(HttpMethod.Head, path, options, config), config);
@@ -625,7 +583,7 @@ namespace Conductor.Client
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Options<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Options<T>(string path, RequestOptions options, Configuration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
             return Exec<T>(NewRequest(HttpMethod.Options, path, options, config), config);
@@ -639,7 +597,7 @@ namespace Conductor.Client
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Patch<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Patch<T>(string path, RequestOptions options, Configuration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
             return Exec<T>(NewRequest(HttpMethod.Patch, path, options, config), config);

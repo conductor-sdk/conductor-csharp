@@ -15,13 +15,15 @@ namespace Conductor.Client
     public class ConductorWorkerRestClient : IConductorWorkerRestClient
     {
         private readonly HttpClient httpClient;
-        private readonly IReadableConfiguration configuration;
+        private readonly Configuration configuration;
+        private readonly ConductorAuthTokenClient conductorAuthTokenClient;
         public JsonSerializerSettings JsonSerializerSettings { get; set; } = new JsonSerializerSettings();
-        public ConductorWorkerRestClient(HttpClient httpClient, IOptions<IReadableConfiguration> configuration) 
+        public ConductorWorkerRestClient(HttpClient httpClient, IOptions<Configuration> configuration, ConductorAuthTokenClient conductorAuthTokenClient) 
         { 
             httpClient.BaseAddress = new Uri(configuration.Value.BasePath);
             this.httpClient = httpClient;
             this.configuration = configuration.Value;
+            this.conductorAuthTokenClient = conductorAuthTokenClient;
         }
 
         public Task<Models.Task> PollTask(string taskType, string workerId, string domain)
@@ -35,7 +37,7 @@ namespace Conductor.Client
                 throw new ArgumentNullException("tasktype");
 
             var urlBuilder = new StringBuilder();
-            urlBuilder.Append(configuration.BasePath.Trim('/'));
+            urlBuilder.Append(configuration.BasePath.ToString().Trim('/'));
             urlBuilder.Append("/tasks/poll/{tasktype}?");
             urlBuilder.Replace("{tasktype}", Uri.EscapeDataString(tasktype));
             if (workerid != null)
@@ -51,9 +53,9 @@ namespace Conductor.Client
             using (var request = new HttpRequestMessage { Method = System.Net.Http.HttpMethod.Get, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-                if(!string.IsNullOrEmpty(this.configuration.AccessToken))
+                if(!string.IsNullOrEmpty(this.configuration.keyId) && !string.IsNullOrEmpty(this.configuration.keySecret))
                 {
-                    request.Headers.Add("X-AUTHORIZATION", this.configuration.AccessToken);
+                    request.Headers.Add("X-AUTHORIZATION", this.conductorAuthTokenClient.getToken(this.configuration.BasePath + "/token", this.configuration.keyId, this.configuration.keySecret));
                 }
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                 try
@@ -94,7 +96,7 @@ namespace Conductor.Client
         public async Task<string> UpdateTaskAsync(TaskResult body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder = new StringBuilder();
-            urlBuilder.Append(configuration.BasePath.Trim('/'));
+            urlBuilder.Append(configuration.BasePath.ToString().Trim('/'));
             urlBuilder.Append("/tasks");
 
             using (var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8))
@@ -103,9 +105,9 @@ namespace Conductor.Client
                 request.Content = content;
                 content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-                if (!string.IsNullOrEmpty(this.configuration.AccessToken))
+                if (!string.IsNullOrEmpty(this.configuration.keyId) && !string.IsNullOrEmpty(this.configuration.keySecret))
                 {
-                    request.Headers.Add("X-AUTHORIZATION", this.configuration.AccessToken);
+                    request.Headers.Add("X-AUTHORIZATION", this.conductorAuthTokenClient.getToken(this.configuration.BasePath + "/token", this.configuration.keyId, this.configuration.keySecret));
                 }
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                 try
