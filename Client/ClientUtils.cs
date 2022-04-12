@@ -84,20 +84,7 @@ namespace Conductor.Client
         /// <param name="obj">The parameter (header, path, query, form).</param>
         /// <param name="configuration">An optional configuration instance, providing formatting options used in processing.</param>
         /// <returns>Formatted string.</returns>
-        public static string ParameterToString(object obj, IReadableConfiguration configuration = null)
-        {
-            if (obj is DateTime dateTime)
-                // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
-                // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
-                // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
-                // For example: 2009-06-15T13:45:30.0000000
-                return dateTime.ToString((configuration ?? GlobalConfiguration.Instance).DateTimeFormat);
-            if (obj is DateTimeOffset dateTimeOffset)
-                // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
-                // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
-                // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
-                // For example: 2009-06-15T13:45:30.0000000
-                return dateTimeOffset.ToString((configuration ?? GlobalConfiguration.Instance).DateTimeFormat);
+        public static string ParameterToString(object obj, Configuration configuration = null) { 
             if (obj is bool boolean)
                 return boolean ? "true" : "false";
             if (obj is ICollection collection)

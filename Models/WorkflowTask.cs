@@ -9,19 +9,13 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Conductor.Client.OpenAPIDateConverter;
 
 namespace Conductor.Client.Models
 {
@@ -168,8 +162,9 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowTask" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
+        [JsonConstructor]
         protected WorkflowTask() { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowTask" /> class.
         /// </summary>
@@ -203,6 +198,7 @@ namespace Conductor.Client.Models
         /// <param name="evaluatorType">evaluatorType.</param>
         /// <param name="expression">expression.</param>
         /// <param name="workflowTaskType">workflowTaskType.</param>
+        [Obsolete]
         public WorkflowTask(string name = default(string), string taskReferenceName = default(string), string description = default(string), Dictionary<string, Object> inputParameters = default(Dictionary<string, Object>), string type = default(string), string dynamicTaskNameParam = default(string), string caseValueParam = default(string), string caseExpression = default(string), string scriptExpression = default(string), Dictionary<string, List<WorkflowTask>> decisionCases = default(Dictionary<string, List<WorkflowTask>>), string dynamicForkJoinTasksParam = default(string), string dynamicForkTasksParam = default(string), string dynamicForkTasksInputParamName = default(string), List<WorkflowTask> defaultCase = default(List<WorkflowTask>), List<List<WorkflowTask>> forkTasks = default(List<List<WorkflowTask>>), int startDelay = default(int), SubWorkflowParams subWorkflowParam = default(SubWorkflowParams), List<string> joinOn = default(List<string>), string sink = default(string), bool optional = default(bool), TaskDef taskDefinition = default(TaskDef), bool rateLimited = default(bool), List<string> defaultExclusiveJoinTask = default(List<string>), bool asyncComplete = default(bool), string loopCondition = default(string), List<WorkflowTask> loopOver = default(List<WorkflowTask>), int retryCount = default(int), string evaluatorType = default(string), string expression = default(string), WorkflowTaskTypeEnum? workflowTaskType = default(WorkflowTaskTypeEnum?))
         {
             // to ensure "name" is required (not null)
@@ -426,6 +422,7 @@ namespace Conductor.Client.Models
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
+        [Obsolete]
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -478,6 +475,7 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
+        [Obsolete]
         public override bool Equals(object input)
         {
             return this.Equals(input as WorkflowTask);
@@ -488,6 +486,7 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="input">Instance of WorkflowTask to be compared</param>
         /// <returns>Boolean</returns>
+        [Obsolete]
         public bool Equals(WorkflowTask input)
         {
             if (input == null)
@@ -652,6 +651,7 @@ namespace Conductor.Client.Models
         /// Gets the hash code
         /// </summary>
         /// <returns>Hash code</returns>
+        [Obsolete]
         public override int GetHashCode()
         {
             unchecked // Overflow is fine, just wrap
@@ -768,7 +768,7 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

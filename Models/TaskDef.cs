@@ -9,19 +9,13 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Conductor.Client.OpenAPIDateConverter;
 
 namespace Conductor.Client.Models
 {
@@ -98,7 +92,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskDef" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
+        [JsonConstructor]
         protected TaskDef() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskDef" /> class.
@@ -545,30 +539,30 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             // RetryCount (int) minimum
             if (this.RetryCount < (int)0)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RetryCount, must be a value greater than or equal to 0.", new [] { "RetryCount" });
+                yield return new ValidationResult("Invalid value for RetryCount, must be a value greater than or equal to 0.", new [] { "RetryCount" });
             }
 
             // ResponseTimeoutSeconds (long) minimum
             if (this.ResponseTimeoutSeconds < (long)1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ResponseTimeoutSeconds, must be a value greater than or equal to 1.", new [] { "ResponseTimeoutSeconds" });
+                yield return new ValidationResult("Invalid value for ResponseTimeoutSeconds, must be a value greater than or equal to 1.", new [] { "ResponseTimeoutSeconds" });
             }
 
             // PollTimeoutSeconds (int) minimum
             if (this.PollTimeoutSeconds < (int)0)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PollTimeoutSeconds, must be a value greater than or equal to 0.", new [] { "PollTimeoutSeconds" });
+                yield return new ValidationResult("Invalid value for PollTimeoutSeconds, must be a value greater than or equal to 0.", new [] { "PollTimeoutSeconds" });
             }
 
             // BackoffScaleFactor (int) minimum
             if (this.BackoffScaleFactor < (int)1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for BackoffScaleFactor, must be a value greater than or equal to 1.", new [] { "BackoffScaleFactor" });
+                yield return new ValidationResult("Invalid value for BackoffScaleFactor, must be a value greater than or equal to 1.", new [] { "BackoffScaleFactor" });
             }
 
             yield break;

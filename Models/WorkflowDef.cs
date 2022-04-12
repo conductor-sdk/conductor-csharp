@@ -9,19 +9,13 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Conductor.Client.OpenAPIDateConverter;
 
 namespace Conductor.Client.Models
 {
@@ -60,7 +54,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowDef" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
+        [JsonConstructor]
         protected WorkflowDef() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowDef" /> class.
@@ -467,18 +461,18 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             // SchemaVersion (int) maximum
             if (this.SchemaVersion > (int)2)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SchemaVersion, must be a value less than or equal to 2.", new [] { "SchemaVersion" });
+                yield return new ValidationResult("Invalid value for SchemaVersion, must be a value less than or equal to 2.", new [] { "SchemaVersion" });
             }
 
             // SchemaVersion (int) minimum
             if (this.SchemaVersion < (int)2)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SchemaVersion, must be a value greater than or equal to 2.", new [] { "SchemaVersion" });
+                yield return new ValidationResult("Invalid value for SchemaVersion, must be a value greater than or equal to 2.", new [] { "SchemaVersion" });
             }
 
             yield break;

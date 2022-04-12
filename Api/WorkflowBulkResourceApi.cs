@@ -10,10 +10,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
 using Conductor.Client;
 using Conductor.Client.Models;
 
@@ -29,7 +25,7 @@ namespace Conductor.Api
         /// <summary>
         /// Pause the list of workflows
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>BulkResponse</returns>
         BulkResponse PauseWorkflow(List<string> requestBody);
@@ -40,14 +36,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
         ApiResponse<BulkResponse> PauseWorkflowWithHttpInfo(List<string> requestBody);
         /// <summary>
         /// Restart the list of completed workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>BulkResponse</returns>
@@ -59,7 +55,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
@@ -67,7 +63,7 @@ namespace Conductor.Api
         /// <summary>
         /// Resume the list of workflows
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>BulkResponse</returns>
         BulkResponse ResumeWorkflow(List<string> requestBody);
@@ -78,14 +74,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
         ApiResponse<BulkResponse> ResumeWorkflowWithHttpInfo(List<string> requestBody);
         /// <summary>
         /// Retry the last failed task for each workflow from the list
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>BulkResponse</returns>
         BulkResponse Retry(List<string> requestBody);
@@ -96,14 +92,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
         ApiResponse<BulkResponse> RetryWithHttpInfo(List<string> requestBody);
         /// <summary>
         /// Terminate workflows execution
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>BulkResponse</returns>
@@ -115,7 +111,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
@@ -123,148 +119,18 @@ namespace Conductor.Api
         #endregion Synchronous Operations
     }
 
-    /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
-    /// </summary>
-    public interface IWorkflowBulkResourceApiAsync : IApiAccessor
-    {
-        #region Asynchronous Operations
-        /// <summary>
-        /// Pause the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> PauseWorkflowAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Pause the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> PauseWorkflowWithHttpInfoAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Restart the list of completed workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> Restart1Async(List<string> requestBody, bool? useLatestDefinitions = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Restart the list of completed workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> Restart1WithHttpInfoAsync(List<string> requestBody, bool? useLatestDefinitions = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Resume the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> ResumeWorkflowAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Resume the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> ResumeWorkflowWithHttpInfoAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Retry the last failed task for each workflow from the list
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> RetryAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retry the last failed task for each workflow from the list
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> RetryWithHttpInfoAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Terminate workflows execution
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> Terminate1Async(List<string> requestBody, string reason = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Terminate workflows execution
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> Terminate1WithHttpInfoAsync(List<string> requestBody, string reason = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
-    }
-
-    /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
-    /// </summary>
-    public interface IWorkflowBulkResourceApi : IWorkflowBulkResourceApiSync, IWorkflowBulkResourceApiAsync
+    public interface IWorkflowBulkResourceApi : IWorkflowBulkResourceApiSync
     {
 
     }
+
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
     public partial class WorkflowBulkResourceApi : IWorkflowBulkResourceApi
     {
-        private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowBulkResourceApi"/> class.
@@ -282,10 +148,9 @@ namespace Conductor.Api
         {
             this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
                 Conductor.Client.GlobalConfiguration.Instance,
-                new Conductor.Client.Configuration { BasePath = basePath }
+                new Configuration { BasePath = basePath }
             );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new ApiClient(this.Configuration.BasePath);
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -295,7 +160,7 @@ namespace Conductor.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public WorkflowBulkResourceApi(Conductor.Client.Configuration configuration)
+        public WorkflowBulkResourceApi(Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -303,8 +168,7 @@ namespace Conductor.Api
                 Conductor.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new ApiClient(this.Configuration.BasePath);
             ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -313,29 +177,21 @@ namespace Conductor.Api
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public WorkflowBulkResourceApi(Conductor.Client.ISynchronousClient client, Conductor.Client.IAsynchronousClient asyncClient, Conductor.Client.IReadableConfiguration configuration)
+        public WorkflowBulkResourceApi(ISynchronousClient client, Configuration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
             if (configuration == null) throw new ArgumentNullException("configuration");
 
             this.Client = client;
-            this.AsynchronousClient = asyncClient;
             this.Configuration = configuration;
             this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public Conductor.Client.IAsynchronousClient AsynchronousClient { get; set; }
-
-        /// <summary>
         /// The client for accessing this underlying API synchronously.
         /// </summary>
-        public Conductor.Client.ISynchronousClient Client { get; set; }
+        public ISynchronousClient Client { get; set; }
 
         /// <summary>
         /// Gets the base path of the API client.
@@ -350,12 +206,12 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.IReadableConfiguration Configuration { get; set; }
+        public Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
         /// </summary>
-        public Conductor.Client.ExceptionFactory ExceptionFactory
+        public ExceptionFactory ExceptionFactory
         {
             get
             {
@@ -371,30 +227,30 @@ namespace Conductor.Api
         /// <summary>
         /// Pause the list of workflows 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>BulkResponse</returns>
         public BulkResponse PauseWorkflow(List<string> requestBody)
         {
-            Conductor.Client.ApiResponse<BulkResponse> localVarResponse = PauseWorkflowWithHttpInfo(requestBody);
+            ApiResponse<BulkResponse> localVarResponse = PauseWorkflowWithHttpInfo(requestBody);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Pause the list of workflows 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public Conductor.Client.ApiResponse<BulkResponse> PauseWorkflowWithHttpInfo(List<string> requestBody)
+        public ApiResponse<BulkResponse> PauseWorkflowWithHttpInfo(List<string> requestBody)
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->PauseWorkflow");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->PauseWorkflow");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -419,11 +275,7 @@ namespace Conductor.Api
 
             localVarRequestOptions.Data = requestBody;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Put<BulkResponse>("/api/workflow/bulk/pause", localVarRequestOptions, this.Configuration);
@@ -440,109 +292,34 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Pause the list of workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BulkResponse</returns>
-        public async System.Threading.Tasks.Task<BulkResponse> PauseWorkflowAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<BulkResponse> localVarResponse = await PauseWorkflowWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Pause the list of workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<BulkResponse>> PauseWorkflowWithHttpInfoAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->PauseWorkflow");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.Data = requestBody;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<BulkResponse>("/api/workflow/bulk/pause", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("PauseWorkflow", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
         /// Restart the list of completed workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>BulkResponse</returns>
         public BulkResponse Restart1(List<string> requestBody, bool? useLatestDefinitions = default(bool?))
         {
-            Conductor.Client.ApiResponse<BulkResponse> localVarResponse = Restart1WithHttpInfo(requestBody, useLatestDefinitions);
+            ApiResponse<BulkResponse> localVarResponse = Restart1WithHttpInfo(requestBody, useLatestDefinitions);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Restart the list of completed workflow 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public Conductor.Client.ApiResponse<BulkResponse> Restart1WithHttpInfo(List<string> requestBody, bool? useLatestDefinitions = default(bool?))
+        public ApiResponse<BulkResponse> Restart1WithHttpInfo(List<string> requestBody, bool? useLatestDefinitions = default(bool?))
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Restart1");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Restart1");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -571,11 +348,7 @@ namespace Conductor.Api
             }
             localVarRequestOptions.Data = requestBody;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<BulkResponse>("/api/workflow/bulk/restart", localVarRequestOptions, this.Configuration);
@@ -592,113 +365,32 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Restart the list of completed workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BulkResponse</returns>
-        public async System.Threading.Tasks.Task<BulkResponse> Restart1Async(List<string> requestBody, bool? useLatestDefinitions = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<BulkResponse> localVarResponse = await Restart1WithHttpInfoAsync(requestBody, useLatestDefinitions, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Restart the list of completed workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<BulkResponse>> Restart1WithHttpInfoAsync(List<string> requestBody, bool? useLatestDefinitions = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Restart1");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (useLatestDefinitions != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "useLatestDefinitions", useLatestDefinitions));
-            }
-            localVarRequestOptions.Data = requestBody;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<BulkResponse>("/api/workflow/bulk/restart", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Restart1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
         /// Resume the list of workflows 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>BulkResponse</returns>
         public BulkResponse ResumeWorkflow(List<string> requestBody)
         {
-            Conductor.Client.ApiResponse<BulkResponse> localVarResponse = ResumeWorkflowWithHttpInfo(requestBody);
+            ApiResponse<BulkResponse> localVarResponse = ResumeWorkflowWithHttpInfo(requestBody);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Resume the list of workflows 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public Conductor.Client.ApiResponse<BulkResponse> ResumeWorkflowWithHttpInfo(List<string> requestBody)
+        public ApiResponse<BulkResponse> ResumeWorkflowWithHttpInfo(List<string> requestBody)
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->ResumeWorkflow");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->ResumeWorkflow");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -723,11 +415,7 @@ namespace Conductor.Api
 
             localVarRequestOptions.Data = requestBody;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Put<BulkResponse>("/api/workflow/bulk/resume", localVarRequestOptions, this.Configuration);
@@ -744,107 +432,32 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Resume the list of workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BulkResponse</returns>
-        public async System.Threading.Tasks.Task<BulkResponse> ResumeWorkflowAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<BulkResponse> localVarResponse = await ResumeWorkflowWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Resume the list of workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<BulkResponse>> ResumeWorkflowWithHttpInfoAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->ResumeWorkflow");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.Data = requestBody;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<BulkResponse>("/api/workflow/bulk/resume", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ResumeWorkflow", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
         /// Retry the last failed task for each workflow from the list 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>BulkResponse</returns>
         public BulkResponse Retry(List<string> requestBody)
         {
-            Conductor.Client.ApiResponse<BulkResponse> localVarResponse = RetryWithHttpInfo(requestBody);
+            ApiResponse<BulkResponse> localVarResponse = RetryWithHttpInfo(requestBody);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Retry the last failed task for each workflow from the list 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public Conductor.Client.ApiResponse<BulkResponse> RetryWithHttpInfo(List<string> requestBody)
+        public ApiResponse<BulkResponse> RetryWithHttpInfo(List<string> requestBody)
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Retry");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Retry");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -869,11 +482,7 @@ namespace Conductor.Api
 
             localVarRequestOptions.Data = requestBody;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<BulkResponse>("/api/workflow/bulk/retry", localVarRequestOptions, this.Configuration);
@@ -890,109 +499,34 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Retry the last failed task for each workflow from the list 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BulkResponse</returns>
-        public async System.Threading.Tasks.Task<BulkResponse> RetryAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<BulkResponse> localVarResponse = await RetryWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retry the last failed task for each workflow from the list 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<BulkResponse>> RetryWithHttpInfoAsync(List<string> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Retry");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.Data = requestBody;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<BulkResponse>("/api/workflow/bulk/retry", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Retry", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
         /// Terminate workflows execution 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>BulkResponse</returns>
         public BulkResponse Terminate1(List<string> requestBody, string reason = default(string))
         {
-            Conductor.Client.ApiResponse<BulkResponse> localVarResponse = Terminate1WithHttpInfo(requestBody, reason);
+            ApiResponse<BulkResponse> localVarResponse = Terminate1WithHttpInfo(requestBody, reason);
             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Terminate workflows execution 
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public Conductor.Client.ApiResponse<BulkResponse> Terminate1WithHttpInfo(List<string> requestBody, string reason = default(string))
+        public ApiResponse<BulkResponse> Terminate1WithHttpInfo(List<string> requestBody, string reason = default(string))
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Terminate1");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Terminate1");
             }
 
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
+            RequestOptions localVarRequestOptions = new RequestOptions();
 
             string[] _contentTypes = new string[] {
                 "application/json"
@@ -1021,11 +555,7 @@ namespace Conductor.Api
             }
             localVarRequestOptions.Data = requestBody;
 
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
+
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<BulkResponse>("/api/workflow/bulk/terminate", localVarRequestOptions, this.Configuration);
@@ -1040,87 +570,5 @@ namespace Conductor.Api
 
             return localVarResponse;
         }
-
-        /// <summary>
-        /// Terminate workflows execution 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BulkResponse</returns>
-        public async System.Threading.Tasks.Task<BulkResponse> Terminate1Async(List<string> requestBody, string reason = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<BulkResponse> localVarResponse = await Terminate1WithHttpInfoAsync(requestBody, reason, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Terminate workflows execution 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<BulkResponse>> Terminate1WithHttpInfoAsync(List<string> requestBody, string reason = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Terminate1");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (reason != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "reason", reason));
-            }
-            localVarRequestOptions.Data = requestBody;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<BulkResponse>("/api/workflow/bulk/terminate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Terminate1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
     }
 }

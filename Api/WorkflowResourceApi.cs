@@ -10,10 +10,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
 using Conductor.Client.Models;
 using Conductor.Client;
 
@@ -30,7 +26,7 @@ namespace Conductor.Api
         /// <summary>
         /// Starts the decision task for a workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void Decide(string workflowId);
@@ -41,14 +37,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DecideWithHttpInfo(string workflowId);
         /// <summary>
         /// Removes the workflow from the system
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns></returns>
@@ -60,7 +56,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -68,7 +64,7 @@ namespace Conductor.Api
         /// <summary>
         /// Gets the workflow by workflow id
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <returns>Workflow</returns>
@@ -80,7 +76,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <returns>ApiResponse of Workflow</returns>
@@ -88,7 +84,7 @@ namespace Conductor.Api
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="path"></param>
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
@@ -101,7 +97,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="path"></param>
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
@@ -110,7 +106,7 @@ namespace Conductor.Api
         /// <summary>
         /// Retrieve all the running workflows
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional, default to 1)</param>
         /// <param name="startTime"> (optional)</param>
@@ -124,7 +120,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="version"> (optional, default to 1)</param>
         /// <param name="startTime"> (optional)</param>
@@ -134,7 +130,7 @@ namespace Conductor.Api
         /// <summary>
         /// Lists workflows for the given correlation id list
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -148,7 +144,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -158,7 +154,7 @@ namespace Conductor.Api
         /// <summary>
         /// Lists workflows for the given correlation id
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="correlationId"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -172,7 +168,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="correlationId"></param>
         /// <param name="includeClosed"> (optional, default to false)</param>
@@ -182,7 +178,7 @@ namespace Conductor.Api
         /// <summary>
         /// Pauses the workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void PauseWorkflow1(string workflowId);
@@ -193,14 +189,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PauseWorkflow1WithHttpInfo(string workflowId);
         /// <summary>
         /// Reruns the workflow from a specific task
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="rerunWorkflowRequest"></param>
         /// <returns>string</returns>
@@ -212,7 +208,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="rerunWorkflowRequest"></param>
         /// <returns>ApiResponse of string</returns>
@@ -220,7 +216,7 @@ namespace Conductor.Api
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void ResetWorkflow(string workflowId);
@@ -231,14 +227,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> ResetWorkflowWithHttpInfo(string workflowId);
         /// <summary>
         /// Restarts a completed workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns></returns>
@@ -250,7 +246,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -258,7 +254,7 @@ namespace Conductor.Api
         /// <summary>
         /// Resumes the workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void ResumeWorkflow1(string workflowId);
@@ -269,14 +265,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> ResumeWorkflow1WithHttpInfo(string workflowId);
         /// <summary>
         /// Retries the last failed task
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns></returns>
@@ -288,7 +284,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -299,7 +295,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -314,7 +310,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -328,7 +324,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -343,7 +339,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -357,7 +353,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -372,7 +368,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -386,7 +382,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -401,7 +397,7 @@ namespace Conductor.Api
         /// <remarks>
         /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="size"> (optional, default to 100)</param>
         /// <param name="sort"> (optional)</param>
@@ -412,7 +408,7 @@ namespace Conductor.Api
         /// <summary>
         /// Skips a given task from a current running workflow
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"> (optional)</param>
@@ -425,7 +421,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"> (optional)</param>
@@ -434,7 +430,7 @@ namespace Conductor.Api
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="version"> (optional)</param>
@@ -449,7 +445,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="requestBody"></param>
         /// <param name="version"> (optional)</param>
@@ -460,7 +456,7 @@ namespace Conductor.Api
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <returns>string</returns>
         string StartWorkflow1(StartWorkflowRequest startWorkflowRequest);
@@ -471,14 +467,14 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> StartWorkflow1WithHttpInfo(StartWorkflowRequest startWorkflowRequest);
         /// <summary>
         /// Terminate workflow execution
         /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns></returns>
@@ -490,7 +486,7 @@ namespace Conductor.Api
         /// <remarks>
         /// 
         /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -498,4170 +494,1724 @@ namespace Conductor.Api
         #endregion Synchronous Operations
     }
 
-    /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
-    /// </summary>
-    public interface IWorkflowResourceApiAsync : IApiAccessor
-    {
-        #region Asynchronous Operations
         /// <summary>
-        /// Starts the decision task for a workflow
+        /// Represents a collection of functions to interact with the API endpoints
         /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DecideAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        public interface IWorkflowResourceApi : IWorkflowResourceApiSync
+        {
+
+        }
 
         /// <summary>
-        /// Starts the decision task for a workflow
+        /// Represents a collection of functions to interact with the API endpoints
         /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DecideWithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Removes the workflow from the system
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="archiveWorkflow"> (optional, default to true)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteAsync(string workflowId, bool? archiveWorkflow = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        public partial class WorkflowResourceApi : IWorkflowResourceApi
+        {
+            private ExceptionFactory _exceptionFactory = (name, response) => null;
 
-        /// <summary>
-        /// Removes the workflow from the system
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="archiveWorkflow"> (optional, default to true)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWithHttpInfoAsync(string workflowId, bool? archiveWorkflow = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Gets the workflow by workflow id
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="includeTasks"> (optional, default to true)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Workflow</returns>
-        System.Threading.Tasks.Task<Workflow> GetExecutionStatusAsync(string workflowId, bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+            /// <summary>
+            /// Initializes a new instance of the <see cref="WorkflowResourceApi"/> class.
+            /// </summary>
+            /// <returns></returns>
+            public WorkflowResourceApi() : this((string)null)
+            {
+            }
 
-        /// <summary>
-        /// Gets the workflow by workflow id
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="includeTasks"> (optional, default to true)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Workflow)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Workflow>> GetExecutionStatusWithHttpInfoAsync(string workflowId, bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Get the uri and path of the external storage where the workflow payload is to be stored
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ExternalStorageLocation</returns>
-        System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocation1Async(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+            /// <summary>
+            /// Initializes a new instance of the <see cref="WorkflowResourceApi"/> class.
+            /// </summary>
+            /// <returns></returns>
+            public WorkflowResourceApi(string basePath)
+            {
+                this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
+                    Conductor.Client.GlobalConfiguration.Instance,
+                    new Configuration { BasePath = basePath }
+                );
+                this.Client = new ApiClient(this.Configuration.BasePath);
+                this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            }
 
-        /// <summary>
-        /// Get the uri and path of the external storage where the workflow payload is to be stored
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1WithHttpInfoAsync(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Retrieve all the running workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional, default to 1)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;string&gt;</returns>
-        System.Threading.Tasks.Task<List<string>> GetRunningWorkflowAsync(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+            /// <summary>
+            /// Initializes a new instance of the <see cref="WorkflowResourceApi"/> class
+            /// using Configuration object
+            /// </summary>
+            /// <param name="configuration">An instance of Configuration</param>
+            /// <returns></returns>
+            public WorkflowResourceApi(Configuration configuration)
+            {
+                if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Retrieve all the running workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional, default to 1)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<string>>> GetRunningWorkflowWithHttpInfoAsync(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Lists workflows for the given correlation id list
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, List<Workflow>>> GetWorkflowsAsync(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+                this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
+                    Conductor.Client.GlobalConfiguration.Instance,
+                    configuration
+                );
+                this.Client = new ApiClient(this.Configuration.BasePath);
+                ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            }
 
-        /// <summary>
-        /// Lists workflows for the given correlation id list
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, List&lt;Workflow&gt;&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, List<Workflow>>>> GetWorkflowsWithHttpInfoAsync(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Lists workflows for the given correlation id
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="correlationId"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;Workflow&gt;</returns>
-        System.Threading.Tasks.Task<List<Workflow>> GetWorkflows1Async(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+            /// <summary>
+            /// Initializes a new instance of the <see cref="WorkflowResourceApi"/> class
+            /// using a Configuration object and client instance.
+            /// </summary>
+            /// <param name="client">The client interface for synchronous API access.</param>
+            /// <param name="configuration">The configuration object.</param>
+            public WorkflowResourceApi(ISynchronousClient client, Configuration configuration)
+            {
+                if (client == null) throw new ArgumentNullException("client");
+                if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Lists workflows for the given correlation id
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="correlationId"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;Workflow&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflows1WithHttpInfoAsync(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Pauses the workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PauseWorkflow1Async(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+                this.Client = client;
+                this.Configuration = configuration;
+                this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            }
+            /// <summary>
+            /// The client for accessing this underlying API synchronously.
+            /// </summary>
+            public ISynchronousClient Client { get; set; }
 
-        /// <summary>
-        /// Pauses the workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PauseWorkflow1WithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Reruns the workflow from a specific task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="rerunWorkflowRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> RerunAsync(string workflowId, RerunWorkflowRequest rerunWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+            /// <summary>
+            /// Gets the base path of the API client.
+            /// </summary>
+            /// <value>The base path</value>
+            public string GetBasePath()
+            {
+                return this.Configuration.BasePath;
+            }
 
-        /// <summary>
-        /// Reruns the workflow from a specific task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="rerunWorkflowRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> RerunWithHttpInfoAsync(string workflowId, RerunWorkflowRequest rerunWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Resets callback times of all non-terminal SIMPLE tasks to 0
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ResetWorkflowAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+            /// <summary>
+            /// Gets or sets the configuration object
+            /// </summary>
+            /// <value>An instance of the Configuration</value>
+            public Configuration Configuration { get; set; }
 
-        /// <summary>
-        /// Resets callback times of all non-terminal SIMPLE tasks to 0
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ResetWorkflowWithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Restarts a completed workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RestartAsync(string workflowId, bool? useLatestDefinitions = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+            /// <summary>
+            /// Provides a factory method hook for the creation of exceptions.
+            /// </summary>
+            public ExceptionFactory ExceptionFactory
+            {
+                get
+                {
+                    if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                    {
+                        throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                    }
+                    return _exceptionFactory;
+                }
+                set { _exceptionFactory = value; }
+            }
 
-        /// <summary>
-        /// Restarts a completed workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RestartWithHttpInfoAsync(string workflowId, bool? useLatestDefinitions = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Resumes the workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ResumeWorkflow1Async(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+            /// <summary>
+            /// Starts the decision task for a workflow 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <returns></returns>
+            public void Decide(string workflowId)
+            {
+                DecideWithHttpInfo(workflowId);
+            }
 
-        /// <summary>
-        /// Resumes the workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ResumeWorkflow1WithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Retries the last failed task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task Retry1Async(string workflowId, bool? resumeSubworkflowTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+            /// <summary>
+            /// Starts the decision task for a workflow 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <returns>ApiResponse of Object(void)</returns>
+            public ApiResponse<object> DecideWithHttpInfo(string workflowId)
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Decide");
+                }
 
-        /// <summary>
-        /// Retries the last failed task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> Retry1WithHttpInfoAsync(string workflowId, bool? resumeSubworkflowTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Search for workflows based on payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultWorkflowSummary</returns>
-        System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+                RequestOptions localVarRequestOptions = new RequestOptions();
 
-        /// <summary>
-        /// Search for workflows based on payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultWorkflowSummary)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowSummary>> SearchWithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Search for workflows based on payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultWorkflow</returns>
-        System.Threading.Tasks.Task<SearchResultWorkflow> SearchV2Async(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+                string[] _contentTypes = new string[] {
+            };
 
-        /// <summary>
-        /// Search for workflows based on payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchV2WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Search for workflows based on task parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultWorkflowSummary</returns>
-        System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchWorkflowsByTasksAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+            };
 
-        /// <summary>
-        /// Search for workflows based on task parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultWorkflowSummary)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowSummary>> SearchWorkflowsByTasksWithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Search for workflows based on task parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultWorkflow</returns>
-        System.Threading.Tasks.Task<SearchResultWorkflow> SearchWorkflowsByTasksV2Async(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
 
-        /// <summary>
-        /// Search for workflows based on task parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchWorkflowsByTasksV2WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Skips a given task from a current running workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskReferenceName"></param>
-        /// <param name="skipTaskRequest"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SkipTaskFromWorkflowAsync(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
 
-        /// <summary>
-        /// Skips a given task from a current running workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskReferenceName"></param>
-        /// <param name="skipTaskRequest"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SkipTaskFromWorkflowWithHttpInfoAsync(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="correlationId"> (optional)</param>
-        /// <param name="priority"> (optional, default to 0)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> StartWorkflowAsync(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
 
-        /// <summary>
-        /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="correlationId"> (optional)</param>
-        /// <param name="priority"> (optional, default to 0)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflowWithHttpInfoAsync(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startWorkflowRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> StartWorkflow1Async(StartWorkflowRequest startWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
-        /// <summary>
-        /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startWorkflowRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflow1WithHttpInfoAsync(StartWorkflowRequest startWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// Terminate workflow execution
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task TerminateAsync(string workflowId, string reason = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
-        /// <summary>
-        /// Terminate workflow execution
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TerminateWithHttpInfoAsync(string workflowId, string reason = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+                // make the HTTP request
+                var localVarResponse = this.Client.Put<Object>("/api/workflow/decide/{workflowId}", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("Decide", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Removes the workflow from the system 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="archiveWorkflow"> (optional, default to true)</param>
+            /// <returns></returns>
+            public void Delete(string workflowId, bool? archiveWorkflow = default(bool?))
+            {
+                DeleteWithHttpInfo(workflowId, archiveWorkflow);
+            }
+
+            /// <summary>
+            /// Removes the workflow from the system 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="archiveWorkflow"> (optional, default to true)</param>
+            /// <returns>ApiResponse of Object(void)</returns>
+            public ApiResponse<object> DeleteWithHttpInfo(string workflowId, bool? archiveWorkflow = default(bool?))
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Delete");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                if (archiveWorkflow != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "archiveWorkflow", archiveWorkflow));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Delete<Object>("/api/workflow/{workflowId}/remove", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("Delete", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Gets the workflow by workflow id 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="includeTasks"> (optional, default to true)</param>
+            /// <returns>Workflow</returns>
+            public Workflow GetExecutionStatus(string workflowId, bool? includeTasks = default(bool?))
+            {
+                ApiResponse<Workflow> localVarResponse = GetExecutionStatusWithHttpInfo(workflowId, includeTasks);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Gets the workflow by workflow id 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="includeTasks"> (optional, default to true)</param>
+            /// <returns>ApiResponse of Workflow</returns>
+            public ApiResponse<Workflow> GetExecutionStatusWithHttpInfo(string workflowId, bool? includeTasks = default(bool?))
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatus");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "*/*"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                if (includeTasks != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Get<Workflow>("/api/workflow/{workflowId}", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("GetExecutionStatus", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Get the uri and path of the external storage where the workflow payload is to be stored 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="path"></param>
+            /// <param name="operation"></param>
+            /// <param name="payloadType"></param>
+            /// <returns>ExternalStorageLocation</returns>
+            public ExternalStorageLocation GetExternalStorageLocation1(string path, string operation, string payloadType)
+            {
+                ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocation1WithHttpInfo(path, operation, payloadType);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Get the uri and path of the external storage where the workflow payload is to be stored 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="path"></param>
+            /// <param name="operation"></param>
+            /// <param name="payloadType"></param>
+            /// <returns>ApiResponse of ExternalStorageLocation</returns>
+            public ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo(string path, string operation, string payloadType)
+            {
+                // verify the required parameter 'path' is set
+                if (path == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'path' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                }
+
+                // verify the required parameter 'operation' is set
+                if (operation == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'operation' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                }
+
+                // verify the required parameter 'payloadType' is set
+                if (payloadType == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "*/*"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "path", path));
+                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "operation", operation));
+                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "payloadType", payloadType));
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Get<ExternalStorageLocation>("/api/workflow/externalstoragelocation", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("GetExternalStorageLocation1", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Retrieve all the running workflows 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="name"></param>
+            /// <param name="version"> (optional, default to 1)</param>
+            /// <param name="startTime"> (optional)</param>
+            /// <param name="endTime"> (optional)</param>
+            /// <returns>List&lt;string&gt;</returns>
+            public List<string> GetRunningWorkflow(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?))
+            {
+                ApiResponse<List<string>> localVarResponse = GetRunningWorkflowWithHttpInfo(name, version, startTime, endTime);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Retrieve all the running workflows 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="name"></param>
+            /// <param name="version"> (optional, default to 1)</param>
+            /// <param name="startTime"> (optional)</param>
+            /// <param name="endTime"> (optional)</param>
+            /// <returns>ApiResponse of List&lt;string&gt;</returns>
+            public ApiResponse<List<string>> GetRunningWorkflowWithHttpInfo(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?))
+            {
+                // verify the required parameter 'name' is set
+                if (name == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetRunningWorkflow");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "*/*"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
+                if (version != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
+                }
+                if (startTime != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+                }
+                if (endTime != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Get<List<string>>("/api/workflow/running/{name}", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("GetRunningWorkflow", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Lists workflows for the given correlation id list 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="name"></param>
+            /// <param name="requestBody"></param>
+            /// <param name="includeClosed"> (optional, default to false)</param>
+            /// <param name="includeTasks"> (optional, default to false)</param>
+            /// <returns>Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
+            public Dictionary<string, List<Workflow>> GetWorkflows(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
+            {
+                ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = GetWorkflowsWithHttpInfo(name, requestBody, includeClosed, includeTasks);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Lists workflows for the given correlation id list 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="name"></param>
+            /// <param name="requestBody"></param>
+            /// <param name="includeClosed"> (optional, default to false)</param>
+            /// <param name="includeTasks"> (optional, default to false)</param>
+            /// <returns>ApiResponse of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
+            public ApiResponse<Dictionary<string, List<Workflow>>> GetWorkflowsWithHttpInfo(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
+            {
+                // verify the required parameter 'name' is set
+                if (name == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
+                }
+
+                // verify the required parameter 'requestBody' is set
+                if (requestBody == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->GetWorkflows");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "*/*"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
+                if (includeClosed != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeClosed", includeClosed));
+                }
+                if (includeTasks != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
+                }
+                localVarRequestOptions.Data = requestBody;
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Post<Dictionary<string, List<Workflow>>>("/api/workflow/{name}/correlated", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("GetWorkflows", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Lists workflows for the given correlation id 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="name"></param>
+            /// <param name="correlationId"></param>
+            /// <param name="includeClosed"> (optional, default to false)</param>
+            /// <param name="includeTasks"> (optional, default to false)</param>
+            /// <returns>List&lt;Workflow&gt;</returns>
+            public List<Workflow> GetWorkflows1(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
+            {
+                ApiResponse<List<Workflow>> localVarResponse = GetWorkflows1WithHttpInfo(name, correlationId, includeClosed, includeTasks);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Lists workflows for the given correlation id 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="name"></param>
+            /// <param name="correlationId"></param>
+            /// <param name="includeClosed"> (optional, default to false)</param>
+            /// <param name="includeTasks"> (optional, default to false)</param>
+            /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
+            public ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
+            {
+                // verify the required parameter 'name' is set
+                if (name == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows1");
+                }
+
+                // verify the required parameter 'correlationId' is set
+                if (correlationId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "*/*"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
+                localVarRequestOptions.PathParameters.Add("correlationId", Conductor.Client.ClientUtils.ParameterToString(correlationId)); // path parameter
+                if (includeClosed != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeClosed", includeClosed));
+                }
+                if (includeTasks != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Get<List<Workflow>>("/api/workflow/{name}/correlated/{correlationId}", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("GetWorkflows1", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Pauses the workflow 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <returns></returns>
+            public void PauseWorkflow1(string workflowId)
+            {
+                PauseWorkflow1WithHttpInfo(workflowId);
+            }
+
+            /// <summary>
+            /// Pauses the workflow 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <returns>ApiResponse of Object(void)</returns>
+            public ApiResponse<object> PauseWorkflow1WithHttpInfo(string workflowId)
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow1");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Put<Object>("/api/workflow/{workflowId}/pause", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("PauseWorkflow1", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Reruns the workflow from a specific task 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="rerunWorkflowRequest"></param>
+            /// <returns>string</returns>
+            public string Rerun(string workflowId, RerunWorkflowRequest rerunWorkflowRequest)
+            {
+                ApiResponse<string> localVarResponse = RerunWithHttpInfo(workflowId, rerunWorkflowRequest);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Reruns the workflow from a specific task 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="rerunWorkflowRequest"></param>
+            /// <returns>ApiResponse of string</returns>
+            public ApiResponse<string> RerunWithHttpInfo(string workflowId, RerunWorkflowRequest rerunWorkflowRequest)
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Rerun");
+                }
+
+                // verify the required parameter 'rerunWorkflowRequest' is set
+                if (rerunWorkflowRequest == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'rerunWorkflowRequest' when calling WorkflowResourceApi->Rerun");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "text/plain"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.Data = rerunWorkflowRequest;
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Post<string>("/api/workflow/{workflowId}/rerun", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("Rerun", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Resets callback times of all non-terminal SIMPLE tasks to 0 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <returns></returns>
+            public void ResetWorkflow(string workflowId)
+            {
+                ResetWorkflowWithHttpInfo(workflowId);
+            }
+
+            /// <summary>
+            /// Resets callback times of all non-terminal SIMPLE tasks to 0 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <returns>ApiResponse of Object(void)</returns>
+            public ApiResponse<object> ResetWorkflowWithHttpInfo(string workflowId)
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResetWorkflow");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Post<Object>("/api/workflow/{workflowId}/resetcallbacks", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("ResetWorkflow", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Restarts a completed workflow 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="useLatestDefinitions"> (optional, default to false)</param>
+            /// <returns></returns>
+            public void Restart(string workflowId, bool? useLatestDefinitions = default(bool?))
+            {
+                RestartWithHttpInfo(workflowId, useLatestDefinitions);
+            }
+
+            /// <summary>
+            /// Restarts a completed workflow 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="useLatestDefinitions"> (optional, default to false)</param>
+            /// <returns>ApiResponse of Object(void)</returns>
+            public ApiResponse<object> RestartWithHttpInfo(string workflowId, bool? useLatestDefinitions = default(bool?))
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Restart");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                if (useLatestDefinitions != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "useLatestDefinitions", useLatestDefinitions));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Post<Object>("/api/workflow/{workflowId}/restart", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("Restart", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Resumes the workflow 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <returns></returns>
+            public void ResumeWorkflow1(string workflowId)
+            {
+                ResumeWorkflow1WithHttpInfo(workflowId);
+            }
+
+            /// <summary>
+            /// Resumes the workflow 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <returns>ApiResponse of Object(void)</returns>
+            public ApiResponse<object> ResumeWorkflow1WithHttpInfo(string workflowId)
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow1");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Put<Object>("/api/workflow/{workflowId}/resume", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("ResumeWorkflow1", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Retries the last failed task 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
+            /// <returns></returns>
+            public void Retry1(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
+            {
+                Retry1WithHttpInfo(workflowId, resumeSubworkflowTasks);
+            }
+
+            /// <summary>
+            /// Retries the last failed task 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
+            /// <returns>ApiResponse of Object(void)</returns>
+            public ApiResponse<object> Retry1WithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry1");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                if (resumeSubworkflowTasks != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "resumeSubworkflowTasks", resumeSubworkflowTasks));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Post<Object>("/api/workflow/{workflowId}/retry", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("Retry1", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="start"> (optional, default to 0)</param>
+            /// <param name="size"> (optional, default to 100)</param>
+            /// <param name="sort"> (optional)</param>
+            /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
+            /// <param name="query"> (optional)</param>
+            /// <returns>SearchResultWorkflowSummary</returns>
+            public SearchResultWorkflowSummary Search(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            {
+                ApiResponse<SearchResultWorkflowSummary> localVarResponse = SearchWithHttpInfo(start, size, sort, freeText, query);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="start"> (optional, default to 0)</param>
+            /// <param name="size"> (optional, default to 100)</param>
+            /// <param name="sort"> (optional)</param>
+            /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
+            /// <param name="query"> (optional)</param>
+            /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
+            public ApiResponse<SearchResultWorkflowSummary> SearchWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            {
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "*/*"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                if (start != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+                }
+                if (size != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                }
+                if (sort != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+                }
+                if (freeText != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
+                }
+                if (query != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Get<SearchResultWorkflowSummary>("/api/workflow/search", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("Search", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="start"> (optional, default to 0)</param>
+            /// <param name="size"> (optional, default to 100)</param>
+            /// <param name="sort"> (optional)</param>
+            /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
+            /// <param name="query"> (optional)</param>
+            /// <returns>SearchResultWorkflow</returns>
+            public SearchResultWorkflow SearchV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            {
+                ApiResponse<SearchResultWorkflow> localVarResponse = SearchV2WithHttpInfo(start, size, sort, freeText, query);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="start"> (optional, default to 0)</param>
+            /// <param name="size"> (optional, default to 100)</param>
+            /// <param name="sort"> (optional)</param>
+            /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
+            /// <param name="query"> (optional)</param>
+            /// <returns>ApiResponse of SearchResultWorkflow</returns>
+            public ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            {
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "*/*"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                if (start != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+                }
+                if (size != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                }
+                if (sort != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+                }
+                if (freeText != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
+                }
+                if (query != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Get<SearchResultWorkflow>("/api/workflow/search-v2", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("SearchV2", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="start"> (optional, default to 0)</param>
+            /// <param name="size"> (optional, default to 100)</param>
+            /// <param name="sort"> (optional)</param>
+            /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
+            /// <param name="query"> (optional)</param>
+            /// <returns>SearchResultWorkflowSummary</returns>
+            public SearchResultWorkflowSummary SearchWorkflowsByTasks(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            {
+                ApiResponse<SearchResultWorkflowSummary> localVarResponse = SearchWorkflowsByTasksWithHttpInfo(start, size, sort, freeText, query);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="start"> (optional, default to 0)</param>
+            /// <param name="size"> (optional, default to 100)</param>
+            /// <param name="sort"> (optional)</param>
+            /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
+            /// <param name="query"> (optional)</param>
+            /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
+            public ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            {
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "*/*"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                if (start != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+                }
+                if (size != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                }
+                if (sort != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+                }
+                if (freeText != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
+                }
+                if (query != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Get<SearchResultWorkflowSummary>("/api/workflow/search-by-tasks", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("SearchWorkflowsByTasks", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+            /// <summary>
+            /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="start"> (optional, default to 0)</param>
+            /// <param name="size"> (optional, default to 100)</param>
+            /// <param name="sort"> (optional)</param>
+            /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
+            /// <param name="query"> (optional)</param>
+            /// <returns>SearchResultWorkflow</returns>
+            public SearchResultWorkflow SearchWorkflowsByTasksV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            {
+                ApiResponse<SearchResultWorkflow> localVarResponse = SearchWorkflowsByTasksV2WithHttpInfo(start, size, sort, freeText, query);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="start"> (optional, default to 0)</param>
+            /// <param name="size"> (optional, default to 100)</param>
+            /// <param name="sort"> (optional)</param>
+            /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
+            /// <param name="query"> (optional)</param>
+            /// <returns>ApiResponse of SearchResultWorkflow</returns>
+            public ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            {
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "*/*"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                if (start != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+                }
+                if (size != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                }
+                if (sort != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+                }
+                if (freeText != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
+                }
+                if (query != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Get<SearchResultWorkflow>("/api/workflow/search-by-tasks-v2", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("SearchWorkflowsByTasksV2", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Skips a given task from a current running workflow 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="taskReferenceName"></param>
+            /// <param name="skipTaskRequest"> (optional)</param>
+            /// <returns></returns>
+            public void SkipTaskFromWorkflow(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest))
+            {
+                SkipTaskFromWorkflowWithHttpInfo(workflowId, taskReferenceName, skipTaskRequest);
+            }
+
+            /// <summary>
+            /// Skips a given task from a current running workflow 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="taskReferenceName"></param>
+            /// <param name="skipTaskRequest"> (optional)</param>
+            /// <returns>ApiResponse of Object(void)</returns>
+            public ApiResponse<object> SkipTaskFromWorkflowWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest))
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
+                }
+
+                // verify the required parameter 'taskReferenceName' is set
+                if (taskReferenceName == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'taskReferenceName' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("taskReferenceName", Conductor.Client.ClientUtils.ParameterToString(taskReferenceName)); // path parameter
+                localVarRequestOptions.Data = skipTaskRequest;
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Put<Object>("/api/workflow/{workflowId}/skiptask/{taskReferenceName}", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("SkipTaskFromWorkflow", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="name"></param>
+            /// <param name="requestBody"></param>
+            /// <param name="version"> (optional)</param>
+            /// <param name="correlationId"> (optional)</param>
+            /// <param name="priority"> (optional, default to 0)</param>
+            /// <returns>string</returns>
+            public string StartWorkflow(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?))
+            {
+                ApiResponse<string> localVarResponse = StartWorkflowWithHttpInfo(name, requestBody, version, correlationId, priority);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="name"></param>
+            /// <param name="requestBody"></param>
+            /// <param name="version"> (optional)</param>
+            /// <param name="correlationId"> (optional)</param>
+            /// <param name="priority"> (optional, default to 0)</param>
+            /// <returns>ApiResponse of string</returns>
+            public ApiResponse<string> StartWorkflowWithHttpInfo(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?))
+            {
+                // verify the required parameter 'name' is set
+                if (name == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow");
+                }
+
+                // verify the required parameter 'requestBody' is set
+                if (requestBody == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->StartWorkflow");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "text/plain"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
+                if (version != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
+                }
+                if (correlationId != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "correlationId", correlationId));
+                }
+                if (priority != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "priority", priority));
+                }
+                localVarRequestOptions.Data = requestBody;
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Post<string>("/api/workflow/{name}", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("StartWorkflow", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+
+            /// <summary>
+            /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="startWorkflowRequest"></param>
+            /// <returns>string</returns>
+            public string StartWorkflow1(StartWorkflowRequest startWorkflowRequest)
+            {
+                ApiResponse<string> localVarResponse = StartWorkflow1WithHttpInfo(startWorkflowRequest);
+                return localVarResponse.Data;
+            }
+
+            /// <summary>
+            /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="startWorkflowRequest"></param>
+            /// <returns>ApiResponse of string</returns>
+            public ApiResponse<string> StartWorkflow1WithHttpInfo(StartWorkflowRequest startWorkflowRequest)
+            {
+                // verify the required parameter 'startWorkflowRequest' is set
+                if (startWorkflowRequest == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'startWorkflowRequest' when calling WorkflowResourceApi->StartWorkflow1");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+                "text/plain"
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.Data = startWorkflowRequest;
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Post<string>("/api/workflow", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("StartWorkflow1", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+            /// <summary>
+            /// Terminate workflow execution 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="reason"> (optional)</param>
+            /// <returns></returns>
+            public void Terminate(string workflowId, string reason = default(string))
+            {
+                TerminateWithHttpInfo(workflowId, reason);
+            }
+
+            /// <summary>
+            /// Terminate workflow execution 
+            /// </summary>
+            /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+            /// <param name="workflowId"></param>
+            /// <param name="reason"> (optional)</param>
+            /// <returns>ApiResponse of Object(void)</returns>
+            public ApiResponse<object> TerminateWithHttpInfo(string workflowId, string reason = default(string))
+            {
+                // verify the required parameter 'workflowId' is set
+                if (workflowId == null)
+                {
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate");
+                }
+
+                RequestOptions localVarRequestOptions = new RequestOptions();
+
+                string[] _contentTypes = new string[] {
+            };
+
+                // to determine the Accept header
+                string[] _accepts = new string[] {
+            };
+
+                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                if (localVarContentType != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+                }
+
+                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                if (localVarAccept != null)
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+                }
+
+                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                if (reason != null)
+                {
+                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "reason", reason));
+                }
+
+
+
+                // make the HTTP request
+                var localVarResponse = this.Client.Delete<Object>("/api/workflow/{workflowId}", localVarRequestOptions, this.Configuration);
+                if (this.ExceptionFactory != null)
+                {
+                    Exception _exception = this.ExceptionFactory("Terminate", localVarResponse);
+                    if (_exception != null)
+                    {
+                        throw _exception;
+                    }
+                }
+
+                return localVarResponse;
+            }
+
+        }
     }
-
-    /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
-    /// </summary>
-    public interface IWorkflowResourceApi : IWorkflowResourceApiSync, IWorkflowResourceApiAsync
-    {
-
-    }
-
-    /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
-    /// </summary>
-    public partial class WorkflowResourceApi : IWorkflowResourceApi
-    {
-        private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WorkflowResourceApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public WorkflowResourceApi() : this((string)null)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WorkflowResourceApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public WorkflowResourceApi(string basePath)
-        {
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
-                new Conductor.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WorkflowResourceApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public WorkflowResourceApi(Conductor.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
-
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Conductor.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WorkflowResourceApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public WorkflowResourceApi(Conductor.Client.ISynchronousClient client, Conductor.Client.IAsynchronousClient asyncClient, Conductor.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
-
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
-        }
-
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public Conductor.Client.IAsynchronousClient AsynchronousClient { get; set; }
-
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public Conductor.Client.ISynchronousClient Client { get; set; }
-
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
-        {
-            return this.Configuration.BasePath;
-        }
-
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public Conductor.Client.IReadableConfiguration Configuration { get; set; }
-
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public Conductor.Client.ExceptionFactory ExceptionFactory
-        {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
-        }
-
-        /// <summary>
-        /// Starts the decision task for a workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns></returns>
-        public void Decide(string workflowId)
-        {
-            DecideWithHttpInfo(workflowId);
-        }
-
-        /// <summary>
-        /// Starts the decision task for a workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> DecideWithHttpInfo(string workflowId)
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Decide");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<Object>("/api/workflow/decide/{workflowId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Decide", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Starts the decision task for a workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DecideAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await DecideWithHttpInfoAsync(workflowId, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Starts the decision task for a workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> DecideWithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Decide");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/workflow/decide/{workflowId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Decide", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Removes the workflow from the system 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="archiveWorkflow"> (optional, default to true)</param>
-        /// <returns></returns>
-        public void Delete(string workflowId, bool? archiveWorkflow = default(bool?))
-        {
-            DeleteWithHttpInfo(workflowId, archiveWorkflow);
-        }
-
-        /// <summary>
-        /// Removes the workflow from the system 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="archiveWorkflow"> (optional, default to true)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> DeleteWithHttpInfo(string workflowId, bool? archiveWorkflow = default(bool?))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Delete");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            if (archiveWorkflow != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "archiveWorkflow", archiveWorkflow));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<Object>("/api/workflow/{workflowId}/remove", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Delete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Removes the workflow from the system 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="archiveWorkflow"> (optional, default to true)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteAsync(string workflowId, bool? archiveWorkflow = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await DeleteWithHttpInfoAsync(workflowId, archiveWorkflow, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Removes the workflow from the system 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="archiveWorkflow"> (optional, default to true)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> DeleteWithHttpInfoAsync(string workflowId, bool? archiveWorkflow = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Delete");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            if (archiveWorkflow != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "archiveWorkflow", archiveWorkflow));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/api/workflow/{workflowId}/remove", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Delete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Gets the workflow by workflow id 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="includeTasks"> (optional, default to true)</param>
-        /// <returns>Workflow</returns>
-        public Workflow GetExecutionStatus(string workflowId, bool? includeTasks = default(bool?))
-        {
-            Conductor.Client.ApiResponse<Workflow> localVarResponse = GetExecutionStatusWithHttpInfo(workflowId, includeTasks);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Gets the workflow by workflow id 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="includeTasks"> (optional, default to true)</param>
-        /// <returns>ApiResponse of Workflow</returns>
-        public Conductor.Client.ApiResponse<Workflow> GetExecutionStatusWithHttpInfo(string workflowId, bool? includeTasks = default(bool?))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatus");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            if (includeTasks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Workflow>("/api/workflow/{workflowId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetExecutionStatus", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Gets the workflow by workflow id 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="includeTasks"> (optional, default to true)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Workflow</returns>
-        public async System.Threading.Tasks.Task<Workflow> GetExecutionStatusAsync(string workflowId, bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<Workflow> localVarResponse = await GetExecutionStatusWithHttpInfoAsync(workflowId, includeTasks, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Gets the workflow by workflow id 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="includeTasks"> (optional, default to true)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Workflow)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Workflow>> GetExecutionStatusWithHttpInfoAsync(string workflowId, bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatus");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            if (includeTasks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Workflow>("/api/workflow/{workflowId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetExecutionStatus", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get the uri and path of the external storage where the workflow payload is to be stored 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <returns>ExternalStorageLocation</returns>
-        public ExternalStorageLocation GetExternalStorageLocation1(string path, string operation, string payloadType)
-        {
-            Conductor.Client.ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocation1WithHttpInfo(path, operation, payloadType);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get the uri and path of the external storage where the workflow payload is to be stored 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        public Conductor.Client.ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo(string path, string operation, string payloadType)
-        {
-            // verify the required parameter 'path' is set
-            if (path == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'path' when calling WorkflowResourceApi->GetExternalStorageLocation1");
-            }
-
-            // verify the required parameter 'operation' is set
-            if (operation == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'operation' when calling WorkflowResourceApi->GetExternalStorageLocation1");
-            }
-
-            // verify the required parameter 'payloadType' is set
-            if (payloadType == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation1");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "path", path));
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "operation", operation));
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "payloadType", payloadType));
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<ExternalStorageLocation>("/api/workflow/externalstoragelocation", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetExternalStorageLocation1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get the uri and path of the external storage where the workflow payload is to be stored 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ExternalStorageLocation</returns>
-        public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocation1Async(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocation1WithHttpInfoAsync(path, operation, payloadType, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get the uri and path of the external storage where the workflow payload is to be stored 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1WithHttpInfoAsync(string path, string operation, string payloadType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'path' is set
-            if (path == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'path' when calling WorkflowResourceApi->GetExternalStorageLocation1");
-            }
-
-            // verify the required parameter 'operation' is set
-            if (operation == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'operation' when calling WorkflowResourceApi->GetExternalStorageLocation1");
-            }
-
-            // verify the required parameter 'payloadType' is set
-            if (payloadType == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation1");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "path", path));
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "operation", operation));
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "payloadType", payloadType));
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ExternalStorageLocation>("/api/workflow/externalstoragelocation", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetExternalStorageLocation1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Retrieve all the running workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional, default to 1)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <returns>List&lt;string&gt;</returns>
-        public List<string> GetRunningWorkflow(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?))
-        {
-            Conductor.Client.ApiResponse<List<string>> localVarResponse = GetRunningWorkflowWithHttpInfo(name, version, startTime, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieve all the running workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional, default to 1)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public Conductor.Client.ApiResponse<List<string>> GetRunningWorkflowWithHttpInfo(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?))
-        {
-            // verify the required parameter 'name' is set
-            if (name == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetRunningWorkflow");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            if (version != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<List<string>>("/api/workflow/running/{name}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetRunningWorkflow", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Retrieve all the running workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional, default to 1)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;string&gt;</returns>
-        public async System.Threading.Tasks.Task<List<string>> GetRunningWorkflowAsync(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<List<string>> localVarResponse = await GetRunningWorkflowWithHttpInfoAsync(name, version, startTime, endTime, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieve all the running workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional, default to 1)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<List<string>>> GetRunningWorkflowWithHttpInfoAsync(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'name' is set
-            if (name == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetRunningWorkflow");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            if (version != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<string>>("/api/workflow/running/{name}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetRunningWorkflow", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Lists workflows for the given correlation id list 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <returns>Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        public Dictionary<string, List<Workflow>> GetWorkflows(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
-        {
-            Conductor.Client.ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = GetWorkflowsWithHttpInfo(name, requestBody, includeClosed, includeTasks);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Lists workflows for the given correlation id list 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        public Conductor.Client.ApiResponse<Dictionary<string, List<Workflow>>> GetWorkflowsWithHttpInfo(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
-        {
-            // verify the required parameter 'name' is set
-            if (name == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
-            }
-
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->GetWorkflows");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            if (includeClosed != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeClosed", includeClosed));
-            }
-            if (includeTasks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
-            }
-            localVarRequestOptions.Data = requestBody;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Dictionary<string, List<Workflow>>>("/api/workflow/{name}/correlated", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetWorkflows", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Lists workflows for the given correlation id list 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, List<Workflow>>> GetWorkflowsAsync(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = await GetWorkflowsWithHttpInfoAsync(name, requestBody, includeClosed, includeTasks, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Lists workflows for the given correlation id list 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, List&lt;Workflow&gt;&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Dictionary<string, List<Workflow>>>> GetWorkflowsWithHttpInfoAsync(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'name' is set
-            if (name == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
-            }
-
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->GetWorkflows");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            if (includeClosed != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeClosed", includeClosed));
-            }
-            if (includeTasks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
-            }
-            localVarRequestOptions.Data = requestBody;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, List<Workflow>>>("/api/workflow/{name}/correlated", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetWorkflows", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Lists workflows for the given correlation id 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="correlationId"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <returns>List&lt;Workflow&gt;</returns>
-        public List<Workflow> GetWorkflows1(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
-        {
-            Conductor.Client.ApiResponse<List<Workflow>> localVarResponse = GetWorkflows1WithHttpInfo(name, correlationId, includeClosed, includeTasks);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Lists workflows for the given correlation id 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="correlationId"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-        public Conductor.Client.ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
-        {
-            // verify the required parameter 'name' is set
-            if (name == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows1");
-            }
-
-            // verify the required parameter 'correlationId' is set
-            if (correlationId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            localVarRequestOptions.PathParameters.Add("correlationId", Conductor.Client.ClientUtils.ParameterToString(correlationId)); // path parameter
-            if (includeClosed != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeClosed", includeClosed));
-            }
-            if (includeTasks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<List<Workflow>>("/api/workflow/{name}/correlated/{correlationId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetWorkflows1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Lists workflows for the given correlation id 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="correlationId"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;Workflow&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Workflow>> GetWorkflows1Async(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<List<Workflow>> localVarResponse = await GetWorkflows1WithHttpInfoAsync(name, correlationId, includeClosed, includeTasks, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Lists workflows for the given correlation id 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="correlationId"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;Workflow&gt;)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<List<Workflow>>> GetWorkflows1WithHttpInfoAsync(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'name' is set
-            if (name == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows1");
-            }
-
-            // verify the required parameter 'correlationId' is set
-            if (correlationId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            localVarRequestOptions.PathParameters.Add("correlationId", Conductor.Client.ClientUtils.ParameterToString(correlationId)); // path parameter
-            if (includeClosed != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeClosed", includeClosed));
-            }
-            if (includeTasks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<Workflow>>("/api/workflow/{name}/correlated/{correlationId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetWorkflows1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Pauses the workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns></returns>
-        public void PauseWorkflow1(string workflowId)
-        {
-            PauseWorkflow1WithHttpInfo(workflowId);
-        }
-
-        /// <summary>
-        /// Pauses the workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> PauseWorkflow1WithHttpInfo(string workflowId)
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow1");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<Object>("/api/workflow/{workflowId}/pause", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("PauseWorkflow1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Pauses the workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PauseWorkflow1Async(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await PauseWorkflow1WithHttpInfoAsync(workflowId, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Pauses the workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> PauseWorkflow1WithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow1");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/workflow/{workflowId}/pause", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("PauseWorkflow1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Reruns the workflow from a specific task 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="rerunWorkflowRequest"></param>
-        /// <returns>string</returns>
-        public string Rerun(string workflowId, RerunWorkflowRequest rerunWorkflowRequest)
-        {
-            Conductor.Client.ApiResponse<string> localVarResponse = RerunWithHttpInfo(workflowId, rerunWorkflowRequest);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Reruns the workflow from a specific task 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="rerunWorkflowRequest"></param>
-        /// <returns>ApiResponse of string</returns>
-        public Conductor.Client.ApiResponse<string> RerunWithHttpInfo(string workflowId, RerunWorkflowRequest rerunWorkflowRequest)
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Rerun");
-            }
-
-            // verify the required parameter 'rerunWorkflowRequest' is set
-            if (rerunWorkflowRequest == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'rerunWorkflowRequest' when calling WorkflowResourceApi->Rerun");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            localVarRequestOptions.Data = rerunWorkflowRequest;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<string>("/api/workflow/{workflowId}/rerun", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Rerun", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Reruns the workflow from a specific task 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="rerunWorkflowRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> RerunAsync(string workflowId, RerunWorkflowRequest rerunWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<string> localVarResponse = await RerunWithHttpInfoAsync(workflowId, rerunWorkflowRequest, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Reruns the workflow from a specific task 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="rerunWorkflowRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<string>> RerunWithHttpInfoAsync(string workflowId, RerunWorkflowRequest rerunWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Rerun");
-            }
-
-            // verify the required parameter 'rerunWorkflowRequest' is set
-            if (rerunWorkflowRequest == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'rerunWorkflowRequest' when calling WorkflowResourceApi->Rerun");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            localVarRequestOptions.Data = rerunWorkflowRequest;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<string>("/api/workflow/{workflowId}/rerun", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Rerun", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Resets callback times of all non-terminal SIMPLE tasks to 0 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns></returns>
-        public void ResetWorkflow(string workflowId)
-        {
-            ResetWorkflowWithHttpInfo(workflowId);
-        }
-
-        /// <summary>
-        /// Resets callback times of all non-terminal SIMPLE tasks to 0 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> ResetWorkflowWithHttpInfo(string workflowId)
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResetWorkflow");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/api/workflow/{workflowId}/resetcallbacks", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ResetWorkflow", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Resets callback times of all non-terminal SIMPLE tasks to 0 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ResetWorkflowAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await ResetWorkflowWithHttpInfoAsync(workflowId, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Resets callback times of all non-terminal SIMPLE tasks to 0 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> ResetWorkflowWithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResetWorkflow");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/workflow/{workflowId}/resetcallbacks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ResetWorkflow", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Restarts a completed workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <returns></returns>
-        public void Restart(string workflowId, bool? useLatestDefinitions = default(bool?))
-        {
-            RestartWithHttpInfo(workflowId, useLatestDefinitions);
-        }
-
-        /// <summary>
-        /// Restarts a completed workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> RestartWithHttpInfo(string workflowId, bool? useLatestDefinitions = default(bool?))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Restart");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            if (useLatestDefinitions != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "useLatestDefinitions", useLatestDefinitions));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/api/workflow/{workflowId}/restart", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Restart", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Restarts a completed workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RestartAsync(string workflowId, bool? useLatestDefinitions = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await RestartWithHttpInfoAsync(workflowId, useLatestDefinitions, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Restarts a completed workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> RestartWithHttpInfoAsync(string workflowId, bool? useLatestDefinitions = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Restart");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            if (useLatestDefinitions != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "useLatestDefinitions", useLatestDefinitions));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/workflow/{workflowId}/restart", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Restart", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Resumes the workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns></returns>
-        public void ResumeWorkflow1(string workflowId)
-        {
-            ResumeWorkflow1WithHttpInfo(workflowId);
-        }
-
-        /// <summary>
-        /// Resumes the workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> ResumeWorkflow1WithHttpInfo(string workflowId)
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow1");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<Object>("/api/workflow/{workflowId}/resume", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ResumeWorkflow1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Resumes the workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ResumeWorkflow1Async(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await ResumeWorkflow1WithHttpInfoAsync(workflowId, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Resumes the workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> ResumeWorkflow1WithHttpInfoAsync(string workflowId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow1");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/workflow/{workflowId}/resume", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ResumeWorkflow1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Retries the last failed task 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
-        /// <returns></returns>
-        public void Retry1(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
-        {
-            Retry1WithHttpInfo(workflowId, resumeSubworkflowTasks);
-        }
-
-        /// <summary>
-        /// Retries the last failed task 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> Retry1WithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry1");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            if (resumeSubworkflowTasks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "resumeSubworkflowTasks", resumeSubworkflowTasks));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/api/workflow/{workflowId}/retry", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Retry1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Retries the last failed task 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task Retry1Async(string workflowId, bool? resumeSubworkflowTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await Retry1WithHttpInfoAsync(workflowId, resumeSubworkflowTasks, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Retries the last failed task 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> Retry1WithHttpInfoAsync(string workflowId, bool? resumeSubworkflowTasks = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry1");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            if (resumeSubworkflowTasks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "resumeSubworkflowTasks", resumeSubworkflowTasks));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/workflow/{workflowId}/retry", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Retry1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>SearchResultWorkflowSummary</returns>
-        public SearchResultWorkflowSummary Search(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
-        {
-            Conductor.Client.ApiResponse<SearchResultWorkflowSummary> localVarResponse = SearchWithHttpInfo(start, size, sort, freeText, query);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
-        public Conductor.Client.ApiResponse<SearchResultWorkflowSummary> SearchWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
-        {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (size != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
-            }
-            if (sort != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
-            }
-            if (freeText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
-            }
-            if (query != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<SearchResultWorkflowSummary>("/api/workflow/search", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Search", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultWorkflowSummary</returns>
-        public async System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<SearchResultWorkflowSummary> localVarResponse = await SearchWithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultWorkflowSummary)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<SearchResultWorkflowSummary>> SearchWithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (size != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
-            }
-            if (sort != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
-            }
-            if (freeText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
-            }
-            if (query != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<SearchResultWorkflowSummary>("/api/workflow/search", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Search", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>SearchResultWorkflow</returns>
-        public SearchResultWorkflow SearchV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
-        {
-            Conductor.Client.ApiResponse<SearchResultWorkflow> localVarResponse = SearchV2WithHttpInfo(start, size, sort, freeText, query);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>ApiResponse of SearchResultWorkflow</returns>
-        public Conductor.Client.ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
-        {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (size != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
-            }
-            if (sort != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
-            }
-            if (freeText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
-            }
-            if (query != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<SearchResultWorkflow>("/api/workflow/search-v2", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SearchV2", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultWorkflow</returns>
-        public async System.Threading.Tasks.Task<SearchResultWorkflow> SearchV2Async(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<SearchResultWorkflow> localVarResponse = await SearchV2WithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Search for workflows based on payload and other parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<SearchResultWorkflow>> SearchV2WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (size != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
-            }
-            if (sort != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
-            }
-            if (freeText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
-            }
-            if (query != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<SearchResultWorkflow>("/api/workflow/search-v2", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SearchV2", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>SearchResultWorkflowSummary</returns>
-        public SearchResultWorkflowSummary SearchWorkflowsByTasks(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
-        {
-            Conductor.Client.ApiResponse<SearchResultWorkflowSummary> localVarResponse = SearchWorkflowsByTasksWithHttpInfo(start, size, sort, freeText, query);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
-        public Conductor.Client.ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
-        {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (size != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
-            }
-            if (sort != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
-            }
-            if (freeText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
-            }
-            if (query != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<SearchResultWorkflowSummary>("/api/workflow/search-by-tasks", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SearchWorkflowsByTasks", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultWorkflowSummary</returns>
-        public async System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchWorkflowsByTasksAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<SearchResultWorkflowSummary> localVarResponse = await SearchWorkflowsByTasksWithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultWorkflowSummary)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<SearchResultWorkflowSummary>> SearchWorkflowsByTasksWithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (size != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
-            }
-            if (sort != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
-            }
-            if (freeText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
-            }
-            if (query != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<SearchResultWorkflowSummary>("/api/workflow/search-by-tasks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SearchWorkflowsByTasks", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>SearchResultWorkflow</returns>
-        public SearchResultWorkflow SearchWorkflowsByTasksV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
-        {
-            Conductor.Client.ApiResponse<SearchResultWorkflow> localVarResponse = SearchWorkflowsByTasksV2WithHttpInfo(start, size, sort, freeText, query);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>ApiResponse of SearchResultWorkflow</returns>
-        public Conductor.Client.ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
-        {
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (size != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
-            }
-            if (sort != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
-            }
-            if (freeText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
-            }
-            if (query != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<SearchResultWorkflow>("/api/workflow/search-by-tasks-v2", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SearchWorkflowsByTasksV2", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SearchResultWorkflow</returns>
-        public async System.Threading.Tasks.Task<SearchResultWorkflow> SearchWorkflowsByTasksV2Async(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<SearchResultWorkflow> localVarResponse = await SearchWorkflowsByTasksV2WithHttpInfoAsync(start, size, sort, freeText, query, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Search for workflows based on task parameters use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<SearchResultWorkflow>> SearchWorkflowsByTasksV2WithHttpInfoAsync(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "*/*"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (size != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
-            }
-            if (sort != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
-            }
-            if (freeText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
-            }
-            if (query != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<SearchResultWorkflow>("/api/workflow/search-by-tasks-v2", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SearchWorkflowsByTasksV2", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Skips a given task from a current running workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskReferenceName"></param>
-        /// <param name="skipTaskRequest"> (optional)</param>
-        /// <returns></returns>
-        public void SkipTaskFromWorkflow(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest))
-        {
-            SkipTaskFromWorkflowWithHttpInfo(workflowId, taskReferenceName, skipTaskRequest);
-        }
-
-        /// <summary>
-        /// Skips a given task from a current running workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskReferenceName"></param>
-        /// <param name="skipTaskRequest"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> SkipTaskFromWorkflowWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
-            }
-
-            // verify the required parameter 'taskReferenceName' is set
-            if (taskReferenceName == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'taskReferenceName' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("taskReferenceName", Conductor.Client.ClientUtils.ParameterToString(taskReferenceName)); // path parameter
-            localVarRequestOptions.Data = skipTaskRequest;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<Object>("/api/workflow/{workflowId}/skiptask/{taskReferenceName}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SkipTaskFromWorkflow", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Skips a given task from a current running workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskReferenceName"></param>
-        /// <param name="skipTaskRequest"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SkipTaskFromWorkflowAsync(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await SkipTaskFromWorkflowWithHttpInfoAsync(workflowId, taskReferenceName, skipTaskRequest, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Skips a given task from a current running workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskReferenceName"></param>
-        /// <param name="skipTaskRequest"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> SkipTaskFromWorkflowWithHttpInfoAsync(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
-            }
-
-            // verify the required parameter 'taskReferenceName' is set
-            if (taskReferenceName == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'taskReferenceName' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("taskReferenceName", Conductor.Client.ClientUtils.ParameterToString(taskReferenceName)); // path parameter
-            localVarRequestOptions.Data = skipTaskRequest;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/workflow/{workflowId}/skiptask/{taskReferenceName}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SkipTaskFromWorkflow", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="correlationId"> (optional)</param>
-        /// <param name="priority"> (optional, default to 0)</param>
-        /// <returns>string</returns>
-        public string StartWorkflow(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?))
-        {
-            Conductor.Client.ApiResponse<string> localVarResponse = StartWorkflowWithHttpInfo(name, requestBody, version, correlationId, priority);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="correlationId"> (optional)</param>
-        /// <param name="priority"> (optional, default to 0)</param>
-        /// <returns>ApiResponse of string</returns>
-        public Conductor.Client.ApiResponse<string> StartWorkflowWithHttpInfo(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?))
-        {
-            // verify the required parameter 'name' is set
-            if (name == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow");
-            }
-
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->StartWorkflow");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            if (version != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
-            }
-            if (correlationId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "correlationId", correlationId));
-            }
-            if (priority != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "priority", priority));
-            }
-            localVarRequestOptions.Data = requestBody;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<string>("/api/workflow/{name}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("StartWorkflow", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="correlationId"> (optional)</param>
-        /// <param name="priority"> (optional, default to 0)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> StartWorkflowAsync(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<string> localVarResponse = await StartWorkflowWithHttpInfoAsync(name, requestBody, version, correlationId, priority, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="correlationId"> (optional)</param>
-        /// <param name="priority"> (optional, default to 0)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<string>> StartWorkflowWithHttpInfoAsync(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'name' is set
-            if (name == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow");
-            }
-
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowResourceApi->StartWorkflow");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            if (version != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
-            }
-            if (correlationId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "correlationId", correlationId));
-            }
-            if (priority != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "priority", priority));
-            }
-            localVarRequestOptions.Data = requestBody;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<string>("/api/workflow/{name}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("StartWorkflow", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startWorkflowRequest"></param>
-        /// <returns>string</returns>
-        public string StartWorkflow1(StartWorkflowRequest startWorkflowRequest)
-        {
-            Conductor.Client.ApiResponse<string> localVarResponse = StartWorkflow1WithHttpInfo(startWorkflowRequest);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startWorkflowRequest"></param>
-        /// <returns>ApiResponse of string</returns>
-        public Conductor.Client.ApiResponse<string> StartWorkflow1WithHttpInfo(StartWorkflowRequest startWorkflowRequest)
-        {
-            // verify the required parameter 'startWorkflowRequest' is set
-            if (startWorkflowRequest == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'startWorkflowRequest' when calling WorkflowResourceApi->StartWorkflow1");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.Data = startWorkflowRequest;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<string>("/api/workflow", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("StartWorkflow1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startWorkflowRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> StartWorkflow1Async(StartWorkflowRequest startWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Conductor.Client.ApiResponse<string> localVarResponse = await StartWorkflow1WithHttpInfoAsync(startWorkflowRequest, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startWorkflowRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<string>> StartWorkflow1WithHttpInfoAsync(StartWorkflowRequest startWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'startWorkflowRequest' is set
-            if (startWorkflowRequest == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'startWorkflowRequest' when calling WorkflowResourceApi->StartWorkflow1");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain"
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.Data = startWorkflowRequest;
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<string>("/api/workflow", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("StartWorkflow1", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Terminate workflow execution 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <returns></returns>
-        public void Terminate(string workflowId, string reason = default(string))
-        {
-            TerminateWithHttpInfo(workflowId, reason);
-        }
-
-        /// <summary>
-        /// Terminate workflow execution 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Conductor.Client.ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = default(string))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate");
-            }
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            if (reason != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "reason", reason));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<Object>("/api/workflow/{workflowId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Terminate", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Terminate workflow execution 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task TerminateAsync(string workflowId, string reason = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await TerminateWithHttpInfoAsync(workflowId, reason, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Terminate workflow execution 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Conductor.Client.ApiResponse<Object>> TerminateWithHttpInfoAsync(string workflowId, string reason = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'workflowId' is set
-            if (workflowId == null)
-            {
-                throw new Conductor.Client.ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate");
-            }
-
-
-            Conductor.Client.RequestOptions localVarRequestOptions = new Conductor.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            if (reason != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "reason", reason));
-            }
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Authorization", this.Configuration.GetApiKeyWithPrefix("X-Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/api/workflow/{workflowId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Terminate", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-    }
-}
