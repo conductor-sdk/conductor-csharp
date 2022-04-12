@@ -15,12 +15,13 @@ namespace Conductor.Client
     public class ConductorWorkerRestClient : IConductorWorkerRestClient
     {
         private readonly HttpClient httpClient;
-        private readonly ConductorClientConfiguration settings;
-        public ConductorWorkerRestClient(HttpClient httpClient, IOptions<ConductorClientConfiguration> options) 
+        private readonly IReadableConfiguration configuration;
+        public JsonSerializerSettings JsonSerializerSettings { get; set; } = new JsonSerializerSettings();
+        public ConductorWorkerRestClient(HttpClient httpClient, IOptions<IReadableConfiguration> configuration) 
         { 
-            httpClient.BaseAddress = options.Value.ServerUrl;
+            httpClient.BaseAddress = new Uri(configuration.Value.BasePath);
             this.httpClient = httpClient;
-            this.settings = options.Value;
+            this.configuration = configuration.Value;
         }
 
         public Task<Models.Task> PollTask(string taskType, string workerId, string domain)
@@ -34,7 +35,7 @@ namespace Conductor.Client
                 throw new ArgumentNullException("tasktype");
 
             var urlBuilder = new StringBuilder();
-            urlBuilder.Append(settings.ServerUrl.OriginalString.Trim('/'));
+            urlBuilder.Append(configuration.BasePath.Trim('/'));
             urlBuilder.Append("/tasks/poll/{tasktype}?");
             urlBuilder.Replace("{tasktype}", Uri.EscapeDataString(tasktype));
             if (workerid != null)
@@ -50,9 +51,9 @@ namespace Conductor.Client
             using (var request = new HttpRequestMessage { Method = System.Net.Http.HttpMethod.Get, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-                if(!string.IsNullOrEmpty(this.settings.Token))
+                if(!string.IsNullOrEmpty(this.configuration.AccessToken))
                 {
-                    request.Headers.Add("X-AUTHORIZATION", this.settings.Token);
+                    request.Headers.Add("X-AUTHORIZATION", this.configuration.AccessToken);
                 }
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                 try
@@ -93,7 +94,7 @@ namespace Conductor.Client
         public async Task<string> UpdateTaskAsync(TaskResult body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder = new StringBuilder();
-            urlBuilder.Append(settings.ServerUrl.OriginalString.Trim('/'));
+            urlBuilder.Append(configuration.BasePath.Trim('/'));
             urlBuilder.Append("/tasks");
 
             using (var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8))
@@ -102,9 +103,9 @@ namespace Conductor.Client
                 request.Content = content;
                 content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-                if (!string.IsNullOrEmpty(this.settings.Token))
+                if (!string.IsNullOrEmpty(this.configuration.AccessToken))
                 {
-                    request.Headers.Add("X-AUTHORIZATION", this.settings.Token);
+                    request.Headers.Add("X-AUTHORIZATION", this.configuration.AccessToken);
                 }
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                 try
@@ -147,7 +148,7 @@ namespace Conductor.Client
             try
             {
                 var responseText = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<T>(responseText, settings.JsonSerializerSettings ?? JsonConvert.DefaultSettings());
+                return JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings ?? JsonConvert.DefaultSettings());
             }
             catch (JsonException exception)
             {

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -56,6 +57,33 @@ namespace Conductor.Client
             string token = PostForToken(uri, keyId, keySecret).Result;
             memoryCache.Set(new AuthenticationConfiguration(keyId, keySecret), token, DateTimeOffset.Now.AddHours(4));
             return token;
+        }
+    }
+
+    public class AuthenticationConfiguration
+    {
+        public AuthenticationConfiguration(string keyId, string keySecret)
+        {
+            this.keyId = keyId;
+            this.keySecret = keySecret;
+        }
+
+        public string keyId { get; set; }
+        public string keySecret { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is AuthenticationConfiguration configuration &&
+                   keyId == configuration.keyId &&
+                   keySecret == configuration.keySecret;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -96359911;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(keyId);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(keySecret);
+            return hashCode;
         }
     }
 }

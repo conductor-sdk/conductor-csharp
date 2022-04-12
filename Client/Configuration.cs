@@ -153,6 +153,11 @@ namespace Conductor.Client
             set { _basePath = value; }
         }
 
+        public int ConcurrentWorkers { get; set; } = 1;
+
+        public int SleepInterval { get; set; } = 1_000;
+        public string Domain { get; set; }
+
         /// <summary>
         /// Gets or sets the default header.
         /// </summary>

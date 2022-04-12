@@ -1,6 +1,5 @@
 ﻿using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +13,18 @@ namespace Conductor.Client.Worker
         private IServiceProvider serviceProvider;
         private ILogger<WorkflowTaskCoordinator> logger;
         private HashSet<Type> workerDefinitions = new HashSet<Type>();
-        private ConductorClientConfiguration conductorClientConfiguration;
+        private IReadableConfiguration configuration;
         private ConductorAuthTokenClient conductorAuthTokenClient;
 
         public WorkflowTaskCoordinator(IServiceProvider serviceProvider,
             ILogger<WorkflowTaskCoordinator> logger,
-            IOptions<ConductorClientConfiguration> conductorClientSettings,
+            IReadableConfiguration configuration,
             ConductorAuthTokenClient conductorAuthTokenClient)
          {
             this.serviceProvider = serviceProvider;
             this.logger = logger;
-            concurrentWorkers = conductorClientSettings.Value.ConcurrentWorkers;
-            conductorClientConfiguration = conductorClientSettings.Value;
+            concurrentWorkers = configuration.ConcurrentWorkers;
+            this.configuration = configuration;
             this.conductorAuthTokenClient = conductorAuthTokenClient;
 
         }
@@ -33,12 +32,10 @@ namespace Conductor.Client.Worker
         public async Task Start()
         {
             logger.LogInformation("Starting WorkflowCoordinator");
-            if (this.conductorClientConfiguration.AuthenticationConfiguration != null 
-                && !string.IsNullOrEmpty(this.conductorClientConfiguration.AuthenticationConfiguration.keyId)
-                && !string.IsNullOrEmpty(this.conductorClientConfiguration.AuthenticationConfiguration.keySecret))
+            if ( !string.IsNullOrEmpty(this.configuration.keyId) && !string.IsNullOrEmpty(this.configuration.keySecret))
             {
-                this.conductorClientConfiguration.Token = this.conductorAuthTokenClient.PostForToken(this.conductorClientConfiguration.ServerUrl + "/token", this.conductorClientConfiguration.AuthenticationConfiguration.keyId,
-                                                                 this.conductorClientConfiguration.AuthenticationConfiguration.keySecret).Result;
+                this.configuration.AccessToken = this.conductorAuthTokenClient.getToken(this.configuration.BasePath + "/token", this.configuration.keyId,
+                                                                 this.configuration.keySecret);
             }
             var pollers = new List<Task>();
             for (var i = 0; i < concurrentWorkers; i++)

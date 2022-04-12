@@ -24,7 +24,12 @@ namespace Conductor.Client
         /// Gets the access token.
         /// </summary>
         /// <value>Access token.</value>
-        string AccessToken { get; }
+        string AccessToken { get; set; }
+
+        int ConcurrentWorkers { get; set; }
+
+        int SleepInterval { get; set; }
+        string Domain { get; set; }
 
         /// <summary>
         /// Gets the API key.

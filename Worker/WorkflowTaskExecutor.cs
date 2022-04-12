@@ -15,7 +15,7 @@ namespace Conductor.Client.Worker
     {
         private List<Type> workers;
         private ILogger<WorkflowTaskExecutor> logger;
-        private readonly ConductorClientConfiguration conductorClientSettings;
+        private readonly IReadableConfiguration configuration;
         private readonly IConductorWorkerRestClient taskClient;
         private readonly IServiceProvider serviceProvider;
         private readonly static int epoch = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
@@ -27,12 +27,12 @@ namespace Conductor.Client.Worker
             IConductorWorkerRestClient taskClient,
             IServiceProvider serviceProvider,
             ILogger<WorkflowTaskExecutor> logger,
-            IOptions<ConductorClientConfiguration> conductorClientSettings)
+            IOptions<IReadableConfiguration> configuration)
         {
             this.taskClient = taskClient;
             this.serviceProvider = serviceProvider;
             this.logger = logger;
-            this.conductorClientSettings = conductorClientSettings.Value;
+            this.configuration = configuration.Value;
         }
 
         private string GetWorkerName()
@@ -83,7 +83,7 @@ namespace Conductor.Client.Worker
 
         private async Task Sleep()
         {
-            var delay = conductorClientSettings.SleepInterval;   
+            var delay = configuration.SleepInterval;   
 
             logger.LogDebug($"Waiting for {delay}ms");
 
@@ -110,7 +110,7 @@ namespace Conductor.Client.Worker
 
         public Task<Models.Task> PollForTask(string taskType)
         {
-            return taskClient.PollTask(taskType, workerId, conductorClientSettings.Domain);
+            return taskClient.PollTask(taskType, workerId, configuration.Domain);
         }
 
         private async Task ProcessTask(Models.Task task, IWorkflowTask workflowTask)
