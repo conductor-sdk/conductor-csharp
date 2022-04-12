@@ -98,7 +98,7 @@ namespace Conductor.Client
         public int ConcurrentWorkers { get; set; } = 1;
 
         public int SleepInterval { get; set; } = 1_000;
-        public string Domain { get; set; } = "";
+        public string Domain { get; set; } = null;
 
         /// <summary>
         /// Gets or sets the default header.

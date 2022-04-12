@@ -72,20 +72,12 @@ namespace SimpleConductorWorker
     {
         static async Task Main(string[] args)
         {
-            await new HostBuilder()
+           await new HostBuilder()
                 .ConfigureServices((ctx, services) =>
                 {
-                    # Conductor server url
-                    services.AddConductorWorker((config) =>
-                    {
-                        config.ServerUrl = new Uri("http://localhost:8080/api/");
-                    });
-                    # Optionally, if you are using Conductor server that requires authentication,  setup key_id and secret
-                    config.AuthenticationClient = new Conductor.Client.AuthenticationClient()
-                    {
-                        keyId = "key",
-                        keySecret = "secret"
-                    };
+
+                    Configuration configuration = new Configuration(new ConcurrentDictionary<string, string>(), "keyId", "keySecret");
+                    services.AddConductorWorker(configuration);
                     services.AddConductorWorkflowTask<MyWorkflowTask>();
                     services.AddHostedService<WorkflowsWorkerService>();
                 })
