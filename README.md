@@ -14,7 +14,7 @@ To find out more about Conductor visit: [https://github.com/Netflix/conductor](h
 
 ### Get Secrets
 Executing workflow or polling a task from a playground requires keyId and keySecret.
-Please follow [guide]() to provision one for your application.
+Please follow [guide](https://orkes.io/content/docs/codelab/helloworld#application-permissions) to provision one for your application.
 
 ### Write workers  
 

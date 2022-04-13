@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Conductor.Client
 {
@@ -16,13 +17,16 @@ namespace Conductor.Client
         private readonly HttpClient httpClient;
         private readonly Configuration configuration;
         private readonly ConductorAuthTokenClient conductorAuthTokenClient;
+        private ILogger<ConductorWorkerRestClient> logger;
+
         public JsonSerializerSettings JsonSerializerSettings { get; set; } = new JsonSerializerSettings();
-        public ConductorWorkerRestClient(HttpClient httpClient, Configuration configuration, ConductorAuthTokenClient conductorAuthTokenClient) 
+        public ConductorWorkerRestClient(HttpClient httpClient, Configuration configuration, ConductorAuthTokenClient conductorAuthTokenClient, ILogger<ConductorWorkerRestClient> logger) 
         { 
             httpClient.BaseAddress = new Uri(configuration.BasePath);
             this.httpClient = httpClient;
             this.configuration = configuration;
             this.conductorAuthTokenClient = conductorAuthTokenClient;
+            this.logger = logger;
         }
 
         public Task<Models.Task> PollTask(string taskType, string workerId, string domain)
@@ -54,7 +58,7 @@ namespace Conductor.Client
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
                 if(!string.IsNullOrEmpty(this.configuration.keyId) && !string.IsNullOrEmpty(this.configuration.keySecret))
                 {
-                    request.Headers.Add("X-AUTHORIZATION", this.conductorAuthTokenClient.getToken(this.configuration.BasePath + "/token", this.configuration.keyId, this.configuration.keySecret));
+                    request.Headers.Add("X-AUTHORIZATION", this.conductorAuthTokenClient.getToken(this.configuration.BasePath + "/api/token", this.configuration.keyId, this.configuration.keySecret));
                 }
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                 try
@@ -75,8 +79,13 @@ namespace Conductor.Client
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         return await ReadResponseAsync<Models.Task>(response, headers);
+                        
                     }
 
+                    return default(Models.Task);
+                } catch(Exception e)
+                {
+                    logger.LogError("Unable to parse content " + e.Message);
                     return default(Models.Task);
                 }
                 finally
