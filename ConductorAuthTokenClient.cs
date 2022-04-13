@@ -17,7 +17,7 @@ namespace Conductor.Client
 
         private MemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
 
-        public Task<string> PostForToken(String uri, String keyId, String keySecret)
+        public async Task<string> PostForToken(String uri, String keyId, String keySecret)
         {
             HttpClient httpClient = new HttpClient();
             var urlBuilder = new StringBuilder(uri);
@@ -30,12 +30,12 @@ namespace Conductor.Client
                     keyId = keyId,
                     keySecret = keySecret,
                 });
-                var response = httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).Result;
+                var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
 
 
                 var result = (JObject)JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
 
-                return Task.FromResult(result["token"].Value<string>());
+                return result["token"].Value<string>();
 
             }
         }
