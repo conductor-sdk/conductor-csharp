@@ -140,6 +140,11 @@ namespace Conductor.Client
 
                     return default(string);
                 }
+                catch (Exception e)
+                {
+                    logger.LogError("Unable to parse content " + e.Message);
+                    return default(string);
+                }
                 finally
                 {
                     if (response != null)

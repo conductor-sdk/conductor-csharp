@@ -32,11 +32,14 @@ namespace Conductor.Client
                 });
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
 
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var result = (JObject)JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
 
-                var result = (JObject)JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
+                    return result["token"].Value<string>();
 
-                return result["token"].Value<string>();
-
+                }
+                return default(string);
             }
         }
 
