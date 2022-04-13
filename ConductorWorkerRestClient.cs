@@ -41,7 +41,7 @@ namespace Conductor.Client
 
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(configuration.BasePath.ToString().Trim('/'));
-            urlBuilder.Append("/tasks/poll/{tasktype}?");
+            urlBuilder.Append("/api/tasks/poll/{tasktype}?");
             urlBuilder.Replace("{tasktype}", Uri.EscapeDataString(tasktype));
             if (workerid != null)
             {
@@ -105,7 +105,7 @@ namespace Conductor.Client
         {
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(configuration.BasePath.ToString().Trim('/'));
-            urlBuilder.Append("/tasks");
+            urlBuilder.Append("/api/tasks");
 
             using (var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8))
             using (var request = new HttpRequestMessage { Method = System.Net.Http.HttpMethod.Post, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
