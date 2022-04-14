@@ -1164,7 +1164,7 @@ namespace Conductor.Api
         public string RequeuePendingTask(string taskType)
         {
             ApiResponse<string> localVarResponse = RequeuePendingTaskWithHttpInfo(taskType);
-            return localVarResponse.Data;
+            return localVarResponse.RawContent;
         }
 
         /// <summary>
@@ -1467,7 +1467,7 @@ namespace Conductor.Api
         public string UpdateTask(TaskResult taskResult)
         {
             ApiResponse<string> localVarResponse = UpdateTaskWithHttpInfo(taskResult);
-            return localVarResponse.Data;
+            return localVarResponse.RawContent;
         }
 
         /// <summary>
@@ -1537,7 +1537,7 @@ namespace Conductor.Api
         public string UpdateTask1(string workflowId, string taskRefName, string status, Dictionary<string, Object> requestBody)
         {
             ApiResponse<string> localVarResponse = UpdateTask1WithHttpInfo(workflowId, taskRefName, status, requestBody);
-            return localVarResponse.Data;
+            return localVarResponse.RawContent;
         }
 
         /// <summary>

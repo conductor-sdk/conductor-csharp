@@ -1223,7 +1223,7 @@ namespace Conductor.Api
             public string Rerun(string workflowId, RerunWorkflowRequest rerunWorkflowRequest)
             {
                 ApiResponse<string> localVarResponse = RerunWithHttpInfo(workflowId, rerunWorkflowRequest);
-                return localVarResponse.Data;
+                return localVarResponse.RawContent;
             }
 
             /// <summary>
@@ -1994,7 +1994,7 @@ namespace Conductor.Api
             public string StartWorkflow(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?))
             {
                 ApiResponse<string> localVarResponse = StartWorkflowWithHttpInfo(name, requestBody, version, correlationId, priority);
-                return localVarResponse.Data;
+                return localVarResponse.RawContent;
             }
 
             /// <summary>
@@ -2085,7 +2085,7 @@ namespace Conductor.Api
             public string StartWorkflow1(StartWorkflowRequest startWorkflowRequest)
             {
                 ApiResponse<string> localVarResponse = StartWorkflow1WithHttpInfo(startWorkflowRequest);
-                return localVarResponse.Data;
+                return localVarResponse.RawContent;
             }
 
             /// <summary>
