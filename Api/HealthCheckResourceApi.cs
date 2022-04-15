@@ -69,12 +69,12 @@ namespace Conductor.Api
         /// <returns></returns>
         public HealthCheckResourceApi(string basePath)
         {
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
+            this.Configuration = Configuration.MergeConfigurations(
+                GlobalConfiguration.Instance,
                 new Configuration { BasePath = basePath }
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            this.ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -87,12 +87,12 @@ namespace Conductor.Api
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
+            this.Configuration = Configuration.MergeConfigurations(
+                GlobalConfiguration.Instance,
                 configuration
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Conductor.Api
 
             this.Client = client;
             this.Configuration = configuration;
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            this.ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -175,13 +175,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);

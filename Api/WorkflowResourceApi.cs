@@ -89,7 +89,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ExternalStorageLocation</returns>
-        ExternalStorageLocation GetExternalStorageLocation1(string path, string operation, string payloadType);
+        ExternalStorageLocation GetExternalStorageLocation(string path, string operation, string payloadType);
 
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored
@@ -102,7 +102,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo(string path, string operation, string payloadType);
+        ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType);
         /// <summary>
         /// Retrieve all the running workflows
         /// </summary>
@@ -160,7 +160,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>List&lt;Workflow&gt;</returns>
-        List<Workflow> GetWorkflows1(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?));
+        List<Workflow> GetWorkflowsByCorrelationId(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?));
 
         /// <summary>
         /// Lists workflows for the given correlation id
@@ -174,14 +174,14 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-        ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?));
+        ApiResponse<List<Workflow>> GetWorkflowsByCorrelationIdWithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?));
         /// <summary>
         /// Pauses the workflow
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
-        void PauseWorkflow1(string workflowId);
+        void PauseWorkflow(string workflowId);
 
         /// <summary>
         /// Pauses the workflow
@@ -192,7 +192,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PauseWorkflow1WithHttpInfo(string workflowId);
+        ApiResponse<Object> PauseWorkflowWithHttpInfo(string workflowId);
         /// <summary>
         /// Reruns the workflow from a specific task
         /// </summary>
@@ -257,7 +257,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
-        void ResumeWorkflow1(string workflowId);
+        void ResumeWorkflow(string workflowId);
 
         /// <summary>
         /// Resumes the workflow
@@ -268,7 +268,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ResumeWorkflow1WithHttpInfo(string workflowId);
+        ApiResponse<Object> ResumeWorkflowWithHttpInfo(string workflowId);
         /// <summary>
         /// Retries the last failed task
         /// </summary>
@@ -276,7 +276,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns></returns>
-        void Retry1(string workflowId, bool? resumeSubworkflowTasks = default(bool?));
+        void Retry(string workflowId, bool? resumeSubworkflowTasks = default(bool?));
 
         /// <summary>
         /// Retries the last failed task
@@ -288,7 +288,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> Retry1WithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?));
+        ApiResponse<Object> RetryWithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?));
         /// <summary>
         /// Search for workflows based on payload and other parameters
         /// </summary>
@@ -459,7 +459,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <returns>string</returns>
-        string StartWorkflow1(StartWorkflowRequest startWorkflowRequest);
+        string StartWorkflowByWorkflowRequest(StartWorkflowRequest startWorkflowRequest);
 
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
@@ -470,7 +470,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="startWorkflowRequest"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> StartWorkflow1WithHttpInfo(StartWorkflowRequest startWorkflowRequest);
+        ApiResponse<string> StartWorkflowByWorkflowRequestWithHttpInfo(StartWorkflowRequest startWorkflowRequest);
         /// <summary>
         /// Terminate workflow execution
         /// </summary>
@@ -523,12 +523,12 @@ namespace Conductor.Api
             /// <returns></returns>
             public WorkflowResourceApi(string basePath)
             {
-                this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                    Conductor.Client.GlobalConfiguration.Instance,
+                this.Configuration = Configuration.MergeConfigurations(
+                    GlobalConfiguration.Instance,
                     new Configuration { BasePath = basePath }
                 );
                 this.Client = new ApiClient(this.Configuration.BasePath);
-                this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+                this.ExceptionFactory = Configuration.DefaultExceptionFactory;
             }
 
             /// <summary>
@@ -541,12 +541,12 @@ namespace Conductor.Api
             {
                 if (configuration == null) throw new ArgumentNullException("configuration");
 
-                this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                    Conductor.Client.GlobalConfiguration.Instance,
+                this.Configuration = Configuration.MergeConfigurations(
+                    GlobalConfiguration.Instance,
                     configuration
                 );
                 this.Client = new ApiClient(this.Configuration.BasePath);
-                ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+                ExceptionFactory = Configuration.DefaultExceptionFactory;
             }
 
             /// <summary>
@@ -562,7 +562,7 @@ namespace Conductor.Api
 
                 this.Client = client;
                 this.Configuration = configuration;
-                this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+                this.ExceptionFactory = Configuration.DefaultExceptionFactory;
             }
             /// <summary>
             /// The client for accessing this underlying API synchronously.
@@ -634,19 +634,19 @@ namespace Conductor.Api
                 string[] _accepts = new string[] {
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
 
 
 
@@ -700,22 +700,22 @@ namespace Conductor.Api
                 string[] _accepts = new string[] {
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
                 if (archiveWorkflow != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "archiveWorkflow", archiveWorkflow));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "archiveWorkflow", archiveWorkflow));
                 }
 
 
@@ -772,22 +772,22 @@ namespace Conductor.Api
                 "*/*"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
                 if (includeTasks != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
                 }
 
 
@@ -814,9 +814,9 @@ namespace Conductor.Api
             /// <param name="operation"></param>
             /// <param name="payloadType"></param>
             /// <returns>ExternalStorageLocation</returns>
-            public ExternalStorageLocation GetExternalStorageLocation1(string path, string operation, string payloadType)
+            public ExternalStorageLocation GetExternalStorageLocation(string path, string operation, string payloadType)
             {
-                ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocation1WithHttpInfo(path, operation, payloadType);
+                ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocationWithHttpInfo(path, operation, payloadType);
                 return localVarResponse.Data;
             }
 
@@ -828,24 +828,24 @@ namespace Conductor.Api
             /// <param name="operation"></param>
             /// <param name="payloadType"></param>
             /// <returns>ApiResponse of ExternalStorageLocation</returns>
-            public ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo(string path, string operation, string payloadType)
+            public ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType)
             {
                 // verify the required parameter 'path' is set
                 if (path == null)
                 {
-                    throw new ApiException(400, "Missing required parameter 'path' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                    throw new ApiException(400, "Missing required parameter 'path' when calling WorkflowResourceApi->GetExternalStorageLocation");
                 }
 
                 // verify the required parameter 'operation' is set
                 if (operation == null)
                 {
-                    throw new ApiException(400, "Missing required parameter 'operation' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                    throw new ApiException(400, "Missing required parameter 'operation' when calling WorkflowResourceApi->GetExternalStorageLocation");
                 }
 
                 // verify the required parameter 'payloadType' is set
                 if (payloadType == null)
                 {
-                    throw new ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation1");
+                    throw new ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation");
                 }
 
                 RequestOptions localVarRequestOptions = new RequestOptions();
@@ -858,21 +858,21 @@ namespace Conductor.Api
                 "*/*"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "path", path));
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "operation", operation));
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "payloadType", payloadType));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "path", path));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "operation", operation));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "payloadType", payloadType));
 
 
 
@@ -880,7 +880,7 @@ namespace Conductor.Api
                 var localVarResponse = this.Client.Get<ExternalStorageLocation>("/api/workflow/externalstoragelocation", localVarRequestOptions, this.Configuration);
                 if (this.ExceptionFactory != null)
                 {
-                    Exception _exception = this.ExceptionFactory("GetExternalStorageLocation1", localVarResponse);
+                    Exception _exception = this.ExceptionFactory("GetExternalStorageLocation", localVarResponse);
                     if (_exception != null)
                     {
                         throw _exception;
@@ -932,30 +932,30 @@ namespace Conductor.Api
                 "*/*"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
+                localVarRequestOptions.PathParameters.Add("name", ClientUtils.ParameterToString(name)); // path parameter
                 if (version != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "version", version));
                 }
                 if (startTime != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
                 }
                 if (endTime != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
                 }
 
 
@@ -1023,26 +1023,26 @@ namespace Conductor.Api
                 "*/*"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
+                localVarRequestOptions.PathParameters.Add("name", ClientUtils.ParameterToString(name)); // path parameter
                 if (includeClosed != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeClosed", includeClosed));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "includeClosed", includeClosed));
                 }
                 if (includeTasks != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
                 }
                 localVarRequestOptions.Data = requestBody;
 
@@ -1071,9 +1071,9 @@ namespace Conductor.Api
             /// <param name="includeClosed"> (optional, default to false)</param>
             /// <param name="includeTasks"> (optional, default to false)</param>
             /// <returns>List&lt;Workflow&gt;</returns>
-            public List<Workflow> GetWorkflows1(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
+            public List<Workflow> GetWorkflowsByCorrelationId(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
             {
-                ApiResponse<List<Workflow>> localVarResponse = GetWorkflows1WithHttpInfo(name, correlationId, includeClosed, includeTasks);
+                ApiResponse<List<Workflow>> localVarResponse = GetWorkflowsByCorrelationIdWithHttpInfo(name, correlationId, includeClosed, includeTasks);
                 return localVarResponse.Data;
             }
 
@@ -1086,18 +1086,18 @@ namespace Conductor.Api
             /// <param name="includeClosed"> (optional, default to false)</param>
             /// <param name="includeTasks"> (optional, default to false)</param>
             /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-            public ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
+            public ApiResponse<List<Workflow>> GetWorkflowsByCorrelationIdWithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
             {
                 // verify the required parameter 'name' is set
                 if (name == null)
                 {
-                    throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows1");
+                    throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflowsByCorrelationId");
                 }
 
                 // verify the required parameter 'correlationId' is set
                 if (correlationId == null)
                 {
-                    throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
+                    throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflowsByCorrelationId");
                 }
 
                 RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1110,27 +1110,27 @@ namespace Conductor.Api
                 "*/*"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-                localVarRequestOptions.PathParameters.Add("correlationId", Conductor.Client.ClientUtils.ParameterToString(correlationId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("name", ClientUtils.ParameterToString(name)); // path parameter
+                localVarRequestOptions.PathParameters.Add("correlationId", ClientUtils.ParameterToString(correlationId)); // path parameter
                 if (includeClosed != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeClosed", includeClosed));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "includeClosed", includeClosed));
                 }
                 if (includeTasks != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "includeTasks", includeTasks));
                 }
 
 
@@ -1139,7 +1139,7 @@ namespace Conductor.Api
                 var localVarResponse = this.Client.Get<List<Workflow>>("/api/workflow/{name}/correlated/{correlationId}", localVarRequestOptions, this.Configuration);
                 if (this.ExceptionFactory != null)
                 {
-                    Exception _exception = this.ExceptionFactory("GetWorkflows1", localVarResponse);
+                    Exception _exception = this.ExceptionFactory("GetWorkflowsByCorrelationId", localVarResponse);
                     if (_exception != null)
                     {
                         throw _exception;
@@ -1155,9 +1155,9 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="workflowId"></param>
             /// <returns></returns>
-            public void PauseWorkflow1(string workflowId)
+            public void PauseWorkflow(string workflowId)
             {
-                PauseWorkflow1WithHttpInfo(workflowId);
+                PauseWorkflowWithHttpInfo(workflowId);
             }
 
             /// <summary>
@@ -1166,12 +1166,12 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="workflowId"></param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> PauseWorkflow1WithHttpInfo(string workflowId)
+            public ApiResponse<object> PauseWorkflowWithHttpInfo(string workflowId)
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
                 {
-                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow1");
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow");
                 }
 
                 RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1183,19 +1183,19 @@ namespace Conductor.Api
                 string[] _accepts = new string[] {
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
 
 
 
@@ -1203,7 +1203,7 @@ namespace Conductor.Api
                 var localVarResponse = this.Client.Put<Object>("/api/workflow/{workflowId}/pause", localVarRequestOptions, this.Configuration);
                 if (this.ExceptionFactory != null)
                 {
-                    Exception _exception = this.ExceptionFactory("PauseWorkflow1", localVarResponse);
+                    Exception _exception = this.ExceptionFactory("PauseWorkflow", localVarResponse);
                     if (_exception != null)
                     {
                         throw _exception;
@@ -1258,19 +1258,19 @@ namespace Conductor.Api
                 "text/plain"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
                 localVarRequestOptions.Data = rerunWorkflowRequest;
 
 
@@ -1323,19 +1323,19 @@ namespace Conductor.Api
                 string[] _accepts = new string[] {
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
 
 
 
@@ -1389,22 +1389,22 @@ namespace Conductor.Api
                 string[] _accepts = new string[] {
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
                 if (useLatestDefinitions != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "useLatestDefinitions", useLatestDefinitions));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "useLatestDefinitions", useLatestDefinitions));
                 }
 
 
@@ -1429,9 +1429,9 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="workflowId"></param>
             /// <returns></returns>
-            public void ResumeWorkflow1(string workflowId)
+            public void ResumeWorkflow(string workflowId)
             {
-                ResumeWorkflow1WithHttpInfo(workflowId);
+                ResumeWorkflowWithHttpInfo(workflowId);
             }
 
             /// <summary>
@@ -1440,12 +1440,12 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="workflowId"></param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> ResumeWorkflow1WithHttpInfo(string workflowId)
+            public ApiResponse<object> ResumeWorkflowWithHttpInfo(string workflowId)
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
                 {
-                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow1");
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow");
                 }
 
                 RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1457,19 +1457,19 @@ namespace Conductor.Api
                 string[] _accepts = new string[] {
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
 
 
 
@@ -1477,7 +1477,7 @@ namespace Conductor.Api
                 var localVarResponse = this.Client.Put<Object>("/api/workflow/{workflowId}/resume", localVarRequestOptions, this.Configuration);
                 if (this.ExceptionFactory != null)
                 {
-                    Exception _exception = this.ExceptionFactory("ResumeWorkflow1", localVarResponse);
+                    Exception _exception = this.ExceptionFactory("ResumeWorkflow", localVarResponse);
                     if (_exception != null)
                     {
                         throw _exception;
@@ -1494,9 +1494,9 @@ namespace Conductor.Api
             /// <param name="workflowId"></param>
             /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
             /// <returns></returns>
-            public void Retry1(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
+            public void Retry(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
             {
-                Retry1WithHttpInfo(workflowId, resumeSubworkflowTasks);
+                RetryWithHttpInfo(workflowId, resumeSubworkflowTasks);
             }
 
             /// <summary>
@@ -1506,12 +1506,12 @@ namespace Conductor.Api
             /// <param name="workflowId"></param>
             /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> Retry1WithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
+            public ApiResponse<object> RetryWithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
                 {
-                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry1");
+                    throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry");
                 }
 
                 RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1523,22 +1523,22 @@ namespace Conductor.Api
                 string[] _accepts = new string[] {
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
                 if (resumeSubworkflowTasks != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "resumeSubworkflowTasks", resumeSubworkflowTasks));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "resumeSubworkflowTasks", resumeSubworkflowTasks));
                 }
 
 
@@ -1547,7 +1547,7 @@ namespace Conductor.Api
                 var localVarResponse = this.Client.Post<Object>("/api/workflow/{workflowId}/retry", localVarRequestOptions, this.Configuration);
                 if (this.ExceptionFactory != null)
                 {
-                    Exception _exception = this.ExceptionFactory("Retry1", localVarResponse);
+                    Exception _exception = this.ExceptionFactory("Retry", localVarResponse);
                     if (_exception != null)
                     {
                         throw _exception;
@@ -1595,13 +1595,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -1609,23 +1609,23 @@ namespace Conductor.Api
 
                 if (start != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "start", start));
                 }
                 if (size != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "size", size));
                 }
                 if (sort != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort", sort));
                 }
                 if (freeText != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "freeText", freeText));
                 }
                 if (query != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "query", query));
                 }
 
 
@@ -1682,13 +1682,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -1696,23 +1696,23 @@ namespace Conductor.Api
 
                 if (start != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "start", start));
                 }
                 if (size != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "size", size));
                 }
                 if (sort != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort", sort));
                 }
                 if (freeText != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "freeText", freeText));
                 }
                 if (query != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "query", query));
                 }
 
 
@@ -1769,13 +1769,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -1783,23 +1783,23 @@ namespace Conductor.Api
 
                 if (start != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "start", start));
                 }
                 if (size != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "size", size));
                 }
                 if (sort != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort", sort));
                 }
                 if (freeText != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "freeText", freeText));
                 }
                 if (query != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "query", query));
                 }
 
 
@@ -1855,13 +1855,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -1869,23 +1869,23 @@ namespace Conductor.Api
 
                 if (start != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "start", start));
                 }
                 if (size != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "size", size));
                 }
                 if (sort != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort", sort));
                 }
                 if (freeText != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "freeText", freeText));
                 }
                 if (query != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "query", query));
                 }
 
 
@@ -1949,20 +1949,20 @@ namespace Conductor.Api
                 string[] _accepts = new string[] {
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-                localVarRequestOptions.PathParameters.Add("taskReferenceName", Conductor.Client.ClientUtils.ParameterToString(taskReferenceName)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("taskReferenceName", ClientUtils.ParameterToString(taskReferenceName)); // path parameter
                 localVarRequestOptions.Data = skipTaskRequest;
 
 
@@ -2032,30 +2032,30 @@ namespace Conductor.Api
                 "text/plain"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
+                localVarRequestOptions.PathParameters.Add("name", ClientUtils.ParameterToString(name)); // path parameter
                 if (version != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "version", version));
                 }
                 if (correlationId != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "correlationId", correlationId));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "correlationId", correlationId));
                 }
                 if (priority != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "priority", priority));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "priority", priority));
                 }
                 localVarRequestOptions.Data = requestBody;
 
@@ -2082,9 +2082,9 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="startWorkflowRequest"></param>
             /// <returns>string</returns>
-            public string StartWorkflow1(StartWorkflowRequest startWorkflowRequest)
+            public string StartWorkflowByWorkflowRequest(StartWorkflowRequest startWorkflowRequest)
             {
-                ApiResponse<string> localVarResponse = StartWorkflow1WithHttpInfo(startWorkflowRequest);
+                ApiResponse<string> localVarResponse = StartWorkflowByWorkflowRequestWithHttpInfo(startWorkflowRequest);
                 return localVarResponse.RawContent;
             }
 
@@ -2094,12 +2094,12 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="startWorkflowRequest"></param>
             /// <returns>ApiResponse of string</returns>
-            public ApiResponse<string> StartWorkflow1WithHttpInfo(StartWorkflowRequest startWorkflowRequest)
+            public ApiResponse<string> StartWorkflowByWorkflowRequestWithHttpInfo(StartWorkflowRequest startWorkflowRequest)
             {
                 // verify the required parameter 'startWorkflowRequest' is set
                 if (startWorkflowRequest == null)
                 {
-                    throw new ApiException(400, "Missing required parameter 'startWorkflowRequest' when calling WorkflowResourceApi->StartWorkflow1");
+                    throw new ApiException(400, "Missing required parameter 'startWorkflowRequest' when calling WorkflowResourceApi->StartWorkflowByWorkflowRequest");
                 }
 
                 RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2113,13 +2113,13 @@ namespace Conductor.Api
                 "text/plain"
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -2133,7 +2133,7 @@ namespace Conductor.Api
                 var localVarResponse = this.Client.Post<string>("/api/workflow", localVarRequestOptions, this.Configuration);
                 if (this.ExceptionFactory != null)
                 {
-                    Exception _exception = this.ExceptionFactory("StartWorkflow1", localVarResponse);
+                    Exception _exception = this.ExceptionFactory("StartWorkflowByWorkflowRequest", localVarResponse);
                     if (_exception != null)
                     {
                         throw _exception;
@@ -2179,22 +2179,22 @@ namespace Conductor.Api
                 string[] _accepts = new string[] {
             };
 
-                var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+                var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
                 if (localVarContentType != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
                 }
 
-                var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+                var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
                 if (localVarAccept != null)
                 {
                     localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
                 }
 
-                localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
+                localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
                 if (reason != null)
                 {
-                    localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "reason", reason));
+                    localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "reason", reason));
                 }
 
 

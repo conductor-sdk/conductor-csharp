@@ -177,7 +177,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns></returns>
-        void Update1(List<WorkflowDef> workflowDef);
+        void UpdateWorkflowDefinitions(List<WorkflowDef> workflowDef);
 
         /// <summary>
         /// Create or update workflow definition(s)
@@ -188,7 +188,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> Update1WithHttpInfo(List<WorkflowDef> workflowDef);
+        ApiResponse<Object> UpdateWorkflowDefinitionsWithHttpInfo(List<WorkflowDef> workflowDef);
         /// <summary>
         /// Update an existing task
         /// </summary>
@@ -239,12 +239,12 @@ namespace Conductor.Api
         /// <returns></returns>
         public MetadataResourceApi(string basePath)
         {
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
+            this.Configuration = Configuration.MergeConfigurations(
+                GlobalConfiguration.Instance,
                 new Configuration { BasePath = basePath }
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            this.ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -257,12 +257,12 @@ namespace Conductor.Api
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
+            this.Configuration = Configuration.MergeConfigurations(
+                GlobalConfiguration.Instance,
                 configuration
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace Conductor.Api
 
             this.Client = client;
             this.Configuration = configuration;
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            this.ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -352,13 +352,13 @@ namespace Conductor.Api
             string[] _accepts = new string[] {
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -420,22 +420,22 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
+            localVarRequestOptions.PathParameters.Add("name", ClientUtils.ParameterToString(name)); // path parameter
             if (version != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "version", version));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "version", version));
             }
 
 
@@ -484,13 +484,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -498,7 +498,7 @@ namespace Conductor.Api
 
             if (access != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "access", access));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "access", access));
             }
 
 
@@ -553,19 +553,19 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("tasktype", Conductor.Client.ClientUtils.ParameterToString(tasktype)); // path parameter
+            localVarRequestOptions.PathParameters.Add("tasktype", ClientUtils.ParameterToString(tasktype)); // path parameter
 
 
 
@@ -613,13 +613,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -627,7 +627,7 @@ namespace Conductor.Api
 
             if (access != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "access", access));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "access", access));
             }
 
 
@@ -681,13 +681,13 @@ namespace Conductor.Api
             string[] _accepts = new string[] {
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -745,19 +745,19 @@ namespace Conductor.Api
             string[] _accepts = new string[] {
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("tasktype", Conductor.Client.ClientUtils.ParameterToString(tasktype)); // path parameter
+            localVarRequestOptions.PathParameters.Add("tasktype", ClientUtils.ParameterToString(tasktype)); // path parameter
 
 
 
@@ -811,20 +811,20 @@ namespace Conductor.Api
             string[] _accepts = new string[] {
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
-            localVarRequestOptions.PathParameters.Add("version", Conductor.Client.ClientUtils.ParameterToString(version)); // path parameter
+            localVarRequestOptions.PathParameters.Add("name", ClientUtils.ParameterToString(name)); // path parameter
+            localVarRequestOptions.PathParameters.Add("version", ClientUtils.ParameterToString(version)); // path parameter
 
 
 
@@ -848,9 +848,9 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns></returns>
-        public void Update1(List<WorkflowDef> workflowDef)
+        public void UpdateWorkflowDefinitions(List<WorkflowDef> workflowDef)
         {
-            Update1WithHttpInfo(workflowDef);
+            UpdateWorkflowDefinitionsWithHttpInfo(workflowDef);
         }
 
         /// <summary>
@@ -859,12 +859,12 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> Update1WithHttpInfo(List<WorkflowDef> workflowDef)
+        public ApiResponse<object> UpdateWorkflowDefinitionsWithHttpInfo(List<WorkflowDef> workflowDef)
         {
             // verify the required parameter 'workflowDef' is set
             if (workflowDef == null)
             {
-                throw new ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->Update1");
+                throw new ApiException(400, "Missing required parameter 'workflowDef' when calling MetadataResourceApi->UpdateWorkflowDefinitions");
             }
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -877,13 +877,13 @@ namespace Conductor.Api
             string[] _accepts = new string[] {
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -897,7 +897,7 @@ namespace Conductor.Api
             var localVarResponse = this.Client.Put<Object>("/api/metadata/workflow", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Update1", localVarResponse);
+                Exception _exception = this.ExceptionFactory("UpdateWorkflowDefinitions", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -942,13 +942,13 @@ namespace Conductor.Api
             string[] _accepts = new string[] {
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);

@@ -145,12 +145,12 @@ namespace Conductor.Api
         /// <returns></returns>
         public EventResourceApi(string basePath)
         {
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
+            this.Configuration = Configuration.MergeConfigurations(
+                GlobalConfiguration.Instance,
                 new Configuration { BasePath = basePath }
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            this.ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -163,12 +163,12 @@ namespace Conductor.Api
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
+            this.Configuration = Configuration.MergeConfigurations(
+                GlobalConfiguration.Instance,
                 configuration
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Conductor.Api
 
             this.Client = client;
             this.Configuration = configuration;
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            this.ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -258,13 +258,13 @@ namespace Conductor.Api
             string[] _accepts = new string[] {
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -316,13 +316,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -383,22 +383,22 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("event", Conductor.Client.ClientUtils.ParameterToString(_event)); // path parameter
+            localVarRequestOptions.PathParameters.Add("event", ClientUtils.ParameterToString(_event)); // path parameter
             if (activeOnly != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "activeOnly", activeOnly));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "activeOnly", activeOnly));
             }
 
 
@@ -451,19 +451,19 @@ namespace Conductor.Api
             string[] _accepts = new string[] {
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("name", Conductor.Client.ClientUtils.ParameterToString(name)); // path parameter
+            localVarRequestOptions.PathParameters.Add("name", ClientUtils.ParameterToString(name)); // path parameter
 
 
 
@@ -516,13 +516,13 @@ namespace Conductor.Api
             string[] _accepts = new string[] {
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
