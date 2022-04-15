@@ -245,7 +245,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTaskSummary</returns>
-        SearchResultTaskSummary Search1(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
+        SearchResultTaskSummary SearchTasksV1(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
 
         /// <summary>
         /// Search for tasks based in payload and other parameters
@@ -274,7 +274,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTask</returns>
-        SearchResultTask SearchV21(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
+        SearchResultTask SearchTasksV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
 
         /// <summary>
         /// Search for tasks based in payload and other parameters
@@ -289,7 +289,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTask</returns>
-        ApiResponse<SearchResultTask> SearchV21WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
+        ApiResponse<SearchResultTask> SearchTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
         /// <summary>
         /// Get Task type queue sizes
         /// </summary>
@@ -382,12 +382,12 @@ namespace Conductor.Api
         /// <returns></returns>
         public TaskResourceApi(string basePath)
         {
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
+            this.Configuration = Configuration.MergeConfigurations(
+                GlobalConfiguration.Instance,
                 new Configuration { BasePath = basePath }
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            this.ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -400,12 +400,12 @@ namespace Conductor.Api
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
+            this.Configuration = Configuration.MergeConfigurations(
+                GlobalConfiguration.Instance,
                 configuration
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -421,7 +421,7 @@ namespace Conductor.Api
 
             this.Client = client;
             this.Configuration = configuration;
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            this.ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -488,13 +488,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -545,13 +545,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -618,34 +618,34 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("tasktype", Conductor.Client.ClientUtils.ParameterToString(tasktype)); // path parameter
+            localVarRequestOptions.PathParameters.Add("tasktype", ClientUtils.ParameterToString(tasktype)); // path parameter
             if (workerid != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "workerid", workerid));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "workerid", workerid));
             }
             if (domain != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "domain", domain));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "domain", domain));
             }
             if (count != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "count", count));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "count", count));
             }
             if (timeout != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "timeout", timeout));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "timeout", timeout));
             }
 
 
@@ -692,13 +692,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -773,21 +773,21 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "path", path));
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "operation", operation));
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "payloadType", payloadType));
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "path", path));
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "operation", operation));
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "payloadType", payloadType));
 
 
 
@@ -841,19 +841,19 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "taskType", taskType));
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "taskType", taskType));
 
 
 
@@ -907,19 +907,19 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("taskId", Conductor.Client.ClientUtils.ParameterToString(taskId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("taskId", ClientUtils.ParameterToString(taskId)); // path parameter
 
 
 
@@ -973,19 +973,19 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("taskId", Conductor.Client.ClientUtils.ParameterToString(taskId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("taskId", ClientUtils.ParameterToString(taskId)); // path parameter
 
 
 
@@ -1046,19 +1046,19 @@ namespace Conductor.Api
             string[] _accepts = new string[] {
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("taskId", Conductor.Client.ClientUtils.ParameterToString(taskId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("taskId", ClientUtils.ParameterToString(taskId)); // path parameter
             localVarRequestOptions.Data = body;
 
 
@@ -1117,26 +1117,26 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("tasktype", Conductor.Client.ClientUtils.ParameterToString(tasktype)); // path parameter
+            localVarRequestOptions.PathParameters.Add("tasktype", ClientUtils.ParameterToString(tasktype)); // path parameter
             if (workerid != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "workerid", workerid));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "workerid", workerid));
             }
             if (domain != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "domain", domain));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "domain", domain));
             }
 
 
@@ -1164,7 +1164,7 @@ namespace Conductor.Api
         public string RequeuePendingTask(string taskType)
         {
             ApiResponse<string> localVarResponse = RequeuePendingTaskWithHttpInfo(taskType);
-            return localVarResponse.Data;
+            return localVarResponse.RawContent;
         }
 
         /// <summary>
@@ -1191,19 +1191,19 @@ namespace Conductor.Api
                 "text/plain"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("taskType", Conductor.Client.ClientUtils.ParameterToString(taskType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("taskType", ClientUtils.ParameterToString(taskType)); // path parameter
 
 
 
@@ -1231,7 +1231,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTaskSummary</returns>
-        public SearchResultTaskSummary Search1(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+        public SearchResultTaskSummary SearchTasksV1(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
             ApiResponse<SearchResultTaskSummary> localVarResponse = Search1WithHttpInfo(start, size, sort, freeText, query);
             return localVarResponse.Data;
@@ -1259,13 +1259,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -1273,23 +1273,23 @@ namespace Conductor.Api
 
             if (start != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "start", start));
             }
             if (size != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "size", size));
             }
             if (sort != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort", sort));
             }
             if (freeText != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "freeText", freeText));
             }
             if (query != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "query", query));
             }
 
 
@@ -1298,7 +1298,7 @@ namespace Conductor.Api
             var localVarResponse = this.Client.Get<SearchResultTaskSummary>("/api/tasks/search", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Search1", localVarResponse);
+                Exception _exception = this.ExceptionFactory("SearchTasksV1", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1318,9 +1318,9 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTask</returns>
-        public SearchResultTask SearchV21(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+        public SearchResultTask SearchTasksV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
-            ApiResponse<SearchResultTask> localVarResponse = SearchV21WithHttpInfo(start, size, sort, freeText, query);
+            ApiResponse<SearchResultTask> localVarResponse = SearchTasksV2WithHttpInfo(start, size, sort, freeText, query);
             return localVarResponse.Data;
         }
 
@@ -1334,7 +1334,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTask</returns>
-        public ApiResponse<SearchResultTask> SearchV21WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+        public ApiResponse<SearchResultTask> SearchTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1346,13 +1346,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -1360,23 +1360,23 @@ namespace Conductor.Api
 
             if (start != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "start", start));
             }
             if (size != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "size", size));
             }
             if (sort != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort", sort));
             }
             if (freeText != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "freeText", freeText));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "freeText", freeText));
             }
             if (query != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "query", query));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "query", query));
             }
 
 
@@ -1385,7 +1385,7 @@ namespace Conductor.Api
             var localVarResponse = this.Client.Get<SearchResultTask>("/api/tasks/search-v2", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SearchV21", localVarResponse);
+                Exception _exception = this.ExceptionFactory("SearchTasksV2", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1425,13 +1425,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -1439,7 +1439,7 @@ namespace Conductor.Api
 
             if (taskType != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("multi", "taskType", taskType));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("multi", "taskType", taskType));
             }
 
 
@@ -1467,7 +1467,7 @@ namespace Conductor.Api
         public string UpdateTask(TaskResult taskResult)
         {
             ApiResponse<string> localVarResponse = UpdateTaskWithHttpInfo(taskResult);
-            return localVarResponse.Data;
+            return localVarResponse.RawContent;
         }
 
         /// <summary>
@@ -1495,13 +1495,13 @@ namespace Conductor.Api
                 "text/plain"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -1537,7 +1537,7 @@ namespace Conductor.Api
         public string UpdateTask1(string workflowId, string taskRefName, string status, Dictionary<string, Object> requestBody)
         {
             ApiResponse<string> localVarResponse = UpdateTask1WithHttpInfo(workflowId, taskRefName, status, requestBody);
-            return localVarResponse.Data;
+            return localVarResponse.RawContent;
         }
 
         /// <summary>
@@ -1586,21 +1586,21 @@ namespace Conductor.Api
                 "text/plain"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("workflowId", Conductor.Client.ClientUtils.ParameterToString(workflowId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("taskRefName", Conductor.Client.ClientUtils.ParameterToString(taskRefName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("status", Conductor.Client.ClientUtils.ParameterToString(status)); // path parameter
+            localVarRequestOptions.PathParameters.Add("workflowId", ClientUtils.ParameterToString(workflowId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("taskRefName", ClientUtils.ParameterToString(taskRefName)); // path parameter
+            localVarRequestOptions.PathParameters.Add("status", ClientUtils.ParameterToString(status)); // path parameter
             localVarRequestOptions.Data = requestBody;
 
 

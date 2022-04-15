@@ -166,7 +166,7 @@ namespace Conductor.Client
         /// </summary>
         public ApiClient()
         {
-            _baseUrl = Conductor.Client.GlobalConfiguration.Instance.BasePath;
+            _baseUrl = GlobalConfiguration.Instance.BasePath;
         }
 
         /// <summary>
@@ -348,7 +348,7 @@ namespace Conductor.Client
                         var bytes = ClientUtils.ReadAsBytes(file);
                         var fileStream = file as FileStream;
                         if (fileStream != null)
-                            request.Files.Add(FileParameter.Create(fileParam.Key, bytes, System.IO.Path.GetFileName(fileStream.Name)));
+                            request.Files.Add(FileParameter.Create(fileParam.Key, bytes, Path.GetFileName(fileStream.Name)));
                         else
                             request.Files.Add(FileParameter.Create(fileParam.Key, bytes, "no_file_name_provided"));
                     }

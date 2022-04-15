@@ -47,7 +47,7 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>BulkResponse</returns>
-        BulkResponse Restart1(List<string> requestBody, bool? useLatestDefinitions = default(bool?));
+        BulkResponse Restart(List<string> requestBody, bool? useLatestDefinitions = default(bool?));
 
         /// <summary>
         /// Restart the list of completed workflow
@@ -59,7 +59,7 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> Restart1WithHttpInfo(List<string> requestBody, bool? useLatestDefinitions = default(bool?));
+        ApiResponse<BulkResponse> RestartWithHttpInfo(List<string> requestBody, bool? useLatestDefinitions = default(bool?));
         /// <summary>
         /// Resume the list of workflows
         /// </summary>
@@ -103,7 +103,7 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>BulkResponse</returns>
-        BulkResponse Terminate1(List<string> requestBody, string reason = default(string));
+        BulkResponse Terminate(List<string> requestBody, string reason = default(string));
 
         /// <summary>
         /// Terminate workflows execution
@@ -115,7 +115,7 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> Terminate1WithHttpInfo(List<string> requestBody, string reason = default(string));
+        ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> requestBody, string reason = default(string));
         #endregion Synchronous Operations
     }
 
@@ -146,12 +146,12 @@ namespace Conductor.Api
         /// <returns></returns>
         public WorkflowBulkResourceApi(string basePath)
         {
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
+            this.Configuration = Configuration.MergeConfigurations(
+                GlobalConfiguration.Instance,
                 new Configuration { BasePath = basePath }
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            this.ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -164,12 +164,12 @@ namespace Conductor.Api
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
-            this.Configuration = Conductor.Client.Configuration.MergeConfigurations(
-                Conductor.Client.GlobalConfiguration.Instance,
+            this.Configuration = Configuration.MergeConfigurations(
+                GlobalConfiguration.Instance,
                 configuration
             );
             this.Client = new ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Conductor.Api
 
             this.Client = client;
             this.Configuration = configuration;
-            this.ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+            this.ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -261,13 +261,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -298,9 +298,9 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>BulkResponse</returns>
-        public BulkResponse Restart1(List<string> requestBody, bool? useLatestDefinitions = default(bool?))
+        public BulkResponse Restart(List<string> requestBody, bool? useLatestDefinitions = default(bool?))
         {
-            ApiResponse<BulkResponse> localVarResponse = Restart1WithHttpInfo(requestBody, useLatestDefinitions);
+            ApiResponse<BulkResponse> localVarResponse = RestartWithHttpInfo(requestBody, useLatestDefinitions);
             return localVarResponse.Data;
         }
 
@@ -311,12 +311,12 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> Restart1WithHttpInfo(List<string> requestBody, bool? useLatestDefinitions = default(bool?))
+        public ApiResponse<BulkResponse> RestartWithHttpInfo(List<string> requestBody, bool? useLatestDefinitions = default(bool?))
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Restart1");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Restart");
             }
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -330,13 +330,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -344,7 +344,7 @@ namespace Conductor.Api
 
             if (useLatestDefinitions != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "useLatestDefinitions", useLatestDefinitions));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "useLatestDefinitions", useLatestDefinitions));
             }
             localVarRequestOptions.Data = requestBody;
 
@@ -354,7 +354,7 @@ namespace Conductor.Api
             var localVarResponse = this.Client.Post<BulkResponse>("/api/workflow/bulk/restart", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Restart1", localVarResponse);
+                Exception _exception = this.ExceptionFactory("Restart", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -401,13 +401,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -468,13 +468,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -505,9 +505,9 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>BulkResponse</returns>
-        public BulkResponse Terminate1(List<string> requestBody, string reason = default(string))
+        public BulkResponse Terminate(List<string> requestBody, string reason = default(string))
         {
-            ApiResponse<BulkResponse> localVarResponse = Terminate1WithHttpInfo(requestBody, reason);
+            ApiResponse<BulkResponse> localVarResponse = TerminateWithHttpInfo(requestBody, reason);
             return localVarResponse.Data;
         }
 
@@ -518,12 +518,12 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> Terminate1WithHttpInfo(List<string> requestBody, string reason = default(string))
+        public ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> requestBody, string reason = default(string))
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
             {
-                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Terminate1");
+                throw new ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowBulkResourceApi->Terminate");
             }
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -537,13 +537,13 @@ namespace Conductor.Api
                 "*/*"
             };
 
-            var localVarContentType = Conductor.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
             }
 
-            var localVarAccept = Conductor.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
@@ -551,7 +551,7 @@ namespace Conductor.Api
 
             if (reason != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Conductor.Client.ClientUtils.ParameterToMultiMap("", "reason", reason));
+                localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "reason", reason));
             }
             localVarRequestOptions.Data = requestBody;
 
@@ -561,7 +561,7 @@ namespace Conductor.Api
             var localVarResponse = this.Client.Post<BulkResponse>("/api/workflow/bulk/terminate", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Terminate1", localVarResponse);
+                Exception _exception = this.ExceptionFactory("Terminate", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
