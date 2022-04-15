@@ -53,7 +53,8 @@ Please follow [guide](https://orkes.io/content/docs/codelab/helloworld#applicati
 
 ### Run workers
 Create main method that does the following:
-1. Search for package called conductor-csharp in microsoft nuget package manager and install it as dependencies
+1. Search for package called conductor-csharp in microsoft nuget package manager and install it as dependencies. If you are planning to run worker then
+Microsoft.Extensions.Hosting is also required.
 2. Add your workers
 3. Start the workers to poll for work
 ```
