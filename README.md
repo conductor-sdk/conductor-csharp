@@ -120,7 +120,7 @@ namespace TestOrkesSDK
             {
                 workflowTaskCoordinator.RegisterWorker(worker);
             }
-            # start all the workers so that it can poll for the tasks
+            // start all the workers so that it can poll for the tasks
             await workflowTaskCoordinator.Start();
         }
     }
@@ -146,6 +146,11 @@ Alternatively it can also be hosted as windows service.
 
 ### Worker Configurations
 Worker configuration is handled via Configuraiton object passed when initializing TaskHandler
+
+### Notes
+Ideally, one worker maps to one task in the workflow. It is recomannded that all workers for a given workflow should be deployed together.
+To maintain proper isolation and fault talerance, workers of different workflow should not be deployed together. Otherwise falure of one deployment cause another workflow failure.
+For a critical worker, it should be deployed as a single deployment with some redudancy.
 
 ### Starting workflow
 Below is the code snippet in order to register and start the workflow,
