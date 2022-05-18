@@ -7,7 +7,6 @@
 2. [Write workers](#Write-workers)
 3. [Run workers](#Run-workers)
 4. [Worker Configurations](#Worker-Configurations)
-5. [Starting workflow](#Starting-workflow)
 
 ### Get Secrets
 Executing workflow or polling a task from a playground requires keyId and keySecret.
