@@ -1,7 +1,5 @@
 # Netflix Conductor Client SDK
 
-To find out more about Conductor visit: [https://github.com/Netflix/conductor](https://github.com/Netflix/conductor)
-
 `conductor-csharp` repository provides the client SDKs to build Task Workers and Clients in C#
 
 ## Quick Start
@@ -145,25 +143,16 @@ Save above code with workers code in Program.cs and run it using consoleApplicat
 ```
 
 ### Worker Configurations
-Worker configuration is handled via Configuraiton object passed when initializing TaskHandler.
-Sample configuration looks like 
+Worker configuration is handled via Configuration object passed when initializing TaskHandler.
 ```
-Configuration configuration = new Configuration(new ConcurrentDictionary<string, string>(), "keyId", "keySecret", "https://play.orkes.io/");
+Configuration configuration = 
+    new Configuration(new ConcurrentDictionary<string, string>(), "KEY", "SECRET", "https://play.orkes.io/");
 ```
-Where the last argument is the conductor instance where worker or sdk is to attached.
-
-### Execute workers
-```
-Run above program as console app or windows service
-```
-
-### Notes
-Ideally, one worker maps to one task in the workflow. It is recomannded that all workers for a given workflow should be deployed together.
-To maintain proper isolation and fault talerance, workers of different workflow should not be deployed together. Otherwise falure of one deployment cause another workflow failure.
-For a critical worker, it should be deployed as a single deployment with some redudancy.
 
 ### Registering and starting the workflow using SDK.
-Below is the code snippet in order to register and start the workflow,
+
+Below is the code snippet that shows how to register a simple workflow and start execution:
+
 ```
 IDictionary<string, string> optionalHeaders = new ConcurrentDictionary<string, string>();
 Configuration configuration = new Configuration(optionalHeaders, "keyId", "keySecret");
@@ -197,77 +186,4 @@ Dictionary<string, Object> input = new Dictionary<string, Object>();
 workflowResourceApi.StartWorkflow("test_workflow", input, 1);
 Console.ReadLine();
 ```
-Please go through [Conductor.Api](https://github.com/conductor-sdk/conductor-csharp/tree/main/Api) or in [nuget package](https://www.fuget.org/packages/conductor-csharp/0.0.5/lib/netstandard2.0/conductor-csharp.dll/Conductor.Api) to find out supported apis
-
-### Running Conductor server locally in 2-minute
-More details on how to run Conductor see https://netflix.github.io/conductor/server/ 
-
-Use the script below to download and start the server locally.  The server runs in memory and no data saved upon exit.
-```shell
-export CONDUCTOR_VER=3.5.2
-export REPO_URL=https://repo1.maven.org/maven2/com/netflix/conductor/conductor-server
-curl $REPO_URL/$CONDUCTOR_VER/conductor-server-$CONDUCTOR_VER-boot.jar \
---output conductor-server-$CONDUCTOR_VER-boot.jar; java -jar conductor-server-$CONDUCTOR_VER-boot.jar 
-```
-
-### Create your first workflow
-Now, let's create a new workflow and see your task worker code in execution!
-
-Create a new Task Metadata for the worker you just created
-
-```shell
-curl -X 'POST' \
-  'http://localhost:8080/api/metadata/taskdefs' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '[{
-    "name": "test_ctask",
-    "description": "C# task example",
-    "retryCount": 3,
-    "retryLogic": "FIXED",
-    "retryDelaySeconds": 10,
-    "timeoutSeconds": 300,
-    "timeoutPolicy": "TIME_OUT_WF",
-    "responseTimeoutSeconds": 180,
-    "ownerEmail": "example@example.com"
-}]'
-```
-
-Create a workflow that uses the task
-```shell
-curl -X 'POST' \
-  'http://localhost:8080/api/metadata/workflow' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "name": "workflow_with_csharp_task_example",
-    "description": "Workflow with C# Task example",
-    "version": 1,
-    "tasks": [
-      {
-        "name": "test_ctask",
-        "taskReferenceName": "test_ctask",
-        "inputParameters": {},
-        "type": "SIMPLE"
-      }
-    ],
-    "inputParameters": [],
-    "outputParameters": {
-      "workerOutput": "${test_ctask.output}"
-    },
-    "schemaVersion": 2,
-    "restartable": true,
-    "ownerEmail": "example@example.com",
-    "timeoutPolicy": "ALERT_ONLY",
-    "timeoutSeconds": 0
-}'
-```
-
-Start a new workflow execution
-```shell
-curl -X 'POST' \
-  'http://localhost:8080/api/workflow/workflow_with_csharp_task_example?priority=0' \
-  -H 'accept: text/plain' \
-  -H 'Content-Type: application/json' \
-  -d '{}'
-```
+Please see [Conductor.Api](https://github.com/conductor-sdk/conductor-csharp/tree/main/Api) for the APIs.
