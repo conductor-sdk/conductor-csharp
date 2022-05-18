@@ -8,9 +8,8 @@
 3. [Run workers](#Run-workers)
 4. [Worker Configurations](#Worker-Configurations)
 
-### Get Secrets
-Executing workflow or polling a task from a playground requires keyId and keySecret.
-Please follow [guide](https://orkes.io/content/docs/codelab/helloworld#application-permissions) to provision one for your application.
+### Dependencies
+`conductor-csharp` packages are published to nugget package manager.  You can find the latest releases [here](https://www.nuget.org/packages/conductor-csharp/).
 
 ### Write workers  
 
@@ -48,9 +47,7 @@ Please follow [guide](https://orkes.io/content/docs/codelab/helloworld#applicati
 ```
 
 ### Run workers
-Create main method that does the following:
-1. Search for package called [conductor-csharp](https://www.nuget.org/packages/conductor-csharp/) in microsoft nuget package manager and install it as dependency. If you are planning to run worker then [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/) is also required.
-2. Add your workers
+
 ```
 using System;
 using System.Threading;
@@ -78,8 +75,8 @@ namespace TestOrkesSDK
                  {
                     // First argument is optional headers which client wasnt to pass.
                      Configuration configuration = new Configuration(new ConcurrentDictionary<string, string>(), 
-                         "keyId",
-                         "keySecret");
+                         "KEY",
+                         "SECRET");
                      services.AddConductorWorker(configuration);
                      services.AddConductorWorkflowTask<MyWorkflowTask>();
                      services.AddHostedService<WorkflowsWorkerService>();
@@ -111,9 +108,11 @@ namespace TestOrkesSDK
 }
 ```
 
-Save above code with workers code in Program.cs and run it using consoleApplication. Alternatively it can also be hosted as windows service.
+####Note:
+Replace KEY and SECRET by obtaining a new key and secret from [Orkes Playground](https://play.orkes.io/)
 
-3. Start the workers to poll for work
+See [Generating Access Keys for Programmatic Access](https://orkes.io/content/docs/getting-started/concepts/access-control#access-keys) for details./
+
 ```
     internal class WorkflowsWorkerService : BackgroundService
     {
