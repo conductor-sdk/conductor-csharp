@@ -4,7 +4,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>0.0.5</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIcon>avatar.jpg</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/conductor-sdk/conductor-csharp</RepositoryUrl>
   </PropertyGroup>
