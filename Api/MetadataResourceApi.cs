@@ -32,16 +32,6 @@ namespace Conductor.Api
         void Create(WorkflowDef workflowDef);
 
         /// <summary>
-        /// Create a new workflow definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowDef"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CreateWithHttpInfo(WorkflowDef workflowDef);
-        /// <summary>
         /// Retrieves workflow definition along with blueprint
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -51,17 +41,6 @@ namespace Conductor.Api
         WorkflowDef Get(string name, int? version = default(int?));
 
         /// <summary>
-        /// Retrieves workflow definition along with blueprint
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional)</param>
-        /// <returns>ApiResponse of WorkflowDef</returns>
-        ApiResponse<WorkflowDef> GetWithHttpInfo(string name, int? version = default(int?));
-        /// <summary>
         /// Retrieves all workflow definition along with blueprint
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -69,16 +48,6 @@ namespace Conductor.Api
         /// <returns>List&lt;WorkflowDef&gt;</returns>
         List<WorkflowDef> GetAllWorkflows(string access = default(string));
 
-        /// <summary>
-        /// Retrieves all workflow definition along with blueprint
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
-        /// <returns>ApiResponse of List&lt;WorkflowDef&gt;</returns>
-        ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = default(string));
         /// <summary>
         /// Gets the task definition
         /// </summary>
@@ -88,16 +57,6 @@ namespace Conductor.Api
         TaskDef GetTaskDef(string tasktype);
 
         /// <summary>
-        /// Gets the task definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <returns>ApiResponse of TaskDef</returns>
-        ApiResponse<TaskDef> GetTaskDefWithHttpInfo(string tasktype);
-        /// <summary>
         /// Gets all task definition
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -105,16 +64,6 @@ namespace Conductor.Api
         /// <returns>List&lt;TaskDef&gt;</returns>
         List<TaskDef> GetTaskDefs(string access = default(string));
 
-        /// <summary>
-        /// Gets all task definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
-        /// <returns>ApiResponse of List&lt;TaskDef&gt;</returns>
-        ApiResponse<List<TaskDef>> GetTaskDefsWithHttpInfo(string access = default(string));
         /// <summary>
         /// Create or update task definition(s)
         /// </summary>
@@ -124,16 +73,6 @@ namespace Conductor.Api
         void RegisterTaskDef(List<TaskDef> taskDef);
 
         /// <summary>
-        /// Create or update task definition(s)
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskDef"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RegisterTaskDefWithHttpInfo(List<TaskDef> taskDef);
-        /// <summary>
         /// Remove a task definition
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -142,16 +81,6 @@ namespace Conductor.Api
         void UnregisterTaskDef(string tasktype);
 
         /// <summary>
-        /// Remove a task definition
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UnregisterTaskDefWithHttpInfo(string tasktype);
-        /// <summary>
         /// Removes workflow definition. It does not remove workflows associated with the definition.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -159,18 +88,6 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <returns></returns>
         void UnregisterWorkflowDef(string name, int version);
-
-        /// <summary>
-        /// Removes workflow definition. It does not remove workflows associated with the definition.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UnregisterWorkflowDefWithHttpInfo(string name, int version);
         /// <summary>
         /// Create or update workflow definition(s)
         /// </summary>
@@ -178,17 +95,6 @@ namespace Conductor.Api
         /// <param name="workflowDef"></param>
         /// <returns></returns>
         void UpdateWorkflowDefinitions(List<WorkflowDef> workflowDef);
-
-        /// <summary>
-        /// Create or update workflow definition(s)
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowDef"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateWorkflowDefinitionsWithHttpInfo(List<WorkflowDef> workflowDef);
         /// <summary>
         /// Update an existing task
         /// </summary>
@@ -196,17 +102,6 @@ namespace Conductor.Api
         /// <param name="taskDef"></param>
         /// <returns></returns>
         void UpdateTaskDef(TaskDef taskDef);
-
-        /// <summary>
-        /// Update an existing task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskDef"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateTaskDefWithHttpInfo(TaskDef taskDef);
         #endregion Synchronous Operations
     }
 
@@ -334,7 +229,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> CreateWithHttpInfo(WorkflowDef workflowDef)
+        private ApiResponse<object> CreateWithHttpInfo(WorkflowDef workflowDef)
         {
             // verify the required parameter 'workflowDef' is set
             if (workflowDef == null)
@@ -402,7 +297,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"> (optional)</param>
         /// <returns>ApiResponse of WorkflowDef</returns>
-        public ApiResponse<WorkflowDef> GetWithHttpInfo(string name, int? version = default(int?))
+        private ApiResponse<WorkflowDef> GetWithHttpInfo(string name, int? version = default(int?))
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -472,7 +367,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <returns>ApiResponse of List&lt;WorkflowDef&gt;</returns>
-        public ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = default(string))
+        private ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = default(string))
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -535,7 +430,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>ApiResponse of TaskDef</returns>
-        public ApiResponse<TaskDef> GetTaskDefWithHttpInfo(string tasktype)
+        private ApiResponse<TaskDef> GetTaskDefWithHttpInfo(string tasktype)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -601,7 +496,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="access"> (optional, default to &quot;READ&quot;)</param>
         /// <returns>ApiResponse of List&lt;TaskDef&gt;</returns>
-        public ApiResponse<List<TaskDef>> GetTaskDefsWithHttpInfo(string access = default(string))
+        private ApiResponse<List<TaskDef>> GetTaskDefsWithHttpInfo(string access = default(string))
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -663,7 +558,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> RegisterTaskDefWithHttpInfo(List<TaskDef> taskDef)
+        private ApiResponse<object> RegisterTaskDefWithHttpInfo(List<TaskDef> taskDef)
         {
             // verify the required parameter 'taskDef' is set
             if (taskDef == null)
@@ -728,7 +623,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> UnregisterTaskDefWithHttpInfo(string tasktype)
+        private ApiResponse<object> UnregisterTaskDefWithHttpInfo(string tasktype)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -794,7 +689,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> UnregisterWorkflowDefWithHttpInfo(string name, int version)
+        private ApiResponse<object> UnregisterWorkflowDefWithHttpInfo(string name, int version)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -859,7 +754,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> UpdateWorkflowDefinitionsWithHttpInfo(List<WorkflowDef> workflowDef)
+        private ApiResponse<object> UpdateWorkflowDefinitionsWithHttpInfo(List<WorkflowDef> workflowDef)
         {
             // verify the required parameter 'workflowDef' is set
             if (workflowDef == null)
@@ -924,7 +819,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskDef"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> UpdateTaskDefWithHttpInfo(TaskDef taskDef)
+        private ApiResponse<object> UpdateTaskDefWithHttpInfo(TaskDef taskDef)
         {
             // verify the required parameter 'taskDef' is set
             if (taskDef == null)

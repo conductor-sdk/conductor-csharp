@@ -67,12 +67,6 @@ namespace Conductor.Client
         {
             if (string.IsNullOrWhiteSpace(basePath.ToString()))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");
-            if (defaultHeaders == null)
-                throw new ArgumentNullException("defaultHeaders");
-            if (keyId == null)
-                throw new ArgumentNullException("keyId");
-            if (keySecret == null)
-                throw new ArgumentNullException("keySecret");
 
             foreach (var keyValuePair in defaultHeaders)
             {

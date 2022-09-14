@@ -30,17 +30,6 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void Decide(string workflowId);
-
-        /// <summary>
-        /// Starts the decision task for a workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DecideWithHttpInfo(string workflowId);
         /// <summary>
         /// Removes the workflow from the system
         /// </summary>
@@ -51,17 +40,6 @@ namespace Conductor.Api
         void Delete(string workflowId, bool? archiveWorkflow = default(bool?));
 
         /// <summary>
-        /// Removes the workflow from the system
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="archiveWorkflow"> (optional, default to true)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteWithHttpInfo(string workflowId, bool? archiveWorkflow = default(bool?));
-        /// <summary>
         /// Gets the workflow by workflow id
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -70,17 +48,6 @@ namespace Conductor.Api
         /// <returns>Workflow</returns>
         Workflow GetExecutionStatus(string workflowId, bool? includeTasks = default(bool?));
 
-        /// <summary>
-        /// Gets the workflow by workflow id
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="includeTasks"> (optional, default to true)</param>
-        /// <returns>ApiResponse of Workflow</returns>
-        ApiResponse<Workflow> GetExecutionStatusWithHttpInfo(string workflowId, bool? includeTasks = default(bool?));
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored
         /// </summary>
@@ -92,18 +59,6 @@ namespace Conductor.Api
         ExternalStorageLocation GetExternalStorageLocation(string path, string operation, string payloadType);
 
         /// <summary>
-        /// Get the uri and path of the external storage where the workflow payload is to be stored
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType);
-        /// <summary>
         /// Retrieve all the running workflows
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -113,20 +68,6 @@ namespace Conductor.Api
         /// <param name="endTime"> (optional)</param>
         /// <returns>List&lt;string&gt;</returns>
         List<string> GetRunningWorkflow(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?));
-
-        /// <summary>
-        /// Retrieve all the running workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="version"> (optional, default to 1)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        ApiResponse<List<string>> GetRunningWorkflowWithHttpInfo(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?));
         /// <summary>
         /// Lists workflows for the given correlation id list
         /// </summary>
@@ -137,20 +78,6 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
         Dictionary<string, List<Workflow>> GetWorkflows(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?));
-
-        /// <summary>
-        /// Lists workflows for the given correlation id list
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        ApiResponse<Dictionary<string, List<Workflow>>> GetWorkflowsWithHttpInfo(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?));
         /// <summary>
         /// Lists workflows for the given correlation id
         /// </summary>
@@ -161,20 +88,6 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>List&lt;Workflow&gt;</returns>
         List<Workflow> GetWorkflowsByCorrelationId(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?));
-
-        /// <summary>
-        /// Lists workflows for the given correlation id
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="correlationId"></param>
-        /// <param name="includeClosed"> (optional, default to false)</param>
-        /// <param name="includeTasks"> (optional, default to false)</param>
-        /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-        ApiResponse<List<Workflow>> GetWorkflowsByCorrelationIdWithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?));
         /// <summary>
         /// Pauses the workflow
         /// </summary>
@@ -182,17 +95,6 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void PauseWorkflow(string workflowId);
-
-        /// <summary>
-        /// Pauses the workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PauseWorkflowWithHttpInfo(string workflowId);
         /// <summary>
         /// Reruns the workflow from a specific task
         /// </summary>
@@ -201,18 +103,6 @@ namespace Conductor.Api
         /// <param name="rerunWorkflowRequest"></param>
         /// <returns>string</returns>
         string Rerun(string workflowId, RerunWorkflowRequest rerunWorkflowRequest);
-
-        /// <summary>
-        /// Reruns the workflow from a specific task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="rerunWorkflowRequest"></param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> RerunWithHttpInfo(string workflowId, RerunWorkflowRequest rerunWorkflowRequest);
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0
         /// </summary>
@@ -222,16 +112,6 @@ namespace Conductor.Api
         void ResetWorkflow(string workflowId);
 
         /// <summary>
-        /// Resets callback times of all non-terminal SIMPLE tasks to 0
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ResetWorkflowWithHttpInfo(string workflowId);
-        /// <summary>
         /// Restarts a completed workflow
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -239,18 +119,6 @@ namespace Conductor.Api
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns></returns>
         void Restart(string workflowId, bool? useLatestDefinitions = default(bool?));
-
-        /// <summary>
-        /// Restarts a completed workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RestartWithHttpInfo(string workflowId, bool? useLatestDefinitions = default(bool?));
         /// <summary>
         /// Resumes the workflow
         /// </summary>
@@ -258,17 +126,6 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <returns></returns>
         void ResumeWorkflow(string workflowId);
-
-        /// <summary>
-        /// Resumes the workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ResumeWorkflowWithHttpInfo(string workflowId);
         /// <summary>
         /// Retries the last failed task
         /// </summary>
@@ -277,18 +134,6 @@ namespace Conductor.Api
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns></returns>
         void Retry(string workflowId, bool? resumeSubworkflowTasks = default(bool?));
-
-        /// <summary>
-        /// Retries the last failed task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RetryWithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?));
         /// <summary>
         /// Search for workflows based on payload and other parameters
         /// </summary>
@@ -303,21 +148,6 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultWorkflowSummary</returns>
         SearchResultWorkflowSummary Search(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
-
-        /// <summary>
-        /// Search for workflows based on payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
-        ApiResponse<SearchResultWorkflowSummary> SearchWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
         /// <summary>
         /// Search for workflows based on payload and other parameters
         /// </summary>
@@ -333,20 +163,6 @@ namespace Conductor.Api
         /// <returns>SearchResultWorkflow</returns>
         SearchResultWorkflow SearchV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
 
-        /// <summary>
-        /// Search for workflows based on payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC.
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>ApiResponse of SearchResultWorkflow</returns>
-        ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
         /// <summary>
         /// Search for workflows based on task parameters
         /// </summary>
@@ -374,37 +190,9 @@ namespace Conductor.Api
         /// <param name="sort"> (optional)</param>
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
-        /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
-        ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
-        /// <summary>
-        /// Search for workflows based on task parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
         /// <returns>SearchResultWorkflow</returns>
         SearchResultWorkflow SearchWorkflowsByTasksV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
 
-        /// <summary>
-        /// Search for workflows based on task parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>ApiResponse of SearchResultWorkflow</returns>
-        ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
         /// <summary>
         /// Skips a given task from a current running workflow
         /// </summary>
@@ -415,18 +203,6 @@ namespace Conductor.Api
         /// <returns></returns>
         void SkipTaskFromWorkflow(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest));
 
-        /// <summary>
-        /// Skips a given task from a current running workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskReferenceName"></param>
-        /// <param name="skipTaskRequest"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SkipTaskFromWorkflowWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest));
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
         /// </summary>
@@ -440,20 +216,6 @@ namespace Conductor.Api
         string StartWorkflow(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?));
 
         /// <summary>
-        /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <param name="requestBody"></param>
-        /// <param name="version"> (optional)</param>
-        /// <param name="correlationId"> (optional)</param>
-        /// <param name="priority"> (optional, default to 0)</param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> StartWorkflowWithHttpInfo(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?));
-        /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -461,16 +223,6 @@ namespace Conductor.Api
         /// <returns>string</returns>
         string StartWorkflowByWorkflowRequest(StartWorkflowRequest startWorkflowRequest);
 
-        /// <summary>
-        /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startWorkflowRequest"></param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> StartWorkflowByWorkflowRequestWithHttpInfo(StartWorkflowRequest startWorkflowRequest);
         /// <summary>
         /// Terminate workflow execution
         /// </summary>
@@ -480,17 +232,6 @@ namespace Conductor.Api
         /// <returns></returns>
         void Terminate(string workflowId, string reason = default(string));
 
-        /// <summary>
-        /// Terminate workflow execution
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = default(string));
         #endregion Synchronous Operations
     }
 
@@ -617,7 +358,7 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="workflowId"></param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> DecideWithHttpInfo(string workflowId)
+            private ApiResponse<object> DecideWithHttpInfo(string workflowId)
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
@@ -683,7 +424,7 @@ namespace Conductor.Api
             /// <param name="workflowId"></param>
             /// <param name="archiveWorkflow"> (optional, default to true)</param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> DeleteWithHttpInfo(string workflowId, bool? archiveWorkflow = default(bool?))
+            private ApiResponse<object> DeleteWithHttpInfo(string workflowId, bool? archiveWorkflow = default(bool?))
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
@@ -754,7 +495,7 @@ namespace Conductor.Api
             /// <param name="workflowId"></param>
             /// <param name="includeTasks"> (optional, default to true)</param>
             /// <returns>ApiResponse of Workflow</returns>
-            public ApiResponse<Workflow> GetExecutionStatusWithHttpInfo(string workflowId, bool? includeTasks = default(bool?))
+            private ApiResponse<Workflow> GetExecutionStatusWithHttpInfo(string workflowId, bool? includeTasks = default(bool?))
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
@@ -828,7 +569,7 @@ namespace Conductor.Api
             /// <param name="operation"></param>
             /// <param name="payloadType"></param>
             /// <returns>ApiResponse of ExternalStorageLocation</returns>
-            public ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType)
+            private ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType)
             {
                 // verify the required parameter 'path' is set
                 if (path == null)
@@ -914,7 +655,7 @@ namespace Conductor.Api
             /// <param name="startTime"> (optional)</param>
             /// <param name="endTime"> (optional)</param>
             /// <returns>ApiResponse of List&lt;string&gt;</returns>
-            public ApiResponse<List<string>> GetRunningWorkflowWithHttpInfo(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?))
+            private ApiResponse<List<string>> GetRunningWorkflowWithHttpInfo(string name, int? version = default(int?), long? startTime = default(long?), long? endTime = default(long?))
             {
                 // verify the required parameter 'name' is set
                 if (name == null)
@@ -998,7 +739,7 @@ namespace Conductor.Api
             /// <param name="includeClosed"> (optional, default to false)</param>
             /// <param name="includeTasks"> (optional, default to false)</param>
             /// <returns>ApiResponse of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-            public ApiResponse<Dictionary<string, List<Workflow>>> GetWorkflowsWithHttpInfo(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
+            private ApiResponse<Dictionary<string, List<Workflow>>> GetWorkflowsWithHttpInfo(string name, List<string> requestBody, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
             {
                 // verify the required parameter 'name' is set
                 if (name == null)
@@ -1086,7 +827,7 @@ namespace Conductor.Api
             /// <param name="includeClosed"> (optional, default to false)</param>
             /// <param name="includeTasks"> (optional, default to false)</param>
             /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-            public ApiResponse<List<Workflow>> GetWorkflowsByCorrelationIdWithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
+            private ApiResponse<List<Workflow>> GetWorkflowsByCorrelationIdWithHttpInfo(string name, string correlationId, bool? includeClosed = default(bool?), bool? includeTasks = default(bool?))
             {
                 // verify the required parameter 'name' is set
                 if (name == null)
@@ -1166,7 +907,7 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="workflowId"></param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> PauseWorkflowWithHttpInfo(string workflowId)
+            private ApiResponse<object> PauseWorkflowWithHttpInfo(string workflowId)
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
@@ -1233,7 +974,7 @@ namespace Conductor.Api
             /// <param name="workflowId"></param>
             /// <param name="rerunWorkflowRequest"></param>
             /// <returns>ApiResponse of string</returns>
-            public ApiResponse<string> RerunWithHttpInfo(string workflowId, RerunWorkflowRequest rerunWorkflowRequest)
+            private ApiResponse<string> RerunWithHttpInfo(string workflowId, RerunWorkflowRequest rerunWorkflowRequest)
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
@@ -1306,7 +1047,7 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="workflowId"></param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> ResetWorkflowWithHttpInfo(string workflowId)
+            private ApiResponse<object> ResetWorkflowWithHttpInfo(string workflowId)
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
@@ -1372,7 +1113,7 @@ namespace Conductor.Api
             /// <param name="workflowId"></param>
             /// <param name="useLatestDefinitions"> (optional, default to false)</param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> RestartWithHttpInfo(string workflowId, bool? useLatestDefinitions = default(bool?))
+            private ApiResponse<object> RestartWithHttpInfo(string workflowId, bool? useLatestDefinitions = default(bool?))
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
@@ -1440,7 +1181,7 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="workflowId"></param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> ResumeWorkflowWithHttpInfo(string workflowId)
+            private ApiResponse<object> ResumeWorkflowWithHttpInfo(string workflowId)
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
@@ -1506,7 +1247,7 @@ namespace Conductor.Api
             /// <param name="workflowId"></param>
             /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> RetryWithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
+            private ApiResponse<object> RetryWithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = default(bool?))
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
@@ -1583,7 +1324,7 @@ namespace Conductor.Api
             /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
             /// <param name="query"> (optional)</param>
             /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
-            public ApiResponse<SearchResultWorkflowSummary> SearchWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            private ApiResponse<SearchResultWorkflowSummary> SearchWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
             {
                 RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1670,7 +1411,7 @@ namespace Conductor.Api
             /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
             /// <param name="query"> (optional)</param>
             /// <returns>ApiResponse of SearchResultWorkflow</returns>
-            public ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            private ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
             {
                 RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1757,7 +1498,7 @@ namespace Conductor.Api
             /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
             /// <param name="query"> (optional)</param>
             /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
-            public ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            private ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
             {
                 RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1843,7 +1584,7 @@ namespace Conductor.Api
             /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
             /// <param name="query"> (optional)</param>
             /// <returns>ApiResponse of SearchResultWorkflow</returns>
-            public ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+            private ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
             {
                 RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1925,7 +1666,7 @@ namespace Conductor.Api
             /// <param name="taskReferenceName"></param>
             /// <param name="skipTaskRequest"> (optional)</param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> SkipTaskFromWorkflowWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest))
+            private ApiResponse<object> SkipTaskFromWorkflowWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest = default(SkipTaskRequest))
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)
@@ -2007,7 +1748,7 @@ namespace Conductor.Api
             /// <param name="correlationId"> (optional)</param>
             /// <param name="priority"> (optional, default to 0)</param>
             /// <returns>ApiResponse of string</returns>
-            public ApiResponse<string> StartWorkflowWithHttpInfo(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?))
+            private ApiResponse<string> StartWorkflowWithHttpInfo(string name, Dictionary<string, Object> requestBody, int? version = default(int?), string correlationId = default(string), int? priority = default(int?))
             {
                 // verify the required parameter 'name' is set
                 if (name == null)
@@ -2094,7 +1835,7 @@ namespace Conductor.Api
             /// <exception cref="ApiException">Thrown when fails to make API call</exception>
             /// <param name="startWorkflowRequest"></param>
             /// <returns>ApiResponse of string</returns>
-            public ApiResponse<string> StartWorkflowByWorkflowRequestWithHttpInfo(StartWorkflowRequest startWorkflowRequest)
+            private ApiResponse<string> StartWorkflowByWorkflowRequestWithHttpInfo(StartWorkflowRequest startWorkflowRequest)
             {
                 // verify the required parameter 'startWorkflowRequest' is set
                 if (startWorkflowRequest == null)
@@ -2162,7 +1903,7 @@ namespace Conductor.Api
             /// <param name="workflowId"></param>
             /// <param name="reason"> (optional)</param>
             /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<object> TerminateWithHttpInfo(string workflowId, string reason = default(string))
+            private ApiResponse<object> TerminateWithHttpInfo(string workflowId, string reason = default(string))
             {
                 // verify the required parameter 'workflowId' is set
                 if (workflowId == null)

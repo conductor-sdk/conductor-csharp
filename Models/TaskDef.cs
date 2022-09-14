@@ -127,6 +127,10 @@ namespace Conductor.Client.Models
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for TaskDef and cannot be null");
             }
+            if (ownerEmail == null)
+            {
+                throw new ArgumentNullException("ownerEmail is a required property for TaskDef and cannot be null");
+            }
             this.Name = name;
             this.TimeoutSeconds = timeoutSeconds;
             this.OwnerApp = ownerApp;

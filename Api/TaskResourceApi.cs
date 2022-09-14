@@ -32,28 +32,10 @@ namespace Conductor.Api
         /// <summary>
         /// Get the details about each queue
         /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Dictionary&lt;string, long&gt;</returns>
-        ApiResponse<Dictionary<string, long>> AllWithHttpInfo();
-        /// <summary>
-        /// Get the details about each queue
-        /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long&gt;&gt;&gt;</returns>
         Dictionary<string, Dictionary<string, Dictionary<string, long>>> AllVerbose();
 
-        /// <summary>
-        /// Get the details about each queue
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long&gt;&gt;&gt;</returns>
-        ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long>>>> AllVerboseWithHttpInfo();
         /// <summary>
         /// Batch poll for a task of a certain type
         /// </summary>
@@ -65,21 +47,6 @@ namespace Conductor.Api
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>List&lt;Task&gt;</returns>
         List<Task> BatchPoll(string tasktype, string workerid = default(string), string domain = default(string), int? count = default(int?), int? timeout = default(int?));
-
-        /// <summary>
-        /// Batch poll for a task of a certain type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="count"> (optional, default to 1)</param>
-        /// <param name="timeout"> (optional, default to 100)</param>
-        /// <returns>ApiResponse of List&lt;Task&gt;</returns>
-        ApiResponse<List<Task>> BatchPollWithHttpInfo(string tasktype, string workerid = default(string), string domain = default(string), int? count = default(int?), int? timeout = default(int?));
         /// <summary>
         /// Get the last poll data for all task types
         /// </summary>
@@ -87,15 +54,6 @@ namespace Conductor.Api
         /// <returns>List&lt;PollData&gt;</returns>
         List<PollData> GetAllPollData();
 
-        /// <summary>
-        /// Get the last poll data for all task types
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;PollData&gt;</returns>
-        ApiResponse<List<PollData>> GetAllPollDataWithHttpInfo();
         /// <summary>
         /// Get the external uri where the task payload is to be stored
         /// </summary>
@@ -107,35 +65,12 @@ namespace Conductor.Api
         ExternalStorageLocation GetExternalStorageLocation(string path, string operation, string payloadType);
 
         /// <summary>
-        /// Get the external uri where the task payload is to be stored
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="path"></param>
-        /// <param name="operation"></param>
-        /// <param name="payloadType"></param>
-        /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType);
-        /// <summary>
         /// Get the last poll data for a given task type
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>List&lt;PollData&gt;</returns>
         List<PollData> GetPollData(string taskType);
-
-        /// <summary>
-        /// Get the last poll data for a given task type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"></param>
-        /// <returns>ApiResponse of List&lt;PollData&gt;</returns>
-        ApiResponse<List<PollData>> GetPollDataWithHttpInfo(string taskType);
         /// <summary>
         /// Get task by Id
         /// </summary>
@@ -145,16 +80,6 @@ namespace Conductor.Api
         Task GetTask(string taskId);
 
         /// <summary>
-        /// Get task by Id
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <returns>ApiResponse of Task</returns>
-        ApiResponse<Task> GetTaskWithHttpInfo(string taskId);
-        /// <summary>
         /// Get Task Execution Logs
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -162,16 +87,6 @@ namespace Conductor.Api
         /// <returns>List&lt;TaskExecLog&gt;</returns>
         List<TaskExecLog> GetTaskLogs(string taskId);
 
-        /// <summary>
-        /// Get Task Execution Logs
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <returns>ApiResponse of List&lt;TaskExecLog&gt;</returns>
-        ApiResponse<List<TaskExecLog>> GetTaskLogsWithHttpInfo(string taskId);
         /// <summary>
         /// Log Task Execution Details
         /// </summary>
@@ -181,17 +96,6 @@ namespace Conductor.Api
         /// <returns></returns>
         void Log(string taskId, string body);
 
-        /// <summary>
-        /// Log Task Execution Details
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskId"></param>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> LogWithHttpInfo(string taskId, string body);
         /// <summary>
         /// Poll for a task of a certain type
         /// </summary>
@@ -203,18 +107,6 @@ namespace Conductor.Api
         Task Poll(string tasktype, string workerid = default(string), string domain = default(string));
 
         /// <summary>
-        /// Poll for a task of a certain type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <returns>ApiResponse of Task</returns>
-        ApiResponse<Task> PollWithHttpInfo(string tasktype, string workerid = default(string), string domain = default(string));
-        /// <summary>
         /// Requeue pending tasks
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -222,16 +114,6 @@ namespace Conductor.Api
         /// <returns>string</returns>
         string RequeuePendingTask(string taskType);
 
-        /// <summary>
-        /// Requeue pending tasks
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"></param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> RequeuePendingTaskWithHttpInfo(string taskType);
         /// <summary>
         /// Search for tasks based in payload and other parameters
         /// </summary>
@@ -259,37 +141,9 @@ namespace Conductor.Api
         /// <param name="sort"> (optional)</param>
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
-        /// <returns>ApiResponse of SearchResultTaskSummary</returns>
-        ApiResponse<SearchResultTaskSummary> Search1WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
-        /// <summary>
-        /// Search for tasks based in payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTask</returns>
         SearchResultTask SearchTasksV2(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
 
-        /// <summary>
-        /// Search for tasks based in payload and other parameters
-        /// </summary>
-        /// <remarks>
-        /// use sort options as sort&#x3D;&lt;field&gt;:ASC|DESC e.g. sort&#x3D;name&amp;sort&#x3D;workflowId:DESC. If order is not specified, defaults to ASC
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="start"> (optional, default to 0)</param>
-        /// <param name="size"> (optional, default to 100)</param>
-        /// <param name="sort"> (optional)</param>
-        /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
-        /// <param name="query"> (optional)</param>
-        /// <returns>ApiResponse of SearchResultTask</returns>
-        ApiResponse<SearchResultTask> SearchTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string));
         /// <summary>
         /// Get Task type queue sizes
         /// </summary>
@@ -297,17 +151,6 @@ namespace Conductor.Api
         /// <param name="taskType"> (optional)</param>
         /// <returns>Dictionary&lt;string, int&gt;</returns>
         Dictionary<string, int> Size1(List<string> taskType = default(List<string>));
-
-        /// <summary>
-        /// Get Task type queue sizes
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskType"> (optional)</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, int&gt;</returns>
-        ApiResponse<Dictionary<string, int>> Size1WithHttpInfo(List<string> taskType = default(List<string>));
         /// <summary>
         /// Update a task
         /// </summary>
@@ -316,16 +159,6 @@ namespace Conductor.Api
         /// <returns>string</returns>
         string UpdateTask(TaskResult taskResult);
 
-        /// <summary>
-        /// Update a task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="taskResult"></param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> UpdateTaskWithHttpInfo(TaskResult taskResult);
         /// <summary>
         /// Update a task By Ref Name
         /// </summary>
@@ -336,20 +169,6 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <returns>string</returns>
         string UpdateTask1(string workflowId, string taskRefName, string status, Dictionary<string, Object> requestBody);
-
-        /// <summary>
-        /// Update a task By Ref Name
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="workflowId"></param>
-        /// <param name="taskRefName"></param>
-        /// <param name="status"></param>
-        /// <param name="requestBody"></param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> UpdateTask1WithHttpInfo(string workflowId, string taskRefName, string status, Dictionary<string, Object> requestBody);
         #endregion Synchronous Operations
     }
 
@@ -476,7 +295,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, long&gt;</returns>
-        public ApiResponse<Dictionary<string, long>> AllWithHttpInfo()
+        private ApiResponse<Dictionary<string, long>> AllWithHttpInfo()
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -533,7 +352,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long&gt;&gt;&gt;</returns>
-        public ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long>>>> AllVerboseWithHttpInfo()
+        private ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long>>>> AllVerboseWithHttpInfo()
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -600,7 +419,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>ApiResponse of List&lt;Task&gt;</returns>
-        public ApiResponse<List<Task>> BatchPollWithHttpInfo(string tasktype, string workerid = default(string), string domain = default(string), int? count = default(int?), int? timeout = default(int?))
+        private ApiResponse<List<Task>> BatchPollWithHttpInfo(string tasktype, string workerid = default(string), string domain = default(string), int? count = default(int?), int? timeout = default(int?))
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -680,7 +499,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;PollData&gt;</returns>
-        public ApiResponse<List<PollData>> GetAllPollDataWithHttpInfo()
+        private ApiResponse<List<PollData>> GetAllPollDataWithHttpInfo()
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -743,7 +562,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        public ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType)
+        private ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType)
         {
             // verify the required parameter 'path' is set
             if (path == null)
@@ -823,7 +642,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>ApiResponse of List&lt;PollData&gt;</returns>
-        public ApiResponse<List<PollData>> GetPollDataWithHttpInfo(string taskType)
+        private ApiResponse<List<PollData>> GetPollDataWithHttpInfo(string taskType)
         {
             // verify the required parameter 'taskType' is set
             if (taskType == null)
@@ -889,7 +708,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>ApiResponse of Task</returns>
-        public ApiResponse<Task> GetTaskWithHttpInfo(string taskId)
+        private ApiResponse<Task> GetTaskWithHttpInfo(string taskId)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -955,7 +774,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>ApiResponse of List&lt;TaskExecLog&gt;</returns>
-        public ApiResponse<List<TaskExecLog>> GetTaskLogsWithHttpInfo(string taskId)
+        private ApiResponse<List<TaskExecLog>> GetTaskLogsWithHttpInfo(string taskId)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -1022,7 +841,7 @@ namespace Conductor.Api
         /// <param name="taskId"></param>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> LogWithHttpInfo(string taskId, string body)
+        private ApiResponse<object> LogWithHttpInfo(string taskId, string body)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -1099,7 +918,7 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>ApiResponse of Task</returns>
-        public ApiResponse<Task> PollWithHttpInfo(string tasktype, string workerid = default(string), string domain = default(string))
+        private ApiResponse<Task> PollWithHttpInfo(string tasktype, string workerid = default(string), string domain = default(string))
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -1173,7 +992,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse<string> RequeuePendingTaskWithHttpInfo(string taskType)
+        private ApiResponse<string> RequeuePendingTaskWithHttpInfo(string taskType)
         {
             // verify the required parameter 'taskType' is set
             if (taskType == null)
@@ -1247,7 +1066,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTaskSummary</returns>
-        public ApiResponse<SearchResultTaskSummary> Search1WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+        private ApiResponse<SearchResultTaskSummary> Search1WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1334,7 +1153,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to &quot;*&quot;)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTask</returns>
-        public ApiResponse<SearchResultTask> SearchTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
+        private ApiResponse<SearchResultTask> SearchTasksV2WithHttpInfo(int? start = default(int?), int? size = default(int?), string sort = default(string), string freeText = default(string), string query = default(string))
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1413,7 +1232,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>ApiResponse of Dictionary&lt;string, int&gt;</returns>
-        public ApiResponse<Dictionary<string, int>> Size1WithHttpInfo(List<string> taskType = default(List<string>))
+        private ApiResponse<Dictionary<string, int>> Size1WithHttpInfo(List<string> taskType = default(List<string>))
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1476,7 +1295,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskResult"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse<string> UpdateTaskWithHttpInfo(TaskResult taskResult)
+        private ApiResponse<string> UpdateTaskWithHttpInfo(TaskResult taskResult)
         {
             // verify the required parameter 'taskResult' is set
             if (taskResult == null)
@@ -1549,7 +1368,7 @@ namespace Conductor.Api
         /// <param name="status"></param>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse<string> UpdateTask1WithHttpInfo(string workflowId, string taskRefName, string status, Dictionary<string, Object> requestBody)
+        private ApiResponse<string> UpdateTask1WithHttpInfo(string workflowId, string taskRefName, string status, Dictionary<string, Object> requestBody)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)

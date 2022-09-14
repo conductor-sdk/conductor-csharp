@@ -31,16 +31,6 @@ namespace Conductor.Api
         BulkResponse PauseWorkflow(List<string> requestBody);
 
         /// <summary>
-        /// Pause the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> PauseWorkflowWithHttpInfo(List<string> requestBody);
-        /// <summary>
         /// Restart the list of completed workflow
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -50,34 +40,12 @@ namespace Conductor.Api
         BulkResponse Restart(List<string> requestBody, bool? useLatestDefinitions = default(bool?));
 
         /// <summary>
-        /// Restart the list of completed workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> RestartWithHttpInfo(List<string> requestBody, bool? useLatestDefinitions = default(bool?));
-        /// <summary>
         /// Resume the list of workflows
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>BulkResponse</returns>
         BulkResponse ResumeWorkflow(List<string> requestBody);
-
-        /// <summary>
-        /// Resume the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> ResumeWorkflowWithHttpInfo(List<string> requestBody);
         /// <summary>
         /// Retry the last failed task for each workflow from the list
         /// </summary>
@@ -87,16 +55,6 @@ namespace Conductor.Api
         BulkResponse Retry(List<string> requestBody);
 
         /// <summary>
-        /// Retry the last failed task for each workflow from the list
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> RetryWithHttpInfo(List<string> requestBody);
-        /// <summary>
         /// Terminate workflows execution
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -104,18 +62,6 @@ namespace Conductor.Api
         /// <param name="reason"> (optional)</param>
         /// <returns>BulkResponse</returns>
         BulkResponse Terminate(List<string> requestBody, string reason = default(string));
-
-        /// <summary>
-        /// Terminate workflows execution
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> requestBody, string reason = default(string));
         #endregion Synchronous Operations
     }
 
@@ -242,7 +188,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> PauseWorkflowWithHttpInfo(List<string> requestBody)
+        private ApiResponse<BulkResponse> PauseWorkflowWithHttpInfo(List<string> requestBody)
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
@@ -311,7 +257,7 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> RestartWithHttpInfo(List<string> requestBody, bool? useLatestDefinitions = default(bool?))
+        private ApiResponse<BulkResponse> RestartWithHttpInfo(List<string> requestBody, bool? useLatestDefinitions = default(bool?))
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
@@ -382,7 +328,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> ResumeWorkflowWithHttpInfo(List<string> requestBody)
+        private ApiResponse<BulkResponse> ResumeWorkflowWithHttpInfo(List<string> requestBody)
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
@@ -449,7 +395,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> RetryWithHttpInfo(List<string> requestBody)
+        private ApiResponse<BulkResponse> RetryWithHttpInfo(List<string> requestBody)
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)
@@ -518,7 +464,7 @@ namespace Conductor.Api
         /// <param name="requestBody"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> requestBody, string reason = default(string))
+        private ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> requestBody, string reason = default(string))
         {
             // verify the required parameter 'requestBody' is set
             if (requestBody == null)

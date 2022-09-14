@@ -30,17 +30,6 @@ namespace Conductor.Api
         /// <param name="eventHandler"></param>
         /// <returns></returns>
         void AddEventHandler(EventHandler eventHandler);
-
-        /// <summary>
-        /// Add a new event handler.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="eventHandler"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddEventHandlerWithHttpInfo(EventHandler eventHandler);
         /// <summary>
         /// Get all the event handlers
         /// </summary>
@@ -48,15 +37,6 @@ namespace Conductor.Api
         /// <returns>List&lt;EventHandler&gt;</returns>
         List<EventHandler> GetEventHandlers();
 
-        /// <summary>
-        /// Get all the event handlers
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
-        ApiResponse<List<EventHandler>> GetEventHandlersWithHttpInfo();
         /// <summary>
         /// Get event handlers for a given event
         /// </summary>
@@ -67,17 +47,6 @@ namespace Conductor.Api
         List<EventHandler> GetEventHandlersForEvent(string _event, bool? activeOnly = default(bool?));
 
         /// <summary>
-        /// Get event handlers for a given event
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="_event"></param>
-        /// <param name="activeOnly"> (optional, default to true)</param>
-        /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
-        ApiResponse<List<EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = default(bool?));
-        /// <summary>
         /// Remove an event handler
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -86,16 +55,6 @@ namespace Conductor.Api
         void RemoveEventHandlerStatus(string name);
 
         /// <summary>
-        /// Remove an event handler
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RemoveEventHandlerStatusWithHttpInfo(string name);
-        /// <summary>
         /// Update an existing event handler.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -103,16 +62,6 @@ namespace Conductor.Api
         /// <returns></returns>
         void UpdateEventHandler(EventHandler eventHandler);
 
-        /// <summary>
-        /// Update an existing event handler.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="eventHandler"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateEventHandlerWithHttpInfo(EventHandler eventHandler);
         #endregion Synchronous Operations
     }
 
@@ -240,7 +189,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> AddEventHandlerWithHttpInfo(EventHandler eventHandler)
+        private ApiResponse<object> AddEventHandlerWithHttpInfo(EventHandler eventHandler)
         {
             // verify the required parameter 'eventHandler' is set
             if (eventHandler == null)
@@ -304,7 +253,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
-        public ApiResponse<List<EventHandler>> GetEventHandlersWithHttpInfo()
+        private ApiResponse<List<EventHandler>> GetEventHandlersWithHttpInfo()
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -365,7 +314,7 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
-        public ApiResponse<List<EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = default(bool?))
+        private ApiResponse<List<EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = default(bool?))
         {
             // verify the required parameter '_event' is set
             if (_event == null)
@@ -434,7 +383,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> RemoveEventHandlerStatusWithHttpInfo(string name)
+        private ApiResponse<object> RemoveEventHandlerStatusWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -498,7 +447,7 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="eventHandler"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<object> UpdateEventHandlerWithHttpInfo(EventHandler eventHandler)
+        private ApiResponse<object> UpdateEventHandlerWithHttpInfo(EventHandler eventHandler)
         {
             // verify the required parameter 'eventHandler' is set
             if (eventHandler == null)

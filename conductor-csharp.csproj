@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>0.0.5</Version>
+    <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/conductor-sdk/conductor-csharp</RepositoryUrl>
@@ -13,6 +14,8 @@
     <EmbeddedResource Remove="conductor-csharp.Test\**" />
     <None Remove="conductor-csharp.Test\**" />
     <None Remove="Microsoft.Extensions.Hosting" />
+    <None Remove="RestSharp.Serializers.NewtonsoftJson" />
+    <None Remove="Examples\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,12 +23,15 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="RestSharp" Version="106.13.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
     <PackageReference Include="Polly" Version="7.2.2" />
 
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="106.13.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Examples\" />
+  </ItemGroup>
 </Project>
