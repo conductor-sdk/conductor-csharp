@@ -2,20 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.0.3</Version>
+    <Version>0.0.5</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>avatar.jpg</PackageIcon>
     <PackageIconUrl />
+    <RepositoryUrl>https://github.com/conductor-sdk/conductor-csharp</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="conductor-csharp.Test\**" />
     <EmbeddedResource Remove="conductor-csharp.Test\**" />
     <None Remove="conductor-csharp.Test\**" />
-    <None Include="..\..\avatar.jpg">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
     <None Include="..\..\Users\manan\Downloads\Orkes.jpg">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
