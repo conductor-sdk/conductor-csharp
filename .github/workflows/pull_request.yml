@@ -13,4 +13,4 @@ jobs:
         with:
           dotnet-version: "6.0.x"
       - name: Validate code style
-        run: dotnet format ./conductor-csharp.csproj
+        run: dotnet format ./conductor-csharp.csproj --verify-no-changes
