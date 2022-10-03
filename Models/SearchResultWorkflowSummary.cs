@@ -90,11 +90,11 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.TotalHits == input.TotalHits ||
                     this.TotalHits.Equals(input.TotalHits)
-                ) && 
+                ) &&
                 (
                     this.Results == input.Results ||
                     this.Results != null &&

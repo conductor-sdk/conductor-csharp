@@ -82,12 +82,14 @@ namespace Conductor.Client.Models
         public WorkflowDef(string ownerApp = default(string), long createTime = default(long), long updateTime = default(long), string createdBy = default(string), string updatedBy = default(string), string name = default(string), string description = default(string), int version = default(int), List<WorkflowTask> tasks = default(List<WorkflowTask>), List<string> inputParameters = default(List<string>), Dictionary<string, Object> outputParameters = default(Dictionary<string, Object>), string failureWorkflow = default(string), int schemaVersion = default(int), bool restartable = default(bool), bool workflowStatusListenerEnabled = default(bool), string ownerEmail = default(string), TimeoutPolicyEnum? timeoutPolicy = default(TimeoutPolicyEnum?), long timeoutSeconds = default(long), Dictionary<string, Object> variables = default(Dictionary<string, Object>), Dictionary<string, Object> inputTemplate = default(Dictionary<string, Object>))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for WorkflowDef and cannot be null");
             }
             this.Name = name;
             // to ensure "tasks" is required (not null)
-            if (tasks == null) {
+            if (tasks == null)
+            {
                 throw new ArgumentNullException("tasks is a required property for WorkflowDef and cannot be null");
             }
             this.Tasks = tasks;
@@ -287,98 +289,98 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.OwnerApp == input.OwnerApp ||
                     (this.OwnerApp != null &&
                     this.OwnerApp.Equals(input.OwnerApp))
-                ) && 
+                ) &&
                 (
                     this.CreateTime == input.CreateTime ||
                     this.CreateTime.Equals(input.CreateTime)
-                ) && 
+                ) &&
                 (
                     this.UpdateTime == input.UpdateTime ||
                     this.UpdateTime.Equals(input.UpdateTime)
-                ) && 
+                ) &&
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
+                ) &&
                 (
                     this.UpdatedBy == input.UpdatedBy ||
                     (this.UpdatedBy != null &&
                     this.UpdatedBy.Equals(input.UpdatedBy))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this._Version == input._Version ||
                     this._Version.Equals(input._Version)
-                ) && 
+                ) &&
                 (
                     this.Tasks == input.Tasks ||
                     this.Tasks != null &&
                     input.Tasks != null &&
                     this.Tasks.SequenceEqual(input.Tasks)
-                ) && 
+                ) &&
                 (
                     this.InputParameters == input.InputParameters ||
                     this.InputParameters != null &&
                     input.InputParameters != null &&
                     this.InputParameters.SequenceEqual(input.InputParameters)
-                ) && 
+                ) &&
                 (
                     this.OutputParameters == input.OutputParameters ||
                     this.OutputParameters != null &&
                     input.OutputParameters != null &&
                     this.OutputParameters.SequenceEqual(input.OutputParameters)
-                ) && 
+                ) &&
                 (
                     this.FailureWorkflow == input.FailureWorkflow ||
                     (this.FailureWorkflow != null &&
                     this.FailureWorkflow.Equals(input.FailureWorkflow))
-                ) && 
+                ) &&
                 (
                     this.SchemaVersion == input.SchemaVersion ||
                     this.SchemaVersion.Equals(input.SchemaVersion)
-                ) && 
+                ) &&
                 (
                     this.Restartable == input.Restartable ||
                     this.Restartable.Equals(input.Restartable)
-                ) && 
+                ) &&
                 (
                     this.WorkflowStatusListenerEnabled == input.WorkflowStatusListenerEnabled ||
                     this.WorkflowStatusListenerEnabled.Equals(input.WorkflowStatusListenerEnabled)
-                ) && 
+                ) &&
                 (
                     this.OwnerEmail == input.OwnerEmail ||
                     (this.OwnerEmail != null &&
                     this.OwnerEmail.Equals(input.OwnerEmail))
-                ) && 
+                ) &&
                 (
                     this.TimeoutPolicy == input.TimeoutPolicy ||
                     this.TimeoutPolicy.Equals(input.TimeoutPolicy)
-                ) && 
+                ) &&
                 (
                     this.TimeoutSeconds == input.TimeoutSeconds ||
                     this.TimeoutSeconds.Equals(input.TimeoutSeconds)
-                ) && 
+                ) &&
                 (
                     this.Variables == input.Variables ||
                     this.Variables != null &&
                     input.Variables != null &&
                     this.Variables.SequenceEqual(input.Variables)
-                ) && 
+                ) &&
                 (
                     this.InputTemplate == input.InputTemplate ||
                     this.InputTemplate != null &&
@@ -466,13 +468,13 @@ namespace Conductor.Client.Models
             // SchemaVersion (int) maximum
             if (this.SchemaVersion > (int)2)
             {
-                yield return new ValidationResult("Invalid value for SchemaVersion, must be a value less than or equal to 2.", new [] { "SchemaVersion" });
+                yield return new ValidationResult("Invalid value for SchemaVersion, must be a value less than or equal to 2.", new[] { "SchemaVersion" });
             }
 
             // SchemaVersion (int) minimum
             if (this.SchemaVersion < (int)2)
             {
-                yield return new ValidationResult("Invalid value for SchemaVersion, must be a value greater than or equal to 2.", new [] { "SchemaVersion" });
+                yield return new ValidationResult("Invalid value for SchemaVersion, must be a value greater than or equal to 2.", new[] { "SchemaVersion" });
             }
 
             yield break;

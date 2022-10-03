@@ -89,12 +89,12 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Uri == input.Uri ||
                     (this.Uri != null &&
                     this.Uri.Equals(input.Uri))
-                ) && 
+                ) &&
                 (
                     this.Path == input.Path ||
                     (this.Path != null &&

@@ -108,23 +108,23 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.WorkflowId == input.WorkflowId ||
                     (this.WorkflowId != null &&
                     this.WorkflowId.Equals(input.WorkflowId))
-                ) && 
+                ) &&
                 (
                     this.TaskRefName == input.TaskRefName ||
                     (this.TaskRefName != null &&
                     this.TaskRefName.Equals(input.TaskRefName))
-                ) && 
+                ) &&
                 (
                     this.Output == input.Output ||
                     this.Output != null &&
                     input.Output != null &&
                     this.Output.SequenceEqual(input.Output)
-                ) && 
+                ) &&
                 (
                     this.TaskId == input.TaskId ||
                     (this.TaskId != null &&

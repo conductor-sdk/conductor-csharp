@@ -71,12 +71,12 @@ namespace TestSDK
         public string TaskType => "simple_task_0";
         public int? Priority => null;
 
-        public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
+        public Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
         {
             Dictionary<string, object> newOutput = new Dictionary<string, object>();
             Random rnd = new Random();
             newOutput.Add("value", rnd.Next(1, 10));
-            return task.Completed(task.OutputData.MergeValues(newOutput));
+            return System.Threading.Tasks.Task.FromResult(task.Completed(task.OutputData.MergeValues(newOutput)));
         }
     }
 }

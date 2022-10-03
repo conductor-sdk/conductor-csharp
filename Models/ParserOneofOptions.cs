@@ -17,7 +17,7 @@ namespace Conductor.Client.Models
     /// ParserOneofOptions
     /// </summary>
     [DataContract]
-    public partial class ParserOneofOptions :  IEquatable<ParserOneofOptions>, IValidatableObject
+    public partial class ParserOneofOptions : IEquatable<ParserOneofOptions>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ParserOneofOptions" /> class.
@@ -26,7 +26,7 @@ namespace Conductor.Client.Models
         public ParserOneofOptions()
         {
         }
-        
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -38,7 +38,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>

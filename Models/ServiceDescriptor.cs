@@ -18,7 +18,7 @@ namespace Conductor.Client.Models
     /// ServiceDescriptor
     /// </summary>
     [DataContract]
-    public partial class ServiceDescriptor :  IEquatable<ServiceDescriptor>, IValidatableObject
+    public partial class ServiceDescriptor : IEquatable<ServiceDescriptor>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceDescriptor" /> class.
@@ -38,41 +38,41 @@ namespace Conductor.Client.Models
             this.Options = options;
             this.Name = name;
         }
-        
+
         /// <summary>
         /// Gets or Sets Index
         /// </summary>
-        [DataMember(Name="index", EmitDefaultValue=false)]
+        [DataMember(Name = "index", EmitDefaultValue = false)]
         public int? Index { get; set; }
 
         /// <summary>
         /// Gets or Sets FullName
         /// </summary>
-        [DataMember(Name="fullName", EmitDefaultValue=false)]
+        [DataMember(Name = "fullName", EmitDefaultValue = false)]
         public string FullName { get; set; }
 
         /// <summary>
         /// Gets or Sets _File
         /// </summary>
-        [DataMember(Name="file", EmitDefaultValue=false)]
+        [DataMember(Name = "file", EmitDefaultValue = false)]
         public FileDescriptor _File { get; set; }
 
         /// <summary>
         /// Gets or Sets Methods
         /// </summary>
-        [DataMember(Name="methods", EmitDefaultValue=false)]
+        [DataMember(Name = "methods", EmitDefaultValue = false)]
         public List<MethodDescriptor> Methods { get; set; }
 
         /// <summary>
         /// Gets or Sets Options
         /// </summary>
-        [DataMember(Name="options", EmitDefaultValue=false)]
+        [DataMember(Name = "options", EmitDefaultValue = false)]
         public ServiceOptions Options { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -122,32 +122,32 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Index == input.Index ||
                     (this.Index != null &&
                     this.Index.Equals(input.Index))
-                ) && 
+                ) &&
                 (
                     this.FullName == input.FullName ||
                     (this.FullName != null &&
                     this.FullName.Equals(input.FullName))
-                ) && 
+                ) &&
                 (
                     this._File == input._File ||
                     (this._File != null &&
                     this._File.Equals(input._File))
-                ) && 
+                ) &&
                 (
                     this.Methods == input.Methods ||
                     this.Methods != null &&
                     this.Methods.SequenceEqual(input.Methods)
-                ) && 
+                ) &&
                 (
                     this.Options == input.Options ||
                     (this.Options != null &&
                     this.Options.Equals(input.Options))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&

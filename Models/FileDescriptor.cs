@@ -19,7 +19,7 @@ namespace Conductor.Client.Models
     /// FileDescriptor
     /// </summary>
     [DataContract]
-    public partial class FileDescriptor :  IEquatable<FileDescriptor>, IValidatableObject
+    public partial class FileDescriptor : IEquatable<FileDescriptor>, IValidatableObject
     {
         /// <summary>
         /// Defines Syntax
@@ -27,19 +27,19 @@ namespace Conductor.Client.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public enum SyntaxEnum
         {
-            
+
             /// <summary>
             /// Enum UNKNOWN for value: UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
             UNKNOWN = 1,
-            
+
             /// <summary>
             /// Enum PROTO2 for value: PROTO2
             /// </summary>
             [EnumMember(Value = "PROTO2")]
             PROTO2 = 2,
-            
+
             /// <summary>
             /// Enum PROTO3 for value: PROTO3
             /// </summary>
@@ -50,7 +50,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Gets or Sets Syntax
         /// </summary>
-        [DataMember(Name="syntax", EmitDefaultValue=false)]
+        [DataMember(Name = "syntax", EmitDefaultValue = false)]
         public SyntaxEnum? Syntax { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="FileDescriptor" /> class.
@@ -82,72 +82,72 @@ namespace Conductor.Client.Models
             this.Package = package;
             this._File = _file;
         }
-        
+
         /// <summary>
         /// Gets or Sets MessageTypes
         /// </summary>
-        [DataMember(Name="messageTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "messageTypes", EmitDefaultValue = false)]
         public List<Descriptor> MessageTypes { get; set; }
 
         /// <summary>
         /// Gets or Sets EnumTypes
         /// </summary>
-        [DataMember(Name="enumTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "enumTypes", EmitDefaultValue = false)]
         public List<EnumDescriptor> EnumTypes { get; set; }
 
         /// <summary>
         /// Gets or Sets Services
         /// </summary>
-        [DataMember(Name="services", EmitDefaultValue=false)]
+        [DataMember(Name = "services", EmitDefaultValue = false)]
         public List<ServiceDescriptor> Services { get; set; }
 
         /// <summary>
         /// Gets or Sets Extensions
         /// </summary>
-        [DataMember(Name="extensions", EmitDefaultValue=false)]
+        [DataMember(Name = "extensions", EmitDefaultValue = false)]
         public List<FieldDescriptor> Extensions { get; set; }
 
         /// <summary>
         /// Gets or Sets Dependencies
         /// </summary>
-        [DataMember(Name="dependencies", EmitDefaultValue=false)]
+        [DataMember(Name = "dependencies", EmitDefaultValue = false)]
         public List<FileDescriptor> Dependencies { get; set; }
 
         /// <summary>
         /// Gets or Sets PublicDependencies
         /// </summary>
-        [DataMember(Name="publicDependencies", EmitDefaultValue=false)]
+        [DataMember(Name = "publicDependencies", EmitDefaultValue = false)]
         public List<FileDescriptor> PublicDependencies { get; set; }
 
         /// <summary>
         /// Gets or Sets Options
         /// </summary>
-        [DataMember(Name="options", EmitDefaultValue=false)]
+        [DataMember(Name = "options", EmitDefaultValue = false)]
         public FileOptions Options { get; set; }
 
         /// <summary>
         /// Gets or Sets FullName
         /// </summary>
-        [DataMember(Name="fullName", EmitDefaultValue=false)]
+        [DataMember(Name = "fullName", EmitDefaultValue = false)]
         public string FullName { get; set; }
 
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Package
         /// </summary>
-        [DataMember(Name="package", EmitDefaultValue=false)]
+        [DataMember(Name = "package", EmitDefaultValue = false)]
         public string Package { get; set; }
 
         /// <summary>
         /// Gets or Sets _File
         /// </summary>
-        [DataMember(Name="file", EmitDefaultValue=false)]
+        [DataMember(Name = "file", EmitDefaultValue = false)]
         public FileDescriptor _File { get; set; }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -203,62 +203,62 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.MessageTypes == input.MessageTypes ||
                     this.MessageTypes != null &&
                     this.MessageTypes.SequenceEqual(input.MessageTypes)
-                ) && 
+                ) &&
                 (
                     this.EnumTypes == input.EnumTypes ||
                     this.EnumTypes != null &&
                     this.EnumTypes.SequenceEqual(input.EnumTypes)
-                ) && 
+                ) &&
                 (
                     this.Services == input.Services ||
                     this.Services != null &&
                     this.Services.SequenceEqual(input.Services)
-                ) && 
+                ) &&
                 (
                     this.Extensions == input.Extensions ||
                     this.Extensions != null &&
                     this.Extensions.SequenceEqual(input.Extensions)
-                ) && 
+                ) &&
                 (
                     this.Dependencies == input.Dependencies ||
                     this.Dependencies != null &&
                     this.Dependencies.SequenceEqual(input.Dependencies)
-                ) && 
+                ) &&
                 (
                     this.PublicDependencies == input.PublicDependencies ||
                     this.PublicDependencies != null &&
                     this.PublicDependencies.SequenceEqual(input.PublicDependencies)
-                ) && 
+                ) &&
                 (
                     this.Options == input.Options ||
                     (this.Options != null &&
                     this.Options.Equals(input.Options))
-                ) && 
+                ) &&
                 (
                     this.FullName == input.FullName ||
                     (this.FullName != null &&
                     this.FullName.Equals(input.FullName))
-                ) && 
+                ) &&
                 (
                     this.Syntax == input.Syntax ||
                     (this.Syntax != null &&
                     this.Syntax.Equals(input.Syntax))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Package == input.Package ||
                     (this.Package != null &&
                     this.Package.Equals(input.Package))
-                ) && 
+                ) &&
                 (
                     this._File == input._File ||
                     (this._File != null &&

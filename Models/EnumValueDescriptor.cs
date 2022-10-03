@@ -17,7 +17,7 @@ namespace Conductor.Client.Models
     /// EnumValueDescriptor
     /// </summary>
     [DataContract]
-    public partial class EnumValueDescriptor :  IEquatable<EnumValueDescriptor>, IValidatableObject
+    public partial class EnumValueDescriptor : IEquatable<EnumValueDescriptor>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EnumValueDescriptor" /> class.
@@ -39,47 +39,47 @@ namespace Conductor.Client.Models
             this.Options = options;
             this.Name = name;
         }
-        
+
         /// <summary>
         /// Gets or Sets Index
         /// </summary>
-        [DataMember(Name="index", EmitDefaultValue=false)]
+        [DataMember(Name = "index", EmitDefaultValue = false)]
         public int? Index { get; set; }
 
         /// <summary>
         /// Gets or Sets FullName
         /// </summary>
-        [DataMember(Name="fullName", EmitDefaultValue=false)]
+        [DataMember(Name = "fullName", EmitDefaultValue = false)]
         public string FullName { get; set; }
 
         /// <summary>
         /// Gets or Sets _File
         /// </summary>
-        [DataMember(Name="file", EmitDefaultValue=false)]
+        [DataMember(Name = "file", EmitDefaultValue = false)]
         public FileDescriptor _File { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public EnumDescriptor Type { get; set; }
 
         /// <summary>
         /// Gets or Sets Number
         /// </summary>
-        [DataMember(Name="number", EmitDefaultValue=false)]
+        [DataMember(Name = "number", EmitDefaultValue = false)]
         public int? Number { get; set; }
 
         /// <summary>
         /// Gets or Sets Options
         /// </summary>
-        [DataMember(Name="options", EmitDefaultValue=false)]
+        [DataMember(Name = "options", EmitDefaultValue = false)]
         public EnumValueOptions Options { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -130,37 +130,37 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Index == input.Index ||
                     (this.Index != null &&
                     this.Index.Equals(input.Index))
-                ) && 
+                ) &&
                 (
                     this.FullName == input.FullName ||
                     (this.FullName != null &&
                     this.FullName.Equals(input.FullName))
-                ) && 
+                ) &&
                 (
                     this._File == input._File ||
                     (this._File != null &&
                     this._File.Equals(input._File))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.Number == input.Number ||
                     (this.Number != null &&
                     this.Number.Equals(input.Number))
-                ) && 
+                ) &&
                 (
                     this.Options == input.Options ||
                     (this.Options != null &&
                     this.Options.Equals(input.Options))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&

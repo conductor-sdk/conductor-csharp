@@ -124,7 +124,8 @@ namespace Conductor.Client.Models
         public TaskDef(string ownerApp = default(string), long createTime = default(long), long updateTime = default(long), string createdBy = default(string), string updatedBy = default(string), string name = default(string), string description = default(string), int retryCount = default(int), long timeoutSeconds = default(long), List<string> inputKeys = default(List<string>), List<string> outputKeys = default(List<string>), TimeoutPolicyEnum? timeoutPolicy = default(TimeoutPolicyEnum?), RetryLogicEnum? retryLogic = default(RetryLogicEnum?), int retryDelaySeconds = default(int), long responseTimeoutSeconds = default(long), int concurrentExecLimit = default(int), Dictionary<string, Object> inputTemplate = default(Dictionary<string, Object>), int rateLimitPerFrequency = default(int), int rateLimitFrequencyInSeconds = default(int), string isolationGroupId = default(string), string executionNameSpace = default(string), string ownerEmail = default(string), int pollTimeoutSeconds = default(int), int backoffScaleFactor = default(int))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for TaskDef and cannot be null");
             }
             if (ownerEmail == null)
@@ -355,113 +356,113 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.OwnerApp == input.OwnerApp ||
                     (this.OwnerApp != null &&
                     this.OwnerApp.Equals(input.OwnerApp))
-                ) && 
+                ) &&
                 (
                     this.CreateTime == input.CreateTime ||
                     this.CreateTime.Equals(input.CreateTime)
-                ) && 
+                ) &&
                 (
                     this.UpdateTime == input.UpdateTime ||
                     this.UpdateTime.Equals(input.UpdateTime)
-                ) && 
+                ) &&
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
+                ) &&
                 (
                     this.UpdatedBy == input.UpdatedBy ||
                     (this.UpdatedBy != null &&
                     this.UpdatedBy.Equals(input.UpdatedBy))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.RetryCount == input.RetryCount ||
                     this.RetryCount.Equals(input.RetryCount)
-                ) && 
+                ) &&
                 (
                     this.TimeoutSeconds == input.TimeoutSeconds ||
                     this.TimeoutSeconds.Equals(input.TimeoutSeconds)
-                ) && 
+                ) &&
                 (
                     this.InputKeys == input.InputKeys ||
                     this.InputKeys != null &&
                     input.InputKeys != null &&
                     this.InputKeys.SequenceEqual(input.InputKeys)
-                ) && 
+                ) &&
                 (
                     this.OutputKeys == input.OutputKeys ||
                     this.OutputKeys != null &&
                     input.OutputKeys != null &&
                     this.OutputKeys.SequenceEqual(input.OutputKeys)
-                ) && 
+                ) &&
                 (
                     this.TimeoutPolicy == input.TimeoutPolicy ||
                     this.TimeoutPolicy.Equals(input.TimeoutPolicy)
-                ) && 
+                ) &&
                 (
                     this.RetryLogic == input.RetryLogic ||
                     this.RetryLogic.Equals(input.RetryLogic)
-                ) && 
+                ) &&
                 (
                     this.RetryDelaySeconds == input.RetryDelaySeconds ||
                     this.RetryDelaySeconds.Equals(input.RetryDelaySeconds)
-                ) && 
+                ) &&
                 (
                     this.ResponseTimeoutSeconds == input.ResponseTimeoutSeconds ||
                     this.ResponseTimeoutSeconds.Equals(input.ResponseTimeoutSeconds)
-                ) && 
+                ) &&
                 (
                     this.ConcurrentExecLimit == input.ConcurrentExecLimit ||
                     this.ConcurrentExecLimit.Equals(input.ConcurrentExecLimit)
-                ) && 
+                ) &&
                 (
                     this.InputTemplate == input.InputTemplate ||
                     this.InputTemplate != null &&
                     input.InputTemplate != null &&
                     this.InputTemplate.SequenceEqual(input.InputTemplate)
-                ) && 
+                ) &&
                 (
                     this.RateLimitPerFrequency == input.RateLimitPerFrequency ||
                     this.RateLimitPerFrequency.Equals(input.RateLimitPerFrequency)
-                ) && 
+                ) &&
                 (
                     this.RateLimitFrequencyInSeconds == input.RateLimitFrequencyInSeconds ||
                     this.RateLimitFrequencyInSeconds.Equals(input.RateLimitFrequencyInSeconds)
-                ) && 
+                ) &&
                 (
                     this.IsolationGroupId == input.IsolationGroupId ||
                     (this.IsolationGroupId != null &&
                     this.IsolationGroupId.Equals(input.IsolationGroupId))
-                ) && 
+                ) &&
                 (
                     this.ExecutionNameSpace == input.ExecutionNameSpace ||
                     (this.ExecutionNameSpace != null &&
                     this.ExecutionNameSpace.Equals(input.ExecutionNameSpace))
-                ) && 
+                ) &&
                 (
                     this.OwnerEmail == input.OwnerEmail ||
                     (this.OwnerEmail != null &&
                     this.OwnerEmail.Equals(input.OwnerEmail))
-                ) && 
+                ) &&
                 (
                     this.PollTimeoutSeconds == input.PollTimeoutSeconds ||
                     this.PollTimeoutSeconds.Equals(input.PollTimeoutSeconds)
-                ) && 
+                ) &&
                 (
                     this.BackoffScaleFactor == input.BackoffScaleFactor ||
                     this.BackoffScaleFactor.Equals(input.BackoffScaleFactor)
@@ -548,25 +549,25 @@ namespace Conductor.Client.Models
             // RetryCount (int) minimum
             if (this.RetryCount < (int)0)
             {
-                yield return new ValidationResult("Invalid value for RetryCount, must be a value greater than or equal to 0.", new [] { "RetryCount" });
+                yield return new ValidationResult("Invalid value for RetryCount, must be a value greater than or equal to 0.", new[] { "RetryCount" });
             }
 
             // ResponseTimeoutSeconds (long) minimum
             if (this.ResponseTimeoutSeconds < (long)1)
             {
-                yield return new ValidationResult("Invalid value for ResponseTimeoutSeconds, must be a value greater than or equal to 1.", new [] { "ResponseTimeoutSeconds" });
+                yield return new ValidationResult("Invalid value for ResponseTimeoutSeconds, must be a value greater than or equal to 1.", new[] { "ResponseTimeoutSeconds" });
             }
 
             // PollTimeoutSeconds (int) minimum
             if (this.PollTimeoutSeconds < (int)0)
             {
-                yield return new ValidationResult("Invalid value for PollTimeoutSeconds, must be a value greater than or equal to 0.", new [] { "PollTimeoutSeconds" });
+                yield return new ValidationResult("Invalid value for PollTimeoutSeconds, must be a value greater than or equal to 0.", new[] { "PollTimeoutSeconds" });
             }
 
             // BackoffScaleFactor (int) minimum
             if (this.BackoffScaleFactor < (int)1)
             {
-                yield return new ValidationResult("Invalid value for BackoffScaleFactor, must be a value greater than or equal to 1.", new [] { "BackoffScaleFactor" });
+                yield return new ValidationResult("Invalid value for BackoffScaleFactor, must be a value greater than or equal to 1.", new[] { "BackoffScaleFactor" });
             }
 
             yield break;

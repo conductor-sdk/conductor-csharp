@@ -98,17 +98,17 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Log == input.Log ||
                     (this.Log != null &&
                     this.Log.Equals(input.Log))
-                ) && 
+                ) &&
                 (
                     this.TaskId == input.TaskId ||
                     (this.TaskId != null &&
                     this.TaskId.Equals(input.TaskId))
-                ) && 
+                ) &&
                 (
                     this.CreatedTime == input.CreatedTime ||
                     this.CreatedTime.Equals(input.CreatedTime)

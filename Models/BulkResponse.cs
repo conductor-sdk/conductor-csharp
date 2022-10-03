@@ -90,13 +90,13 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.BulkErrorResults == input.BulkErrorResults ||
                     this.BulkErrorResults != null &&
                     input.BulkErrorResults != null &&
                     this.BulkErrorResults.SequenceEqual(input.BulkErrorResults)
-                ) && 
+                ) &&
                 (
                     this.BulkSuccessfulResults == input.BulkSuccessfulResults ||
                     this.BulkSuccessfulResults != null &&

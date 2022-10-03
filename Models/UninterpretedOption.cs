@@ -18,7 +18,7 @@ namespace Conductor.Client.Models
     /// UninterpretedOption
     /// </summary>
     [DataContract]
-    public partial class UninterpretedOption :  IEquatable<UninterpretedOption>, IValidatableObject
+    public partial class UninterpretedOption : IEquatable<UninterpretedOption>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UninterpretedOption" /> class.
@@ -72,119 +72,119 @@ namespace Conductor.Client.Models
             this.DescriptorForType = descriptorForType;
             this.AllFields = allFields;
         }
-        
+
         /// <summary>
         /// Gets or Sets UnknownFields
         /// </summary>
-        [DataMember(Name="unknownFields", EmitDefaultValue=false)]
+        [DataMember(Name = "unknownFields", EmitDefaultValue = false)]
         public UnknownFieldSet UnknownFields { get; set; }
 
         /// <summary>
         /// Gets or Sets Initialized
         /// </summary>
-        [DataMember(Name="initialized", EmitDefaultValue=false)]
+        [DataMember(Name = "initialized", EmitDefaultValue = false)]
         public bool? Initialized { get; set; }
 
         /// <summary>
         /// Gets or Sets DoubleValue
         /// </summary>
-        [DataMember(Name="doubleValue", EmitDefaultValue=false)]
+        [DataMember(Name = "doubleValue", EmitDefaultValue = false)]
         public double? DoubleValue { get; set; }
 
         /// <summary>
         /// Gets or Sets StringValue
         /// </summary>
-        [DataMember(Name="stringValue", EmitDefaultValue=false)]
+        [DataMember(Name = "stringValue", EmitDefaultValue = false)]
         public ByteString StringValue { get; set; }
 
         /// <summary>
         /// Gets or Sets ParserForType
         /// </summary>
-        [DataMember(Name="parserForType", EmitDefaultValue=false)]
+        [DataMember(Name = "parserForType", EmitDefaultValue = false)]
         public ParserUninterpretedOption ParserForType { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultInstanceForType
         /// </summary>
-        [DataMember(Name="defaultInstanceForType", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultInstanceForType", EmitDefaultValue = false)]
         public UninterpretedOption DefaultInstanceForType { get; set; }
 
         /// <summary>
         /// Gets or Sets SerializedSize
         /// </summary>
-        [DataMember(Name="serializedSize", EmitDefaultValue=false)]
+        [DataMember(Name = "serializedSize", EmitDefaultValue = false)]
         public int? SerializedSize { get; set; }
 
         /// <summary>
         /// Gets or Sets NameList
         /// </summary>
-        [DataMember(Name="nameList", EmitDefaultValue=false)]
+        [DataMember(Name = "nameList", EmitDefaultValue = false)]
         public List<NamePart> NameList { get; set; }
 
         /// <summary>
         /// Gets or Sets NameOrBuilderList
         /// </summary>
-        [DataMember(Name="nameOrBuilderList", EmitDefaultValue=false)]
+        [DataMember(Name = "nameOrBuilderList", EmitDefaultValue = false)]
         public List<NamePartOrBuilder> NameOrBuilderList { get; set; }
 
         /// <summary>
         /// Gets or Sets IdentifierValue
         /// </summary>
-        [DataMember(Name="identifierValue", EmitDefaultValue=false)]
+        [DataMember(Name = "identifierValue", EmitDefaultValue = false)]
         public string IdentifierValue { get; set; }
 
         /// <summary>
         /// Gets or Sets IdentifierValueBytes
         /// </summary>
-        [DataMember(Name="identifierValueBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "identifierValueBytes", EmitDefaultValue = false)]
         public ByteString IdentifierValueBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets PositiveIntValue
         /// </summary>
-        [DataMember(Name="positiveIntValue", EmitDefaultValue=false)]
+        [DataMember(Name = "positiveIntValue", EmitDefaultValue = false)]
         public long? PositiveIntValue { get; set; }
 
         /// <summary>
         /// Gets or Sets NegativeIntValue
         /// </summary>
-        [DataMember(Name="negativeIntValue", EmitDefaultValue=false)]
+        [DataMember(Name = "negativeIntValue", EmitDefaultValue = false)]
         public long? NegativeIntValue { get; set; }
 
         /// <summary>
         /// Gets or Sets AggregateValue
         /// </summary>
-        [DataMember(Name="aggregateValue", EmitDefaultValue=false)]
+        [DataMember(Name = "aggregateValue", EmitDefaultValue = false)]
         public string AggregateValue { get; set; }
 
         /// <summary>
         /// Gets or Sets AggregateValueBytes
         /// </summary>
-        [DataMember(Name="aggregateValueBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "aggregateValueBytes", EmitDefaultValue = false)]
         public ByteString AggregateValueBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets NameCount
         /// </summary>
-        [DataMember(Name="nameCount", EmitDefaultValue=false)]
+        [DataMember(Name = "nameCount", EmitDefaultValue = false)]
         public int? NameCount { get; set; }
 
         /// <summary>
         /// Gets or Sets InitializationErrorString
         /// </summary>
-        [DataMember(Name="initializationErrorString", EmitDefaultValue=false)]
+        [DataMember(Name = "initializationErrorString", EmitDefaultValue = false)]
         public string InitializationErrorString { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptorForType
         /// </summary>
-        [DataMember(Name="descriptorForType", EmitDefaultValue=false)]
+        [DataMember(Name = "descriptorForType", EmitDefaultValue = false)]
         public Descriptor DescriptorForType { get; set; }
 
         /// <summary>
         /// Gets or Sets AllFields
         /// </summary>
-        [DataMember(Name="allFields", EmitDefaultValue=false)]
+        [DataMember(Name = "allFields", EmitDefaultValue = false)]
         public Dictionary<string, Object> AllFields { get; set; }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -247,97 +247,97 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UnknownFields == input.UnknownFields ||
                     (this.UnknownFields != null &&
                     this.UnknownFields.Equals(input.UnknownFields))
-                ) && 
+                ) &&
                 (
                     this.Initialized == input.Initialized ||
                     (this.Initialized != null &&
                     this.Initialized.Equals(input.Initialized))
-                ) && 
+                ) &&
                 (
                     this.DoubleValue == input.DoubleValue ||
                     (this.DoubleValue != null &&
                     this.DoubleValue.Equals(input.DoubleValue))
-                ) && 
+                ) &&
                 (
                     this.StringValue == input.StringValue ||
                     (this.StringValue != null &&
                     this.StringValue.Equals(input.StringValue))
-                ) && 
+                ) &&
                 (
                     this.ParserForType == input.ParserForType ||
                     (this.ParserForType != null &&
                     this.ParserForType.Equals(input.ParserForType))
-                ) && 
+                ) &&
                 (
                     this.DefaultInstanceForType == input.DefaultInstanceForType ||
                     (this.DefaultInstanceForType != null &&
                     this.DefaultInstanceForType.Equals(input.DefaultInstanceForType))
-                ) && 
+                ) &&
                 (
                     this.SerializedSize == input.SerializedSize ||
                     (this.SerializedSize != null &&
                     this.SerializedSize.Equals(input.SerializedSize))
-                ) && 
+                ) &&
                 (
                     this.NameList == input.NameList ||
                     this.NameList != null &&
                     this.NameList.SequenceEqual(input.NameList)
-                ) && 
+                ) &&
                 (
                     this.NameOrBuilderList == input.NameOrBuilderList ||
                     this.NameOrBuilderList != null &&
                     this.NameOrBuilderList.SequenceEqual(input.NameOrBuilderList)
-                ) && 
+                ) &&
                 (
                     this.IdentifierValue == input.IdentifierValue ||
                     (this.IdentifierValue != null &&
                     this.IdentifierValue.Equals(input.IdentifierValue))
-                ) && 
+                ) &&
                 (
                     this.IdentifierValueBytes == input.IdentifierValueBytes ||
                     (this.IdentifierValueBytes != null &&
                     this.IdentifierValueBytes.Equals(input.IdentifierValueBytes))
-                ) && 
+                ) &&
                 (
                     this.PositiveIntValue == input.PositiveIntValue ||
                     (this.PositiveIntValue != null &&
                     this.PositiveIntValue.Equals(input.PositiveIntValue))
-                ) && 
+                ) &&
                 (
                     this.NegativeIntValue == input.NegativeIntValue ||
                     (this.NegativeIntValue != null &&
                     this.NegativeIntValue.Equals(input.NegativeIntValue))
-                ) && 
+                ) &&
                 (
                     this.AggregateValue == input.AggregateValue ||
                     (this.AggregateValue != null &&
                     this.AggregateValue.Equals(input.AggregateValue))
-                ) && 
+                ) &&
                 (
                     this.AggregateValueBytes == input.AggregateValueBytes ||
                     (this.AggregateValueBytes != null &&
                     this.AggregateValueBytes.Equals(input.AggregateValueBytes))
-                ) && 
+                ) &&
                 (
                     this.NameCount == input.NameCount ||
                     (this.NameCount != null &&
                     this.NameCount.Equals(input.NameCount))
-                ) && 
+                ) &&
                 (
                     this.InitializationErrorString == input.InitializationErrorString ||
                     (this.InitializationErrorString != null &&
                     this.InitializationErrorString.Equals(input.InitializationErrorString))
-                ) && 
+                ) &&
                 (
                     this.DescriptorForType == input.DescriptorForType ||
                     (this.DescriptorForType != null &&
                     this.DescriptorForType.Equals(input.DescriptorForType))
-                ) && 
+                ) &&
                 (
                     this.AllFields == input.AllFields ||
                     this.AllFields != null &&

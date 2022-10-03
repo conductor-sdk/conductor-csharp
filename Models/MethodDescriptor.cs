@@ -17,7 +17,7 @@ namespace Conductor.Client.Models
     /// MethodDescriptor
     /// </summary>
     [DataContract]
-    public partial class MethodDescriptor :  IEquatable<MethodDescriptor>, IValidatableObject
+    public partial class MethodDescriptor : IEquatable<MethodDescriptor>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MethodDescriptor" /> class.
@@ -41,53 +41,53 @@ namespace Conductor.Client.Models
             this.Options = options;
             this.Name = name;
         }
-        
+
         /// <summary>
         /// Gets or Sets Index
         /// </summary>
-        [DataMember(Name="index", EmitDefaultValue=false)]
+        [DataMember(Name = "index", EmitDefaultValue = false)]
         public int? Index { get; set; }
 
         /// <summary>
         /// Gets or Sets FullName
         /// </summary>
-        [DataMember(Name="fullName", EmitDefaultValue=false)]
+        [DataMember(Name = "fullName", EmitDefaultValue = false)]
         public string FullName { get; set; }
 
         /// <summary>
         /// Gets or Sets _File
         /// </summary>
-        [DataMember(Name="file", EmitDefaultValue=false)]
+        [DataMember(Name = "file", EmitDefaultValue = false)]
         public FileDescriptor _File { get; set; }
 
         /// <summary>
         /// Gets or Sets Service
         /// </summary>
-        [DataMember(Name="service", EmitDefaultValue=false)]
+        [DataMember(Name = "service", EmitDefaultValue = false)]
         public ServiceDescriptor Service { get; set; }
 
         /// <summary>
         /// Gets or Sets InputType
         /// </summary>
-        [DataMember(Name="inputType", EmitDefaultValue=false)]
+        [DataMember(Name = "inputType", EmitDefaultValue = false)]
         public Descriptor InputType { get; set; }
 
         /// <summary>
         /// Gets or Sets OutputType
         /// </summary>
-        [DataMember(Name="outputType", EmitDefaultValue=false)]
+        [DataMember(Name = "outputType", EmitDefaultValue = false)]
         public Descriptor OutputType { get; set; }
 
         /// <summary>
         /// Gets or Sets Options
         /// </summary>
-        [DataMember(Name="options", EmitDefaultValue=false)]
+        [DataMember(Name = "options", EmitDefaultValue = false)]
         public MethodOptions Options { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -139,42 +139,42 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Index == input.Index ||
                     (this.Index != null &&
                     this.Index.Equals(input.Index))
-                ) && 
+                ) &&
                 (
                     this.FullName == input.FullName ||
                     (this.FullName != null &&
                     this.FullName.Equals(input.FullName))
-                ) && 
+                ) &&
                 (
                     this._File == input._File ||
                     (this._File != null &&
                     this._File.Equals(input._File))
-                ) && 
+                ) &&
                 (
                     this.Service == input.Service ||
                     (this.Service != null &&
                     this.Service.Equals(input.Service))
-                ) && 
+                ) &&
                 (
                     this.InputType == input.InputType ||
                     (this.InputType != null &&
                     this.InputType.Equals(input.InputType))
-                ) && 
+                ) &&
                 (
                     this.OutputType == input.OutputType ||
                     (this.OutputType != null &&
                     this.OutputType.Equals(input.OutputType))
-                ) && 
+                ) &&
                 (
                     this.Options == input.Options ||
                     (this.Options != null &&
                     this.Options.Equals(input.Options))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&

@@ -18,7 +18,7 @@ namespace Conductor.Client.Models
     /// OneofDescriptor
     /// </summary>
     [DataContract]
-    public partial class OneofDescriptor :  IEquatable<OneofDescriptor>, IValidatableObject
+    public partial class OneofDescriptor : IEquatable<OneofDescriptor>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OneofDescriptor" /> class.
@@ -42,53 +42,53 @@ namespace Conductor.Client.Models
             this.Options = options;
             this.Name = name;
         }
-        
+
         /// <summary>
         /// Gets or Sets Index
         /// </summary>
-        [DataMember(Name="index", EmitDefaultValue=false)]
+        [DataMember(Name = "index", EmitDefaultValue = false)]
         public int? Index { get; set; }
 
         /// <summary>
         /// Gets or Sets FullName
         /// </summary>
-        [DataMember(Name="fullName", EmitDefaultValue=false)]
+        [DataMember(Name = "fullName", EmitDefaultValue = false)]
         public string FullName { get; set; }
 
         /// <summary>
         /// Gets or Sets _File
         /// </summary>
-        [DataMember(Name="file", EmitDefaultValue=false)]
+        [DataMember(Name = "file", EmitDefaultValue = false)]
         public FileDescriptor _File { get; set; }
 
         /// <summary>
         /// Gets or Sets ContainingType
         /// </summary>
-        [DataMember(Name="containingType", EmitDefaultValue=false)]
+        [DataMember(Name = "containingType", EmitDefaultValue = false)]
         public Descriptor ContainingType { get; set; }
 
         /// <summary>
         /// Gets or Sets FieldCount
         /// </summary>
-        [DataMember(Name="fieldCount", EmitDefaultValue=false)]
+        [DataMember(Name = "fieldCount", EmitDefaultValue = false)]
         public int? FieldCount { get; set; }
 
         /// <summary>
         /// Gets or Sets Fields
         /// </summary>
-        [DataMember(Name="fields", EmitDefaultValue=false)]
+        [DataMember(Name = "fields", EmitDefaultValue = false)]
         public List<FieldDescriptor> Fields { get; set; }
 
         /// <summary>
         /// Gets or Sets Options
         /// </summary>
-        [DataMember(Name="options", EmitDefaultValue=false)]
+        [DataMember(Name = "options", EmitDefaultValue = false)]
         public OneofOptions Options { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -140,42 +140,42 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Index == input.Index ||
                     (this.Index != null &&
                     this.Index.Equals(input.Index))
-                ) && 
+                ) &&
                 (
                     this.FullName == input.FullName ||
                     (this.FullName != null &&
                     this.FullName.Equals(input.FullName))
-                ) && 
+                ) &&
                 (
                     this._File == input._File ||
                     (this._File != null &&
                     this._File.Equals(input._File))
-                ) && 
+                ) &&
                 (
                     this.ContainingType == input.ContainingType ||
                     (this.ContainingType != null &&
                     this.ContainingType.Equals(input.ContainingType))
-                ) && 
+                ) &&
                 (
                     this.FieldCount == input.FieldCount ||
                     (this.FieldCount != null &&
                     this.FieldCount.Equals(input.FieldCount))
-                ) && 
+                ) &&
                 (
                     this.Fields == input.Fields ||
                     this.Fields != null &&
                     this.Fields.SequenceEqual(input.Fields)
-                ) && 
+                ) &&
                 (
                     this.Options == input.Options ||
                     (this.Options != null &&
                     this.Options.Equals(input.Options))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&

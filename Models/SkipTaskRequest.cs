@@ -90,13 +90,13 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.TaskInput == input.TaskInput ||
                     this.TaskInput != null &&
                     input.TaskInput != null &&
                     this.TaskInput.SequenceEqual(input.TaskInput)
-                ) && 
+                ) &&
                 (
                     this.TaskOutput == input.TaskOutput ||
                     this.TaskOutput != null &&

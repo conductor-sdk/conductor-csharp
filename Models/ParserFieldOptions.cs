@@ -17,7 +17,7 @@ namespace Conductor.Client.Models
     /// ParserFieldOptions
     /// </summary>
     [DataContract]
-    public partial class ParserFieldOptions :  IEquatable<ParserFieldOptions>, IValidatableObject
+    public partial class ParserFieldOptions : IEquatable<ParserFieldOptions>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ParserFieldOptions" /> class.
@@ -26,7 +26,7 @@ namespace Conductor.Client.Models
         public ParserFieldOptions()
         {
         }
-        
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -38,7 +38,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>

@@ -17,7 +17,7 @@ namespace Conductor.Client.Models
     /// ParserEnumOptions
     /// </summary>
     [DataContract]
-    public partial class ParserEnumOptions :  IEquatable<ParserEnumOptions>, IValidatableObject
+    public partial class ParserEnumOptions : IEquatable<ParserEnumOptions>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ParserEnumOptions" /> class.
@@ -26,7 +26,7 @@ namespace Conductor.Client.Models
         public ParserEnumOptions()
         {
         }
-        
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -38,7 +38,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>

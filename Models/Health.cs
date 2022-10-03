@@ -18,7 +18,7 @@ namespace Conductor.Client.Models
     /// Health
     /// </summary>
     [DataContract]
-    public partial class Health :  IEquatable<Health>, IValidatableObject
+    public partial class Health : IEquatable<Health>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Health" /> class.
@@ -40,23 +40,23 @@ namespace Conductor.Client.Models
             }
             this.ErrorMessage = errorMessage;
         }
-        
+
         /// <summary>
         /// Gets or Sets Details
         /// </summary>
-        [DataMember(Name="details", EmitDefaultValue=false)]
+        [DataMember(Name = "details", EmitDefaultValue = false)]
         public Dictionary<string, Object> Details { get; set; }
 
         /// <summary>
         /// Gets or Sets Healthy
         /// </summary>
-        [DataMember(Name="healthy", EmitDefaultValue=false)]
+        [DataMember(Name = "healthy", EmitDefaultValue = false)]
         public bool? Healthy { get; set; }
 
         /// <summary>
         /// Gets or Sets ErrorMessage
         /// </summary>
-        [DataMember(Name="errorMessage", EmitDefaultValue=false)]
+        [DataMember(Name = "errorMessage", EmitDefaultValue = false)]
         public string ErrorMessage { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -103,17 +103,17 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Details == input.Details ||
                     this.Details != null &&
                     this.Details.SequenceEqual(input.Details)
-                ) && 
+                ) &&
                 (
                     this.Healthy == input.Healthy ||
                     (this.Healthy != null &&
                     this.Healthy.Equals(input.Healthy))
-                ) && 
+                ) &&
                 (
                     this.ErrorMessage == input.ErrorMessage ||
                     (this.ErrorMessage != null &&

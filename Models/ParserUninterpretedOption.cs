@@ -17,7 +17,7 @@ namespace Conductor.Client.Models
     /// ParserUninterpretedOption
     /// </summary>
     [DataContract]
-    public partial class ParserUninterpretedOption :  IEquatable<ParserUninterpretedOption>, IValidatableObject
+    public partial class ParserUninterpretedOption : IEquatable<ParserUninterpretedOption>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ParserUninterpretedOption" /> class.
@@ -26,7 +26,7 @@ namespace Conductor.Client.Models
         public ParserUninterpretedOption()
         {
         }
-        
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -38,7 +38,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>

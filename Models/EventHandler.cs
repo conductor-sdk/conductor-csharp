@@ -41,17 +41,20 @@ namespace Conductor.Client.Models
         public EventHandler(string name = default(string), string _event = default(string), string condition = default(string), List<Action> actions = default(List<Action>), bool active = default(bool), string evaluatorType = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for EventHandler and cannot be null");
             }
             this.Name = name;
             // to ensure "_event" is required (not null)
-            if (_event == null) {
+            if (_event == null)
+            {
                 throw new ArgumentNullException("_event is a required property for EventHandler and cannot be null");
             }
             this.Event = _event;
             // to ensure "actions" is required (not null)
-            if (actions == null) {
+            if (actions == null)
+            {
                 throw new ArgumentNullException("actions is a required property for EventHandler and cannot be null");
             }
             this.Actions = actions;
@@ -144,32 +147,32 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Event == input.Event ||
                     (this.Event != null &&
                     this.Event.Equals(input.Event))
-                ) && 
+                ) &&
                 (
                     this.Condition == input.Condition ||
                     (this.Condition != null &&
                     this.Condition.Equals(input.Condition))
-                ) && 
+                ) &&
                 (
                     this.Actions == input.Actions ||
                     this.Actions != null &&
                     input.Actions != null &&
                     this.Actions.SequenceEqual(input.Actions)
-                ) && 
+                ) &&
                 (
                     this.Active == input.Active ||
                     this.Active.Equals(input.Active)
-                ) && 
+                ) &&
                 (
                     this.EvaluatorType == input.EvaluatorType ||
                     (this.EvaluatorType != null &&

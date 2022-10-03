@@ -202,12 +202,14 @@ namespace Conductor.Client.Models
         public WorkflowTask(string name = default(string), string taskReferenceName = default(string), string description = default(string), Dictionary<string, Object> inputParameters = default(Dictionary<string, Object>), string type = default(string), string dynamicTaskNameParam = default(string), string caseValueParam = default(string), string caseExpression = default(string), string scriptExpression = default(string), Dictionary<string, List<WorkflowTask>> decisionCases = default(Dictionary<string, List<WorkflowTask>>), string dynamicForkJoinTasksParam = default(string), string dynamicForkTasksParam = default(string), string dynamicForkTasksInputParamName = default(string), List<WorkflowTask> defaultCase = default(List<WorkflowTask>), List<List<WorkflowTask>> forkTasks = default(List<List<WorkflowTask>>), int startDelay = default(int), SubWorkflowParams subWorkflowParam = default(SubWorkflowParams), List<string> joinOn = default(List<string>), string sink = default(string), bool optional = default(bool), TaskDef taskDefinition = default(TaskDef), bool rateLimited = default(bool), List<string> defaultExclusiveJoinTask = default(List<string>), bool asyncComplete = default(bool), string loopCondition = default(string), List<WorkflowTask> loopOver = default(List<WorkflowTask>), int retryCount = default(int), string evaluatorType = default(string), string expression = default(string), WorkflowTaskTypeEnum? workflowTaskType = default(WorkflowTaskTypeEnum?))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for WorkflowTask and cannot be null");
             }
             this.Name = name;
             // to ensure "taskReferenceName" is required (not null)
-            if (taskReferenceName == null) {
+            if (taskReferenceName == null)
+            {
                 throw new ArgumentNullException("taskReferenceName is a required property for WorkflowTask and cannot be null");
             }
             this.TaskReferenceName = taskReferenceName;
@@ -493,154 +495,154 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.TaskReferenceName == input.TaskReferenceName ||
                     (this.TaskReferenceName != null &&
                     this.TaskReferenceName.Equals(input.TaskReferenceName))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.InputParameters == input.InputParameters ||
                     this.InputParameters != null &&
                     input.InputParameters != null &&
                     this.InputParameters.SequenceEqual(input.InputParameters)
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.DynamicTaskNameParam == input.DynamicTaskNameParam ||
                     (this.DynamicTaskNameParam != null &&
                     this.DynamicTaskNameParam.Equals(input.DynamicTaskNameParam))
-                ) && 
+                ) &&
                 (
                     this.CaseValueParam == input.CaseValueParam ||
                     (this.CaseValueParam != null &&
                     this.CaseValueParam.Equals(input.CaseValueParam))
-                ) && 
+                ) &&
                 (
                     this.CaseExpression == input.CaseExpression ||
                     (this.CaseExpression != null &&
                     this.CaseExpression.Equals(input.CaseExpression))
-                ) && 
+                ) &&
                 (
                     this.ScriptExpression == input.ScriptExpression ||
                     (this.ScriptExpression != null &&
                     this.ScriptExpression.Equals(input.ScriptExpression))
-                ) && 
+                ) &&
                 (
                     this.DecisionCases == input.DecisionCases ||
                     this.DecisionCases != null &&
                     input.DecisionCases != null &&
                     this.DecisionCases.SequenceEqual(input.DecisionCases)
-                ) && 
+                ) &&
                 (
                     this.DynamicForkJoinTasksParam == input.DynamicForkJoinTasksParam ||
                     (this.DynamicForkJoinTasksParam != null &&
                     this.DynamicForkJoinTasksParam.Equals(input.DynamicForkJoinTasksParam))
-                ) && 
+                ) &&
                 (
                     this.DynamicForkTasksParam == input.DynamicForkTasksParam ||
                     (this.DynamicForkTasksParam != null &&
                     this.DynamicForkTasksParam.Equals(input.DynamicForkTasksParam))
-                ) && 
+                ) &&
                 (
                     this.DynamicForkTasksInputParamName == input.DynamicForkTasksInputParamName ||
                     (this.DynamicForkTasksInputParamName != null &&
                     this.DynamicForkTasksInputParamName.Equals(input.DynamicForkTasksInputParamName))
-                ) && 
+                ) &&
                 (
                     this.DefaultCase == input.DefaultCase ||
                     this.DefaultCase != null &&
                     input.DefaultCase != null &&
                     this.DefaultCase.SequenceEqual(input.DefaultCase)
-                ) && 
+                ) &&
                 (
                     this.ForkTasks == input.ForkTasks ||
                     this.ForkTasks != null &&
                     input.ForkTasks != null &&
                     this.ForkTasks.SequenceEqual(input.ForkTasks)
-                ) && 
+                ) &&
                 (
                     this.StartDelay == input.StartDelay ||
                     this.StartDelay.Equals(input.StartDelay)
-                ) && 
+                ) &&
                 (
                     this.SubWorkflowParam == input.SubWorkflowParam ||
                     (this.SubWorkflowParam != null &&
                     this.SubWorkflowParam.Equals(input.SubWorkflowParam))
-                ) && 
+                ) &&
                 (
                     this.JoinOn == input.JoinOn ||
                     this.JoinOn != null &&
                     input.JoinOn != null &&
                     this.JoinOn.SequenceEqual(input.JoinOn)
-                ) && 
+                ) &&
                 (
                     this.Sink == input.Sink ||
                     (this.Sink != null &&
                     this.Sink.Equals(input.Sink))
-                ) && 
+                ) &&
                 (
                     this.Optional == input.Optional ||
                     this.Optional.Equals(input.Optional)
-                ) && 
+                ) &&
                 (
                     this.TaskDefinition == input.TaskDefinition ||
                     (this.TaskDefinition != null &&
                     this.TaskDefinition.Equals(input.TaskDefinition))
-                ) && 
+                ) &&
                 (
                     this.RateLimited == input.RateLimited ||
                     this.RateLimited.Equals(input.RateLimited)
-                ) && 
+                ) &&
                 (
                     this.DefaultExclusiveJoinTask == input.DefaultExclusiveJoinTask ||
                     this.DefaultExclusiveJoinTask != null &&
                     input.DefaultExclusiveJoinTask != null &&
                     this.DefaultExclusiveJoinTask.SequenceEqual(input.DefaultExclusiveJoinTask)
-                ) && 
+                ) &&
                 (
                     this.AsyncComplete == input.AsyncComplete ||
                     this.AsyncComplete.Equals(input.AsyncComplete)
-                ) && 
+                ) &&
                 (
                     this.LoopCondition == input.LoopCondition ||
                     (this.LoopCondition != null &&
                     this.LoopCondition.Equals(input.LoopCondition))
-                ) && 
+                ) &&
                 (
                     this.LoopOver == input.LoopOver ||
                     this.LoopOver != null &&
                     input.LoopOver != null &&
                     this.LoopOver.SequenceEqual(input.LoopOver)
-                ) && 
+                ) &&
                 (
                     this.RetryCount == input.RetryCount ||
                     this.RetryCount.Equals(input.RetryCount)
-                ) && 
+                ) &&
                 (
                     this.EvaluatorType == input.EvaluatorType ||
                     (this.EvaluatorType != null &&
                     this.EvaluatorType.Equals(input.EvaluatorType))
-                ) && 
+                ) &&
                 (
                     this.Expression == input.Expression ||
                     (this.Expression != null &&
                     this.Expression.Equals(input.Expression))
-                ) && 
+                ) &&
                 (
                     this.WorkflowTaskType == input.WorkflowTaskType ||
                     this.WorkflowTaskType.Equals(input.WorkflowTaskType)

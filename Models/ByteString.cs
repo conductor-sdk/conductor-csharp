@@ -17,7 +17,7 @@ namespace Conductor.Client.Models
     /// ByteString
     /// </summary>
     [DataContract]
-    public partial class ByteString :  IEquatable<ByteString>, IValidatableObject
+    public partial class ByteString : IEquatable<ByteString>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ByteString" /> class.
@@ -45,17 +45,17 @@ namespace Conductor.Client.Models
                 this.Empty = empty;
             }
         }
-        
+
         /// <summary>
         /// Gets or Sets ValidUtf8
         /// </summary>
-        [DataMember(Name="validUtf8", EmitDefaultValue=false)]
+        [DataMember(Name = "validUtf8", EmitDefaultValue = false)]
         public bool? ValidUtf8 { get; set; }
 
         /// <summary>
         /// Gets or Sets Empty
         /// </summary>
-        [DataMember(Name="empty", EmitDefaultValue=false)]
+        [DataMember(Name = "empty", EmitDefaultValue = false)]
         public bool? Empty { get; set; }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -101,12 +101,12 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ValidUtf8 == input.ValidUtf8 ||
                     (this.ValidUtf8 != null &&
                     this.ValidUtf8.Equals(input.ValidUtf8))
-                ) && 
+                ) &&
                 (
                     this.Empty == input.Empty ||
                     (this.Empty != null &&

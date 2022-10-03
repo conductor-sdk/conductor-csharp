@@ -18,7 +18,7 @@ namespace Conductor.Client.Models
     /// EnumValueOptions
     /// </summary>
     [DataContract]
-    public partial class EnumValueOptions :  IEquatable<EnumValueOptions>, IValidatableObject
+    public partial class EnumValueOptions : IEquatable<EnumValueOptions>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EnumValueOptions" /> class.
@@ -68,83 +68,83 @@ namespace Conductor.Client.Models
             this.AllFields = allFields;
             this.AllFieldsRaw = allFieldsRaw;
         }
-        
+
         /// <summary>
         /// Gets or Sets UnknownFields
         /// </summary>
-        [DataMember(Name="unknownFields", EmitDefaultValue=false)]
+        [DataMember(Name = "unknownFields", EmitDefaultValue = false)]
         public UnknownFieldSet UnknownFields { get; set; }
 
         /// <summary>
         /// Gets or Sets Initialized
         /// </summary>
-        [DataMember(Name="initialized", EmitDefaultValue=false)]
+        [DataMember(Name = "initialized", EmitDefaultValue = false)]
         public bool? Initialized { get; set; }
 
         /// <summary>
         /// Gets or Sets ParserForType
         /// </summary>
-        [DataMember(Name="parserForType", EmitDefaultValue=false)]
+        [DataMember(Name = "parserForType", EmitDefaultValue = false)]
         public ParserEnumValueOptions ParserForType { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultInstanceForType
         /// </summary>
-        [DataMember(Name="defaultInstanceForType", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultInstanceForType", EmitDefaultValue = false)]
         public EnumValueOptions DefaultInstanceForType { get; set; }
 
         /// <summary>
         /// Gets or Sets SerializedSize
         /// </summary>
-        [DataMember(Name="serializedSize", EmitDefaultValue=false)]
+        [DataMember(Name = "serializedSize", EmitDefaultValue = false)]
         public int? SerializedSize { get; set; }
 
         /// <summary>
         /// Gets or Sets Deprecated
         /// </summary>
-        [DataMember(Name="deprecated", EmitDefaultValue=false)]
+        [DataMember(Name = "deprecated", EmitDefaultValue = false)]
         public bool? Deprecated { get; set; }
 
         /// <summary>
         /// Gets or Sets UninterpretedOptionList
         /// </summary>
-        [DataMember(Name="uninterpretedOptionList", EmitDefaultValue=false)]
+        [DataMember(Name = "uninterpretedOptionList", EmitDefaultValue = false)]
         public List<UninterpretedOption> UninterpretedOptionList { get; set; }
 
         /// <summary>
         /// Gets or Sets UninterpretedOptionOrBuilderList
         /// </summary>
-        [DataMember(Name="uninterpretedOptionOrBuilderList", EmitDefaultValue=false)]
+        [DataMember(Name = "uninterpretedOptionOrBuilderList", EmitDefaultValue = false)]
         public List<UninterpretedOptionOrBuilder> UninterpretedOptionOrBuilderList { get; set; }
 
         /// <summary>
         /// Gets or Sets UninterpretedOptionCount
         /// </summary>
-        [DataMember(Name="uninterpretedOptionCount", EmitDefaultValue=false)]
+        [DataMember(Name = "uninterpretedOptionCount", EmitDefaultValue = false)]
         public int? UninterpretedOptionCount { get; set; }
 
         /// <summary>
         /// Gets or Sets InitializationErrorString
         /// </summary>
-        [DataMember(Name="initializationErrorString", EmitDefaultValue=false)]
+        [DataMember(Name = "initializationErrorString", EmitDefaultValue = false)]
         public string InitializationErrorString { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptorForType
         /// </summary>
-        [DataMember(Name="descriptorForType", EmitDefaultValue=false)]
+        [DataMember(Name = "descriptorForType", EmitDefaultValue = false)]
         public Descriptor DescriptorForType { get; set; }
 
         /// <summary>
         /// Gets or Sets AllFields
         /// </summary>
-        [DataMember(Name="allFields", EmitDefaultValue=false)]
+        [DataMember(Name = "allFields", EmitDefaultValue = false)]
         public Dictionary<string, Object> AllFields { get; set; }
 
         /// <summary>
         /// Gets or Sets AllFieldsRaw
         /// </summary>
-        [DataMember(Name="allFieldsRaw", EmitDefaultValue=false)]
+        [DataMember(Name = "allFieldsRaw", EmitDefaultValue = false)]
         public Dictionary<string, Object> AllFieldsRaw { get; set; }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -201,67 +201,67 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UnknownFields == input.UnknownFields ||
                     (this.UnknownFields != null &&
                     this.UnknownFields.Equals(input.UnknownFields))
-                ) && 
+                ) &&
                 (
                     this.Initialized == input.Initialized ||
                     (this.Initialized != null &&
                     this.Initialized.Equals(input.Initialized))
-                ) && 
+                ) &&
                 (
                     this.ParserForType == input.ParserForType ||
                     (this.ParserForType != null &&
                     this.ParserForType.Equals(input.ParserForType))
-                ) && 
+                ) &&
                 (
                     this.DefaultInstanceForType == input.DefaultInstanceForType ||
                     (this.DefaultInstanceForType != null &&
                     this.DefaultInstanceForType.Equals(input.DefaultInstanceForType))
-                ) && 
+                ) &&
                 (
                     this.SerializedSize == input.SerializedSize ||
                     (this.SerializedSize != null &&
                     this.SerializedSize.Equals(input.SerializedSize))
-                ) && 
+                ) &&
                 (
                     this.Deprecated == input.Deprecated ||
                     (this.Deprecated != null &&
                     this.Deprecated.Equals(input.Deprecated))
-                ) && 
+                ) &&
                 (
                     this.UninterpretedOptionList == input.UninterpretedOptionList ||
                     this.UninterpretedOptionList != null &&
                     this.UninterpretedOptionList.SequenceEqual(input.UninterpretedOptionList)
-                ) && 
+                ) &&
                 (
                     this.UninterpretedOptionOrBuilderList == input.UninterpretedOptionOrBuilderList ||
                     this.UninterpretedOptionOrBuilderList != null &&
                     this.UninterpretedOptionOrBuilderList.SequenceEqual(input.UninterpretedOptionOrBuilderList)
-                ) && 
+                ) &&
                 (
                     this.UninterpretedOptionCount == input.UninterpretedOptionCount ||
                     (this.UninterpretedOptionCount != null &&
                     this.UninterpretedOptionCount.Equals(input.UninterpretedOptionCount))
-                ) && 
+                ) &&
                 (
                     this.InitializationErrorString == input.InitializationErrorString ||
                     (this.InitializationErrorString != null &&
                     this.InitializationErrorString.Equals(input.InitializationErrorString))
-                ) && 
+                ) &&
                 (
                     this.DescriptorForType == input.DescriptorForType ||
                     (this.DescriptorForType != null &&
                     this.DescriptorForType.Equals(input.DescriptorForType))
-                ) && 
+                ) &&
                 (
                     this.AllFields == input.AllFields ||
                     this.AllFields != null &&
                     this.AllFields.SequenceEqual(input.AllFields)
-                ) && 
+                ) &&
                 (
                     this.AllFieldsRaw == input.AllFieldsRaw ||
                     this.AllFieldsRaw != null &&

@@ -144,26 +144,26 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this._Action == input._Action ||
                     this._Action.Equals(input._Action)
-                ) && 
+                ) &&
                 (
                     this.StartWorkflow == input.StartWorkflow ||
                     (this.StartWorkflow != null &&
                     this.StartWorkflow.Equals(input.StartWorkflow))
-                ) && 
+                ) &&
                 (
                     this.CompleteTask == input.CompleteTask ||
                     (this.CompleteTask != null &&
                     this.CompleteTask.Equals(input.CompleteTask))
-                ) && 
+                ) &&
                 (
                     this.FailTask == input.FailTask ||
                     (this.FailTask != null &&
                     this.FailTask.Equals(input.FailTask))
-                ) && 
+                ) &&
                 (
                     this.ExpandInlineJSON == input.ExpandInlineJSON ||
                     this.ExpandInlineJSON.Equals(input.ExpandInlineJSON)

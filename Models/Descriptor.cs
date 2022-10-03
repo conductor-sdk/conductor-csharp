@@ -18,7 +18,7 @@ namespace Conductor.Client.Models
     /// Descriptor
     /// </summary>
     [DataContract]
-    public partial class Descriptor :  IEquatable<Descriptor>, IValidatableObject
+    public partial class Descriptor : IEquatable<Descriptor>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Descriptor" /> class.
@@ -58,77 +58,77 @@ namespace Conductor.Client.Models
             }
             this.Name = name;
         }
-        
+
         /// <summary>
         /// Gets or Sets Index
         /// </summary>
-        [DataMember(Name="index", EmitDefaultValue=false)]
+        [DataMember(Name = "index", EmitDefaultValue = false)]
         public int? Index { get; set; }
 
         /// <summary>
         /// Gets or Sets FullName
         /// </summary>
-        [DataMember(Name="fullName", EmitDefaultValue=false)]
+        [DataMember(Name = "fullName", EmitDefaultValue = false)]
         public string FullName { get; set; }
 
         /// <summary>
         /// Gets or Sets _File
         /// </summary>
-        [DataMember(Name="file", EmitDefaultValue=false)]
+        [DataMember(Name = "file", EmitDefaultValue = false)]
         public FileDescriptor _File { get; set; }
 
         /// <summary>
         /// Gets or Sets ContainingType
         /// </summary>
-        [DataMember(Name="containingType", EmitDefaultValue=false)]
+        [DataMember(Name = "containingType", EmitDefaultValue = false)]
         public Descriptor ContainingType { get; set; }
 
         /// <summary>
         /// Gets or Sets NestedTypes
         /// </summary>
-        [DataMember(Name="nestedTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "nestedTypes", EmitDefaultValue = false)]
         public List<Descriptor> NestedTypes { get; set; }
 
         /// <summary>
         /// Gets or Sets EnumTypes
         /// </summary>
-        [DataMember(Name="enumTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "enumTypes", EmitDefaultValue = false)]
         public List<EnumDescriptor> EnumTypes { get; set; }
 
         /// <summary>
         /// Gets or Sets Fields
         /// </summary>
-        [DataMember(Name="fields", EmitDefaultValue=false)]
+        [DataMember(Name = "fields", EmitDefaultValue = false)]
         public List<FieldDescriptor> Fields { get; set; }
 
         /// <summary>
         /// Gets or Sets Extensions
         /// </summary>
-        [DataMember(Name="extensions", EmitDefaultValue=false)]
+        [DataMember(Name = "extensions", EmitDefaultValue = false)]
         public List<FieldDescriptor> Extensions { get; set; }
 
         /// <summary>
         /// Gets or Sets Oneofs
         /// </summary>
-        [DataMember(Name="oneofs", EmitDefaultValue=false)]
+        [DataMember(Name = "oneofs", EmitDefaultValue = false)]
         public List<OneofDescriptor> Oneofs { get; set; }
 
         /// <summary>
         /// Gets or Sets Options
         /// </summary>
-        [DataMember(Name="options", EmitDefaultValue=false)]
+        [DataMember(Name = "options", EmitDefaultValue = false)]
         public MessageOptions Options { get; set; }
 
         /// <summary>
         /// Gets or Sets Extendable
         /// </summary>
-        [DataMember(Name="extendable", EmitDefaultValue=false)]
+        [DataMember(Name = "extendable", EmitDefaultValue = false)]
         public bool? Extendable { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -184,62 +184,62 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Index == input.Index ||
                     (this.Index != null &&
                     this.Index.Equals(input.Index))
-                ) && 
+                ) &&
                 (
                     this.FullName == input.FullName ||
                     (this.FullName != null &&
                     this.FullName.Equals(input.FullName))
-                ) && 
+                ) &&
                 (
                     this._File == input._File ||
                     (this._File != null &&
                     this._File.Equals(input._File))
-                ) && 
+                ) &&
                 (
                     this.ContainingType == input.ContainingType ||
                     (this.ContainingType != null &&
                     this.ContainingType.Equals(input.ContainingType))
-                ) && 
+                ) &&
                 (
                     this.NestedTypes == input.NestedTypes ||
                     this.NestedTypes != null &&
                     this.NestedTypes.SequenceEqual(input.NestedTypes)
-                ) && 
+                ) &&
                 (
                     this.EnumTypes == input.EnumTypes ||
                     this.EnumTypes != null &&
                     this.EnumTypes.SequenceEqual(input.EnumTypes)
-                ) && 
+                ) &&
                 (
                     this.Fields == input.Fields ||
                     this.Fields != null &&
                     this.Fields.SequenceEqual(input.Fields)
-                ) && 
+                ) &&
                 (
                     this.Extensions == input.Extensions ||
                     this.Extensions != null &&
                     this.Extensions.SequenceEqual(input.Extensions)
-                ) && 
+                ) &&
                 (
                     this.Oneofs == input.Oneofs ||
                     this.Oneofs != null &&
                     this.Oneofs.SequenceEqual(input.Oneofs)
-                ) && 
+                ) &&
                 (
                     this.Options == input.Options ||
                     (this.Options != null &&
                     this.Options.Equals(input.Options))
-                ) && 
+                ) &&
                 (
                     this.Extendable == input.Extendable ||
                     (this.Extendable != null &&
                     this.Extendable.Equals(input.Extendable))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&

@@ -18,7 +18,7 @@ namespace Conductor.Client.Models
     /// Any
     /// </summary>
     [DataContract]
-    public partial class Any :  IEquatable<Any>, IValidatableObject
+    public partial class Any : IEquatable<Any>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Any" /> class.
@@ -56,71 +56,71 @@ namespace Conductor.Client.Models
             this.DescriptorForType = descriptorForType;
             this.AllFields = allFields;
         }
-        
+
         /// <summary>
         /// Gets or Sets UnknownFields
         /// </summary>
-        [DataMember(Name="unknownFields", EmitDefaultValue=false)]
+        [DataMember(Name = "unknownFields", EmitDefaultValue = false)]
         public UnknownFieldSet UnknownFields { get; set; }
 
         /// <summary>
         /// Gets or Sets Initialized
         /// </summary>
-        [DataMember(Name="initialized", EmitDefaultValue=false)]
+        [DataMember(Name = "initialized", EmitDefaultValue = false)]
         public bool? Initialized { get; set; }
 
         /// <summary>
         /// Gets or Sets TypeUrl
         /// </summary>
-        [DataMember(Name="typeUrl", EmitDefaultValue=false)]
+        [DataMember(Name = "typeUrl", EmitDefaultValue = false)]
         public string TypeUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets TypeUrlBytes
         /// </summary>
-        [DataMember(Name="typeUrlBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "typeUrlBytes", EmitDefaultValue = false)]
         public ByteString TypeUrlBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets ParserForType
         /// </summary>
-        [DataMember(Name="parserForType", EmitDefaultValue=false)]
+        [DataMember(Name = "parserForType", EmitDefaultValue = false)]
         public ParserAny ParserForType { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultInstanceForType
         /// </summary>
-        [DataMember(Name="defaultInstanceForType", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultInstanceForType", EmitDefaultValue = false)]
         public Any DefaultInstanceForType { get; set; }
 
         /// <summary>
         /// Gets or Sets SerializedSize
         /// </summary>
-        [DataMember(Name="serializedSize", EmitDefaultValue=false)]
+        [DataMember(Name = "serializedSize", EmitDefaultValue = false)]
         public int? SerializedSize { get; set; }
 
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
-        [DataMember(Name="value", EmitDefaultValue=false)]
+        [DataMember(Name = "value", EmitDefaultValue = false)]
         public ByteString Value { get; set; }
 
         /// <summary>
         /// Gets or Sets InitializationErrorString
         /// </summary>
-        [DataMember(Name="initializationErrorString", EmitDefaultValue=false)]
+        [DataMember(Name = "initializationErrorString", EmitDefaultValue = false)]
         public string InitializationErrorString { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptorForType
         /// </summary>
-        [DataMember(Name="descriptorForType", EmitDefaultValue=false)]
+        [DataMember(Name = "descriptorForType", EmitDefaultValue = false)]
         public Descriptor DescriptorForType { get; set; }
 
         /// <summary>
         /// Gets or Sets AllFields
         /// </summary>
-        [DataMember(Name="allFields", EmitDefaultValue=false)]
+        [DataMember(Name = "allFields", EmitDefaultValue = false)]
         public Dictionary<string, Object> AllFields { get; set; }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -175,57 +175,57 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UnknownFields == input.UnknownFields ||
                     (this.UnknownFields != null &&
                     this.UnknownFields.Equals(input.UnknownFields))
-                ) && 
+                ) &&
                 (
                     this.Initialized == input.Initialized ||
                     (this.Initialized != null &&
                     this.Initialized.Equals(input.Initialized))
-                ) && 
+                ) &&
                 (
                     this.TypeUrl == input.TypeUrl ||
                     (this.TypeUrl != null &&
                     this.TypeUrl.Equals(input.TypeUrl))
-                ) && 
+                ) &&
                 (
                     this.TypeUrlBytes == input.TypeUrlBytes ||
                     (this.TypeUrlBytes != null &&
                     this.TypeUrlBytes.Equals(input.TypeUrlBytes))
-                ) && 
+                ) &&
                 (
                     this.ParserForType == input.ParserForType ||
                     (this.ParserForType != null &&
                     this.ParserForType.Equals(input.ParserForType))
-                ) && 
+                ) &&
                 (
                     this.DefaultInstanceForType == input.DefaultInstanceForType ||
                     (this.DefaultInstanceForType != null &&
                     this.DefaultInstanceForType.Equals(input.DefaultInstanceForType))
-                ) && 
+                ) &&
                 (
                     this.SerializedSize == input.SerializedSize ||
                     (this.SerializedSize != null &&
                     this.SerializedSize.Equals(input.SerializedSize))
-                ) && 
+                ) &&
                 (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
-                ) && 
+                ) &&
                 (
                     this.InitializationErrorString == input.InitializationErrorString ||
                     (this.InitializationErrorString != null &&
                     this.InitializationErrorString.Equals(input.InitializationErrorString))
-                ) && 
+                ) &&
                 (
                     this.DescriptorForType == input.DescriptorForType ||
                     (this.DescriptorForType != null &&
                     this.DescriptorForType.Equals(input.DescriptorForType))
-                ) && 
+                ) &&
                 (
                     this.AllFields == input.AllFields ||
                     this.AllFields != null &&

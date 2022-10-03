@@ -499,195 +499,196 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="input">Instance of Task to be compared</param>
         /// <returns>Boolean</returns>
+        [Obsolete]
         public bool Equals(Task input)
         {
             if (input == null)
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.TaskType == input.TaskType ||
                     (this.TaskType != null &&
                     this.TaskType.Equals(input.TaskType))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.InputData == input.InputData ||
                     this.InputData != null &&
                     input.InputData != null &&
                     this.InputData.SequenceEqual(input.InputData)
-                ) && 
+                ) &&
                 (
                     this.ReferenceTaskName == input.ReferenceTaskName ||
                     (this.ReferenceTaskName != null &&
                     this.ReferenceTaskName.Equals(input.ReferenceTaskName))
-                ) && 
+                ) &&
                 (
                     this.RetryCount == input.RetryCount ||
                     this.RetryCount.Equals(input.RetryCount)
-                ) && 
+                ) &&
                 (
                     this.Seq == input.Seq ||
                     this.Seq.Equals(input.Seq)
-                ) && 
+                ) &&
                 (
                     this.CorrelationId == input.CorrelationId ||
                     (this.CorrelationId != null &&
                     this.CorrelationId.Equals(input.CorrelationId))
-                ) && 
+                ) &&
                 (
                     this.PollCount == input.PollCount ||
                     this.PollCount.Equals(input.PollCount)
-                ) && 
+                ) &&
                 (
                     this.TaskDefName == input.TaskDefName ||
                     (this.TaskDefName != null &&
                     this.TaskDefName.Equals(input.TaskDefName))
-                ) && 
+                ) &&
                 (
                     this.ScheduledTime == input.ScheduledTime ||
                     this.ScheduledTime.Equals(input.ScheduledTime)
-                ) && 
+                ) &&
                 (
                     this.StartTime == input.StartTime ||
                     this.StartTime.Equals(input.StartTime)
-                ) && 
+                ) &&
                 (
                     this.EndTime == input.EndTime ||
                     this.EndTime.Equals(input.EndTime)
-                ) && 
+                ) &&
                 (
                     this.UpdateTime == input.UpdateTime ||
                     this.UpdateTime.Equals(input.UpdateTime)
-                ) && 
+                ) &&
                 (
                     this.StartDelayInSeconds == input.StartDelayInSeconds ||
                     this.StartDelayInSeconds.Equals(input.StartDelayInSeconds)
-                ) && 
+                ) &&
                 (
                     this.RetriedTaskId == input.RetriedTaskId ||
                     (this.RetriedTaskId != null &&
                     this.RetriedTaskId.Equals(input.RetriedTaskId))
-                ) && 
+                ) &&
                 (
                     this.Retried == input.Retried ||
                     this.Retried.Equals(input.Retried)
-                ) && 
+                ) &&
                 (
                     this.Executed == input.Executed ||
                     this.Executed.Equals(input.Executed)
-                ) && 
+                ) &&
                 (
                     this.CallbackFromWorker == input.CallbackFromWorker ||
                     this.CallbackFromWorker.Equals(input.CallbackFromWorker)
-                ) && 
+                ) &&
                 (
                     this.ResponseTimeoutSeconds == input.ResponseTimeoutSeconds ||
                     this.ResponseTimeoutSeconds.Equals(input.ResponseTimeoutSeconds)
-                ) && 
+                ) &&
                 (
                     this.WorkflowInstanceId == input.WorkflowInstanceId ||
                     (this.WorkflowInstanceId != null &&
                     this.WorkflowInstanceId.Equals(input.WorkflowInstanceId))
-                ) && 
+                ) &&
                 (
                     this.WorkflowType == input.WorkflowType ||
                     (this.WorkflowType != null &&
                     this.WorkflowType.Equals(input.WorkflowType))
-                ) && 
+                ) &&
                 (
                     this.TaskId == input.TaskId ||
                     (this.TaskId != null &&
                     this.TaskId.Equals(input.TaskId))
-                ) && 
+                ) &&
                 (
                     this.ReasonForIncompletion == input.ReasonForIncompletion ||
                     (this.ReasonForIncompletion != null &&
                     this.ReasonForIncompletion.Equals(input.ReasonForIncompletion))
-                ) && 
+                ) &&
                 (
                     this.CallbackAfterSeconds == input.CallbackAfterSeconds ||
                     this.CallbackAfterSeconds.Equals(input.CallbackAfterSeconds)
-                ) && 
+                ) &&
                 (
                     this.WorkerId == input.WorkerId ||
                     (this.WorkerId != null &&
                     this.WorkerId.Equals(input.WorkerId))
-                ) && 
+                ) &&
                 (
                     this.OutputData == input.OutputData ||
                     this.OutputData != null &&
                     input.OutputData != null &&
                     this.OutputData.SequenceEqual(input.OutputData)
-                ) && 
+                ) &&
                 (
                     this.WorkflowTask == input.WorkflowTask ||
                     (this.WorkflowTask != null &&
                     this.WorkflowTask.Equals(input.WorkflowTask))
-                ) && 
+                ) &&
                 (
                     this.Domain == input.Domain ||
                     (this.Domain != null &&
                     this.Domain.Equals(input.Domain))
-                ) && 
+                ) &&
                 (
                     this.RateLimitPerFrequency == input.RateLimitPerFrequency ||
                     this.RateLimitPerFrequency.Equals(input.RateLimitPerFrequency)
-                ) && 
+                ) &&
                 (
                     this.RateLimitFrequencyInSeconds == input.RateLimitFrequencyInSeconds ||
                     this.RateLimitFrequencyInSeconds.Equals(input.RateLimitFrequencyInSeconds)
-                ) && 
+                ) &&
                 (
                     this.ExternalInputPayloadStoragePath == input.ExternalInputPayloadStoragePath ||
                     (this.ExternalInputPayloadStoragePath != null &&
                     this.ExternalInputPayloadStoragePath.Equals(input.ExternalInputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.ExternalOutputPayloadStoragePath == input.ExternalOutputPayloadStoragePath ||
                     (this.ExternalOutputPayloadStoragePath != null &&
                     this.ExternalOutputPayloadStoragePath.Equals(input.ExternalOutputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.WorkflowPriority == input.WorkflowPriority ||
                     this.WorkflowPriority.Equals(input.WorkflowPriority)
-                ) && 
+                ) &&
                 (
                     this.ExecutionNameSpace == input.ExecutionNameSpace ||
                     (this.ExecutionNameSpace != null &&
                     this.ExecutionNameSpace.Equals(input.ExecutionNameSpace))
-                ) && 
+                ) &&
                 (
                     this.IsolationGroupId == input.IsolationGroupId ||
                     (this.IsolationGroupId != null &&
                     this.IsolationGroupId.Equals(input.IsolationGroupId))
-                ) && 
+                ) &&
                 (
                     this.Iteration == input.Iteration ||
                     this.Iteration.Equals(input.Iteration)
-                ) && 
+                ) &&
                 (
                     this.SubWorkflowId == input.SubWorkflowId ||
                     (this.SubWorkflowId != null &&
                     this.SubWorkflowId.Equals(input.SubWorkflowId))
-                ) && 
+                ) &&
                 (
                     this.SubworkflowChanged == input.SubworkflowChanged ||
                     this.SubworkflowChanged.Equals(input.SubworkflowChanged)
-                ) && 
+                ) &&
                 (
                     this.TaskDefinition == input.TaskDefinition ||
                     (this.TaskDefinition != null &&
                     this.TaskDefinition.Equals(input.TaskDefinition))
-                ) && 
+                ) &&
                 (
                     this.LoopOverTask == input.LoopOverTask ||
                     this.LoopOverTask.Equals(input.LoopOverTask)
-                ) && 
+                ) &&
                 (
                     this.QueueWaitTime == input.QueueWaitTime ||
                     this.QueueWaitTime.Equals(input.QueueWaitTime)

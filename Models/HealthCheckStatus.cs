@@ -18,7 +18,7 @@ namespace Conductor.Client.Models
     /// HealthCheckStatus
     /// </summary>
     [DataContract]
-    public partial class HealthCheckStatus :  IEquatable<HealthCheckStatus>, IValidatableObject
+    public partial class HealthCheckStatus : IEquatable<HealthCheckStatus>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HealthCheckStatus" /> class.
@@ -40,23 +40,23 @@ namespace Conductor.Client.Models
                 this.Healthy = healthy;
             }
         }
-        
+
         /// <summary>
         /// Gets or Sets HealthResults
         /// </summary>
-        [DataMember(Name="healthResults", EmitDefaultValue=false)]
+        [DataMember(Name = "healthResults", EmitDefaultValue = false)]
         public List<Health> HealthResults { get; set; }
 
         /// <summary>
         /// Gets or Sets SuppressedHealthResults
         /// </summary>
-        [DataMember(Name="suppressedHealthResults", EmitDefaultValue=false)]
+        [DataMember(Name = "suppressedHealthResults", EmitDefaultValue = false)]
         public List<Health> SuppressedHealthResults { get; set; }
 
         /// <summary>
         /// Gets or Sets Healthy
         /// </summary>
-        [DataMember(Name="healthy", EmitDefaultValue=false)]
+        [DataMember(Name = "healthy", EmitDefaultValue = false)]
         public bool? Healthy { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -103,17 +103,17 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.HealthResults == input.HealthResults ||
                     this.HealthResults != null &&
                     this.HealthResults.SequenceEqual(input.HealthResults)
-                ) && 
+                ) &&
                 (
                     this.SuppressedHealthResults == input.SuppressedHealthResults ||
                     this.SuppressedHealthResults != null &&
                     this.SuppressedHealthResults.SequenceEqual(input.SuppressedHealthResults)
-                ) && 
+                ) &&
                 (
                     this.Healthy == input.Healthy ||
                     (this.Healthy != null &&

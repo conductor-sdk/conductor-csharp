@@ -17,7 +17,7 @@ namespace Conductor.Client.Models
     /// UnknownFieldSet
     /// </summary>
     [DataContract]
-    public partial class UnknownFieldSet :  IEquatable<UnknownFieldSet>, IValidatableObject
+    public partial class UnknownFieldSet : IEquatable<UnknownFieldSet>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UnknownFieldSet" /> class.
@@ -43,35 +43,35 @@ namespace Conductor.Client.Models
             this.SerializedSizeAsMessageSet = serializedSizeAsMessageSet;
             this.SerializedSize = serializedSize;
         }
-        
+
         /// <summary>
         /// Gets or Sets Initialized
         /// </summary>
-        [DataMember(Name="initialized", EmitDefaultValue=false)]
+        [DataMember(Name = "initialized", EmitDefaultValue = false)]
         public bool? Initialized { get; set; }
 
         /// <summary>
         /// Gets or Sets ParserForType
         /// </summary>
-        [DataMember(Name="parserForType", EmitDefaultValue=false)]
+        [DataMember(Name = "parserForType", EmitDefaultValue = false)]
         public Parser ParserForType { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultInstanceForType
         /// </summary>
-        [DataMember(Name="defaultInstanceForType", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultInstanceForType", EmitDefaultValue = false)]
         public UnknownFieldSet DefaultInstanceForType { get; set; }
 
         /// <summary>
         /// Gets or Sets SerializedSizeAsMessageSet
         /// </summary>
-        [DataMember(Name="serializedSizeAsMessageSet", EmitDefaultValue=false)]
+        [DataMember(Name = "serializedSizeAsMessageSet", EmitDefaultValue = false)]
         public int? SerializedSizeAsMessageSet { get; set; }
 
         /// <summary>
         /// Gets or Sets SerializedSize
         /// </summary>
-        [DataMember(Name="serializedSize", EmitDefaultValue=false)]
+        [DataMember(Name = "serializedSize", EmitDefaultValue = false)]
         public int? SerializedSize { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -120,27 +120,27 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Initialized == input.Initialized ||
                     (this.Initialized != null &&
                     this.Initialized.Equals(input.Initialized))
-                ) && 
+                ) &&
                 (
                     this.ParserForType == input.ParserForType ||
                     (this.ParserForType != null &&
                     this.ParserForType.Equals(input.ParserForType))
-                ) && 
+                ) &&
                 (
                     this.DefaultInstanceForType == input.DefaultInstanceForType ||
                     (this.DefaultInstanceForType != null &&
                     this.DefaultInstanceForType.Equals(input.DefaultInstanceForType))
-                ) && 
+                ) &&
                 (
                     this.SerializedSizeAsMessageSet == input.SerializedSizeAsMessageSet ||
                     (this.SerializedSizeAsMessageSet != null &&
                     this.SerializedSizeAsMessageSet.Equals(input.SerializedSizeAsMessageSet))
-                ) && 
+                ) &&
                 (
                     this.SerializedSize == input.SerializedSize ||
                     (this.SerializedSize != null &&

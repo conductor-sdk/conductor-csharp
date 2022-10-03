@@ -84,12 +84,14 @@ namespace Conductor.Client.Models
         public TaskResult(string workflowInstanceId = default(string), string taskId = default(string), string reasonForIncompletion = default(string), long callbackAfterSeconds = default(long), string workerId = default(string), StatusEnum? status = default(StatusEnum?), Dictionary<string, Object> outputData = default(Dictionary<string, Object>), List<TaskExecLog> logs = default(List<TaskExecLog>), string externalOutputPayloadStoragePath = default(string), string subWorkflowId = default(string))
         {
             // to ensure "workflowInstanceId" is required (not null)
-            if (workflowInstanceId == null) {
+            if (workflowInstanceId == null)
+            {
                 throw new ArgumentNullException("workflowInstanceId is a required property for TaskResult and cannot be null");
             }
             this.WorkflowInstanceId = workflowInstanceId;
             // to ensure "taskId" is required (not null)
-            if (taskId == null) {
+            if (taskId == null)
+            {
                 throw new ArgumentNullException("taskId is a required property for TaskResult and cannot be null");
             }
             this.TaskId = taskId;
@@ -209,52 +211,52 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.WorkflowInstanceId == input.WorkflowInstanceId ||
                     (this.WorkflowInstanceId != null &&
                     this.WorkflowInstanceId.Equals(input.WorkflowInstanceId))
-                ) && 
+                ) &&
                 (
                     this.TaskId == input.TaskId ||
                     (this.TaskId != null &&
                     this.TaskId.Equals(input.TaskId))
-                ) && 
+                ) &&
                 (
                     this.ReasonForIncompletion == input.ReasonForIncompletion ||
                     (this.ReasonForIncompletion != null &&
                     this.ReasonForIncompletion.Equals(input.ReasonForIncompletion))
-                ) && 
+                ) &&
                 (
                     this.CallbackAfterSeconds == input.CallbackAfterSeconds ||
                     this.CallbackAfterSeconds.Equals(input.CallbackAfterSeconds)
-                ) && 
+                ) &&
                 (
                     this.WorkerId == input.WorkerId ||
                     (this.WorkerId != null &&
                     this.WorkerId.Equals(input.WorkerId))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.OutputData == input.OutputData ||
                     this.OutputData != null &&
                     input.OutputData != null &&
                     this.OutputData.SequenceEqual(input.OutputData)
-                ) && 
+                ) &&
                 (
                     this.Logs == input.Logs ||
                     this.Logs != null &&
                     input.Logs != null &&
                     this.Logs.SequenceEqual(input.Logs)
-                ) && 
+                ) &&
                 (
                     this.ExternalOutputPayloadStoragePath == input.ExternalOutputPayloadStoragePath ||
                     (this.ExternalOutputPayloadStoragePath != null &&
                     this.ExternalOutputPayloadStoragePath.Equals(input.ExternalOutputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.SubWorkflowId == input.SubWorkflowId ||
                     (this.SubWorkflowId != null &&

@@ -25,9 +25,9 @@ namespace TestOrkesSDK
                 "http://localhost:8080/");
             //Create task definition
             MetadataResourceApi metadataResourceApi = new MetadataResourceApi(configuration);
-            TaskDef taskDef = new TaskDef(name: "simple_task_0", ownerEmail:"test@orkes.io");
+            TaskDef taskDef = new TaskDef(name: "simple_task_0", ownerEmail: "test@orkes.io");
             taskDef.OwnerEmail = "test@orkes.io";
-            metadataResourceApi.RegisterTaskDef(new List<TaskDef>() { taskDef});
+            metadataResourceApi.RegisterTaskDef(new List<TaskDef>() { taskDef });
 
             WorkflowTask workflowTask = new(name: "simple_task_0", taskReferenceName: "simple_task_0")
             {
@@ -42,7 +42,7 @@ namespace TestOrkesSDK
                 tasks: new List<WorkflowTask>() { workflowTask }, version: version);
             workflowDef.OwnerEmail = "manan.bhatt@orkes.io";
             workflowDef.SchemaVersion = 2;
-            metadataResourceApi.UpdateWorkflowDefinitions(new List<WorkflowDef>() { workflowDef});
+            metadataResourceApi.UpdateWorkflowDefinitions(new List<WorkflowDef>() { workflowDef });
 
             //Start workflow
             WorkflowResourceApi workflowResourceApi = new WorkflowResourceApi(configuration);

@@ -18,7 +18,7 @@ namespace Conductor.Client.Models
     /// FieldDescriptor
     /// </summary>
     [DataContract]
-    public partial class FieldDescriptor :  IEquatable<FieldDescriptor>, IValidatableObject
+    public partial class FieldDescriptor : IEquatable<FieldDescriptor>, IValidatableObject
     {
         /// <summary>
         /// Defines Type
@@ -26,109 +26,109 @@ namespace Conductor.Client.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
-            
+
             /// <summary>
             /// Enum DOUBLE for value: DOUBLE
             /// </summary>
             [EnumMember(Value = "DOUBLE")]
             DOUBLE = 1,
-            
+
             /// <summary>
             /// Enum FLOAT for value: FLOAT
             /// </summary>
             [EnumMember(Value = "FLOAT")]
             FLOAT = 2,
-            
+
             /// <summary>
             /// Enum INT64 for value: INT64
             /// </summary>
             [EnumMember(Value = "INT64")]
             INT64 = 3,
-            
+
             /// <summary>
             /// Enum UINT64 for value: UINT64
             /// </summary>
             [EnumMember(Value = "UINT64")]
             UINT64 = 4,
-            
+
             /// <summary>
             /// Enum INT32 for value: INT32
             /// </summary>
             [EnumMember(Value = "INT32")]
             INT32 = 5,
-            
+
             /// <summary>
             /// Enum FIXED64 for value: FIXED64
             /// </summary>
             [EnumMember(Value = "FIXED64")]
             FIXED64 = 6,
-            
+
             /// <summary>
             /// Enum FIXED32 for value: FIXED32
             /// </summary>
             [EnumMember(Value = "FIXED32")]
             FIXED32 = 7,
-            
+
             /// <summary>
             /// Enum BOOL for value: BOOL
             /// </summary>
             [EnumMember(Value = "BOOL")]
             BOOL = 8,
-            
+
             /// <summary>
             /// Enum STRING for value: STRING
             /// </summary>
             [EnumMember(Value = "STRING")]
             STRING = 9,
-            
+
             /// <summary>
             /// Enum GROUP for value: GROUP
             /// </summary>
             [EnumMember(Value = "GROUP")]
             GROUP = 10,
-            
+
             /// <summary>
             /// Enum MESSAGE for value: MESSAGE
             /// </summary>
             [EnumMember(Value = "MESSAGE")]
             MESSAGE = 11,
-            
+
             /// <summary>
             /// Enum BYTES for value: BYTES
             /// </summary>
             [EnumMember(Value = "BYTES")]
             BYTES = 12,
-            
+
             /// <summary>
             /// Enum UINT32 for value: UINT32
             /// </summary>
             [EnumMember(Value = "UINT32")]
             UINT32 = 13,
-            
+
             /// <summary>
             /// Enum ENUM for value: ENUM
             /// </summary>
             [EnumMember(Value = "ENUM")]
             ENUM = 14,
-            
+
             /// <summary>
             /// Enum SFIXED32 for value: SFIXED32
             /// </summary>
             [EnumMember(Value = "SFIXED32")]
             SFIXED32 = 15,
-            
+
             /// <summary>
             /// Enum SFIXED64 for value: SFIXED64
             /// </summary>
             [EnumMember(Value = "SFIXED64")]
             SFIXED64 = 16,
-            
+
             /// <summary>
             /// Enum SINT32 for value: SINT32
             /// </summary>
             [EnumMember(Value = "SINT32")]
             SINT32 = 17,
-            
+
             /// <summary>
             /// Enum SINT64 for value: SINT64
             /// </summary>
@@ -139,7 +139,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Defines LiteType
@@ -147,109 +147,109 @@ namespace Conductor.Client.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public enum LiteTypeEnum
         {
-            
+
             /// <summary>
             /// Enum DOUBLE for value: DOUBLE
             /// </summary>
             [EnumMember(Value = "DOUBLE")]
             DOUBLE = 1,
-            
+
             /// <summary>
             /// Enum FLOAT for value: FLOAT
             /// </summary>
             [EnumMember(Value = "FLOAT")]
             FLOAT = 2,
-            
+
             /// <summary>
             /// Enum INT64 for value: INT64
             /// </summary>
             [EnumMember(Value = "INT64")]
             INT64 = 3,
-            
+
             /// <summary>
             /// Enum UINT64 for value: UINT64
             /// </summary>
             [EnumMember(Value = "UINT64")]
             UINT64 = 4,
-            
+
             /// <summary>
             /// Enum INT32 for value: INT32
             /// </summary>
             [EnumMember(Value = "INT32")]
             INT32 = 5,
-            
+
             /// <summary>
             /// Enum FIXED64 for value: FIXED64
             /// </summary>
             [EnumMember(Value = "FIXED64")]
             FIXED64 = 6,
-            
+
             /// <summary>
             /// Enum FIXED32 for value: FIXED32
             /// </summary>
             [EnumMember(Value = "FIXED32")]
             FIXED32 = 7,
-            
+
             /// <summary>
             /// Enum BOOL for value: BOOL
             /// </summary>
             [EnumMember(Value = "BOOL")]
             BOOL = 8,
-            
+
             /// <summary>
             /// Enum STRING for value: STRING
             /// </summary>
             [EnumMember(Value = "STRING")]
             STRING = 9,
-            
+
             /// <summary>
             /// Enum GROUP for value: GROUP
             /// </summary>
             [EnumMember(Value = "GROUP")]
             GROUP = 10,
-            
+
             /// <summary>
             /// Enum MESSAGE for value: MESSAGE
             /// </summary>
             [EnumMember(Value = "MESSAGE")]
             MESSAGE = 11,
-            
+
             /// <summary>
             /// Enum BYTES for value: BYTES
             /// </summary>
             [EnumMember(Value = "BYTES")]
             BYTES = 12,
-            
+
             /// <summary>
             /// Enum UINT32 for value: UINT32
             /// </summary>
             [EnumMember(Value = "UINT32")]
             UINT32 = 13,
-            
+
             /// <summary>
             /// Enum ENUM for value: ENUM
             /// </summary>
             [EnumMember(Value = "ENUM")]
             ENUM = 14,
-            
+
             /// <summary>
             /// Enum SFIXED32 for value: SFIXED32
             /// </summary>
             [EnumMember(Value = "SFIXED32")]
             SFIXED32 = 15,
-            
+
             /// <summary>
             /// Enum SFIXED64 for value: SFIXED64
             /// </summary>
             [EnumMember(Value = "SFIXED64")]
             SFIXED64 = 16,
-            
+
             /// <summary>
             /// Enum SINT32 for value: SINT32
             /// </summary>
             [EnumMember(Value = "SINT32")]
             SINT32 = 17,
-            
+
             /// <summary>
             /// Enum SINT64 for value: SINT64
             /// </summary>
@@ -260,7 +260,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Gets or Sets LiteType
         /// </summary>
-        [DataMember(Name="liteType", EmitDefaultValue=false)]
+        [DataMember(Name = "liteType", EmitDefaultValue = false)]
         public LiteTypeEnum? LiteType { get; set; }
         /// <summary>
         /// Defines JavaType
@@ -268,55 +268,55 @@ namespace Conductor.Client.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public enum JavaTypeEnum
         {
-            
+
             /// <summary>
             /// Enum INT for value: INT
             /// </summary>
             [EnumMember(Value = "INT")]
             INT = 1,
-            
+
             /// <summary>
             /// Enum LONG for value: LONG
             /// </summary>
             [EnumMember(Value = "LONG")]
             LONG = 2,
-            
+
             /// <summary>
             /// Enum FLOAT for value: FLOAT
             /// </summary>
             [EnumMember(Value = "FLOAT")]
             FLOAT = 3,
-            
+
             /// <summary>
             /// Enum DOUBLE for value: DOUBLE
             /// </summary>
             [EnumMember(Value = "DOUBLE")]
             DOUBLE = 4,
-            
+
             /// <summary>
             /// Enum BOOLEAN for value: BOOLEAN
             /// </summary>
             [EnumMember(Value = "BOOLEAN")]
             BOOLEAN = 5,
-            
+
             /// <summary>
             /// Enum STRING for value: STRING
             /// </summary>
             [EnumMember(Value = "STRING")]
             STRING = 6,
-            
+
             /// <summary>
             /// Enum BYTESTRING for value: BYTE_STRING
             /// </summary>
             [EnumMember(Value = "BYTE_STRING")]
             BYTESTRING = 7,
-            
+
             /// <summary>
             /// Enum ENUM for value: ENUM
             /// </summary>
             [EnumMember(Value = "ENUM")]
             ENUM = 8,
-            
+
             /// <summary>
             /// Enum MESSAGE for value: MESSAGE
             /// </summary>
@@ -327,7 +327,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Gets or Sets JavaType
         /// </summary>
-        [DataMember(Name="javaType", EmitDefaultValue=false)]
+        [DataMember(Name = "javaType", EmitDefaultValue = false)]
         public JavaTypeEnum? JavaType { get; set; }
         /// <summary>
         /// Defines LiteJavaType
@@ -335,55 +335,55 @@ namespace Conductor.Client.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public enum LiteJavaTypeEnum
         {
-            
+
             /// <summary>
             /// Enum INT for value: INT
             /// </summary>
             [EnumMember(Value = "INT")]
             INT = 1,
-            
+
             /// <summary>
             /// Enum LONG for value: LONG
             /// </summary>
             [EnumMember(Value = "LONG")]
             LONG = 2,
-            
+
             /// <summary>
             /// Enum FLOAT for value: FLOAT
             /// </summary>
             [EnumMember(Value = "FLOAT")]
             FLOAT = 3,
-            
+
             /// <summary>
             /// Enum DOUBLE for value: DOUBLE
             /// </summary>
             [EnumMember(Value = "DOUBLE")]
             DOUBLE = 4,
-            
+
             /// <summary>
             /// Enum BOOLEAN for value: BOOLEAN
             /// </summary>
             [EnumMember(Value = "BOOLEAN")]
             BOOLEAN = 5,
-            
+
             /// <summary>
             /// Enum STRING for value: STRING
             /// </summary>
             [EnumMember(Value = "STRING")]
             STRING = 6,
-            
+
             /// <summary>
             /// Enum BYTESTRING for value: BYTE_STRING
             /// </summary>
             [EnumMember(Value = "BYTE_STRING")]
             BYTESTRING = 7,
-            
+
             /// <summary>
             /// Enum ENUM for value: ENUM
             /// </summary>
             [EnumMember(Value = "ENUM")]
             ENUM = 8,
-            
+
             /// <summary>
             /// Enum MESSAGE for value: MESSAGE
             /// </summary>
@@ -394,7 +394,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Gets or Sets LiteJavaType
         /// </summary>
-        [DataMember(Name="liteJavaType", EmitDefaultValue=false)]
+        [DataMember(Name = "liteJavaType", EmitDefaultValue = false)]
         public LiteJavaTypeEnum? LiteJavaType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldDescriptor" /> class.
@@ -506,129 +506,129 @@ namespace Conductor.Client.Models
             this.Name = name;
             this.Number = number;
         }
-        
+
         /// <summary>
         /// Gets or Sets Index
         /// </summary>
-        [DataMember(Name="index", EmitDefaultValue=false)]
+        [DataMember(Name = "index", EmitDefaultValue = false)]
         public int? Index { get; set; }
 
         /// <summary>
         /// Gets or Sets FullName
         /// </summary>
-        [DataMember(Name="fullName", EmitDefaultValue=false)]
+        [DataMember(Name = "fullName", EmitDefaultValue = false)]
         public string FullName { get; set; }
 
         /// <summary>
         /// Gets or Sets JsonName
         /// </summary>
-        [DataMember(Name="jsonName", EmitDefaultValue=false)]
+        [DataMember(Name = "jsonName", EmitDefaultValue = false)]
         public string JsonName { get; set; }
 
         /// <summary>
         /// Gets or Sets _File
         /// </summary>
-        [DataMember(Name="file", EmitDefaultValue=false)]
+        [DataMember(Name = "file", EmitDefaultValue = false)]
         public FileDescriptor _File { get; set; }
 
         /// <summary>
         /// Gets or Sets ExtensionScope
         /// </summary>
-        [DataMember(Name="extensionScope", EmitDefaultValue=false)]
+        [DataMember(Name = "extensionScope", EmitDefaultValue = false)]
         public Descriptor ExtensionScope { get; set; }
 
 
         /// <summary>
         /// Gets or Sets ContainingType
         /// </summary>
-        [DataMember(Name="containingType", EmitDefaultValue=false)]
+        [DataMember(Name = "containingType", EmitDefaultValue = false)]
         public Descriptor ContainingType { get; set; }
 
         /// <summary>
         /// Gets or Sets MessageType
         /// </summary>
-        [DataMember(Name="messageType", EmitDefaultValue=false)]
+        [DataMember(Name = "messageType", EmitDefaultValue = false)]
         public Descriptor MessageType { get; set; }
 
         /// <summary>
         /// Gets or Sets ContainingOneof
         /// </summary>
-        [DataMember(Name="containingOneof", EmitDefaultValue=false)]
+        [DataMember(Name = "containingOneof", EmitDefaultValue = false)]
         public OneofDescriptor ContainingOneof { get; set; }
 
         /// <summary>
         /// Gets or Sets EnumType
         /// </summary>
-        [DataMember(Name="enumType", EmitDefaultValue=false)]
+        [DataMember(Name = "enumType", EmitDefaultValue = false)]
         public EnumDescriptor EnumType { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultValue
         /// </summary>
-        [DataMember(Name="defaultValue", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultValue", EmitDefaultValue = false)]
         public Object DefaultValue { get; set; }
 
         /// <summary>
         /// Gets or Sets Options
         /// </summary>
-        [DataMember(Name="options", EmitDefaultValue=false)]
+        [DataMember(Name = "options", EmitDefaultValue = false)]
         public FieldOptions Options { get; set; }
 
         /// <summary>
         /// Gets or Sets Optional
         /// </summary>
-        [DataMember(Name="optional", EmitDefaultValue=false)]
+        [DataMember(Name = "optional", EmitDefaultValue = false)]
         public bool? Optional { get; set; }
 
         /// <summary>
         /// Gets or Sets Packed
         /// </summary>
-        [DataMember(Name="packed", EmitDefaultValue=false)]
+        [DataMember(Name = "packed", EmitDefaultValue = false)]
         public bool? Packed { get; set; }
 
         /// <summary>
         /// Gets or Sets Required
         /// </summary>
-        [DataMember(Name="required", EmitDefaultValue=false)]
+        [DataMember(Name = "required", EmitDefaultValue = false)]
         public bool? Required { get; set; }
 
 
         /// <summary>
         /// Gets or Sets Extension
         /// </summary>
-        [DataMember(Name="extension", EmitDefaultValue=false)]
+        [DataMember(Name = "extension", EmitDefaultValue = false)]
         public bool? Extension { get; set; }
 
         /// <summary>
         /// Gets or Sets Repeated
         /// </summary>
-        [DataMember(Name="repeated", EmitDefaultValue=false)]
+        [DataMember(Name = "repeated", EmitDefaultValue = false)]
         public bool? Repeated { get; set; }
 
 
         /// <summary>
         /// Gets or Sets MapField
         /// </summary>
-        [DataMember(Name="mapField", EmitDefaultValue=false)]
+        [DataMember(Name = "mapField", EmitDefaultValue = false)]
         public bool? MapField { get; set; }
 
 
         /// <summary>
         /// Gets or Sets Packable
         /// </summary>
-        [DataMember(Name="packable", EmitDefaultValue=false)]
+        [DataMember(Name = "packable", EmitDefaultValue = false)]
         public bool? Packable { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Number
         /// </summary>
-        [DataMember(Name="number", EmitDefaultValue=false)]
+        [DataMember(Name = "number", EmitDefaultValue = false)]
         public int? Number { get; set; }
 
         /// <summary>
@@ -666,7 +666,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -696,122 +696,122 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Index == input.Index ||
                     (this.Index != null &&
                     this.Index.Equals(input.Index))
-                ) && 
+                ) &&
                 (
                     this.FullName == input.FullName ||
                     (this.FullName != null &&
                     this.FullName.Equals(input.FullName))
-                ) && 
+                ) &&
                 (
                     this.JsonName == input.JsonName ||
                     (this.JsonName != null &&
                     this.JsonName.Equals(input.JsonName))
-                ) && 
+                ) &&
                 (
                     this._File == input._File ||
                     (this._File != null &&
                     this._File.Equals(input._File))
-                ) && 
+                ) &&
                 (
                     this.ExtensionScope == input.ExtensionScope ||
                     (this.ExtensionScope != null &&
                     this.ExtensionScope.Equals(input.ExtensionScope))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.ContainingType == input.ContainingType ||
                     (this.ContainingType != null &&
                     this.ContainingType.Equals(input.ContainingType))
-                ) && 
+                ) &&
                 (
                     this.MessageType == input.MessageType ||
                     (this.MessageType != null &&
                     this.MessageType.Equals(input.MessageType))
-                ) && 
+                ) &&
                 (
                     this.ContainingOneof == input.ContainingOneof ||
                     (this.ContainingOneof != null &&
                     this.ContainingOneof.Equals(input.ContainingOneof))
-                ) && 
+                ) &&
                 (
                     this.EnumType == input.EnumType ||
                     (this.EnumType != null &&
                     this.EnumType.Equals(input.EnumType))
-                ) && 
+                ) &&
                 (
                     this.DefaultValue == input.DefaultValue ||
                     (this.DefaultValue != null &&
                     this.DefaultValue.Equals(input.DefaultValue))
-                ) && 
+                ) &&
                 (
                     this.Options == input.Options ||
                     (this.Options != null &&
                     this.Options.Equals(input.Options))
-                ) && 
+                ) &&
                 (
                     this.Optional == input.Optional ||
                     (this.Optional != null &&
                     this.Optional.Equals(input.Optional))
-                ) && 
+                ) &&
                 (
                     this.Packed == input.Packed ||
                     (this.Packed != null &&
                     this.Packed.Equals(input.Packed))
-                ) && 
+                ) &&
                 (
                     this.Required == input.Required ||
                     (this.Required != null &&
                     this.Required.Equals(input.Required))
-                ) && 
+                ) &&
                 (
                     this.LiteType == input.LiteType ||
                     (this.LiteType != null &&
                     this.LiteType.Equals(input.LiteType))
-                ) && 
+                ) &&
                 (
                     this.Extension == input.Extension ||
                     (this.Extension != null &&
                     this.Extension.Equals(input.Extension))
-                ) && 
+                ) &&
                 (
                     this.Repeated == input.Repeated ||
                     (this.Repeated != null &&
                     this.Repeated.Equals(input.Repeated))
-                ) && 
+                ) &&
                 (
                     this.JavaType == input.JavaType ||
                     (this.JavaType != null &&
                     this.JavaType.Equals(input.JavaType))
-                ) && 
+                ) &&
                 (
                     this.MapField == input.MapField ||
                     (this.MapField != null &&
                     this.MapField.Equals(input.MapField))
-                ) && 
+                ) &&
                 (
                     this.LiteJavaType == input.LiteJavaType ||
                     (this.LiteJavaType != null &&
                     this.LiteJavaType.Equals(input.LiteJavaType))
-                ) && 
+                ) &&
                 (
                     this.Packable == input.Packable ||
                     (this.Packable != null &&
                     this.Packable.Equals(input.Packable))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Number == input.Number ||
                     (this.Number != null &&

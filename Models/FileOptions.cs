@@ -19,7 +19,7 @@ namespace Conductor.Client.Models
     /// FileOptions
     /// </summary>
     [DataContract]
-    public partial class FileOptions :  IEquatable<FileOptions>, IValidatableObject
+    public partial class FileOptions : IEquatable<FileOptions>, IValidatableObject
     {
         /// <summary>
         /// Defines OptimizeFor
@@ -27,19 +27,19 @@ namespace Conductor.Client.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public enum OptimizeForEnum
         {
-            
+
             /// <summary>
             /// Enum SPEED for value: SPEED
             /// </summary>
             [EnumMember(Value = "SPEED")]
             SPEED = 1,
-            
+
             /// <summary>
             /// Enum CODESIZE for value: CODE_SIZE
             /// </summary>
             [EnumMember(Value = "CODE_SIZE")]
             CODESIZE = 2,
-            
+
             /// <summary>
             /// Enum LITERUNTIME for value: LITE_RUNTIME
             /// </summary>
@@ -50,7 +50,7 @@ namespace Conductor.Client.Models
         /// <summary>
         /// Gets or Sets OptimizeFor
         /// </summary>
-        [DataMember(Name="optimizeFor", EmitDefaultValue=false)]
+        [DataMember(Name = "optimizeFor", EmitDefaultValue = false)]
         public OptimizeForEnum? OptimizeFor { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="FileOptions" /> class.
@@ -214,228 +214,228 @@ namespace Conductor.Client.Models
             this.AllFields = allFields;
             this.AllFieldsRaw = allFieldsRaw;
         }
-        
+
         /// <summary>
         /// Gets or Sets UnknownFields
         /// </summary>
-        [DataMember(Name="unknownFields", EmitDefaultValue=false)]
+        [DataMember(Name = "unknownFields", EmitDefaultValue = false)]
         public UnknownFieldSet UnknownFields { get; set; }
 
         /// <summary>
         /// Gets or Sets Initialized
         /// </summary>
-        [DataMember(Name="initialized", EmitDefaultValue=false)]
+        [DataMember(Name = "initialized", EmitDefaultValue = false)]
         public bool? Initialized { get; set; }
 
         /// <summary>
         /// Gets or Sets JavaPackage
         /// </summary>
-        [DataMember(Name="javaPackage", EmitDefaultValue=false)]
+        [DataMember(Name = "javaPackage", EmitDefaultValue = false)]
         public string JavaPackage { get; set; }
 
         /// <summary>
         /// Gets or Sets JavaPackageBytes
         /// </summary>
-        [DataMember(Name="javaPackageBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "javaPackageBytes", EmitDefaultValue = false)]
         public ByteString JavaPackageBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets JavaOuterClassname
         /// </summary>
-        [DataMember(Name="javaOuterClassname", EmitDefaultValue=false)]
+        [DataMember(Name = "javaOuterClassname", EmitDefaultValue = false)]
         public string JavaOuterClassname { get; set; }
 
         /// <summary>
         /// Gets or Sets JavaOuterClassnameBytes
         /// </summary>
-        [DataMember(Name="javaOuterClassnameBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "javaOuterClassnameBytes", EmitDefaultValue = false)]
         public ByteString JavaOuterClassnameBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets JavaMultipleFiles
         /// </summary>
-        [DataMember(Name="javaMultipleFiles", EmitDefaultValue=false)]
+        [DataMember(Name = "javaMultipleFiles", EmitDefaultValue = false)]
         public bool? JavaMultipleFiles { get; set; }
 
         /// <summary>
         /// Gets or Sets JavaGenerateEqualsAndHash
         /// </summary>
-        [DataMember(Name="javaGenerateEqualsAndHash", EmitDefaultValue=false)]
+        [DataMember(Name = "javaGenerateEqualsAndHash", EmitDefaultValue = false)]
         public bool? JavaGenerateEqualsAndHash { get; set; }
 
 
         /// <summary>
         /// Gets or Sets GoPackage
         /// </summary>
-        [DataMember(Name="goPackage", EmitDefaultValue=false)]
+        [DataMember(Name = "goPackage", EmitDefaultValue = false)]
         public string GoPackage { get; set; }
 
         /// <summary>
         /// Gets or Sets GoPackageBytes
         /// </summary>
-        [DataMember(Name="goPackageBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "goPackageBytes", EmitDefaultValue = false)]
         public ByteString GoPackageBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets CcGenericServices
         /// </summary>
-        [DataMember(Name="ccGenericServices", EmitDefaultValue=false)]
+        [DataMember(Name = "ccGenericServices", EmitDefaultValue = false)]
         public bool? CcGenericServices { get; set; }
 
         /// <summary>
         /// Gets or Sets JavaGenericServices
         /// </summary>
-        [DataMember(Name="javaGenericServices", EmitDefaultValue=false)]
+        [DataMember(Name = "javaGenericServices", EmitDefaultValue = false)]
         public bool? JavaGenericServices { get; set; }
 
         /// <summary>
         /// Gets or Sets PyGenericServices
         /// </summary>
-        [DataMember(Name="pyGenericServices", EmitDefaultValue=false)]
+        [DataMember(Name = "pyGenericServices", EmitDefaultValue = false)]
         public bool? PyGenericServices { get; set; }
 
         /// <summary>
         /// Gets or Sets PhpGenericServices
         /// </summary>
-        [DataMember(Name="phpGenericServices", EmitDefaultValue=false)]
+        [DataMember(Name = "phpGenericServices", EmitDefaultValue = false)]
         public bool? PhpGenericServices { get; set; }
 
         /// <summary>
         /// Gets or Sets CcEnableArenas
         /// </summary>
-        [DataMember(Name="ccEnableArenas", EmitDefaultValue=false)]
+        [DataMember(Name = "ccEnableArenas", EmitDefaultValue = false)]
         public bool? CcEnableArenas { get; set; }
 
         /// <summary>
         /// Gets or Sets ObjcClassPrefix
         /// </summary>
-        [DataMember(Name="objcClassPrefix", EmitDefaultValue=false)]
+        [DataMember(Name = "objcClassPrefix", EmitDefaultValue = false)]
         public string ObjcClassPrefix { get; set; }
 
         /// <summary>
         /// Gets or Sets ObjcClassPrefixBytes
         /// </summary>
-        [DataMember(Name="objcClassPrefixBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "objcClassPrefixBytes", EmitDefaultValue = false)]
         public ByteString ObjcClassPrefixBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets CsharpNamespace
         /// </summary>
-        [DataMember(Name="csharpNamespace", EmitDefaultValue=false)]
+        [DataMember(Name = "csharpNamespace", EmitDefaultValue = false)]
         public string CsharpNamespace { get; set; }
 
         /// <summary>
         /// Gets or Sets CsharpNamespaceBytes
         /// </summary>
-        [DataMember(Name="csharpNamespaceBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "csharpNamespaceBytes", EmitDefaultValue = false)]
         public ByteString CsharpNamespaceBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets SwiftPrefix
         /// </summary>
-        [DataMember(Name="swiftPrefix", EmitDefaultValue=false)]
+        [DataMember(Name = "swiftPrefix", EmitDefaultValue = false)]
         public string SwiftPrefix { get; set; }
 
         /// <summary>
         /// Gets or Sets SwiftPrefixBytes
         /// </summary>
-        [DataMember(Name="swiftPrefixBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "swiftPrefixBytes", EmitDefaultValue = false)]
         public ByteString SwiftPrefixBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets PhpClassPrefix
         /// </summary>
-        [DataMember(Name="phpClassPrefix", EmitDefaultValue=false)]
+        [DataMember(Name = "phpClassPrefix", EmitDefaultValue = false)]
         public string PhpClassPrefix { get; set; }
 
         /// <summary>
         /// Gets or Sets PhpClassPrefixBytes
         /// </summary>
-        [DataMember(Name="phpClassPrefixBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "phpClassPrefixBytes", EmitDefaultValue = false)]
         public ByteString PhpClassPrefixBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets PhpNamespace
         /// </summary>
-        [DataMember(Name="phpNamespace", EmitDefaultValue=false)]
+        [DataMember(Name = "phpNamespace", EmitDefaultValue = false)]
         public string PhpNamespace { get; set; }
 
         /// <summary>
         /// Gets or Sets PhpNamespaceBytes
         /// </summary>
-        [DataMember(Name="phpNamespaceBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "phpNamespaceBytes", EmitDefaultValue = false)]
         public ByteString PhpNamespaceBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets ParserForType
         /// </summary>
-        [DataMember(Name="parserForType", EmitDefaultValue=false)]
+        [DataMember(Name = "parserForType", EmitDefaultValue = false)]
         public ParserFileOptions ParserForType { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultInstanceForType
         /// </summary>
-        [DataMember(Name="defaultInstanceForType", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultInstanceForType", EmitDefaultValue = false)]
         public FileOptions DefaultInstanceForType { get; set; }
 
         /// <summary>
         /// Gets or Sets SerializedSize
         /// </summary>
-        [DataMember(Name="serializedSize", EmitDefaultValue=false)]
+        [DataMember(Name = "serializedSize", EmitDefaultValue = false)]
         public int? SerializedSize { get; set; }
 
         /// <summary>
         /// Gets or Sets Deprecated
         /// </summary>
-        [DataMember(Name="deprecated", EmitDefaultValue=false)]
+        [DataMember(Name = "deprecated", EmitDefaultValue = false)]
         public bool? Deprecated { get; set; }
 
         /// <summary>
         /// Gets or Sets UninterpretedOptionList
         /// </summary>
-        [DataMember(Name="uninterpretedOptionList", EmitDefaultValue=false)]
+        [DataMember(Name = "uninterpretedOptionList", EmitDefaultValue = false)]
         public List<UninterpretedOption> UninterpretedOptionList { get; set; }
 
         /// <summary>
         /// Gets or Sets UninterpretedOptionOrBuilderList
         /// </summary>
-        [DataMember(Name="uninterpretedOptionOrBuilderList", EmitDefaultValue=false)]
+        [DataMember(Name = "uninterpretedOptionOrBuilderList", EmitDefaultValue = false)]
         public List<UninterpretedOptionOrBuilder> UninterpretedOptionOrBuilderList { get; set; }
 
         /// <summary>
         /// Gets or Sets UninterpretedOptionCount
         /// </summary>
-        [DataMember(Name="uninterpretedOptionCount", EmitDefaultValue=false)]
+        [DataMember(Name = "uninterpretedOptionCount", EmitDefaultValue = false)]
         public int? UninterpretedOptionCount { get; set; }
 
         /// <summary>
         /// Gets or Sets JavaStringCheckUtf8
         /// </summary>
-        [DataMember(Name="javaStringCheckUtf8", EmitDefaultValue=false)]
+        [DataMember(Name = "javaStringCheckUtf8", EmitDefaultValue = false)]
         public bool? JavaStringCheckUtf8 { get; set; }
 
         /// <summary>
         /// Gets or Sets InitializationErrorString
         /// </summary>
-        [DataMember(Name="initializationErrorString", EmitDefaultValue=false)]
+        [DataMember(Name = "initializationErrorString", EmitDefaultValue = false)]
         public string InitializationErrorString { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptorForType
         /// </summary>
-        [DataMember(Name="descriptorForType", EmitDefaultValue=false)]
+        [DataMember(Name = "descriptorForType", EmitDefaultValue = false)]
         public Descriptor DescriptorForType { get; set; }
 
         /// <summary>
         /// Gets or Sets AllFields
         /// </summary>
-        [DataMember(Name="allFields", EmitDefaultValue=false)]
+        [DataMember(Name = "allFields", EmitDefaultValue = false)]
         public Dictionary<string, Object> AllFields { get; set; }
 
         /// <summary>
         /// Gets or Sets AllFieldsRaw
         /// </summary>
-        [DataMember(Name="allFieldsRaw", EmitDefaultValue=false)]
+        [DataMember(Name = "allFieldsRaw", EmitDefaultValue = false)]
         public Dictionary<string, Object> AllFieldsRaw { get; set; }
 
         /// <summary>
@@ -487,7 +487,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -517,192 +517,192 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UnknownFields == input.UnknownFields ||
                     (this.UnknownFields != null &&
                     this.UnknownFields.Equals(input.UnknownFields))
-                ) && 
+                ) &&
                 (
                     this.Initialized == input.Initialized ||
                     (this.Initialized != null &&
                     this.Initialized.Equals(input.Initialized))
-                ) && 
+                ) &&
                 (
                     this.JavaPackage == input.JavaPackage ||
                     (this.JavaPackage != null &&
                     this.JavaPackage.Equals(input.JavaPackage))
-                ) && 
+                ) &&
                 (
                     this.JavaPackageBytes == input.JavaPackageBytes ||
                     (this.JavaPackageBytes != null &&
                     this.JavaPackageBytes.Equals(input.JavaPackageBytes))
-                ) && 
+                ) &&
                 (
                     this.JavaOuterClassname == input.JavaOuterClassname ||
                     (this.JavaOuterClassname != null &&
                     this.JavaOuterClassname.Equals(input.JavaOuterClassname))
-                ) && 
+                ) &&
                 (
                     this.JavaOuterClassnameBytes == input.JavaOuterClassnameBytes ||
                     (this.JavaOuterClassnameBytes != null &&
                     this.JavaOuterClassnameBytes.Equals(input.JavaOuterClassnameBytes))
-                ) && 
+                ) &&
                 (
                     this.JavaMultipleFiles == input.JavaMultipleFiles ||
                     (this.JavaMultipleFiles != null &&
                     this.JavaMultipleFiles.Equals(input.JavaMultipleFiles))
-                ) && 
+                ) &&
                 (
                     this.JavaGenerateEqualsAndHash == input.JavaGenerateEqualsAndHash ||
                     (this.JavaGenerateEqualsAndHash != null &&
                     this.JavaGenerateEqualsAndHash.Equals(input.JavaGenerateEqualsAndHash))
-                ) && 
+                ) &&
                 (
                     this.OptimizeFor == input.OptimizeFor ||
                     (this.OptimizeFor != null &&
                     this.OptimizeFor.Equals(input.OptimizeFor))
-                ) && 
+                ) &&
                 (
                     this.GoPackage == input.GoPackage ||
                     (this.GoPackage != null &&
                     this.GoPackage.Equals(input.GoPackage))
-                ) && 
+                ) &&
                 (
                     this.GoPackageBytes == input.GoPackageBytes ||
                     (this.GoPackageBytes != null &&
                     this.GoPackageBytes.Equals(input.GoPackageBytes))
-                ) && 
+                ) &&
                 (
                     this.CcGenericServices == input.CcGenericServices ||
                     (this.CcGenericServices != null &&
                     this.CcGenericServices.Equals(input.CcGenericServices))
-                ) && 
+                ) &&
                 (
                     this.JavaGenericServices == input.JavaGenericServices ||
                     (this.JavaGenericServices != null &&
                     this.JavaGenericServices.Equals(input.JavaGenericServices))
-                ) && 
+                ) &&
                 (
                     this.PyGenericServices == input.PyGenericServices ||
                     (this.PyGenericServices != null &&
                     this.PyGenericServices.Equals(input.PyGenericServices))
-                ) && 
+                ) &&
                 (
                     this.PhpGenericServices == input.PhpGenericServices ||
                     (this.PhpGenericServices != null &&
                     this.PhpGenericServices.Equals(input.PhpGenericServices))
-                ) && 
+                ) &&
                 (
                     this.CcEnableArenas == input.CcEnableArenas ||
                     (this.CcEnableArenas != null &&
                     this.CcEnableArenas.Equals(input.CcEnableArenas))
-                ) && 
+                ) &&
                 (
                     this.ObjcClassPrefix == input.ObjcClassPrefix ||
                     (this.ObjcClassPrefix != null &&
                     this.ObjcClassPrefix.Equals(input.ObjcClassPrefix))
-                ) && 
+                ) &&
                 (
                     this.ObjcClassPrefixBytes == input.ObjcClassPrefixBytes ||
                     (this.ObjcClassPrefixBytes != null &&
                     this.ObjcClassPrefixBytes.Equals(input.ObjcClassPrefixBytes))
-                ) && 
+                ) &&
                 (
                     this.CsharpNamespace == input.CsharpNamespace ||
                     (this.CsharpNamespace != null &&
                     this.CsharpNamespace.Equals(input.CsharpNamespace))
-                ) && 
+                ) &&
                 (
                     this.CsharpNamespaceBytes == input.CsharpNamespaceBytes ||
                     (this.CsharpNamespaceBytes != null &&
                     this.CsharpNamespaceBytes.Equals(input.CsharpNamespaceBytes))
-                ) && 
+                ) &&
                 (
                     this.SwiftPrefix == input.SwiftPrefix ||
                     (this.SwiftPrefix != null &&
                     this.SwiftPrefix.Equals(input.SwiftPrefix))
-                ) && 
+                ) &&
                 (
                     this.SwiftPrefixBytes == input.SwiftPrefixBytes ||
                     (this.SwiftPrefixBytes != null &&
                     this.SwiftPrefixBytes.Equals(input.SwiftPrefixBytes))
-                ) && 
+                ) &&
                 (
                     this.PhpClassPrefix == input.PhpClassPrefix ||
                     (this.PhpClassPrefix != null &&
                     this.PhpClassPrefix.Equals(input.PhpClassPrefix))
-                ) && 
+                ) &&
                 (
                     this.PhpClassPrefixBytes == input.PhpClassPrefixBytes ||
                     (this.PhpClassPrefixBytes != null &&
                     this.PhpClassPrefixBytes.Equals(input.PhpClassPrefixBytes))
-                ) && 
+                ) &&
                 (
                     this.PhpNamespace == input.PhpNamespace ||
                     (this.PhpNamespace != null &&
                     this.PhpNamespace.Equals(input.PhpNamespace))
-                ) && 
+                ) &&
                 (
                     this.PhpNamespaceBytes == input.PhpNamespaceBytes ||
                     (this.PhpNamespaceBytes != null &&
                     this.PhpNamespaceBytes.Equals(input.PhpNamespaceBytes))
-                ) && 
+                ) &&
                 (
                     this.ParserForType == input.ParserForType ||
                     (this.ParserForType != null &&
                     this.ParserForType.Equals(input.ParserForType))
-                ) && 
+                ) &&
                 (
                     this.DefaultInstanceForType == input.DefaultInstanceForType ||
                     (this.DefaultInstanceForType != null &&
                     this.DefaultInstanceForType.Equals(input.DefaultInstanceForType))
-                ) && 
+                ) &&
                 (
                     this.SerializedSize == input.SerializedSize ||
                     (this.SerializedSize != null &&
                     this.SerializedSize.Equals(input.SerializedSize))
-                ) && 
+                ) &&
                 (
                     this.Deprecated == input.Deprecated ||
                     (this.Deprecated != null &&
                     this.Deprecated.Equals(input.Deprecated))
-                ) && 
+                ) &&
                 (
                     this.UninterpretedOptionList == input.UninterpretedOptionList ||
                     this.UninterpretedOptionList != null &&
                     this.UninterpretedOptionList.SequenceEqual(input.UninterpretedOptionList)
-                ) && 
+                ) &&
                 (
                     this.UninterpretedOptionOrBuilderList == input.UninterpretedOptionOrBuilderList ||
                     this.UninterpretedOptionOrBuilderList != null &&
                     this.UninterpretedOptionOrBuilderList.SequenceEqual(input.UninterpretedOptionOrBuilderList)
-                ) && 
+                ) &&
                 (
                     this.UninterpretedOptionCount == input.UninterpretedOptionCount ||
                     (this.UninterpretedOptionCount != null &&
                     this.UninterpretedOptionCount.Equals(input.UninterpretedOptionCount))
-                ) && 
+                ) &&
                 (
                     this.JavaStringCheckUtf8 == input.JavaStringCheckUtf8 ||
                     (this.JavaStringCheckUtf8 != null &&
                     this.JavaStringCheckUtf8.Equals(input.JavaStringCheckUtf8))
-                ) && 
+                ) &&
                 (
                     this.InitializationErrorString == input.InitializationErrorString ||
                     (this.InitializationErrorString != null &&
                     this.InitializationErrorString.Equals(input.InitializationErrorString))
-                ) && 
+                ) &&
                 (
                     this.DescriptorForType == input.DescriptorForType ||
                     (this.DescriptorForType != null &&
                     this.DescriptorForType.Equals(input.DescriptorForType))
-                ) && 
+                ) &&
                 (
                     this.AllFields == input.AllFields ||
                     this.AllFields != null &&
                     this.AllFields.SequenceEqual(input.AllFields)
-                ) && 
+                ) &&
                 (
                     this.AllFieldsRaw == input.AllFieldsRaw ||
                     this.AllFieldsRaw != null &&

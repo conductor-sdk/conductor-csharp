@@ -17,7 +17,7 @@ namespace Conductor.Client.Models
     /// ParserMethodOptions
     /// </summary>
     [DataContract]
-    public partial class ParserMethodOptions :  IEquatable<ParserMethodOptions>, IValidatableObject
+    public partial class ParserMethodOptions : IEquatable<ParserMethodOptions>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ParserMethodOptions" /> class.
@@ -26,7 +26,7 @@ namespace Conductor.Client.Models
         public ParserMethodOptions()
         {
         }
-        
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -38,7 +38,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>

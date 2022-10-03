@@ -2,7 +2,7 @@
 
 namespace Conductor.Exceptions
 {
-    public  class WorkerNotFoundException : Exception
+    public class WorkerNotFoundException : Exception
     {
         public WorkerNotFoundException()
         {

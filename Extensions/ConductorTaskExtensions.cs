@@ -10,15 +10,15 @@ namespace Conductor.Client.Extensions
         {
             return new TaskResult
             (
-                workflowInstanceId : task.WorkflowInstanceId,
-                taskId : task.TaskId,
-                status : TaskResult.StatusEnum.INPROGRESS,
-                outputData : outputData,
-                logs :  new List<TaskExecLog>
+                workflowInstanceId: task.WorkflowInstanceId,
+                taskId: task.TaskId,
+                status: TaskResult.StatusEnum.INPROGRESS,
+                outputData: outputData,
+                logs: new List<TaskExecLog>
                 {
                     new TaskExecLog { TaskId = task.TaskId, Log = log, CreatedTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() }
                 },
-                callbackAfterSeconds : callbackAfterSeconds.Value
+                callbackAfterSeconds: callbackAfterSeconds.Value
             );
         }
 
@@ -26,11 +26,11 @@ namespace Conductor.Client.Extensions
         {
             return new TaskResult
             (
-                workflowInstanceId : task.WorkflowInstanceId,
-                taskId : task.TaskId,
-                status : TaskResult.StatusEnum.INPROGRESS,
-                outputData : outputData,
-                logs : logs
+                workflowInstanceId: task.WorkflowInstanceId,
+                taskId: task.TaskId,
+                status: TaskResult.StatusEnum.INPROGRESS,
+                outputData: outputData,
+                logs: logs
             );
         }
 
@@ -38,11 +38,11 @@ namespace Conductor.Client.Extensions
         {
             return new TaskResult
             (
-                workflowInstanceId : task.WorkflowInstanceId,
-                taskId : task.TaskId,
-                status : TaskResult.StatusEnum.COMPLETED,
-                outputData : outputData,
-                logs : logs
+                workflowInstanceId: task.WorkflowInstanceId,
+                taskId: task.TaskId,
+                status: TaskResult.StatusEnum.COMPLETED,
+                outputData: outputData,
+                logs: logs
             );
         }
 
@@ -50,12 +50,12 @@ namespace Conductor.Client.Extensions
         {
             return new TaskResult
             (
-                workflowInstanceId : task.WorkflowInstanceId,
-                taskId : task.TaskId,
-                status : TaskResult.StatusEnum.FAILED,
-                reasonForIncompletion : errorMessage,
-                outputData : outputData,
-                logs : logs
+                workflowInstanceId: task.WorkflowInstanceId,
+                taskId: task.TaskId,
+                status: TaskResult.StatusEnum.FAILED,
+                reasonForIncompletion: errorMessage,
+                outputData: outputData,
+                logs: logs
             );
         }
 
@@ -63,12 +63,12 @@ namespace Conductor.Client.Extensions
         {
             return new TaskResult
             (
-                workflowInstanceId : task.WorkflowInstanceId,
-                taskId : task.TaskId,
-                status : TaskResult.StatusEnum.FAILEDWITHTERMINALERROR,
-                reasonForIncompletion : errorMessage,
-                outputData : outputData,
-                logs : logs
+                workflowInstanceId: task.WorkflowInstanceId,
+                taskId: task.TaskId,
+                status: TaskResult.StatusEnum.FAILEDWITHTERMINALERROR,
+                reasonForIncompletion: errorMessage,
+                outputData: outputData,
+                logs: logs
             );
         }
     }

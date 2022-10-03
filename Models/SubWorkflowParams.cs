@@ -39,7 +39,8 @@ namespace Conductor.Client.Models
         public SubWorkflowParams(string name = default(string), int version = default(int), Dictionary<string, string> taskToDomain = default(Dictionary<string, string>), WorkflowDef workflowDefinition = default(WorkflowDef))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for SubWorkflowParams and cannot be null");
             }
             this.Name = name;
@@ -118,22 +119,22 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this._Version == input._Version ||
                     this._Version.Equals(input._Version)
-                ) && 
+                ) &&
                 (
                     this.TaskToDomain == input.TaskToDomain ||
                     this.TaskToDomain != null &&
                     input.TaskToDomain != null &&
                     this.TaskToDomain.SequenceEqual(input.TaskToDomain)
-                ) && 
+                ) &&
                 (
                     this.WorkflowDefinition == input.WorkflowDefinition ||
                     (this.WorkflowDefinition != null &&

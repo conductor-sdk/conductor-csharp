@@ -11,4 +11,3 @@ namespace Conductor.Client.Interfaces
         Task<TaskResult> Execute(Models.Task task, CancellationToken token);
     }
 }
-    

@@ -288,92 +288,92 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.WorkflowType == input.WorkflowType ||
                     (this.WorkflowType != null &&
                     this.WorkflowType.Equals(input.WorkflowType))
-                ) && 
+                ) &&
                 (
                     this._Version == input._Version ||
                     this._Version.Equals(input._Version)
-                ) && 
+                ) &&
                 (
                     this.WorkflowId == input.WorkflowId ||
                     (this.WorkflowId != null &&
                     this.WorkflowId.Equals(input.WorkflowId))
-                ) && 
+                ) &&
                 (
                     this.CorrelationId == input.CorrelationId ||
                     (this.CorrelationId != null &&
                     this.CorrelationId.Equals(input.CorrelationId))
-                ) && 
+                ) &&
                 (
                     this.StartTime == input.StartTime ||
                     (this.StartTime != null &&
                     this.StartTime.Equals(input.StartTime))
-                ) && 
+                ) &&
                 (
                     this.UpdateTime == input.UpdateTime ||
                     (this.UpdateTime != null &&
                     this.UpdateTime.Equals(input.UpdateTime))
-                ) && 
+                ) &&
                 (
                     this.EndTime == input.EndTime ||
                     (this.EndTime != null &&
                     this.EndTime.Equals(input.EndTime))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.Input == input.Input ||
                     (this.Input != null &&
                     this.Input.Equals(input.Input))
-                ) && 
+                ) &&
                 (
                     this.Output == input.Output ||
                     (this.Output != null &&
                     this.Output.Equals(input.Output))
-                ) && 
+                ) &&
                 (
                     this.ReasonForIncompletion == input.ReasonForIncompletion ||
                     (this.ReasonForIncompletion != null &&
                     this.ReasonForIncompletion.Equals(input.ReasonForIncompletion))
-                ) && 
+                ) &&
                 (
                     this.ExecutionTime == input.ExecutionTime ||
                     this.ExecutionTime.Equals(input.ExecutionTime)
-                ) && 
+                ) &&
                 (
                     this.Event == input.Event ||
                     (this.Event != null &&
                     this.Event.Equals(input.Event))
-                ) && 
+                ) &&
                 (
                     this.FailedReferenceTaskNames == input.FailedReferenceTaskNames ||
                     (this.FailedReferenceTaskNames != null &&
                     this.FailedReferenceTaskNames.Equals(input.FailedReferenceTaskNames))
-                ) && 
+                ) &&
                 (
                     this.ExternalInputPayloadStoragePath == input.ExternalInputPayloadStoragePath ||
                     (this.ExternalInputPayloadStoragePath != null &&
                     this.ExternalInputPayloadStoragePath.Equals(input.ExternalInputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.ExternalOutputPayloadStoragePath == input.ExternalOutputPayloadStoragePath ||
                     (this.ExternalOutputPayloadStoragePath != null &&
                     this.ExternalOutputPayloadStoragePath.Equals(input.ExternalOutputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.Priority == input.Priority ||
                     this.Priority.Equals(input.Priority)
-                ) && 
+                ) &&
                 (
                     this.OutputSize == input.OutputSize ||
                     this.OutputSize.Equals(input.OutputSize)
-                ) && 
+                ) &&
                 (
                     this.InputSize == input.InputSize ||
                     this.InputSize.Equals(input.InputSize)

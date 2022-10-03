@@ -18,7 +18,7 @@ namespace Conductor.Client.Models
     /// NamePartOrBuilder
     /// </summary>
     [DataContract]
-    public partial class NamePartOrBuilder :  IEquatable<NamePartOrBuilder>, IValidatableObject
+    public partial class NamePartOrBuilder : IEquatable<NamePartOrBuilder>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NamePartOrBuilder" /> class.
@@ -60,59 +60,59 @@ namespace Conductor.Client.Models
                 this.Initialized = initialized;
             }
         }
-        
+
         /// <summary>
         /// Gets or Sets NamePart
         /// </summary>
-        [DataMember(Name="namePart", EmitDefaultValue=false)]
+        [DataMember(Name = "namePart", EmitDefaultValue = false)]
         public string NamePart { get; set; }
 
         /// <summary>
         /// Gets or Sets NamePartBytes
         /// </summary>
-        [DataMember(Name="namePartBytes", EmitDefaultValue=false)]
+        [DataMember(Name = "namePartBytes", EmitDefaultValue = false)]
         public ByteString NamePartBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets IsExtension
         /// </summary>
-        [DataMember(Name="isExtension", EmitDefaultValue=false)]
+        [DataMember(Name = "isExtension", EmitDefaultValue = false)]
         public bool? IsExtension { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultInstanceForType
         /// </summary>
-        [DataMember(Name="defaultInstanceForType", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultInstanceForType", EmitDefaultValue = false)]
         public Message DefaultInstanceForType { get; set; }
 
         /// <summary>
         /// Gets or Sets InitializationErrorString
         /// </summary>
-        [DataMember(Name="initializationErrorString", EmitDefaultValue=false)]
+        [DataMember(Name = "initializationErrorString", EmitDefaultValue = false)]
         public string InitializationErrorString { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptorForType
         /// </summary>
-        [DataMember(Name="descriptorForType", EmitDefaultValue=false)]
+        [DataMember(Name = "descriptorForType", EmitDefaultValue = false)]
         public Descriptor DescriptorForType { get; set; }
 
         /// <summary>
         /// Gets or Sets AllFields
         /// </summary>
-        [DataMember(Name="allFields", EmitDefaultValue=false)]
+        [DataMember(Name = "allFields", EmitDefaultValue = false)]
         public Dictionary<string, Object> AllFields { get; set; }
 
         /// <summary>
         /// Gets or Sets UnknownFields
         /// </summary>
-        [DataMember(Name="unknownFields", EmitDefaultValue=false)]
+        [DataMember(Name = "unknownFields", EmitDefaultValue = false)]
         public UnknownFieldSet UnknownFields { get; set; }
 
         /// <summary>
         /// Gets or Sets Initialized
         /// </summary>
-        [DataMember(Name="initialized", EmitDefaultValue=false)]
+        [DataMember(Name = "initialized", EmitDefaultValue = false)]
         public bool? Initialized { get; set; }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -165,47 +165,47 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.NamePart == input.NamePart ||
                     (this.NamePart != null &&
                     this.NamePart.Equals(input.NamePart))
-                ) && 
+                ) &&
                 (
                     this.NamePartBytes == input.NamePartBytes ||
                     (this.NamePartBytes != null &&
                     this.NamePartBytes.Equals(input.NamePartBytes))
-                ) && 
+                ) &&
                 (
                     this.IsExtension == input.IsExtension ||
                     (this.IsExtension != null &&
                     this.IsExtension.Equals(input.IsExtension))
-                ) && 
+                ) &&
                 (
                     this.DefaultInstanceForType == input.DefaultInstanceForType ||
                     (this.DefaultInstanceForType != null &&
                     this.DefaultInstanceForType.Equals(input.DefaultInstanceForType))
-                ) && 
+                ) &&
                 (
                     this.InitializationErrorString == input.InitializationErrorString ||
                     (this.InitializationErrorString != null &&
                     this.InitializationErrorString.Equals(input.InitializationErrorString))
-                ) && 
+                ) &&
                 (
                     this.DescriptorForType == input.DescriptorForType ||
                     (this.DescriptorForType != null &&
                     this.DescriptorForType.Equals(input.DescriptorForType))
-                ) && 
+                ) &&
                 (
                     this.AllFields == input.AllFields ||
                     this.AllFields != null &&
                     this.AllFields.SequenceEqual(input.AllFields)
-                ) && 
+                ) &&
                 (
                     this.UnknownFields == input.UnknownFields ||
                     (this.UnknownFields != null &&
                     this.UnknownFields.Equals(input.UnknownFields))
-                ) && 
+                ) &&
                 (
                     this.Initialized == input.Initialized ||
                     (this.Initialized != null &&

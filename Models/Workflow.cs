@@ -370,141 +370,141 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.OwnerApp == input.OwnerApp ||
                     (this.OwnerApp != null &&
                     this.OwnerApp.Equals(input.OwnerApp))
-                ) && 
+                ) &&
                 (
                     this.CreateTime == input.CreateTime ||
                     this.CreateTime.Equals(input.CreateTime)
-                ) && 
+                ) &&
                 (
                     this.UpdateTime == input.UpdateTime ||
                     this.UpdateTime.Equals(input.UpdateTime)
-                ) && 
+                ) &&
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
+                ) &&
                 (
                     this.UpdatedBy == input.UpdatedBy ||
                     (this.UpdatedBy != null &&
                     this.UpdatedBy.Equals(input.UpdatedBy))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.EndTime == input.EndTime ||
                     this.EndTime.Equals(input.EndTime)
-                ) && 
+                ) &&
                 (
                     this.WorkflowId == input.WorkflowId ||
                     (this.WorkflowId != null &&
                     this.WorkflowId.Equals(input.WorkflowId))
-                ) && 
+                ) &&
                 (
                     this.ParentWorkflowId == input.ParentWorkflowId ||
                     (this.ParentWorkflowId != null &&
                     this.ParentWorkflowId.Equals(input.ParentWorkflowId))
-                ) && 
+                ) &&
                 (
                     this.ParentWorkflowTaskId == input.ParentWorkflowTaskId ||
                     (this.ParentWorkflowTaskId != null &&
                     this.ParentWorkflowTaskId.Equals(input.ParentWorkflowTaskId))
-                ) && 
+                ) &&
                 (
                     this.Tasks == input.Tasks ||
                     this.Tasks != null &&
                     input.Tasks != null &&
                     this.Tasks.SequenceEqual(input.Tasks)
-                ) && 
+                ) &&
                 (
                     this.Input == input.Input ||
                     this.Input != null &&
                     input.Input != null &&
                     this.Input.SequenceEqual(input.Input)
-                ) && 
+                ) &&
                 (
                     this.Output == input.Output ||
                     this.Output != null &&
                     input.Output != null &&
                     this.Output.SequenceEqual(input.Output)
-                ) && 
+                ) &&
                 (
                     this.CorrelationId == input.CorrelationId ||
                     (this.CorrelationId != null &&
                     this.CorrelationId.Equals(input.CorrelationId))
-                ) && 
+                ) &&
                 (
                     this.ReRunFromWorkflowId == input.ReRunFromWorkflowId ||
                     (this.ReRunFromWorkflowId != null &&
                     this.ReRunFromWorkflowId.Equals(input.ReRunFromWorkflowId))
-                ) && 
+                ) &&
                 (
                     this.ReasonForIncompletion == input.ReasonForIncompletion ||
                     (this.ReasonForIncompletion != null &&
                     this.ReasonForIncompletion.Equals(input.ReasonForIncompletion))
-                ) && 
+                ) &&
                 (
                     this.Event == input.Event ||
                     (this.Event != null &&
                     this.Event.Equals(input.Event))
-                ) && 
+                ) &&
                 (
                     this.TaskToDomain == input.TaskToDomain ||
                     this.TaskToDomain != null &&
                     input.TaskToDomain != null &&
                     this.TaskToDomain.SequenceEqual(input.TaskToDomain)
-                ) && 
+                ) &&
                 (
                     this.FailedReferenceTaskNames == input.FailedReferenceTaskNames ||
                     this.FailedReferenceTaskNames != null &&
                     input.FailedReferenceTaskNames != null &&
                     this.FailedReferenceTaskNames.SequenceEqual(input.FailedReferenceTaskNames)
-                ) && 
+                ) &&
                 (
                     this.WorkflowDefinition == input.WorkflowDefinition ||
                     (this.WorkflowDefinition != null &&
                     this.WorkflowDefinition.Equals(input.WorkflowDefinition))
-                ) && 
+                ) &&
                 (
                     this.ExternalInputPayloadStoragePath == input.ExternalInputPayloadStoragePath ||
                     (this.ExternalInputPayloadStoragePath != null &&
                     this.ExternalInputPayloadStoragePath.Equals(input.ExternalInputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.ExternalOutputPayloadStoragePath == input.ExternalOutputPayloadStoragePath ||
                     (this.ExternalOutputPayloadStoragePath != null &&
                     this.ExternalOutputPayloadStoragePath.Equals(input.ExternalOutputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.Priority == input.Priority ||
                     this.Priority.Equals(input.Priority)
-                ) && 
+                ) &&
                 (
                     this.Variables == input.Variables ||
                     this.Variables != null &&
                     input.Variables != null &&
                     this.Variables.SequenceEqual(input.Variables)
-                ) && 
+                ) &&
                 (
                     this.LastRetriedTime == input.LastRetriedTime ||
                     this.LastRetriedTime.Equals(input.LastRetriedTime)
-                ) && 
+                ) &&
                 (
                     this.StartTime == input.StartTime ||
                     this.StartTime.Equals(input.StartTime)
-                ) && 
+                ) &&
                 (
                     this.WorkflowName == input.WorkflowName ||
                     (this.WorkflowName != null &&
                     this.WorkflowName.Equals(input.WorkflowName))
-                ) && 
+                ) &&
                 (
                     this.WorkflowVersion == input.WorkflowVersion ||
                     this.WorkflowVersion.Equals(input.WorkflowVersion)
@@ -622,13 +622,13 @@ namespace Conductor.Client.Models
             // Priority (int) maximum
             if (this.Priority > (int)99)
             {
-                yield return new ValidationResult("Invalid value for Priority, must be a value less than or equal to 99.", new [] { "Priority" });
+                yield return new ValidationResult("Invalid value for Priority, must be a value less than or equal to 99.", new[] { "Priority" });
             }
 
             // Priority (int) minimum
             if (this.Priority < (int)0)
             {
-                yield return new ValidationResult("Invalid value for Priority, must be a value greater than or equal to 0.", new [] { "Priority" });
+                yield return new ValidationResult("Invalid value for Priority, must be a value greater than or equal to 0.", new[] { "Priority" });
             }
 
             yield break;

@@ -83,7 +83,7 @@ namespace Conductor.Client.Worker
 
         private async Task Sleep()
         {
-            var delay = configuration.SleepInterval;   
+            var delay = configuration.SleepInterval;
 
             logger.LogDebug($"Waiting for {delay}ms");
 
@@ -102,7 +102,7 @@ namespace Conductor.Client.Worker
                 workflowTasks.Add(worklfowTask);
             }
 
-            var prio =  workflowTasks.Where(p => p.Priority != null).OrderByDescending(p => p.Priority).ToList();
+            var prio = workflowTasks.Where(p => p.Priority != null).OrderByDescending(p => p.Priority).ToList();
             var random = workflowTasks.Where(p => p.Priority == null).ToList();
             ShuffleList(random);
             return prio.Concat(random).ToList();
@@ -128,7 +128,7 @@ namespace Conductor.Client.Worker
                     var timeout = task.ResponseTimeoutSeconds * 1000;
                     cts.CancelAfter(timeout > int.MaxValue ? int.MaxValue : (int)timeout);
                     result = await workflowTask.Execute(task, cts.Token).WaitOrCancel(cts.Token);
-                } 
+                }
                 else
                 {
                     result = await workflowTask.Execute(task, CancellationToken.None);

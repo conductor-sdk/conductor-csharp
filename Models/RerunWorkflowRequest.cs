@@ -117,29 +117,29 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.ReRunFromWorkflowId == input.ReRunFromWorkflowId ||
                     (this.ReRunFromWorkflowId != null &&
                     this.ReRunFromWorkflowId.Equals(input.ReRunFromWorkflowId))
-                ) && 
+                ) &&
                 (
                     this.WorkflowInput == input.WorkflowInput ||
                     this.WorkflowInput != null &&
                     input.WorkflowInput != null &&
                     this.WorkflowInput.SequenceEqual(input.WorkflowInput)
-                ) && 
+                ) &&
                 (
                     this.ReRunFromTaskId == input.ReRunFromTaskId ||
                     (this.ReRunFromTaskId != null &&
                     this.ReRunFromTaskId.Equals(input.ReRunFromTaskId))
-                ) && 
+                ) &&
                 (
                     this.TaskInput == input.TaskInput ||
                     this.TaskInput != null &&
                     input.TaskInput != null &&
                     this.TaskInput.SequenceEqual(input.TaskInput)
-                ) && 
+                ) &&
                 (
                     this.CorrelationId == input.CorrelationId ||
                     (this.CorrelationId != null &&

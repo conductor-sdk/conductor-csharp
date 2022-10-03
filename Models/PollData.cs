@@ -107,22 +107,22 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.QueueName == input.QueueName ||
                     (this.QueueName != null &&
                     this.QueueName.Equals(input.QueueName))
-                ) && 
+                ) &&
                 (
                     this.Domain == input.Domain ||
                     (this.Domain != null &&
                     this.Domain.Equals(input.Domain))
-                ) && 
+                ) &&
                 (
                     this.WorkerId == input.WorkerId ||
                     (this.WorkerId != null &&
                     this.WorkerId.Equals(input.WorkerId))
-                ) && 
+                ) &&
                 (
                     this.LastPollTime == input.LastPollTime ||
                     this.LastPollTime.Equals(input.LastPollTime)

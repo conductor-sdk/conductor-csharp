@@ -20,8 +20,8 @@ namespace Conductor.Client
         private ILogger<ConductorWorkerRestClient> logger;
 
         public JsonSerializerSettings JsonSerializerSettings { get; set; } = new JsonSerializerSettings();
-        public ConductorWorkerRestClient(HttpClient httpClient, Configuration configuration, ConductorAuthTokenClient conductorAuthTokenClient, ILogger<ConductorWorkerRestClient> logger) 
-        { 
+        public ConductorWorkerRestClient(HttpClient httpClient, Configuration configuration, ConductorAuthTokenClient conductorAuthTokenClient, ILogger<ConductorWorkerRestClient> logger)
+        {
             httpClient.BaseAddress = new Uri(configuration.BasePath);
             this.httpClient = httpClient;
             this.configuration = configuration;
@@ -56,7 +56,7 @@ namespace Conductor.Client
             using (var request = new HttpRequestMessage { Method = System.Net.Http.HttpMethod.Get, RequestUri = new Uri(urlBuilder.ToString(), UriKind.RelativeOrAbsolute) })
             {
                 request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-                if(!string.IsNullOrEmpty(this.configuration.keyId) && !string.IsNullOrEmpty(this.configuration.keySecret))
+                if (!string.IsNullOrEmpty(this.configuration.keyId) && !string.IsNullOrEmpty(this.configuration.keySecret))
                 {
                     request.Headers.Add("X-AUTHORIZATION", this.conductorAuthTokenClient.getToken(this.configuration.BasePath + "/api/token", this.configuration.keyId, this.configuration.keySecret));
                 }
@@ -79,11 +79,12 @@ namespace Conductor.Client
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         return await ReadResponseAsync<Models.Task>(response, headers);
-                        
+
                     }
 
                     return default(Models.Task);
-                } catch(Exception e)
+                }
+                catch (Exception e)
                 {
                     logger.LogError("Unable to parse content " + e.Message);
                     return default(Models.Task);

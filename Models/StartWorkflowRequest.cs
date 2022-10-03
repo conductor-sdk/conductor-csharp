@@ -43,7 +43,8 @@ namespace Conductor.Client.Models
         public StartWorkflowRequest(string name = default(string), int version = default(int), string correlationId = default(string), Dictionary<string, Object> input = default(Dictionary<string, Object>), Dictionary<string, string> taskToDomain = default(Dictionary<string, string>), WorkflowDef workflowDef = default(WorkflowDef), string externalInputPayloadStoragePath = default(string), int priority = default(int))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for StartWorkflowRequest and cannot be null");
             }
             this.Name = name;
@@ -154,43 +155,43 @@ namespace Conductor.Client.Models
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this._Version == input._Version ||
                     this._Version.Equals(input._Version)
-                ) && 
+                ) &&
                 (
                     this.CorrelationId == input.CorrelationId ||
                     (this.CorrelationId != null &&
                     this.CorrelationId.Equals(input.CorrelationId))
-                ) && 
+                ) &&
                 (
                     this.Input == input.Input ||
                     this.Input != null &&
                     input.Input != null &&
                     this.Input.SequenceEqual(input.Input)
-                ) && 
+                ) &&
                 (
                     this.TaskToDomain == input.TaskToDomain ||
                     this.TaskToDomain != null &&
                     input.TaskToDomain != null &&
                     this.TaskToDomain.SequenceEqual(input.TaskToDomain)
-                ) && 
+                ) &&
                 (
                     this.WorkflowDef == input.WorkflowDef ||
                     (this.WorkflowDef != null &&
                     this.WorkflowDef.Equals(input.WorkflowDef))
-                ) && 
+                ) &&
                 (
                     this.ExternalInputPayloadStoragePath == input.ExternalInputPayloadStoragePath ||
                     (this.ExternalInputPayloadStoragePath != null &&
                     this.ExternalInputPayloadStoragePath.Equals(input.ExternalInputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.Priority == input.Priority ||
                     this.Priority.Equals(input.Priority)
@@ -246,13 +247,13 @@ namespace Conductor.Client.Models
             // Priority (int) maximum
             if (this.Priority > (int)99)
             {
-                yield return new ValidationResult("Invalid value for Priority, must be a value less than or equal to 99.", new [] { "Priority" });
+                yield return new ValidationResult("Invalid value for Priority, must be a value less than or equal to 99.", new[] { "Priority" });
             }
 
             // Priority (int) minimum
             if (this.Priority < (int)0)
             {
-                yield return new ValidationResult("Invalid value for Priority, must be a value greater than or equal to 0.", new [] { "Priority" });
+                yield return new ValidationResult("Invalid value for Priority, must be a value greater than or equal to 0.", new[] { "Priority" });
             }
 
             yield break;
