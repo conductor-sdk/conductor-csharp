@@ -1,21 +1,17 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS raw_base_image
+RUN mkdir ./package
+COPY ./ ./package
+WORKDIR /package
 
-ARG PKG_VER
-ARG NUGET_SRC
-ARG NUGET_API_KEY
+FROM raw_base_image AS linter
+RUN dotnet format --verify-no-changes ./*.csproj
 
-# Assert All variables are assigned
-RUN [ ! -z "${NUGET_SRC}" ] & \
-    [ ! -z "${NUGET_API_KEY}" ] & \
-    [ ! -z "${PKG_VER}" ]
+# FROM raw_base_image AS built_base_image
+# RUN [ ! -z "${NUGET_SRC}" ] & \
+#     [ ! -z "${NUGET_API_KEY}" ] & \
+#     [ ! -z "${PKG_VER}" ]
+# RUN dotnet build ./*.csproj
 
-WORKDIR  /package
-
-COPY ./*.csproj ./*.config ./
-
-RUN dotnet restore
-
-COPY ./ ./
-
-RUN dotnet pack -o ./build --include-symbols --include-source -v n -c Release "/p:Version=${PKG_VER}"
-RUN dotnet nuget push -s "${NUGET_SRC}" -k "${NUGET_API_KEY}" "./build/*.symbols.nupkg"
+# FROM built_base_image
+# RUN dotnet pack -o ./build --include-symbols --include-source -v n -c Release "/p:Version=${PKG_VER}"
+# RUN dotnet nuget push -s "${NUGET_SRC}" -k "${NUGET_API_KEY}" "./build/*.symbols.nupkg"
