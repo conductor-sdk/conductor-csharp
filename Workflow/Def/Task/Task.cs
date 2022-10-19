@@ -4,7 +4,7 @@ namespace Conductor.Client.Workflow.Def.Task
 {
     public abstract class Task
     {
-        protected Models.TaskDef taskDef;
+        protected Models.TaskDef _taskDef;
         protected string _name { get; set; }
 
         protected string _taskType { get; set; }

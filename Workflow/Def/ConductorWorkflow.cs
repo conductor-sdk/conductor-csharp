@@ -1,20 +1,49 @@
 using System.Collections.Generic;
+using Conductor.Client.Models;
 
 namespace Conductor.Client.Workflow.Def
 {
-    internal class ConductorWorkflow
+    public class ConductorWorkflow
     {
-        private string name { get; set; }
-        private string description { get; set; }
-        private int version { get; set; }
-        private string failureWorkflow { get; set; }
-        private string ownerEmail { get; set; }
-        private Models.TaskDef.TimeoutPolicyEnum timeoutPolicy { get; set; }
-        private Dictionary<string, object> workflowOutput { get; set; }
-        private long timeoutSeconds { get; set; }
-        private bool restartable { get; set; }
-        private Dictionary<string, object> variables { get; set; }
+        private string _name { get; set; }
+        private string _description { get; set; }
+        private int _version { get; set; }
+        private string _failureWorkflow { get; set; }
+        private string _ownerEmail { get; set; }
+        private Models.TaskDef.TimeoutPolicyEnum _timeoutPolicy { get; set; }
+        private Dictionary<string, object> _workflowOutput { get; set; }
+        private long _timeoutSeconds { get; set; }
+        private bool _restartable { get; set; }
+        private Dictionary<string, object> _variables { get; set; }
+        private List<Task.Task> _tasks { get; set; }
 
-        private List<Task.Task> tasks { get; set; }
+        public WorkflowDef ToWorkflowDef()
+        {
+            WorkflowDef workflowDef = new WorkflowDef(
+                name: _name,
+                tasks: GetWorkflowTasks()
+            );
+            workflowDef.Description = _description;
+            workflowDef._Version = _version;
+            workflowDef.FailureWorkflow = _failureWorkflow;
+            workflowDef.OwnerEmail = _ownerEmail;
+            // TODO add timeout policy
+            // workflowDef.TimeoutPolicy = _timeoutPolicy;
+            workflowDef.TimeoutSeconds = _timeoutSeconds;
+            workflowDef.Restartable = _restartable;
+            workflowDef.OutputParameters = _workflowOutput;
+            workflowDef.Variables = _variables;
+            return workflowDef;
+        }
+
+        private List<WorkflowTask> GetWorkflowTasks()
+        {
+            List<WorkflowTask> workflowTasks = new List<WorkflowTask>(_tasks.Count);
+            for (int i = 0; i < _tasks.Count; i += 1)
+            {
+                workflowTasks[i] = _tasks[i].ToWorkflowTask();
+            }
+            return workflowTasks;
+        }
     }
 }
