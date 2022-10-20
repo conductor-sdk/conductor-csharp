@@ -9,7 +9,7 @@
 4. [Worker Configurations](#Worker-Configurations)
 
 ### Dependencies
-`conductor-csharp` packages are published to nugget package manager.  You can find the latest releases [here](https://www.nuget.org/packages/conductor-csharp/).
+`conductor-csharp` packages are published to NuGet package manager.  You can find the latest releases [here](https://www.nuget.org/packages/conductor-csharp/).
 
 ### Write workers  
 
