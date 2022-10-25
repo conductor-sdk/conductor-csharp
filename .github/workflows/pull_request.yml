@@ -9,4 +9,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Linter
-        run: docker build --target linter .
+        run: docker build --target=linter .
+      - name: Build
+        run: docker build --target=build .
+      - name: Test
+        run: docker build --target=unit-tests .

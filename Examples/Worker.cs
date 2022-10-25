@@ -1,7 +1,7 @@
 ﻿using System;
-using Conductor.Client.Extensions;
-using Conductor.Client.Interfaces;
-using Conductor.Client.Models;
+using Conductor.Extensions;
+using Conductor.Interfaces;
+using Conductor.Models;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,10 +10,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using Task = System.Threading.Tasks.Task;
-using Conductor.Client;
+using Conductor;
 using System.Collections.Concurrent;
 
-namespace TestSDK
+namespace Examples
 {
     class Worker
     {
@@ -71,7 +71,7 @@ namespace TestSDK
         public string TaskType => "simple_task_0";
         public int? Priority => null;
 
-        public Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
+        public Task<TaskResult> Execute(Conductor.Models.Task task, CancellationToken token)
         {
             Dictionary<string, object> newOutput = new Dictionary<string, object>();
             Random rnd = new Random();

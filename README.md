@@ -21,7 +21,7 @@
         public string TaskType => "test_ctask";
         public int? Priority => null;
 
-        public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
+        public async Task<TaskResult> Execute(Conductor.Models.Task task, CancellationToken token)
         {
            Dictionary<string, object> newOutput = new Dictionary<string, object>();
            newOutput.Add("output", "1");
@@ -36,7 +36,7 @@
         public string TaskType => "test_ctask2";
         public int? Priority => null;
 
-        public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
+        public async Task<TaskResult> Execute(Conductor.Models.Task task, CancellationToken token)
         {
            Dictionary<string, object> newOutput = new Dictionary<string, object>();
            //Reuse the existing code written in C#
@@ -56,12 +56,12 @@ using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Conductor.Client.Models;
-using Conductor.Client.Extensions;
-using Conductor.Client.Interfaces;
+using Conductor.Models;
+using Conductor.Extensions;
+using Conductor.Interfaces;
 
 using Task = System.Threading.Tasks.Task;
-using Conductor.Client;
+using Conductor;
 using System.Collections.Concurrent;
 
 namespace TestOrkesSDK
@@ -98,7 +98,7 @@ namespace TestOrkesSDK
         public string TaskType => "my_ctask";
         public int? Priority => null;
 
-        public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
+        public async Task<TaskResult> Execute(Conductor.Models.Task task, CancellationToken token)
         {
             Dictionary<string, object> newOutput = new Dictionary<string, object>();
             newOutput.Add("output", 1);

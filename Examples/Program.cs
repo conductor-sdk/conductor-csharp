@@ -1,20 +1,11 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Conductor.Client.Models;
-using Conductor.Client.Extensions;
-using Conductor.Client.Interfaces;
-
-using Task = System.Threading.Tasks.Task;
-using Conductor.Client;
-using System.Collections.Concurrent;
+﻿using Conductor;
 using Conductor.Api;
+using Conductor.Models;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 
-namespace TestOrkesSDK
+namespace Examples
 {
     class SDK
     {
@@ -69,7 +60,6 @@ namespace TestOrkesSDK
             //Check Execution Status
             workflow = workflowResourceApi.GetExecutionStatus(workflowId);
             Console.WriteLine("Execution status " + workflow.Status); // RUNNING
-
         }
     }
 }
