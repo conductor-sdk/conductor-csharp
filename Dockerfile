@@ -10,7 +10,7 @@ FROM raw_base_image AS build
 WORKDIR /package/Conductor
 RUN dotnet build ./*.csproj
 
-FROM raw_base_image AS unit-tests
+FROM build AS test
 COPY ./Tests /package/Tests
 WORKDIR /package/Tests
 RUN dotnet test
