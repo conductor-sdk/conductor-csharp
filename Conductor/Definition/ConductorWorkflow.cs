@@ -10,7 +10,7 @@ namespace Conductor.Definition
         private int _version { get; set; }
         private string _failureWorkflow { get; set; }
         private string _ownerEmail { get; set; }
-        private Models.TaskDef.TimeoutPolicyEnum _timeoutPolicy { get; set; }
+        private Models.WorkflowDef.TimeoutPolicyEnum _timeoutPolicy { get; set; }
         private Dictionary<string, object> _workflowOutput { get; set; }
         private long _timeoutSeconds { get; set; }
         private bool _restartable { get; set; }
@@ -27,13 +27,75 @@ namespace Conductor.Definition
             workflowDef._Version = _version;
             workflowDef.FailureWorkflow = _failureWorkflow;
             workflowDef.OwnerEmail = _ownerEmail;
-            // TODO add timeout policy
-            // workflowDef.TimeoutPolicy = _timeoutPolicy;
+            workflowDef.TimeoutPolicy = _timeoutPolicy;
             workflowDef.TimeoutSeconds = _timeoutSeconds;
             workflowDef.Restartable = _restartable;
             workflowDef.OutputParameters = _workflowOutput;
             workflowDef.Variables = _variables;
             return workflowDef;
+        }
+
+        public ConductorWorkflow WithName(string name)
+        {
+            _name = name;
+            return this;
+        }
+
+        public ConductorWorkflow WithVersion(int version)
+        {
+            _version = version;
+            return this;
+        }
+
+        public ConductorWorkflow WithDescription(string description)
+        {
+            _description = description;
+            return this;
+        }
+
+        public ConductorWorkflow WithTimeoutPolicy(WorkflowDef.TimeoutPolicyEnum timeoutPolicy, int timeoutSeconds)
+        {
+            _timeoutPolicy = timeoutPolicy;
+            _timeoutSeconds = timeoutSeconds;
+            return this;
+        }
+
+        public ConductorWorkflow WithTask(Definition.TaskType.Task task)
+        {
+            _tasks.Add(task);
+            return this;
+        }
+
+        public ConductorWorkflow WithFailureWorkflow(string failureWorkflow)
+        {
+            _failureWorkflow = failureWorkflow;
+            return this;
+        }
+
+        public ConductorWorkflow WithRestartable(bool restartable)
+        {
+            _restartable = restartable;
+            return this;
+        }
+
+        public ConductorWorkflow WithOutputParameters(Dictionary<string, object> workflowOutput)
+        {
+            _workflowOutput = workflowOutput;
+            return this;
+        }
+
+        public ConductorWorkflow WithOwner(string ownerEmail)
+        {
+            _ownerEmail = ownerEmail;
+            return this;
+        }
+
+        public StartWorkflowRequest GetStartWorkflowRequest()
+        {
+            return new StartWorkflowRequest(
+                name: _name,
+                version: _version
+            );
         }
 
         private List<WorkflowTask> GetWorkflowTasks()
