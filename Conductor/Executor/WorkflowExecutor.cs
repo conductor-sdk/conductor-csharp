@@ -25,7 +25,8 @@ namespace Conductor.Executor
             Models.WorkflowDef workflowDef = conductorWorkflow.ToWorkflowDef();
             if (overwrite)
             {
-                _metadataClient.UpdateWorkflowDefinitions(
+                _metadataClient.UpdateWorkflowDefinitions
+                (
                     new List<Models.WorkflowDef>(1) { workflowDef }
                 );
             }
@@ -33,6 +34,14 @@ namespace Conductor.Executor
             {
                 _metadataClient.Create(workflowDef);
             }
+        }
+
+        public string StartWorkflow(Conductor.Definition.ConductorWorkflow conductorWorkflow)
+        {
+            return _workflowClient.StartWorkflowByWorkflowRequest
+            (
+                conductorWorkflow.GetStartWorkflowRequest()
+            );
         }
     }
 }
