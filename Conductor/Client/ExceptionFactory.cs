@@ -1,7 +1,7 @@
 using System;
 using RestSharp;
 
-namespace Conductor
+namespace Conductor.Client
 {
     /// <summary>
     /// A delegate to ExceptionFactory method

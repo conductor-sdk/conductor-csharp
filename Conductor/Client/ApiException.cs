@@ -1,6 +1,6 @@
 using System;
 
-namespace Conductor
+namespace Conductor.Client
 {
     /// <summary>
     /// API Exception
@@ -22,7 +22,7 @@ namespace Conductor
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiException"/> class.
         /// </summary>
-        public ApiException() {}
+        public ApiException() { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiException"/> class.

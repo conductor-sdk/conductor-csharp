@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Converters;
 
-namespace Conductor
+namespace Conductor.Client
 {
     /// <summary>
     /// Formatter for 'date' swagger formats ss defined by full-date - RFC3339

@@ -11,7 +11,7 @@
 using System;
 using System.Collections.Generic;
 using Conductor;
-
+using Conductor.Client;
 using EventHandler = Conductor.Models.EventHandler;
 
 namespace Conductor.Api
@@ -20,7 +20,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IEventResourceApiSync : IApiAccessor
+    public interface IEventResourceApiSync : Conductor.Client.IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -171,6 +171,9 @@ namespace Conductor.Api
             }
             set { _exceptionFactory = value; }
         }
+
+        Configuration IApiAccessor.Configuration { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        ExceptionFactory IApiAccessor.ExceptionFactory { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         /// <summary>
         /// Add a new event handler. 

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Conductor
+namespace Conductor.Client
 {
     /// <summary>
     /// Represents a readable-only configuration contract.

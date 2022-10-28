@@ -489,6 +489,7 @@ namespace Conductor.Models
         /// </summary>
         /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
+        [Obsolete]
         public override bool Equals(object input)
         {
             return this.Equals(input as Task);

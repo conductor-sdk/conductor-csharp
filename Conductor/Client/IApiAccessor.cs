@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 
-namespace Conductor
+namespace Conductor.Client
 {
     /// <summary>
     /// Represents configuration aspects required to interact with the API endpoints.
@@ -15,14 +15,14 @@ namespace Conductor
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        Configuration Configuration {get; set;}
+        Configuration Configuration { get; set; }
 
         /// <summary>
         /// Gets the base path of the API client.
         /// </summary>
         /// <value>The base path</value>
         String GetBasePath();
-        
+
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
         /// </summary>
