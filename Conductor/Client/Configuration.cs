@@ -105,7 +105,7 @@ namespace Conductor.Client
         public Configuration()
         {
             UserAgent = "Swagger-Codegen/1.0.0/csharp";
-            BasePath = "https://pg-staging.orkesconductor.com/";
+            BasePath = "https://play.orkes.io/";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -120,7 +120,7 @@ namespace Conductor.Client
             IDictionary<string, string> defaultHeader,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "https://pg-staging.orkesconductor.com/") : this()
+            string basePath = "https://play.orkes.io/") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");

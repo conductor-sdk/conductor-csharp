@@ -43,12 +43,12 @@ namespace Conductor.Client
         public ApiClient()
         {
             Configuration = Conductor.Client.Configuration.Default;
-            RestClient = new RestClient("https://pg-staging.orkesconductor.com/");
+            RestClient = new RestClient("https://play.orkes.io/");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://pg-staging.orkesconductor.com/).
+        /// with default base path (https://play.orkes.io/).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config)
@@ -63,7 +63,7 @@ namespace Conductor.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://pg-staging.orkesconductor.com/")
+        public ApiClient(String basePath = "https://play.orkes.io/")
         {
             if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
