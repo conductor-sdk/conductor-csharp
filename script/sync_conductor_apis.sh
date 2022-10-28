@@ -58,7 +58,7 @@ function remove_header_from_file {
 
 function replace_namespace_from_file {
     local filepath="${1}"
-    replace_with_sed "${filepath}" "IO.Swagger.Client" "Conductor"
+    replace_with_sed "${filepath}" "IO.Swagger" "Conductor"
 }
 
 function update_package_file {
@@ -110,3 +110,4 @@ function update_client_package_file {
 # generate_code
 
 update_package "Client" update_client_package_file update_client_package_startup
+cd ../Conductor && dotnet format
