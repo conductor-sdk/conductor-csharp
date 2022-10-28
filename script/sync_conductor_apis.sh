@@ -61,6 +61,13 @@ function replace_namespace_from_file {
     replace_with_sed "${filepath}" "IO.Swagger" "Conductor"
 }
 
+function replace_default_url_from_file {
+    local filepath="${1}"
+    old_url="https:\/\/pg-staging.orkesconductor.com\/"
+    new_url="https:\/\/play.orkes.io\/"
+    sed -i '' s/"${old_url}"/"${new_url}"/g "${filepath}"
+}
+
 function update_package_file {
     local path="${1}"
     local update_package_file_function=${2}
@@ -104,6 +111,7 @@ function update_client_package_file {
     local filepath="${1}"
     remove_header_from_file "${filepath}"
     replace_namespace_from_file "${filepath}"
+    replace_default_url_from_file "${filepath}"
 }
 
 # install_dependencies
