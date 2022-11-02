@@ -20,7 +20,7 @@ namespace Conductor.Worker
         public WorkflowTaskCoordinator(IServiceProvider serviceProvider,
             ILogger<WorkflowTaskCoordinator> logger,
             Configuration configuration)
-            // ConductorAuthTokenClient conductorAuthTokenClient)
+        // ConductorAuthTokenClient conductorAuthTokenClient)
         {
             this.serviceProvider = serviceProvider;
             this.logger = logger;
