@@ -1,3 +1,4 @@
+
 using Newtonsoft.Json.Converters;
 
 namespace Conductor.Client

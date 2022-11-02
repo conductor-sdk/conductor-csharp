@@ -1,3 +1,4 @@
+
 using System;
 using System.Reflection;
 using System.Collections.Concurrent;
@@ -216,15 +217,12 @@ namespace Conductor.Client
         /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
-        public virtual string BasePath
-        {
+        public virtual string BasePath {
             get { return _basePath; }
-            set
-            {
+            set {
                 _basePath = value;
                 // pass-through to ApiClient if it's set.
-                if (_apiClient != null)
-                {
+                if(_apiClient != null) {
                     _apiClient.RestClient.BaseUrl = new Uri(_basePath);
                 }
             }
@@ -241,13 +239,13 @@ namespace Conductor.Client
         /// </summary>
         public virtual int Timeout
         {
-
+            
             get
             {
                 if (_apiClient == null)
                 {
                     return _timeout;
-                }
+                } 
                 else
                 {
                     return ApiClient.RestClient.Timeout;
@@ -289,9 +287,9 @@ namespace Conductor.Client
         public string GetApiKeyWithPrefix(string apiKeyIdentifier)
         {
             var apiKeyValue = "";
-            ApiKey.TryGetValue(apiKeyIdentifier, out apiKeyValue);
+            ApiKey.TryGetValue (apiKeyIdentifier, out apiKeyValue);
             var apiKeyPrefix = "";
-            if (ApiKeyPrefix.TryGetValue(apiKeyIdentifier, out apiKeyPrefix))
+            if (ApiKeyPrefix.TryGetValue (apiKeyIdentifier, out apiKeyPrefix))
                 return apiKeyPrefix + " " + apiKeyValue;
             else
                 return apiKeyValue;
@@ -430,7 +428,7 @@ namespace Conductor.Client
         {
             String report = "C# SDK (Conductor) Debug Report:\n";
             report += "    OS: " + System.Environment.OSVersion + "\n";
-            report += "    .NET Framework Version: " + System.Environment.Version + "\n";
+            report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: v2\n";
             report += "    SDK Package Version: 1.0.0\n";
 

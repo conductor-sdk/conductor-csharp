@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 
@@ -34,7 +35,7 @@ namespace Conductor.Client
         /// <param name="data">Data (parsed HTTP body)</param>
         public ApiResponse(int statusCode, IDictionary<string, string> headers, T data)
         {
-            this.StatusCode = statusCode;
+            this.StatusCode= statusCode;
             this.Headers = headers;
             this.Data = data;
         }
