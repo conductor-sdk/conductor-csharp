@@ -24,7 +24,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Response</returns>
-        Response GenerateToken(GenerateTokenRequest body);
+        Token GenerateToken(GenerateTokenRequest body);
 
         /// <summary>
         /// Generate JWT with the given access key
@@ -35,7 +35,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Response</returns>
-        ApiResponse<Response> GenerateTokenWithHttpInfo(GenerateTokenRequest body);
+        ApiResponse<Token> GenerateTokenWithHttpInfo(GenerateTokenRequest body);
         /// <summary>
         /// Get the user info from the token
         /// </summary>
@@ -218,9 +218,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Response</returns>
-        public Response GenerateToken(GenerateTokenRequest body)
+        public Token GenerateToken(GenerateTokenRequest body)
         {
-            ApiResponse<Response> localVarResponse = GenerateTokenWithHttpInfo(body);
+            ApiResponse<Token> localVarResponse = GenerateTokenWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -230,7 +230,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Response</returns>
-        public ApiResponse<Response> GenerateTokenWithHttpInfo(GenerateTokenRequest body)
+        public ApiResponse<Token> GenerateTokenWithHttpInfo(GenerateTokenRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -285,9 +285,9 @@ namespace Conductor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Response>(localVarStatusCode,
+            return new ApiResponse<Token>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+                (Token)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Token)));
         }
 
         /// <summary>

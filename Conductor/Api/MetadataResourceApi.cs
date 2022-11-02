@@ -100,7 +100,7 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Object</returns>
-        Object GetTaskDef(string tasktype, bool? metadata = null);
+        TaskDef GetTaskDef(string tasktype, bool? metadata = null);
 
         /// <summary>
         /// Gets the task definition
@@ -112,7 +112,7 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetTaskDefWithHttpInfo(string tasktype, bool? metadata = null);
+        ApiResponse<TaskDef> GetTaskDefWithHttpInfo(string tasktype, bool? metadata = null);
         /// <summary>
         /// Gets all task definition
         /// </summary>
@@ -1116,9 +1116,9 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Object</returns>
-        public Object GetTaskDef(string tasktype, bool? metadata = null)
+        public TaskDef GetTaskDef(string tasktype, bool? metadata = null)
         {
-            ApiResponse<Object> localVarResponse = GetTaskDefWithHttpInfo(tasktype, metadata);
+            ApiResponse<TaskDef> localVarResponse = GetTaskDefWithHttpInfo(tasktype, metadata);
             return localVarResponse.Data;
         }
 
@@ -1129,7 +1129,7 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> GetTaskDefWithHttpInfo(string tasktype, bool? metadata = null)
+        public ApiResponse<TaskDef> GetTaskDefWithHttpInfo(string tasktype, bool? metadata = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -1177,9 +1177,9 @@ namespace Conductor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<TaskDef>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (TaskDef)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TaskDef)));
         }
 
         /// <summary>
