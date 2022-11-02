@@ -19,29 +19,30 @@ namespace Conductor.Models
     /// The object over which access is being granted or removed
     /// </summary>
     [DataContract]
-        public partial class TargetRef :  IEquatable<TargetRef>, IValidatableObject
+    public partial class TargetRef : IEquatable<TargetRef>, IValidatableObject
     {
         /// <summary>
         /// Defines Id
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum IdEnum
+        public enum IdEnum
         {
             /// <summary>
             /// Enum IdentifierofthetargeteGnameincaseitsaWORKFLOWDEF for value: Identifier of the target e.g. `name` in case it's a WORKFLOW_DEF
             /// </summary>
             [EnumMember(Value = "Identifier of the target e.g. `name` in case it's a WORKFLOW_DEF")]
-            IdentifierofthetargeteGnameincaseitsaWORKFLOWDEF = 1        }
+            IdentifierofthetargeteGnameincaseitsaWORKFLOWDEF = 1
+        }
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public IdEnum Id { get; set; }
         /// <summary>
         /// Defines Type
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum TypeEnum
+        public enum TypeEnum
         {
             /// <summary>
             /// Enum WORKFLOWDEF for value: WORKFLOW_DEF
@@ -62,11 +63,12 @@ namespace Conductor.Models
             /// Enum USER for value: USER
             /// </summary>
             [EnumMember(Value = "USER")]
-            USER = 4        }
+            USER = 4
+        }
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetRef" /> class.
@@ -94,7 +96,7 @@ namespace Conductor.Models
                 this.Type = type;
             }
         }
-        
+
 
 
         /// <summary>
@@ -110,7 +112,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -140,12 +142,12 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&

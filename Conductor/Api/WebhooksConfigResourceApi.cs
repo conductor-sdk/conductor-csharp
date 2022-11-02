@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IWebhooksConfigResourceApi : IApiAccessor
+    public interface IWebhooksConfigResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -24,7 +24,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>WebhookEvent</returns>
-        WebhookEvent CreateWebhook (WebhookEvent body);
+        WebhookEvent CreateWebhook(WebhookEvent body);
 
         /// <summary>
         /// 
@@ -35,7 +35,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of WebhookEvent</returns>
-        ApiResponse<WebhookEvent> CreateWebhookWithHttpInfo (WebhookEvent body);
+        ApiResponse<WebhookEvent> CreateWebhookWithHttpInfo(WebhookEvent body);
         /// <summary>
         /// 
         /// </summary>
@@ -45,7 +45,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns></returns>
-        void DeleteWebhook (string id);
+        void DeleteWebhook(string id);
 
         /// <summary>
         /// 
@@ -56,7 +56,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteWebhookWithHttpInfo (string id);
+        ApiResponse<Object> DeleteWebhookWithHttpInfo(string id);
         /// <summary>
         /// 
         /// </summary>
@@ -65,7 +65,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;WebhookEvent&gt;</returns>
-        List<WebhookEvent> GetAllWebhook ();
+        List<WebhookEvent> GetAllWebhook();
 
         /// <summary>
         /// 
@@ -75,7 +75,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;WebhookEvent&gt;</returns>
-        ApiResponse<List<WebhookEvent>> GetAllWebhookWithHttpInfo ();
+        ApiResponse<List<WebhookEvent>> GetAllWebhookWithHttpInfo();
         /// <summary>
         /// 
         /// </summary>
@@ -85,7 +85,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>WebhookEvent</returns>
-        WebhookEvent GetWebhook (string id);
+        WebhookEvent GetWebhook(string id);
 
         /// <summary>
         /// 
@@ -96,7 +96,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of WebhookEvent</returns>
-        ApiResponse<WebhookEvent> GetWebhookWithHttpInfo (string id);
+        ApiResponse<WebhookEvent> GetWebhookWithHttpInfo(string id);
         /// <summary>
         /// 
         /// </summary>
@@ -107,7 +107,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>WebhookEvent</returns>
-        WebhookEvent UpdateWebhook (WebhookEvent body, string id);
+        WebhookEvent UpdateWebhook(WebhookEvent body, string id);
 
         /// <summary>
         /// 
@@ -119,7 +119,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of WebhookEvent</returns>
-        ApiResponse<WebhookEvent> UpdateWebhookWithHttpInfo (WebhookEvent body, string id);
+        ApiResponse<WebhookEvent> UpdateWebhookWithHttpInfo(WebhookEvent body, string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -131,7 +131,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of WebhookEvent</returns>
-        System.Threading.Tasks.Task<WebhookEvent> CreateWebhookAsync (WebhookEvent body);
+        System.Threading.Tasks.Task<WebhookEvent> CreateWebhookAsync(WebhookEvent body);
 
         /// <summary>
         /// 
@@ -142,7 +142,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (WebhookEvent)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> CreateWebhookAsyncWithHttpInfo (WebhookEvent body);
+        System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> CreateWebhookAsyncWithHttpInfo(WebhookEvent body);
         /// <summary>
         /// 
         /// </summary>
@@ -152,7 +152,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteWebhookAsync (string id);
+        System.Threading.Tasks.Task DeleteWebhookAsync(string id);
 
         /// <summary>
         /// 
@@ -163,7 +163,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWebhookAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWebhookAsyncWithHttpInfo(string id);
         /// <summary>
         /// 
         /// </summary>
@@ -172,7 +172,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;WebhookEvent&gt;</returns>
-        System.Threading.Tasks.Task<List<WebhookEvent>> GetAllWebhookAsync ();
+        System.Threading.Tasks.Task<List<WebhookEvent>> GetAllWebhookAsync();
 
         /// <summary>
         /// 
@@ -182,7 +182,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;WebhookEvent&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<WebhookEvent>>> GetAllWebhookAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<WebhookEvent>>> GetAllWebhookAsyncWithHttpInfo();
         /// <summary>
         /// 
         /// </summary>
@@ -192,7 +192,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of WebhookEvent</returns>
-        System.Threading.Tasks.Task<WebhookEvent> GetWebhookAsync (string id);
+        System.Threading.Tasks.Task<WebhookEvent> GetWebhookAsync(string id);
 
         /// <summary>
         /// 
@@ -203,7 +203,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (WebhookEvent)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> GetWebhookAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> GetWebhookAsyncWithHttpInfo(string id);
         /// <summary>
         /// 
         /// </summary>
@@ -214,7 +214,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of WebhookEvent</returns>
-        System.Threading.Tasks.Task<WebhookEvent> UpdateWebhookAsync (WebhookEvent body, string id);
+        System.Threading.Tasks.Task<WebhookEvent> UpdateWebhookAsync(WebhookEvent body, string id);
 
         /// <summary>
         /// 
@@ -226,14 +226,14 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (WebhookEvent)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> UpdateWebhookAsyncWithHttpInfo (WebhookEvent body, string id);
+        System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> UpdateWebhookAsyncWithHttpInfo(WebhookEvent body, string id);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class WebhooksConfigResourceApi : IWebhooksConfigResourceApi
+    public partial class WebhooksConfigResourceApi : IWebhooksConfigResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -298,7 +298,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -344,10 +344,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>WebhookEvent</returns>
-        public WebhookEvent CreateWebhook (WebhookEvent body)
+        public WebhookEvent CreateWebhook(WebhookEvent body)
         {
-             ApiResponse<WebhookEvent> localVarResponse = CreateWebhookWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<WebhookEvent> localVarResponse = CreateWebhookWithHttpInfo(body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -356,7 +356,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of WebhookEvent</returns>
-        public ApiResponse< WebhookEvent > CreateWebhookWithHttpInfo (WebhookEvent body)
+        public ApiResponse<WebhookEvent> CreateWebhookWithHttpInfo(WebhookEvent body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -399,11 +399,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -413,7 +413,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WebhookEvent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WebhookEvent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
+                (WebhookEvent)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
         }
 
         /// <summary>
@@ -422,10 +422,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of WebhookEvent</returns>
-        public async System.Threading.Tasks.Task<WebhookEvent> CreateWebhookAsync (WebhookEvent body)
+        public async System.Threading.Tasks.Task<WebhookEvent> CreateWebhookAsync(WebhookEvent body)
         {
-             ApiResponse<WebhookEvent> localVarResponse = await CreateWebhookAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<WebhookEvent> localVarResponse = await CreateWebhookAsyncWithHttpInfo(body);
+            return localVarResponse.Data;
 
         }
 
@@ -435,7 +435,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (WebhookEvent)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> CreateWebhookAsyncWithHttpInfo (WebhookEvent body)
+        public async System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> CreateWebhookAsyncWithHttpInfo(WebhookEvent body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -478,11 +478,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -492,7 +492,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WebhookEvent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WebhookEvent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
+                (WebhookEvent)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
         }
 
         /// <summary>
@@ -501,9 +501,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns></returns>
-        public void DeleteWebhook (string id)
+        public void DeleteWebhook(string id)
         {
-             DeleteWebhookWithHttpInfo(id);
+            DeleteWebhookWithHttpInfo(id);
         }
 
         /// <summary>
@@ -512,7 +512,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteWebhookWithHttpInfo (string id)
+        public ApiResponse<Object> DeleteWebhookWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -546,11 +546,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -569,9 +569,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteWebhookAsync (string id)
+        public async System.Threading.Tasks.Task DeleteWebhookAsync(string id)
         {
-             await DeleteWebhookAsyncWithHttpInfo(id);
+            await DeleteWebhookAsyncWithHttpInfo(id);
 
         }
 
@@ -581,7 +581,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWebhookAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWebhookAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -615,11 +615,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -637,10 +637,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;WebhookEvent&gt;</returns>
-        public List<WebhookEvent> GetAllWebhook ()
+        public List<WebhookEvent> GetAllWebhook()
         {
-             ApiResponse<List<WebhookEvent>> localVarResponse = GetAllWebhookWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<WebhookEvent>> localVarResponse = GetAllWebhookWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -648,7 +648,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;WebhookEvent&gt;</returns>
-        public ApiResponse< List<WebhookEvent> > GetAllWebhookWithHttpInfo ()
+        public ApiResponse<List<WebhookEvent>> GetAllWebhookWithHttpInfo()
         {
 
             var localVarPath = "/api/metadata/webhook";
@@ -679,11 +679,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -693,7 +693,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<WebhookEvent>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<WebhookEvent>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WebhookEvent>)));
+                (List<WebhookEvent>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WebhookEvent>)));
         }
 
         /// <summary>
@@ -701,10 +701,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;WebhookEvent&gt;</returns>
-        public async System.Threading.Tasks.Task<List<WebhookEvent>> GetAllWebhookAsync ()
+        public async System.Threading.Tasks.Task<List<WebhookEvent>> GetAllWebhookAsync()
         {
-             ApiResponse<List<WebhookEvent>> localVarResponse = await GetAllWebhookAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<WebhookEvent>> localVarResponse = await GetAllWebhookAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -713,7 +713,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;WebhookEvent&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<WebhookEvent>>> GetAllWebhookAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<WebhookEvent>>> GetAllWebhookAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/metadata/webhook";
@@ -744,11 +744,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -758,7 +758,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<WebhookEvent>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<WebhookEvent>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WebhookEvent>)));
+                (List<WebhookEvent>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WebhookEvent>)));
         }
 
         /// <summary>
@@ -767,10 +767,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>WebhookEvent</returns>
-        public WebhookEvent GetWebhook (string id)
+        public WebhookEvent GetWebhook(string id)
         {
-             ApiResponse<WebhookEvent> localVarResponse = GetWebhookWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<WebhookEvent> localVarResponse = GetWebhookWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -779,7 +779,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of WebhookEvent</returns>
-        public ApiResponse< WebhookEvent > GetWebhookWithHttpInfo (string id)
+        public ApiResponse<WebhookEvent> GetWebhookWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -814,11 +814,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -828,7 +828,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WebhookEvent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WebhookEvent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
+                (WebhookEvent)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
         }
 
         /// <summary>
@@ -837,10 +837,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of WebhookEvent</returns>
-        public async System.Threading.Tasks.Task<WebhookEvent> GetWebhookAsync (string id)
+        public async System.Threading.Tasks.Task<WebhookEvent> GetWebhookAsync(string id)
         {
-             ApiResponse<WebhookEvent> localVarResponse = await GetWebhookAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<WebhookEvent> localVarResponse = await GetWebhookAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -850,7 +850,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (WebhookEvent)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> GetWebhookAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> GetWebhookAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -885,11 +885,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -899,7 +899,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WebhookEvent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WebhookEvent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
+                (WebhookEvent)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
         }
 
         /// <summary>
@@ -909,10 +909,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>WebhookEvent</returns>
-        public WebhookEvent UpdateWebhook (WebhookEvent body, string id)
+        public WebhookEvent UpdateWebhook(WebhookEvent body, string id)
         {
-             ApiResponse<WebhookEvent> localVarResponse = UpdateWebhookWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<WebhookEvent> localVarResponse = UpdateWebhookWithHttpInfo(body, id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -922,7 +922,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of WebhookEvent</returns>
-        public ApiResponse< WebhookEvent > UpdateWebhookWithHttpInfo (WebhookEvent body, string id)
+        public ApiResponse<WebhookEvent> UpdateWebhookWithHttpInfo(WebhookEvent body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -969,11 +969,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -983,7 +983,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WebhookEvent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WebhookEvent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
+                (WebhookEvent)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
         }
 
         /// <summary>
@@ -993,10 +993,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of WebhookEvent</returns>
-        public async System.Threading.Tasks.Task<WebhookEvent> UpdateWebhookAsync (WebhookEvent body, string id)
+        public async System.Threading.Tasks.Task<WebhookEvent> UpdateWebhookAsync(WebhookEvent body, string id)
         {
-             ApiResponse<WebhookEvent> localVarResponse = await UpdateWebhookAsyncWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<WebhookEvent> localVarResponse = await UpdateWebhookAsyncWithHttpInfo(body, id);
+            return localVarResponse.Data;
 
         }
 
@@ -1007,7 +1007,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (WebhookEvent)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> UpdateWebhookAsyncWithHttpInfo (WebhookEvent body, string id)
+        public async System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> UpdateWebhookAsyncWithHttpInfo(WebhookEvent body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1054,11 +1054,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1068,7 +1068,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WebhookEvent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WebhookEvent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
+                (WebhookEvent)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEvent)));
         }
 
     }

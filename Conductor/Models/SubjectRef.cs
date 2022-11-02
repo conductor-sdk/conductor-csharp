@@ -19,14 +19,14 @@ namespace Conductor.Models
     /// User, group or role which is granted/removed access
     /// </summary>
     [DataContract]
-        public partial class SubjectRef :  IEquatable<SubjectRef>, IValidatableObject
+    public partial class SubjectRef : IEquatable<SubjectRef>, IValidatableObject
     {
         /// <summary>
         /// User, role or group
         /// </summary>
         /// <value>User, role or group</value>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum TypeEnum
+        public enum TypeEnum
         {
             /// <summary>
             /// Enum USER for value: USER
@@ -42,12 +42,13 @@ namespace Conductor.Models
             /// Enum GROUP for value: GROUP
             /// </summary>
             [EnumMember(Value = "GROUP")]
-            GROUP = 3        }
+            GROUP = 3
+        }
         /// <summary>
         /// User, role or group
         /// </summary>
         /// <value>User, role or group</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubjectRef" /> class.
@@ -67,11 +68,11 @@ namespace Conductor.Models
             }
             this.Type = type;
         }
-        
+
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
 
@@ -88,7 +89,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -118,12 +119,12 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&

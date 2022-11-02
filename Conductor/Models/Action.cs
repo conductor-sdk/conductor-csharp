@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// Action
     /// </summary>
     [DataContract]
-        public partial class Action :  IEquatable<Action>, IValidatableObject
+    public partial class Action : IEquatable<Action>, IValidatableObject
     {
         /// <summary>
         /// Defines _Action
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum ActionEnum
+        public enum ActionEnum
         {
             /// <summary>
             /// Enum Startworkflow for value: start_workflow
@@ -51,11 +51,12 @@ namespace Conductor.Models
             /// Enum Updateworkflowvariables for value: update_workflow_variables
             /// </summary>
             [EnumMember(Value = "update_workflow_variables")]
-            Updateworkflowvariables = 5        }
+            Updateworkflowvariables = 5
+        }
         /// <summary>
         /// Gets or Sets _Action
         /// </summary>
-        [DataMember(Name="action", EmitDefaultValue=false)]
+        [DataMember(Name = "action", EmitDefaultValue = false)]
         public ActionEnum? _Action { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Action" /> class.
@@ -77,42 +78,42 @@ namespace Conductor.Models
             this.TerminateWorkflow = terminateWorkflow;
             this.UpdateWorkflowVariables = updateWorkflowVariables;
         }
-        
+
 
         /// <summary>
         /// Gets or Sets CompleteTask
         /// </summary>
-        [DataMember(Name="complete_task", EmitDefaultValue=false)]
+        [DataMember(Name = "complete_task", EmitDefaultValue = false)]
         public TaskDetails CompleteTask { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpandInlineJSON
         /// </summary>
-        [DataMember(Name="expandInlineJSON", EmitDefaultValue=false)]
+        [DataMember(Name = "expandInlineJSON", EmitDefaultValue = false)]
         public bool? ExpandInlineJSON { get; set; }
 
         /// <summary>
         /// Gets or Sets FailTask
         /// </summary>
-        [DataMember(Name="fail_task", EmitDefaultValue=false)]
+        [DataMember(Name = "fail_task", EmitDefaultValue = false)]
         public TaskDetails FailTask { get; set; }
 
         /// <summary>
         /// Gets or Sets StartWorkflow
         /// </summary>
-        [DataMember(Name="start_workflow", EmitDefaultValue=false)]
+        [DataMember(Name = "start_workflow", EmitDefaultValue = false)]
         public StartWorkflow StartWorkflow { get; set; }
 
         /// <summary>
         /// Gets or Sets TerminateWorkflow
         /// </summary>
-        [DataMember(Name="terminate_workflow", EmitDefaultValue=false)]
+        [DataMember(Name = "terminate_workflow", EmitDefaultValue = false)]
         public TerminateWorkflow TerminateWorkflow { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdateWorkflowVariables
         /// </summary>
-        [DataMember(Name="update_workflow_variables", EmitDefaultValue=false)]
+        [DataMember(Name = "update_workflow_variables", EmitDefaultValue = false)]
         public UpdateWorkflowVariables UpdateWorkflowVariables { get; set; }
 
         /// <summary>
@@ -133,7 +134,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -163,37 +164,37 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._Action == input._Action ||
                     (this._Action != null &&
                     this._Action.Equals(input._Action))
-                ) && 
+                ) &&
                 (
                     this.CompleteTask == input.CompleteTask ||
                     (this.CompleteTask != null &&
                     this.CompleteTask.Equals(input.CompleteTask))
-                ) && 
+                ) &&
                 (
                     this.ExpandInlineJSON == input.ExpandInlineJSON ||
                     (this.ExpandInlineJSON != null &&
                     this.ExpandInlineJSON.Equals(input.ExpandInlineJSON))
-                ) && 
+                ) &&
                 (
                     this.FailTask == input.FailTask ||
                     (this.FailTask != null &&
                     this.FailTask.Equals(input.FailTask))
-                ) && 
+                ) &&
                 (
                     this.StartWorkflow == input.StartWorkflow ||
                     (this.StartWorkflow != null &&
                     this.StartWorkflow.Equals(input.StartWorkflow))
-                ) && 
+                ) &&
                 (
                     this.TerminateWorkflow == input.TerminateWorkflow ||
                     (this.TerminateWorkflow != null &&
                     this.TerminateWorkflow.Equals(input.TerminateWorkflow))
-                ) && 
+                ) &&
                 (
                     this.UpdateWorkflowVariables == input.UpdateWorkflowVariables ||
                     (this.UpdateWorkflowVariables != null &&

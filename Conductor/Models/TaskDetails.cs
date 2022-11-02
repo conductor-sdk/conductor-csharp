@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// TaskDetails
     /// </summary>
     [DataContract]
-        public partial class TaskDetails :  IEquatable<TaskDetails>, IValidatableObject
+    public partial class TaskDetails : IEquatable<TaskDetails>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskDetails" /> class.
@@ -35,29 +35,29 @@ namespace Conductor.Models
             this.TaskRefName = taskRefName;
             this.WorkflowId = workflowId;
         }
-        
+
         /// <summary>
         /// Gets or Sets Output
         /// </summary>
-        [DataMember(Name="output", EmitDefaultValue=false)]
+        [DataMember(Name = "output", EmitDefaultValue = false)]
         public Dictionary<string, Object> Output { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskId
         /// </summary>
-        [DataMember(Name="taskId", EmitDefaultValue=false)]
+        [DataMember(Name = "taskId", EmitDefaultValue = false)]
         public string TaskId { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskRefName
         /// </summary>
-        [DataMember(Name="taskRefName", EmitDefaultValue=false)]
+        [DataMember(Name = "taskRefName", EmitDefaultValue = false)]
         public string TaskRefName { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowId
         /// </summary>
-        [DataMember(Name="workflowId", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
         public string WorkflowId { get; set; }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -105,23 +105,23 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Output == input.Output ||
                     this.Output != null &&
                     input.Output != null &&
                     this.Output.SequenceEqual(input.Output)
-                ) && 
+                ) &&
                 (
                     this.TaskId == input.TaskId ||
                     (this.TaskId != null &&
                     this.TaskId.Equals(input.TaskId))
-                ) && 
+                ) &&
                 (
                     this.TaskRefName == input.TaskRefName ||
                     (this.TaskRefName != null &&
                     this.TaskRefName.Equals(input.TaskRefName))
-                ) && 
+                ) &&
                 (
                     this.WorkflowId == input.WorkflowId ||
                     (this.WorkflowId != null &&

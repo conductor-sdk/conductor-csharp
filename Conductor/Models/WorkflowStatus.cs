@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// WorkflowStatus
     /// </summary>
     [DataContract]
-        public partial class WorkflowStatus :  IEquatable<WorkflowStatus>, IValidatableObject
+    public partial class WorkflowStatus : IEquatable<WorkflowStatus>, IValidatableObject
     {
         /// <summary>
         /// Defines Status
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum StatusEnum
+        public enum StatusEnum
         {
             /// <summary>
             /// Enum RUNNING for value: RUNNING
@@ -56,11 +56,12 @@ namespace Conductor.Models
             /// Enum PAUSED for value: PAUSED
             /// </summary>
             [EnumMember(Value = "PAUSED")]
-            PAUSED = 6        }
+            PAUSED = 6
+        }
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowStatus" /> class.
@@ -78,30 +79,30 @@ namespace Conductor.Models
             this.Variables = variables;
             this.WorkflowId = workflowId;
         }
-        
+
         /// <summary>
         /// Gets or Sets CorrelationId
         /// </summary>
-        [DataMember(Name="correlationId", EmitDefaultValue=false)]
+        [DataMember(Name = "correlationId", EmitDefaultValue = false)]
         public string CorrelationId { get; set; }
 
         /// <summary>
         /// Gets or Sets Output
         /// </summary>
-        [DataMember(Name="output", EmitDefaultValue=false)]
+        [DataMember(Name = "output", EmitDefaultValue = false)]
         public Dictionary<string, Object> Output { get; set; }
 
 
         /// <summary>
         /// Gets or Sets Variables
         /// </summary>
-        [DataMember(Name="variables", EmitDefaultValue=false)]
+        [DataMember(Name = "variables", EmitDefaultValue = false)]
         public Dictionary<string, Object> Variables { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowId
         /// </summary>
-        [DataMember(Name="workflowId", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
         public string WorkflowId { get; set; }
 
         /// <summary>
@@ -120,7 +121,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -150,29 +151,29 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CorrelationId == input.CorrelationId ||
                     (this.CorrelationId != null &&
                     this.CorrelationId.Equals(input.CorrelationId))
-                ) && 
+                ) &&
                 (
                     this.Output == input.Output ||
                     this.Output != null &&
                     input.Output != null &&
                     this.Output.SequenceEqual(input.Output)
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.Variables == input.Variables ||
                     this.Variables != null &&
                     input.Variables != null &&
                     this.Variables.SequenceEqual(input.Variables)
-                ) && 
+                ) &&
                 (
                     this.WorkflowId == input.WorkflowId ||
                     (this.WorkflowId != null &&

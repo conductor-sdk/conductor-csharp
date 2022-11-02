@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface ITaskResourceApi : IApiAccessor
+    public interface ITaskResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -23,7 +23,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, long?&gt;</returns>
-        Dictionary<string, long?> All ();
+        Dictionary<string, long?> All();
 
         /// <summary>
         /// Get the details about each queue
@@ -33,7 +33,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, long?&gt;</returns>
-        ApiResponse<Dictionary<string, long?>> AllWithHttpInfo ();
+        ApiResponse<Dictionary<string, long?>> AllWithHttpInfo();
         /// <summary>
         /// Get the details about each queue
         /// </summary>
@@ -42,7 +42,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;&gt;</returns>
-        Dictionary<string, Dictionary<string, Dictionary<string, long?>>> AllVerbose ();
+        Dictionary<string, Dictionary<string, Dictionary<string, long?>>> AllVerbose();
 
         /// <summary>
         /// Get the details about each queue
@@ -52,7 +52,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;&gt;</returns>
-        ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> AllVerboseWithHttpInfo ();
+        ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> AllVerboseWithHttpInfo();
         /// <summary>
         /// Batch poll for a task of a certain type
         /// </summary>
@@ -66,7 +66,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>List&lt;Task&gt;</returns>
-        List<Task> BatchPoll (string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null);
+        List<Task> BatchPoll(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null);
 
         /// <summary>
         /// Batch poll for a task of a certain type
@@ -81,7 +81,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>ApiResponse of List&lt;Task&gt;</returns>
-        ApiResponse<List<Task>> BatchPollWithHttpInfo (string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null);
+        ApiResponse<List<Task>> BatchPollWithHttpInfo(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null);
         /// <summary>
         /// Get the last poll data for all task types
         /// </summary>
@@ -90,7 +90,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;PollData&gt;</returns>
-        List<PollData> GetAllPollData ();
+        List<PollData> GetAllPollData();
 
         /// <summary>
         /// Get the last poll data for all task types
@@ -100,7 +100,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;PollData&gt;</returns>
-        ApiResponse<List<PollData>> GetAllPollDataWithHttpInfo ();
+        ApiResponse<List<PollData>> GetAllPollDataWithHttpInfo();
         /// <summary>
         /// Get the external uri where the task payload is to be stored
         /// </summary>
@@ -112,7 +112,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ExternalStorageLocation</returns>
-        ExternalStorageLocation GetExternalStorageLocation1 (string path, string operation, string payloadType);
+        ExternalStorageLocation GetExternalStorageLocation1(string path, string operation, string payloadType);
 
         /// <summary>
         /// Get the external uri where the task payload is to be stored
@@ -125,7 +125,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo (string path, string operation, string payloadType);
+        ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo(string path, string operation, string payloadType);
         /// <summary>
         /// Get the last poll data for a given task type
         /// </summary>
@@ -135,7 +135,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>List&lt;PollData&gt;</returns>
-        List<PollData> GetPollData (string taskType);
+        List<PollData> GetPollData(string taskType);
 
         /// <summary>
         /// Get the last poll data for a given task type
@@ -146,7 +146,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>ApiResponse of List&lt;PollData&gt;</returns>
-        ApiResponse<List<PollData>> GetPollDataWithHttpInfo (string taskType);
+        ApiResponse<List<PollData>> GetPollDataWithHttpInfo(string taskType);
         /// <summary>
         /// Get task by Id
         /// </summary>
@@ -156,7 +156,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task</returns>
-        Task GetTask (string taskId);
+        Task GetTask(string taskId);
 
         /// <summary>
         /// Get task by Id
@@ -167,7 +167,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>ApiResponse of Task</returns>
-        ApiResponse<Task> GetTaskWithHttpInfo (string taskId);
+        ApiResponse<Task> GetTaskWithHttpInfo(string taskId);
         /// <summary>
         /// Get Task Execution Logs
         /// </summary>
@@ -177,7 +177,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>List&lt;TaskExecLog&gt;</returns>
-        List<TaskExecLog> GetTaskLogs (string taskId);
+        List<TaskExecLog> GetTaskLogs(string taskId);
 
         /// <summary>
         /// Get Task Execution Logs
@@ -188,7 +188,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>ApiResponse of List&lt;TaskExecLog&gt;</returns>
-        ApiResponse<List<TaskExecLog>> GetTaskLogsWithHttpInfo (string taskId);
+        ApiResponse<List<TaskExecLog>> GetTaskLogsWithHttpInfo(string taskId);
         /// <summary>
         /// Log Task Execution Details
         /// </summary>
@@ -199,7 +199,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskId"></param>
         /// <returns></returns>
-        void Log (string body, string taskId);
+        void Log(string body, string taskId);
 
         /// <summary>
         /// Log Task Execution Details
@@ -211,7 +211,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> LogWithHttpInfo (string body, string taskId);
+        ApiResponse<Object> LogWithHttpInfo(string body, string taskId);
         /// <summary>
         /// Poll for a task of a certain type
         /// </summary>
@@ -223,7 +223,7 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>Task</returns>
-        Task Poll (string tasktype, string workerid = null, string domain = null);
+        Task Poll(string tasktype, string workerid = null, string domain = null);
 
         /// <summary>
         /// Poll for a task of a certain type
@@ -236,7 +236,7 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>ApiResponse of Task</returns>
-        ApiResponse<Task> PollWithHttpInfo (string tasktype, string workerid = null, string domain = null);
+        ApiResponse<Task> PollWithHttpInfo(string tasktype, string workerid = null, string domain = null);
         /// <summary>
         /// Requeue pending tasks
         /// </summary>
@@ -246,7 +246,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>string</returns>
-        string RequeuePendingTask (string taskType);
+        string RequeuePendingTask(string taskType);
 
         /// <summary>
         /// Requeue pending tasks
@@ -257,7 +257,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> RequeuePendingTaskWithHttpInfo (string taskType);
+        ApiResponse<string> RequeuePendingTaskWithHttpInfo(string taskType);
         /// <summary>
         /// Search for tasks based in payload and other parameters
         /// </summary>
@@ -271,7 +271,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTaskSummary</returns>
-        SearchResultTaskSummary Search1 (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        SearchResultTaskSummary Search1(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for tasks based in payload and other parameters
@@ -286,7 +286,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTaskSummary</returns>
-        ApiResponse<SearchResultTaskSummary> Search1WithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        ApiResponse<SearchResultTaskSummary> Search1WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Search for tasks based in payload and other parameters
         /// </summary>
@@ -300,7 +300,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTask</returns>
-        SearchResultTask SearchV21 (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        SearchResultTask SearchV21(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for tasks based in payload and other parameters
@@ -315,7 +315,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTask</returns>
-        ApiResponse<SearchResultTask> SearchV21WithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        ApiResponse<SearchResultTask> SearchV21WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Get Task type queue sizes
         /// </summary>
@@ -325,7 +325,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>Dictionary&lt;string, int?&gt;</returns>
-        Dictionary<string, int?> Size (List<string> taskType = null);
+        Dictionary<string, int?> Size(List<string> taskType = null);
 
         /// <summary>
         /// Get Task type queue sizes
@@ -336,7 +336,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>ApiResponse of Dictionary&lt;string, int?&gt;</returns>
-        ApiResponse<Dictionary<string, int?>> SizeWithHttpInfo (List<string> taskType = null);
+        ApiResponse<Dictionary<string, int?>> SizeWithHttpInfo(List<string> taskType = null);
         /// <summary>
         /// Update a task
         /// </summary>
@@ -346,7 +346,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>string</returns>
-        string UpdateTask (TaskResult body);
+        string UpdateTask(TaskResult body);
 
         /// <summary>
         /// Update a task
@@ -357,7 +357,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> UpdateTaskWithHttpInfo (TaskResult body);
+        ApiResponse<string> UpdateTaskWithHttpInfo(TaskResult body);
         /// <summary>
         /// Update a task By Ref Name
         /// </summary>
@@ -370,7 +370,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>string</returns>
-        string UpdateTask1 (Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
+        string UpdateTask1(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
 
         /// <summary>
         /// Update a task By Ref Name
@@ -384,7 +384,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> UpdateTask1WithHttpInfo (Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
+        ApiResponse<string> UpdateTask1WithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -395,7 +395,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, long?&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, long?>> AllAsync ();
+        System.Threading.Tasks.Task<Dictionary<string, long?>> AllAsync();
 
         /// <summary>
         /// Get the details about each queue
@@ -405,7 +405,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, long?&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, long?>>> AllAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, long?>>> AllAsyncWithHttpInfo();
         /// <summary>
         /// Get the details about each queue
         /// </summary>
@@ -414,7 +414,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> AllVerboseAsync ();
+        System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> AllVerboseAsync();
 
         /// <summary>
         /// Get the details about each queue
@@ -424,7 +424,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>>> AllVerboseAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>>> AllVerboseAsyncWithHttpInfo();
         /// <summary>
         /// Batch poll for a task of a certain type
         /// </summary>
@@ -438,7 +438,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>Task of List&lt;Task&gt;</returns>
-        System.Threading.Tasks.Task<List<Task>> BatchPollAsync (string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null);
+        System.Threading.Tasks.Task<List<Task>> BatchPollAsync(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null);
 
         /// <summary>
         /// Batch poll for a task of a certain type
@@ -453,7 +453,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>Task of ApiResponse (List&lt;Task&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Task>>> BatchPollAsyncWithHttpInfo (string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Task>>> BatchPollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null);
         /// <summary>
         /// Get the last poll data for all task types
         /// </summary>
@@ -462,7 +462,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;PollData&gt;</returns>
-        System.Threading.Tasks.Task<List<PollData>> GetAllPollDataAsync ();
+        System.Threading.Tasks.Task<List<PollData>> GetAllPollDataAsync();
 
         /// <summary>
         /// Get the last poll data for all task types
@@ -472,7 +472,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;PollData&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetAllPollDataAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetAllPollDataAsyncWithHttpInfo();
         /// <summary>
         /// Get the external uri where the task payload is to be stored
         /// </summary>
@@ -484,7 +484,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ExternalStorageLocation</returns>
-        System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocation1Async (string path, string operation, string payloadType);
+        System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocation1Async(string path, string operation, string payloadType);
 
         /// <summary>
         /// Get the external uri where the task payload is to be stored
@@ -497,7 +497,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1AsyncWithHttpInfo (string path, string operation, string payloadType);
+        System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1AsyncWithHttpInfo(string path, string operation, string payloadType);
         /// <summary>
         /// Get the last poll data for a given task type
         /// </summary>
@@ -507,7 +507,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of List&lt;PollData&gt;</returns>
-        System.Threading.Tasks.Task<List<PollData>> GetPollDataAsync (string taskType);
+        System.Threading.Tasks.Task<List<PollData>> GetPollDataAsync(string taskType);
 
         /// <summary>
         /// Get the last poll data for a given task type
@@ -518,7 +518,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of ApiResponse (List&lt;PollData&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetPollDataAsyncWithHttpInfo (string taskType);
+        System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetPollDataAsyncWithHttpInfo(string taskType);
         /// <summary>
         /// Get task by Id
         /// </summary>
@@ -528,7 +528,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of Task</returns>
-        System.Threading.Tasks.Task<Task> GetTaskAsync (string taskId);
+        System.Threading.Tasks.Task<Task> GetTaskAsync(string taskId);
 
         /// <summary>
         /// Get task by Id
@@ -539,7 +539,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of ApiResponse (Task)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Task>> GetTaskAsyncWithHttpInfo (string taskId);
+        System.Threading.Tasks.Task<ApiResponse<Task>> GetTaskAsyncWithHttpInfo(string taskId);
         /// <summary>
         /// Get Task Execution Logs
         /// </summary>
@@ -549,7 +549,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of List&lt;TaskExecLog&gt;</returns>
-        System.Threading.Tasks.Task<List<TaskExecLog>> GetTaskLogsAsync (string taskId);
+        System.Threading.Tasks.Task<List<TaskExecLog>> GetTaskLogsAsync(string taskId);
 
         /// <summary>
         /// Get Task Execution Logs
@@ -560,7 +560,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of ApiResponse (List&lt;TaskExecLog&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<TaskExecLog>>> GetTaskLogsAsyncWithHttpInfo (string taskId);
+        System.Threading.Tasks.Task<ApiResponse<List<TaskExecLog>>> GetTaskLogsAsyncWithHttpInfo(string taskId);
         /// <summary>
         /// Log Task Execution Details
         /// </summary>
@@ -571,7 +571,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task LogAsync (string body, string taskId);
+        System.Threading.Tasks.Task LogAsync(string body, string taskId);
 
         /// <summary>
         /// Log Task Execution Details
@@ -583,7 +583,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> LogAsyncWithHttpInfo (string body, string taskId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> LogAsyncWithHttpInfo(string body, string taskId);
         /// <summary>
         /// Poll for a task of a certain type
         /// </summary>
@@ -595,7 +595,7 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>Task of Task</returns>
-        System.Threading.Tasks.Task<Task> PollAsync (string tasktype, string workerid = null, string domain = null);
+        System.Threading.Tasks.Task<Task> PollAsync(string tasktype, string workerid = null, string domain = null);
 
         /// <summary>
         /// Poll for a task of a certain type
@@ -608,7 +608,7 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>Task of ApiResponse (Task)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Task>> PollAsyncWithHttpInfo (string tasktype, string workerid = null, string domain = null);
+        System.Threading.Tasks.Task<ApiResponse<Task>> PollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null);
         /// <summary>
         /// Requeue pending tasks
         /// </summary>
@@ -618,7 +618,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> RequeuePendingTaskAsync (string taskType);
+        System.Threading.Tasks.Task<string> RequeuePendingTaskAsync(string taskType);
 
         /// <summary>
         /// Requeue pending tasks
@@ -629,7 +629,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> RequeuePendingTaskAsyncWithHttpInfo (string taskType);
+        System.Threading.Tasks.Task<ApiResponse<string>> RequeuePendingTaskAsyncWithHttpInfo(string taskType);
         /// <summary>
         /// Search for tasks based in payload and other parameters
         /// </summary>
@@ -643,7 +643,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultTaskSummary</returns>
-        System.Threading.Tasks.Task<SearchResultTaskSummary> Search1Async (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<SearchResultTaskSummary> Search1Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for tasks based in payload and other parameters
@@ -658,7 +658,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTaskSummary)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> Search1AsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> Search1AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Search for tasks based in payload and other parameters
         /// </summary>
@@ -672,7 +672,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultTask</returns>
-        System.Threading.Tasks.Task<SearchResultTask> SearchV21Async (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<SearchResultTask> SearchV21Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for tasks based in payload and other parameters
@@ -687,7 +687,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTask)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> SearchV21AsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> SearchV21AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Get Task type queue sizes
         /// </summary>
@@ -697,7 +697,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>Task of Dictionary&lt;string, int?&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, int?>> SizeAsync (List<string> taskType = null);
+        System.Threading.Tasks.Task<Dictionary<string, int?>> SizeAsync(List<string> taskType = null);
 
         /// <summary>
         /// Get Task type queue sizes
@@ -708,7 +708,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, int?&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, int?>>> SizeAsyncWithHttpInfo (List<string> taskType = null);
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, int?>>> SizeAsyncWithHttpInfo(List<string> taskType = null);
         /// <summary>
         /// Update a task
         /// </summary>
@@ -718,7 +718,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> UpdateTaskAsync (TaskResult body);
+        System.Threading.Tasks.Task<string> UpdateTaskAsync(TaskResult body);
 
         /// <summary>
         /// Update a task
@@ -729,7 +729,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo (TaskResult body);
+        System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo(TaskResult body);
         /// <summary>
         /// Update a task By Ref Name
         /// </summary>
@@ -742,7 +742,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> UpdateTask1Async (Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
+        System.Threading.Tasks.Task<string> UpdateTask1Async(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
 
         /// <summary>
         /// Update a task By Ref Name
@@ -756,14 +756,14 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> UpdateTask1AsyncWithHttpInfo (Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
+        System.Threading.Tasks.Task<ApiResponse<string>> UpdateTask1AsyncWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class TaskResourceApi : ITaskResourceApi
+    public partial class TaskResourceApi : ITaskResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -828,7 +828,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -873,10 +873,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, long?&gt;</returns>
-        public Dictionary<string, long?> All ()
+        public Dictionary<string, long?> All()
         {
-             ApiResponse<Dictionary<string, long?>> localVarResponse = AllWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, long?>> localVarResponse = AllWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -884,7 +884,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, long?&gt;</returns>
-        public ApiResponse< Dictionary<string, long?> > AllWithHttpInfo ()
+        public ApiResponse<Dictionary<string, long?>> AllWithHttpInfo()
         {
 
             var localVarPath = "/api/tasks/queue/all";
@@ -915,11 +915,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -929,7 +929,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, long?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, long?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, long?>)));
+                (Dictionary<string, long?>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, long?>)));
         }
 
         /// <summary>
@@ -937,10 +937,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, long?&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, long?>> AllAsync ()
+        public async System.Threading.Tasks.Task<Dictionary<string, long?>> AllAsync()
         {
-             ApiResponse<Dictionary<string, long?>> localVarResponse = await AllAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, long?>> localVarResponse = await AllAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -949,7 +949,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, long?&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, long?>>> AllAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, long?>>> AllAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/tasks/queue/all";
@@ -980,11 +980,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -994,7 +994,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, long?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, long?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, long?>)));
+                (Dictionary<string, long?>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, long?>)));
         }
 
         /// <summary>
@@ -1002,10 +1002,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;&gt;</returns>
-        public Dictionary<string, Dictionary<string, Dictionary<string, long?>>> AllVerbose ()
+        public Dictionary<string, Dictionary<string, Dictionary<string, long?>>> AllVerbose()
         {
-             ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> localVarResponse = AllVerboseWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> localVarResponse = AllVerboseWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1013,7 +1013,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;&gt;</returns>
-        public ApiResponse< Dictionary<string, Dictionary<string, Dictionary<string, long?>>> > AllVerboseWithHttpInfo ()
+        public ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> AllVerboseWithHttpInfo()
         {
 
             var localVarPath = "/api/tasks/queue/all/verbose";
@@ -1044,11 +1044,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1058,7 +1058,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Dictionary<string, Dictionary<string, long?>>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Dictionary<string, Dictionary<string, long?>>>)));
+                (Dictionary<string, Dictionary<string, Dictionary<string, long?>>>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Dictionary<string, Dictionary<string, long?>>>)));
         }
 
         /// <summary>
@@ -1066,10 +1066,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> AllVerboseAsync ()
+        public async System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> AllVerboseAsync()
         {
-             ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> localVarResponse = await AllVerboseAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> localVarResponse = await AllVerboseAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -1078,7 +1078,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>>> AllVerboseAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>>> AllVerboseAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/tasks/queue/all/verbose";
@@ -1109,11 +1109,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1123,7 +1123,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Dictionary<string, Dictionary<string, long?>>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Dictionary<string, Dictionary<string, long?>>>)));
+                (Dictionary<string, Dictionary<string, Dictionary<string, long?>>>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Dictionary<string, Dictionary<string, long?>>>)));
         }
 
         /// <summary>
@@ -1136,10 +1136,10 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>List&lt;Task&gt;</returns>
-        public List<Task> BatchPoll (string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
+        public List<Task> BatchPoll(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
         {
-             ApiResponse<List<Task>> localVarResponse = BatchPollWithHttpInfo(tasktype, workerid, domain, count, timeout);
-             return localVarResponse.Data;
+            ApiResponse<List<Task>> localVarResponse = BatchPollWithHttpInfo(tasktype, workerid, domain, count, timeout);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1152,7 +1152,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>ApiResponse of List&lt;Task&gt;</returns>
-        public ApiResponse< List<Task> > BatchPollWithHttpInfo (string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
+        public ApiResponse<List<Task>> BatchPollWithHttpInfo(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -1191,11 +1191,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1205,7 +1205,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Task>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Task>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Task>)));
+                (List<Task>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Task>)));
         }
 
         /// <summary>
@@ -1218,10 +1218,10 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>Task of List&lt;Task&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Task>> BatchPollAsync (string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
+        public async System.Threading.Tasks.Task<List<Task>> BatchPollAsync(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
         {
-             ApiResponse<List<Task>> localVarResponse = await BatchPollAsyncWithHttpInfo(tasktype, workerid, domain, count, timeout);
-             return localVarResponse.Data;
+            ApiResponse<List<Task>> localVarResponse = await BatchPollAsyncWithHttpInfo(tasktype, workerid, domain, count, timeout);
+            return localVarResponse.Data;
 
         }
 
@@ -1235,7 +1235,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>Task of ApiResponse (List&lt;Task&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Task>>> BatchPollAsyncWithHttpInfo (string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Task>>> BatchPollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -1274,11 +1274,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1288,7 +1288,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Task>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Task>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Task>)));
+                (List<Task>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Task>)));
         }
 
         /// <summary>
@@ -1296,10 +1296,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;PollData&gt;</returns>
-        public List<PollData> GetAllPollData ()
+        public List<PollData> GetAllPollData()
         {
-             ApiResponse<List<PollData>> localVarResponse = GetAllPollDataWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<PollData>> localVarResponse = GetAllPollDataWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1307,7 +1307,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;PollData&gt;</returns>
-        public ApiResponse< List<PollData> > GetAllPollDataWithHttpInfo ()
+        public ApiResponse<List<PollData>> GetAllPollDataWithHttpInfo()
         {
 
             var localVarPath = "/api/tasks/queue/polldata/all";
@@ -1338,11 +1338,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1352,7 +1352,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<PollData>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<PollData>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PollData>)));
+                (List<PollData>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PollData>)));
         }
 
         /// <summary>
@@ -1360,10 +1360,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;PollData&gt;</returns>
-        public async System.Threading.Tasks.Task<List<PollData>> GetAllPollDataAsync ()
+        public async System.Threading.Tasks.Task<List<PollData>> GetAllPollDataAsync()
         {
-             ApiResponse<List<PollData>> localVarResponse = await GetAllPollDataAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<PollData>> localVarResponse = await GetAllPollDataAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -1372,7 +1372,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;PollData&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetAllPollDataAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetAllPollDataAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/tasks/queue/polldata/all";
@@ -1403,11 +1403,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1417,7 +1417,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<PollData>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<PollData>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PollData>)));
+                (List<PollData>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PollData>)));
         }
 
         /// <summary>
@@ -1428,10 +1428,10 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ExternalStorageLocation</returns>
-        public ExternalStorageLocation GetExternalStorageLocation1 (string path, string operation, string payloadType)
+        public ExternalStorageLocation GetExternalStorageLocation1(string path, string operation, string payloadType)
         {
-             ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocation1WithHttpInfo(path, operation, payloadType);
-             return localVarResponse.Data;
+            ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocation1WithHttpInfo(path, operation, payloadType);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1442,7 +1442,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        public ApiResponse< ExternalStorageLocation > GetExternalStorageLocation1WithHttpInfo (string path, string operation, string payloadType)
+        public ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo(string path, string operation, string payloadType)
         {
             // verify the required parameter 'path' is set
             if (path == null)
@@ -1485,11 +1485,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1499,7 +1499,7 @@ namespace Conductor.Api
 
             return new ApiResponse<ExternalStorageLocation>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ExternalStorageLocation) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExternalStorageLocation)));
+                (ExternalStorageLocation)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExternalStorageLocation)));
         }
 
         /// <summary>
@@ -1510,10 +1510,10 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ExternalStorageLocation</returns>
-        public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocation1Async (string path, string operation, string payloadType)
+        public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocation1Async(string path, string operation, string payloadType)
         {
-             ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocation1AsyncWithHttpInfo(path, operation, payloadType);
-             return localVarResponse.Data;
+            ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocation1AsyncWithHttpInfo(path, operation, payloadType);
+            return localVarResponse.Data;
 
         }
 
@@ -1525,7 +1525,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1AsyncWithHttpInfo (string path, string operation, string payloadType)
+        public async System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1AsyncWithHttpInfo(string path, string operation, string payloadType)
         {
             // verify the required parameter 'path' is set
             if (path == null)
@@ -1568,11 +1568,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1582,7 +1582,7 @@ namespace Conductor.Api
 
             return new ApiResponse<ExternalStorageLocation>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ExternalStorageLocation) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExternalStorageLocation)));
+                (ExternalStorageLocation)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExternalStorageLocation)));
         }
 
         /// <summary>
@@ -1591,10 +1591,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>List&lt;PollData&gt;</returns>
-        public List<PollData> GetPollData (string taskType)
+        public List<PollData> GetPollData(string taskType)
         {
-             ApiResponse<List<PollData>> localVarResponse = GetPollDataWithHttpInfo(taskType);
-             return localVarResponse.Data;
+            ApiResponse<List<PollData>> localVarResponse = GetPollDataWithHttpInfo(taskType);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1603,7 +1603,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>ApiResponse of List&lt;PollData&gt;</returns>
-        public ApiResponse< List<PollData> > GetPollDataWithHttpInfo (string taskType)
+        public ApiResponse<List<PollData>> GetPollDataWithHttpInfo(string taskType)
         {
             // verify the required parameter 'taskType' is set
             if (taskType == null)
@@ -1638,11 +1638,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1652,7 +1652,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<PollData>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<PollData>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PollData>)));
+                (List<PollData>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PollData>)));
         }
 
         /// <summary>
@@ -1661,10 +1661,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of List&lt;PollData&gt;</returns>
-        public async System.Threading.Tasks.Task<List<PollData>> GetPollDataAsync (string taskType)
+        public async System.Threading.Tasks.Task<List<PollData>> GetPollDataAsync(string taskType)
         {
-             ApiResponse<List<PollData>> localVarResponse = await GetPollDataAsyncWithHttpInfo(taskType);
-             return localVarResponse.Data;
+            ApiResponse<List<PollData>> localVarResponse = await GetPollDataAsyncWithHttpInfo(taskType);
+            return localVarResponse.Data;
 
         }
 
@@ -1674,7 +1674,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of ApiResponse (List&lt;PollData&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetPollDataAsyncWithHttpInfo (string taskType)
+        public async System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetPollDataAsyncWithHttpInfo(string taskType)
         {
             // verify the required parameter 'taskType' is set
             if (taskType == null)
@@ -1709,11 +1709,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1723,7 +1723,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<PollData>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<PollData>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PollData>)));
+                (List<PollData>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PollData>)));
         }
 
         /// <summary>
@@ -1732,10 +1732,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task</returns>
-        public Task GetTask (string taskId)
+        public Task GetTask(string taskId)
         {
-             ApiResponse<Task> localVarResponse = GetTaskWithHttpInfo(taskId);
-             return localVarResponse.Data;
+            ApiResponse<Task> localVarResponse = GetTaskWithHttpInfo(taskId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1744,7 +1744,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>ApiResponse of Task</returns>
-        public ApiResponse< Task > GetTaskWithHttpInfo (string taskId)
+        public ApiResponse<Task> GetTaskWithHttpInfo(string taskId)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -1779,11 +1779,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1793,7 +1793,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Task>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Task) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Task)));
+                (Task)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Task)));
         }
 
         /// <summary>
@@ -1802,10 +1802,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of Task</returns>
-        public async System.Threading.Tasks.Task<Task> GetTaskAsync (string taskId)
+        public async System.Threading.Tasks.Task<Task> GetTaskAsync(string taskId)
         {
-             ApiResponse<Task> localVarResponse = await GetTaskAsyncWithHttpInfo(taskId);
-             return localVarResponse.Data;
+            ApiResponse<Task> localVarResponse = await GetTaskAsyncWithHttpInfo(taskId);
+            return localVarResponse.Data;
 
         }
 
@@ -1815,7 +1815,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of ApiResponse (Task)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Task>> GetTaskAsyncWithHttpInfo (string taskId)
+        public async System.Threading.Tasks.Task<ApiResponse<Task>> GetTaskAsyncWithHttpInfo(string taskId)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -1850,11 +1850,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1864,7 +1864,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Task>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Task) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Task)));
+                (Task)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Task)));
         }
 
         /// <summary>
@@ -1873,10 +1873,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>List&lt;TaskExecLog&gt;</returns>
-        public List<TaskExecLog> GetTaskLogs (string taskId)
+        public List<TaskExecLog> GetTaskLogs(string taskId)
         {
-             ApiResponse<List<TaskExecLog>> localVarResponse = GetTaskLogsWithHttpInfo(taskId);
-             return localVarResponse.Data;
+            ApiResponse<List<TaskExecLog>> localVarResponse = GetTaskLogsWithHttpInfo(taskId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1885,7 +1885,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>ApiResponse of List&lt;TaskExecLog&gt;</returns>
-        public ApiResponse< List<TaskExecLog> > GetTaskLogsWithHttpInfo (string taskId)
+        public ApiResponse<List<TaskExecLog>> GetTaskLogsWithHttpInfo(string taskId)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -1920,11 +1920,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1934,7 +1934,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<TaskExecLog>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<TaskExecLog>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TaskExecLog>)));
+                (List<TaskExecLog>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TaskExecLog>)));
         }
 
         /// <summary>
@@ -1943,10 +1943,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of List&lt;TaskExecLog&gt;</returns>
-        public async System.Threading.Tasks.Task<List<TaskExecLog>> GetTaskLogsAsync (string taskId)
+        public async System.Threading.Tasks.Task<List<TaskExecLog>> GetTaskLogsAsync(string taskId)
         {
-             ApiResponse<List<TaskExecLog>> localVarResponse = await GetTaskLogsAsyncWithHttpInfo(taskId);
-             return localVarResponse.Data;
+            ApiResponse<List<TaskExecLog>> localVarResponse = await GetTaskLogsAsyncWithHttpInfo(taskId);
+            return localVarResponse.Data;
 
         }
 
@@ -1956,7 +1956,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of ApiResponse (List&lt;TaskExecLog&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<TaskExecLog>>> GetTaskLogsAsyncWithHttpInfo (string taskId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<TaskExecLog>>> GetTaskLogsAsyncWithHttpInfo(string taskId)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -1991,11 +1991,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2005,7 +2005,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<TaskExecLog>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<TaskExecLog>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TaskExecLog>)));
+                (List<TaskExecLog>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TaskExecLog>)));
         }
 
         /// <summary>
@@ -2015,9 +2015,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskId"></param>
         /// <returns></returns>
-        public void Log (string body, string taskId)
+        public void Log(string body, string taskId)
         {
-             LogWithHttpInfo(body, taskId);
+            LogWithHttpInfo(body, taskId);
         }
 
         /// <summary>
@@ -2027,7 +2027,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> LogWithHttpInfo (string body, string taskId)
+        public ApiResponse<Object> LogWithHttpInfo(string body, string taskId)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2073,11 +2073,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2097,9 +2097,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskId"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task LogAsync (string body, string taskId)
+        public async System.Threading.Tasks.Task LogAsync(string body, string taskId)
         {
-             await LogAsyncWithHttpInfo(body, taskId);
+            await LogAsyncWithHttpInfo(body, taskId);
 
         }
 
@@ -2110,7 +2110,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskId"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> LogAsyncWithHttpInfo (string body, string taskId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> LogAsyncWithHttpInfo(string body, string taskId)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2156,11 +2156,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2181,10 +2181,10 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>Task</returns>
-        public Task Poll (string tasktype, string workerid = null, string domain = null)
+        public Task Poll(string tasktype, string workerid = null, string domain = null)
         {
-             ApiResponse<Task> localVarResponse = PollWithHttpInfo(tasktype, workerid, domain);
-             return localVarResponse.Data;
+            ApiResponse<Task> localVarResponse = PollWithHttpInfo(tasktype, workerid, domain);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2195,7 +2195,7 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>ApiResponse of Task</returns>
-        public ApiResponse< Task > PollWithHttpInfo (string tasktype, string workerid = null, string domain = null)
+        public ApiResponse<Task> PollWithHttpInfo(string tasktype, string workerid = null, string domain = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -2232,11 +2232,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2246,7 +2246,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Task>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Task) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Task)));
+                (Task)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Task)));
         }
 
         /// <summary>
@@ -2257,10 +2257,10 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>Task of Task</returns>
-        public async System.Threading.Tasks.Task<Task> PollAsync (string tasktype, string workerid = null, string domain = null)
+        public async System.Threading.Tasks.Task<Task> PollAsync(string tasktype, string workerid = null, string domain = null)
         {
-             ApiResponse<Task> localVarResponse = await PollAsyncWithHttpInfo(tasktype, workerid, domain);
-             return localVarResponse.Data;
+            ApiResponse<Task> localVarResponse = await PollAsyncWithHttpInfo(tasktype, workerid, domain);
+            return localVarResponse.Data;
 
         }
 
@@ -2272,7 +2272,7 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>Task of ApiResponse (Task)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Task>> PollAsyncWithHttpInfo (string tasktype, string workerid = null, string domain = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Task>> PollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -2309,11 +2309,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2323,7 +2323,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Task>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Task) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Task)));
+                (Task)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Task)));
         }
 
         /// <summary>
@@ -2332,10 +2332,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>string</returns>
-        public string RequeuePendingTask (string taskType)
+        public string RequeuePendingTask(string taskType)
         {
-             ApiResponse<string> localVarResponse = RequeuePendingTaskWithHttpInfo(taskType);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = RequeuePendingTaskWithHttpInfo(taskType);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2344,7 +2344,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > RequeuePendingTaskWithHttpInfo (string taskType)
+        public ApiResponse<string> RequeuePendingTaskWithHttpInfo(string taskType)
         {
             // verify the required parameter 'taskType' is set
             if (taskType == null)
@@ -2379,11 +2379,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2393,7 +2393,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2402,10 +2402,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> RequeuePendingTaskAsync (string taskType)
+        public async System.Threading.Tasks.Task<string> RequeuePendingTaskAsync(string taskType)
         {
-             ApiResponse<string> localVarResponse = await RequeuePendingTaskAsyncWithHttpInfo(taskType);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await RequeuePendingTaskAsyncWithHttpInfo(taskType);
+            return localVarResponse.Data;
 
         }
 
@@ -2415,7 +2415,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> RequeuePendingTaskAsyncWithHttpInfo (string taskType)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> RequeuePendingTaskAsyncWithHttpInfo(string taskType)
         {
             // verify the required parameter 'taskType' is set
             if (taskType == null)
@@ -2450,11 +2450,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2464,7 +2464,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2477,10 +2477,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTaskSummary</returns>
-        public SearchResultTaskSummary Search1 (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public SearchResultTaskSummary Search1(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultTaskSummary> localVarResponse = Search1WithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultTaskSummary> localVarResponse = Search1WithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2493,7 +2493,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTaskSummary</returns>
-        public ApiResponse< SearchResultTaskSummary > Search1WithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public ApiResponse<SearchResultTaskSummary> Search1WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/tasks/search";
@@ -2529,11 +2529,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2543,7 +2543,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultTaskSummary>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultTaskSummary) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTaskSummary)));
+                (SearchResultTaskSummary)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTaskSummary)));
         }
 
         /// <summary>
@@ -2556,10 +2556,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultTaskSummary</returns>
-        public async System.Threading.Tasks.Task<SearchResultTaskSummary> Search1Async (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<SearchResultTaskSummary> Search1Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultTaskSummary> localVarResponse = await Search1AsyncWithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultTaskSummary> localVarResponse = await Search1AsyncWithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
 
         }
 
@@ -2573,7 +2573,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTaskSummary)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> Search1AsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> Search1AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/tasks/search";
@@ -2609,11 +2609,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2623,7 +2623,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultTaskSummary>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultTaskSummary) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTaskSummary)));
+                (SearchResultTaskSummary)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTaskSummary)));
         }
 
         /// <summary>
@@ -2636,10 +2636,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTask</returns>
-        public SearchResultTask SearchV21 (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public SearchResultTask SearchV21(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultTask> localVarResponse = SearchV21WithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultTask> localVarResponse = SearchV21WithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2652,7 +2652,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTask</returns>
-        public ApiResponse< SearchResultTask > SearchV21WithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public ApiResponse<SearchResultTask> SearchV21WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/tasks/search-v2";
@@ -2688,11 +2688,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2702,7 +2702,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultTask>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultTask) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTask)));
+                (SearchResultTask)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTask)));
         }
 
         /// <summary>
@@ -2715,10 +2715,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultTask</returns>
-        public async System.Threading.Tasks.Task<SearchResultTask> SearchV21Async (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<SearchResultTask> SearchV21Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultTask> localVarResponse = await SearchV21AsyncWithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultTask> localVarResponse = await SearchV21AsyncWithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
 
         }
 
@@ -2732,7 +2732,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTask)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> SearchV21AsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> SearchV21AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/tasks/search-v2";
@@ -2768,11 +2768,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2782,7 +2782,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultTask>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultTask) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTask)));
+                (SearchResultTask)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTask)));
         }
 
         /// <summary>
@@ -2791,10 +2791,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>Dictionary&lt;string, int?&gt;</returns>
-        public Dictionary<string, int?> Size (List<string> taskType = null)
+        public Dictionary<string, int?> Size(List<string> taskType = null)
         {
-             ApiResponse<Dictionary<string, int?>> localVarResponse = SizeWithHttpInfo(taskType);
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, int?>> localVarResponse = SizeWithHttpInfo(taskType);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2803,7 +2803,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>ApiResponse of Dictionary&lt;string, int?&gt;</returns>
-        public ApiResponse< Dictionary<string, int?> > SizeWithHttpInfo (List<string> taskType = null)
+        public ApiResponse<Dictionary<string, int?>> SizeWithHttpInfo(List<string> taskType = null)
         {
 
             var localVarPath = "/api/tasks/queue/sizes";
@@ -2835,11 +2835,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2849,7 +2849,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, int?>)));
+                (Dictionary<string, int?>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, int?>)));
         }
 
         /// <summary>
@@ -2858,10 +2858,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>Task of Dictionary&lt;string, int?&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, int?>> SizeAsync (List<string> taskType = null)
+        public async System.Threading.Tasks.Task<Dictionary<string, int?>> SizeAsync(List<string> taskType = null)
         {
-             ApiResponse<Dictionary<string, int?>> localVarResponse = await SizeAsyncWithHttpInfo(taskType);
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, int?>> localVarResponse = await SizeAsyncWithHttpInfo(taskType);
+            return localVarResponse.Data;
 
         }
 
@@ -2871,7 +2871,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, int?&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, int?>>> SizeAsyncWithHttpInfo (List<string> taskType = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, int?>>> SizeAsyncWithHttpInfo(List<string> taskType = null)
         {
 
             var localVarPath = "/api/tasks/queue/sizes";
@@ -2903,11 +2903,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2917,7 +2917,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, int?>)));
+                (Dictionary<string, int?>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, int?>)));
         }
 
         /// <summary>
@@ -2926,10 +2926,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>string</returns>
-        public string UpdateTask (TaskResult body)
+        public string UpdateTask(TaskResult body)
         {
-             ApiResponse<string> localVarResponse = UpdateTaskWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = UpdateTaskWithHttpInfo(body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2938,7 +2938,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > UpdateTaskWithHttpInfo (TaskResult body)
+        public ApiResponse<string> UpdateTaskWithHttpInfo(TaskResult body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2981,11 +2981,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2995,7 +2995,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3004,10 +3004,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> UpdateTaskAsync (TaskResult body)
+        public async System.Threading.Tasks.Task<string> UpdateTaskAsync(TaskResult body)
         {
-             ApiResponse<string> localVarResponse = await UpdateTaskAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await UpdateTaskAsyncWithHttpInfo(body);
+            return localVarResponse.Data;
 
         }
 
@@ -3017,7 +3017,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo (TaskResult body)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo(TaskResult body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -3060,11 +3060,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3074,7 +3074,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3086,10 +3086,10 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>string</returns>
-        public string UpdateTask1 (Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
+        public string UpdateTask1(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
         {
-             ApiResponse<string> localVarResponse = UpdateTask1WithHttpInfo(body, workflowId, taskRefName, status);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = UpdateTask1WithHttpInfo(body, workflowId, taskRefName, status);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3101,7 +3101,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > UpdateTask1WithHttpInfo (Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
+        public ApiResponse<string> UpdateTask1WithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -3156,11 +3156,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3170,7 +3170,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3182,10 +3182,10 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> UpdateTask1Async (Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
+        public async System.Threading.Tasks.Task<string> UpdateTask1Async(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
         {
-             ApiResponse<string> localVarResponse = await UpdateTask1AsyncWithHttpInfo(body, workflowId, taskRefName, status);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await UpdateTask1AsyncWithHttpInfo(body, workflowId, taskRefName, status);
+            return localVarResponse.Data;
 
         }
 
@@ -3198,7 +3198,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTask1AsyncWithHttpInfo (Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTask1AsyncWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -3253,11 +3253,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3267,7 +3267,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
     }

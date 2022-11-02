@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface ITokenResourceApi : IApiAccessor
+    public interface ITokenResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -24,7 +24,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Response</returns>
-        Response GenerateToken (GenerateTokenRequest body);
+        Response GenerateToken(GenerateTokenRequest body);
 
         /// <summary>
         /// Generate JWT with the given access key
@@ -35,7 +35,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Response</returns>
-        ApiResponse<Response> GenerateTokenWithHttpInfo (GenerateTokenRequest body);
+        ApiResponse<Response> GenerateTokenWithHttpInfo(GenerateTokenRequest body);
         /// <summary>
         /// Get the user info from the token
         /// </summary>
@@ -45,7 +45,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="claims"> (optional, default to false)</param>
         /// <returns>Object</returns>
-        Object GetUserInfo (bool? claims = null);
+        Object GetUserInfo(bool? claims = null);
 
         /// <summary>
         /// Get the user info from the token
@@ -56,7 +56,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="claims"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetUserInfoWithHttpInfo (bool? claims = null);
+        ApiResponse<Object> GetUserInfoWithHttpInfo(bool? claims = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -68,7 +68,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Response</returns>
-        System.Threading.Tasks.Task<Response> GenerateTokenAsync (GenerateTokenRequest body);
+        System.Threading.Tasks.Task<Response> GenerateTokenAsync(GenerateTokenRequest body);
 
         /// <summary>
         /// Generate JWT with the given access key
@@ -79,7 +79,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Response>> GenerateTokenAsyncWithHttpInfo (GenerateTokenRequest body);
+        System.Threading.Tasks.Task<ApiResponse<Response>> GenerateTokenAsyncWithHttpInfo(GenerateTokenRequest body);
         /// <summary>
         /// Get the user info from the token
         /// </summary>
@@ -89,7 +89,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="claims"> (optional, default to false)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetUserInfoAsync (bool? claims = null);
+        System.Threading.Tasks.Task<Object> GetUserInfoAsync(bool? claims = null);
 
         /// <summary>
         /// Get the user info from the token
@@ -100,14 +100,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="claims"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetUserInfoAsyncWithHttpInfo (bool? claims = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetUserInfoAsyncWithHttpInfo(bool? claims = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class TokenResourceApi : ITokenResourceApi
+    public partial class TokenResourceApi : ITokenResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -172,7 +172,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -218,10 +218,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Response</returns>
-        public Response GenerateToken (GenerateTokenRequest body)
+        public Response GenerateToken(GenerateTokenRequest body)
         {
-             ApiResponse<Response> localVarResponse = GenerateTokenWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<Response> localVarResponse = GenerateTokenWithHttpInfo(body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Response</returns>
-        public ApiResponse< Response > GenerateTokenWithHttpInfo (GenerateTokenRequest body)
+        public ApiResponse<Response> GenerateTokenWithHttpInfo(GenerateTokenRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -273,11 +273,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -287,7 +287,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Response>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Response) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+                (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
         }
 
         /// <summary>
@@ -296,10 +296,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Response</returns>
-        public async System.Threading.Tasks.Task<Response> GenerateTokenAsync (GenerateTokenRequest body)
+        public async System.Threading.Tasks.Task<Response> GenerateTokenAsync(GenerateTokenRequest body)
         {
-             ApiResponse<Response> localVarResponse = await GenerateTokenAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<Response> localVarResponse = await GenerateTokenAsyncWithHttpInfo(body);
+            return localVarResponse.Data;
 
         }
 
@@ -309,7 +309,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Response>> GenerateTokenAsyncWithHttpInfo (GenerateTokenRequest body)
+        public async System.Threading.Tasks.Task<ApiResponse<Response>> GenerateTokenAsyncWithHttpInfo(GenerateTokenRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -352,11 +352,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -366,7 +366,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Response>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Response) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+                (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
         }
 
         /// <summary>
@@ -375,10 +375,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="claims"> (optional, default to false)</param>
         /// <returns>Object</returns>
-        public Object GetUserInfo (bool? claims = null)
+        public Object GetUserInfo(bool? claims = null)
         {
-             ApiResponse<Object> localVarResponse = GetUserInfoWithHttpInfo(claims);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetUserInfoWithHttpInfo(claims);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="claims"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetUserInfoWithHttpInfo (bool? claims = null)
+        public ApiResponse<Object> GetUserInfoWithHttpInfo(bool? claims = null)
         {
 
             var localVarPath = "/api/token/userInfo";
@@ -419,11 +419,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -433,7 +433,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -442,10 +442,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="claims"> (optional, default to false)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetUserInfoAsync (bool? claims = null)
+        public async System.Threading.Tasks.Task<Object> GetUserInfoAsync(bool? claims = null)
         {
-             ApiResponse<Object> localVarResponse = await GetUserInfoAsyncWithHttpInfo(claims);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await GetUserInfoAsyncWithHttpInfo(claims);
+            return localVarResponse.Data;
 
         }
 
@@ -455,7 +455,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="claims"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUserInfoAsyncWithHttpInfo (bool? claims = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUserInfoAsyncWithHttpInfo(bool? claims = null)
         {
 
             var localVarPath = "/api/token/userInfo";
@@ -487,11 +487,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -501,7 +501,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
     }

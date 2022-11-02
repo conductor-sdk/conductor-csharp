@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// SubWorkflowParams
     /// </summary>
     [DataContract]
-        public partial class SubWorkflowParams :  IEquatable<SubWorkflowParams>, IValidatableObject
+    public partial class SubWorkflowParams : IEquatable<SubWorkflowParams>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SubWorkflowParams" /> class.
@@ -43,29 +43,29 @@ namespace Conductor.Models
             this.Version = version;
             this.WorkflowDefinition = workflowDefinition;
         }
-        
+
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskToDomain
         /// </summary>
-        [DataMember(Name="taskToDomain", EmitDefaultValue=false)]
+        [DataMember(Name = "taskToDomain", EmitDefaultValue = false)]
         public Dictionary<string, string> TaskToDomain { get; set; }
 
         /// <summary>
         /// Gets or Sets Version
         /// </summary>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name = "version", EmitDefaultValue = false)]
         public int? Version { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowDefinition
         /// </summary>
-        [DataMember(Name="workflowDefinition", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowDefinition", EmitDefaultValue = false)]
         public WorkflowDef WorkflowDefinition { get; set; }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -113,23 +113,23 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.TaskToDomain == input.TaskToDomain ||
                     this.TaskToDomain != null &&
                     input.TaskToDomain != null &&
                     this.TaskToDomain.SequenceEqual(input.TaskToDomain)
-                ) && 
+                ) &&
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
                     this.Version.Equals(input.Version))
-                ) && 
+                ) &&
                 (
                     this.WorkflowDefinition == input.WorkflowDefinition ||
                     (this.WorkflowDefinition != null &&

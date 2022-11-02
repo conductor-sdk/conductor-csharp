@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// EventHandler
     /// </summary>
     [DataContract]
-        public partial class EventHandler :  IEquatable<EventHandler>, IValidatableObject
+    public partial class EventHandler : IEquatable<EventHandler>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EventHandler" /> class.
@@ -63,41 +63,41 @@ namespace Conductor.Models
             this.Condition = condition;
             this.EvaluatorType = evaluatorType;
         }
-        
+
         /// <summary>
         /// Gets or Sets Actions
         /// </summary>
-        [DataMember(Name="actions", EmitDefaultValue=false)]
+        [DataMember(Name = "actions", EmitDefaultValue = false)]
         public List<Action> Actions { get; set; }
 
         /// <summary>
         /// Gets or Sets Active
         /// </summary>
-        [DataMember(Name="active", EmitDefaultValue=false)]
+        [DataMember(Name = "active", EmitDefaultValue = false)]
         public bool? Active { get; set; }
 
         /// <summary>
         /// Gets or Sets Condition
         /// </summary>
-        [DataMember(Name="condition", EmitDefaultValue=false)]
+        [DataMember(Name = "condition", EmitDefaultValue = false)]
         public string Condition { get; set; }
 
         /// <summary>
         /// Gets or Sets EvaluatorType
         /// </summary>
-        [DataMember(Name="evaluatorType", EmitDefaultValue=false)]
+        [DataMember(Name = "evaluatorType", EmitDefaultValue = false)]
         public string EvaluatorType { get; set; }
 
         /// <summary>
         /// Gets or Sets _Event
         /// </summary>
-        [DataMember(Name="event", EmitDefaultValue=false)]
+        [DataMember(Name = "event", EmitDefaultValue = false)]
         public string _Event { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -147,33 +147,33 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Actions == input.Actions ||
                     this.Actions != null &&
                     input.Actions != null &&
                     this.Actions.SequenceEqual(input.Actions)
-                ) && 
+                ) &&
                 (
                     this.Active == input.Active ||
                     (this.Active != null &&
                     this.Active.Equals(input.Active))
-                ) && 
+                ) &&
                 (
                     this.Condition == input.Condition ||
                     (this.Condition != null &&
                     this.Condition.Equals(input.Condition))
-                ) && 
+                ) &&
                 (
                     this.EvaluatorType == input.EvaluatorType ||
                     (this.EvaluatorType != null &&
                     this.EvaluatorType.Equals(input.EvaluatorType))
-                ) && 
+                ) &&
                 (
                     this._Event == input._Event ||
                     (this._Event != null &&
                     this._Event.Equals(input._Event))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&

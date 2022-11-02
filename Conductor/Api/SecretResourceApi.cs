@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface ISecretResourceApi : IApiAccessor
+    public interface ISecretResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -24,7 +24,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Object</returns>
-        Object DeleteSecret (string key);
+        Object DeleteSecret(string key);
 
         /// <summary>
         /// Delete a secret value by key
@@ -35,7 +35,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> DeleteSecretWithHttpInfo (string key);
+        ApiResponse<Object> DeleteSecretWithHttpInfo(string key);
         /// <summary>
         /// Delete a tag by secret
         /// </summary>
@@ -46,7 +46,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void DeleteTagForSecret (string key, string body = null);
+        void DeleteTagForSecret(string key, string body = null);
 
         /// <summary>
         /// Delete a tag by secret
@@ -58,7 +58,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteTagForSecretWithHttpInfo (string key, string body = null);
+        ApiResponse<Object> DeleteTagForSecretWithHttpInfo(string key, string body = null);
         /// <summary>
         /// Get secret value by key
         /// </summary>
@@ -68,7 +68,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Object</returns>
-        Object GetSecret (string key);
+        Object GetSecret(string key);
 
         /// <summary>
         /// Get secret value by key
@@ -79,7 +79,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetSecretWithHttpInfo (string key);
+        ApiResponse<Object> GetSecretWithHttpInfo(string key);
         /// <summary>
         /// Get tags by secret
         /// </summary>
@@ -89,7 +89,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>List&lt;TagObject&gt;</returns>
-        List<TagObject> GetTags (string key);
+        List<TagObject> GetTags(string key);
 
         /// <summary>
         /// Get tags by secret
@@ -100,7 +100,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>ApiResponse of List&lt;TagObject&gt;</returns>
-        ApiResponse<List<TagObject>> GetTagsWithHttpInfo (string key);
+        ApiResponse<List<TagObject>> GetTagsWithHttpInfo(string key);
         /// <summary>
         /// List all secret names
         /// </summary>
@@ -109,7 +109,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        Object ListAllSecretNames ();
+        Object ListAllSecretNames();
 
         /// <summary>
         /// List all secret names
@@ -119,7 +119,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> ListAllSecretNamesWithHttpInfo ();
+        ApiResponse<Object> ListAllSecretNamesWithHttpInfo();
         /// <summary>
         /// List all secret names user can grant access to
         /// </summary>
@@ -128,7 +128,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;string&gt;</returns>
-        List<string> ListSecretsThatUserCanGrantAccessTo ();
+        List<string> ListSecretsThatUserCanGrantAccessTo();
 
         /// <summary>
         /// List all secret names user can grant access to
@@ -138,7 +138,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        ApiResponse<List<string>> ListSecretsThatUserCanGrantAccessToWithHttpInfo ();
+        ApiResponse<List<string>> ListSecretsThatUserCanGrantAccessToWithHttpInfo();
         /// <summary>
         /// Put a secret value by key
         /// </summary>
@@ -149,7 +149,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="key"></param>
         /// <returns>Object</returns>
-        Object PutSecret (string body, string key);
+        Object PutSecret(string body, string key);
 
         /// <summary>
         /// Put a secret value by key
@@ -161,7 +161,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="key"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> PutSecretWithHttpInfo (string body, string key);
+        ApiResponse<Object> PutSecretWithHttpInfo(string body, string key);
         /// <summary>
         /// Put a tag by secret
         /// </summary>
@@ -172,7 +172,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void PutTagForSecret (string key, string body = null);
+        void PutTagForSecret(string key, string body = null);
 
         /// <summary>
         /// Put a tag by secret
@@ -184,7 +184,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PutTagForSecretWithHttpInfo (string key, string body = null);
+        ApiResponse<Object> PutTagForSecretWithHttpInfo(string key, string body = null);
         /// <summary>
         /// Check if secret exists
         /// </summary>
@@ -194,7 +194,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Object</returns>
-        Object SecretExists (string key);
+        Object SecretExists(string key);
 
         /// <summary>
         /// Check if secret exists
@@ -205,7 +205,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> SecretExistsWithHttpInfo (string key);
+        ApiResponse<Object> SecretExistsWithHttpInfo(string key);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -217,7 +217,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> DeleteSecretAsync (string key);
+        System.Threading.Tasks.Task<Object> DeleteSecretAsync(string key);
 
         /// <summary>
         /// Delete a secret value by key
@@ -228,7 +228,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSecretAsyncWithHttpInfo (string key);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSecretAsyncWithHttpInfo(string key);
         /// <summary>
         /// Delete a tag by secret
         /// </summary>
@@ -239,7 +239,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteTagForSecretAsync (string key, string body = null);
+        System.Threading.Tasks.Task DeleteTagForSecretAsync(string key, string body = null);
 
         /// <summary>
         /// Delete a tag by secret
@@ -251,7 +251,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForSecretAsyncWithHttpInfo (string key, string body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForSecretAsyncWithHttpInfo(string key, string body = null);
         /// <summary>
         /// Get secret value by key
         /// </summary>
@@ -261,7 +261,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetSecretAsync (string key);
+        System.Threading.Tasks.Task<Object> GetSecretAsync(string key);
 
         /// <summary>
         /// Get secret value by key
@@ -272,7 +272,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetSecretAsyncWithHttpInfo (string key);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetSecretAsyncWithHttpInfo(string key);
         /// <summary>
         /// Get tags by secret
         /// </summary>
@@ -282,7 +282,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
-        System.Threading.Tasks.Task<List<TagObject>> GetTagsAsync (string key);
+        System.Threading.Tasks.Task<List<TagObject>> GetTagsAsync(string key);
 
         /// <summary>
         /// Get tags by secret
@@ -293,7 +293,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsAsyncWithHttpInfo (string key);
+        System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsAsyncWithHttpInfo(string key);
         /// <summary>
         /// List all secret names
         /// </summary>
@@ -302,7 +302,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> ListAllSecretNamesAsync ();
+        System.Threading.Tasks.Task<Object> ListAllSecretNamesAsync();
 
         /// <summary>
         /// List all secret names
@@ -312,7 +312,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ListAllSecretNamesAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> ListAllSecretNamesAsyncWithHttpInfo();
         /// <summary>
         /// List all secret names user can grant access to
         /// </summary>
@@ -321,7 +321,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
-        System.Threading.Tasks.Task<List<string>> ListSecretsThatUserCanGrantAccessToAsync ();
+        System.Threading.Tasks.Task<List<string>> ListSecretsThatUserCanGrantAccessToAsync();
 
         /// <summary>
         /// List all secret names user can grant access to
@@ -331,7 +331,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<string>>> ListSecretsThatUserCanGrantAccessToAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<string>>> ListSecretsThatUserCanGrantAccessToAsyncWithHttpInfo();
         /// <summary>
         /// Put a secret value by key
         /// </summary>
@@ -342,7 +342,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> PutSecretAsync (string body, string key);
+        System.Threading.Tasks.Task<Object> PutSecretAsync(string body, string key);
 
         /// <summary>
         /// Put a secret value by key
@@ -354,7 +354,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PutSecretAsyncWithHttpInfo (string body, string key);
+        System.Threading.Tasks.Task<ApiResponse<Object>> PutSecretAsyncWithHttpInfo(string body, string key);
         /// <summary>
         /// Put a tag by secret
         /// </summary>
@@ -365,7 +365,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PutTagForSecretAsync (string key, string body = null);
+        System.Threading.Tasks.Task PutTagForSecretAsync(string key, string body = null);
 
         /// <summary>
         /// Put a tag by secret
@@ -377,7 +377,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForSecretAsyncWithHttpInfo (string key, string body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForSecretAsyncWithHttpInfo(string key, string body = null);
         /// <summary>
         /// Check if secret exists
         /// </summary>
@@ -387,7 +387,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> SecretExistsAsync (string key);
+        System.Threading.Tasks.Task<Object> SecretExistsAsync(string key);
 
         /// <summary>
         /// Check if secret exists
@@ -398,14 +398,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SecretExistsAsyncWithHttpInfo (string key);
+        System.Threading.Tasks.Task<ApiResponse<Object>> SecretExistsAsyncWithHttpInfo(string key);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class SecretResourceApi : ISecretResourceApi
+    public partial class SecretResourceApi : ISecretResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -470,7 +470,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -516,10 +516,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Object</returns>
-        public Object DeleteSecret (string key)
+        public Object DeleteSecret(string key)
         {
-             ApiResponse<Object> localVarResponse = DeleteSecretWithHttpInfo(key);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = DeleteSecretWithHttpInfo(key);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -528,7 +528,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > DeleteSecretWithHttpInfo (string key)
+        public ApiResponse<Object> DeleteSecretWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -563,11 +563,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -577,7 +577,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -586,10 +586,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> DeleteSecretAsync (string key)
+        public async System.Threading.Tasks.Task<Object> DeleteSecretAsync(string key)
         {
-             ApiResponse<Object> localVarResponse = await DeleteSecretAsyncWithHttpInfo(key);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await DeleteSecretAsyncWithHttpInfo(key);
+            return localVarResponse.Data;
 
         }
 
@@ -599,7 +599,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSecretAsyncWithHttpInfo (string key)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSecretAsyncWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -634,11 +634,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -648,7 +648,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -658,9 +658,9 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void DeleteTagForSecret (string key, string body = null)
+        public void DeleteTagForSecret(string key, string body = null)
         {
-             DeleteTagForSecretWithHttpInfo(key, body);
+            DeleteTagForSecretWithHttpInfo(key, body);
         }
 
         /// <summary>
@@ -670,7 +670,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteTagForSecretWithHttpInfo (string key, string body = null)
+        public ApiResponse<Object> DeleteTagForSecretWithHttpInfo(string key, string body = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -713,11 +713,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -737,9 +737,9 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteTagForSecretAsync (string key, string body = null)
+        public async System.Threading.Tasks.Task DeleteTagForSecretAsync(string key, string body = null)
         {
-             await DeleteTagForSecretAsyncWithHttpInfo(key, body);
+            await DeleteTagForSecretAsyncWithHttpInfo(key, body);
 
         }
 
@@ -750,7 +750,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForSecretAsyncWithHttpInfo (string key, string body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForSecretAsyncWithHttpInfo(string key, string body = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -793,11 +793,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -816,10 +816,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Object</returns>
-        public Object GetSecret (string key)
+        public Object GetSecret(string key)
         {
-             ApiResponse<Object> localVarResponse = GetSecretWithHttpInfo(key);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetSecretWithHttpInfo(key);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -828,7 +828,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetSecretWithHttpInfo (string key)
+        public ApiResponse<Object> GetSecretWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -863,11 +863,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -877,7 +877,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -886,10 +886,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetSecretAsync (string key)
+        public async System.Threading.Tasks.Task<Object> GetSecretAsync(string key)
         {
-             ApiResponse<Object> localVarResponse = await GetSecretAsyncWithHttpInfo(key);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await GetSecretAsyncWithHttpInfo(key);
+            return localVarResponse.Data;
 
         }
 
@@ -899,7 +899,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetSecretAsyncWithHttpInfo (string key)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetSecretAsyncWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -934,11 +934,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -948,7 +948,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -957,10 +957,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>List&lt;TagObject&gt;</returns>
-        public List<TagObject> GetTags (string key)
+        public List<TagObject> GetTags(string key)
         {
-             ApiResponse<List<TagObject>> localVarResponse = GetTagsWithHttpInfo(key);
-             return localVarResponse.Data;
+            ApiResponse<List<TagObject>> localVarResponse = GetTagsWithHttpInfo(key);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -969,7 +969,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>ApiResponse of List&lt;TagObject&gt;</returns>
-        public ApiResponse< List<TagObject> > GetTagsWithHttpInfo (string key)
+        public ApiResponse<List<TagObject>> GetTagsWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -1004,11 +1004,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1018,7 +1018,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<TagObject>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<TagObject>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
+                (List<TagObject>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
         }
 
         /// <summary>
@@ -1027,10 +1027,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
-        public async System.Threading.Tasks.Task<List<TagObject>> GetTagsAsync (string key)
+        public async System.Threading.Tasks.Task<List<TagObject>> GetTagsAsync(string key)
         {
-             ApiResponse<List<TagObject>> localVarResponse = await GetTagsAsyncWithHttpInfo(key);
-             return localVarResponse.Data;
+            ApiResponse<List<TagObject>> localVarResponse = await GetTagsAsyncWithHttpInfo(key);
+            return localVarResponse.Data;
 
         }
 
@@ -1040,7 +1040,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsAsyncWithHttpInfo (string key)
+        public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsAsyncWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -1075,11 +1075,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1089,7 +1089,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<TagObject>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<TagObject>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
+                (List<TagObject>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
         }
 
         /// <summary>
@@ -1097,10 +1097,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        public Object ListAllSecretNames ()
+        public Object ListAllSecretNames()
         {
-             ApiResponse<Object> localVarResponse = ListAllSecretNamesWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = ListAllSecretNamesWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1108,7 +1108,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > ListAllSecretNamesWithHttpInfo ()
+        public ApiResponse<Object> ListAllSecretNamesWithHttpInfo()
         {
 
             var localVarPath = "/api/secrets";
@@ -1139,11 +1139,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1153,7 +1153,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1161,10 +1161,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> ListAllSecretNamesAsync ()
+        public async System.Threading.Tasks.Task<Object> ListAllSecretNamesAsync()
         {
-             ApiResponse<Object> localVarResponse = await ListAllSecretNamesAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await ListAllSecretNamesAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -1173,7 +1173,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ListAllSecretNamesAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ListAllSecretNamesAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/secrets";
@@ -1204,11 +1204,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1218,7 +1218,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1226,10 +1226,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;string&gt;</returns>
-        public List<string> ListSecretsThatUserCanGrantAccessTo ()
+        public List<string> ListSecretsThatUserCanGrantAccessTo()
         {
-             ApiResponse<List<string>> localVarResponse = ListSecretsThatUserCanGrantAccessToWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<string>> localVarResponse = ListSecretsThatUserCanGrantAccessToWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1237,7 +1237,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public ApiResponse< List<string> > ListSecretsThatUserCanGrantAccessToWithHttpInfo ()
+        public ApiResponse<List<string>> ListSecretsThatUserCanGrantAccessToWithHttpInfo()
         {
 
             var localVarPath = "/api/secrets";
@@ -1268,11 +1268,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1282,7 +1282,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (List<string>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -1290,10 +1290,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
-        public async System.Threading.Tasks.Task<List<string>> ListSecretsThatUserCanGrantAccessToAsync ()
+        public async System.Threading.Tasks.Task<List<string>> ListSecretsThatUserCanGrantAccessToAsync()
         {
-             ApiResponse<List<string>> localVarResponse = await ListSecretsThatUserCanGrantAccessToAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<string>> localVarResponse = await ListSecretsThatUserCanGrantAccessToAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -1302,7 +1302,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> ListSecretsThatUserCanGrantAccessToAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> ListSecretsThatUserCanGrantAccessToAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/secrets";
@@ -1333,11 +1333,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1347,7 +1347,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (List<string>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -1357,10 +1357,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="key"></param>
         /// <returns>Object</returns>
-        public Object PutSecret (string body, string key)
+        public Object PutSecret(string body, string key)
         {
-             ApiResponse<Object> localVarResponse = PutSecretWithHttpInfo(body, key);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = PutSecretWithHttpInfo(body, key);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1370,7 +1370,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="key"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > PutSecretWithHttpInfo (string body, string key)
+        public ApiResponse<Object> PutSecretWithHttpInfo(string body, string key)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1417,11 +1417,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1431,7 +1431,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1441,10 +1441,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> PutSecretAsync (string body, string key)
+        public async System.Threading.Tasks.Task<Object> PutSecretAsync(string body, string key)
         {
-             ApiResponse<Object> localVarResponse = await PutSecretAsyncWithHttpInfo(body, key);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await PutSecretAsyncWithHttpInfo(body, key);
+            return localVarResponse.Data;
 
         }
 
@@ -1455,7 +1455,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutSecretAsyncWithHttpInfo (string body, string key)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutSecretAsyncWithHttpInfo(string body, string key)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1502,11 +1502,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1516,7 +1516,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1526,9 +1526,9 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void PutTagForSecret (string key, string body = null)
+        public void PutTagForSecret(string key, string body = null)
         {
-             PutTagForSecretWithHttpInfo(key, body);
+            PutTagForSecretWithHttpInfo(key, body);
         }
 
         /// <summary>
@@ -1538,7 +1538,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PutTagForSecretWithHttpInfo (string key, string body = null)
+        public ApiResponse<Object> PutTagForSecretWithHttpInfo(string key, string body = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -1581,11 +1581,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1605,9 +1605,9 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PutTagForSecretAsync (string key, string body = null)
+        public async System.Threading.Tasks.Task PutTagForSecretAsync(string key, string body = null)
         {
-             await PutTagForSecretAsyncWithHttpInfo(key, body);
+            await PutTagForSecretAsyncWithHttpInfo(key, body);
 
         }
 
@@ -1618,7 +1618,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForSecretAsyncWithHttpInfo (string key, string body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForSecretAsyncWithHttpInfo(string key, string body = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -1661,11 +1661,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1684,10 +1684,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Object</returns>
-        public Object SecretExists (string key)
+        public Object SecretExists(string key)
         {
-             ApiResponse<Object> localVarResponse = SecretExistsWithHttpInfo(key);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = SecretExistsWithHttpInfo(key);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1696,7 +1696,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > SecretExistsWithHttpInfo (string key)
+        public ApiResponse<Object> SecretExistsWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -1731,11 +1731,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1745,7 +1745,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1754,10 +1754,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> SecretExistsAsync (string key)
+        public async System.Threading.Tasks.Task<Object> SecretExistsAsync(string key)
         {
-             ApiResponse<Object> localVarResponse = await SecretExistsAsyncWithHttpInfo(key);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await SecretExistsAsyncWithHttpInfo(key);
+            return localVarResponse.Data;
 
         }
 
@@ -1767,7 +1767,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> SecretExistsAsyncWithHttpInfo (string key)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> SecretExistsAsyncWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -1802,11 +1802,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1816,7 +1816,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
     }

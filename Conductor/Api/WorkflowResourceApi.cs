@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IWorkflowResourceApi : IApiAccessor
+    public interface IWorkflowResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -24,7 +24,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
-        void Decide (string workflowId);
+        void Decide(string workflowId);
 
         /// <summary>
         /// Starts the decision task for a workflow
@@ -35,7 +35,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DecideWithHttpInfo (string workflowId);
+        ApiResponse<Object> DecideWithHttpInfo(string workflowId);
         /// <summary>
         /// Removes the workflow from the system
         /// </summary>
@@ -46,7 +46,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns></returns>
-        void Delete (string workflowId, bool? archiveWorkflow = null);
+        void Delete(string workflowId, bool? archiveWorkflow = null);
 
         /// <summary>
         /// Removes the workflow from the system
@@ -58,7 +58,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteWithHttpInfo (string workflowId, bool? archiveWorkflow = null);
+        ApiResponse<Object> DeleteWithHttpInfo(string workflowId, bool? archiveWorkflow = null);
         /// <summary>
         /// Execute a workflow synchronously
         /// </summary>
@@ -72,7 +72,7 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <param name="waitUntilTaskRef"> (optional)</param>
         /// <returns>WorkflowRun</returns>
-        WorkflowRun ExecuteWorkflow (StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null);
+        WorkflowRun ExecuteWorkflow(StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null);
 
         /// <summary>
         /// Execute a workflow synchronously
@@ -87,7 +87,7 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <param name="waitUntilTaskRef"> (optional)</param>
         /// <returns>ApiResponse of WorkflowRun</returns>
-        ApiResponse<WorkflowRun> ExecuteWorkflowWithHttpInfo (StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null);
+        ApiResponse<WorkflowRun> ExecuteWorkflowWithHttpInfo(StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null);
         /// <summary>
         /// Gets the workflow by workflow id
         /// </summary>
@@ -99,7 +99,7 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Workflow</returns>
-        Workflow GetExecutionStatus (string workflowId, bool? includeTasks = null, bool? summarize = null);
+        Workflow GetExecutionStatus(string workflowId, bool? includeTasks = null, bool? summarize = null);
 
         /// <summary>
         /// Gets the workflow by workflow id
@@ -112,7 +112,7 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>ApiResponse of Workflow</returns>
-        ApiResponse<Workflow> GetExecutionStatusWithHttpInfo (string workflowId, bool? includeTasks = null, bool? summarize = null);
+        ApiResponse<Workflow> GetExecutionStatusWithHttpInfo(string workflowId, bool? includeTasks = null, bool? summarize = null);
         /// <summary>
         /// Gets the workflow tasks by workflow id
         /// </summary>
@@ -125,7 +125,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 15)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>SearchResultTask</returns>
-        SearchResultTask GetExecutionStatusTaskList (string workflowId, int? start = null, int? count = null, string status = null);
+        SearchResultTask GetExecutionStatusTaskList(string workflowId, int? start = null, int? count = null, string status = null);
 
         /// <summary>
         /// Gets the workflow tasks by workflow id
@@ -139,7 +139,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 15)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTask</returns>
-        ApiResponse<SearchResultTask> GetExecutionStatusTaskListWithHttpInfo (string workflowId, int? start = null, int? count = null, string status = null);
+        ApiResponse<SearchResultTask> GetExecutionStatusTaskListWithHttpInfo(string workflowId, int? start = null, int? count = null, string status = null);
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored
         /// </summary>
@@ -151,7 +151,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ExternalStorageLocation</returns>
-        ExternalStorageLocation GetExternalStorageLocation (string path, string operation, string payloadType);
+        ExternalStorageLocation GetExternalStorageLocation(string path, string operation, string payloadType);
 
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored
@@ -164,7 +164,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo (string path, string operation, string payloadType);
+        ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType);
         /// <summary>
         /// Retrieve all the running workflows
         /// </summary>
@@ -177,7 +177,7 @@ namespace Conductor.Api
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>List&lt;string&gt;</returns>
-        List<string> GetRunningWorkflow (string name, int? version = null, long? startTime = null, long? endTime = null);
+        List<string> GetRunningWorkflow(string name, int? version = null, long? startTime = null, long? endTime = null);
 
         /// <summary>
         /// Retrieve all the running workflows
@@ -191,7 +191,7 @@ namespace Conductor.Api
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        ApiResponse<List<string>> GetRunningWorkflowWithHttpInfo (string name, int? version = null, long? startTime = null, long? endTime = null);
+        ApiResponse<List<string>> GetRunningWorkflowWithHttpInfo(string name, int? version = null, long? startTime = null, long? endTime = null);
         /// <summary>
         /// Gets the workflow by workflow id
         /// </summary>
@@ -203,7 +203,7 @@ namespace Conductor.Api
         /// <param name="includeOutput"> (optional, default to false)</param>
         /// <param name="includeVariables"> (optional, default to false)</param>
         /// <returns>WorkflowStatus</returns>
-        WorkflowStatus GetWorkflowStatusSummary (string workflowId, bool? includeOutput = null, bool? includeVariables = null);
+        WorkflowStatus GetWorkflowStatusSummary(string workflowId, bool? includeOutput = null, bool? includeVariables = null);
 
         /// <summary>
         /// Gets the workflow by workflow id
@@ -216,7 +216,7 @@ namespace Conductor.Api
         /// <param name="includeOutput"> (optional, default to false)</param>
         /// <param name="includeVariables"> (optional, default to false)</param>
         /// <returns>ApiResponse of WorkflowStatus</returns>
-        ApiResponse<WorkflowStatus> GetWorkflowStatusSummaryWithHttpInfo (string workflowId, bool? includeOutput = null, bool? includeVariables = null);
+        ApiResponse<WorkflowStatus> GetWorkflowStatusSummaryWithHttpInfo(string workflowId, bool? includeOutput = null, bool? includeVariables = null);
         /// <summary>
         /// Lists workflows for the given correlation id list
         /// </summary>
@@ -229,7 +229,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        Dictionary<string, List<Workflow>> GetWorkflows (List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null);
+        Dictionary<string, List<Workflow>> GetWorkflows(List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null);
 
         /// <summary>
         /// Lists workflows for the given correlation id list
@@ -243,7 +243,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        ApiResponse<Dictionary<string, List<Workflow>>> GetWorkflowsWithHttpInfo (List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null);
+        ApiResponse<Dictionary<string, List<Workflow>>> GetWorkflowsWithHttpInfo(List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null);
         /// <summary>
         /// Lists workflows for the given correlation id
         /// </summary>
@@ -256,7 +256,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>List&lt;Workflow&gt;</returns>
-        List<Workflow> GetWorkflows1 (string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
+        List<Workflow> GetWorkflows1(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
 
         /// <summary>
         /// Lists workflows for the given correlation id
@@ -270,7 +270,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-        ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo (string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
+        ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
         /// <summary>
         /// 
         /// </summary>
@@ -280,7 +280,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>string</returns>
-        string NotifyWorkflowCompletion (string workflowId);
+        string NotifyWorkflowCompletion(string workflowId);
 
         /// <summary>
         /// 
@@ -291,7 +291,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> NotifyWorkflowCompletionWithHttpInfo (string workflowId);
+        ApiResponse<string> NotifyWorkflowCompletionWithHttpInfo(string workflowId);
         /// <summary>
         /// Pauses the workflow
         /// </summary>
@@ -301,7 +301,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
-        void PauseWorkflow (string workflowId);
+        void PauseWorkflow(string workflowId);
 
         /// <summary>
         /// Pauses the workflow
@@ -312,7 +312,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PauseWorkflowWithHttpInfo (string workflowId);
+        ApiResponse<Object> PauseWorkflowWithHttpInfo(string workflowId);
         /// <summary>
         /// Reruns the workflow from a specific task
         /// </summary>
@@ -323,7 +323,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="workflowId"></param>
         /// <returns>string</returns>
-        string Rerun (RerunWorkflowRequest body, string workflowId);
+        string Rerun(RerunWorkflowRequest body, string workflowId);
 
         /// <summary>
         /// Reruns the workflow from a specific task
@@ -335,7 +335,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> RerunWithHttpInfo (RerunWorkflowRequest body, string workflowId);
+        ApiResponse<string> RerunWithHttpInfo(RerunWorkflowRequest body, string workflowId);
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0
         /// </summary>
@@ -345,7 +345,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
-        void ResetWorkflow (string workflowId);
+        void ResetWorkflow(string workflowId);
 
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0
@@ -356,7 +356,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ResetWorkflowWithHttpInfo (string workflowId);
+        ApiResponse<Object> ResetWorkflowWithHttpInfo(string workflowId);
         /// <summary>
         /// Restarts a completed workflow
         /// </summary>
@@ -367,7 +367,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns></returns>
-        void Restart (string workflowId, bool? useLatestDefinitions = null);
+        void Restart(string workflowId, bool? useLatestDefinitions = null);
 
         /// <summary>
         /// Restarts a completed workflow
@@ -379,7 +379,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RestartWithHttpInfo (string workflowId, bool? useLatestDefinitions = null);
+        ApiResponse<Object> RestartWithHttpInfo(string workflowId, bool? useLatestDefinitions = null);
         /// <summary>
         /// Resumes the workflow
         /// </summary>
@@ -389,7 +389,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
-        void ResumeWorkflow (string workflowId);
+        void ResumeWorkflow(string workflowId);
 
         /// <summary>
         /// Resumes the workflow
@@ -400,7 +400,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ResumeWorkflowWithHttpInfo (string workflowId);
+        ApiResponse<Object> ResumeWorkflowWithHttpInfo(string workflowId);
         /// <summary>
         /// Retries the last failed task
         /// </summary>
@@ -411,7 +411,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns></returns>
-        void Retry (string workflowId, bool? resumeSubworkflowTasks = null);
+        void Retry(string workflowId, bool? resumeSubworkflowTasks = null);
 
         /// <summary>
         /// Retries the last failed task
@@ -423,7 +423,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RetryWithHttpInfo (string workflowId, bool? resumeSubworkflowTasks = null);
+        ApiResponse<Object> RetryWithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = null);
         /// <summary>
         /// Search for workflows based on payload and other parameters
         /// </summary>
@@ -439,7 +439,7 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="skipCache"> (optional, default to false)</param>
         /// <returns>ScrollableSearchResultWorkflowSummary</returns>
-        ScrollableSearchResultWorkflowSummary Search (string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null);
+        ScrollableSearchResultWorkflowSummary Search(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null);
 
         /// <summary>
         /// Search for workflows based on payload and other parameters
@@ -456,7 +456,7 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="skipCache"> (optional, default to false)</param>
         /// <returns>ApiResponse of ScrollableSearchResultWorkflowSummary</returns>
-        ApiResponse<ScrollableSearchResultWorkflowSummary> SearchWithHttpInfo (string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null);
+        ApiResponse<ScrollableSearchResultWorkflowSummary> SearchWithHttpInfo(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null);
         /// <summary>
         /// Search for workflows based on payload and other parameters
         /// </summary>
@@ -470,7 +470,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultWorkflow</returns>
-        SearchResultWorkflow SearchV2 (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        SearchResultWorkflow SearchV2(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for workflows based on payload and other parameters
@@ -485,7 +485,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflow</returns>
-        ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Search for workflows based on task parameters
         /// </summary>
@@ -499,7 +499,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultWorkflowSummary</returns>
-        SearchResultWorkflowSummary SearchWorkflowsByTasks (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        SearchResultWorkflowSummary SearchWorkflowsByTasks(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for workflows based on task parameters
@@ -514,7 +514,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
-        ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Search for workflows based on task parameters
         /// </summary>
@@ -528,7 +528,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultWorkflow</returns>
-        SearchResultWorkflow SearchWorkflowsByTasksV2 (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        SearchResultWorkflow SearchWorkflowsByTasksV2(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for workflows based on task parameters
@@ -543,7 +543,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflow</returns>
-        ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Skips a given task from a current running workflow
         /// </summary>
@@ -555,7 +555,7 @@ namespace Conductor.Api
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"></param>
         /// <returns></returns>
-        void SkipTaskFromWorkflow (string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest);
+        void SkipTaskFromWorkflow(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest);
 
         /// <summary>
         /// Skips a given task from a current running workflow
@@ -568,7 +568,7 @@ namespace Conductor.Api
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SkipTaskFromWorkflowWithHttpInfo (string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest);
+        ApiResponse<Object> SkipTaskFromWorkflowWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest);
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
         /// </summary>
@@ -578,7 +578,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>string</returns>
-        string StartWorkflow (StartWorkflowRequest body);
+        string StartWorkflow(StartWorkflowRequest body);
 
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
@@ -589,7 +589,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> StartWorkflowWithHttpInfo (StartWorkflowRequest body);
+        ApiResponse<string> StartWorkflowWithHttpInfo(StartWorkflowRequest body);
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
         /// </summary>
@@ -603,7 +603,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>string</returns>
-        string StartWorkflow1 (Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
+        string StartWorkflow1(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
 
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
@@ -618,7 +618,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> StartWorkflow1WithHttpInfo (Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
+        ApiResponse<string> StartWorkflow1WithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
         /// <summary>
         /// Terminate workflow execution
         /// </summary>
@@ -629,7 +629,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns></returns>
-        void Terminate1 (string workflowId, string reason = null);
+        void Terminate1(string workflowId, string reason = null);
 
         /// <summary>
         /// Terminate workflow execution
@@ -641,7 +641,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> Terminate1WithHttpInfo (string workflowId, string reason = null);
+        ApiResponse<Object> Terminate1WithHttpInfo(string workflowId, string reason = null);
         /// <summary>
         /// Force upload all completed workflows to document store
         /// </summary>
@@ -650,7 +650,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        Object UploadCompletedWorkflows ();
+        Object UploadCompletedWorkflows();
 
         /// <summary>
         /// Force upload all completed workflows to document store
@@ -660,7 +660,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> UploadCompletedWorkflowsWithHttpInfo ();
+        ApiResponse<Object> UploadCompletedWorkflowsWithHttpInfo();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -672,7 +672,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DecideAsync (string workflowId);
+        System.Threading.Tasks.Task DecideAsync(string workflowId);
 
         /// <summary>
         /// Starts the decision task for a workflow
@@ -683,7 +683,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DecideAsyncWithHttpInfo (string workflowId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DecideAsyncWithHttpInfo(string workflowId);
         /// <summary>
         /// Removes the workflow from the system
         /// </summary>
@@ -694,7 +694,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteAsync (string workflowId, bool? archiveWorkflow = null);
+        System.Threading.Tasks.Task DeleteAsync(string workflowId, bool? archiveWorkflow = null);
 
         /// <summary>
         /// Removes the workflow from the system
@@ -706,7 +706,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAsyncWithHttpInfo (string workflowId, bool? archiveWorkflow = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAsyncWithHttpInfo(string workflowId, bool? archiveWorkflow = null);
         /// <summary>
         /// Execute a workflow synchronously
         /// </summary>
@@ -720,7 +720,7 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <param name="waitUntilTaskRef"> (optional)</param>
         /// <returns>Task of WorkflowRun</returns>
-        System.Threading.Tasks.Task<WorkflowRun> ExecuteWorkflowAsync (StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null);
+        System.Threading.Tasks.Task<WorkflowRun> ExecuteWorkflowAsync(StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null);
 
         /// <summary>
         /// Execute a workflow synchronously
@@ -735,7 +735,7 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <param name="waitUntilTaskRef"> (optional)</param>
         /// <returns>Task of ApiResponse (WorkflowRun)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorkflowRun>> ExecuteWorkflowAsyncWithHttpInfo (StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null);
+        System.Threading.Tasks.Task<ApiResponse<WorkflowRun>> ExecuteWorkflowAsyncWithHttpInfo(StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null);
         /// <summary>
         /// Gets the workflow by workflow id
         /// </summary>
@@ -747,7 +747,7 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Task of Workflow</returns>
-        System.Threading.Tasks.Task<Workflow> GetExecutionStatusAsync (string workflowId, bool? includeTasks = null, bool? summarize = null);
+        System.Threading.Tasks.Task<Workflow> GetExecutionStatusAsync(string workflowId, bool? includeTasks = null, bool? summarize = null);
 
         /// <summary>
         /// Gets the workflow by workflow id
@@ -760,7 +760,7 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Workflow)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Workflow>> GetExecutionStatusAsyncWithHttpInfo (string workflowId, bool? includeTasks = null, bool? summarize = null);
+        System.Threading.Tasks.Task<ApiResponse<Workflow>> GetExecutionStatusAsyncWithHttpInfo(string workflowId, bool? includeTasks = null, bool? summarize = null);
         /// <summary>
         /// Gets the workflow tasks by workflow id
         /// </summary>
@@ -773,7 +773,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 15)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>Task of SearchResultTask</returns>
-        System.Threading.Tasks.Task<SearchResultTask> GetExecutionStatusTaskListAsync (string workflowId, int? start = null, int? count = null, string status = null);
+        System.Threading.Tasks.Task<SearchResultTask> GetExecutionStatusTaskListAsync(string workflowId, int? start = null, int? count = null, string status = null);
 
         /// <summary>
         /// Gets the workflow tasks by workflow id
@@ -787,7 +787,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 15)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTask)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> GetExecutionStatusTaskListAsyncWithHttpInfo (string workflowId, int? start = null, int? count = null, string status = null);
+        System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> GetExecutionStatusTaskListAsyncWithHttpInfo(string workflowId, int? start = null, int? count = null, string status = null);
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored
         /// </summary>
@@ -799,7 +799,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ExternalStorageLocation</returns>
-        System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocationAsync (string path, string operation, string payloadType);
+        System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocationAsync(string path, string operation, string payloadType);
 
         /// <summary>
         /// Get the uri and path of the external storage where the workflow payload is to be stored
@@ -812,7 +812,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocationAsyncWithHttpInfo (string path, string operation, string payloadType);
+        System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocationAsyncWithHttpInfo(string path, string operation, string payloadType);
         /// <summary>
         /// Retrieve all the running workflows
         /// </summary>
@@ -825,7 +825,7 @@ namespace Conductor.Api
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>Task of List&lt;string&gt;</returns>
-        System.Threading.Tasks.Task<List<string>> GetRunningWorkflowAsync (string name, int? version = null, long? startTime = null, long? endTime = null);
+        System.Threading.Tasks.Task<List<string>> GetRunningWorkflowAsync(string name, int? version = null, long? startTime = null, long? endTime = null);
 
         /// <summary>
         /// Retrieve all the running workflows
@@ -839,7 +839,7 @@ namespace Conductor.Api
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<string>>> GetRunningWorkflowAsyncWithHttpInfo (string name, int? version = null, long? startTime = null, long? endTime = null);
+        System.Threading.Tasks.Task<ApiResponse<List<string>>> GetRunningWorkflowAsyncWithHttpInfo(string name, int? version = null, long? startTime = null, long? endTime = null);
         /// <summary>
         /// Gets the workflow by workflow id
         /// </summary>
@@ -851,7 +851,7 @@ namespace Conductor.Api
         /// <param name="includeOutput"> (optional, default to false)</param>
         /// <param name="includeVariables"> (optional, default to false)</param>
         /// <returns>Task of WorkflowStatus</returns>
-        System.Threading.Tasks.Task<WorkflowStatus> GetWorkflowStatusSummaryAsync (string workflowId, bool? includeOutput = null, bool? includeVariables = null);
+        System.Threading.Tasks.Task<WorkflowStatus> GetWorkflowStatusSummaryAsync(string workflowId, bool? includeOutput = null, bool? includeVariables = null);
 
         /// <summary>
         /// Gets the workflow by workflow id
@@ -864,7 +864,7 @@ namespace Conductor.Api
         /// <param name="includeOutput"> (optional, default to false)</param>
         /// <param name="includeVariables"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (WorkflowStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorkflowStatus>> GetWorkflowStatusSummaryAsyncWithHttpInfo (string workflowId, bool? includeOutput = null, bool? includeVariables = null);
+        System.Threading.Tasks.Task<ApiResponse<WorkflowStatus>> GetWorkflowStatusSummaryAsyncWithHttpInfo(string workflowId, bool? includeOutput = null, bool? includeVariables = null);
         /// <summary>
         /// Lists workflows for the given correlation id list
         /// </summary>
@@ -877,7 +877,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, List<Workflow>>> GetWorkflowsAsync (List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null);
+        System.Threading.Tasks.Task<Dictionary<string, List<Workflow>>> GetWorkflowsAsync(List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null);
 
         /// <summary>
         /// Lists workflows for the given correlation id list
@@ -891,7 +891,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, List&lt;Workflow&gt;&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, List<Workflow>>>> GetWorkflowsAsyncWithHttpInfo (List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null);
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, List<Workflow>>>> GetWorkflowsAsyncWithHttpInfo(List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null);
         /// <summary>
         /// Lists workflows for the given correlation id
         /// </summary>
@@ -904,7 +904,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of List&lt;Workflow&gt;</returns>
-        System.Threading.Tasks.Task<List<Workflow>> GetWorkflows1Async (string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
+        System.Threading.Tasks.Task<List<Workflow>> GetWorkflows1Async(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
 
         /// <summary>
         /// Lists workflows for the given correlation id
@@ -918,7 +918,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (List&lt;Workflow&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflows1AsyncWithHttpInfo (string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflows1AsyncWithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
         /// <summary>
         /// 
         /// </summary>
@@ -928,7 +928,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> NotifyWorkflowCompletionAsync (string workflowId);
+        System.Threading.Tasks.Task<string> NotifyWorkflowCompletionAsync(string workflowId);
 
         /// <summary>
         /// 
@@ -939,7 +939,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> NotifyWorkflowCompletionAsyncWithHttpInfo (string workflowId);
+        System.Threading.Tasks.Task<ApiResponse<string>> NotifyWorkflowCompletionAsyncWithHttpInfo(string workflowId);
         /// <summary>
         /// Pauses the workflow
         /// </summary>
@@ -949,7 +949,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PauseWorkflowAsync (string workflowId);
+        System.Threading.Tasks.Task PauseWorkflowAsync(string workflowId);
 
         /// <summary>
         /// Pauses the workflow
@@ -960,7 +960,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PauseWorkflowAsyncWithHttpInfo (string workflowId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> PauseWorkflowAsyncWithHttpInfo(string workflowId);
         /// <summary>
         /// Reruns the workflow from a specific task
         /// </summary>
@@ -971,7 +971,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> RerunAsync (RerunWorkflowRequest body, string workflowId);
+        System.Threading.Tasks.Task<string> RerunAsync(RerunWorkflowRequest body, string workflowId);
 
         /// <summary>
         /// Reruns the workflow from a specific task
@@ -983,7 +983,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> RerunAsyncWithHttpInfo (RerunWorkflowRequest body, string workflowId);
+        System.Threading.Tasks.Task<ApiResponse<string>> RerunAsyncWithHttpInfo(RerunWorkflowRequest body, string workflowId);
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0
         /// </summary>
@@ -993,7 +993,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ResetWorkflowAsync (string workflowId);
+        System.Threading.Tasks.Task ResetWorkflowAsync(string workflowId);
 
         /// <summary>
         /// Resets callback times of all non-terminal SIMPLE tasks to 0
@@ -1004,7 +1004,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ResetWorkflowAsyncWithHttpInfo (string workflowId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ResetWorkflowAsyncWithHttpInfo(string workflowId);
         /// <summary>
         /// Restarts a completed workflow
         /// </summary>
@@ -1015,7 +1015,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RestartAsync (string workflowId, bool? useLatestDefinitions = null);
+        System.Threading.Tasks.Task RestartAsync(string workflowId, bool? useLatestDefinitions = null);
 
         /// <summary>
         /// Restarts a completed workflow
@@ -1027,7 +1027,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RestartAsyncWithHttpInfo (string workflowId, bool? useLatestDefinitions = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RestartAsyncWithHttpInfo(string workflowId, bool? useLatestDefinitions = null);
         /// <summary>
         /// Resumes the workflow
         /// </summary>
@@ -1037,7 +1037,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ResumeWorkflowAsync (string workflowId);
+        System.Threading.Tasks.Task ResumeWorkflowAsync(string workflowId);
 
         /// <summary>
         /// Resumes the workflow
@@ -1048,7 +1048,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ResumeWorkflowAsyncWithHttpInfo (string workflowId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ResumeWorkflowAsyncWithHttpInfo(string workflowId);
         /// <summary>
         /// Retries the last failed task
         /// </summary>
@@ -1059,7 +1059,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RetryAsync (string workflowId, bool? resumeSubworkflowTasks = null);
+        System.Threading.Tasks.Task RetryAsync(string workflowId, bool? resumeSubworkflowTasks = null);
 
         /// <summary>
         /// Retries the last failed task
@@ -1071,7 +1071,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RetryAsyncWithHttpInfo (string workflowId, bool? resumeSubworkflowTasks = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RetryAsyncWithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = null);
         /// <summary>
         /// Search for workflows based on payload and other parameters
         /// </summary>
@@ -1087,7 +1087,7 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="skipCache"> (optional, default to false)</param>
         /// <returns>Task of ScrollableSearchResultWorkflowSummary</returns>
-        System.Threading.Tasks.Task<ScrollableSearchResultWorkflowSummary> SearchAsync (string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null);
+        System.Threading.Tasks.Task<ScrollableSearchResultWorkflowSummary> SearchAsync(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null);
 
         /// <summary>
         /// Search for workflows based on payload and other parameters
@@ -1104,7 +1104,7 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="skipCache"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (ScrollableSearchResultWorkflowSummary)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ScrollableSearchResultWorkflowSummary>> SearchAsyncWithHttpInfo (string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null);
+        System.Threading.Tasks.Task<ApiResponse<ScrollableSearchResultWorkflowSummary>> SearchAsyncWithHttpInfo(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null);
         /// <summary>
         /// Search for workflows based on payload and other parameters
         /// </summary>
@@ -1118,7 +1118,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflow</returns>
-        System.Threading.Tasks.Task<SearchResultWorkflow> SearchV2Async (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<SearchResultWorkflow> SearchV2Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for workflows based on payload and other parameters
@@ -1133,7 +1133,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchV2AsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchV2AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Search for workflows based on task parameters
         /// </summary>
@@ -1147,7 +1147,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflowSummary</returns>
-        System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchWorkflowsByTasksAsync (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchWorkflowsByTasksAsync(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for workflows based on task parameters
@@ -1162,7 +1162,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflowSummary)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowSummary>> SearchWorkflowsByTasksAsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowSummary>> SearchWorkflowsByTasksAsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Search for workflows based on task parameters
         /// </summary>
@@ -1176,7 +1176,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflow</returns>
-        System.Threading.Tasks.Task<SearchResultWorkflow> SearchWorkflowsByTasksV2Async (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<SearchResultWorkflow> SearchWorkflowsByTasksV2Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for workflows based on task parameters
@@ -1191,7 +1191,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchWorkflowsByTasksV2AsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchWorkflowsByTasksV2AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Skips a given task from a current running workflow
         /// </summary>
@@ -1203,7 +1203,7 @@ namespace Conductor.Api
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SkipTaskFromWorkflowAsync (string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest);
+        System.Threading.Tasks.Task SkipTaskFromWorkflowAsync(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest);
 
         /// <summary>
         /// Skips a given task from a current running workflow
@@ -1216,7 +1216,7 @@ namespace Conductor.Api
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SkipTaskFromWorkflowAsyncWithHttpInfo (string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest);
+        System.Threading.Tasks.Task<ApiResponse<Object>> SkipTaskFromWorkflowAsyncWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest);
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
         /// </summary>
@@ -1226,7 +1226,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> StartWorkflowAsync (StartWorkflowRequest body);
+        System.Threading.Tasks.Task<string> StartWorkflowAsync(StartWorkflowRequest body);
 
         /// <summary>
         /// Start a new workflow with StartWorkflowRequest, which allows task to be executed in a domain
@@ -1237,7 +1237,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflowAsyncWithHttpInfo (StartWorkflowRequest body);
+        System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflowAsyncWithHttpInfo(StartWorkflowRequest body);
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
         /// </summary>
@@ -1251,7 +1251,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> StartWorkflow1Async (Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
+        System.Threading.Tasks.Task<string> StartWorkflow1Async(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
 
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
@@ -1266,7 +1266,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflow1AsyncWithHttpInfo (Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
+        System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflow1AsyncWithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
         /// <summary>
         /// Terminate workflow execution
         /// </summary>
@@ -1277,7 +1277,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task Terminate1Async (string workflowId, string reason = null);
+        System.Threading.Tasks.Task Terminate1Async(string workflowId, string reason = null);
 
         /// <summary>
         /// Terminate workflow execution
@@ -1289,7 +1289,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> Terminate1AsyncWithHttpInfo (string workflowId, string reason = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> Terminate1AsyncWithHttpInfo(string workflowId, string reason = null);
         /// <summary>
         /// Force upload all completed workflows to document store
         /// </summary>
@@ -1298,7 +1298,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> UploadCompletedWorkflowsAsync ();
+        System.Threading.Tasks.Task<Object> UploadCompletedWorkflowsAsync();
 
         /// <summary>
         /// Force upload all completed workflows to document store
@@ -1308,14 +1308,14 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UploadCompletedWorkflowsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> UploadCompletedWorkflowsAsyncWithHttpInfo();
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class WorkflowResourceApi : IWorkflowResourceApi
+    public partial class WorkflowResourceApi : IWorkflowResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -1380,7 +1380,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -1426,9 +1426,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
-        public void Decide (string workflowId)
+        public void Decide(string workflowId)
         {
-             DecideWithHttpInfo(workflowId);
+            DecideWithHttpInfo(workflowId);
         }
 
         /// <summary>
@@ -1437,7 +1437,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DecideWithHttpInfo (string workflowId)
+        public ApiResponse<Object> DecideWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -1471,11 +1471,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1494,9 +1494,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DecideAsync (string workflowId)
+        public async System.Threading.Tasks.Task DecideAsync(string workflowId)
         {
-             await DecideAsyncWithHttpInfo(workflowId);
+            await DecideAsyncWithHttpInfo(workflowId);
 
         }
 
@@ -1506,7 +1506,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DecideAsyncWithHttpInfo (string workflowId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DecideAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -1540,11 +1540,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1564,9 +1564,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns></returns>
-        public void Delete (string workflowId, bool? archiveWorkflow = null)
+        public void Delete(string workflowId, bool? archiveWorkflow = null)
         {
-             DeleteWithHttpInfo(workflowId, archiveWorkflow);
+            DeleteWithHttpInfo(workflowId, archiveWorkflow);
         }
 
         /// <summary>
@@ -1576,7 +1576,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteWithHttpInfo (string workflowId, bool? archiveWorkflow = null)
+        public ApiResponse<Object> DeleteWithHttpInfo(string workflowId, bool? archiveWorkflow = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -1611,11 +1611,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1635,9 +1635,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteAsync (string workflowId, bool? archiveWorkflow = null)
+        public async System.Threading.Tasks.Task DeleteAsync(string workflowId, bool? archiveWorkflow = null)
         {
-             await DeleteAsyncWithHttpInfo(workflowId, archiveWorkflow);
+            await DeleteAsyncWithHttpInfo(workflowId, archiveWorkflow);
 
         }
 
@@ -1648,7 +1648,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAsyncWithHttpInfo (string workflowId, bool? archiveWorkflow = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAsyncWithHttpInfo(string workflowId, bool? archiveWorkflow = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -1683,11 +1683,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1710,10 +1710,10 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <param name="waitUntilTaskRef"> (optional)</param>
         /// <returns>WorkflowRun</returns>
-        public WorkflowRun ExecuteWorkflow (StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null)
+        public WorkflowRun ExecuteWorkflow(StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null)
         {
-             ApiResponse<WorkflowRun> localVarResponse = ExecuteWorkflowWithHttpInfo(body, requestId, name, version, waitUntilTaskRef);
-             return localVarResponse.Data;
+            ApiResponse<WorkflowRun> localVarResponse = ExecuteWorkflowWithHttpInfo(body, requestId, name, version, waitUntilTaskRef);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1726,7 +1726,7 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <param name="waitUntilTaskRef"> (optional)</param>
         /// <returns>ApiResponse of WorkflowRun</returns>
-        public ApiResponse< WorkflowRun > ExecuteWorkflowWithHttpInfo (StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null)
+        public ApiResponse<WorkflowRun> ExecuteWorkflowWithHttpInfo(StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1782,11 +1782,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1796,7 +1796,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WorkflowRun>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WorkflowRun) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowRun)));
+                (WorkflowRun)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowRun)));
         }
 
         /// <summary>
@@ -1809,10 +1809,10 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <param name="waitUntilTaskRef"> (optional)</param>
         /// <returns>Task of WorkflowRun</returns>
-        public async System.Threading.Tasks.Task<WorkflowRun> ExecuteWorkflowAsync (StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null)
+        public async System.Threading.Tasks.Task<WorkflowRun> ExecuteWorkflowAsync(StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null)
         {
-             ApiResponse<WorkflowRun> localVarResponse = await ExecuteWorkflowAsyncWithHttpInfo(body, requestId, name, version, waitUntilTaskRef);
-             return localVarResponse.Data;
+            ApiResponse<WorkflowRun> localVarResponse = await ExecuteWorkflowAsyncWithHttpInfo(body, requestId, name, version, waitUntilTaskRef);
+            return localVarResponse.Data;
 
         }
 
@@ -1826,7 +1826,7 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <param name="waitUntilTaskRef"> (optional)</param>
         /// <returns>Task of ApiResponse (WorkflowRun)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WorkflowRun>> ExecuteWorkflowAsyncWithHttpInfo (StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null)
+        public async System.Threading.Tasks.Task<ApiResponse<WorkflowRun>> ExecuteWorkflowAsyncWithHttpInfo(StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1882,11 +1882,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1896,7 +1896,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WorkflowRun>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WorkflowRun) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowRun)));
+                (WorkflowRun)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowRun)));
         }
 
         /// <summary>
@@ -1907,10 +1907,10 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Workflow</returns>
-        public Workflow GetExecutionStatus (string workflowId, bool? includeTasks = null, bool? summarize = null)
+        public Workflow GetExecutionStatus(string workflowId, bool? includeTasks = null, bool? summarize = null)
         {
-             ApiResponse<Workflow> localVarResponse = GetExecutionStatusWithHttpInfo(workflowId, includeTasks, summarize);
-             return localVarResponse.Data;
+            ApiResponse<Workflow> localVarResponse = GetExecutionStatusWithHttpInfo(workflowId, includeTasks, summarize);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1921,7 +1921,7 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>ApiResponse of Workflow</returns>
-        public ApiResponse< Workflow > GetExecutionStatusWithHttpInfo (string workflowId, bool? includeTasks = null, bool? summarize = null)
+        public ApiResponse<Workflow> GetExecutionStatusWithHttpInfo(string workflowId, bool? includeTasks = null, bool? summarize = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -1958,11 +1958,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1972,7 +1972,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Workflow>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Workflow) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Workflow)));
+                (Workflow)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Workflow)));
         }
 
         /// <summary>
@@ -1983,10 +1983,10 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Task of Workflow</returns>
-        public async System.Threading.Tasks.Task<Workflow> GetExecutionStatusAsync (string workflowId, bool? includeTasks = null, bool? summarize = null)
+        public async System.Threading.Tasks.Task<Workflow> GetExecutionStatusAsync(string workflowId, bool? includeTasks = null, bool? summarize = null)
         {
-             ApiResponse<Workflow> localVarResponse = await GetExecutionStatusAsyncWithHttpInfo(workflowId, includeTasks, summarize);
-             return localVarResponse.Data;
+            ApiResponse<Workflow> localVarResponse = await GetExecutionStatusAsyncWithHttpInfo(workflowId, includeTasks, summarize);
+            return localVarResponse.Data;
 
         }
 
@@ -1998,7 +1998,7 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Workflow)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Workflow>> GetExecutionStatusAsyncWithHttpInfo (string workflowId, bool? includeTasks = null, bool? summarize = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Workflow>> GetExecutionStatusAsyncWithHttpInfo(string workflowId, bool? includeTasks = null, bool? summarize = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -2035,11 +2035,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2049,7 +2049,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Workflow>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Workflow) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Workflow)));
+                (Workflow)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Workflow)));
         }
 
         /// <summary>
@@ -2061,10 +2061,10 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 15)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>SearchResultTask</returns>
-        public SearchResultTask GetExecutionStatusTaskList (string workflowId, int? start = null, int? count = null, string status = null)
+        public SearchResultTask GetExecutionStatusTaskList(string workflowId, int? start = null, int? count = null, string status = null)
         {
-             ApiResponse<SearchResultTask> localVarResponse = GetExecutionStatusTaskListWithHttpInfo(workflowId, start, count, status);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultTask> localVarResponse = GetExecutionStatusTaskListWithHttpInfo(workflowId, start, count, status);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2076,7 +2076,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 15)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTask</returns>
-        public ApiResponse< SearchResultTask > GetExecutionStatusTaskListWithHttpInfo (string workflowId, int? start = null, int? count = null, string status = null)
+        public ApiResponse<SearchResultTask> GetExecutionStatusTaskListWithHttpInfo(string workflowId, int? start = null, int? count = null, string status = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -2114,11 +2114,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2128,7 +2128,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultTask>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultTask) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTask)));
+                (SearchResultTask)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTask)));
         }
 
         /// <summary>
@@ -2140,10 +2140,10 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 15)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>Task of SearchResultTask</returns>
-        public async System.Threading.Tasks.Task<SearchResultTask> GetExecutionStatusTaskListAsync (string workflowId, int? start = null, int? count = null, string status = null)
+        public async System.Threading.Tasks.Task<SearchResultTask> GetExecutionStatusTaskListAsync(string workflowId, int? start = null, int? count = null, string status = null)
         {
-             ApiResponse<SearchResultTask> localVarResponse = await GetExecutionStatusTaskListAsyncWithHttpInfo(workflowId, start, count, status);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultTask> localVarResponse = await GetExecutionStatusTaskListAsyncWithHttpInfo(workflowId, start, count, status);
+            return localVarResponse.Data;
 
         }
 
@@ -2156,7 +2156,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 15)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTask)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> GetExecutionStatusTaskListAsyncWithHttpInfo (string workflowId, int? start = null, int? count = null, string status = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> GetExecutionStatusTaskListAsyncWithHttpInfo(string workflowId, int? start = null, int? count = null, string status = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -2194,11 +2194,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2208,7 +2208,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultTask>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultTask) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTask)));
+                (SearchResultTask)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTask)));
         }
 
         /// <summary>
@@ -2219,10 +2219,10 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ExternalStorageLocation</returns>
-        public ExternalStorageLocation GetExternalStorageLocation (string path, string operation, string payloadType)
+        public ExternalStorageLocation GetExternalStorageLocation(string path, string operation, string payloadType)
         {
-             ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocationWithHttpInfo(path, operation, payloadType);
-             return localVarResponse.Data;
+            ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocationWithHttpInfo(path, operation, payloadType);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2233,7 +2233,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        public ApiResponse< ExternalStorageLocation > GetExternalStorageLocationWithHttpInfo (string path, string operation, string payloadType)
+        public ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType)
         {
             // verify the required parameter 'path' is set
             if (path == null)
@@ -2276,11 +2276,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2290,7 +2290,7 @@ namespace Conductor.Api
 
             return new ApiResponse<ExternalStorageLocation>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ExternalStorageLocation) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExternalStorageLocation)));
+                (ExternalStorageLocation)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExternalStorageLocation)));
         }
 
         /// <summary>
@@ -2301,10 +2301,10 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ExternalStorageLocation</returns>
-        public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocationAsync (string path, string operation, string payloadType)
+        public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocationAsync(string path, string operation, string payloadType)
         {
-             ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocationAsyncWithHttpInfo(path, operation, payloadType);
-             return localVarResponse.Data;
+            ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocationAsyncWithHttpInfo(path, operation, payloadType);
+            return localVarResponse.Data;
 
         }
 
@@ -2316,7 +2316,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocationAsyncWithHttpInfo (string path, string operation, string payloadType)
+        public async System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocationAsyncWithHttpInfo(string path, string operation, string payloadType)
         {
             // verify the required parameter 'path' is set
             if (path == null)
@@ -2359,11 +2359,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2373,7 +2373,7 @@ namespace Conductor.Api
 
             return new ApiResponse<ExternalStorageLocation>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ExternalStorageLocation) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExternalStorageLocation)));
+                (ExternalStorageLocation)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExternalStorageLocation)));
         }
 
         /// <summary>
@@ -2385,10 +2385,10 @@ namespace Conductor.Api
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>List&lt;string&gt;</returns>
-        public List<string> GetRunningWorkflow (string name, int? version = null, long? startTime = null, long? endTime = null)
+        public List<string> GetRunningWorkflow(string name, int? version = null, long? startTime = null, long? endTime = null)
         {
-             ApiResponse<List<string>> localVarResponse = GetRunningWorkflowWithHttpInfo(name, version, startTime, endTime);
-             return localVarResponse.Data;
+            ApiResponse<List<string>> localVarResponse = GetRunningWorkflowWithHttpInfo(name, version, startTime, endTime);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2400,7 +2400,7 @@ namespace Conductor.Api
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public ApiResponse< List<string> > GetRunningWorkflowWithHttpInfo (string name, int? version = null, long? startTime = null, long? endTime = null)
+        public ApiResponse<List<string>> GetRunningWorkflowWithHttpInfo(string name, int? version = null, long? startTime = null, long? endTime = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -2438,11 +2438,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2452,7 +2452,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (List<string>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -2464,10 +2464,10 @@ namespace Conductor.Api
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>Task of List&lt;string&gt;</returns>
-        public async System.Threading.Tasks.Task<List<string>> GetRunningWorkflowAsync (string name, int? version = null, long? startTime = null, long? endTime = null)
+        public async System.Threading.Tasks.Task<List<string>> GetRunningWorkflowAsync(string name, int? version = null, long? startTime = null, long? endTime = null)
         {
-             ApiResponse<List<string>> localVarResponse = await GetRunningWorkflowAsyncWithHttpInfo(name, version, startTime, endTime);
-             return localVarResponse.Data;
+            ApiResponse<List<string>> localVarResponse = await GetRunningWorkflowAsyncWithHttpInfo(name, version, startTime, endTime);
+            return localVarResponse.Data;
 
         }
 
@@ -2480,7 +2480,7 @@ namespace Conductor.Api
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> GetRunningWorkflowAsyncWithHttpInfo (string name, int? version = null, long? startTime = null, long? endTime = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> GetRunningWorkflowAsyncWithHttpInfo(string name, int? version = null, long? startTime = null, long? endTime = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -2518,11 +2518,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2532,7 +2532,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (List<string>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -2543,10 +2543,10 @@ namespace Conductor.Api
         /// <param name="includeOutput"> (optional, default to false)</param>
         /// <param name="includeVariables"> (optional, default to false)</param>
         /// <returns>WorkflowStatus</returns>
-        public WorkflowStatus GetWorkflowStatusSummary (string workflowId, bool? includeOutput = null, bool? includeVariables = null)
+        public WorkflowStatus GetWorkflowStatusSummary(string workflowId, bool? includeOutput = null, bool? includeVariables = null)
         {
-             ApiResponse<WorkflowStatus> localVarResponse = GetWorkflowStatusSummaryWithHttpInfo(workflowId, includeOutput, includeVariables);
-             return localVarResponse.Data;
+            ApiResponse<WorkflowStatus> localVarResponse = GetWorkflowStatusSummaryWithHttpInfo(workflowId, includeOutput, includeVariables);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2557,7 +2557,7 @@ namespace Conductor.Api
         /// <param name="includeOutput"> (optional, default to false)</param>
         /// <param name="includeVariables"> (optional, default to false)</param>
         /// <returns>ApiResponse of WorkflowStatus</returns>
-        public ApiResponse< WorkflowStatus > GetWorkflowStatusSummaryWithHttpInfo (string workflowId, bool? includeOutput = null, bool? includeVariables = null)
+        public ApiResponse<WorkflowStatus> GetWorkflowStatusSummaryWithHttpInfo(string workflowId, bool? includeOutput = null, bool? includeVariables = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -2594,11 +2594,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2608,7 +2608,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WorkflowStatus>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WorkflowStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowStatus)));
+                (WorkflowStatus)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowStatus)));
         }
 
         /// <summary>
@@ -2619,10 +2619,10 @@ namespace Conductor.Api
         /// <param name="includeOutput"> (optional, default to false)</param>
         /// <param name="includeVariables"> (optional, default to false)</param>
         /// <returns>Task of WorkflowStatus</returns>
-        public async System.Threading.Tasks.Task<WorkflowStatus> GetWorkflowStatusSummaryAsync (string workflowId, bool? includeOutput = null, bool? includeVariables = null)
+        public async System.Threading.Tasks.Task<WorkflowStatus> GetWorkflowStatusSummaryAsync(string workflowId, bool? includeOutput = null, bool? includeVariables = null)
         {
-             ApiResponse<WorkflowStatus> localVarResponse = await GetWorkflowStatusSummaryAsyncWithHttpInfo(workflowId, includeOutput, includeVariables);
-             return localVarResponse.Data;
+            ApiResponse<WorkflowStatus> localVarResponse = await GetWorkflowStatusSummaryAsyncWithHttpInfo(workflowId, includeOutput, includeVariables);
+            return localVarResponse.Data;
 
         }
 
@@ -2634,7 +2634,7 @@ namespace Conductor.Api
         /// <param name="includeOutput"> (optional, default to false)</param>
         /// <param name="includeVariables"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (WorkflowStatus)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WorkflowStatus>> GetWorkflowStatusSummaryAsyncWithHttpInfo (string workflowId, bool? includeOutput = null, bool? includeVariables = null)
+        public async System.Threading.Tasks.Task<ApiResponse<WorkflowStatus>> GetWorkflowStatusSummaryAsyncWithHttpInfo(string workflowId, bool? includeOutput = null, bool? includeVariables = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -2671,11 +2671,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2685,7 +2685,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WorkflowStatus>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WorkflowStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowStatus)));
+                (WorkflowStatus)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowStatus)));
         }
 
         /// <summary>
@@ -2697,10 +2697,10 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        public Dictionary<string, List<Workflow>> GetWorkflows (List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null)
+        public Dictionary<string, List<Workflow>> GetWorkflows(List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null)
         {
-             ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = GetWorkflowsWithHttpInfo(body, name, includeClosed, includeTasks);
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = GetWorkflowsWithHttpInfo(body, name, includeClosed, includeTasks);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2712,7 +2712,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        public ApiResponse< Dictionary<string, List<Workflow>> > GetWorkflowsWithHttpInfo (List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null)
+        public ApiResponse<Dictionary<string, List<Workflow>>> GetWorkflowsWithHttpInfo(List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2761,11 +2761,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2775,7 +2775,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, List<Workflow>>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, List<Workflow>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, List<Workflow>>)));
+                (Dictionary<string, List<Workflow>>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, List<Workflow>>)));
         }
 
         /// <summary>
@@ -2787,10 +2787,10 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, List<Workflow>>> GetWorkflowsAsync (List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null)
+        public async System.Threading.Tasks.Task<Dictionary<string, List<Workflow>>> GetWorkflowsAsync(List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null)
         {
-             ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = await GetWorkflowsAsyncWithHttpInfo(body, name, includeClosed, includeTasks);
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = await GetWorkflowsAsyncWithHttpInfo(body, name, includeClosed, includeTasks);
+            return localVarResponse.Data;
 
         }
 
@@ -2803,7 +2803,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, List&lt;Workflow&gt;&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, List<Workflow>>>> GetWorkflowsAsyncWithHttpInfo (List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, List<Workflow>>>> GetWorkflowsAsyncWithHttpInfo(List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2852,11 +2852,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2866,7 +2866,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, List<Workflow>>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, List<Workflow>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, List<Workflow>>)));
+                (Dictionary<string, List<Workflow>>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, List<Workflow>>)));
         }
 
         /// <summary>
@@ -2878,10 +2878,10 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>List&lt;Workflow&gt;</returns>
-        public List<Workflow> GetWorkflows1 (string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
+        public List<Workflow> GetWorkflows1(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
         {
-             ApiResponse<List<Workflow>> localVarResponse = GetWorkflows1WithHttpInfo(name, correlationId, includeClosed, includeTasks);
-             return localVarResponse.Data;
+            ApiResponse<List<Workflow>> localVarResponse = GetWorkflows1WithHttpInfo(name, correlationId, includeClosed, includeTasks);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2893,7 +2893,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-        public ApiResponse< List<Workflow> > GetWorkflows1WithHttpInfo (string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
+        public ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -2934,11 +2934,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2948,7 +2948,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Workflow>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Workflow>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Workflow>)));
+                (List<Workflow>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Workflow>)));
         }
 
         /// <summary>
@@ -2960,10 +2960,10 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of List&lt;Workflow&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Workflow>> GetWorkflows1Async (string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
+        public async System.Threading.Tasks.Task<List<Workflow>> GetWorkflows1Async(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
         {
-             ApiResponse<List<Workflow>> localVarResponse = await GetWorkflows1AsyncWithHttpInfo(name, correlationId, includeClosed, includeTasks);
-             return localVarResponse.Data;
+            ApiResponse<List<Workflow>> localVarResponse = await GetWorkflows1AsyncWithHttpInfo(name, correlationId, includeClosed, includeTasks);
+            return localVarResponse.Data;
 
         }
 
@@ -2976,7 +2976,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (List&lt;Workflow&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflows1AsyncWithHttpInfo (string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflows1AsyncWithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -3017,11 +3017,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3031,7 +3031,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Workflow>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Workflow>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Workflow>)));
+                (List<Workflow>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Workflow>)));
         }
 
         /// <summary>
@@ -3040,10 +3040,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>string</returns>
-        public string NotifyWorkflowCompletion (string workflowId)
+        public string NotifyWorkflowCompletion(string workflowId)
         {
-             ApiResponse<string> localVarResponse = NotifyWorkflowCompletionWithHttpInfo(workflowId);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = NotifyWorkflowCompletionWithHttpInfo(workflowId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3052,7 +3052,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > NotifyWorkflowCompletionWithHttpInfo (string workflowId)
+        public ApiResponse<string> NotifyWorkflowCompletionWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3087,11 +3087,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3101,7 +3101,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3110,10 +3110,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> NotifyWorkflowCompletionAsync (string workflowId)
+        public async System.Threading.Tasks.Task<string> NotifyWorkflowCompletionAsync(string workflowId)
         {
-             ApiResponse<string> localVarResponse = await NotifyWorkflowCompletionAsyncWithHttpInfo(workflowId);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await NotifyWorkflowCompletionAsyncWithHttpInfo(workflowId);
+            return localVarResponse.Data;
 
         }
 
@@ -3123,7 +3123,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> NotifyWorkflowCompletionAsyncWithHttpInfo (string workflowId)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> NotifyWorkflowCompletionAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3158,11 +3158,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3172,7 +3172,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3181,9 +3181,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
-        public void PauseWorkflow (string workflowId)
+        public void PauseWorkflow(string workflowId)
         {
-             PauseWorkflowWithHttpInfo(workflowId);
+            PauseWorkflowWithHttpInfo(workflowId);
         }
 
         /// <summary>
@@ -3192,7 +3192,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PauseWorkflowWithHttpInfo (string workflowId)
+        public ApiResponse<Object> PauseWorkflowWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3226,11 +3226,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3249,9 +3249,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PauseWorkflowAsync (string workflowId)
+        public async System.Threading.Tasks.Task PauseWorkflowAsync(string workflowId)
         {
-             await PauseWorkflowAsyncWithHttpInfo(workflowId);
+            await PauseWorkflowAsyncWithHttpInfo(workflowId);
 
         }
 
@@ -3261,7 +3261,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PauseWorkflowAsyncWithHttpInfo (string workflowId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PauseWorkflowAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3295,11 +3295,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3319,10 +3319,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="workflowId"></param>
         /// <returns>string</returns>
-        public string Rerun (RerunWorkflowRequest body, string workflowId)
+        public string Rerun(RerunWorkflowRequest body, string workflowId)
         {
-             ApiResponse<string> localVarResponse = RerunWithHttpInfo(body, workflowId);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = RerunWithHttpInfo(body, workflowId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3332,7 +3332,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > RerunWithHttpInfo (RerunWorkflowRequest body, string workflowId)
+        public ApiResponse<string> RerunWithHttpInfo(RerunWorkflowRequest body, string workflowId)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -3379,11 +3379,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3393,7 +3393,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3403,10 +3403,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> RerunAsync (RerunWorkflowRequest body, string workflowId)
+        public async System.Threading.Tasks.Task<string> RerunAsync(RerunWorkflowRequest body, string workflowId)
         {
-             ApiResponse<string> localVarResponse = await RerunAsyncWithHttpInfo(body, workflowId);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await RerunAsyncWithHttpInfo(body, workflowId);
+            return localVarResponse.Data;
 
         }
 
@@ -3417,7 +3417,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> RerunAsyncWithHttpInfo (RerunWorkflowRequest body, string workflowId)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> RerunAsyncWithHttpInfo(RerunWorkflowRequest body, string workflowId)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -3464,11 +3464,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3478,7 +3478,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3487,9 +3487,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
-        public void ResetWorkflow (string workflowId)
+        public void ResetWorkflow(string workflowId)
         {
-             ResetWorkflowWithHttpInfo(workflowId);
+            ResetWorkflowWithHttpInfo(workflowId);
         }
 
         /// <summary>
@@ -3498,7 +3498,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ResetWorkflowWithHttpInfo (string workflowId)
+        public ApiResponse<Object> ResetWorkflowWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3532,11 +3532,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3555,9 +3555,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ResetWorkflowAsync (string workflowId)
+        public async System.Threading.Tasks.Task ResetWorkflowAsync(string workflowId)
         {
-             await ResetWorkflowAsyncWithHttpInfo(workflowId);
+            await ResetWorkflowAsyncWithHttpInfo(workflowId);
 
         }
 
@@ -3567,7 +3567,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ResetWorkflowAsyncWithHttpInfo (string workflowId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ResetWorkflowAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3601,11 +3601,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3625,9 +3625,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns></returns>
-        public void Restart (string workflowId, bool? useLatestDefinitions = null)
+        public void Restart(string workflowId, bool? useLatestDefinitions = null)
         {
-             RestartWithHttpInfo(workflowId, useLatestDefinitions);
+            RestartWithHttpInfo(workflowId, useLatestDefinitions);
         }
 
         /// <summary>
@@ -3637,7 +3637,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> RestartWithHttpInfo (string workflowId, bool? useLatestDefinitions = null)
+        public ApiResponse<Object> RestartWithHttpInfo(string workflowId, bool? useLatestDefinitions = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3672,11 +3672,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3696,9 +3696,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RestartAsync (string workflowId, bool? useLatestDefinitions = null)
+        public async System.Threading.Tasks.Task RestartAsync(string workflowId, bool? useLatestDefinitions = null)
         {
-             await RestartAsyncWithHttpInfo(workflowId, useLatestDefinitions);
+            await RestartAsyncWithHttpInfo(workflowId, useLatestDefinitions);
 
         }
 
@@ -3709,7 +3709,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RestartAsyncWithHttpInfo (string workflowId, bool? useLatestDefinitions = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RestartAsyncWithHttpInfo(string workflowId, bool? useLatestDefinitions = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3744,11 +3744,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3767,9 +3767,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns></returns>
-        public void ResumeWorkflow (string workflowId)
+        public void ResumeWorkflow(string workflowId)
         {
-             ResumeWorkflowWithHttpInfo(workflowId);
+            ResumeWorkflowWithHttpInfo(workflowId);
         }
 
         /// <summary>
@@ -3778,7 +3778,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ResumeWorkflowWithHttpInfo (string workflowId)
+        public ApiResponse<Object> ResumeWorkflowWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3812,11 +3812,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3835,9 +3835,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ResumeWorkflowAsync (string workflowId)
+        public async System.Threading.Tasks.Task ResumeWorkflowAsync(string workflowId)
         {
-             await ResumeWorkflowAsyncWithHttpInfo(workflowId);
+            await ResumeWorkflowAsyncWithHttpInfo(workflowId);
 
         }
 
@@ -3847,7 +3847,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ResumeWorkflowAsyncWithHttpInfo (string workflowId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ResumeWorkflowAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3881,11 +3881,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3905,9 +3905,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns></returns>
-        public void Retry (string workflowId, bool? resumeSubworkflowTasks = null)
+        public void Retry(string workflowId, bool? resumeSubworkflowTasks = null)
         {
-             RetryWithHttpInfo(workflowId, resumeSubworkflowTasks);
+            RetryWithHttpInfo(workflowId, resumeSubworkflowTasks);
         }
 
         /// <summary>
@@ -3917,7 +3917,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> RetryWithHttpInfo (string workflowId, bool? resumeSubworkflowTasks = null)
+        public ApiResponse<Object> RetryWithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -3952,11 +3952,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -3976,9 +3976,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RetryAsync (string workflowId, bool? resumeSubworkflowTasks = null)
+        public async System.Threading.Tasks.Task RetryAsync(string workflowId, bool? resumeSubworkflowTasks = null)
         {
-             await RetryAsyncWithHttpInfo(workflowId, resumeSubworkflowTasks);
+            await RetryAsyncWithHttpInfo(workflowId, resumeSubworkflowTasks);
 
         }
 
@@ -3989,7 +3989,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RetryAsyncWithHttpInfo (string workflowId, bool? resumeSubworkflowTasks = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RetryAsyncWithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -4024,11 +4024,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4053,10 +4053,10 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="skipCache"> (optional, default to false)</param>
         /// <returns>ScrollableSearchResultWorkflowSummary</returns>
-        public ScrollableSearchResultWorkflowSummary Search (string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
+        public ScrollableSearchResultWorkflowSummary Search(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
         {
-             ApiResponse<ScrollableSearchResultWorkflowSummary> localVarResponse = SearchWithHttpInfo(queryId, start, size, sort, freeText, query, skipCache);
-             return localVarResponse.Data;
+            ApiResponse<ScrollableSearchResultWorkflowSummary> localVarResponse = SearchWithHttpInfo(queryId, start, size, sort, freeText, query, skipCache);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4071,7 +4071,7 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="skipCache"> (optional, default to false)</param>
         /// <returns>ApiResponse of ScrollableSearchResultWorkflowSummary</returns>
-        public ApiResponse< ScrollableSearchResultWorkflowSummary > SearchWithHttpInfo (string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
+        public ApiResponse<ScrollableSearchResultWorkflowSummary> SearchWithHttpInfo(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
         {
 
             var localVarPath = "/api/workflow/search";
@@ -4109,11 +4109,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4123,7 +4123,7 @@ namespace Conductor.Api
 
             return new ApiResponse<ScrollableSearchResultWorkflowSummary>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ScrollableSearchResultWorkflowSummary) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ScrollableSearchResultWorkflowSummary)));
+                (ScrollableSearchResultWorkflowSummary)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ScrollableSearchResultWorkflowSummary)));
         }
 
         /// <summary>
@@ -4138,10 +4138,10 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="skipCache"> (optional, default to false)</param>
         /// <returns>Task of ScrollableSearchResultWorkflowSummary</returns>
-        public async System.Threading.Tasks.Task<ScrollableSearchResultWorkflowSummary> SearchAsync (string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
+        public async System.Threading.Tasks.Task<ScrollableSearchResultWorkflowSummary> SearchAsync(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
         {
-             ApiResponse<ScrollableSearchResultWorkflowSummary> localVarResponse = await SearchAsyncWithHttpInfo(queryId, start, size, sort, freeText, query, skipCache);
-             return localVarResponse.Data;
+            ApiResponse<ScrollableSearchResultWorkflowSummary> localVarResponse = await SearchAsyncWithHttpInfo(queryId, start, size, sort, freeText, query, skipCache);
+            return localVarResponse.Data;
 
         }
 
@@ -4157,7 +4157,7 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="skipCache"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (ScrollableSearchResultWorkflowSummary)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ScrollableSearchResultWorkflowSummary>> SearchAsyncWithHttpInfo (string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ScrollableSearchResultWorkflowSummary>> SearchAsyncWithHttpInfo(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
         {
 
             var localVarPath = "/api/workflow/search";
@@ -4195,11 +4195,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4209,7 +4209,7 @@ namespace Conductor.Api
 
             return new ApiResponse<ScrollableSearchResultWorkflowSummary>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ScrollableSearchResultWorkflowSummary) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ScrollableSearchResultWorkflowSummary)));
+                (ScrollableSearchResultWorkflowSummary)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ScrollableSearchResultWorkflowSummary)));
         }
 
         /// <summary>
@@ -4222,10 +4222,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultWorkflow</returns>
-        public SearchResultWorkflow SearchV2 (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public SearchResultWorkflow SearchV2(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultWorkflow> localVarResponse = SearchV2WithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultWorkflow> localVarResponse = SearchV2WithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4238,7 +4238,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflow</returns>
-        public ApiResponse< SearchResultWorkflow > SearchV2WithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/workflow/search-v2";
@@ -4274,11 +4274,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4288,7 +4288,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultWorkflow>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultWorkflow) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflow)));
+                (SearchResultWorkflow)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflow)));
         }
 
         /// <summary>
@@ -4301,10 +4301,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflow</returns>
-        public async System.Threading.Tasks.Task<SearchResultWorkflow> SearchV2Async (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<SearchResultWorkflow> SearchV2Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultWorkflow> localVarResponse = await SearchV2AsyncWithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultWorkflow> localVarResponse = await SearchV2AsyncWithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
 
         }
 
@@ -4318,7 +4318,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchV2AsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchV2AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/workflow/search-v2";
@@ -4354,11 +4354,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4368,7 +4368,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultWorkflow>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultWorkflow) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflow)));
+                (SearchResultWorkflow)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflow)));
         }
 
         /// <summary>
@@ -4381,10 +4381,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultWorkflowSummary</returns>
-        public SearchResultWorkflowSummary SearchWorkflowsByTasks (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public SearchResultWorkflowSummary SearchWorkflowsByTasks(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultWorkflowSummary> localVarResponse = SearchWorkflowsByTasksWithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultWorkflowSummary> localVarResponse = SearchWorkflowsByTasksWithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4397,7 +4397,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflowSummary</returns>
-        public ApiResponse< SearchResultWorkflowSummary > SearchWorkflowsByTasksWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/workflow/search-by-tasks";
@@ -4433,11 +4433,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4447,7 +4447,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultWorkflowSummary>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultWorkflowSummary) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflowSummary)));
+                (SearchResultWorkflowSummary)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflowSummary)));
         }
 
         /// <summary>
@@ -4460,10 +4460,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflowSummary</returns>
-        public async System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchWorkflowsByTasksAsync (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchWorkflowsByTasksAsync(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultWorkflowSummary> localVarResponse = await SearchWorkflowsByTasksAsyncWithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultWorkflowSummary> localVarResponse = await SearchWorkflowsByTasksAsyncWithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
 
         }
 
@@ -4477,7 +4477,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflowSummary)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowSummary>> SearchWorkflowsByTasksAsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowSummary>> SearchWorkflowsByTasksAsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/workflow/search-by-tasks";
@@ -4513,11 +4513,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4527,7 +4527,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultWorkflowSummary>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultWorkflowSummary) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflowSummary)));
+                (SearchResultWorkflowSummary)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflowSummary)));
         }
 
         /// <summary>
@@ -4540,10 +4540,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultWorkflow</returns>
-        public SearchResultWorkflow SearchWorkflowsByTasksV2 (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public SearchResultWorkflow SearchWorkflowsByTasksV2(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultWorkflow> localVarResponse = SearchWorkflowsByTasksV2WithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultWorkflow> localVarResponse = SearchWorkflowsByTasksV2WithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4556,7 +4556,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflow</returns>
-        public ApiResponse< SearchResultWorkflow > SearchWorkflowsByTasksV2WithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/workflow/search-by-tasks-v2";
@@ -4592,11 +4592,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4606,7 +4606,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultWorkflow>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultWorkflow) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflow)));
+                (SearchResultWorkflow)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflow)));
         }
 
         /// <summary>
@@ -4619,10 +4619,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflow</returns>
-        public async System.Threading.Tasks.Task<SearchResultWorkflow> SearchWorkflowsByTasksV2Async (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<SearchResultWorkflow> SearchWorkflowsByTasksV2Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultWorkflow> localVarResponse = await SearchWorkflowsByTasksV2AsyncWithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultWorkflow> localVarResponse = await SearchWorkflowsByTasksV2AsyncWithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
 
         }
 
@@ -4636,7 +4636,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchWorkflowsByTasksV2AsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchWorkflowsByTasksV2AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/workflow/search-by-tasks-v2";
@@ -4672,11 +4672,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4686,7 +4686,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultWorkflow>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultWorkflow) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflow)));
+                (SearchResultWorkflow)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflow)));
         }
 
         /// <summary>
@@ -4697,9 +4697,9 @@ namespace Conductor.Api
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"></param>
         /// <returns></returns>
-        public void SkipTaskFromWorkflow (string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest)
+        public void SkipTaskFromWorkflow(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest)
         {
-             SkipTaskFromWorkflowWithHttpInfo(workflowId, taskReferenceName, skipTaskRequest);
+            SkipTaskFromWorkflowWithHttpInfo(workflowId, taskReferenceName, skipTaskRequest);
         }
 
         /// <summary>
@@ -4710,7 +4710,7 @@ namespace Conductor.Api
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> SkipTaskFromWorkflowWithHttpInfo (string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest)
+        public ApiResponse<Object> SkipTaskFromWorkflowWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -4752,11 +4752,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4777,9 +4777,9 @@ namespace Conductor.Api
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SkipTaskFromWorkflowAsync (string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest)
+        public async System.Threading.Tasks.Task SkipTaskFromWorkflowAsync(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest)
         {
-             await SkipTaskFromWorkflowAsyncWithHttpInfo(workflowId, taskReferenceName, skipTaskRequest);
+            await SkipTaskFromWorkflowAsyncWithHttpInfo(workflowId, taskReferenceName, skipTaskRequest);
 
         }
 
@@ -4791,7 +4791,7 @@ namespace Conductor.Api
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> SkipTaskFromWorkflowAsyncWithHttpInfo (string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> SkipTaskFromWorkflowAsyncWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -4833,11 +4833,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4856,10 +4856,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>string</returns>
-        public string StartWorkflow (StartWorkflowRequest body)
+        public string StartWorkflow(StartWorkflowRequest body)
         {
-             ApiResponse<string> localVarResponse = StartWorkflowWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = StartWorkflowWithHttpInfo(body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4868,7 +4868,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > StartWorkflowWithHttpInfo (StartWorkflowRequest body)
+        public ApiResponse<string> StartWorkflowWithHttpInfo(StartWorkflowRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -4911,11 +4911,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -4925,7 +4925,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -4934,10 +4934,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> StartWorkflowAsync (StartWorkflowRequest body)
+        public async System.Threading.Tasks.Task<string> StartWorkflowAsync(StartWorkflowRequest body)
         {
-             ApiResponse<string> localVarResponse = await StartWorkflowAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await StartWorkflowAsyncWithHttpInfo(body);
+            return localVarResponse.Data;
 
         }
 
@@ -4947,7 +4947,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflowAsyncWithHttpInfo (StartWorkflowRequest body)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflowAsyncWithHttpInfo(StartWorkflowRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -4990,11 +4990,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -5004,7 +5004,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -5017,10 +5017,10 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>string</returns>
-        public string StartWorkflow1 (Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
+        public string StartWorkflow1(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
         {
-             ApiResponse<string> localVarResponse = StartWorkflow1WithHttpInfo(body, name, version, correlationId, priority);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = StartWorkflow1WithHttpInfo(body, name, version, correlationId, priority);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5033,7 +5033,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > StartWorkflow1WithHttpInfo (Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
+        public ApiResponse<string> StartWorkflow1WithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -5083,11 +5083,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -5097,7 +5097,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -5110,10 +5110,10 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> StartWorkflow1Async (Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
+        public async System.Threading.Tasks.Task<string> StartWorkflow1Async(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
         {
-             ApiResponse<string> localVarResponse = await StartWorkflow1AsyncWithHttpInfo(body, name, version, correlationId, priority);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await StartWorkflow1AsyncWithHttpInfo(body, name, version, correlationId, priority);
+            return localVarResponse.Data;
 
         }
 
@@ -5127,7 +5127,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflow1AsyncWithHttpInfo (Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflow1AsyncWithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -5177,11 +5177,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -5191,7 +5191,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -5201,9 +5201,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns></returns>
-        public void Terminate1 (string workflowId, string reason = null)
+        public void Terminate1(string workflowId, string reason = null)
         {
-             Terminate1WithHttpInfo(workflowId, reason);
+            Terminate1WithHttpInfo(workflowId, reason);
         }
 
         /// <summary>
@@ -5213,7 +5213,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> Terminate1WithHttpInfo (string workflowId, string reason = null)
+        public ApiResponse<Object> Terminate1WithHttpInfo(string workflowId, string reason = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -5248,11 +5248,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -5272,9 +5272,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task Terminate1Async (string workflowId, string reason = null)
+        public async System.Threading.Tasks.Task Terminate1Async(string workflowId, string reason = null)
         {
-             await Terminate1AsyncWithHttpInfo(workflowId, reason);
+            await Terminate1AsyncWithHttpInfo(workflowId, reason);
 
         }
 
@@ -5285,7 +5285,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> Terminate1AsyncWithHttpInfo (string workflowId, string reason = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> Terminate1AsyncWithHttpInfo(string workflowId, string reason = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -5320,11 +5320,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -5342,10 +5342,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        public Object UploadCompletedWorkflows ()
+        public Object UploadCompletedWorkflows()
         {
-             ApiResponse<Object> localVarResponse = UploadCompletedWorkflowsWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = UploadCompletedWorkflowsWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -5353,7 +5353,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > UploadCompletedWorkflowsWithHttpInfo ()
+        public ApiResponse<Object> UploadCompletedWorkflowsWithHttpInfo()
         {
 
             var localVarPath = "/api/workflow/document-store/upload";
@@ -5384,11 +5384,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -5398,7 +5398,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -5406,10 +5406,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> UploadCompletedWorkflowsAsync ()
+        public async System.Threading.Tasks.Task<Object> UploadCompletedWorkflowsAsync()
         {
-             ApiResponse<Object> localVarResponse = await UploadCompletedWorkflowsAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await UploadCompletedWorkflowsAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -5418,7 +5418,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadCompletedWorkflowsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadCompletedWorkflowsAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/workflow/document-store/upload";
@@ -5449,11 +5449,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -5463,7 +5463,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
     }

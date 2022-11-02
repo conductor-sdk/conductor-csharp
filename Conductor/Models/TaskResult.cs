@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// TaskResult
     /// </summary>
     [DataContract]
-        public partial class TaskResult :  IEquatable<TaskResult>, IValidatableObject
+    public partial class TaskResult : IEquatable<TaskResult>, IValidatableObject
     {
         /// <summary>
         /// Defines Status
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum StatusEnum
+        public enum StatusEnum
         {
             /// <summary>
             /// Enum INPROGRESS for value: IN_PROGRESS
@@ -46,11 +46,12 @@ namespace Conductor.Models
             /// Enum COMPLETED for value: COMPLETED
             /// </summary>
             [EnumMember(Value = "COMPLETED")]
-            COMPLETED = 4        }
+            COMPLETED = 4
+        }
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskResult" /> class.
@@ -94,60 +95,60 @@ namespace Conductor.Models
             this.SubWorkflowId = subWorkflowId;
             this.WorkerId = workerId;
         }
-        
+
         /// <summary>
         /// Gets or Sets CallbackAfterSeconds
         /// </summary>
-        [DataMember(Name="callbackAfterSeconds", EmitDefaultValue=false)]
+        [DataMember(Name = "callbackAfterSeconds", EmitDefaultValue = false)]
         public long? CallbackAfterSeconds { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalOutputPayloadStoragePath
         /// </summary>
-        [DataMember(Name="externalOutputPayloadStoragePath", EmitDefaultValue=false)]
+        [DataMember(Name = "externalOutputPayloadStoragePath", EmitDefaultValue = false)]
         public string ExternalOutputPayloadStoragePath { get; set; }
 
         /// <summary>
         /// Gets or Sets Logs
         /// </summary>
-        [DataMember(Name="logs", EmitDefaultValue=false)]
+        [DataMember(Name = "logs", EmitDefaultValue = false)]
         public List<TaskExecLog> Logs { get; set; }
 
         /// <summary>
         /// Gets or Sets OutputData
         /// </summary>
-        [DataMember(Name="outputData", EmitDefaultValue=false)]
+        [DataMember(Name = "outputData", EmitDefaultValue = false)]
         public Dictionary<string, Object> OutputData { get; set; }
 
         /// <summary>
         /// Gets or Sets ReasonForIncompletion
         /// </summary>
-        [DataMember(Name="reasonForIncompletion", EmitDefaultValue=false)]
+        [DataMember(Name = "reasonForIncompletion", EmitDefaultValue = false)]
         public string ReasonForIncompletion { get; set; }
 
 
         /// <summary>
         /// Gets or Sets SubWorkflowId
         /// </summary>
-        [DataMember(Name="subWorkflowId", EmitDefaultValue=false)]
+        [DataMember(Name = "subWorkflowId", EmitDefaultValue = false)]
         public string SubWorkflowId { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskId
         /// </summary>
-        [DataMember(Name="taskId", EmitDefaultValue=false)]
+        [DataMember(Name = "taskId", EmitDefaultValue = false)]
         public string TaskId { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkerId
         /// </summary>
-        [DataMember(Name="workerId", EmitDefaultValue=false)]
+        [DataMember(Name = "workerId", EmitDefaultValue = false)]
         public string WorkerId { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowInstanceId
         /// </summary>
-        [DataMember(Name="workflowInstanceId", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowInstanceId", EmitDefaultValue = false)]
         public string WorkflowInstanceId { get; set; }
 
         /// <summary>
@@ -171,7 +172,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -201,54 +202,54 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CallbackAfterSeconds == input.CallbackAfterSeconds ||
                     (this.CallbackAfterSeconds != null &&
                     this.CallbackAfterSeconds.Equals(input.CallbackAfterSeconds))
-                ) && 
+                ) &&
                 (
                     this.ExternalOutputPayloadStoragePath == input.ExternalOutputPayloadStoragePath ||
                     (this.ExternalOutputPayloadStoragePath != null &&
                     this.ExternalOutputPayloadStoragePath.Equals(input.ExternalOutputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.Logs == input.Logs ||
                     this.Logs != null &&
                     input.Logs != null &&
                     this.Logs.SequenceEqual(input.Logs)
-                ) && 
+                ) &&
                 (
                     this.OutputData == input.OutputData ||
                     this.OutputData != null &&
                     input.OutputData != null &&
                     this.OutputData.SequenceEqual(input.OutputData)
-                ) && 
+                ) &&
                 (
                     this.ReasonForIncompletion == input.ReasonForIncompletion ||
                     (this.ReasonForIncompletion != null &&
                     this.ReasonForIncompletion.Equals(input.ReasonForIncompletion))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.SubWorkflowId == input.SubWorkflowId ||
                     (this.SubWorkflowId != null &&
                     this.SubWorkflowId.Equals(input.SubWorkflowId))
-                ) && 
+                ) &&
                 (
                     this.TaskId == input.TaskId ||
                     (this.TaskId != null &&
                     this.TaskId.Equals(input.TaskId))
-                ) && 
+                ) &&
                 (
                     this.WorkerId == input.WorkerId ||
                     (this.WorkerId != null &&
                     this.WorkerId.Equals(input.WorkerId))
-                ) && 
+                ) &&
                 (
                     this.WorkflowInstanceId == input.WorkflowInstanceId ||
                     (this.WorkflowInstanceId != null &&

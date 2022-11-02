@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// WorkflowSchedule
     /// </summary>
     [DataContract]
-        public partial class WorkflowSchedule :  IEquatable<WorkflowSchedule>, IValidatableObject
+    public partial class WorkflowSchedule : IEquatable<WorkflowSchedule>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowSchedule" /> class.
@@ -51,77 +51,77 @@ namespace Conductor.Models
             this.UpdatedBy = updatedBy;
             this.UpdatedTime = updatedTime;
         }
-        
+
         /// <summary>
         /// Gets or Sets CreateTime
         /// </summary>
-        [DataMember(Name="createTime", EmitDefaultValue=false)]
+        [DataMember(Name = "createTime", EmitDefaultValue = false)]
         public long? CreateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name = "createdBy", EmitDefaultValue = false)]
         public string CreatedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets CronExpression
         /// </summary>
-        [DataMember(Name="cronExpression", EmitDefaultValue=false)]
+        [DataMember(Name = "cronExpression", EmitDefaultValue = false)]
         public string CronExpression { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Paused
         /// </summary>
-        [DataMember(Name="paused", EmitDefaultValue=false)]
+        [DataMember(Name = "paused", EmitDefaultValue = false)]
         public bool? Paused { get; set; }
 
         /// <summary>
         /// Gets or Sets PausedReason
         /// </summary>
-        [DataMember(Name="pausedReason", EmitDefaultValue=false)]
+        [DataMember(Name = "pausedReason", EmitDefaultValue = false)]
         public string PausedReason { get; set; }
 
         /// <summary>
         /// Gets or Sets RunCatchupScheduleInstances
         /// </summary>
-        [DataMember(Name="runCatchupScheduleInstances", EmitDefaultValue=false)]
+        [DataMember(Name = "runCatchupScheduleInstances", EmitDefaultValue = false)]
         public bool? RunCatchupScheduleInstances { get; set; }
 
         /// <summary>
         /// Gets or Sets ScheduleEndTime
         /// </summary>
-        [DataMember(Name="scheduleEndTime", EmitDefaultValue=false)]
+        [DataMember(Name = "scheduleEndTime", EmitDefaultValue = false)]
         public long? ScheduleEndTime { get; set; }
 
         /// <summary>
         /// Gets or Sets ScheduleStartTime
         /// </summary>
-        [DataMember(Name="scheduleStartTime", EmitDefaultValue=false)]
+        [DataMember(Name = "scheduleStartTime", EmitDefaultValue = false)]
         public long? ScheduleStartTime { get; set; }
 
         /// <summary>
         /// Gets or Sets StartWorkflowRequest
         /// </summary>
-        [DataMember(Name="startWorkflowRequest", EmitDefaultValue=false)]
+        [DataMember(Name = "startWorkflowRequest", EmitDefaultValue = false)]
         public StartWorkflowRequest StartWorkflowRequest { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdatedBy
         /// </summary>
-        [DataMember(Name="updatedBy", EmitDefaultValue=false)]
+        [DataMember(Name = "updatedBy", EmitDefaultValue = false)]
         public string UpdatedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdatedTime
         /// </summary>
-        [DataMember(Name="updatedTime", EmitDefaultValue=false)]
+        [DataMember(Name = "updatedTime", EmitDefaultValue = false)]
         public long? UpdatedTime { get; set; }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -177,62 +177,62 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CreateTime == input.CreateTime ||
                     (this.CreateTime != null &&
                     this.CreateTime.Equals(input.CreateTime))
-                ) && 
+                ) &&
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
+                ) &&
                 (
                     this.CronExpression == input.CronExpression ||
                     (this.CronExpression != null &&
                     this.CronExpression.Equals(input.CronExpression))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Paused == input.Paused ||
                     (this.Paused != null &&
                     this.Paused.Equals(input.Paused))
-                ) && 
+                ) &&
                 (
                     this.PausedReason == input.PausedReason ||
                     (this.PausedReason != null &&
                     this.PausedReason.Equals(input.PausedReason))
-                ) && 
+                ) &&
                 (
                     this.RunCatchupScheduleInstances == input.RunCatchupScheduleInstances ||
                     (this.RunCatchupScheduleInstances != null &&
                     this.RunCatchupScheduleInstances.Equals(input.RunCatchupScheduleInstances))
-                ) && 
+                ) &&
                 (
                     this.ScheduleEndTime == input.ScheduleEndTime ||
                     (this.ScheduleEndTime != null &&
                     this.ScheduleEndTime.Equals(input.ScheduleEndTime))
-                ) && 
+                ) &&
                 (
                     this.ScheduleStartTime == input.ScheduleStartTime ||
                     (this.ScheduleStartTime != null &&
                     this.ScheduleStartTime.Equals(input.ScheduleStartTime))
-                ) && 
+                ) &&
                 (
                     this.StartWorkflowRequest == input.StartWorkflowRequest ||
                     (this.StartWorkflowRequest != null &&
                     this.StartWorkflowRequest.Equals(input.StartWorkflowRequest))
-                ) && 
+                ) &&
                 (
                     this.UpdatedBy == input.UpdatedBy ||
                     (this.UpdatedBy != null &&
                     this.UpdatedBy.Equals(input.UpdatedBy))
-                ) && 
+                ) &&
                 (
                     this.UpdatedTime == input.UpdatedTime ||
                     (this.UpdatedTime != null &&

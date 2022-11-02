@@ -19,19 +19,19 @@ namespace Conductor.Models
     /// UpsertGroupRequest
     /// </summary>
     [DataContract]
-        public partial class UpsertGroupRequest :  IEquatable<UpsertGroupRequest>, IValidatableObject
+    public partial class UpsertGroupRequest : IEquatable<UpsertGroupRequest>, IValidatableObject
     {
         /// <summary>
         /// a default Map&lt;TargetType, Set&lt;Access&gt; to share permissions, allowed target types: WORKFLOW_DEF, TASK_DEF, WORKFLOW_SCHEDULE
         /// </summary>
         /// <value>a default Map&lt;TargetType, Set&lt;Access&gt; to share permissions, allowed target types: WORKFLOW_DEF, TASK_DEF, WORKFLOW_SCHEDULE</value>
-        [DataMember(Name="defaultAccess", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultAccess", EmitDefaultValue = false)]
         public Dictionary<string, List<string>> DefaultAccess { get; set; }
         /// <summary>
         /// Defines Roles
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum RolesEnum
+        public enum RolesEnum
         {
             /// <summary>
             /// Enum ADMIN for value: ADMIN
@@ -57,11 +57,12 @@ namespace Conductor.Models
             /// Enum WORKFLOWMANAGER for value: WORKFLOW_MANAGER
             /// </summary>
             [EnumMember(Value = "WORKFLOW_MANAGER")]
-            WORKFLOWMANAGER = 5        }
+            WORKFLOWMANAGER = 5
+        }
         /// <summary>
         /// Gets or Sets Roles
         /// </summary>
-        [DataMember(Name="roles", EmitDefaultValue=false)]
+        [DataMember(Name = "roles", EmitDefaultValue = false)]
         public List<RolesEnum> Roles { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="UpsertGroupRequest" /> class.
@@ -83,13 +84,13 @@ namespace Conductor.Models
             this.DefaultAccess = defaultAccess;
             this.Roles = roles;
         }
-        
+
 
         /// <summary>
         /// A general description of the group
         /// </summary>
         /// <value>A general description of the group</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
 
@@ -107,7 +108,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -137,18 +138,18 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.DefaultAccess == input.DefaultAccess ||
                     this.DefaultAccess != null &&
                     input.DefaultAccess != null &&
                     this.DefaultAccess.SequenceEqual(input.DefaultAccess)
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Roles == input.Roles ||
                     this.Roles != null &&

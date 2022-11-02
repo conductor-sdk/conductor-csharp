@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IUserResourceApi : IApiAccessor
+    public interface IUserResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -24,7 +24,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Response</returns>
-        Response DeleteUser (string id);
+        Response DeleteUser(string id);
 
         /// <summary>
         /// Delete a user
@@ -35,7 +35,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Response</returns>
-        ApiResponse<Response> DeleteUserWithHttpInfo (string id);
+        ApiResponse<Response> DeleteUserWithHttpInfo(string id);
         /// <summary>
         /// Get the permissions this user has over workflows and tasks
         /// </summary>
@@ -45,7 +45,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <returns>Object</returns>
-        Object GetGrantedPermissions (string userId);
+        Object GetGrantedPermissions(string userId);
 
         /// <summary>
         /// Get the permissions this user has over workflows and tasks
@@ -56,7 +56,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetGrantedPermissionsWithHttpInfo (string userId);
+        ApiResponse<Object> GetGrantedPermissionsWithHttpInfo(string userId);
         /// <summary>
         /// Get a user by id
         /// </summary>
@@ -66,7 +66,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object GetUser (string id);
+        Object GetUser(string id);
 
         /// <summary>
         /// Get a user by id
@@ -77,7 +77,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetUserWithHttpInfo (string id);
+        ApiResponse<Object> GetUserWithHttpInfo(string id);
         /// <summary>
         /// Get all users
         /// </summary>
@@ -87,7 +87,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="apps"> (optional, default to false)</param>
         /// <returns>List&lt;ConductorUser&gt;</returns>
-        List<ConductorUser> ListUsers (bool? apps = null);
+        List<ConductorUser> ListUsers(bool? apps = null);
 
         /// <summary>
         /// Get all users
@@ -98,7 +98,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="apps"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;ConductorUser&gt;</returns>
-        ApiResponse<List<ConductorUser>> ListUsersWithHttpInfo (bool? apps = null);
+        ApiResponse<List<ConductorUser>> ListUsersWithHttpInfo(bool? apps = null);
         /// <summary>
         /// Send an email with a link to this cluster
         /// </summary>
@@ -109,7 +109,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Object</returns>
-        Object SendInviteEmail (string id, ConductorUser body = null);
+        Object SendInviteEmail(string id, ConductorUser body = null);
 
         /// <summary>
         /// Send an email with a link to this cluster
@@ -121,7 +121,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> SendInviteEmailWithHttpInfo (string id, ConductorUser body = null);
+        ApiResponse<Object> SendInviteEmailWithHttpInfo(string id, ConductorUser body = null);
         /// <summary>
         /// Create or update a user
         /// </summary>
@@ -132,7 +132,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object UpsertUser (UpsertUserRequest body, string id);
+        Object UpsertUser(UpsertUserRequest body, string id);
 
         /// <summary>
         /// Create or update a user
@@ -144,7 +144,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> UpsertUserWithHttpInfo (UpsertUserRequest body, string id);
+        ApiResponse<Object> UpsertUserWithHttpInfo(UpsertUserRequest body, string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -156,7 +156,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Response</returns>
-        System.Threading.Tasks.Task<Response> DeleteUserAsync (string id);
+        System.Threading.Tasks.Task<Response> DeleteUserAsync(string id);
 
         /// <summary>
         /// Delete a user
@@ -167,7 +167,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Response>> DeleteUserAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Response>> DeleteUserAsyncWithHttpInfo(string id);
         /// <summary>
         /// Get the permissions this user has over workflows and tasks
         /// </summary>
@@ -177,7 +177,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetGrantedPermissionsAsync (string userId);
+        System.Threading.Tasks.Task<Object> GetGrantedPermissionsAsync(string userId);
 
         /// <summary>
         /// Get the permissions this user has over workflows and tasks
@@ -188,7 +188,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissionsAsyncWithHttpInfo (string userId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissionsAsyncWithHttpInfo(string userId);
         /// <summary>
         /// Get a user by id
         /// </summary>
@@ -198,7 +198,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetUserAsync (string id);
+        System.Threading.Tasks.Task<Object> GetUserAsync(string id);
 
         /// <summary>
         /// Get a user by id
@@ -209,7 +209,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetUserAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetUserAsyncWithHttpInfo(string id);
         /// <summary>
         /// Get all users
         /// </summary>
@@ -219,7 +219,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="apps"> (optional, default to false)</param>
         /// <returns>Task of List&lt;ConductorUser&gt;</returns>
-        System.Threading.Tasks.Task<List<ConductorUser>> ListUsersAsync (bool? apps = null);
+        System.Threading.Tasks.Task<List<ConductorUser>> ListUsersAsync(bool? apps = null);
 
         /// <summary>
         /// Get all users
@@ -230,7 +230,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="apps"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (List&lt;ConductorUser&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ConductorUser>>> ListUsersAsyncWithHttpInfo (bool? apps = null);
+        System.Threading.Tasks.Task<ApiResponse<List<ConductorUser>>> ListUsersAsyncWithHttpInfo(bool? apps = null);
         /// <summary>
         /// Send an email with a link to this cluster
         /// </summary>
@@ -241,7 +241,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> SendInviteEmailAsync (string id, ConductorUser body = null);
+        System.Threading.Tasks.Task<Object> SendInviteEmailAsync(string id, ConductorUser body = null);
 
         /// <summary>
         /// Send an email with a link to this cluster
@@ -253,7 +253,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SendInviteEmailAsyncWithHttpInfo (string id, ConductorUser body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> SendInviteEmailAsyncWithHttpInfo(string id, ConductorUser body = null);
         /// <summary>
         /// Create or update a user
         /// </summary>
@@ -264,7 +264,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> UpsertUserAsync (UpsertUserRequest body, string id);
+        System.Threading.Tasks.Task<Object> UpsertUserAsync(UpsertUserRequest body, string id);
 
         /// <summary>
         /// Create or update a user
@@ -276,14 +276,14 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpsertUserAsyncWithHttpInfo (UpsertUserRequest body, string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpsertUserAsyncWithHttpInfo(UpsertUserRequest body, string id);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class UserResourceApi : IUserResourceApi
+    public partial class UserResourceApi : IUserResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -348,7 +348,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -394,10 +394,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Response</returns>
-        public Response DeleteUser (string id)
+        public Response DeleteUser(string id)
         {
-             ApiResponse<Response> localVarResponse = DeleteUserWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Response> localVarResponse = DeleteUserWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -406,7 +406,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Response</returns>
-        public ApiResponse< Response > DeleteUserWithHttpInfo (string id)
+        public ApiResponse<Response> DeleteUserWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -441,11 +441,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -455,7 +455,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Response>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Response) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+                (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
         }
 
         /// <summary>
@@ -464,10 +464,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Response</returns>
-        public async System.Threading.Tasks.Task<Response> DeleteUserAsync (string id)
+        public async System.Threading.Tasks.Task<Response> DeleteUserAsync(string id)
         {
-             ApiResponse<Response> localVarResponse = await DeleteUserAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Response> localVarResponse = await DeleteUserAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -477,7 +477,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Response>> DeleteUserAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Response>> DeleteUserAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -512,11 +512,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -526,7 +526,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Response>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Response) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+                (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
         }
 
         /// <summary>
@@ -535,10 +535,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <returns>Object</returns>
-        public Object GetGrantedPermissions (string userId)
+        public Object GetGrantedPermissions(string userId)
         {
-             ApiResponse<Object> localVarResponse = GetGrantedPermissionsWithHttpInfo(userId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetGrantedPermissionsWithHttpInfo(userId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -547,7 +547,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetGrantedPermissionsWithHttpInfo (string userId)
+        public ApiResponse<Object> GetGrantedPermissionsWithHttpInfo(string userId)
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
@@ -582,11 +582,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -596,7 +596,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -605,10 +605,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetGrantedPermissionsAsync (string userId)
+        public async System.Threading.Tasks.Task<Object> GetGrantedPermissionsAsync(string userId)
         {
-             ApiResponse<Object> localVarResponse = await GetGrantedPermissionsAsyncWithHttpInfo(userId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await GetGrantedPermissionsAsyncWithHttpInfo(userId);
+            return localVarResponse.Data;
 
         }
 
@@ -618,7 +618,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissionsAsyncWithHttpInfo (string userId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissionsAsyncWithHttpInfo(string userId)
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
@@ -653,11 +653,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -667,7 +667,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -676,10 +676,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object GetUser (string id)
+        public Object GetUser(string id)
         {
-             ApiResponse<Object> localVarResponse = GetUserWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetUserWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -688,7 +688,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetUserWithHttpInfo (string id)
+        public ApiResponse<Object> GetUserWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -723,11 +723,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -737,7 +737,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -746,10 +746,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetUserAsync (string id)
+        public async System.Threading.Tasks.Task<Object> GetUserAsync(string id)
         {
-             ApiResponse<Object> localVarResponse = await GetUserAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await GetUserAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -759,7 +759,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUserAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUserAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -794,11 +794,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -808,7 +808,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -817,10 +817,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="apps"> (optional, default to false)</param>
         /// <returns>List&lt;ConductorUser&gt;</returns>
-        public List<ConductorUser> ListUsers (bool? apps = null)
+        public List<ConductorUser> ListUsers(bool? apps = null)
         {
-             ApiResponse<List<ConductorUser>> localVarResponse = ListUsersWithHttpInfo(apps);
-             return localVarResponse.Data;
+            ApiResponse<List<ConductorUser>> localVarResponse = ListUsersWithHttpInfo(apps);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -829,7 +829,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="apps"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;ConductorUser&gt;</returns>
-        public ApiResponse< List<ConductorUser> > ListUsersWithHttpInfo (bool? apps = null)
+        public ApiResponse<List<ConductorUser>> ListUsersWithHttpInfo(bool? apps = null)
         {
 
             var localVarPath = "/api/users";
@@ -861,11 +861,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -875,7 +875,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<ConductorUser>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<ConductorUser>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ConductorUser>)));
+                (List<ConductorUser>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ConductorUser>)));
         }
 
         /// <summary>
@@ -884,10 +884,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="apps"> (optional, default to false)</param>
         /// <returns>Task of List&lt;ConductorUser&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ConductorUser>> ListUsersAsync (bool? apps = null)
+        public async System.Threading.Tasks.Task<List<ConductorUser>> ListUsersAsync(bool? apps = null)
         {
-             ApiResponse<List<ConductorUser>> localVarResponse = await ListUsersAsyncWithHttpInfo(apps);
-             return localVarResponse.Data;
+            ApiResponse<List<ConductorUser>> localVarResponse = await ListUsersAsyncWithHttpInfo(apps);
+            return localVarResponse.Data;
 
         }
 
@@ -897,7 +897,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="apps"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (List&lt;ConductorUser&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ConductorUser>>> ListUsersAsyncWithHttpInfo (bool? apps = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ConductorUser>>> ListUsersAsyncWithHttpInfo(bool? apps = null)
         {
 
             var localVarPath = "/api/users";
@@ -929,11 +929,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -943,7 +943,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<ConductorUser>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<ConductorUser>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ConductorUser>)));
+                (List<ConductorUser>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ConductorUser>)));
         }
 
         /// <summary>
@@ -953,10 +953,10 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Object</returns>
-        public Object SendInviteEmail (string id, ConductorUser body = null)
+        public Object SendInviteEmail(string id, ConductorUser body = null)
         {
-             ApiResponse<Object> localVarResponse = SendInviteEmailWithHttpInfo(id, body);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = SendInviteEmailWithHttpInfo(id, body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -966,7 +966,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > SendInviteEmailWithHttpInfo (string id, ConductorUser body = null)
+        public ApiResponse<Object> SendInviteEmailWithHttpInfo(string id, ConductorUser body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1010,11 +1010,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1024,7 +1024,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1034,10 +1034,10 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> SendInviteEmailAsync (string id, ConductorUser body = null)
+        public async System.Threading.Tasks.Task<Object> SendInviteEmailAsync(string id, ConductorUser body = null)
         {
-             ApiResponse<Object> localVarResponse = await SendInviteEmailAsyncWithHttpInfo(id, body);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await SendInviteEmailAsyncWithHttpInfo(id, body);
+            return localVarResponse.Data;
 
         }
 
@@ -1048,7 +1048,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> SendInviteEmailAsyncWithHttpInfo (string id, ConductorUser body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> SendInviteEmailAsyncWithHttpInfo(string id, ConductorUser body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1092,11 +1092,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1106,7 +1106,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1116,10 +1116,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object UpsertUser (UpsertUserRequest body, string id)
+        public Object UpsertUser(UpsertUserRequest body, string id)
         {
-             ApiResponse<Object> localVarResponse = UpsertUserWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = UpsertUserWithHttpInfo(body, id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1129,7 +1129,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > UpsertUserWithHttpInfo (UpsertUserRequest body, string id)
+        public ApiResponse<Object> UpsertUserWithHttpInfo(UpsertUserRequest body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1176,11 +1176,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1190,7 +1190,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1200,10 +1200,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> UpsertUserAsync (UpsertUserRequest body, string id)
+        public async System.Threading.Tasks.Task<Object> UpsertUserAsync(UpsertUserRequest body, string id)
         {
-             ApiResponse<Object> localVarResponse = await UpsertUserAsyncWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await UpsertUserAsyncWithHttpInfo(body, id);
+            return localVarResponse.Data;
 
         }
 
@@ -1214,7 +1214,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpsertUserAsyncWithHttpInfo (UpsertUserRequest body, string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpsertUserAsyncWithHttpInfo(UpsertUserRequest body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1261,11 +1261,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1275,7 +1275,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
     }

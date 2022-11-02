@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// TerminateWorkflow
     /// </summary>
     [DataContract]
-        public partial class TerminateWorkflow :  IEquatable<TerminateWorkflow>, IValidatableObject
+    public partial class TerminateWorkflow : IEquatable<TerminateWorkflow>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TerminateWorkflow" /> class.
@@ -31,17 +31,17 @@ namespace Conductor.Models
             this.TerminationReason = terminationReason;
             this.WorkflowId = workflowId;
         }
-        
+
         /// <summary>
         /// Gets or Sets TerminationReason
         /// </summary>
-        [DataMember(Name="terminationReason", EmitDefaultValue=false)]
+        [DataMember(Name = "terminationReason", EmitDefaultValue = false)]
         public string TerminationReason { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowId
         /// </summary>
-        [DataMember(Name="workflowId", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
         public string WorkflowId { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,12 +87,12 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TerminationReason == input.TerminationReason ||
                     (this.TerminationReason != null &&
                     this.TerminationReason.Equals(input.TerminationReason))
-                ) && 
+                ) &&
                 (
                     this.WorkflowId == input.WorkflowId ||
                     (this.WorkflowId != null &&

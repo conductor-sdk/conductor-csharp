@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// WorkflowTask
     /// </summary>
     [DataContract]
-        public partial class WorkflowTask :  IEquatable<WorkflowTask>, IValidatableObject
+    public partial class WorkflowTask : IEquatable<WorkflowTask>, IValidatableObject
     {
         /// <summary>
         /// Defines WorkflowTaskType
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum WorkflowTaskTypeEnum
+        public enum WorkflowTaskTypeEnum
         {
             /// <summary>
             /// Enum SIMPLE for value: SIMPLE
@@ -136,11 +136,12 @@ namespace Conductor.Models
             /// Enum SETVARIABLE for value: SET_VARIABLE
             /// </summary>
             [EnumMember(Value = "SET_VARIABLE")]
-            SETVARIABLE = 22        }
+            SETVARIABLE = 22
+        }
         /// <summary>
         /// Gets or Sets WorkflowTaskType
         /// </summary>
-        [DataMember(Name="workflowTaskType", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowTaskType", EmitDefaultValue = false)]
         public WorkflowTaskTypeEnum? WorkflowTaskType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowTask" /> class.
@@ -224,179 +225,179 @@ namespace Conductor.Models
             this.Type = type;
             this.WorkflowTaskType = workflowTaskType;
         }
-        
+
         /// <summary>
         /// Gets or Sets AsyncComplete
         /// </summary>
-        [DataMember(Name="asyncComplete", EmitDefaultValue=false)]
+        [DataMember(Name = "asyncComplete", EmitDefaultValue = false)]
         public bool? AsyncComplete { get; set; }
 
         /// <summary>
         /// Gets or Sets CaseExpression
         /// </summary>
-        [DataMember(Name="caseExpression", EmitDefaultValue=false)]
+        [DataMember(Name = "caseExpression", EmitDefaultValue = false)]
         public string CaseExpression { get; set; }
 
         /// <summary>
         /// Gets or Sets CaseValueParam
         /// </summary>
-        [DataMember(Name="caseValueParam", EmitDefaultValue=false)]
+        [DataMember(Name = "caseValueParam", EmitDefaultValue = false)]
         public string CaseValueParam { get; set; }
 
         /// <summary>
         /// Gets or Sets DecisionCases
         /// </summary>
-        [DataMember(Name="decisionCases", EmitDefaultValue=false)]
+        [DataMember(Name = "decisionCases", EmitDefaultValue = false)]
         public Dictionary<string, List<WorkflowTask>> DecisionCases { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultCase
         /// </summary>
-        [DataMember(Name="defaultCase", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultCase", EmitDefaultValue = false)]
         public List<WorkflowTask> DefaultCase { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultExclusiveJoinTask
         /// </summary>
-        [DataMember(Name="defaultExclusiveJoinTask", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultExclusiveJoinTask", EmitDefaultValue = false)]
         public List<string> DefaultExclusiveJoinTask { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets DynamicForkJoinTasksParam
         /// </summary>
-        [DataMember(Name="dynamicForkJoinTasksParam", EmitDefaultValue=false)]
+        [DataMember(Name = "dynamicForkJoinTasksParam", EmitDefaultValue = false)]
         public string DynamicForkJoinTasksParam { get; set; }
 
         /// <summary>
         /// Gets or Sets DynamicForkTasksInputParamName
         /// </summary>
-        [DataMember(Name="dynamicForkTasksInputParamName", EmitDefaultValue=false)]
+        [DataMember(Name = "dynamicForkTasksInputParamName", EmitDefaultValue = false)]
         public string DynamicForkTasksInputParamName { get; set; }
 
         /// <summary>
         /// Gets or Sets DynamicForkTasksParam
         /// </summary>
-        [DataMember(Name="dynamicForkTasksParam", EmitDefaultValue=false)]
+        [DataMember(Name = "dynamicForkTasksParam", EmitDefaultValue = false)]
         public string DynamicForkTasksParam { get; set; }
 
         /// <summary>
         /// Gets or Sets DynamicTaskNameParam
         /// </summary>
-        [DataMember(Name="dynamicTaskNameParam", EmitDefaultValue=false)]
+        [DataMember(Name = "dynamicTaskNameParam", EmitDefaultValue = false)]
         public string DynamicTaskNameParam { get; set; }
 
         /// <summary>
         /// Gets or Sets EvaluatorType
         /// </summary>
-        [DataMember(Name="evaluatorType", EmitDefaultValue=false)]
+        [DataMember(Name = "evaluatorType", EmitDefaultValue = false)]
         public string EvaluatorType { get; set; }
 
         /// <summary>
         /// Gets or Sets Expression
         /// </summary>
-        [DataMember(Name="expression", EmitDefaultValue=false)]
+        [DataMember(Name = "expression", EmitDefaultValue = false)]
         public string Expression { get; set; }
 
         /// <summary>
         /// Gets or Sets ForkTasks
         /// </summary>
-        [DataMember(Name="forkTasks", EmitDefaultValue=false)]
+        [DataMember(Name = "forkTasks", EmitDefaultValue = false)]
         public List<List<WorkflowTask>> ForkTasks { get; set; }
 
         /// <summary>
         /// Gets or Sets InputParameters
         /// </summary>
-        [DataMember(Name="inputParameters", EmitDefaultValue=false)]
+        [DataMember(Name = "inputParameters", EmitDefaultValue = false)]
         public Dictionary<string, Object> InputParameters { get; set; }
 
         /// <summary>
         /// Gets or Sets JoinOn
         /// </summary>
-        [DataMember(Name="joinOn", EmitDefaultValue=false)]
+        [DataMember(Name = "joinOn", EmitDefaultValue = false)]
         public List<string> JoinOn { get; set; }
 
         /// <summary>
         /// Gets or Sets LoopCondition
         /// </summary>
-        [DataMember(Name="loopCondition", EmitDefaultValue=false)]
+        [DataMember(Name = "loopCondition", EmitDefaultValue = false)]
         public string LoopCondition { get; set; }
 
         /// <summary>
         /// Gets or Sets LoopOver
         /// </summary>
-        [DataMember(Name="loopOver", EmitDefaultValue=false)]
+        [DataMember(Name = "loopOver", EmitDefaultValue = false)]
         public List<WorkflowTask> LoopOver { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Optional
         /// </summary>
-        [DataMember(Name="optional", EmitDefaultValue=false)]
+        [DataMember(Name = "optional", EmitDefaultValue = false)]
         public bool? Optional { get; set; }
 
         /// <summary>
         /// Gets or Sets RateLimited
         /// </summary>
-        [DataMember(Name="rateLimited", EmitDefaultValue=false)]
+        [DataMember(Name = "rateLimited", EmitDefaultValue = false)]
         public bool? RateLimited { get; set; }
 
         /// <summary>
         /// Gets or Sets RetryCount
         /// </summary>
-        [DataMember(Name="retryCount", EmitDefaultValue=false)]
+        [DataMember(Name = "retryCount", EmitDefaultValue = false)]
         public int? RetryCount { get; set; }
 
         /// <summary>
         /// Gets or Sets ScriptExpression
         /// </summary>
-        [DataMember(Name="scriptExpression", EmitDefaultValue=false)]
+        [DataMember(Name = "scriptExpression", EmitDefaultValue = false)]
         public string ScriptExpression { get; set; }
 
         /// <summary>
         /// Gets or Sets Sink
         /// </summary>
-        [DataMember(Name="sink", EmitDefaultValue=false)]
+        [DataMember(Name = "sink", EmitDefaultValue = false)]
         public string Sink { get; set; }
 
         /// <summary>
         /// Gets or Sets StartDelay
         /// </summary>
-        [DataMember(Name="startDelay", EmitDefaultValue=false)]
+        [DataMember(Name = "startDelay", EmitDefaultValue = false)]
         public int? StartDelay { get; set; }
 
         /// <summary>
         /// Gets or Sets SubWorkflowParam
         /// </summary>
-        [DataMember(Name="subWorkflowParam", EmitDefaultValue=false)]
+        [DataMember(Name = "subWorkflowParam", EmitDefaultValue = false)]
         public SubWorkflowParams SubWorkflowParam { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskDefinition
         /// </summary>
-        [DataMember(Name="taskDefinition", EmitDefaultValue=false)]
+        [DataMember(Name = "taskDefinition", EmitDefaultValue = false)]
         public TaskDef TaskDefinition { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskReferenceName
         /// </summary>
-        [DataMember(Name="taskReferenceName", EmitDefaultValue=false)]
+        [DataMember(Name = "taskReferenceName", EmitDefaultValue = false)]
         public string TaskReferenceName { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
 
@@ -441,7 +442,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -471,159 +472,159 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AsyncComplete == input.AsyncComplete ||
                     (this.AsyncComplete != null &&
                     this.AsyncComplete.Equals(input.AsyncComplete))
-                ) && 
+                ) &&
                 (
                     this.CaseExpression == input.CaseExpression ||
                     (this.CaseExpression != null &&
                     this.CaseExpression.Equals(input.CaseExpression))
-                ) && 
+                ) &&
                 (
                     this.CaseValueParam == input.CaseValueParam ||
                     (this.CaseValueParam != null &&
                     this.CaseValueParam.Equals(input.CaseValueParam))
-                ) && 
+                ) &&
                 (
                     this.DecisionCases == input.DecisionCases ||
                     this.DecisionCases != null &&
                     input.DecisionCases != null &&
                     this.DecisionCases.SequenceEqual(input.DecisionCases)
-                ) && 
+                ) &&
                 (
                     this.DefaultCase == input.DefaultCase ||
                     this.DefaultCase != null &&
                     input.DefaultCase != null &&
                     this.DefaultCase.SequenceEqual(input.DefaultCase)
-                ) && 
+                ) &&
                 (
                     this.DefaultExclusiveJoinTask == input.DefaultExclusiveJoinTask ||
                     this.DefaultExclusiveJoinTask != null &&
                     input.DefaultExclusiveJoinTask != null &&
                     this.DefaultExclusiveJoinTask.SequenceEqual(input.DefaultExclusiveJoinTask)
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.DynamicForkJoinTasksParam == input.DynamicForkJoinTasksParam ||
                     (this.DynamicForkJoinTasksParam != null &&
                     this.DynamicForkJoinTasksParam.Equals(input.DynamicForkJoinTasksParam))
-                ) && 
+                ) &&
                 (
                     this.DynamicForkTasksInputParamName == input.DynamicForkTasksInputParamName ||
                     (this.DynamicForkTasksInputParamName != null &&
                     this.DynamicForkTasksInputParamName.Equals(input.DynamicForkTasksInputParamName))
-                ) && 
+                ) &&
                 (
                     this.DynamicForkTasksParam == input.DynamicForkTasksParam ||
                     (this.DynamicForkTasksParam != null &&
                     this.DynamicForkTasksParam.Equals(input.DynamicForkTasksParam))
-                ) && 
+                ) &&
                 (
                     this.DynamicTaskNameParam == input.DynamicTaskNameParam ||
                     (this.DynamicTaskNameParam != null &&
                     this.DynamicTaskNameParam.Equals(input.DynamicTaskNameParam))
-                ) && 
+                ) &&
                 (
                     this.EvaluatorType == input.EvaluatorType ||
                     (this.EvaluatorType != null &&
                     this.EvaluatorType.Equals(input.EvaluatorType))
-                ) && 
+                ) &&
                 (
                     this.Expression == input.Expression ||
                     (this.Expression != null &&
                     this.Expression.Equals(input.Expression))
-                ) && 
+                ) &&
                 (
                     this.ForkTasks == input.ForkTasks ||
                     this.ForkTasks != null &&
                     input.ForkTasks != null &&
                     this.ForkTasks.SequenceEqual(input.ForkTasks)
-                ) && 
+                ) &&
                 (
                     this.InputParameters == input.InputParameters ||
                     this.InputParameters != null &&
                     input.InputParameters != null &&
                     this.InputParameters.SequenceEqual(input.InputParameters)
-                ) && 
+                ) &&
                 (
                     this.JoinOn == input.JoinOn ||
                     this.JoinOn != null &&
                     input.JoinOn != null &&
                     this.JoinOn.SequenceEqual(input.JoinOn)
-                ) && 
+                ) &&
                 (
                     this.LoopCondition == input.LoopCondition ||
                     (this.LoopCondition != null &&
                     this.LoopCondition.Equals(input.LoopCondition))
-                ) && 
+                ) &&
                 (
                     this.LoopOver == input.LoopOver ||
                     this.LoopOver != null &&
                     input.LoopOver != null &&
                     this.LoopOver.SequenceEqual(input.LoopOver)
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Optional == input.Optional ||
                     (this.Optional != null &&
                     this.Optional.Equals(input.Optional))
-                ) && 
+                ) &&
                 (
                     this.RateLimited == input.RateLimited ||
                     (this.RateLimited != null &&
                     this.RateLimited.Equals(input.RateLimited))
-                ) && 
+                ) &&
                 (
                     this.RetryCount == input.RetryCount ||
                     (this.RetryCount != null &&
                     this.RetryCount.Equals(input.RetryCount))
-                ) && 
+                ) &&
                 (
                     this.ScriptExpression == input.ScriptExpression ||
                     (this.ScriptExpression != null &&
                     this.ScriptExpression.Equals(input.ScriptExpression))
-                ) && 
+                ) &&
                 (
                     this.Sink == input.Sink ||
                     (this.Sink != null &&
                     this.Sink.Equals(input.Sink))
-                ) && 
+                ) &&
                 (
                     this.StartDelay == input.StartDelay ||
                     (this.StartDelay != null &&
                     this.StartDelay.Equals(input.StartDelay))
-                ) && 
+                ) &&
                 (
                     this.SubWorkflowParam == input.SubWorkflowParam ||
                     (this.SubWorkflowParam != null &&
                     this.SubWorkflowParam.Equals(input.SubWorkflowParam))
-                ) && 
+                ) &&
                 (
                     this.TaskDefinition == input.TaskDefinition ||
                     (this.TaskDefinition != null &&
                     this.TaskDefinition.Equals(input.TaskDefinition))
-                ) && 
+                ) &&
                 (
                     this.TaskReferenceName == input.TaskReferenceName ||
                     (this.TaskReferenceName != null &&
                     this.TaskReferenceName.Equals(input.TaskReferenceName))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.WorkflowTaskType == input.WorkflowTaskType ||
                     (this.WorkflowTaskType != null &&

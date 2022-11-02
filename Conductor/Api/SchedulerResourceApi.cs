@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface ISchedulerResourceApi : IApiAccessor
+    public interface ISchedulerResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -24,7 +24,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Object</returns>
-        Object DeleteSchedule (string name);
+        Object DeleteSchedule(string name);
 
         /// <summary>
         /// Deletes an existing workflow schedule by name
@@ -35,7 +35,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> DeleteScheduleWithHttpInfo (string name);
+        ApiResponse<Object> DeleteScheduleWithHttpInfo(string name);
         /// <summary>
         /// Delete a tag for schedule
         /// </summary>
@@ -46,7 +46,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void DeleteTagForSchedule (string name, string body = null);
+        void DeleteTagForSchedule(string name, string body = null);
 
         /// <summary>
         /// Delete a tag for schedule
@@ -58,7 +58,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteTagForScheduleWithHttpInfo (string name, string body = null);
+        ApiResponse<Object> DeleteTagForScheduleWithHttpInfo(string name, string body = null);
         /// <summary>
         /// Get all existing workflow schedules and optionally filter by workflow name
         /// </summary>
@@ -68,7 +68,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowName"> (optional)</param>
         /// <returns>List&lt;WorkflowSchedule&gt;</returns>
-        List<WorkflowSchedule> GetAllSchedules (string workflowName = null);
+        List<WorkflowSchedule> GetAllSchedules(string workflowName = null);
 
         /// <summary>
         /// Get all existing workflow schedules and optionally filter by workflow name
@@ -79,7 +79,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowName"> (optional)</param>
         /// <returns>ApiResponse of List&lt;WorkflowSchedule&gt;</returns>
-        ApiResponse<List<WorkflowSchedule>> GetAllSchedulesWithHttpInfo (string workflowName = null);
+        ApiResponse<List<WorkflowSchedule>> GetAllSchedulesWithHttpInfo(string workflowName = null);
         /// <summary>
         /// Get list of the next x (default 3, max 5) execution times for a scheduler
         /// </summary>
@@ -92,7 +92,7 @@ namespace Conductor.Api
         /// <param name="scheduleEndTime"> (optional)</param>
         /// <param name="limit"> (optional, default to 3)</param>
         /// <returns>List&lt;long?&gt;</returns>
-        List<long?> GetNextFewSchedules (string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null);
+        List<long?> GetNextFewSchedules(string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null);
 
         /// <summary>
         /// Get list of the next x (default 3, max 5) execution times for a scheduler
@@ -106,7 +106,7 @@ namespace Conductor.Api
         /// <param name="scheduleEndTime"> (optional)</param>
         /// <param name="limit"> (optional, default to 3)</param>
         /// <returns>ApiResponse of List&lt;long?&gt;</returns>
-        ApiResponse<List<long?>> GetNextFewSchedulesWithHttpInfo (string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null);
+        ApiResponse<List<long?>> GetNextFewSchedulesWithHttpInfo(string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null);
         /// <summary>
         /// Get an existing workflow schedule by name
         /// </summary>
@@ -116,7 +116,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>WorkflowSchedule</returns>
-        WorkflowSchedule GetSchedule (string name);
+        WorkflowSchedule GetSchedule(string name);
 
         /// <summary>
         /// Get an existing workflow schedule by name
@@ -127,7 +127,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of WorkflowSchedule</returns>
-        ApiResponse<WorkflowSchedule> GetScheduleWithHttpInfo (string name);
+        ApiResponse<WorkflowSchedule> GetScheduleWithHttpInfo(string name);
         /// <summary>
         /// Get tags by schedule
         /// </summary>
@@ -137,7 +137,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>List&lt;TagObject&gt;</returns>
-        List<TagObject> GetTagsForSchedule (string name);
+        List<TagObject> GetTagsForSchedule(string name);
 
         /// <summary>
         /// Get tags by schedule
@@ -148,7 +148,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of List&lt;TagObject&gt;</returns>
-        ApiResponse<List<TagObject>> GetTagsForScheduleWithHttpInfo (string name);
+        ApiResponse<List<TagObject>> GetTagsForScheduleWithHttpInfo(string name);
         /// <summary>
         /// Pause all scheduling in a single conductor server instance (for debugging only)
         /// </summary>
@@ -157,7 +157,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        Dictionary<string, Object> PauseAllSchedules ();
+        Dictionary<string, Object> PauseAllSchedules();
 
         /// <summary>
         /// Pause all scheduling in a single conductor server instance (for debugging only)
@@ -167,7 +167,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        ApiResponse<Dictionary<string, Object>> PauseAllSchedulesWithHttpInfo ();
+        ApiResponse<Dictionary<string, Object>> PauseAllSchedulesWithHttpInfo();
         /// <summary>
         /// Pauses an existing schedule by name
         /// </summary>
@@ -177,7 +177,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Object</returns>
-        Object PauseSchedule (string name);
+        Object PauseSchedule(string name);
 
         /// <summary>
         /// Pauses an existing schedule by name
@@ -188,7 +188,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> PauseScheduleWithHttpInfo (string name);
+        ApiResponse<Object> PauseScheduleWithHttpInfo(string name);
         /// <summary>
         /// Put a tag to schedule
         /// </summary>
@@ -199,7 +199,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void PutTagForSchedule (string name, string body = null);
+        void PutTagForSchedule(string name, string body = null);
 
         /// <summary>
         /// Put a tag to schedule
@@ -211,7 +211,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PutTagForScheduleWithHttpInfo (string name, string body = null);
+        ApiResponse<Object> PutTagForScheduleWithHttpInfo(string name, string body = null);
         /// <summary>
         /// Requeue all execution records
         /// </summary>
@@ -220,7 +220,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        Dictionary<string, Object> RequeueAllExecutionRecords ();
+        Dictionary<string, Object> RequeueAllExecutionRecords();
 
         /// <summary>
         /// Requeue all execution records
@@ -230,7 +230,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        ApiResponse<Dictionary<string, Object>> RequeueAllExecutionRecordsWithHttpInfo ();
+        ApiResponse<Dictionary<string, Object>> RequeueAllExecutionRecordsWithHttpInfo();
         /// <summary>
         /// Resume all scheduling
         /// </summary>
@@ -239,7 +239,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        Dictionary<string, Object> ResumeAllSchedules ();
+        Dictionary<string, Object> ResumeAllSchedules();
 
         /// <summary>
         /// Resume all scheduling
@@ -249,7 +249,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        ApiResponse<Dictionary<string, Object>> ResumeAllSchedulesWithHttpInfo ();
+        ApiResponse<Dictionary<string, Object>> ResumeAllSchedulesWithHttpInfo();
         /// <summary>
         /// Resume a paused schedule by name
         /// </summary>
@@ -259,7 +259,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Object</returns>
-        Object ResumeSchedule (string name);
+        Object ResumeSchedule(string name);
 
         /// <summary>
         /// Resume a paused schedule by name
@@ -270,7 +270,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> ResumeScheduleWithHttpInfo (string name);
+        ApiResponse<Object> ResumeScheduleWithHttpInfo(string name);
         /// <summary>
         /// Create or update a schedule for a specified workflow with a corresponding start workflow request
         /// </summary>
@@ -280,7 +280,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Object</returns>
-        Object SaveSchedule (SaveScheduleRequest body);
+        Object SaveSchedule(SaveScheduleRequest body);
 
         /// <summary>
         /// Create or update a schedule for a specified workflow with a corresponding start workflow request
@@ -291,7 +291,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> SaveScheduleWithHttpInfo (SaveScheduleRequest body);
+        ApiResponse<Object> SaveScheduleWithHttpInfo(SaveScheduleRequest body);
         /// <summary>
         /// Search for workflows based on payload and other parameters
         /// </summary>
@@ -305,7 +305,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultWorkflowScheduleExecutionModel</returns>
-        SearchResultWorkflowScheduleExecutionModel SearchV22 (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        SearchResultWorkflowScheduleExecutionModel SearchV22(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for workflows based on payload and other parameters
@@ -320,7 +320,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflowScheduleExecutionModel</returns>
-        ApiResponse<SearchResultWorkflowScheduleExecutionModel> SearchV22WithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        ApiResponse<SearchResultWorkflowScheduleExecutionModel> SearchV22WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Test timeout - do not use in production
         /// </summary>
@@ -329,7 +329,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns></returns>
-        void TestTimeout ();
+        void TestTimeout();
 
         /// <summary>
         /// Test timeout - do not use in production
@@ -339,7 +339,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TestTimeoutWithHttpInfo ();
+        ApiResponse<Object> TestTimeoutWithHttpInfo();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -351,7 +351,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> DeleteScheduleAsync (string name);
+        System.Threading.Tasks.Task<Object> DeleteScheduleAsync(string name);
 
         /// <summary>
         /// Deletes an existing workflow schedule by name
@@ -362,7 +362,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteScheduleAsyncWithHttpInfo (string name);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteScheduleAsyncWithHttpInfo(string name);
         /// <summary>
         /// Delete a tag for schedule
         /// </summary>
@@ -373,7 +373,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteTagForScheduleAsync (string name, string body = null);
+        System.Threading.Tasks.Task DeleteTagForScheduleAsync(string name, string body = null);
 
         /// <summary>
         /// Delete a tag for schedule
@@ -385,7 +385,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForScheduleAsyncWithHttpInfo (string name, string body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForScheduleAsyncWithHttpInfo(string name, string body = null);
         /// <summary>
         /// Get all existing workflow schedules and optionally filter by workflow name
         /// </summary>
@@ -395,7 +395,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowName"> (optional)</param>
         /// <returns>Task of List&lt;WorkflowSchedule&gt;</returns>
-        System.Threading.Tasks.Task<List<WorkflowSchedule>> GetAllSchedulesAsync (string workflowName = null);
+        System.Threading.Tasks.Task<List<WorkflowSchedule>> GetAllSchedulesAsync(string workflowName = null);
 
         /// <summary>
         /// Get all existing workflow schedules and optionally filter by workflow name
@@ -406,7 +406,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowName"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;WorkflowSchedule&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<WorkflowSchedule>>> GetAllSchedulesAsyncWithHttpInfo (string workflowName = null);
+        System.Threading.Tasks.Task<ApiResponse<List<WorkflowSchedule>>> GetAllSchedulesAsyncWithHttpInfo(string workflowName = null);
         /// <summary>
         /// Get list of the next x (default 3, max 5) execution times for a scheduler
         /// </summary>
@@ -419,7 +419,7 @@ namespace Conductor.Api
         /// <param name="scheduleEndTime"> (optional)</param>
         /// <param name="limit"> (optional, default to 3)</param>
         /// <returns>Task of List&lt;long?&gt;</returns>
-        System.Threading.Tasks.Task<List<long?>> GetNextFewSchedulesAsync (string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null);
+        System.Threading.Tasks.Task<List<long?>> GetNextFewSchedulesAsync(string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null);
 
         /// <summary>
         /// Get list of the next x (default 3, max 5) execution times for a scheduler
@@ -433,7 +433,7 @@ namespace Conductor.Api
         /// <param name="scheduleEndTime"> (optional)</param>
         /// <param name="limit"> (optional, default to 3)</param>
         /// <returns>Task of ApiResponse (List&lt;long?&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<long?>>> GetNextFewSchedulesAsyncWithHttpInfo (string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null);
+        System.Threading.Tasks.Task<ApiResponse<List<long?>>> GetNextFewSchedulesAsyncWithHttpInfo(string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null);
         /// <summary>
         /// Get an existing workflow schedule by name
         /// </summary>
@@ -443,7 +443,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of WorkflowSchedule</returns>
-        System.Threading.Tasks.Task<WorkflowSchedule> GetScheduleAsync (string name);
+        System.Threading.Tasks.Task<WorkflowSchedule> GetScheduleAsync(string name);
 
         /// <summary>
         /// Get an existing workflow schedule by name
@@ -454,7 +454,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (WorkflowSchedule)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorkflowSchedule>> GetScheduleAsyncWithHttpInfo (string name);
+        System.Threading.Tasks.Task<ApiResponse<WorkflowSchedule>> GetScheduleAsyncWithHttpInfo(string name);
         /// <summary>
         /// Get tags by schedule
         /// </summary>
@@ -464,7 +464,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
-        System.Threading.Tasks.Task<List<TagObject>> GetTagsForScheduleAsync (string name);
+        System.Threading.Tasks.Task<List<TagObject>> GetTagsForScheduleAsync(string name);
 
         /// <summary>
         /// Get tags by schedule
@@ -475,7 +475,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsForScheduleAsyncWithHttpInfo (string name);
+        System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsForScheduleAsyncWithHttpInfo(string name);
         /// <summary>
         /// Pause all scheduling in a single conductor server instance (for debugging only)
         /// </summary>
@@ -484,7 +484,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Object>> PauseAllSchedulesAsync ();
+        System.Threading.Tasks.Task<Dictionary<string, Object>> PauseAllSchedulesAsync();
 
         /// <summary>
         /// Pause all scheduling in a single conductor server instance (for debugging only)
@@ -494,7 +494,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> PauseAllSchedulesAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> PauseAllSchedulesAsyncWithHttpInfo();
         /// <summary>
         /// Pauses an existing schedule by name
         /// </summary>
@@ -504,7 +504,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> PauseScheduleAsync (string name);
+        System.Threading.Tasks.Task<Object> PauseScheduleAsync(string name);
 
         /// <summary>
         /// Pauses an existing schedule by name
@@ -515,7 +515,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PauseScheduleAsyncWithHttpInfo (string name);
+        System.Threading.Tasks.Task<ApiResponse<Object>> PauseScheduleAsyncWithHttpInfo(string name);
         /// <summary>
         /// Put a tag to schedule
         /// </summary>
@@ -526,7 +526,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PutTagForScheduleAsync (string name, string body = null);
+        System.Threading.Tasks.Task PutTagForScheduleAsync(string name, string body = null);
 
         /// <summary>
         /// Put a tag to schedule
@@ -538,7 +538,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForScheduleAsyncWithHttpInfo (string name, string body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForScheduleAsyncWithHttpInfo(string name, string body = null);
         /// <summary>
         /// Requeue all execution records
         /// </summary>
@@ -547,7 +547,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Object>> RequeueAllExecutionRecordsAsync ();
+        System.Threading.Tasks.Task<Dictionary<string, Object>> RequeueAllExecutionRecordsAsync();
 
         /// <summary>
         /// Requeue all execution records
@@ -557,7 +557,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> RequeueAllExecutionRecordsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> RequeueAllExecutionRecordsAsyncWithHttpInfo();
         /// <summary>
         /// Resume all scheduling
         /// </summary>
@@ -566,7 +566,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Object>> ResumeAllSchedulesAsync ();
+        System.Threading.Tasks.Task<Dictionary<string, Object>> ResumeAllSchedulesAsync();
 
         /// <summary>
         /// Resume all scheduling
@@ -576,7 +576,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> ResumeAllSchedulesAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> ResumeAllSchedulesAsyncWithHttpInfo();
         /// <summary>
         /// Resume a paused schedule by name
         /// </summary>
@@ -586,7 +586,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> ResumeScheduleAsync (string name);
+        System.Threading.Tasks.Task<Object> ResumeScheduleAsync(string name);
 
         /// <summary>
         /// Resume a paused schedule by name
@@ -597,7 +597,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ResumeScheduleAsyncWithHttpInfo (string name);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ResumeScheduleAsyncWithHttpInfo(string name);
         /// <summary>
         /// Create or update a schedule for a specified workflow with a corresponding start workflow request
         /// </summary>
@@ -607,7 +607,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> SaveScheduleAsync (SaveScheduleRequest body);
+        System.Threading.Tasks.Task<Object> SaveScheduleAsync(SaveScheduleRequest body);
 
         /// <summary>
         /// Create or update a schedule for a specified workflow with a corresponding start workflow request
@@ -618,7 +618,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SaveScheduleAsyncWithHttpInfo (SaveScheduleRequest body);
+        System.Threading.Tasks.Task<ApiResponse<Object>> SaveScheduleAsyncWithHttpInfo(SaveScheduleRequest body);
         /// <summary>
         /// Search for workflows based on payload and other parameters
         /// </summary>
@@ -632,7 +632,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflowScheduleExecutionModel</returns>
-        System.Threading.Tasks.Task<SearchResultWorkflowScheduleExecutionModel> SearchV22Async (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<SearchResultWorkflowScheduleExecutionModel> SearchV22Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for workflows based on payload and other parameters
@@ -647,7 +647,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflowScheduleExecutionModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowScheduleExecutionModel>> SearchV22AsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowScheduleExecutionModel>> SearchV22AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Test timeout - do not use in production
         /// </summary>
@@ -656,7 +656,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task TestTimeoutAsync ();
+        System.Threading.Tasks.Task TestTimeoutAsync();
 
         /// <summary>
         /// Test timeout - do not use in production
@@ -666,14 +666,14 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TestTimeoutAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> TestTimeoutAsyncWithHttpInfo();
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class SchedulerResourceApi : ISchedulerResourceApi
+    public partial class SchedulerResourceApi : ISchedulerResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -738,7 +738,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -784,10 +784,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Object</returns>
-        public Object DeleteSchedule (string name)
+        public Object DeleteSchedule(string name)
         {
-             ApiResponse<Object> localVarResponse = DeleteScheduleWithHttpInfo(name);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = DeleteScheduleWithHttpInfo(name);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -796,7 +796,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > DeleteScheduleWithHttpInfo (string name)
+        public ApiResponse<Object> DeleteScheduleWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -831,11 +831,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -845,7 +845,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -854,10 +854,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> DeleteScheduleAsync (string name)
+        public async System.Threading.Tasks.Task<Object> DeleteScheduleAsync(string name)
         {
-             ApiResponse<Object> localVarResponse = await DeleteScheduleAsyncWithHttpInfo(name);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await DeleteScheduleAsyncWithHttpInfo(name);
+            return localVarResponse.Data;
 
         }
 
@@ -867,7 +867,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteScheduleAsyncWithHttpInfo (string name)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteScheduleAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -902,11 +902,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -916,7 +916,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -926,9 +926,9 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void DeleteTagForSchedule (string name, string body = null)
+        public void DeleteTagForSchedule(string name, string body = null)
         {
-             DeleteTagForScheduleWithHttpInfo(name, body);
+            DeleteTagForScheduleWithHttpInfo(name, body);
         }
 
         /// <summary>
@@ -938,7 +938,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteTagForScheduleWithHttpInfo (string name, string body = null)
+        public ApiResponse<Object> DeleteTagForScheduleWithHttpInfo(string name, string body = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -981,11 +981,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1005,9 +1005,9 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteTagForScheduleAsync (string name, string body = null)
+        public async System.Threading.Tasks.Task DeleteTagForScheduleAsync(string name, string body = null)
         {
-             await DeleteTagForScheduleAsyncWithHttpInfo(name, body);
+            await DeleteTagForScheduleAsyncWithHttpInfo(name, body);
 
         }
 
@@ -1018,7 +1018,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForScheduleAsyncWithHttpInfo (string name, string body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForScheduleAsyncWithHttpInfo(string name, string body = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1061,11 +1061,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1084,10 +1084,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowName"> (optional)</param>
         /// <returns>List&lt;WorkflowSchedule&gt;</returns>
-        public List<WorkflowSchedule> GetAllSchedules (string workflowName = null)
+        public List<WorkflowSchedule> GetAllSchedules(string workflowName = null)
         {
-             ApiResponse<List<WorkflowSchedule>> localVarResponse = GetAllSchedulesWithHttpInfo(workflowName);
-             return localVarResponse.Data;
+            ApiResponse<List<WorkflowSchedule>> localVarResponse = GetAllSchedulesWithHttpInfo(workflowName);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1096,7 +1096,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowName"> (optional)</param>
         /// <returns>ApiResponse of List&lt;WorkflowSchedule&gt;</returns>
-        public ApiResponse< List<WorkflowSchedule> > GetAllSchedulesWithHttpInfo (string workflowName = null)
+        public ApiResponse<List<WorkflowSchedule>> GetAllSchedulesWithHttpInfo(string workflowName = null)
         {
 
             var localVarPath = "/api/scheduler/schedules";
@@ -1128,11 +1128,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1142,7 +1142,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<WorkflowSchedule>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<WorkflowSchedule>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkflowSchedule>)));
+                (List<WorkflowSchedule>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkflowSchedule>)));
         }
 
         /// <summary>
@@ -1151,10 +1151,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowName"> (optional)</param>
         /// <returns>Task of List&lt;WorkflowSchedule&gt;</returns>
-        public async System.Threading.Tasks.Task<List<WorkflowSchedule>> GetAllSchedulesAsync (string workflowName = null)
+        public async System.Threading.Tasks.Task<List<WorkflowSchedule>> GetAllSchedulesAsync(string workflowName = null)
         {
-             ApiResponse<List<WorkflowSchedule>> localVarResponse = await GetAllSchedulesAsyncWithHttpInfo(workflowName);
-             return localVarResponse.Data;
+            ApiResponse<List<WorkflowSchedule>> localVarResponse = await GetAllSchedulesAsyncWithHttpInfo(workflowName);
+            return localVarResponse.Data;
 
         }
 
@@ -1164,7 +1164,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowName"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;WorkflowSchedule&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<WorkflowSchedule>>> GetAllSchedulesAsyncWithHttpInfo (string workflowName = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<WorkflowSchedule>>> GetAllSchedulesAsyncWithHttpInfo(string workflowName = null)
         {
 
             var localVarPath = "/api/scheduler/schedules";
@@ -1196,11 +1196,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1210,7 +1210,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<WorkflowSchedule>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<WorkflowSchedule>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkflowSchedule>)));
+                (List<WorkflowSchedule>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkflowSchedule>)));
         }
 
         /// <summary>
@@ -1222,10 +1222,10 @@ namespace Conductor.Api
         /// <param name="scheduleEndTime"> (optional)</param>
         /// <param name="limit"> (optional, default to 3)</param>
         /// <returns>List&lt;long?&gt;</returns>
-        public List<long?> GetNextFewSchedules (string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null)
+        public List<long?> GetNextFewSchedules(string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null)
         {
-             ApiResponse<List<long?>> localVarResponse = GetNextFewSchedulesWithHttpInfo(cronExpression, scheduleStartTime, scheduleEndTime, limit);
-             return localVarResponse.Data;
+            ApiResponse<List<long?>> localVarResponse = GetNextFewSchedulesWithHttpInfo(cronExpression, scheduleStartTime, scheduleEndTime, limit);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1237,7 +1237,7 @@ namespace Conductor.Api
         /// <param name="scheduleEndTime"> (optional)</param>
         /// <param name="limit"> (optional, default to 3)</param>
         /// <returns>ApiResponse of List&lt;long?&gt;</returns>
-        public ApiResponse< List<long?> > GetNextFewSchedulesWithHttpInfo (string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null)
+        public ApiResponse<List<long?>> GetNextFewSchedulesWithHttpInfo(string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null)
         {
             // verify the required parameter 'cronExpression' is set
             if (cronExpression == null)
@@ -1275,11 +1275,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1289,7 +1289,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<long?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<long?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<long?>)));
+                (List<long?>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<long?>)));
         }
 
         /// <summary>
@@ -1301,10 +1301,10 @@ namespace Conductor.Api
         /// <param name="scheduleEndTime"> (optional)</param>
         /// <param name="limit"> (optional, default to 3)</param>
         /// <returns>Task of List&lt;long?&gt;</returns>
-        public async System.Threading.Tasks.Task<List<long?>> GetNextFewSchedulesAsync (string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null)
+        public async System.Threading.Tasks.Task<List<long?>> GetNextFewSchedulesAsync(string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null)
         {
-             ApiResponse<List<long?>> localVarResponse = await GetNextFewSchedulesAsyncWithHttpInfo(cronExpression, scheduleStartTime, scheduleEndTime, limit);
-             return localVarResponse.Data;
+            ApiResponse<List<long?>> localVarResponse = await GetNextFewSchedulesAsyncWithHttpInfo(cronExpression, scheduleStartTime, scheduleEndTime, limit);
+            return localVarResponse.Data;
 
         }
 
@@ -1317,7 +1317,7 @@ namespace Conductor.Api
         /// <param name="scheduleEndTime"> (optional)</param>
         /// <param name="limit"> (optional, default to 3)</param>
         /// <returns>Task of ApiResponse (List&lt;long?&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<long?>>> GetNextFewSchedulesAsyncWithHttpInfo (string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<long?>>> GetNextFewSchedulesAsyncWithHttpInfo(string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null)
         {
             // verify the required parameter 'cronExpression' is set
             if (cronExpression == null)
@@ -1355,11 +1355,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1369,7 +1369,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<long?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<long?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<long?>)));
+                (List<long?>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<long?>)));
         }
 
         /// <summary>
@@ -1378,10 +1378,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>WorkflowSchedule</returns>
-        public WorkflowSchedule GetSchedule (string name)
+        public WorkflowSchedule GetSchedule(string name)
         {
-             ApiResponse<WorkflowSchedule> localVarResponse = GetScheduleWithHttpInfo(name);
-             return localVarResponse.Data;
+            ApiResponse<WorkflowSchedule> localVarResponse = GetScheduleWithHttpInfo(name);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1390,7 +1390,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of WorkflowSchedule</returns>
-        public ApiResponse< WorkflowSchedule > GetScheduleWithHttpInfo (string name)
+        public ApiResponse<WorkflowSchedule> GetScheduleWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1425,11 +1425,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1439,7 +1439,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WorkflowSchedule>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WorkflowSchedule) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowSchedule)));
+                (WorkflowSchedule)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowSchedule)));
         }
 
         /// <summary>
@@ -1448,10 +1448,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of WorkflowSchedule</returns>
-        public async System.Threading.Tasks.Task<WorkflowSchedule> GetScheduleAsync (string name)
+        public async System.Threading.Tasks.Task<WorkflowSchedule> GetScheduleAsync(string name)
         {
-             ApiResponse<WorkflowSchedule> localVarResponse = await GetScheduleAsyncWithHttpInfo(name);
-             return localVarResponse.Data;
+            ApiResponse<WorkflowSchedule> localVarResponse = await GetScheduleAsyncWithHttpInfo(name);
+            return localVarResponse.Data;
 
         }
 
@@ -1461,7 +1461,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (WorkflowSchedule)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WorkflowSchedule>> GetScheduleAsyncWithHttpInfo (string name)
+        public async System.Threading.Tasks.Task<ApiResponse<WorkflowSchedule>> GetScheduleAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1496,11 +1496,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1510,7 +1510,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WorkflowSchedule>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WorkflowSchedule) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowSchedule)));
+                (WorkflowSchedule)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowSchedule)));
         }
 
         /// <summary>
@@ -1519,10 +1519,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>List&lt;TagObject&gt;</returns>
-        public List<TagObject> GetTagsForSchedule (string name)
+        public List<TagObject> GetTagsForSchedule(string name)
         {
-             ApiResponse<List<TagObject>> localVarResponse = GetTagsForScheduleWithHttpInfo(name);
-             return localVarResponse.Data;
+            ApiResponse<List<TagObject>> localVarResponse = GetTagsForScheduleWithHttpInfo(name);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1531,7 +1531,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of List&lt;TagObject&gt;</returns>
-        public ApiResponse< List<TagObject> > GetTagsForScheduleWithHttpInfo (string name)
+        public ApiResponse<List<TagObject>> GetTagsForScheduleWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1566,11 +1566,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1580,7 +1580,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<TagObject>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<TagObject>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
+                (List<TagObject>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
         }
 
         /// <summary>
@@ -1589,10 +1589,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
-        public async System.Threading.Tasks.Task<List<TagObject>> GetTagsForScheduleAsync (string name)
+        public async System.Threading.Tasks.Task<List<TagObject>> GetTagsForScheduleAsync(string name)
         {
-             ApiResponse<List<TagObject>> localVarResponse = await GetTagsForScheduleAsyncWithHttpInfo(name);
-             return localVarResponse.Data;
+            ApiResponse<List<TagObject>> localVarResponse = await GetTagsForScheduleAsyncWithHttpInfo(name);
+            return localVarResponse.Data;
 
         }
 
@@ -1602,7 +1602,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsForScheduleAsyncWithHttpInfo (string name)
+        public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsForScheduleAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1637,11 +1637,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1651,7 +1651,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<TagObject>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<TagObject>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
+                (List<TagObject>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
         }
 
         /// <summary>
@@ -1659,10 +1659,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        public Dictionary<string, Object> PauseAllSchedules ()
+        public Dictionary<string, Object> PauseAllSchedules()
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = PauseAllSchedulesWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = PauseAllSchedulesWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1670,7 +1670,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        public ApiResponse< Dictionary<string, Object> > PauseAllSchedulesWithHttpInfo ()
+        public ApiResponse<Dictionary<string, Object>> PauseAllSchedulesWithHttpInfo()
         {
 
             var localVarPath = "/api/scheduler/admin/pause";
@@ -1701,11 +1701,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1715,7 +1715,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -1723,10 +1723,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, Object>> PauseAllSchedulesAsync ()
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> PauseAllSchedulesAsync()
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = await PauseAllSchedulesAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = await PauseAllSchedulesAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -1735,7 +1735,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> PauseAllSchedulesAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> PauseAllSchedulesAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/scheduler/admin/pause";
@@ -1766,11 +1766,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1780,7 +1780,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -1789,10 +1789,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Object</returns>
-        public Object PauseSchedule (string name)
+        public Object PauseSchedule(string name)
         {
-             ApiResponse<Object> localVarResponse = PauseScheduleWithHttpInfo(name);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = PauseScheduleWithHttpInfo(name);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1801,7 +1801,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > PauseScheduleWithHttpInfo (string name)
+        public ApiResponse<Object> PauseScheduleWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1836,11 +1836,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1850,7 +1850,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1859,10 +1859,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> PauseScheduleAsync (string name)
+        public async System.Threading.Tasks.Task<Object> PauseScheduleAsync(string name)
         {
-             ApiResponse<Object> localVarResponse = await PauseScheduleAsyncWithHttpInfo(name);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await PauseScheduleAsyncWithHttpInfo(name);
+            return localVarResponse.Data;
 
         }
 
@@ -1872,7 +1872,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PauseScheduleAsyncWithHttpInfo (string name)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PauseScheduleAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1907,11 +1907,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1921,7 +1921,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1931,9 +1931,9 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void PutTagForSchedule (string name, string body = null)
+        public void PutTagForSchedule(string name, string body = null)
         {
-             PutTagForScheduleWithHttpInfo(name, body);
+            PutTagForScheduleWithHttpInfo(name, body);
         }
 
         /// <summary>
@@ -1943,7 +1943,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PutTagForScheduleWithHttpInfo (string name, string body = null)
+        public ApiResponse<Object> PutTagForScheduleWithHttpInfo(string name, string body = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1986,11 +1986,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2010,9 +2010,9 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PutTagForScheduleAsync (string name, string body = null)
+        public async System.Threading.Tasks.Task PutTagForScheduleAsync(string name, string body = null)
         {
-             await PutTagForScheduleAsyncWithHttpInfo(name, body);
+            await PutTagForScheduleAsyncWithHttpInfo(name, body);
 
         }
 
@@ -2023,7 +2023,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForScheduleAsyncWithHttpInfo (string name, string body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForScheduleAsyncWithHttpInfo(string name, string body = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -2066,11 +2066,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2088,10 +2088,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        public Dictionary<string, Object> RequeueAllExecutionRecords ()
+        public Dictionary<string, Object> RequeueAllExecutionRecords()
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = RequeueAllExecutionRecordsWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = RequeueAllExecutionRecordsWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2099,7 +2099,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        public ApiResponse< Dictionary<string, Object> > RequeueAllExecutionRecordsWithHttpInfo ()
+        public ApiResponse<Dictionary<string, Object>> RequeueAllExecutionRecordsWithHttpInfo()
         {
 
             var localVarPath = "/api/scheduler/admin/requeue";
@@ -2130,11 +2130,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2144,7 +2144,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -2152,10 +2152,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, Object>> RequeueAllExecutionRecordsAsync ()
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> RequeueAllExecutionRecordsAsync()
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = await RequeueAllExecutionRecordsAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = await RequeueAllExecutionRecordsAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -2164,7 +2164,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> RequeueAllExecutionRecordsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> RequeueAllExecutionRecordsAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/scheduler/admin/requeue";
@@ -2195,11 +2195,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2209,7 +2209,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -2217,10 +2217,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        public Dictionary<string, Object> ResumeAllSchedules ()
+        public Dictionary<string, Object> ResumeAllSchedules()
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = ResumeAllSchedulesWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = ResumeAllSchedulesWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2228,7 +2228,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        public ApiResponse< Dictionary<string, Object> > ResumeAllSchedulesWithHttpInfo ()
+        public ApiResponse<Dictionary<string, Object>> ResumeAllSchedulesWithHttpInfo()
         {
 
             var localVarPath = "/api/scheduler/admin/resume";
@@ -2259,11 +2259,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2273,7 +2273,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -2281,10 +2281,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, Object>> ResumeAllSchedulesAsync ()
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> ResumeAllSchedulesAsync()
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = await ResumeAllSchedulesAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = await ResumeAllSchedulesAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -2293,7 +2293,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> ResumeAllSchedulesAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> ResumeAllSchedulesAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/scheduler/admin/resume";
@@ -2324,11 +2324,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2338,7 +2338,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -2347,10 +2347,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Object</returns>
-        public Object ResumeSchedule (string name)
+        public Object ResumeSchedule(string name)
         {
-             ApiResponse<Object> localVarResponse = ResumeScheduleWithHttpInfo(name);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = ResumeScheduleWithHttpInfo(name);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2359,7 +2359,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > ResumeScheduleWithHttpInfo (string name)
+        public ApiResponse<Object> ResumeScheduleWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -2394,11 +2394,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2408,7 +2408,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2417,10 +2417,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> ResumeScheduleAsync (string name)
+        public async System.Threading.Tasks.Task<Object> ResumeScheduleAsync(string name)
         {
-             ApiResponse<Object> localVarResponse = await ResumeScheduleAsyncWithHttpInfo(name);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await ResumeScheduleAsyncWithHttpInfo(name);
+            return localVarResponse.Data;
 
         }
 
@@ -2430,7 +2430,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ResumeScheduleAsyncWithHttpInfo (string name)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ResumeScheduleAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -2465,11 +2465,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2479,7 +2479,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2488,10 +2488,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Object</returns>
-        public Object SaveSchedule (SaveScheduleRequest body)
+        public Object SaveSchedule(SaveScheduleRequest body)
         {
-             ApiResponse<Object> localVarResponse = SaveScheduleWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = SaveScheduleWithHttpInfo(body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2500,7 +2500,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > SaveScheduleWithHttpInfo (SaveScheduleRequest body)
+        public ApiResponse<Object> SaveScheduleWithHttpInfo(SaveScheduleRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2543,11 +2543,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2557,7 +2557,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2566,10 +2566,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> SaveScheduleAsync (SaveScheduleRequest body)
+        public async System.Threading.Tasks.Task<Object> SaveScheduleAsync(SaveScheduleRequest body)
         {
-             ApiResponse<Object> localVarResponse = await SaveScheduleAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await SaveScheduleAsyncWithHttpInfo(body);
+            return localVarResponse.Data;
 
         }
 
@@ -2579,7 +2579,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> SaveScheduleAsyncWithHttpInfo (SaveScheduleRequest body)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> SaveScheduleAsyncWithHttpInfo(SaveScheduleRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2622,11 +2622,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2636,7 +2636,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2649,10 +2649,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultWorkflowScheduleExecutionModel</returns>
-        public SearchResultWorkflowScheduleExecutionModel SearchV22 (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public SearchResultWorkflowScheduleExecutionModel SearchV22(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultWorkflowScheduleExecutionModel> localVarResponse = SearchV22WithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultWorkflowScheduleExecutionModel> localVarResponse = SearchV22WithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2665,7 +2665,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultWorkflowScheduleExecutionModel</returns>
-        public ApiResponse< SearchResultWorkflowScheduleExecutionModel > SearchV22WithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public ApiResponse<SearchResultWorkflowScheduleExecutionModel> SearchV22WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/scheduler/search/executions";
@@ -2701,11 +2701,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2715,7 +2715,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultWorkflowScheduleExecutionModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultWorkflowScheduleExecutionModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflowScheduleExecutionModel)));
+                (SearchResultWorkflowScheduleExecutionModel)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflowScheduleExecutionModel)));
         }
 
         /// <summary>
@@ -2728,10 +2728,10 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflowScheduleExecutionModel</returns>
-        public async System.Threading.Tasks.Task<SearchResultWorkflowScheduleExecutionModel> SearchV22Async (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<SearchResultWorkflowScheduleExecutionModel> SearchV22Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-             ApiResponse<SearchResultWorkflowScheduleExecutionModel> localVarResponse = await SearchV22AsyncWithHttpInfo(start, size, sort, freeText, query);
-             return localVarResponse.Data;
+            ApiResponse<SearchResultWorkflowScheduleExecutionModel> localVarResponse = await SearchV22AsyncWithHttpInfo(start, size, sort, freeText, query);
+            return localVarResponse.Data;
 
         }
 
@@ -2745,7 +2745,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflowScheduleExecutionModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowScheduleExecutionModel>> SearchV22AsyncWithHttpInfo (int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowScheduleExecutionModel>> SearchV22AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/api/scheduler/search/executions";
@@ -2781,11 +2781,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2795,7 +2795,7 @@ namespace Conductor.Api
 
             return new ApiResponse<SearchResultWorkflowScheduleExecutionModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResultWorkflowScheduleExecutionModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflowScheduleExecutionModel)));
+                (SearchResultWorkflowScheduleExecutionModel)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultWorkflowScheduleExecutionModel)));
         }
 
         /// <summary>
@@ -2803,9 +2803,9 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns></returns>
-        public void TestTimeout ()
+        public void TestTimeout()
         {
-             TestTimeoutWithHttpInfo();
+            TestTimeoutWithHttpInfo();
         }
 
         /// <summary>
@@ -2813,7 +2813,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> TestTimeoutWithHttpInfo ()
+        public ApiResponse<Object> TestTimeoutWithHttpInfo()
         {
 
             var localVarPath = "/api/scheduler/test/timeout";
@@ -2843,11 +2843,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2865,9 +2865,9 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task TestTimeoutAsync ()
+        public async System.Threading.Tasks.Task TestTimeoutAsync()
         {
-             await TestTimeoutAsyncWithHttpInfo();
+            await TestTimeoutAsyncWithHttpInfo();
 
         }
 
@@ -2876,7 +2876,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TestTimeoutAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TestTimeoutAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/scheduler/test/timeout";
@@ -2906,11 +2906,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {

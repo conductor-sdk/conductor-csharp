@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// ConductorUser
     /// </summary>
     [DataContract]
-        public partial class ConductorUser :  IEquatable<ConductorUser>, IValidatableObject
+    public partial class ConductorUser : IEquatable<ConductorUser>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ConductorUser" /> class.
@@ -39,41 +39,41 @@ namespace Conductor.Models
             this.Roles = roles;
             this.Uuid = uuid;
         }
-        
+
         /// <summary>
         /// Gets or Sets ApplicationUser
         /// </summary>
-        [DataMember(Name="applicationUser", EmitDefaultValue=false)]
+        [DataMember(Name = "applicationUser", EmitDefaultValue = false)]
         public bool? ApplicationUser { get; set; }
 
         /// <summary>
         /// Gets or Sets Groups
         /// </summary>
-        [DataMember(Name="groups", EmitDefaultValue=false)]
+        [DataMember(Name = "groups", EmitDefaultValue = false)]
         public List<Group> Groups { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Roles
         /// </summary>
-        [DataMember(Name="roles", EmitDefaultValue=false)]
+        [DataMember(Name = "roles", EmitDefaultValue = false)]
         public List<Role> Roles { get; set; }
 
         /// <summary>
         /// Gets or Sets Uuid
         /// </summary>
-        [DataMember(Name="uuid", EmitDefaultValue=false)]
+        [DataMember(Name = "uuid", EmitDefaultValue = false)]
         public string Uuid { get; set; }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -123,34 +123,34 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ApplicationUser == input.ApplicationUser ||
                     (this.ApplicationUser != null &&
                     this.ApplicationUser.Equals(input.ApplicationUser))
-                ) && 
+                ) &&
                 (
                     this.Groups == input.Groups ||
                     this.Groups != null &&
                     input.Groups != null &&
                     this.Groups.SequenceEqual(input.Groups)
-                ) && 
+                ) &&
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Roles == input.Roles ||
                     this.Roles != null &&
                     input.Roles != null &&
                     this.Roles.SequenceEqual(input.Roles)
-                ) && 
+                ) &&
                 (
                     this.Uuid == input.Uuid ||
                     (this.Uuid != null &&

@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// WorkflowDef
     /// </summary>
     [DataContract]
-        public partial class WorkflowDef :  IEquatable<WorkflowDef>, IValidatableObject
+    public partial class WorkflowDef : IEquatable<WorkflowDef>, IValidatableObject
     {
         /// <summary>
         /// Defines TimeoutPolicy
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum TimeoutPolicyEnum
+        public enum TimeoutPolicyEnum
         {
             /// <summary>
             /// Enum TIMEOUTWF for value: TIME_OUT_WF
@@ -36,11 +36,12 @@ namespace Conductor.Models
             /// Enum ALERTONLY for value: ALERT_ONLY
             /// </summary>
             [EnumMember(Value = "ALERT_ONLY")]
-            ALERTONLY = 2        }
+            ALERTONLY = 2
+        }
         /// <summary>
         /// Gets or Sets TimeoutPolicy
         /// </summary>
-        [DataMember(Name="timeoutPolicy", EmitDefaultValue=false)]
+        [DataMember(Name = "timeoutPolicy", EmitDefaultValue = false)]
         public TimeoutPolicyEnum? TimeoutPolicy { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowDef" /> class.
@@ -112,120 +113,120 @@ namespace Conductor.Models
             this.Version = version;
             this.WorkflowStatusListenerEnabled = workflowStatusListenerEnabled;
         }
-        
+
         /// <summary>
         /// Gets or Sets CreateTime
         /// </summary>
-        [DataMember(Name="createTime", EmitDefaultValue=false)]
+        [DataMember(Name = "createTime", EmitDefaultValue = false)]
         public long? CreateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name = "createdBy", EmitDefaultValue = false)]
         public string CreatedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets FailureWorkflow
         /// </summary>
-        [DataMember(Name="failureWorkflow", EmitDefaultValue=false)]
+        [DataMember(Name = "failureWorkflow", EmitDefaultValue = false)]
         public string FailureWorkflow { get; set; }
 
         /// <summary>
         /// Gets or Sets InputParameters
         /// </summary>
-        [DataMember(Name="inputParameters", EmitDefaultValue=false)]
+        [DataMember(Name = "inputParameters", EmitDefaultValue = false)]
         public List<string> InputParameters { get; set; }
 
         /// <summary>
         /// Gets or Sets InputTemplate
         /// </summary>
-        [DataMember(Name="inputTemplate", EmitDefaultValue=false)]
+        [DataMember(Name = "inputTemplate", EmitDefaultValue = false)]
         public Dictionary<string, Object> InputTemplate { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets OutputParameters
         /// </summary>
-        [DataMember(Name="outputParameters", EmitDefaultValue=false)]
+        [DataMember(Name = "outputParameters", EmitDefaultValue = false)]
         public Dictionary<string, Object> OutputParameters { get; set; }
 
         /// <summary>
         /// Gets or Sets OwnerApp
         /// </summary>
-        [DataMember(Name="ownerApp", EmitDefaultValue=false)]
+        [DataMember(Name = "ownerApp", EmitDefaultValue = false)]
         public string OwnerApp { get; set; }
 
         /// <summary>
         /// Gets or Sets OwnerEmail
         /// </summary>
-        [DataMember(Name="ownerEmail", EmitDefaultValue=false)]
+        [DataMember(Name = "ownerEmail", EmitDefaultValue = false)]
         public string OwnerEmail { get; set; }
 
         /// <summary>
         /// Gets or Sets Restartable
         /// </summary>
-        [DataMember(Name="restartable", EmitDefaultValue=false)]
+        [DataMember(Name = "restartable", EmitDefaultValue = false)]
         public bool? Restartable { get; set; }
 
         /// <summary>
         /// Gets or Sets SchemaVersion
         /// </summary>
-        [DataMember(Name="schemaVersion", EmitDefaultValue=false)]
+        [DataMember(Name = "schemaVersion", EmitDefaultValue = false)]
         public int? SchemaVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets Tasks
         /// </summary>
-        [DataMember(Name="tasks", EmitDefaultValue=false)]
+        [DataMember(Name = "tasks", EmitDefaultValue = false)]
         public List<WorkflowTask> Tasks { get; set; }
 
 
         /// <summary>
         /// Gets or Sets TimeoutSeconds
         /// </summary>
-        [DataMember(Name="timeoutSeconds", EmitDefaultValue=false)]
+        [DataMember(Name = "timeoutSeconds", EmitDefaultValue = false)]
         public long? TimeoutSeconds { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdateTime
         /// </summary>
-        [DataMember(Name="updateTime", EmitDefaultValue=false)]
+        [DataMember(Name = "updateTime", EmitDefaultValue = false)]
         public long? UpdateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdatedBy
         /// </summary>
-        [DataMember(Name="updatedBy", EmitDefaultValue=false)]
+        [DataMember(Name = "updatedBy", EmitDefaultValue = false)]
         public string UpdatedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets Variables
         /// </summary>
-        [DataMember(Name="variables", EmitDefaultValue=false)]
+        [DataMember(Name = "variables", EmitDefaultValue = false)]
         public Dictionary<string, Object> Variables { get; set; }
 
         /// <summary>
         /// Gets or Sets Version
         /// </summary>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name = "version", EmitDefaultValue = false)]
         public int? Version { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowStatusListenerEnabled
         /// </summary>
-        [DataMember(Name="workflowStatusListenerEnabled", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowStatusListenerEnabled", EmitDefaultValue = false)]
         public bool? WorkflowStatusListenerEnabled { get; set; }
 
         /// <summary>
@@ -259,7 +260,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -289,107 +290,107 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CreateTime == input.CreateTime ||
                     (this.CreateTime != null &&
                     this.CreateTime.Equals(input.CreateTime))
-                ) && 
+                ) &&
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.FailureWorkflow == input.FailureWorkflow ||
                     (this.FailureWorkflow != null &&
                     this.FailureWorkflow.Equals(input.FailureWorkflow))
-                ) && 
+                ) &&
                 (
                     this.InputParameters == input.InputParameters ||
                     this.InputParameters != null &&
                     input.InputParameters != null &&
                     this.InputParameters.SequenceEqual(input.InputParameters)
-                ) && 
+                ) &&
                 (
                     this.InputTemplate == input.InputTemplate ||
                     this.InputTemplate != null &&
                     input.InputTemplate != null &&
                     this.InputTemplate.SequenceEqual(input.InputTemplate)
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.OutputParameters == input.OutputParameters ||
                     this.OutputParameters != null &&
                     input.OutputParameters != null &&
                     this.OutputParameters.SequenceEqual(input.OutputParameters)
-                ) && 
+                ) &&
                 (
                     this.OwnerApp == input.OwnerApp ||
                     (this.OwnerApp != null &&
                     this.OwnerApp.Equals(input.OwnerApp))
-                ) && 
+                ) &&
                 (
                     this.OwnerEmail == input.OwnerEmail ||
                     (this.OwnerEmail != null &&
                     this.OwnerEmail.Equals(input.OwnerEmail))
-                ) && 
+                ) &&
                 (
                     this.Restartable == input.Restartable ||
                     (this.Restartable != null &&
                     this.Restartable.Equals(input.Restartable))
-                ) && 
+                ) &&
                 (
                     this.SchemaVersion == input.SchemaVersion ||
                     (this.SchemaVersion != null &&
                     this.SchemaVersion.Equals(input.SchemaVersion))
-                ) && 
+                ) &&
                 (
                     this.Tasks == input.Tasks ||
                     this.Tasks != null &&
                     input.Tasks != null &&
                     this.Tasks.SequenceEqual(input.Tasks)
-                ) && 
+                ) &&
                 (
                     this.TimeoutPolicy == input.TimeoutPolicy ||
                     (this.TimeoutPolicy != null &&
                     this.TimeoutPolicy.Equals(input.TimeoutPolicy))
-                ) && 
+                ) &&
                 (
                     this.TimeoutSeconds == input.TimeoutSeconds ||
                     (this.TimeoutSeconds != null &&
                     this.TimeoutSeconds.Equals(input.TimeoutSeconds))
-                ) && 
+                ) &&
                 (
                     this.UpdateTime == input.UpdateTime ||
                     (this.UpdateTime != null &&
                     this.UpdateTime.Equals(input.UpdateTime))
-                ) && 
+                ) &&
                 (
                     this.UpdatedBy == input.UpdatedBy ||
                     (this.UpdatedBy != null &&
                     this.UpdatedBy.Equals(input.UpdatedBy))
-                ) && 
+                ) &&
                 (
                     this.Variables == input.Variables ||
                     this.Variables != null &&
                     input.Variables != null &&
                     this.Variables.SequenceEqual(input.Variables)
-                ) && 
+                ) &&
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
                     this.Version.Equals(input.Version))
-                ) && 
+                ) &&
                 (
                     this.WorkflowStatusListenerEnabled == input.WorkflowStatusListenerEnabled ||
                     (this.WorkflowStatusListenerEnabled != null &&

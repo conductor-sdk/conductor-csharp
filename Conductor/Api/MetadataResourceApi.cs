@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IMetadataResourceApi : IApiAccessor
+    public interface IMetadataResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -25,7 +25,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to false)</param>
         /// <returns>Object</returns>
-        Object Create (WorkflowDef body, bool? overwrite = null);
+        Object Create(WorkflowDef body, bool? overwrite = null);
 
         /// <summary>
         /// Create a new workflow definition
@@ -37,7 +37,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> CreateWithHttpInfo (WorkflowDef body, bool? overwrite = null);
+        ApiResponse<Object> CreateWithHttpInfo(WorkflowDef body, bool? overwrite = null);
         /// <summary>
         /// Retrieves workflow definition along with blueprint
         /// </summary>
@@ -49,7 +49,7 @@ namespace Conductor.Api
         /// <param name="version"> (optional)</param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>WorkflowDef</returns>
-        WorkflowDef Get (string name, int? version = null, bool? metadata = null);
+        WorkflowDef Get(string name, int? version = null, bool? metadata = null);
 
         /// <summary>
         /// Retrieves workflow definition along with blueprint
@@ -62,7 +62,7 @@ namespace Conductor.Api
         /// <param name="version"> (optional)</param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>ApiResponse of WorkflowDef</returns>
-        ApiResponse<WorkflowDef> GetWithHttpInfo (string name, int? version = null, bool? metadata = null);
+        ApiResponse<WorkflowDef> GetWithHttpInfo(string name, int? version = null, bool? metadata = null);
         /// <summary>
         /// Retrieves all workflow definition along with blueprint
         /// </summary>
@@ -75,7 +75,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>List&lt;WorkflowDef&gt;</returns>
-        List<WorkflowDef> GetAllWorkflows (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
+        List<WorkflowDef> GetAllWorkflows(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
 
         /// <summary>
         /// Retrieves all workflow definition along with blueprint
@@ -89,7 +89,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>ApiResponse of List&lt;WorkflowDef&gt;</returns>
-        ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
+        ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
         /// <summary>
         /// Gets the task definition
         /// </summary>
@@ -100,7 +100,7 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Object</returns>
-        Object GetTaskDef (string tasktype, bool? metadata = null);
+        Object GetTaskDef(string tasktype, bool? metadata = null);
 
         /// <summary>
         /// Gets the task definition
@@ -112,7 +112,7 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetTaskDefWithHttpInfo (string tasktype, bool? metadata = null);
+        ApiResponse<Object> GetTaskDefWithHttpInfo(string tasktype, bool? metadata = null);
         /// <summary>
         /// Gets all task definition
         /// </summary>
@@ -125,7 +125,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>List&lt;TaskDef&gt;</returns>
-        List<TaskDef> GetTaskDefs (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
+        List<TaskDef> GetTaskDefs(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
 
         /// <summary>
         /// Gets all task definition
@@ -139,7 +139,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>ApiResponse of List&lt;TaskDef&gt;</returns>
-        ApiResponse<List<TaskDef>> GetTaskDefsWithHttpInfo (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
+        ApiResponse<List<TaskDef>> GetTaskDefsWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
         /// <summary>
         /// Create or update task definition(s)
         /// </summary>
@@ -149,7 +149,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Object</returns>
-        Object RegisterTaskDef (List<TaskDef> body);
+        Object RegisterTaskDef(List<TaskDef> body);
 
         /// <summary>
         /// Create or update task definition(s)
@@ -160,7 +160,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> RegisterTaskDefWithHttpInfo (List<TaskDef> body);
+        ApiResponse<Object> RegisterTaskDefWithHttpInfo(List<TaskDef> body);
         /// <summary>
         /// Remove a task definition
         /// </summary>
@@ -170,7 +170,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns></returns>
-        void UnregisterTaskDef (string tasktype);
+        void UnregisterTaskDef(string tasktype);
 
         /// <summary>
         /// Remove a task definition
@@ -181,7 +181,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UnregisterTaskDefWithHttpInfo (string tasktype);
+        ApiResponse<Object> UnregisterTaskDefWithHttpInfo(string tasktype);
         /// <summary>
         /// Removes workflow definition. It does not remove workflows associated with the definition.
         /// </summary>
@@ -192,7 +192,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns></returns>
-        void UnregisterWorkflowDef (string name, int? version);
+        void UnregisterWorkflowDef(string name, int? version);
 
         /// <summary>
         /// Removes workflow definition. It does not remove workflows associated with the definition.
@@ -204,7 +204,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UnregisterWorkflowDefWithHttpInfo (string name, int? version);
+        ApiResponse<Object> UnregisterWorkflowDefWithHttpInfo(string name, int? version);
         /// <summary>
         /// Create or update workflow definition(s)
         /// </summary>
@@ -215,7 +215,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>Object</returns>
-        Object Update (List<WorkflowDef> body, bool? overwrite = null);
+        Object Update(List<WorkflowDef> body, bool? overwrite = null);
 
         /// <summary>
         /// Create or update workflow definition(s)
@@ -227,7 +227,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> UpdateWithHttpInfo (List<WorkflowDef> body, bool? overwrite = null);
+        ApiResponse<Object> UpdateWithHttpInfo(List<WorkflowDef> body, bool? overwrite = null);
         /// <summary>
         /// Update an existing task
         /// </summary>
@@ -237,7 +237,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Object</returns>
-        Object UpdateTaskDef (TaskDef body);
+        Object UpdateTaskDef(TaskDef body);
 
         /// <summary>
         /// Update an existing task
@@ -248,7 +248,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> UpdateTaskDefWithHttpInfo (TaskDef body);
+        ApiResponse<Object> UpdateTaskDefWithHttpInfo(TaskDef body);
         /// <summary>
         /// Upload all workflows and tasks definitions to S3
         /// </summary>
@@ -257,7 +257,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        Object UploadWorkflowsAndTasksDefinitionsToS3 ();
+        Object UploadWorkflowsAndTasksDefinitionsToS3();
 
         /// <summary>
         /// Upload all workflows and tasks definitions to S3
@@ -267,7 +267,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> UploadWorkflowsAndTasksDefinitionsToS3WithHttpInfo ();
+        ApiResponse<Object> UploadWorkflowsAndTasksDefinitionsToS3WithHttpInfo();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -280,7 +280,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to false)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> CreateAsync (WorkflowDef body, bool? overwrite = null);
+        System.Threading.Tasks.Task<Object> CreateAsync(WorkflowDef body, bool? overwrite = null);
 
         /// <summary>
         /// Create a new workflow definition
@@ -292,7 +292,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CreateAsyncWithHttpInfo (WorkflowDef body, bool? overwrite = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> CreateAsyncWithHttpInfo(WorkflowDef body, bool? overwrite = null);
         /// <summary>
         /// Retrieves workflow definition along with blueprint
         /// </summary>
@@ -304,7 +304,7 @@ namespace Conductor.Api
         /// <param name="version"> (optional)</param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of WorkflowDef</returns>
-        System.Threading.Tasks.Task<WorkflowDef> GetAsync (string name, int? version = null, bool? metadata = null);
+        System.Threading.Tasks.Task<WorkflowDef> GetAsync(string name, int? version = null, bool? metadata = null);
 
         /// <summary>
         /// Retrieves workflow definition along with blueprint
@@ -317,7 +317,7 @@ namespace Conductor.Api
         /// <param name="version"> (optional)</param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (WorkflowDef)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorkflowDef>> GetAsyncWithHttpInfo (string name, int? version = null, bool? metadata = null);
+        System.Threading.Tasks.Task<ApiResponse<WorkflowDef>> GetAsyncWithHttpInfo(string name, int? version = null, bool? metadata = null);
         /// <summary>
         /// Retrieves all workflow definition along with blueprint
         /// </summary>
@@ -330,7 +330,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of List&lt;WorkflowDef&gt;</returns>
-        System.Threading.Tasks.Task<List<WorkflowDef>> GetAllWorkflowsAsync (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
+        System.Threading.Tasks.Task<List<WorkflowDef>> GetAllWorkflowsAsync(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
 
         /// <summary>
         /// Retrieves all workflow definition along with blueprint
@@ -344,7 +344,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;WorkflowDef&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<WorkflowDef>>> GetAllWorkflowsAsyncWithHttpInfo (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
+        System.Threading.Tasks.Task<ApiResponse<List<WorkflowDef>>> GetAllWorkflowsAsyncWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
         /// <summary>
         /// Gets the task definition
         /// </summary>
@@ -355,7 +355,7 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetTaskDefAsync (string tasktype, bool? metadata = null);
+        System.Threading.Tasks.Task<Object> GetTaskDefAsync(string tasktype, bool? metadata = null);
 
         /// <summary>
         /// Gets the task definition
@@ -367,7 +367,7 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetTaskDefAsyncWithHttpInfo (string tasktype, bool? metadata = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetTaskDefAsyncWithHttpInfo(string tasktype, bool? metadata = null);
         /// <summary>
         /// Gets all task definition
         /// </summary>
@@ -380,7 +380,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of List&lt;TaskDef&gt;</returns>
-        System.Threading.Tasks.Task<List<TaskDef>> GetTaskDefsAsync (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
+        System.Threading.Tasks.Task<List<TaskDef>> GetTaskDefsAsync(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
 
         /// <summary>
         /// Gets all task definition
@@ -394,7 +394,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;TaskDef&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<TaskDef>>> GetTaskDefsAsyncWithHttpInfo (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
+        System.Threading.Tasks.Task<ApiResponse<List<TaskDef>>> GetTaskDefsAsyncWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
         /// <summary>
         /// Create or update task definition(s)
         /// </summary>
@@ -404,7 +404,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> RegisterTaskDefAsync (List<TaskDef> body);
+        System.Threading.Tasks.Task<Object> RegisterTaskDefAsync(List<TaskDef> body);
 
         /// <summary>
         /// Create or update task definition(s)
@@ -415,7 +415,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RegisterTaskDefAsyncWithHttpInfo (List<TaskDef> body);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RegisterTaskDefAsyncWithHttpInfo(List<TaskDef> body);
         /// <summary>
         /// Remove a task definition
         /// </summary>
@@ -425,7 +425,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UnregisterTaskDefAsync (string tasktype);
+        System.Threading.Tasks.Task UnregisterTaskDefAsync(string tasktype);
 
         /// <summary>
         /// Remove a task definition
@@ -436,7 +436,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterTaskDefAsyncWithHttpInfo (string tasktype);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterTaskDefAsyncWithHttpInfo(string tasktype);
         /// <summary>
         /// Removes workflow definition. It does not remove workflows associated with the definition.
         /// </summary>
@@ -447,7 +447,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UnregisterWorkflowDefAsync (string name, int? version);
+        System.Threading.Tasks.Task UnregisterWorkflowDefAsync(string name, int? version);
 
         /// <summary>
         /// Removes workflow definition. It does not remove workflows associated with the definition.
@@ -459,7 +459,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterWorkflowDefAsyncWithHttpInfo (string name, int? version);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterWorkflowDefAsyncWithHttpInfo(string name, int? version);
         /// <summary>
         /// Create or update workflow definition(s)
         /// </summary>
@@ -470,7 +470,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> UpdateAsync (List<WorkflowDef> body, bool? overwrite = null);
+        System.Threading.Tasks.Task<Object> UpdateAsync(List<WorkflowDef> body, bool? overwrite = null);
 
         /// <summary>
         /// Create or update workflow definition(s)
@@ -482,7 +482,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAsyncWithHttpInfo (List<WorkflowDef> body, bool? overwrite = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAsyncWithHttpInfo(List<WorkflowDef> body, bool? overwrite = null);
         /// <summary>
         /// Update an existing task
         /// </summary>
@@ -492,7 +492,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> UpdateTaskDefAsync (TaskDef body);
+        System.Threading.Tasks.Task<Object> UpdateTaskDefAsync(TaskDef body);
 
         /// <summary>
         /// Update an existing task
@@ -503,7 +503,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateTaskDefAsyncWithHttpInfo (TaskDef body);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateTaskDefAsyncWithHttpInfo(TaskDef body);
         /// <summary>
         /// Upload all workflows and tasks definitions to S3
         /// </summary>
@@ -512,7 +512,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> UploadWorkflowsAndTasksDefinitionsToS3Async ();
+        System.Threading.Tasks.Task<Object> UploadWorkflowsAndTasksDefinitionsToS3Async();
 
         /// <summary>
         /// Upload all workflows and tasks definitions to S3
@@ -522,14 +522,14 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UploadWorkflowsAndTasksDefinitionsToS3AsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> UploadWorkflowsAndTasksDefinitionsToS3AsyncWithHttpInfo();
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class MetadataResourceApi : IMetadataResourceApi
+    public partial class MetadataResourceApi : IMetadataResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -594,7 +594,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -641,10 +641,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to false)</param>
         /// <returns>Object</returns>
-        public Object Create (WorkflowDef body, bool? overwrite = null)
+        public Object Create(WorkflowDef body, bool? overwrite = null)
         {
-             ApiResponse<Object> localVarResponse = CreateWithHttpInfo(body, overwrite);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = CreateWithHttpInfo(body, overwrite);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -654,7 +654,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > CreateWithHttpInfo (WorkflowDef body, bool? overwrite = null)
+        public ApiResponse<Object> CreateWithHttpInfo(WorkflowDef body, bool? overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -698,11 +698,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -712,7 +712,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -722,10 +722,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to false)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> CreateAsync (WorkflowDef body, bool? overwrite = null)
+        public async System.Threading.Tasks.Task<Object> CreateAsync(WorkflowDef body, bool? overwrite = null)
         {
-             ApiResponse<Object> localVarResponse = await CreateAsyncWithHttpInfo(body, overwrite);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await CreateAsyncWithHttpInfo(body, overwrite);
+            return localVarResponse.Data;
 
         }
 
@@ -736,7 +736,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateAsyncWithHttpInfo (WorkflowDef body, bool? overwrite = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateAsyncWithHttpInfo(WorkflowDef body, bool? overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -780,11 +780,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -794,7 +794,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -805,10 +805,10 @@ namespace Conductor.Api
         /// <param name="version"> (optional)</param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>WorkflowDef</returns>
-        public WorkflowDef Get (string name, int? version = null, bool? metadata = null)
+        public WorkflowDef Get(string name, int? version = null, bool? metadata = null)
         {
-             ApiResponse<WorkflowDef> localVarResponse = GetWithHttpInfo(name, version, metadata);
-             return localVarResponse.Data;
+            ApiResponse<WorkflowDef> localVarResponse = GetWithHttpInfo(name, version, metadata);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -819,7 +819,7 @@ namespace Conductor.Api
         /// <param name="version"> (optional)</param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>ApiResponse of WorkflowDef</returns>
-        public ApiResponse< WorkflowDef > GetWithHttpInfo (string name, int? version = null, bool? metadata = null)
+        public ApiResponse<WorkflowDef> GetWithHttpInfo(string name, int? version = null, bool? metadata = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -856,11 +856,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -870,7 +870,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WorkflowDef>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WorkflowDef) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowDef)));
+                (WorkflowDef)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowDef)));
         }
 
         /// <summary>
@@ -881,10 +881,10 @@ namespace Conductor.Api
         /// <param name="version"> (optional)</param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of WorkflowDef</returns>
-        public async System.Threading.Tasks.Task<WorkflowDef> GetAsync (string name, int? version = null, bool? metadata = null)
+        public async System.Threading.Tasks.Task<WorkflowDef> GetAsync(string name, int? version = null, bool? metadata = null)
         {
-             ApiResponse<WorkflowDef> localVarResponse = await GetAsyncWithHttpInfo(name, version, metadata);
-             return localVarResponse.Data;
+            ApiResponse<WorkflowDef> localVarResponse = await GetAsyncWithHttpInfo(name, version, metadata);
+            return localVarResponse.Data;
 
         }
 
@@ -896,7 +896,7 @@ namespace Conductor.Api
         /// <param name="version"> (optional)</param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (WorkflowDef)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WorkflowDef>> GetAsyncWithHttpInfo (string name, int? version = null, bool? metadata = null)
+        public async System.Threading.Tasks.Task<ApiResponse<WorkflowDef>> GetAsyncWithHttpInfo(string name, int? version = null, bool? metadata = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -933,11 +933,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -947,7 +947,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WorkflowDef>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WorkflowDef) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowDef)));
+                (WorkflowDef)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowDef)));
         }
 
         /// <summary>
@@ -959,10 +959,10 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>List&lt;WorkflowDef&gt;</returns>
-        public List<WorkflowDef> GetAllWorkflows (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
+        public List<WorkflowDef> GetAllWorkflows(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
-             ApiResponse<List<WorkflowDef>> localVarResponse = GetAllWorkflowsWithHttpInfo(access, metadata, tagKey, tagValue);
-             return localVarResponse.Data;
+            ApiResponse<List<WorkflowDef>> localVarResponse = GetAllWorkflowsWithHttpInfo(access, metadata, tagKey, tagValue);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -974,7 +974,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>ApiResponse of List&lt;WorkflowDef&gt;</returns>
-        public ApiResponse< List<WorkflowDef> > GetAllWorkflowsWithHttpInfo (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
+        public ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
 
             var localVarPath = "/api/metadata/workflow";
@@ -1009,11 +1009,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1023,7 +1023,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<WorkflowDef>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<WorkflowDef>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkflowDef>)));
+                (List<WorkflowDef>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkflowDef>)));
         }
 
         /// <summary>
@@ -1035,10 +1035,10 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of List&lt;WorkflowDef&gt;</returns>
-        public async System.Threading.Tasks.Task<List<WorkflowDef>> GetAllWorkflowsAsync (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
+        public async System.Threading.Tasks.Task<List<WorkflowDef>> GetAllWorkflowsAsync(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
-             ApiResponse<List<WorkflowDef>> localVarResponse = await GetAllWorkflowsAsyncWithHttpInfo(access, metadata, tagKey, tagValue);
-             return localVarResponse.Data;
+            ApiResponse<List<WorkflowDef>> localVarResponse = await GetAllWorkflowsAsyncWithHttpInfo(access, metadata, tagKey, tagValue);
+            return localVarResponse.Data;
 
         }
 
@@ -1051,7 +1051,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;WorkflowDef&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<WorkflowDef>>> GetAllWorkflowsAsyncWithHttpInfo (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<WorkflowDef>>> GetAllWorkflowsAsyncWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
 
             var localVarPath = "/api/metadata/workflow";
@@ -1086,11 +1086,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1100,7 +1100,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<WorkflowDef>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<WorkflowDef>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkflowDef>)));
+                (List<WorkflowDef>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkflowDef>)));
         }
 
         /// <summary>
@@ -1110,10 +1110,10 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Object</returns>
-        public Object GetTaskDef (string tasktype, bool? metadata = null)
+        public Object GetTaskDef(string tasktype, bool? metadata = null)
         {
-             ApiResponse<Object> localVarResponse = GetTaskDefWithHttpInfo(tasktype, metadata);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetTaskDefWithHttpInfo(tasktype, metadata);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1123,7 +1123,7 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetTaskDefWithHttpInfo (string tasktype, bool? metadata = null)
+        public ApiResponse<Object> GetTaskDefWithHttpInfo(string tasktype, bool? metadata = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -1159,11 +1159,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1173,7 +1173,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1183,10 +1183,10 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetTaskDefAsync (string tasktype, bool? metadata = null)
+        public async System.Threading.Tasks.Task<Object> GetTaskDefAsync(string tasktype, bool? metadata = null)
         {
-             ApiResponse<Object> localVarResponse = await GetTaskDefAsyncWithHttpInfo(tasktype, metadata);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await GetTaskDefAsyncWithHttpInfo(tasktype, metadata);
+            return localVarResponse.Data;
 
         }
 
@@ -1197,7 +1197,7 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetTaskDefAsyncWithHttpInfo (string tasktype, bool? metadata = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetTaskDefAsyncWithHttpInfo(string tasktype, bool? metadata = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -1233,11 +1233,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1247,7 +1247,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1259,10 +1259,10 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>List&lt;TaskDef&gt;</returns>
-        public List<TaskDef> GetTaskDefs (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
+        public List<TaskDef> GetTaskDefs(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
-             ApiResponse<List<TaskDef>> localVarResponse = GetTaskDefsWithHttpInfo(access, metadata, tagKey, tagValue);
-             return localVarResponse.Data;
+            ApiResponse<List<TaskDef>> localVarResponse = GetTaskDefsWithHttpInfo(access, metadata, tagKey, tagValue);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1274,7 +1274,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>ApiResponse of List&lt;TaskDef&gt;</returns>
-        public ApiResponse< List<TaskDef> > GetTaskDefsWithHttpInfo (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
+        public ApiResponse<List<TaskDef>> GetTaskDefsWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
 
             var localVarPath = "/api/metadata/taskdefs";
@@ -1309,11 +1309,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1323,7 +1323,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<TaskDef>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<TaskDef>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TaskDef>)));
+                (List<TaskDef>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TaskDef>)));
         }
 
         /// <summary>
@@ -1335,10 +1335,10 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of List&lt;TaskDef&gt;</returns>
-        public async System.Threading.Tasks.Task<List<TaskDef>> GetTaskDefsAsync (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
+        public async System.Threading.Tasks.Task<List<TaskDef>> GetTaskDefsAsync(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
-             ApiResponse<List<TaskDef>> localVarResponse = await GetTaskDefsAsyncWithHttpInfo(access, metadata, tagKey, tagValue);
-             return localVarResponse.Data;
+            ApiResponse<List<TaskDef>> localVarResponse = await GetTaskDefsAsyncWithHttpInfo(access, metadata, tagKey, tagValue);
+            return localVarResponse.Data;
 
         }
 
@@ -1351,7 +1351,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;TaskDef&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<TaskDef>>> GetTaskDefsAsyncWithHttpInfo (string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<TaskDef>>> GetTaskDefsAsyncWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
 
             var localVarPath = "/api/metadata/taskdefs";
@@ -1386,11 +1386,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1400,7 +1400,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<TaskDef>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<TaskDef>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TaskDef>)));
+                (List<TaskDef>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TaskDef>)));
         }
 
         /// <summary>
@@ -1409,10 +1409,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Object</returns>
-        public Object RegisterTaskDef (List<TaskDef> body)
+        public Object RegisterTaskDef(List<TaskDef> body)
         {
-             ApiResponse<Object> localVarResponse = RegisterTaskDefWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = RegisterTaskDefWithHttpInfo(body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1421,7 +1421,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > RegisterTaskDefWithHttpInfo (List<TaskDef> body)
+        public ApiResponse<Object> RegisterTaskDefWithHttpInfo(List<TaskDef> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1464,11 +1464,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1478,7 +1478,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1487,10 +1487,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> RegisterTaskDefAsync (List<TaskDef> body)
+        public async System.Threading.Tasks.Task<Object> RegisterTaskDefAsync(List<TaskDef> body)
         {
-             ApiResponse<Object> localVarResponse = await RegisterTaskDefAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await RegisterTaskDefAsyncWithHttpInfo(body);
+            return localVarResponse.Data;
 
         }
 
@@ -1500,7 +1500,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RegisterTaskDefAsyncWithHttpInfo (List<TaskDef> body)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RegisterTaskDefAsyncWithHttpInfo(List<TaskDef> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1543,11 +1543,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1557,7 +1557,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1566,9 +1566,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns></returns>
-        public void UnregisterTaskDef (string tasktype)
+        public void UnregisterTaskDef(string tasktype)
         {
-             UnregisterTaskDefWithHttpInfo(tasktype);
+            UnregisterTaskDefWithHttpInfo(tasktype);
         }
 
         /// <summary>
@@ -1577,7 +1577,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UnregisterTaskDefWithHttpInfo (string tasktype)
+        public ApiResponse<Object> UnregisterTaskDefWithHttpInfo(string tasktype)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -1611,11 +1611,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1634,9 +1634,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UnregisterTaskDefAsync (string tasktype)
+        public async System.Threading.Tasks.Task UnregisterTaskDefAsync(string tasktype)
         {
-             await UnregisterTaskDefAsyncWithHttpInfo(tasktype);
+            await UnregisterTaskDefAsyncWithHttpInfo(tasktype);
 
         }
 
@@ -1646,7 +1646,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterTaskDefAsyncWithHttpInfo (string tasktype)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterTaskDefAsyncWithHttpInfo(string tasktype)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -1680,11 +1680,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1704,9 +1704,9 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns></returns>
-        public void UnregisterWorkflowDef (string name, int? version)
+        public void UnregisterWorkflowDef(string name, int? version)
         {
-             UnregisterWorkflowDefWithHttpInfo(name, version);
+            UnregisterWorkflowDefWithHttpInfo(name, version);
         }
 
         /// <summary>
@@ -1716,7 +1716,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UnregisterWorkflowDefWithHttpInfo (string name, int? version)
+        public ApiResponse<Object> UnregisterWorkflowDefWithHttpInfo(string name, int? version)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1754,11 +1754,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1778,9 +1778,9 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UnregisterWorkflowDefAsync (string name, int? version)
+        public async System.Threading.Tasks.Task UnregisterWorkflowDefAsync(string name, int? version)
         {
-             await UnregisterWorkflowDefAsyncWithHttpInfo(name, version);
+            await UnregisterWorkflowDefAsyncWithHttpInfo(name, version);
 
         }
 
@@ -1791,7 +1791,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterWorkflowDefAsyncWithHttpInfo (string name, int? version)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterWorkflowDefAsyncWithHttpInfo(string name, int? version)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1829,11 +1829,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1853,10 +1853,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>Object</returns>
-        public Object Update (List<WorkflowDef> body, bool? overwrite = null)
+        public Object Update(List<WorkflowDef> body, bool? overwrite = null)
         {
-             ApiResponse<Object> localVarResponse = UpdateWithHttpInfo(body, overwrite);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = UpdateWithHttpInfo(body, overwrite);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1866,7 +1866,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > UpdateWithHttpInfo (List<WorkflowDef> body, bool? overwrite = null)
+        public ApiResponse<Object> UpdateWithHttpInfo(List<WorkflowDef> body, bool? overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1910,11 +1910,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1924,7 +1924,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1934,10 +1934,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> UpdateAsync (List<WorkflowDef> body, bool? overwrite = null)
+        public async System.Threading.Tasks.Task<Object> UpdateAsync(List<WorkflowDef> body, bool? overwrite = null)
         {
-             ApiResponse<Object> localVarResponse = await UpdateAsyncWithHttpInfo(body, overwrite);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await UpdateAsyncWithHttpInfo(body, overwrite);
+            return localVarResponse.Data;
 
         }
 
@@ -1948,7 +1948,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAsyncWithHttpInfo (List<WorkflowDef> body, bool? overwrite = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAsyncWithHttpInfo(List<WorkflowDef> body, bool? overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1992,11 +1992,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2006,7 +2006,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2015,10 +2015,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Object</returns>
-        public Object UpdateTaskDef (TaskDef body)
+        public Object UpdateTaskDef(TaskDef body)
         {
-             ApiResponse<Object> localVarResponse = UpdateTaskDefWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = UpdateTaskDefWithHttpInfo(body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2027,7 +2027,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > UpdateTaskDefWithHttpInfo (TaskDef body)
+        public ApiResponse<Object> UpdateTaskDefWithHttpInfo(TaskDef body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2070,11 +2070,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2084,7 +2084,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2093,10 +2093,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> UpdateTaskDefAsync (TaskDef body)
+        public async System.Threading.Tasks.Task<Object> UpdateTaskDefAsync(TaskDef body)
         {
-             ApiResponse<Object> localVarResponse = await UpdateTaskDefAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await UpdateTaskDefAsyncWithHttpInfo(body);
+            return localVarResponse.Data;
 
         }
 
@@ -2106,7 +2106,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateTaskDefAsyncWithHttpInfo (TaskDef body)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateTaskDefAsyncWithHttpInfo(TaskDef body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2149,11 +2149,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2163,7 +2163,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2171,10 +2171,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        public Object UploadWorkflowsAndTasksDefinitionsToS3 ()
+        public Object UploadWorkflowsAndTasksDefinitionsToS3()
         {
-             ApiResponse<Object> localVarResponse = UploadWorkflowsAndTasksDefinitionsToS3WithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = UploadWorkflowsAndTasksDefinitionsToS3WithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2182,7 +2182,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > UploadWorkflowsAndTasksDefinitionsToS3WithHttpInfo ()
+        public ApiResponse<Object> UploadWorkflowsAndTasksDefinitionsToS3WithHttpInfo()
         {
 
             var localVarPath = "/api/metadata/workflow-task-defs/upload";
@@ -2213,11 +2213,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2227,7 +2227,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2235,10 +2235,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> UploadWorkflowsAndTasksDefinitionsToS3Async ()
+        public async System.Threading.Tasks.Task<Object> UploadWorkflowsAndTasksDefinitionsToS3Async()
         {
-             ApiResponse<Object> localVarResponse = await UploadWorkflowsAndTasksDefinitionsToS3AsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await UploadWorkflowsAndTasksDefinitionsToS3AsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -2247,7 +2247,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadWorkflowsAndTasksDefinitionsToS3AsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadWorkflowsAndTasksDefinitionsToS3AsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/metadata/workflow-task-defs/upload";
@@ -2278,11 +2278,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2292,7 +2292,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
     }

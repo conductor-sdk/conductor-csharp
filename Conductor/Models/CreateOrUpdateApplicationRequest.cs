@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// CreateOrUpdateApplicationRequest
     /// </summary>
     [DataContract]
-        public partial class CreateOrUpdateApplicationRequest :  IEquatable<CreateOrUpdateApplicationRequest>, IValidatableObject
+    public partial class CreateOrUpdateApplicationRequest : IEquatable<CreateOrUpdateApplicationRequest>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateOrUpdateApplicationRequest" /> class.
@@ -37,12 +37,12 @@ namespace Conductor.Models
                 this.Name = name;
             }
         }
-        
+
         /// <summary>
         /// Application&#x27;s name e.g.: Payment Processors
         /// </summary>
         /// <value>Application&#x27;s name e.g.: Payment Processors</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,7 +87,7 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&

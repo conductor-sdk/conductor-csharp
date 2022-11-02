@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// TaskExecLog
     /// </summary>
     [DataContract]
-        public partial class TaskExecLog :  IEquatable<TaskExecLog>, IValidatableObject
+    public partial class TaskExecLog : IEquatable<TaskExecLog>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskExecLog" /> class.
@@ -33,23 +33,23 @@ namespace Conductor.Models
             this.Log = log;
             this.TaskId = taskId;
         }
-        
+
         /// <summary>
         /// Gets or Sets CreatedTime
         /// </summary>
-        [DataMember(Name="createdTime", EmitDefaultValue=false)]
+        [DataMember(Name = "createdTime", EmitDefaultValue = false)]
         public long? CreatedTime { get; set; }
 
         /// <summary>
         /// Gets or Sets Log
         /// </summary>
-        [DataMember(Name="log", EmitDefaultValue=false)]
+        [DataMember(Name = "log", EmitDefaultValue = false)]
         public string Log { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskId
         /// </summary>
-        [DataMember(Name="taskId", EmitDefaultValue=false)]
+        [DataMember(Name = "taskId", EmitDefaultValue = false)]
         public string TaskId { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CreatedTime == input.CreatedTime ||
                     (this.CreatedTime != null &&
                     this.CreatedTime.Equals(input.CreatedTime))
-                ) && 
+                ) &&
                 (
                     this.Log == input.Log ||
                     (this.Log != null &&
                     this.Log.Equals(input.Log))
-                ) && 
+                ) &&
                 (
                     this.TaskId == input.TaskId ||
                     (this.TaskId != null &&

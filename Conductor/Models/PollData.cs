@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// PollData
     /// </summary>
     [DataContract]
-        public partial class PollData :  IEquatable<PollData>, IValidatableObject
+    public partial class PollData : IEquatable<PollData>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PollData" /> class.
@@ -35,29 +35,29 @@ namespace Conductor.Models
             this.QueueName = queueName;
             this.WorkerId = workerId;
         }
-        
+
         /// <summary>
         /// Gets or Sets Domain
         /// </summary>
-        [DataMember(Name="domain", EmitDefaultValue=false)]
+        [DataMember(Name = "domain", EmitDefaultValue = false)]
         public string Domain { get; set; }
 
         /// <summary>
         /// Gets or Sets LastPollTime
         /// </summary>
-        [DataMember(Name="lastPollTime", EmitDefaultValue=false)]
+        [DataMember(Name = "lastPollTime", EmitDefaultValue = false)]
         public long? LastPollTime { get; set; }
 
         /// <summary>
         /// Gets or Sets QueueName
         /// </summary>
-        [DataMember(Name="queueName", EmitDefaultValue=false)]
+        [DataMember(Name = "queueName", EmitDefaultValue = false)]
         public string QueueName { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkerId
         /// </summary>
-        [DataMember(Name="workerId", EmitDefaultValue=false)]
+        [DataMember(Name = "workerId", EmitDefaultValue = false)]
         public string WorkerId { get; set; }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -105,22 +105,22 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Domain == input.Domain ||
                     (this.Domain != null &&
                     this.Domain.Equals(input.Domain))
-                ) && 
+                ) &&
                 (
                     this.LastPollTime == input.LastPollTime ||
                     (this.LastPollTime != null &&
                     this.LastPollTime.Equals(input.LastPollTime))
-                ) && 
+                ) &&
                 (
                     this.QueueName == input.QueueName ||
                     (this.QueueName != null &&
                     this.QueueName.Equals(input.QueueName))
-                ) && 
+                ) &&
                 (
                     this.WorkerId == input.WorkerId ||
                     (this.WorkerId != null &&

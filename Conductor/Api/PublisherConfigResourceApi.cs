@@ -11,7 +11,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IPublisherConfigResourceApi : IApiAccessor
+    public interface IPublisherConfigResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -23,7 +23,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object DeleteConfig (string id);
+        Object DeleteConfig(string id);
 
         /// <summary>
         /// Delete a publisher config value by id
@@ -34,7 +34,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> DeleteConfigWithHttpInfo (string id);
+        ApiResponse<Object> DeleteConfigWithHttpInfo(string id);
         /// <summary>
         /// Get a publisher config value by id
         /// </summary>
@@ -44,7 +44,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>string</returns>
-        string DownloadConfig (string id);
+        string DownloadConfig(string id);
 
         /// <summary>
         /// Get a publisher config value by id
@@ -55,7 +55,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> DownloadConfigWithHttpInfo (string id);
+        ApiResponse<string> DownloadConfigWithHttpInfo(string id);
         /// <summary>
         /// Get all publisher configurations
         /// </summary>
@@ -64,7 +64,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        Object ListAllConfigs ();
+        Object ListAllConfigs();
 
         /// <summary>
         /// Get all publisher configurations
@@ -74,7 +74,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> ListAllConfigsWithHttpInfo ();
+        ApiResponse<Object> ListAllConfigsWithHttpInfo();
         /// <summary>
         /// Put a publisher config value by id
         /// </summary>
@@ -85,7 +85,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object UploadConfig (string body, string id);
+        Object UploadConfig(string body, string id);
 
         /// <summary>
         /// Put a publisher config value by id
@@ -97,7 +97,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> UploadConfigWithHttpInfo (string body, string id);
+        ApiResponse<Object> UploadConfigWithHttpInfo(string body, string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -109,7 +109,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> DeleteConfigAsync (string id);
+        System.Threading.Tasks.Task<Object> DeleteConfigAsync(string id);
 
         /// <summary>
         /// Delete a publisher config value by id
@@ -120,7 +120,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteConfigAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteConfigAsyncWithHttpInfo(string id);
         /// <summary>
         /// Get a publisher config value by id
         /// </summary>
@@ -130,7 +130,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> DownloadConfigAsync (string id);
+        System.Threading.Tasks.Task<string> DownloadConfigAsync(string id);
 
         /// <summary>
         /// Get a publisher config value by id
@@ -141,7 +141,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> DownloadConfigAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<string>> DownloadConfigAsyncWithHttpInfo(string id);
         /// <summary>
         /// Get all publisher configurations
         /// </summary>
@@ -150,7 +150,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> ListAllConfigsAsync ();
+        System.Threading.Tasks.Task<Object> ListAllConfigsAsync();
 
         /// <summary>
         /// Get all publisher configurations
@@ -160,7 +160,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ListAllConfigsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> ListAllConfigsAsyncWithHttpInfo();
         /// <summary>
         /// Put a publisher config value by id
         /// </summary>
@@ -171,7 +171,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> UploadConfigAsync (string body, string id);
+        System.Threading.Tasks.Task<Object> UploadConfigAsync(string body, string id);
 
         /// <summary>
         /// Put a publisher config value by id
@@ -183,14 +183,14 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UploadConfigAsyncWithHttpInfo (string body, string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UploadConfigAsyncWithHttpInfo(string body, string id);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class PublisherConfigResourceApi : IPublisherConfigResourceApi
+    public partial class PublisherConfigResourceApi : IPublisherConfigResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -255,7 +255,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -301,10 +301,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object DeleteConfig (string id)
+        public Object DeleteConfig(string id)
         {
-             ApiResponse<Object> localVarResponse = DeleteConfigWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = DeleteConfigWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > DeleteConfigWithHttpInfo (string id)
+        public ApiResponse<Object> DeleteConfigWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -348,11 +348,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -362,7 +362,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -371,10 +371,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> DeleteConfigAsync (string id)
+        public async System.Threading.Tasks.Task<Object> DeleteConfigAsync(string id)
         {
-             ApiResponse<Object> localVarResponse = await DeleteConfigAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await DeleteConfigAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -384,7 +384,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteConfigAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteConfigAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -419,11 +419,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -433,7 +433,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -442,10 +442,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>string</returns>
-        public string DownloadConfig (string id)
+        public string DownloadConfig(string id)
         {
-             ApiResponse<string> localVarResponse = DownloadConfigWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = DownloadConfigWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -454,7 +454,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > DownloadConfigWithHttpInfo (string id)
+        public ApiResponse<string> DownloadConfigWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -489,11 +489,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -503,7 +503,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -512,10 +512,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> DownloadConfigAsync (string id)
+        public async System.Threading.Tasks.Task<string> DownloadConfigAsync(string id)
         {
-             ApiResponse<string> localVarResponse = await DownloadConfigAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await DownloadConfigAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -525,7 +525,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> DownloadConfigAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DownloadConfigAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -560,11 +560,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -574,7 +574,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -582,10 +582,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
-        public Object ListAllConfigs ()
+        public Object ListAllConfigs()
         {
-             ApiResponse<Object> localVarResponse = ListAllConfigsWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = ListAllConfigsWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -593,7 +593,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > ListAllConfigsWithHttpInfo ()
+        public ApiResponse<Object> ListAllConfigsWithHttpInfo()
         {
 
             var localVarPath = "/api/publishers";
@@ -624,11 +624,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -638,7 +638,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -646,10 +646,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> ListAllConfigsAsync ()
+        public async System.Threading.Tasks.Task<Object> ListAllConfigsAsync()
         {
-             ApiResponse<Object> localVarResponse = await ListAllConfigsAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await ListAllConfigsAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -658,7 +658,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ListAllConfigsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ListAllConfigsAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/publishers";
@@ -689,11 +689,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -703,7 +703,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -713,10 +713,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object UploadConfig (string body, string id)
+        public Object UploadConfig(string body, string id)
         {
-             ApiResponse<Object> localVarResponse = UploadConfigWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = UploadConfigWithHttpInfo(body, id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -726,7 +726,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > UploadConfigWithHttpInfo (string body, string id)
+        public ApiResponse<Object> UploadConfigWithHttpInfo(string body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -773,11 +773,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -787,7 +787,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -797,10 +797,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> UploadConfigAsync (string body, string id)
+        public async System.Threading.Tasks.Task<Object> UploadConfigAsync(string body, string id)
         {
-             ApiResponse<Object> localVarResponse = await UploadConfigAsyncWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await UploadConfigAsyncWithHttpInfo(body, id);
+            return localVarResponse.Data;
 
         }
 
@@ -811,7 +811,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadConfigAsyncWithHttpInfo (string body, string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadConfigAsyncWithHttpInfo(string body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -858,11 +858,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -872,7 +872,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
     }

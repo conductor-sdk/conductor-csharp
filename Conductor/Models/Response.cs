@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// Response
     /// </summary>
     [DataContract]
-        public partial class Response :  IEquatable<Response>, IValidatableObject
+    public partial class Response : IEquatable<Response>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Response" /> class.
@@ -27,7 +27,7 @@ namespace Conductor.Models
         public Response()
         {
         }
-        
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -39,7 +39,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>

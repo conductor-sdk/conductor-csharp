@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// SearchResultTaskSummary
     /// </summary>
     [DataContract]
-        public partial class SearchResultTaskSummary :  IEquatable<SearchResultTaskSummary>, IValidatableObject
+    public partial class SearchResultTaskSummary : IEquatable<SearchResultTaskSummary>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchResultTaskSummary" /> class.
@@ -31,17 +31,17 @@ namespace Conductor.Models
             this.Results = results;
             this.TotalHits = totalHits;
         }
-        
+
         /// <summary>
         /// Gets or Sets Results
         /// </summary>
-        [DataMember(Name="results", EmitDefaultValue=false)]
+        [DataMember(Name = "results", EmitDefaultValue = false)]
         public List<TaskSummary> Results { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalHits
         /// </summary>
-        [DataMember(Name="totalHits", EmitDefaultValue=false)]
+        [DataMember(Name = "totalHits", EmitDefaultValue = false)]
         public long? TotalHits { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,13 +87,13 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Results == input.Results ||
                     this.Results != null &&
                     input.Results != null &&
                     this.Results.SequenceEqual(input.Results)
-                ) && 
+                ) &&
                 (
                     this.TotalHits == input.TotalHits ||
                     (this.TotalHits != null &&

@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IAdminResourceApi : IApiAccessor
+    public interface IAdminResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -23,7 +23,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        Dictionary<string, Object> GetRedisUsage ();
+        Dictionary<string, Object> GetRedisUsage();
 
         /// <summary>
         /// Get details of redis usage
@@ -33,7 +33,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        ApiResponse<Dictionary<string, Object>> GetRedisUsageWithHttpInfo ();
+        ApiResponse<Dictionary<string, Object>> GetRedisUsageWithHttpInfo();
         /// <summary>
         /// Queue up all the running workflows for sweep
         /// </summary>
@@ -43,7 +43,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>string</returns>
-        string RequeueSweep (string workflowId);
+        string RequeueSweep(string workflowId);
 
         /// <summary>
         /// Queue up all the running workflows for sweep
@@ -54,7 +54,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> RequeueSweepWithHttpInfo (string workflowId);
+        ApiResponse<string> RequeueSweepWithHttpInfo(string workflowId);
         /// <summary>
         /// Verify and repair workflow consistency
         /// </summary>
@@ -64,7 +64,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>string</returns>
-        string VerifyAndRepairWorkflowConsistency (string workflowId);
+        string VerifyAndRepairWorkflowConsistency(string workflowId);
 
         /// <summary>
         /// Verify and repair workflow consistency
@@ -75,7 +75,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> VerifyAndRepairWorkflowConsistencyWithHttpInfo (string workflowId);
+        ApiResponse<string> VerifyAndRepairWorkflowConsistencyWithHttpInfo(string workflowId);
         /// <summary>
         /// Get the list of pending tasks for a given task type
         /// </summary>
@@ -87,7 +87,7 @@ namespace Conductor.Api
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 100)</param>
         /// <returns>List&lt;Task&gt;</returns>
-        List<Task> View (string tasktype, int? start = null, int? count = null);
+        List<Task> View(string tasktype, int? start = null, int? count = null);
 
         /// <summary>
         /// Get the list of pending tasks for a given task type
@@ -100,7 +100,7 @@ namespace Conductor.Api
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 100)</param>
         /// <returns>ApiResponse of List&lt;Task&gt;</returns>
-        ApiResponse<List<Task>> ViewWithHttpInfo (string tasktype, int? start = null, int? count = null);
+        ApiResponse<List<Task>> ViewWithHttpInfo(string tasktype, int? start = null, int? count = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -111,7 +111,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Object>> GetRedisUsageAsync ();
+        System.Threading.Tasks.Task<Dictionary<string, Object>> GetRedisUsageAsync();
 
         /// <summary>
         /// Get details of redis usage
@@ -121,7 +121,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetRedisUsageAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetRedisUsageAsyncWithHttpInfo();
         /// <summary>
         /// Queue up all the running workflows for sweep
         /// </summary>
@@ -131,7 +131,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> RequeueSweepAsync (string workflowId);
+        System.Threading.Tasks.Task<string> RequeueSweepAsync(string workflowId);
 
         /// <summary>
         /// Queue up all the running workflows for sweep
@@ -142,7 +142,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> RequeueSweepAsyncWithHttpInfo (string workflowId);
+        System.Threading.Tasks.Task<ApiResponse<string>> RequeueSweepAsyncWithHttpInfo(string workflowId);
         /// <summary>
         /// Verify and repair workflow consistency
         /// </summary>
@@ -152,7 +152,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> VerifyAndRepairWorkflowConsistencyAsync (string workflowId);
+        System.Threading.Tasks.Task<string> VerifyAndRepairWorkflowConsistencyAsync(string workflowId);
 
         /// <summary>
         /// Verify and repair workflow consistency
@@ -163,7 +163,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> VerifyAndRepairWorkflowConsistencyAsyncWithHttpInfo (string workflowId);
+        System.Threading.Tasks.Task<ApiResponse<string>> VerifyAndRepairWorkflowConsistencyAsyncWithHttpInfo(string workflowId);
         /// <summary>
         /// Get the list of pending tasks for a given task type
         /// </summary>
@@ -175,7 +175,7 @@ namespace Conductor.Api
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 100)</param>
         /// <returns>Task of List&lt;Task&gt;</returns>
-        System.Threading.Tasks.Task<List<Task>> ViewAsync (string tasktype, int? start = null, int? count = null);
+        System.Threading.Tasks.Task<List<Task>> ViewAsync(string tasktype, int? start = null, int? count = null);
 
         /// <summary>
         /// Get the list of pending tasks for a given task type
@@ -188,14 +188,14 @@ namespace Conductor.Api
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 100)</param>
         /// <returns>Task of ApiResponse (List&lt;Task&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Task>>> ViewAsyncWithHttpInfo (string tasktype, int? start = null, int? count = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Task>>> ViewAsyncWithHttpInfo(string tasktype, int? start = null, int? count = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class AdminResourceApi : IAdminResourceApi
+    public partial class AdminResourceApi : IAdminResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -260,7 +260,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -305,10 +305,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        public Dictionary<string, Object> GetRedisUsage ()
+        public Dictionary<string, Object> GetRedisUsage()
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = GetRedisUsageWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = GetRedisUsageWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        public ApiResponse< Dictionary<string, Object> > GetRedisUsageWithHttpInfo ()
+        public ApiResponse<Dictionary<string, Object>> GetRedisUsageWithHttpInfo()
         {
 
             var localVarPath = "/api/admin/redisUsage";
@@ -347,11 +347,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -361,7 +361,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -369,10 +369,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, Object>> GetRedisUsageAsync ()
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> GetRedisUsageAsync()
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = await GetRedisUsageAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = await GetRedisUsageAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -381,7 +381,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetRedisUsageAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetRedisUsageAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/admin/redisUsage";
@@ -412,11 +412,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -426,7 +426,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -435,10 +435,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>string</returns>
-        public string RequeueSweep (string workflowId)
+        public string RequeueSweep(string workflowId)
         {
-             ApiResponse<string> localVarResponse = RequeueSweepWithHttpInfo(workflowId);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = RequeueSweepWithHttpInfo(workflowId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -447,7 +447,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > RequeueSweepWithHttpInfo (string workflowId)
+        public ApiResponse<string> RequeueSweepWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -482,11 +482,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -496,7 +496,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -505,10 +505,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> RequeueSweepAsync (string workflowId)
+        public async System.Threading.Tasks.Task<string> RequeueSweepAsync(string workflowId)
         {
-             ApiResponse<string> localVarResponse = await RequeueSweepAsyncWithHttpInfo(workflowId);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await RequeueSweepAsyncWithHttpInfo(workflowId);
+            return localVarResponse.Data;
 
         }
 
@@ -518,7 +518,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> RequeueSweepAsyncWithHttpInfo (string workflowId)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> RequeueSweepAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -553,11 +553,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -567,7 +567,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -576,10 +576,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>string</returns>
-        public string VerifyAndRepairWorkflowConsistency (string workflowId)
+        public string VerifyAndRepairWorkflowConsistency(string workflowId)
         {
-             ApiResponse<string> localVarResponse = VerifyAndRepairWorkflowConsistencyWithHttpInfo(workflowId);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = VerifyAndRepairWorkflowConsistencyWithHttpInfo(workflowId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -588,7 +588,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > VerifyAndRepairWorkflowConsistencyWithHttpInfo (string workflowId)
+        public ApiResponse<string> VerifyAndRepairWorkflowConsistencyWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -623,11 +623,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -637,7 +637,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -646,10 +646,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> VerifyAndRepairWorkflowConsistencyAsync (string workflowId)
+        public async System.Threading.Tasks.Task<string> VerifyAndRepairWorkflowConsistencyAsync(string workflowId)
         {
-             ApiResponse<string> localVarResponse = await VerifyAndRepairWorkflowConsistencyAsyncWithHttpInfo(workflowId);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await VerifyAndRepairWorkflowConsistencyAsyncWithHttpInfo(workflowId);
+            return localVarResponse.Data;
 
         }
 
@@ -659,7 +659,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> VerifyAndRepairWorkflowConsistencyAsyncWithHttpInfo (string workflowId)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> VerifyAndRepairWorkflowConsistencyAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -694,11 +694,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -708,7 +708,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -719,10 +719,10 @@ namespace Conductor.Api
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 100)</param>
         /// <returns>List&lt;Task&gt;</returns>
-        public List<Task> View (string tasktype, int? start = null, int? count = null)
+        public List<Task> View(string tasktype, int? start = null, int? count = null)
         {
-             ApiResponse<List<Task>> localVarResponse = ViewWithHttpInfo(tasktype, start, count);
-             return localVarResponse.Data;
+            ApiResponse<List<Task>> localVarResponse = ViewWithHttpInfo(tasktype, start, count);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -733,7 +733,7 @@ namespace Conductor.Api
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 100)</param>
         /// <returns>ApiResponse of List&lt;Task&gt;</returns>
-        public ApiResponse< List<Task> > ViewWithHttpInfo (string tasktype, int? start = null, int? count = null)
+        public ApiResponse<List<Task>> ViewWithHttpInfo(string tasktype, int? start = null, int? count = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -770,11 +770,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -784,7 +784,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Task>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Task>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Task>)));
+                (List<Task>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Task>)));
         }
 
         /// <summary>
@@ -795,10 +795,10 @@ namespace Conductor.Api
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 100)</param>
         /// <returns>Task of List&lt;Task&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Task>> ViewAsync (string tasktype, int? start = null, int? count = null)
+        public async System.Threading.Tasks.Task<List<Task>> ViewAsync(string tasktype, int? start = null, int? count = null)
         {
-             ApiResponse<List<Task>> localVarResponse = await ViewAsyncWithHttpInfo(tasktype, start, count);
-             return localVarResponse.Data;
+            ApiResponse<List<Task>> localVarResponse = await ViewAsyncWithHttpInfo(tasktype, start, count);
+            return localVarResponse.Data;
 
         }
 
@@ -810,7 +810,7 @@ namespace Conductor.Api
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 100)</param>
         /// <returns>Task of ApiResponse (List&lt;Task&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Task>>> ViewAsyncWithHttpInfo (string tasktype, int? start = null, int? count = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Task>>> ViewAsyncWithHttpInfo(string tasktype, int? start = null, int? count = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
@@ -847,11 +847,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -861,7 +861,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Task>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Task>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Task>)));
+                (List<Task>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Task>)));
         }
 
     }

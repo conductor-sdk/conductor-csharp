@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// WebhookExecutionHistory
     /// </summary>
     [DataContract]
-        public partial class WebhookExecutionHistory :  IEquatable<WebhookExecutionHistory>, IValidatableObject
+    public partial class WebhookExecutionHistory : IEquatable<WebhookExecutionHistory>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WebhookExecutionHistory" /> class.
@@ -35,29 +35,29 @@ namespace Conductor.Models
             this.TimeStamp = timeStamp;
             this.WorkflowIds = workflowIds;
         }
-        
+
         /// <summary>
         /// Gets or Sets EventId
         /// </summary>
-        [DataMember(Name="eventId", EmitDefaultValue=false)]
+        [DataMember(Name = "eventId", EmitDefaultValue = false)]
         public string EventId { get; set; }
 
         /// <summary>
         /// Gets or Sets Matched
         /// </summary>
-        [DataMember(Name="matched", EmitDefaultValue=false)]
+        [DataMember(Name = "matched", EmitDefaultValue = false)]
         public bool? Matched { get; set; }
 
         /// <summary>
         /// Gets or Sets TimeStamp
         /// </summary>
-        [DataMember(Name="timeStamp", EmitDefaultValue=false)]
+        [DataMember(Name = "timeStamp", EmitDefaultValue = false)]
         public long? TimeStamp { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowIds
         /// </summary>
-        [DataMember(Name="workflowIds", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowIds", EmitDefaultValue = false)]
         public List<string> WorkflowIds { get; set; }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -105,22 +105,22 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EventId == input.EventId ||
                     (this.EventId != null &&
                     this.EventId.Equals(input.EventId))
-                ) && 
+                ) &&
                 (
                     this.Matched == input.Matched ||
                     (this.Matched != null &&
                     this.Matched.Equals(input.Matched))
-                ) && 
+                ) &&
                 (
                     this.TimeStamp == input.TimeStamp ||
                     (this.TimeStamp != null &&
                     this.TimeStamp.Equals(input.TimeStamp))
-                ) && 
+                ) &&
                 (
                     this.WorkflowIds == input.WorkflowIds ||
                     this.WorkflowIds != null &&

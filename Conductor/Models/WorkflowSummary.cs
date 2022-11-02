@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// WorkflowSummary
     /// </summary>
     [DataContract]
-        public partial class WorkflowSummary :  IEquatable<WorkflowSummary>, IValidatableObject
+    public partial class WorkflowSummary : IEquatable<WorkflowSummary>, IValidatableObject
     {
         /// <summary>
         /// Defines Status
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum StatusEnum
+        public enum StatusEnum
         {
             /// <summary>
             /// Enum RUNNING for value: RUNNING
@@ -56,11 +56,12 @@ namespace Conductor.Models
             /// Enum PAUSED for value: PAUSED
             /// </summary>
             [EnumMember(Value = "PAUSED")]
-            PAUSED = 6        }
+            PAUSED = 6
+        }
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowSummary" /> class.
@@ -108,120 +109,120 @@ namespace Conductor.Models
             this.WorkflowId = workflowId;
             this.WorkflowType = workflowType;
         }
-        
+
         /// <summary>
         /// Gets or Sets CorrelationId
         /// </summary>
-        [DataMember(Name="correlationId", EmitDefaultValue=false)]
+        [DataMember(Name = "correlationId", EmitDefaultValue = false)]
         public string CorrelationId { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name = "createdBy", EmitDefaultValue = false)]
         public string CreatedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets EndTime
         /// </summary>
-        [DataMember(Name="endTime", EmitDefaultValue=false)]
+        [DataMember(Name = "endTime", EmitDefaultValue = false)]
         public string EndTime { get; set; }
 
         /// <summary>
         /// Gets or Sets _Event
         /// </summary>
-        [DataMember(Name="event", EmitDefaultValue=false)]
+        [DataMember(Name = "event", EmitDefaultValue = false)]
         public string _Event { get; set; }
 
         /// <summary>
         /// Gets or Sets ExecutionTime
         /// </summary>
-        [DataMember(Name="executionTime", EmitDefaultValue=false)]
+        [DataMember(Name = "executionTime", EmitDefaultValue = false)]
         public long? ExecutionTime { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalInputPayloadStoragePath
         /// </summary>
-        [DataMember(Name="externalInputPayloadStoragePath", EmitDefaultValue=false)]
+        [DataMember(Name = "externalInputPayloadStoragePath", EmitDefaultValue = false)]
         public string ExternalInputPayloadStoragePath { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalOutputPayloadStoragePath
         /// </summary>
-        [DataMember(Name="externalOutputPayloadStoragePath", EmitDefaultValue=false)]
+        [DataMember(Name = "externalOutputPayloadStoragePath", EmitDefaultValue = false)]
         public string ExternalOutputPayloadStoragePath { get; set; }
 
         /// <summary>
         /// Gets or Sets FailedReferenceTaskNames
         /// </summary>
-        [DataMember(Name="failedReferenceTaskNames", EmitDefaultValue=false)]
+        [DataMember(Name = "failedReferenceTaskNames", EmitDefaultValue = false)]
         public string FailedReferenceTaskNames { get; set; }
 
         /// <summary>
         /// Gets or Sets Input
         /// </summary>
-        [DataMember(Name="input", EmitDefaultValue=false)]
+        [DataMember(Name = "input", EmitDefaultValue = false)]
         public string Input { get; set; }
 
         /// <summary>
         /// Gets or Sets InputSize
         /// </summary>
-        [DataMember(Name="inputSize", EmitDefaultValue=false)]
+        [DataMember(Name = "inputSize", EmitDefaultValue = false)]
         public long? InputSize { get; set; }
 
         /// <summary>
         /// Gets or Sets Output
         /// </summary>
-        [DataMember(Name="output", EmitDefaultValue=false)]
+        [DataMember(Name = "output", EmitDefaultValue = false)]
         public string Output { get; set; }
 
         /// <summary>
         /// Gets or Sets OutputSize
         /// </summary>
-        [DataMember(Name="outputSize", EmitDefaultValue=false)]
+        [DataMember(Name = "outputSize", EmitDefaultValue = false)]
         public long? OutputSize { get; set; }
 
         /// <summary>
         /// Gets or Sets Priority
         /// </summary>
-        [DataMember(Name="priority", EmitDefaultValue=false)]
+        [DataMember(Name = "priority", EmitDefaultValue = false)]
         public int? Priority { get; set; }
 
         /// <summary>
         /// Gets or Sets ReasonForIncompletion
         /// </summary>
-        [DataMember(Name="reasonForIncompletion", EmitDefaultValue=false)]
+        [DataMember(Name = "reasonForIncompletion", EmitDefaultValue = false)]
         public string ReasonForIncompletion { get; set; }
 
         /// <summary>
         /// Gets or Sets StartTime
         /// </summary>
-        [DataMember(Name="startTime", EmitDefaultValue=false)]
+        [DataMember(Name = "startTime", EmitDefaultValue = false)]
         public string StartTime { get; set; }
 
 
         /// <summary>
         /// Gets or Sets UpdateTime
         /// </summary>
-        [DataMember(Name="updateTime", EmitDefaultValue=false)]
+        [DataMember(Name = "updateTime", EmitDefaultValue = false)]
         public string UpdateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets Version
         /// </summary>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name = "version", EmitDefaultValue = false)]
         public int? Version { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowId
         /// </summary>
-        [DataMember(Name="workflowId", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
         public string WorkflowId { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowType
         /// </summary>
-        [DataMember(Name="workflowType", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowType", EmitDefaultValue = false)]
         public string WorkflowType { get; set; }
 
         /// <summary>
@@ -255,7 +256,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -285,102 +286,102 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CorrelationId == input.CorrelationId ||
                     (this.CorrelationId != null &&
                     this.CorrelationId.Equals(input.CorrelationId))
-                ) && 
+                ) &&
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
+                ) &&
                 (
                     this.EndTime == input.EndTime ||
                     (this.EndTime != null &&
                     this.EndTime.Equals(input.EndTime))
-                ) && 
+                ) &&
                 (
                     this._Event == input._Event ||
                     (this._Event != null &&
                     this._Event.Equals(input._Event))
-                ) && 
+                ) &&
                 (
                     this.ExecutionTime == input.ExecutionTime ||
                     (this.ExecutionTime != null &&
                     this.ExecutionTime.Equals(input.ExecutionTime))
-                ) && 
+                ) &&
                 (
                     this.ExternalInputPayloadStoragePath == input.ExternalInputPayloadStoragePath ||
                     (this.ExternalInputPayloadStoragePath != null &&
                     this.ExternalInputPayloadStoragePath.Equals(input.ExternalInputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.ExternalOutputPayloadStoragePath == input.ExternalOutputPayloadStoragePath ||
                     (this.ExternalOutputPayloadStoragePath != null &&
                     this.ExternalOutputPayloadStoragePath.Equals(input.ExternalOutputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.FailedReferenceTaskNames == input.FailedReferenceTaskNames ||
                     (this.FailedReferenceTaskNames != null &&
                     this.FailedReferenceTaskNames.Equals(input.FailedReferenceTaskNames))
-                ) && 
+                ) &&
                 (
                     this.Input == input.Input ||
                     (this.Input != null &&
                     this.Input.Equals(input.Input))
-                ) && 
+                ) &&
                 (
                     this.InputSize == input.InputSize ||
                     (this.InputSize != null &&
                     this.InputSize.Equals(input.InputSize))
-                ) && 
+                ) &&
                 (
                     this.Output == input.Output ||
                     (this.Output != null &&
                     this.Output.Equals(input.Output))
-                ) && 
+                ) &&
                 (
                     this.OutputSize == input.OutputSize ||
                     (this.OutputSize != null &&
                     this.OutputSize.Equals(input.OutputSize))
-                ) && 
+                ) &&
                 (
                     this.Priority == input.Priority ||
                     (this.Priority != null &&
                     this.Priority.Equals(input.Priority))
-                ) && 
+                ) &&
                 (
                     this.ReasonForIncompletion == input.ReasonForIncompletion ||
                     (this.ReasonForIncompletion != null &&
                     this.ReasonForIncompletion.Equals(input.ReasonForIncompletion))
-                ) && 
+                ) &&
                 (
                     this.StartTime == input.StartTime ||
                     (this.StartTime != null &&
                     this.StartTime.Equals(input.StartTime))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.UpdateTime == input.UpdateTime ||
                     (this.UpdateTime != null &&
                     this.UpdateTime.Equals(input.UpdateTime))
-                ) && 
+                ) &&
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
                     this.Version.Equals(input.Version))
-                ) && 
+                ) &&
                 (
                     this.WorkflowId == input.WorkflowId ||
                     (this.WorkflowId != null &&
                     this.WorkflowId.Equals(input.WorkflowId))
-                ) && 
+                ) &&
                 (
                     this.WorkflowType == input.WorkflowType ||
                     (this.WorkflowType != null &&

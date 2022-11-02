@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// ScrollableSearchResultWorkflowSummary
     /// </summary>
     [DataContract]
-        public partial class ScrollableSearchResultWorkflowSummary :  IEquatable<ScrollableSearchResultWorkflowSummary>, IValidatableObject
+    public partial class ScrollableSearchResultWorkflowSummary : IEquatable<ScrollableSearchResultWorkflowSummary>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ScrollableSearchResultWorkflowSummary" /> class.
@@ -31,17 +31,17 @@ namespace Conductor.Models
             this.QueryId = queryId;
             this.Results = results;
         }
-        
+
         /// <summary>
         /// Gets or Sets QueryId
         /// </summary>
-        [DataMember(Name="queryId", EmitDefaultValue=false)]
+        [DataMember(Name = "queryId", EmitDefaultValue = false)]
         public string QueryId { get; set; }
 
         /// <summary>
         /// Gets or Sets Results
         /// </summary>
-        [DataMember(Name="results", EmitDefaultValue=false)]
+        [DataMember(Name = "results", EmitDefaultValue = false)]
         public List<WorkflowSummary> Results { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,12 +87,12 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.QueryId == input.QueryId ||
                     (this.QueryId != null &&
                     this.QueryId.Equals(input.QueryId))
-                ) && 
+                ) &&
                 (
                     this.Results == input.Results ||
                     this.Results != null &&

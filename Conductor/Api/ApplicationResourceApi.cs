@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IApplicationResourceApi : IApiAccessor
+    public interface IApplicationResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -25,7 +25,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Object</returns>
-        Object AddRoleToApplicationUser (string applicationId, string role);
+        Object AddRoleToApplicationUser(string applicationId, string role);
 
         /// <summary>
         /// 
@@ -37,7 +37,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> AddRoleToApplicationUserWithHttpInfo (string applicationId, string role);
+        ApiResponse<Object> AddRoleToApplicationUserWithHttpInfo(string applicationId, string role);
         /// <summary>
         /// Create an access key for an application
         /// </summary>
@@ -47,7 +47,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object CreateAccessKey (string id);
+        Object CreateAccessKey(string id);
 
         /// <summary>
         /// Create an access key for an application
@@ -58,7 +58,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> CreateAccessKeyWithHttpInfo (string id);
+        ApiResponse<Object> CreateAccessKeyWithHttpInfo(string id);
         /// <summary>
         /// Create an application
         /// </summary>
@@ -68,7 +68,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Object</returns>
-        Object CreateApplication (CreateOrUpdateApplicationRequest body);
+        Object CreateApplication(CreateOrUpdateApplicationRequest body);
 
         /// <summary>
         /// Create an application
@@ -79,7 +79,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> CreateApplicationWithHttpInfo (CreateOrUpdateApplicationRequest body);
+        ApiResponse<Object> CreateApplicationWithHttpInfo(CreateOrUpdateApplicationRequest body);
         /// <summary>
         /// Delete an access key
         /// </summary>
@@ -90,7 +90,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Object</returns>
-        Object DeleteAccessKey (string applicationId, string keyId);
+        Object DeleteAccessKey(string applicationId, string keyId);
 
         /// <summary>
         /// Delete an access key
@@ -102,7 +102,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> DeleteAccessKeyWithHttpInfo (string applicationId, string keyId);
+        ApiResponse<Object> DeleteAccessKeyWithHttpInfo(string applicationId, string keyId);
         /// <summary>
         /// Delete an application
         /// </summary>
@@ -112,7 +112,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object DeleteApplication (string id);
+        Object DeleteApplication(string id);
 
         /// <summary>
         /// Delete an application
@@ -123,7 +123,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> DeleteApplicationWithHttpInfo (string id);
+        ApiResponse<Object> DeleteApplicationWithHttpInfo(string id);
         /// <summary>
         /// Delete a tag for application
         /// </summary>
@@ -134,7 +134,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void DeleteTagForApplication (string id, string body = null);
+        void DeleteTagForApplication(string id, string body = null);
 
         /// <summary>
         /// Delete a tag for application
@@ -146,7 +146,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteTagForApplicationWithHttpInfo (string id, string body = null);
+        ApiResponse<Object> DeleteTagForApplicationWithHttpInfo(string id, string body = null);
         /// <summary>
         /// Get application&#x27;s access keys
         /// </summary>
@@ -156,7 +156,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object GetAccessKeys (string id);
+        Object GetAccessKeys(string id);
 
         /// <summary>
         /// Get application&#x27;s access keys
@@ -167,7 +167,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetAccessKeysWithHttpInfo (string id);
+        ApiResponse<Object> GetAccessKeysWithHttpInfo(string id);
         /// <summary>
         /// Get an application by id
         /// </summary>
@@ -177,7 +177,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object GetApplication (string id);
+        Object GetApplication(string id);
 
         /// <summary>
         /// Get an application by id
@@ -188,7 +188,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetApplicationWithHttpInfo (string id);
+        ApiResponse<Object> GetApplicationWithHttpInfo(string id);
         /// <summary>
         /// Get tags by application
         /// </summary>
@@ -198,7 +198,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>List&lt;TagObject&gt;</returns>
-        List<TagObject> GetTagsForApplication (string id);
+        List<TagObject> GetTagsForApplication(string id);
 
         /// <summary>
         /// Get tags by application
@@ -209,7 +209,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of List&lt;TagObject&gt;</returns>
-        ApiResponse<List<TagObject>> GetTagsForApplicationWithHttpInfo (string id);
+        ApiResponse<List<TagObject>> GetTagsForApplicationWithHttpInfo(string id);
         /// <summary>
         /// Get all applications
         /// </summary>
@@ -218,7 +218,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;ConductorApplication&gt;</returns>
-        List<ConductorApplication> ListApplications ();
+        List<ConductorApplication> ListApplications();
 
         /// <summary>
         /// Get all applications
@@ -228,7 +228,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;ConductorApplication&gt;</returns>
-        ApiResponse<List<ConductorApplication>> ListApplicationsWithHttpInfo ();
+        ApiResponse<List<ConductorApplication>> ListApplicationsWithHttpInfo();
         /// <summary>
         /// Put a tag to application
         /// </summary>
@@ -239,7 +239,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void PutTagForApplication (string id, string body = null);
+        void PutTagForApplication(string id, string body = null);
 
         /// <summary>
         /// Put a tag to application
@@ -251,7 +251,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PutTagForApplicationWithHttpInfo (string id, string body = null);
+        ApiResponse<Object> PutTagForApplicationWithHttpInfo(string id, string body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -262,7 +262,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Object</returns>
-        Object RemoveRoleFromApplicationUser (string applicationId, string role);
+        Object RemoveRoleFromApplicationUser(string applicationId, string role);
 
         /// <summary>
         /// 
@@ -274,7 +274,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> RemoveRoleFromApplicationUserWithHttpInfo (string applicationId, string role);
+        ApiResponse<Object> RemoveRoleFromApplicationUserWithHttpInfo(string applicationId, string role);
         /// <summary>
         /// Toggle the status of an access key
         /// </summary>
@@ -285,7 +285,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Object</returns>
-        Object ToggleAccessKeyStatus (string applicationId, string keyId);
+        Object ToggleAccessKeyStatus(string applicationId, string keyId);
 
         /// <summary>
         /// Toggle the status of an access key
@@ -297,7 +297,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> ToggleAccessKeyStatusWithHttpInfo (string applicationId, string keyId);
+        ApiResponse<Object> ToggleAccessKeyStatusWithHttpInfo(string applicationId, string keyId);
         /// <summary>
         /// Update an application
         /// </summary>
@@ -308,7 +308,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object UpdateApplication (CreateOrUpdateApplicationRequest body, string id);
+        Object UpdateApplication(CreateOrUpdateApplicationRequest body, string id);
 
         /// <summary>
         /// Update an application
@@ -320,7 +320,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> UpdateApplicationWithHttpInfo (CreateOrUpdateApplicationRequest body, string id);
+        ApiResponse<Object> UpdateApplicationWithHttpInfo(CreateOrUpdateApplicationRequest body, string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -333,7 +333,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> AddRoleToApplicationUserAsync (string applicationId, string role);
+        System.Threading.Tasks.Task<Object> AddRoleToApplicationUserAsync(string applicationId, string role);
 
         /// <summary>
         /// 
@@ -345,7 +345,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddRoleToApplicationUserAsyncWithHttpInfo (string applicationId, string role);
+        System.Threading.Tasks.Task<ApiResponse<Object>> AddRoleToApplicationUserAsyncWithHttpInfo(string applicationId, string role);
         /// <summary>
         /// Create an access key for an application
         /// </summary>
@@ -355,7 +355,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> CreateAccessKeyAsync (string id);
+        System.Threading.Tasks.Task<Object> CreateAccessKeyAsync(string id);
 
         /// <summary>
         /// Create an access key for an application
@@ -366,7 +366,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CreateAccessKeyAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> CreateAccessKeyAsyncWithHttpInfo(string id);
         /// <summary>
         /// Create an application
         /// </summary>
@@ -376,7 +376,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> CreateApplicationAsync (CreateOrUpdateApplicationRequest body);
+        System.Threading.Tasks.Task<Object> CreateApplicationAsync(CreateOrUpdateApplicationRequest body);
 
         /// <summary>
         /// Create an application
@@ -387,7 +387,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CreateApplicationAsyncWithHttpInfo (CreateOrUpdateApplicationRequest body);
+        System.Threading.Tasks.Task<ApiResponse<Object>> CreateApplicationAsyncWithHttpInfo(CreateOrUpdateApplicationRequest body);
         /// <summary>
         /// Delete an access key
         /// </summary>
@@ -398,7 +398,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> DeleteAccessKeyAsync (string applicationId, string keyId);
+        System.Threading.Tasks.Task<Object> DeleteAccessKeyAsync(string applicationId, string keyId);
 
         /// <summary>
         /// Delete an access key
@@ -410,7 +410,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccessKeyAsyncWithHttpInfo (string applicationId, string keyId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccessKeyAsyncWithHttpInfo(string applicationId, string keyId);
         /// <summary>
         /// Delete an application
         /// </summary>
@@ -420,7 +420,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> DeleteApplicationAsync (string id);
+        System.Threading.Tasks.Task<Object> DeleteApplicationAsync(string id);
 
         /// <summary>
         /// Delete an application
@@ -431,7 +431,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteApplicationAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteApplicationAsyncWithHttpInfo(string id);
         /// <summary>
         /// Delete a tag for application
         /// </summary>
@@ -442,7 +442,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteTagForApplicationAsync (string id, string body = null);
+        System.Threading.Tasks.Task DeleteTagForApplicationAsync(string id, string body = null);
 
         /// <summary>
         /// Delete a tag for application
@@ -454,7 +454,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForApplicationAsyncWithHttpInfo (string id, string body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForApplicationAsyncWithHttpInfo(string id, string body = null);
         /// <summary>
         /// Get application&#x27;s access keys
         /// </summary>
@@ -464,7 +464,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetAccessKeysAsync (string id);
+        System.Threading.Tasks.Task<Object> GetAccessKeysAsync(string id);
 
         /// <summary>
         /// Get application&#x27;s access keys
@@ -475,7 +475,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetAccessKeysAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetAccessKeysAsyncWithHttpInfo(string id);
         /// <summary>
         /// Get an application by id
         /// </summary>
@@ -485,7 +485,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetApplicationAsync (string id);
+        System.Threading.Tasks.Task<Object> GetApplicationAsync(string id);
 
         /// <summary>
         /// Get an application by id
@@ -496,7 +496,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetApplicationAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetApplicationAsyncWithHttpInfo(string id);
         /// <summary>
         /// Get tags by application
         /// </summary>
@@ -506,7 +506,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
-        System.Threading.Tasks.Task<List<TagObject>> GetTagsForApplicationAsync (string id);
+        System.Threading.Tasks.Task<List<TagObject>> GetTagsForApplicationAsync(string id);
 
         /// <summary>
         /// Get tags by application
@@ -517,7 +517,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsForApplicationAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsForApplicationAsyncWithHttpInfo(string id);
         /// <summary>
         /// Get all applications
         /// </summary>
@@ -526,7 +526,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;ConductorApplication&gt;</returns>
-        System.Threading.Tasks.Task<List<ConductorApplication>> ListApplicationsAsync ();
+        System.Threading.Tasks.Task<List<ConductorApplication>> ListApplicationsAsync();
 
         /// <summary>
         /// Get all applications
@@ -536,7 +536,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;ConductorApplication&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ConductorApplication>>> ListApplicationsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<ConductorApplication>>> ListApplicationsAsyncWithHttpInfo();
         /// <summary>
         /// Put a tag to application
         /// </summary>
@@ -547,7 +547,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PutTagForApplicationAsync (string id, string body = null);
+        System.Threading.Tasks.Task PutTagForApplicationAsync(string id, string body = null);
 
         /// <summary>
         /// Put a tag to application
@@ -559,7 +559,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForApplicationAsyncWithHttpInfo (string id, string body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForApplicationAsyncWithHttpInfo(string id, string body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -570,7 +570,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> RemoveRoleFromApplicationUserAsync (string applicationId, string role);
+        System.Threading.Tasks.Task<Object> RemoveRoleFromApplicationUserAsync(string applicationId, string role);
 
         /// <summary>
         /// 
@@ -582,7 +582,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveRoleFromApplicationUserAsyncWithHttpInfo (string applicationId, string role);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveRoleFromApplicationUserAsyncWithHttpInfo(string applicationId, string role);
         /// <summary>
         /// Toggle the status of an access key
         /// </summary>
@@ -593,7 +593,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> ToggleAccessKeyStatusAsync (string applicationId, string keyId);
+        System.Threading.Tasks.Task<Object> ToggleAccessKeyStatusAsync(string applicationId, string keyId);
 
         /// <summary>
         /// Toggle the status of an access key
@@ -605,7 +605,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ToggleAccessKeyStatusAsyncWithHttpInfo (string applicationId, string keyId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ToggleAccessKeyStatusAsyncWithHttpInfo(string applicationId, string keyId);
         /// <summary>
         /// Update an application
         /// </summary>
@@ -616,7 +616,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> UpdateApplicationAsync (CreateOrUpdateApplicationRequest body, string id);
+        System.Threading.Tasks.Task<Object> UpdateApplicationAsync(CreateOrUpdateApplicationRequest body, string id);
 
         /// <summary>
         /// Update an application
@@ -628,14 +628,14 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateApplicationAsyncWithHttpInfo (CreateOrUpdateApplicationRequest body, string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateApplicationAsyncWithHttpInfo(CreateOrUpdateApplicationRequest body, string id);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class ApplicationResourceApi : IApplicationResourceApi
+    public partial class ApplicationResourceApi : IApplicationResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -700,7 +700,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -747,10 +747,10 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Object</returns>
-        public Object AddRoleToApplicationUser (string applicationId, string role)
+        public Object AddRoleToApplicationUser(string applicationId, string role)
         {
-             ApiResponse<Object> localVarResponse = AddRoleToApplicationUserWithHttpInfo(applicationId, role);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = AddRoleToApplicationUserWithHttpInfo(applicationId, role);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -760,7 +760,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > AddRoleToApplicationUserWithHttpInfo (string applicationId, string role)
+        public ApiResponse<Object> AddRoleToApplicationUserWithHttpInfo(string applicationId, string role)
         {
             // verify the required parameter 'applicationId' is set
             if (applicationId == null)
@@ -799,11 +799,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -813,7 +813,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -823,10 +823,10 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> AddRoleToApplicationUserAsync (string applicationId, string role)
+        public async System.Threading.Tasks.Task<Object> AddRoleToApplicationUserAsync(string applicationId, string role)
         {
-             ApiResponse<Object> localVarResponse = await AddRoleToApplicationUserAsyncWithHttpInfo(applicationId, role);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await AddRoleToApplicationUserAsyncWithHttpInfo(applicationId, role);
+            return localVarResponse.Data;
 
         }
 
@@ -837,7 +837,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddRoleToApplicationUserAsyncWithHttpInfo (string applicationId, string role)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddRoleToApplicationUserAsyncWithHttpInfo(string applicationId, string role)
         {
             // verify the required parameter 'applicationId' is set
             if (applicationId == null)
@@ -876,11 +876,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -890,7 +890,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -899,10 +899,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object CreateAccessKey (string id)
+        public Object CreateAccessKey(string id)
         {
-             ApiResponse<Object> localVarResponse = CreateAccessKeyWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = CreateAccessKeyWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -911,7 +911,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > CreateAccessKeyWithHttpInfo (string id)
+        public ApiResponse<Object> CreateAccessKeyWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -946,11 +946,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -960,7 +960,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -969,10 +969,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> CreateAccessKeyAsync (string id)
+        public async System.Threading.Tasks.Task<Object> CreateAccessKeyAsync(string id)
         {
-             ApiResponse<Object> localVarResponse = await CreateAccessKeyAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await CreateAccessKeyAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -982,7 +982,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateAccessKeyAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateAccessKeyAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1017,11 +1017,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1031,7 +1031,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1040,10 +1040,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Object</returns>
-        public Object CreateApplication (CreateOrUpdateApplicationRequest body)
+        public Object CreateApplication(CreateOrUpdateApplicationRequest body)
         {
-             ApiResponse<Object> localVarResponse = CreateApplicationWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = CreateApplicationWithHttpInfo(body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1052,7 +1052,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > CreateApplicationWithHttpInfo (CreateOrUpdateApplicationRequest body)
+        public ApiResponse<Object> CreateApplicationWithHttpInfo(CreateOrUpdateApplicationRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1095,11 +1095,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1109,7 +1109,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1118,10 +1118,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> CreateApplicationAsync (CreateOrUpdateApplicationRequest body)
+        public async System.Threading.Tasks.Task<Object> CreateApplicationAsync(CreateOrUpdateApplicationRequest body)
         {
-             ApiResponse<Object> localVarResponse = await CreateApplicationAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await CreateApplicationAsyncWithHttpInfo(body);
+            return localVarResponse.Data;
 
         }
 
@@ -1131,7 +1131,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateApplicationAsyncWithHttpInfo (CreateOrUpdateApplicationRequest body)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateApplicationAsyncWithHttpInfo(CreateOrUpdateApplicationRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1174,11 +1174,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1188,7 +1188,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1198,10 +1198,10 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Object</returns>
-        public Object DeleteAccessKey (string applicationId, string keyId)
+        public Object DeleteAccessKey(string applicationId, string keyId)
         {
-             ApiResponse<Object> localVarResponse = DeleteAccessKeyWithHttpInfo(applicationId, keyId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = DeleteAccessKeyWithHttpInfo(applicationId, keyId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1211,7 +1211,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > DeleteAccessKeyWithHttpInfo (string applicationId, string keyId)
+        public ApiResponse<Object> DeleteAccessKeyWithHttpInfo(string applicationId, string keyId)
         {
             // verify the required parameter 'applicationId' is set
             if (applicationId == null)
@@ -1250,11 +1250,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1264,7 +1264,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1274,10 +1274,10 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> DeleteAccessKeyAsync (string applicationId, string keyId)
+        public async System.Threading.Tasks.Task<Object> DeleteAccessKeyAsync(string applicationId, string keyId)
         {
-             ApiResponse<Object> localVarResponse = await DeleteAccessKeyAsyncWithHttpInfo(applicationId, keyId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await DeleteAccessKeyAsyncWithHttpInfo(applicationId, keyId);
+            return localVarResponse.Data;
 
         }
 
@@ -1288,7 +1288,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccessKeyAsyncWithHttpInfo (string applicationId, string keyId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccessKeyAsyncWithHttpInfo(string applicationId, string keyId)
         {
             // verify the required parameter 'applicationId' is set
             if (applicationId == null)
@@ -1327,11 +1327,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1341,7 +1341,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1350,10 +1350,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object DeleteApplication (string id)
+        public Object DeleteApplication(string id)
         {
-             ApiResponse<Object> localVarResponse = DeleteApplicationWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = DeleteApplicationWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1362,7 +1362,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > DeleteApplicationWithHttpInfo (string id)
+        public ApiResponse<Object> DeleteApplicationWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1397,11 +1397,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1411,7 +1411,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1420,10 +1420,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> DeleteApplicationAsync (string id)
+        public async System.Threading.Tasks.Task<Object> DeleteApplicationAsync(string id)
         {
-             ApiResponse<Object> localVarResponse = await DeleteApplicationAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await DeleteApplicationAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -1433,7 +1433,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteApplicationAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteApplicationAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1468,11 +1468,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1482,7 +1482,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1492,9 +1492,9 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void DeleteTagForApplication (string id, string body = null)
+        public void DeleteTagForApplication(string id, string body = null)
         {
-             DeleteTagForApplicationWithHttpInfo(id, body);
+            DeleteTagForApplicationWithHttpInfo(id, body);
         }
 
         /// <summary>
@@ -1504,7 +1504,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteTagForApplicationWithHttpInfo (string id, string body = null)
+        public ApiResponse<Object> DeleteTagForApplicationWithHttpInfo(string id, string body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1547,11 +1547,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1571,9 +1571,9 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteTagForApplicationAsync (string id, string body = null)
+        public async System.Threading.Tasks.Task DeleteTagForApplicationAsync(string id, string body = null)
         {
-             await DeleteTagForApplicationAsyncWithHttpInfo(id, body);
+            await DeleteTagForApplicationAsyncWithHttpInfo(id, body);
 
         }
 
@@ -1584,7 +1584,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForApplicationAsyncWithHttpInfo (string id, string body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForApplicationAsyncWithHttpInfo(string id, string body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1627,11 +1627,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1650,10 +1650,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object GetAccessKeys (string id)
+        public Object GetAccessKeys(string id)
         {
-             ApiResponse<Object> localVarResponse = GetAccessKeysWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetAccessKeysWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1662,7 +1662,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetAccessKeysWithHttpInfo (string id)
+        public ApiResponse<Object> GetAccessKeysWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1697,11 +1697,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1711,7 +1711,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1720,10 +1720,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetAccessKeysAsync (string id)
+        public async System.Threading.Tasks.Task<Object> GetAccessKeysAsync(string id)
         {
-             ApiResponse<Object> localVarResponse = await GetAccessKeysAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await GetAccessKeysAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -1733,7 +1733,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetAccessKeysAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetAccessKeysAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1768,11 +1768,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1782,7 +1782,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1791,10 +1791,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object GetApplication (string id)
+        public Object GetApplication(string id)
         {
-             ApiResponse<Object> localVarResponse = GetApplicationWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetApplicationWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1803,7 +1803,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetApplicationWithHttpInfo (string id)
+        public ApiResponse<Object> GetApplicationWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1838,11 +1838,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1852,7 +1852,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1861,10 +1861,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetApplicationAsync (string id)
+        public async System.Threading.Tasks.Task<Object> GetApplicationAsync(string id)
         {
-             ApiResponse<Object> localVarResponse = await GetApplicationAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await GetApplicationAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -1874,7 +1874,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetApplicationAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetApplicationAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1909,11 +1909,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1923,7 +1923,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1932,10 +1932,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>List&lt;TagObject&gt;</returns>
-        public List<TagObject> GetTagsForApplication (string id)
+        public List<TagObject> GetTagsForApplication(string id)
         {
-             ApiResponse<List<TagObject>> localVarResponse = GetTagsForApplicationWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<List<TagObject>> localVarResponse = GetTagsForApplicationWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1944,7 +1944,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of List&lt;TagObject&gt;</returns>
-        public ApiResponse< List<TagObject> > GetTagsForApplicationWithHttpInfo (string id)
+        public ApiResponse<List<TagObject>> GetTagsForApplicationWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1979,11 +1979,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1993,7 +1993,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<TagObject>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<TagObject>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
+                (List<TagObject>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
         }
 
         /// <summary>
@@ -2002,10 +2002,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
-        public async System.Threading.Tasks.Task<List<TagObject>> GetTagsForApplicationAsync (string id)
+        public async System.Threading.Tasks.Task<List<TagObject>> GetTagsForApplicationAsync(string id)
         {
-             ApiResponse<List<TagObject>> localVarResponse = await GetTagsForApplicationAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<List<TagObject>> localVarResponse = await GetTagsForApplicationAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -2015,7 +2015,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsForApplicationAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsForApplicationAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2050,11 +2050,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2064,7 +2064,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<TagObject>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<TagObject>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
+                (List<TagObject>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TagObject>)));
         }
 
         /// <summary>
@@ -2072,10 +2072,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;ConductorApplication&gt;</returns>
-        public List<ConductorApplication> ListApplications ()
+        public List<ConductorApplication> ListApplications()
         {
-             ApiResponse<List<ConductorApplication>> localVarResponse = ListApplicationsWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<ConductorApplication>> localVarResponse = ListApplicationsWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2083,7 +2083,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;ConductorApplication&gt;</returns>
-        public ApiResponse< List<ConductorApplication> > ListApplicationsWithHttpInfo ()
+        public ApiResponse<List<ConductorApplication>> ListApplicationsWithHttpInfo()
         {
 
             var localVarPath = "/api/applications";
@@ -2114,11 +2114,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2128,7 +2128,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<ConductorApplication>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<ConductorApplication>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ConductorApplication>)));
+                (List<ConductorApplication>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ConductorApplication>)));
         }
 
         /// <summary>
@@ -2136,10 +2136,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;ConductorApplication&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ConductorApplication>> ListApplicationsAsync ()
+        public async System.Threading.Tasks.Task<List<ConductorApplication>> ListApplicationsAsync()
         {
-             ApiResponse<List<ConductorApplication>> localVarResponse = await ListApplicationsAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<ConductorApplication>> localVarResponse = await ListApplicationsAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -2148,7 +2148,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;ConductorApplication&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ConductorApplication>>> ListApplicationsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<ConductorApplication>>> ListApplicationsAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/applications";
@@ -2179,11 +2179,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2193,7 +2193,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<ConductorApplication>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<ConductorApplication>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ConductorApplication>)));
+                (List<ConductorApplication>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ConductorApplication>)));
         }
 
         /// <summary>
@@ -2203,9 +2203,9 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void PutTagForApplication (string id, string body = null)
+        public void PutTagForApplication(string id, string body = null)
         {
-             PutTagForApplicationWithHttpInfo(id, body);
+            PutTagForApplicationWithHttpInfo(id, body);
         }
 
         /// <summary>
@@ -2215,7 +2215,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PutTagForApplicationWithHttpInfo (string id, string body = null)
+        public ApiResponse<Object> PutTagForApplicationWithHttpInfo(string id, string body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2258,11 +2258,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2282,9 +2282,9 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PutTagForApplicationAsync (string id, string body = null)
+        public async System.Threading.Tasks.Task PutTagForApplicationAsync(string id, string body = null)
         {
-             await PutTagForApplicationAsyncWithHttpInfo(id, body);
+            await PutTagForApplicationAsyncWithHttpInfo(id, body);
 
         }
 
@@ -2295,7 +2295,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForApplicationAsyncWithHttpInfo (string id, string body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForApplicationAsyncWithHttpInfo(string id, string body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2338,11 +2338,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2362,10 +2362,10 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Object</returns>
-        public Object RemoveRoleFromApplicationUser (string applicationId, string role)
+        public Object RemoveRoleFromApplicationUser(string applicationId, string role)
         {
-             ApiResponse<Object> localVarResponse = RemoveRoleFromApplicationUserWithHttpInfo(applicationId, role);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = RemoveRoleFromApplicationUserWithHttpInfo(applicationId, role);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2375,7 +2375,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > RemoveRoleFromApplicationUserWithHttpInfo (string applicationId, string role)
+        public ApiResponse<Object> RemoveRoleFromApplicationUserWithHttpInfo(string applicationId, string role)
         {
             // verify the required parameter 'applicationId' is set
             if (applicationId == null)
@@ -2414,11 +2414,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2428,7 +2428,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2438,10 +2438,10 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> RemoveRoleFromApplicationUserAsync (string applicationId, string role)
+        public async System.Threading.Tasks.Task<Object> RemoveRoleFromApplicationUserAsync(string applicationId, string role)
         {
-             ApiResponse<Object> localVarResponse = await RemoveRoleFromApplicationUserAsyncWithHttpInfo(applicationId, role);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await RemoveRoleFromApplicationUserAsyncWithHttpInfo(applicationId, role);
+            return localVarResponse.Data;
 
         }
 
@@ -2452,7 +2452,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveRoleFromApplicationUserAsyncWithHttpInfo (string applicationId, string role)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveRoleFromApplicationUserAsyncWithHttpInfo(string applicationId, string role)
         {
             // verify the required parameter 'applicationId' is set
             if (applicationId == null)
@@ -2491,11 +2491,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2505,7 +2505,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2515,10 +2515,10 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Object</returns>
-        public Object ToggleAccessKeyStatus (string applicationId, string keyId)
+        public Object ToggleAccessKeyStatus(string applicationId, string keyId)
         {
-             ApiResponse<Object> localVarResponse = ToggleAccessKeyStatusWithHttpInfo(applicationId, keyId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = ToggleAccessKeyStatusWithHttpInfo(applicationId, keyId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2528,7 +2528,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > ToggleAccessKeyStatusWithHttpInfo (string applicationId, string keyId)
+        public ApiResponse<Object> ToggleAccessKeyStatusWithHttpInfo(string applicationId, string keyId)
         {
             // verify the required parameter 'applicationId' is set
             if (applicationId == null)
@@ -2567,11 +2567,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2581,7 +2581,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2591,10 +2591,10 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> ToggleAccessKeyStatusAsync (string applicationId, string keyId)
+        public async System.Threading.Tasks.Task<Object> ToggleAccessKeyStatusAsync(string applicationId, string keyId)
         {
-             ApiResponse<Object> localVarResponse = await ToggleAccessKeyStatusAsyncWithHttpInfo(applicationId, keyId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await ToggleAccessKeyStatusAsyncWithHttpInfo(applicationId, keyId);
+            return localVarResponse.Data;
 
         }
 
@@ -2605,7 +2605,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ToggleAccessKeyStatusAsyncWithHttpInfo (string applicationId, string keyId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ToggleAccessKeyStatusAsyncWithHttpInfo(string applicationId, string keyId)
         {
             // verify the required parameter 'applicationId' is set
             if (applicationId == null)
@@ -2644,11 +2644,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2658,7 +2658,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2668,10 +2668,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object UpdateApplication (CreateOrUpdateApplicationRequest body, string id)
+        public Object UpdateApplication(CreateOrUpdateApplicationRequest body, string id)
         {
-             ApiResponse<Object> localVarResponse = UpdateApplicationWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = UpdateApplicationWithHttpInfo(body, id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2681,7 +2681,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > UpdateApplicationWithHttpInfo (CreateOrUpdateApplicationRequest body, string id)
+        public ApiResponse<Object> UpdateApplicationWithHttpInfo(CreateOrUpdateApplicationRequest body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2728,11 +2728,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2742,7 +2742,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2752,10 +2752,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> UpdateApplicationAsync (CreateOrUpdateApplicationRequest body, string id)
+        public async System.Threading.Tasks.Task<Object> UpdateApplicationAsync(CreateOrUpdateApplicationRequest body, string id)
         {
-             ApiResponse<Object> localVarResponse = await UpdateApplicationAsyncWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await UpdateApplicationAsyncWithHttpInfo(body, id);
+            return localVarResponse.Data;
 
         }
 
@@ -2766,7 +2766,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateApplicationAsyncWithHttpInfo (CreateOrUpdateApplicationRequest body, string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateApplicationAsyncWithHttpInfo(CreateOrUpdateApplicationRequest body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2813,11 +2813,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2827,7 +2827,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
     }

@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// GenerateTokenRequest
     /// </summary>
     [DataContract]
-        public partial class GenerateTokenRequest :  IEquatable<GenerateTokenRequest>, IValidatableObject
+    public partial class GenerateTokenRequest : IEquatable<GenerateTokenRequest>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateTokenRequest" /> class.
@@ -47,17 +47,17 @@ namespace Conductor.Models
                 this.KeySecret = keySecret;
             }
         }
-        
+
         /// <summary>
         /// Gets or Sets KeyId
         /// </summary>
-        [DataMember(Name="keyId", EmitDefaultValue=false)]
+        [DataMember(Name = "keyId", EmitDefaultValue = false)]
         public string KeyId { get; set; }
 
         /// <summary>
         /// Gets or Sets KeySecret
         /// </summary>
-        [DataMember(Name="keySecret", EmitDefaultValue=false)]
+        [DataMember(Name = "keySecret", EmitDefaultValue = false)]
         public string KeySecret { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -103,12 +103,12 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.KeyId == input.KeyId ||
                     (this.KeyId != null &&
                     this.KeyId.Equals(input.KeyId))
-                ) && 
+                ) &&
                 (
                     this.KeySecret == input.KeySecret ||
                     (this.KeySecret != null &&

@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// WorkflowScheduleExecutionModel
     /// </summary>
     [DataContract]
-        public partial class WorkflowScheduleExecutionModel :  IEquatable<WorkflowScheduleExecutionModel>, IValidatableObject
+    public partial class WorkflowScheduleExecutionModel : IEquatable<WorkflowScheduleExecutionModel>, IValidatableObject
     {
         /// <summary>
         /// Defines State
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum StateEnum
+        public enum StateEnum
         {
             /// <summary>
             /// Enum POLLED for value: POLLED
@@ -41,11 +41,12 @@ namespace Conductor.Models
             /// Enum EXECUTED for value: EXECUTED
             /// </summary>
             [EnumMember(Value = "EXECUTED")]
-            EXECUTED = 3        }
+            EXECUTED = 3
+        }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name = "state", EmitDefaultValue = false)]
         public StateEnum? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowScheduleExecutionModel" /> class.
@@ -73,60 +74,60 @@ namespace Conductor.Models
             this.WorkflowId = workflowId;
             this.WorkflowName = workflowName;
         }
-        
+
         /// <summary>
         /// Gets or Sets ExecutionId
         /// </summary>
-        [DataMember(Name="executionId", EmitDefaultValue=false)]
+        [DataMember(Name = "executionId", EmitDefaultValue = false)]
         public string ExecutionId { get; set; }
 
         /// <summary>
         /// Gets or Sets ExecutionTime
         /// </summary>
-        [DataMember(Name="executionTime", EmitDefaultValue=false)]
+        [DataMember(Name = "executionTime", EmitDefaultValue = false)]
         public long? ExecutionTime { get; set; }
 
         /// <summary>
         /// Gets or Sets Reason
         /// </summary>
-        [DataMember(Name="reason", EmitDefaultValue=false)]
+        [DataMember(Name = "reason", EmitDefaultValue = false)]
         public string Reason { get; set; }
 
         /// <summary>
         /// Gets or Sets ScheduleName
         /// </summary>
-        [DataMember(Name="scheduleName", EmitDefaultValue=false)]
+        [DataMember(Name = "scheduleName", EmitDefaultValue = false)]
         public string ScheduleName { get; set; }
 
         /// <summary>
         /// Gets or Sets ScheduledTime
         /// </summary>
-        [DataMember(Name="scheduledTime", EmitDefaultValue=false)]
+        [DataMember(Name = "scheduledTime", EmitDefaultValue = false)]
         public long? ScheduledTime { get; set; }
 
         /// <summary>
         /// Gets or Sets StackTrace
         /// </summary>
-        [DataMember(Name="stackTrace", EmitDefaultValue=false)]
+        [DataMember(Name = "stackTrace", EmitDefaultValue = false)]
         public string StackTrace { get; set; }
 
         /// <summary>
         /// Gets or Sets StartWorkflowRequest
         /// </summary>
-        [DataMember(Name="startWorkflowRequest", EmitDefaultValue=false)]
+        [DataMember(Name = "startWorkflowRequest", EmitDefaultValue = false)]
         public StartWorkflowRequest StartWorkflowRequest { get; set; }
 
 
         /// <summary>
         /// Gets or Sets WorkflowId
         /// </summary>
-        [DataMember(Name="workflowId", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
         public string WorkflowId { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowName
         /// </summary>
-        [DataMember(Name="workflowName", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowName", EmitDefaultValue = false)]
         public string WorkflowName { get; set; }
 
         /// <summary>
@@ -150,7 +151,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -180,52 +181,52 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ExecutionId == input.ExecutionId ||
                     (this.ExecutionId != null &&
                     this.ExecutionId.Equals(input.ExecutionId))
-                ) && 
+                ) &&
                 (
                     this.ExecutionTime == input.ExecutionTime ||
                     (this.ExecutionTime != null &&
                     this.ExecutionTime.Equals(input.ExecutionTime))
-                ) && 
+                ) &&
                 (
                     this.Reason == input.Reason ||
                     (this.Reason != null &&
                     this.Reason.Equals(input.Reason))
-                ) && 
+                ) &&
                 (
                     this.ScheduleName == input.ScheduleName ||
                     (this.ScheduleName != null &&
                     this.ScheduleName.Equals(input.ScheduleName))
-                ) && 
+                ) &&
                 (
                     this.ScheduledTime == input.ScheduledTime ||
                     (this.ScheduledTime != null &&
                     this.ScheduledTime.Equals(input.ScheduledTime))
-                ) && 
+                ) &&
                 (
                     this.StackTrace == input.StackTrace ||
                     (this.StackTrace != null &&
                     this.StackTrace.Equals(input.StackTrace))
-                ) && 
+                ) &&
                 (
                     this.StartWorkflowRequest == input.StartWorkflowRequest ||
                     (this.StartWorkflowRequest != null &&
                     this.StartWorkflowRequest.Equals(input.StartWorkflowRequest))
-                ) && 
+                ) &&
                 (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
-                ) && 
+                ) &&
                 (
                     this.WorkflowId == input.WorkflowId ||
                     (this.WorkflowId != null &&
                     this.WorkflowId.Equals(input.WorkflowId))
-                ) && 
+                ) &&
                 (
                     this.WorkflowName == input.WorkflowName ||
                     (this.WorkflowName != null &&

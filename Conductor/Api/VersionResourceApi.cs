@@ -11,7 +11,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IVersionResourceApi : IApiAccessor
+    public interface IVersionResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -22,7 +22,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
-        string GetVersion ();
+        string GetVersion();
 
         /// <summary>
         /// Get the server&#x27;s version
@@ -32,7 +32,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> GetVersionWithHttpInfo ();
+        ApiResponse<string> GetVersionWithHttpInfo();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -43,7 +43,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> GetVersionAsync ();
+        System.Threading.Tasks.Task<string> GetVersionAsync();
 
         /// <summary>
         /// Get the server&#x27;s version
@@ -53,14 +53,14 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> GetVersionAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<string>> GetVersionAsyncWithHttpInfo();
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class VersionResourceApi : IVersionResourceApi
+    public partial class VersionResourceApi : IVersionResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -125,7 +125,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -170,10 +170,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
-        public string GetVersion ()
+        public string GetVersion()
         {
-             ApiResponse<string> localVarResponse = GetVersionWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = GetVersionWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > GetVersionWithHttpInfo ()
+        public ApiResponse<string> GetVersionWithHttpInfo()
         {
 
             var localVarPath = "/api/version";
@@ -212,11 +212,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -226,7 +226,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -234,10 +234,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> GetVersionAsync ()
+        public async System.Threading.Tasks.Task<string> GetVersionAsync()
         {
-             ApiResponse<string> localVarResponse = await GetVersionAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await GetVersionAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -246,7 +246,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> GetVersionAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<string>> GetVersionAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/version";
@@ -277,11 +277,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -291,7 +291,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
     }

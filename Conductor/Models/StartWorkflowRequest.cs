@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// StartWorkflowRequest
     /// </summary>
     [DataContract]
-        public partial class StartWorkflowRequest :  IEquatable<StartWorkflowRequest>, IValidatableObject
+    public partial class StartWorkflowRequest : IEquatable<StartWorkflowRequest>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="StartWorkflowRequest" /> class.
@@ -53,59 +53,59 @@ namespace Conductor.Models
             this.Version = version;
             this.WorkflowDef = workflowDef;
         }
-        
+
         /// <summary>
         /// Gets or Sets CorrelationId
         /// </summary>
-        [DataMember(Name="correlationId", EmitDefaultValue=false)]
+        [DataMember(Name = "correlationId", EmitDefaultValue = false)]
         public string CorrelationId { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name = "createdBy", EmitDefaultValue = false)]
         public string CreatedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalInputPayloadStoragePath
         /// </summary>
-        [DataMember(Name="externalInputPayloadStoragePath", EmitDefaultValue=false)]
+        [DataMember(Name = "externalInputPayloadStoragePath", EmitDefaultValue = false)]
         public string ExternalInputPayloadStoragePath { get; set; }
 
         /// <summary>
         /// Gets or Sets Input
         /// </summary>
-        [DataMember(Name="input", EmitDefaultValue=false)]
+        [DataMember(Name = "input", EmitDefaultValue = false)]
         public Dictionary<string, Object> Input { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Priority
         /// </summary>
-        [DataMember(Name="priority", EmitDefaultValue=false)]
+        [DataMember(Name = "priority", EmitDefaultValue = false)]
         public int? Priority { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskToDomain
         /// </summary>
-        [DataMember(Name="taskToDomain", EmitDefaultValue=false)]
+        [DataMember(Name = "taskToDomain", EmitDefaultValue = false)]
         public Dictionary<string, string> TaskToDomain { get; set; }
 
         /// <summary>
         /// Gets or Sets Version
         /// </summary>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name = "version", EmitDefaultValue = false)]
         public int? Version { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowDef
         /// </summary>
-        [DataMember(Name="workflowDef", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowDef", EmitDefaultValue = false)]
         public WorkflowDef WorkflowDef { get; set; }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -158,49 +158,49 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CorrelationId == input.CorrelationId ||
                     (this.CorrelationId != null &&
                     this.CorrelationId.Equals(input.CorrelationId))
-                ) && 
+                ) &&
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
+                ) &&
                 (
                     this.ExternalInputPayloadStoragePath == input.ExternalInputPayloadStoragePath ||
                     (this.ExternalInputPayloadStoragePath != null &&
                     this.ExternalInputPayloadStoragePath.Equals(input.ExternalInputPayloadStoragePath))
-                ) && 
+                ) &&
                 (
                     this.Input == input.Input ||
                     this.Input != null &&
                     input.Input != null &&
                     this.Input.SequenceEqual(input.Input)
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Priority == input.Priority ||
                     (this.Priority != null &&
                     this.Priority.Equals(input.Priority))
-                ) && 
+                ) &&
                 (
                     this.TaskToDomain == input.TaskToDomain ||
                     this.TaskToDomain != null &&
                     input.TaskToDomain != null &&
                     this.TaskToDomain.SequenceEqual(input.TaskToDomain)
-                ) && 
+                ) &&
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
                     this.Version.Equals(input.Version))
-                ) && 
+                ) &&
                 (
                     this.WorkflowDef == input.WorkflowDef ||
                     (this.WorkflowDef != null &&

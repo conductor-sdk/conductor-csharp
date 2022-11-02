@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// BulkResponse
     /// </summary>
     [DataContract]
-        public partial class BulkResponse :  IEquatable<BulkResponse>, IValidatableObject
+    public partial class BulkResponse : IEquatable<BulkResponse>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BulkResponse" /> class.
@@ -31,17 +31,17 @@ namespace Conductor.Models
             this.BulkErrorResults = bulkErrorResults;
             this.BulkSuccessfulResults = bulkSuccessfulResults;
         }
-        
+
         /// <summary>
         /// Gets or Sets BulkErrorResults
         /// </summary>
-        [DataMember(Name="bulkErrorResults", EmitDefaultValue=false)]
+        [DataMember(Name = "bulkErrorResults", EmitDefaultValue = false)]
         public Dictionary<string, string> BulkErrorResults { get; set; }
 
         /// <summary>
         /// Gets or Sets BulkSuccessfulResults
         /// </summary>
-        [DataMember(Name="bulkSuccessfulResults", EmitDefaultValue=false)]
+        [DataMember(Name = "bulkSuccessfulResults", EmitDefaultValue = false)]
         public List<string> BulkSuccessfulResults { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,13 +87,13 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.BulkErrorResults == input.BulkErrorResults ||
                     this.BulkErrorResults != null &&
                     input.BulkErrorResults != null &&
                     this.BulkErrorResults.SequenceEqual(input.BulkErrorResults)
-                ) && 
+                ) &&
                 (
                     this.BulkSuccessfulResults == input.BulkSuccessfulResults ||
                     this.BulkSuccessfulResults != null &&

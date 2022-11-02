@@ -19,12 +19,12 @@ namespace Conductor.Models
     /// Group
     /// </summary>
     [DataContract]
-        public partial class Group :  IEquatable<Group>, IValidatableObject
+    public partial class Group : IEquatable<Group>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets DefaultAccess
         /// </summary>
-        [DataMember(Name="defaultAccess", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultAccess", EmitDefaultValue = false)]
         public Dictionary<string, List<string>> DefaultAccess { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Group" /> class.
@@ -40,24 +40,24 @@ namespace Conductor.Models
             this.Id = id;
             this.Roles = roles;
         }
-        
+
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Roles
         /// </summary>
-        [DataMember(Name="roles", EmitDefaultValue=false)]
+        [DataMember(Name = "roles", EmitDefaultValue = false)]
         public List<Role> Roles { get; set; }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -105,23 +105,23 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.DefaultAccess == input.DefaultAccess ||
                     this.DefaultAccess != null &&
                     input.DefaultAccess != null &&
                     this.DefaultAccess.SequenceEqual(input.DefaultAccess)
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Roles == input.Roles ||
                     this.Roles != null &&

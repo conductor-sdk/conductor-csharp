@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// Role
     /// </summary>
     [DataContract]
-        public partial class Role :  IEquatable<Role>, IValidatableObject
+    public partial class Role : IEquatable<Role>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Role" /> class.
@@ -31,17 +31,17 @@ namespace Conductor.Models
             this.Name = name;
             this.Permissions = permissions;
         }
-        
+
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Permissions
         /// </summary>
-        [DataMember(Name="permissions", EmitDefaultValue=false)]
+        [DataMember(Name = "permissions", EmitDefaultValue = false)]
         public List<Permission> Permissions { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,12 +87,12 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Permissions == input.Permissions ||
                     this.Permissions != null &&

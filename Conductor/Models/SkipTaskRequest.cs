@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// SkipTaskRequest
     /// </summary>
     [DataContract]
-        public partial class SkipTaskRequest :  IEquatable<SkipTaskRequest>, IValidatableObject
+    public partial class SkipTaskRequest : IEquatable<SkipTaskRequest>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SkipTaskRequest" /> class.
@@ -31,17 +31,17 @@ namespace Conductor.Models
             this.TaskInput = taskInput;
             this.TaskOutput = taskOutput;
         }
-        
+
         /// <summary>
         /// Gets or Sets TaskInput
         /// </summary>
-        [DataMember(Name="taskInput", EmitDefaultValue=false)]
+        [DataMember(Name = "taskInput", EmitDefaultValue = false)]
         public Dictionary<string, Object> TaskInput { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskOutput
         /// </summary>
-        [DataMember(Name="taskOutput", EmitDefaultValue=false)]
+        [DataMember(Name = "taskOutput", EmitDefaultValue = false)]
         public Dictionary<string, Object> TaskOutput { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,13 +87,13 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TaskInput == input.TaskInput ||
                     this.TaskInput != null &&
                     input.TaskInput != null &&
                     this.TaskInput.SequenceEqual(input.TaskInput)
-                ) && 
+                ) &&
                 (
                     this.TaskOutput == input.TaskOutput ||
                     this.TaskOutput != null &&

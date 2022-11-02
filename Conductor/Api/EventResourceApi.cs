@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IEventResourceApi : IApiAccessor
+    public interface IEventResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -24,7 +24,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
-        void AddEventHandler (Conductor.Models.EventHandler body);
+        void AddEventHandler(Conductor.Models.EventHandler body);
 
         /// <summary>
         /// Add a new event handler.
@@ -35,7 +35,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddEventHandlerWithHttpInfo (Conductor.Models.EventHandler body);
+        ApiResponse<Object> AddEventHandlerWithHttpInfo(Conductor.Models.EventHandler body);
         /// <summary>
         /// Delete queue config by name
         /// </summary>
@@ -46,7 +46,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns></returns>
-        void DeleteQueueConfig (string queueType, string queueName);
+        void DeleteQueueConfig(string queueType, string queueName);
 
         /// <summary>
         /// Delete queue config by name
@@ -58,7 +58,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteQueueConfigWithHttpInfo (string queueType, string queueName);
+        ApiResponse<Object> DeleteQueueConfigWithHttpInfo(string queueType, string queueName);
         /// <summary>
         /// Get all the event handlers
         /// </summary>
@@ -67,7 +67,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Conductor.Models.EventHandler&gt;</returns>
-        List<Conductor.Models.EventHandler> GetEventHandlers ();
+        List<Conductor.Models.EventHandler> GetEventHandlers();
 
         /// <summary>
         /// Get all the event handlers
@@ -77,7 +77,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersWithHttpInfo ();
+        ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersWithHttpInfo();
         /// <summary>
         /// Get event handlers for a given event
         /// </summary>
@@ -88,7 +88,7 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>List&lt;Conductor.Models.EventHandler&gt;</returns>
-        List<Conductor.Models.EventHandler> GetEventHandlersForEvent (string _event, bool? activeOnly = null);
+        List<Conductor.Models.EventHandler> GetEventHandlersForEvent(string _event, bool? activeOnly = null);
 
         /// <summary>
         /// Get event handlers for a given event
@@ -100,7 +100,7 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>ApiResponse of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersForEventWithHttpInfo (string _event, bool? activeOnly = null);
+        ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = null);
         /// <summary>
         /// Get queue config by name
         /// </summary>
@@ -111,7 +111,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        Dictionary<string, Object> GetQueueConfig (string queueType, string queueName);
+        Dictionary<string, Object> GetQueueConfig(string queueType, string queueName);
 
         /// <summary>
         /// Get queue config by name
@@ -123,7 +123,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        ApiResponse<Dictionary<string, Object>> GetQueueConfigWithHttpInfo (string queueType, string queueName);
+        ApiResponse<Dictionary<string, Object>> GetQueueConfigWithHttpInfo(string queueType, string queueName);
         /// <summary>
         /// Get all queue configs
         /// </summary>
@@ -132,7 +132,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> GetQueueNames ();
+        Dictionary<string, string> GetQueueNames();
 
         /// <summary>
         /// Get all queue configs
@@ -142,7 +142,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        ApiResponse<Dictionary<string, string>> GetQueueNamesWithHttpInfo ();
+        ApiResponse<Dictionary<string, string>> GetQueueNamesWithHttpInfo();
         /// <summary>
         /// Create or update queue config by name
         /// </summary>
@@ -154,7 +154,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns></returns>
-        void PutQueueConfig (string body, string queueType, string queueName);
+        void PutQueueConfig(string body, string queueType, string queueName);
 
         /// <summary>
         /// Create or update queue config by name
@@ -167,7 +167,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PutQueueConfigWithHttpInfo (string body, string queueType, string queueName);
+        ApiResponse<Object> PutQueueConfigWithHttpInfo(string body, string queueType, string queueName);
         /// <summary>
         /// Remove an event handler
         /// </summary>
@@ -177,7 +177,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns></returns>
-        void RemoveEventHandlerStatus (string name);
+        void RemoveEventHandlerStatus(string name);
 
         /// <summary>
         /// Remove an event handler
@@ -188,7 +188,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RemoveEventHandlerStatusWithHttpInfo (string name);
+        ApiResponse<Object> RemoveEventHandlerStatusWithHttpInfo(string name);
         /// <summary>
         /// Update an existing event handler.
         /// </summary>
@@ -198,7 +198,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
-        void UpdateEventHandler (Conductor.Models.EventHandler body);
+        void UpdateEventHandler(Conductor.Models.EventHandler body);
 
         /// <summary>
         /// Update an existing event handler.
@@ -209,7 +209,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateEventHandlerWithHttpInfo (Conductor.Models.EventHandler body);
+        ApiResponse<Object> UpdateEventHandlerWithHttpInfo(Conductor.Models.EventHandler body);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -221,7 +221,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddEventHandlerAsync (Conductor.Models.EventHandler body);
+        System.Threading.Tasks.Task AddEventHandlerAsync(Conductor.Models.EventHandler body);
 
         /// <summary>
         /// Add a new event handler.
@@ -232,7 +232,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddEventHandlerAsyncWithHttpInfo (Conductor.Models.EventHandler body);
+        System.Threading.Tasks.Task<ApiResponse<Object>> AddEventHandlerAsyncWithHttpInfo(Conductor.Models.EventHandler body);
         /// <summary>
         /// Delete queue config by name
         /// </summary>
@@ -243,7 +243,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteQueueConfigAsync (string queueType, string queueName);
+        System.Threading.Tasks.Task DeleteQueueConfigAsync(string queueType, string queueName);
 
         /// <summary>
         /// Delete queue config by name
@@ -255,7 +255,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteQueueConfigAsyncWithHttpInfo (string queueType, string queueName);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteQueueConfigAsyncWithHttpInfo(string queueType, string queueName);
         /// <summary>
         /// Get all the event handlers
         /// </summary>
@@ -264,7 +264,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersAsync ();
+        System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersAsync();
 
         /// <summary>
         /// Get all the event handlers
@@ -274,7 +274,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Conductor.Models.EventHandler&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersAsyncWithHttpInfo();
         /// <summary>
         /// Get event handlers for a given event
         /// </summary>
@@ -285,7 +285,7 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>Task of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersForEventAsync (string _event, bool? activeOnly = null);
+        System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersForEventAsync(string _event, bool? activeOnly = null);
 
         /// <summary>
         /// Get event handlers for a given event
@@ -297,7 +297,7 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>Task of ApiResponse (List&lt;Conductor.Models.EventHandler&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersForEventAsyncWithHttpInfo (string _event, bool? activeOnly = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersForEventAsyncWithHttpInfo(string _event, bool? activeOnly = null);
         /// <summary>
         /// Get queue config by name
         /// </summary>
@@ -308,7 +308,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Object>> GetQueueConfigAsync (string queueType, string queueName);
+        System.Threading.Tasks.Task<Dictionary<string, Object>> GetQueueConfigAsync(string queueType, string queueName);
 
         /// <summary>
         /// Get queue config by name
@@ -320,7 +320,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetQueueConfigAsyncWithHttpInfo (string queueType, string queueName);
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetQueueConfigAsyncWithHttpInfo(string queueType, string queueName);
         /// <summary>
         /// Get all queue configs
         /// </summary>
@@ -329,7 +329,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, string>> GetQueueNamesAsync ();
+        System.Threading.Tasks.Task<Dictionary<string, string>> GetQueueNamesAsync();
 
         /// <summary>
         /// Get all queue configs
@@ -339,7 +339,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetQueueNamesAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetQueueNamesAsyncWithHttpInfo();
         /// <summary>
         /// Create or update queue config by name
         /// </summary>
@@ -351,7 +351,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PutQueueConfigAsync (string body, string queueType, string queueName);
+        System.Threading.Tasks.Task PutQueueConfigAsync(string body, string queueType, string queueName);
 
         /// <summary>
         /// Create or update queue config by name
@@ -364,7 +364,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PutQueueConfigAsyncWithHttpInfo (string body, string queueType, string queueName);
+        System.Threading.Tasks.Task<ApiResponse<Object>> PutQueueConfigAsyncWithHttpInfo(string body, string queueType, string queueName);
         /// <summary>
         /// Remove an event handler
         /// </summary>
@@ -374,7 +374,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RemoveEventHandlerStatusAsync (string name);
+        System.Threading.Tasks.Task RemoveEventHandlerStatusAsync(string name);
 
         /// <summary>
         /// Remove an event handler
@@ -385,7 +385,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveEventHandlerStatusAsyncWithHttpInfo (string name);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveEventHandlerStatusAsyncWithHttpInfo(string name);
         /// <summary>
         /// Update an existing event handler.
         /// </summary>
@@ -395,7 +395,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateEventHandlerAsync (Conductor.Models.EventHandler body);
+        System.Threading.Tasks.Task UpdateEventHandlerAsync(Conductor.Models.EventHandler body);
 
         /// <summary>
         /// Update an existing event handler.
@@ -406,14 +406,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEventHandlerAsyncWithHttpInfo (Conductor.Models.EventHandler body);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEventHandlerAsyncWithHttpInfo(Conductor.Models.EventHandler body);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class EventResourceApi : IEventResourceApi
+    public partial class EventResourceApi : IEventResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -478,7 +478,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -524,9 +524,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
-        public void AddEventHandler (Conductor.Models.EventHandler body)
+        public void AddEventHandler(Conductor.Models.EventHandler body)
         {
-             AddEventHandlerWithHttpInfo(body);
+            AddEventHandlerWithHttpInfo(body);
         }
 
         /// <summary>
@@ -535,7 +535,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddEventHandlerWithHttpInfo (Conductor.Models.EventHandler body)
+        public ApiResponse<Object> AddEventHandlerWithHttpInfo(Conductor.Models.EventHandler body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -577,11 +577,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -600,9 +600,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddEventHandlerAsync (Conductor.Models.EventHandler body)
+        public async System.Threading.Tasks.Task AddEventHandlerAsync(Conductor.Models.EventHandler body)
         {
-             await AddEventHandlerAsyncWithHttpInfo(body);
+            await AddEventHandlerAsyncWithHttpInfo(body);
 
         }
 
@@ -612,7 +612,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddEventHandlerAsyncWithHttpInfo (Conductor.Models.EventHandler body)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddEventHandlerAsyncWithHttpInfo(Conductor.Models.EventHandler body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -654,11 +654,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -678,9 +678,9 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns></returns>
-        public void DeleteQueueConfig (string queueType, string queueName)
+        public void DeleteQueueConfig(string queueType, string queueName)
         {
-             DeleteQueueConfigWithHttpInfo(queueType, queueName);
+            DeleteQueueConfigWithHttpInfo(queueType, queueName);
         }
 
         /// <summary>
@@ -690,7 +690,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteQueueConfigWithHttpInfo (string queueType, string queueName)
+        public ApiResponse<Object> DeleteQueueConfigWithHttpInfo(string queueType, string queueName)
         {
             // verify the required parameter 'queueType' is set
             if (queueType == null)
@@ -728,11 +728,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -752,9 +752,9 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteQueueConfigAsync (string queueType, string queueName)
+        public async System.Threading.Tasks.Task DeleteQueueConfigAsync(string queueType, string queueName)
         {
-             await DeleteQueueConfigAsyncWithHttpInfo(queueType, queueName);
+            await DeleteQueueConfigAsyncWithHttpInfo(queueType, queueName);
 
         }
 
@@ -765,7 +765,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteQueueConfigAsyncWithHttpInfo (string queueType, string queueName)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteQueueConfigAsyncWithHttpInfo(string queueType, string queueName)
         {
             // verify the required parameter 'queueType' is set
             if (queueType == null)
@@ -803,11 +803,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -825,10 +825,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Conductor.Models.EventHandler&gt;</returns>
-        public List<Conductor.Models.EventHandler> GetEventHandlers ()
+        public List<Conductor.Models.EventHandler> GetEventHandlers()
         {
-             ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = GetEventHandlersWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = GetEventHandlersWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -836,7 +836,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        public ApiResponse< List<Conductor.Models.EventHandler> > GetEventHandlersWithHttpInfo ()
+        public ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersWithHttpInfo()
         {
 
             var localVarPath = "/api/event";
@@ -867,11 +867,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -881,7 +881,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Conductor.Models.EventHandler>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Conductor.Models.EventHandler>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
+                (List<Conductor.Models.EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
         }
 
         /// <summary>
@@ -889,10 +889,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersAsync ()
+        public async System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersAsync()
         {
-             ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = await GetEventHandlersAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = await GetEventHandlersAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -901,7 +901,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Conductor.Models.EventHandler&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/event";
@@ -932,11 +932,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -946,7 +946,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Conductor.Models.EventHandler>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Conductor.Models.EventHandler>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
+                (List<Conductor.Models.EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
         }
 
         /// <summary>
@@ -956,10 +956,10 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>List&lt;Conductor.Models.EventHandler&gt;</returns>
-        public List<Conductor.Models.EventHandler> GetEventHandlersForEvent (string _event, bool? activeOnly = null)
+        public List<Conductor.Models.EventHandler> GetEventHandlersForEvent(string _event, bool? activeOnly = null)
         {
-             ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = GetEventHandlersForEventWithHttpInfo(_event, activeOnly);
-             return localVarResponse.Data;
+            ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = GetEventHandlersForEventWithHttpInfo(_event, activeOnly);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -969,7 +969,7 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>ApiResponse of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        public ApiResponse< List<Conductor.Models.EventHandler> > GetEventHandlersForEventWithHttpInfo (string _event, bool? activeOnly = null)
+        public ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = null)
         {
             // verify the required parameter '_event' is set
             if (_event == null)
@@ -1005,11 +1005,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1019,7 +1019,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Conductor.Models.EventHandler>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Conductor.Models.EventHandler>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
+                (List<Conductor.Models.EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
         }
 
         /// <summary>
@@ -1029,10 +1029,10 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>Task of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersForEventAsync (string _event, bool? activeOnly = null)
+        public async System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersForEventAsync(string _event, bool? activeOnly = null)
         {
-             ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = await GetEventHandlersForEventAsyncWithHttpInfo(_event, activeOnly);
-             return localVarResponse.Data;
+            ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = await GetEventHandlersForEventAsyncWithHttpInfo(_event, activeOnly);
+            return localVarResponse.Data;
 
         }
 
@@ -1043,7 +1043,7 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>Task of ApiResponse (List&lt;Conductor.Models.EventHandler&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersForEventAsyncWithHttpInfo (string _event, bool? activeOnly = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersForEventAsyncWithHttpInfo(string _event, bool? activeOnly = null)
         {
             // verify the required parameter '_event' is set
             if (_event == null)
@@ -1079,11 +1079,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1093,7 +1093,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Conductor.Models.EventHandler>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Conductor.Models.EventHandler>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
+                (List<Conductor.Models.EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
         }
 
         /// <summary>
@@ -1103,10 +1103,10 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        public Dictionary<string, Object> GetQueueConfig (string queueType, string queueName)
+        public Dictionary<string, Object> GetQueueConfig(string queueType, string queueName)
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = GetQueueConfigWithHttpInfo(queueType, queueName);
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = GetQueueConfigWithHttpInfo(queueType, queueName);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1116,7 +1116,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        public ApiResponse< Dictionary<string, Object> > GetQueueConfigWithHttpInfo (string queueType, string queueName)
+        public ApiResponse<Dictionary<string, Object>> GetQueueConfigWithHttpInfo(string queueType, string queueName)
         {
             // verify the required parameter 'queueType' is set
             if (queueType == null)
@@ -1155,11 +1155,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1169,7 +1169,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -1179,10 +1179,10 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, Object>> GetQueueConfigAsync (string queueType, string queueName)
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> GetQueueConfigAsync(string queueType, string queueName)
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = await GetQueueConfigAsyncWithHttpInfo(queueType, queueName);
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = await GetQueueConfigAsyncWithHttpInfo(queueType, queueName);
+            return localVarResponse.Data;
 
         }
 
@@ -1193,7 +1193,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetQueueConfigAsyncWithHttpInfo (string queueType, string queueName)
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetQueueConfigAsyncWithHttpInfo(string queueType, string queueName)
         {
             // verify the required parameter 'queueType' is set
             if (queueType == null)
@@ -1232,11 +1232,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1246,7 +1246,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -1254,10 +1254,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> GetQueueNames ()
+        public Dictionary<string, string> GetQueueNames()
         {
-             ApiResponse<Dictionary<string, string>> localVarResponse = GetQueueNamesWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, string>> localVarResponse = GetQueueNamesWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1265,7 +1265,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        public ApiResponse< Dictionary<string, string> > GetQueueNamesWithHttpInfo ()
+        public ApiResponse<Dictionary<string, string>> GetQueueNamesWithHttpInfo()
         {
 
             var localVarPath = "/api/event/queue/config";
@@ -1296,11 +1296,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1310,7 +1310,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+                (Dictionary<string, string>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -1318,10 +1318,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, string>> GetQueueNamesAsync ()
+        public async System.Threading.Tasks.Task<Dictionary<string, string>> GetQueueNamesAsync()
         {
-             ApiResponse<Dictionary<string, string>> localVarResponse = await GetQueueNamesAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, string>> localVarResponse = await GetQueueNamesAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -1330,7 +1330,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetQueueNamesAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetQueueNamesAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/event/queue/config";
@@ -1361,11 +1361,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1375,7 +1375,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+                (Dictionary<string, string>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -1386,9 +1386,9 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns></returns>
-        public void PutQueueConfig (string body, string queueType, string queueName)
+        public void PutQueueConfig(string body, string queueType, string queueName)
         {
-             PutQueueConfigWithHttpInfo(body, queueType, queueName);
+            PutQueueConfigWithHttpInfo(body, queueType, queueName);
         }
 
         /// <summary>
@@ -1399,7 +1399,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PutQueueConfigWithHttpInfo (string body, string queueType, string queueName)
+        public ApiResponse<Object> PutQueueConfigWithHttpInfo(string body, string queueType, string queueName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1449,11 +1449,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1474,9 +1474,9 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PutQueueConfigAsync (string body, string queueType, string queueName)
+        public async System.Threading.Tasks.Task PutQueueConfigAsync(string body, string queueType, string queueName)
         {
-             await PutQueueConfigAsyncWithHttpInfo(body, queueType, queueName);
+            await PutQueueConfigAsyncWithHttpInfo(body, queueType, queueName);
 
         }
 
@@ -1488,7 +1488,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutQueueConfigAsyncWithHttpInfo (string body, string queueType, string queueName)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutQueueConfigAsyncWithHttpInfo(string body, string queueType, string queueName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1538,11 +1538,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1561,9 +1561,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns></returns>
-        public void RemoveEventHandlerStatus (string name)
+        public void RemoveEventHandlerStatus(string name)
         {
-             RemoveEventHandlerStatusWithHttpInfo(name);
+            RemoveEventHandlerStatusWithHttpInfo(name);
         }
 
         /// <summary>
@@ -1572,7 +1572,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> RemoveEventHandlerStatusWithHttpInfo (string name)
+        public ApiResponse<Object> RemoveEventHandlerStatusWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1606,11 +1606,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1629,9 +1629,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RemoveEventHandlerStatusAsync (string name)
+        public async System.Threading.Tasks.Task RemoveEventHandlerStatusAsync(string name)
         {
-             await RemoveEventHandlerStatusAsyncWithHttpInfo(name);
+            await RemoveEventHandlerStatusAsyncWithHttpInfo(name);
 
         }
 
@@ -1641,7 +1641,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveEventHandlerStatusAsyncWithHttpInfo (string name)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveEventHandlerStatusAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1675,11 +1675,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1698,9 +1698,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
-        public void UpdateEventHandler (Conductor.Models.EventHandler body)
+        public void UpdateEventHandler(Conductor.Models.EventHandler body)
         {
-             UpdateEventHandlerWithHttpInfo(body);
+            UpdateEventHandlerWithHttpInfo(body);
         }
 
         /// <summary>
@@ -1709,7 +1709,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateEventHandlerWithHttpInfo (Conductor.Models.EventHandler body)
+        public ApiResponse<Object> UpdateEventHandlerWithHttpInfo(Conductor.Models.EventHandler body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1751,11 +1751,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1774,9 +1774,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateEventHandlerAsync (Conductor.Models.EventHandler body)
+        public async System.Threading.Tasks.Task UpdateEventHandlerAsync(Conductor.Models.EventHandler body)
         {
-             await UpdateEventHandlerAsyncWithHttpInfo(body);
+            await UpdateEventHandlerAsyncWithHttpInfo(body);
 
         }
 
@@ -1786,7 +1786,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEventHandlerAsyncWithHttpInfo (Conductor.Models.EventHandler body)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEventHandlerAsyncWithHttpInfo(Conductor.Models.EventHandler body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1828,11 +1828,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {

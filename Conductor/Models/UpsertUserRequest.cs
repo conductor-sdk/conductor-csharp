@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// UpsertUserRequest
     /// </summary>
     [DataContract]
-        public partial class UpsertUserRequest :  IEquatable<UpsertUserRequest>, IValidatableObject
+    public partial class UpsertUserRequest : IEquatable<UpsertUserRequest>, IValidatableObject
     {
         /// <summary>
         /// Defines Roles
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum RolesEnum
+        public enum RolesEnum
         {
             /// <summary>
             /// Enum ADMIN for value: ADMIN
@@ -51,11 +51,12 @@ namespace Conductor.Models
             /// Enum WORKFLOWMANAGER for value: WORKFLOW_MANAGER
             /// </summary>
             [EnumMember(Value = "WORKFLOW_MANAGER")]
-            WORKFLOWMANAGER = 5        }
+            WORKFLOWMANAGER = 5
+        }
         /// <summary>
         /// Gets or Sets Roles
         /// </summary>
-        [DataMember(Name="roles", EmitDefaultValue=false)]
+        [DataMember(Name = "roles", EmitDefaultValue = false)]
         public List<RolesEnum> Roles { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="UpsertUserRequest" /> class.
@@ -77,19 +78,19 @@ namespace Conductor.Models
             this.Groups = groups;
             this.Roles = roles;
         }
-        
+
         /// <summary>
         /// Ids of the groups this user belongs to
         /// </summary>
         /// <value>Ids of the groups this user belongs to</value>
-        [DataMember(Name="groups", EmitDefaultValue=false)]
+        [DataMember(Name = "groups", EmitDefaultValue = false)]
         public List<string> Groups { get; set; }
 
         /// <summary>
         /// User&#x27;s full name
         /// </summary>
         /// <value>User&#x27;s full name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
 
@@ -107,7 +108,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -137,18 +138,18 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Groups == input.Groups ||
                     this.Groups != null &&
                     input.Groups != null &&
                     this.Groups.SequenceEqual(input.Groups)
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Roles == input.Roles ||
                     this.Roles != null &&

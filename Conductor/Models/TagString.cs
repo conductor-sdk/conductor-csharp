@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// TagString
     /// </summary>
     [DataContract]
-        public partial class TagString :  IEquatable<TagString>, IValidatableObject
+    public partial class TagString : IEquatable<TagString>, IValidatableObject
     {
         /// <summary>
         /// Defines Type
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum TypeEnum
+        public enum TypeEnum
         {
             /// <summary>
             /// Enum METADATA for value: METADATA
@@ -36,11 +36,12 @@ namespace Conductor.Models
             /// Enum RATELIMIT for value: RATE_LIMIT
             /// </summary>
             [EnumMember(Value = "RATE_LIMIT")]
-            RATELIMIT = 2        }
+            RATELIMIT = 2
+        }
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TagString" /> class.
@@ -54,18 +55,18 @@ namespace Conductor.Models
             this.Type = type;
             this.Value = value;
         }
-        
+
         /// <summary>
         /// Gets or Sets Key
         /// </summary>
-        [DataMember(Name="key", EmitDefaultValue=false)]
+        [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
 
 
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
-        [DataMember(Name="value", EmitDefaultValue=false)]
+        [DataMember(Name = "value", EmitDefaultValue = false)]
         public string Value { get; set; }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,17 +113,17 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.Value == input.Value ||
                     (this.Value != null &&

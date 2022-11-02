@@ -11,7 +11,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IMigrationResourceApi : IApiAccessor
+    public interface IMigrationResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -22,7 +22,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>int?</returns>
-        int? MigrateIndex ();
+        int? MigrateIndex();
 
         /// <summary>
         /// Migrate Workflow Index t o the sharded table
@@ -32,7 +32,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of int?</returns>
-        ApiResponse<int?> MigrateIndexWithHttpInfo ();
+        ApiResponse<int?> MigrateIndexWithHttpInfo();
         /// <summary>
         /// Migrate Workflow and Task Definitions to Postgres
         /// </summary>
@@ -41,7 +41,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns></returns>
-        void MigrateMetadata ();
+        void MigrateMetadata();
 
         /// <summary>
         /// Migrate Workflow and Task Definitions to Postgres
@@ -51,7 +51,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> MigrateMetadataWithHttpInfo ();
+        ApiResponse<Object> MigrateMetadataWithHttpInfo();
         /// <summary>
         /// Migrate workflows from Redis to Postgres
         /// </summary>
@@ -62,7 +62,7 @@ namespace Conductor.Api
         /// <param name="batchSize"></param>
         /// <param name="startFromTimestamp"></param>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        Dictionary<string, Object> MigrateWorkflows (int? batchSize, long? startFromTimestamp);
+        Dictionary<string, Object> MigrateWorkflows(int? batchSize, long? startFromTimestamp);
 
         /// <summary>
         /// Migrate workflows from Redis to Postgres
@@ -74,7 +74,7 @@ namespace Conductor.Api
         /// <param name="batchSize"></param>
         /// <param name="startFromTimestamp"></param>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        ApiResponse<Dictionary<string, Object>> MigrateWorkflowsWithHttpInfo (int? batchSize, long? startFromTimestamp);
+        ApiResponse<Dictionary<string, Object>> MigrateWorkflowsWithHttpInfo(int? batchSize, long? startFromTimestamp);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -85,7 +85,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of int?</returns>
-        System.Threading.Tasks.Task<int?> MigrateIndexAsync ();
+        System.Threading.Tasks.Task<int?> MigrateIndexAsync();
 
         /// <summary>
         /// Migrate Workflow Index t o the sharded table
@@ -95,7 +95,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (int?)</returns>
-        System.Threading.Tasks.Task<ApiResponse<int?>> MigrateIndexAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<int?>> MigrateIndexAsyncWithHttpInfo();
         /// <summary>
         /// Migrate Workflow and Task Definitions to Postgres
         /// </summary>
@@ -104,7 +104,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task MigrateMetadataAsync ();
+        System.Threading.Tasks.Task MigrateMetadataAsync();
 
         /// <summary>
         /// Migrate Workflow and Task Definitions to Postgres
@@ -114,7 +114,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> MigrateMetadataAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> MigrateMetadataAsyncWithHttpInfo();
         /// <summary>
         /// Migrate workflows from Redis to Postgres
         /// </summary>
@@ -125,7 +125,7 @@ namespace Conductor.Api
         /// <param name="batchSize"></param>
         /// <param name="startFromTimestamp"></param>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Object>> MigrateWorkflowsAsync (int? batchSize, long? startFromTimestamp);
+        System.Threading.Tasks.Task<Dictionary<string, Object>> MigrateWorkflowsAsync(int? batchSize, long? startFromTimestamp);
 
         /// <summary>
         /// Migrate workflows from Redis to Postgres
@@ -137,14 +137,14 @@ namespace Conductor.Api
         /// <param name="batchSize"></param>
         /// <param name="startFromTimestamp"></param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> MigrateWorkflowsAsyncWithHttpInfo (int? batchSize, long? startFromTimestamp);
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> MigrateWorkflowsAsyncWithHttpInfo(int? batchSize, long? startFromTimestamp);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class MigrationResourceApi : IMigrationResourceApi
+    public partial class MigrationResourceApi : IMigrationResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -209,7 +209,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -254,10 +254,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>int?</returns>
-        public int? MigrateIndex ()
+        public int? MigrateIndex()
         {
-             ApiResponse<int?> localVarResponse = MigrateIndexWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<int?> localVarResponse = MigrateIndexWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of int?</returns>
-        public ApiResponse< int? > MigrateIndexWithHttpInfo ()
+        public ApiResponse<int?> MigrateIndexWithHttpInfo()
         {
 
             var localVarPath = "/api/admin/migrate_index";
@@ -296,11 +296,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -310,7 +310,7 @@ namespace Conductor.Api
 
             return new ApiResponse<int?>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (int?) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(int?)));
+                (int?)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(int?)));
         }
 
         /// <summary>
@@ -318,10 +318,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of int?</returns>
-        public async System.Threading.Tasks.Task<int?> MigrateIndexAsync ()
+        public async System.Threading.Tasks.Task<int?> MigrateIndexAsync()
         {
-             ApiResponse<int?> localVarResponse = await MigrateIndexAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<int?> localVarResponse = await MigrateIndexAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -330,7 +330,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (int?)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<int?>> MigrateIndexAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<int?>> MigrateIndexAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/admin/migrate_index";
@@ -361,11 +361,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -375,7 +375,7 @@ namespace Conductor.Api
 
             return new ApiResponse<int?>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (int?) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(int?)));
+                (int?)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(int?)));
         }
 
         /// <summary>
@@ -383,9 +383,9 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns></returns>
-        public void MigrateMetadata ()
+        public void MigrateMetadata()
         {
-             MigrateMetadataWithHttpInfo();
+            MigrateMetadataWithHttpInfo();
         }
 
         /// <summary>
@@ -393,7 +393,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> MigrateMetadataWithHttpInfo ()
+        public ApiResponse<Object> MigrateMetadataWithHttpInfo()
         {
 
             var localVarPath = "/api/admin/migrate_metadata";
@@ -423,11 +423,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -445,9 +445,9 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task MigrateMetadataAsync ()
+        public async System.Threading.Tasks.Task MigrateMetadataAsync()
         {
-             await MigrateMetadataAsyncWithHttpInfo();
+            await MigrateMetadataAsyncWithHttpInfo();
 
         }
 
@@ -456,7 +456,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> MigrateMetadataAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> MigrateMetadataAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/admin/migrate_metadata";
@@ -486,11 +486,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -510,10 +510,10 @@ namespace Conductor.Api
         /// <param name="batchSize"></param>
         /// <param name="startFromTimestamp"></param>
         /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        public Dictionary<string, Object> MigrateWorkflows (int? batchSize, long? startFromTimestamp)
+        public Dictionary<string, Object> MigrateWorkflows(int? batchSize, long? startFromTimestamp)
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = MigrateWorkflowsWithHttpInfo(batchSize, startFromTimestamp);
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = MigrateWorkflowsWithHttpInfo(batchSize, startFromTimestamp);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -523,7 +523,7 @@ namespace Conductor.Api
         /// <param name="batchSize"></param>
         /// <param name="startFromTimestamp"></param>
         /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        public ApiResponse< Dictionary<string, Object> > MigrateWorkflowsWithHttpInfo (int? batchSize, long? startFromTimestamp)
+        public ApiResponse<Dictionary<string, Object>> MigrateWorkflowsWithHttpInfo(int? batchSize, long? startFromTimestamp)
         {
             // verify the required parameter 'batchSize' is set
             if (batchSize == null)
@@ -562,11 +562,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -576,7 +576,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -586,10 +586,10 @@ namespace Conductor.Api
         /// <param name="batchSize"></param>
         /// <param name="startFromTimestamp"></param>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, Object>> MigrateWorkflowsAsync (int? batchSize, long? startFromTimestamp)
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> MigrateWorkflowsAsync(int? batchSize, long? startFromTimestamp)
         {
-             ApiResponse<Dictionary<string, Object>> localVarResponse = await MigrateWorkflowsAsyncWithHttpInfo(batchSize, startFromTimestamp);
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Object>> localVarResponse = await MigrateWorkflowsAsyncWithHttpInfo(batchSize, startFromTimestamp);
+            return localVarResponse.Data;
 
         }
 
@@ -600,7 +600,7 @@ namespace Conductor.Api
         /// <param name="batchSize"></param>
         /// <param name="startFromTimestamp"></param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> MigrateWorkflowsAsyncWithHttpInfo (int? batchSize, long? startFromTimestamp)
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> MigrateWorkflowsAsyncWithHttpInfo(int? batchSize, long? startFromTimestamp)
         {
             // verify the required parameter 'batchSize' is set
             if (batchSize == null)
@@ -639,11 +639,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -653,7 +653,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
     }

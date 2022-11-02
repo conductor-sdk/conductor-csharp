@@ -19,14 +19,14 @@ namespace Conductor.Models
     /// AuthorizationRequest
     /// </summary>
     [DataContract]
-        public partial class AuthorizationRequest :  IEquatable<AuthorizationRequest>, IValidatableObject
+    public partial class AuthorizationRequest : IEquatable<AuthorizationRequest>, IValidatableObject
     {
         /// <summary>
         /// The set of access which is granted or removed
         /// </summary>
         /// <value>The set of access which is granted or removed</value>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum AccessEnum
+        public enum AccessEnum
         {
             /// <summary>
             /// Enum CREATE for value: CREATE
@@ -52,12 +52,13 @@ namespace Conductor.Models
             /// Enum EXECUTE for value: EXECUTE
             /// </summary>
             [EnumMember(Value = "EXECUTE")]
-            EXECUTE = 5        }
+            EXECUTE = 5
+        }
         /// <summary>
         /// The set of access which is granted or removed
         /// </summary>
         /// <value>The set of access which is granted or removed</value>
-        [DataMember(Name="access", EmitDefaultValue=false)]
+        [DataMember(Name = "access", EmitDefaultValue = false)]
         public List<AccessEnum> Access { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorizationRequest" /> class.
@@ -95,18 +96,18 @@ namespace Conductor.Models
                 this.Target = target;
             }
         }
-        
+
 
         /// <summary>
         /// Gets or Sets Subject
         /// </summary>
-        [DataMember(Name="subject", EmitDefaultValue=false)]
+        [DataMember(Name = "subject", EmitDefaultValue = false)]
         public SubjectRef Subject { get; set; }
 
         /// <summary>
         /// Gets or Sets Target
         /// </summary>
-        [DataMember(Name="target", EmitDefaultValue=false)]
+        [DataMember(Name = "target", EmitDefaultValue = false)]
         public TargetRef Target { get; set; }
 
         /// <summary>
@@ -123,7 +124,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -153,18 +154,18 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Access == input.Access ||
                     this.Access != null &&
                     input.Access != null &&
                     this.Access.SequenceEqual(input.Access)
-                ) && 
+                ) &&
                 (
                     this.Subject == input.Subject ||
                     (this.Subject != null &&
                     this.Subject.Equals(input.Subject))
-                ) && 
+                ) &&
                 (
                     this.Target == input.Target ||
                     (this.Target != null &&

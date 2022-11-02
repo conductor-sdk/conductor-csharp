@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// WorkflowRun
     /// </summary>
     [DataContract]
-        public partial class WorkflowRun :  IEquatable<WorkflowRun>, IValidatableObject
+    public partial class WorkflowRun : IEquatable<WorkflowRun>, IValidatableObject
     {
         /// <summary>
         /// Defines Status
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum StatusEnum
+        public enum StatusEnum
         {
             /// <summary>
             /// Enum RUNNING for value: RUNNING
@@ -56,11 +56,12 @@ namespace Conductor.Models
             /// Enum PAUSED for value: PAUSED
             /// </summary>
             [EnumMember(Value = "PAUSED")]
-            PAUSED = 6        }
+            PAUSED = 6
+        }
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowRun" /> class.
@@ -92,72 +93,72 @@ namespace Conductor.Models
             this.Variables = variables;
             this.WorkflowId = workflowId;
         }
-        
+
         /// <summary>
         /// Gets or Sets CorrelationId
         /// </summary>
-        [DataMember(Name="correlationId", EmitDefaultValue=false)]
+        [DataMember(Name = "correlationId", EmitDefaultValue = false)]
         public string CorrelationId { get; set; }
 
         /// <summary>
         /// Gets or Sets CreateTime
         /// </summary>
-        [DataMember(Name="createTime", EmitDefaultValue=false)]
+        [DataMember(Name = "createTime", EmitDefaultValue = false)]
         public long? CreateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name = "createdBy", EmitDefaultValue = false)]
         public string CreatedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets Input
         /// </summary>
-        [DataMember(Name="input", EmitDefaultValue=false)]
+        [DataMember(Name = "input", EmitDefaultValue = false)]
         public Dictionary<string, Object> Input { get; set; }
 
         /// <summary>
         /// Gets or Sets Output
         /// </summary>
-        [DataMember(Name="output", EmitDefaultValue=false)]
+        [DataMember(Name = "output", EmitDefaultValue = false)]
         public Dictionary<string, Object> Output { get; set; }
 
         /// <summary>
         /// Gets or Sets Priority
         /// </summary>
-        [DataMember(Name="priority", EmitDefaultValue=false)]
+        [DataMember(Name = "priority", EmitDefaultValue = false)]
         public int? Priority { get; set; }
 
         /// <summary>
         /// Gets or Sets RequestId
         /// </summary>
-        [DataMember(Name="requestId", EmitDefaultValue=false)]
+        [DataMember(Name = "requestId", EmitDefaultValue = false)]
         public string RequestId { get; set; }
 
 
         /// <summary>
         /// Gets or Sets Tasks
         /// </summary>
-        [DataMember(Name="tasks", EmitDefaultValue=false)]
+        [DataMember(Name = "tasks", EmitDefaultValue = false)]
         public List<Task> Tasks { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdateTime
         /// </summary>
-        [DataMember(Name="updateTime", EmitDefaultValue=false)]
+        [DataMember(Name = "updateTime", EmitDefaultValue = false)]
         public long? UpdateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets Variables
         /// </summary>
-        [DataMember(Name="variables", EmitDefaultValue=false)]
+        [DataMember(Name = "variables", EmitDefaultValue = false)]
         public Dictionary<string, Object> Variables { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowId
         /// </summary>
-        [DataMember(Name="workflowId", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
         public string WorkflowId { get; set; }
 
         /// <summary>
@@ -183,7 +184,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -213,66 +214,66 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CorrelationId == input.CorrelationId ||
                     (this.CorrelationId != null &&
                     this.CorrelationId.Equals(input.CorrelationId))
-                ) && 
+                ) &&
                 (
                     this.CreateTime == input.CreateTime ||
                     (this.CreateTime != null &&
                     this.CreateTime.Equals(input.CreateTime))
-                ) && 
+                ) &&
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
+                ) &&
                 (
                     this.Input == input.Input ||
                     this.Input != null &&
                     input.Input != null &&
                     this.Input.SequenceEqual(input.Input)
-                ) && 
+                ) &&
                 (
                     this.Output == input.Output ||
                     this.Output != null &&
                     input.Output != null &&
                     this.Output.SequenceEqual(input.Output)
-                ) && 
+                ) &&
                 (
                     this.Priority == input.Priority ||
                     (this.Priority != null &&
                     this.Priority.Equals(input.Priority))
-                ) && 
+                ) &&
                 (
                     this.RequestId == input.RequestId ||
                     (this.RequestId != null &&
                     this.RequestId.Equals(input.RequestId))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.Tasks == input.Tasks ||
                     this.Tasks != null &&
                     input.Tasks != null &&
                     this.Tasks.SequenceEqual(input.Tasks)
-                ) && 
+                ) &&
                 (
                     this.UpdateTime == input.UpdateTime ||
                     (this.UpdateTime != null &&
                     this.UpdateTime.Equals(input.UpdateTime))
-                ) && 
+                ) &&
                 (
                     this.Variables == input.Variables ||
                     this.Variables != null &&
                     input.Variables != null &&
                     this.Variables.SequenceEqual(input.Variables)
-                ) && 
+                ) &&
                 (
                     this.WorkflowId == input.WorkflowId ||
                     (this.WorkflowId != null &&

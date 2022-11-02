@@ -11,7 +11,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IIncomingWebhookResourceApi : IApiAccessor
+    public interface IIncomingWebhookResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -24,7 +24,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>string</returns>
-        string HandleWebhook (string body, string id);
+        string HandleWebhook(string body, string id);
 
         /// <summary>
         /// 
@@ -36,7 +36,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> HandleWebhookWithHttpInfo (string body, string id);
+        ApiResponse<string> HandleWebhookWithHttpInfo(string body, string id);
         /// <summary>
         /// 
         /// </summary>
@@ -47,7 +47,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="requestParams"></param>
         /// <returns>string</returns>
-        string HandleWebhook1 (string id, Dictionary<string, string> requestParams);
+        string HandleWebhook1(string id, Dictionary<string, string> requestParams);
 
         /// <summary>
         /// 
@@ -59,7 +59,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="requestParams"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> HandleWebhook1WithHttpInfo (string id, Dictionary<string, string> requestParams);
+        ApiResponse<string> HandleWebhook1WithHttpInfo(string id, Dictionary<string, string> requestParams);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -72,7 +72,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> HandleWebhookAsync (string body, string id);
+        System.Threading.Tasks.Task<string> HandleWebhookAsync(string body, string id);
 
         /// <summary>
         /// 
@@ -84,7 +84,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> HandleWebhookAsyncWithHttpInfo (string body, string id);
+        System.Threading.Tasks.Task<ApiResponse<string>> HandleWebhookAsyncWithHttpInfo(string body, string id);
         /// <summary>
         /// 
         /// </summary>
@@ -95,7 +95,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="requestParams"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> HandleWebhook1Async (string id, Dictionary<string, string> requestParams);
+        System.Threading.Tasks.Task<string> HandleWebhook1Async(string id, Dictionary<string, string> requestParams);
 
         /// <summary>
         /// 
@@ -107,14 +107,14 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="requestParams"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> HandleWebhook1AsyncWithHttpInfo (string id, Dictionary<string, string> requestParams);
+        System.Threading.Tasks.Task<ApiResponse<string>> HandleWebhook1AsyncWithHttpInfo(string id, Dictionary<string, string> requestParams);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class IncomingWebhookResourceApi : IIncomingWebhookResourceApi
+    public partial class IncomingWebhookResourceApi : IIncomingWebhookResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -179,7 +179,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -226,10 +226,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>string</returns>
-        public string HandleWebhook (string body, string id)
+        public string HandleWebhook(string body, string id)
         {
-             ApiResponse<string> localVarResponse = HandleWebhookWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = HandleWebhookWithHttpInfo(body, id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > HandleWebhookWithHttpInfo (string body, string id)
+        public ApiResponse<string> HandleWebhookWithHttpInfo(string body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -286,11 +286,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -300,7 +300,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -310,10 +310,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> HandleWebhookAsync (string body, string id)
+        public async System.Threading.Tasks.Task<string> HandleWebhookAsync(string body, string id)
         {
-             ApiResponse<string> localVarResponse = await HandleWebhookAsyncWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await HandleWebhookAsyncWithHttpInfo(body, id);
+            return localVarResponse.Data;
 
         }
 
@@ -324,7 +324,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> HandleWebhookAsyncWithHttpInfo (string body, string id)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> HandleWebhookAsyncWithHttpInfo(string body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -371,11 +371,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -385,7 +385,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -395,10 +395,10 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="requestParams"></param>
         /// <returns>string</returns>
-        public string HandleWebhook1 (string id, Dictionary<string, string> requestParams)
+        public string HandleWebhook1(string id, Dictionary<string, string> requestParams)
         {
-             ApiResponse<string> localVarResponse = HandleWebhook1WithHttpInfo(id, requestParams);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = HandleWebhook1WithHttpInfo(id, requestParams);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -408,7 +408,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="requestParams"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > HandleWebhook1WithHttpInfo (string id, Dictionary<string, string> requestParams)
+        public ApiResponse<string> HandleWebhook1WithHttpInfo(string id, Dictionary<string, string> requestParams)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -447,11 +447,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -461,7 +461,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -471,10 +471,10 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="requestParams"></param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> HandleWebhook1Async (string id, Dictionary<string, string> requestParams)
+        public async System.Threading.Tasks.Task<string> HandleWebhook1Async(string id, Dictionary<string, string> requestParams)
         {
-             ApiResponse<string> localVarResponse = await HandleWebhook1AsyncWithHttpInfo(id, requestParams);
-             return localVarResponse.Data;
+            ApiResponse<string> localVarResponse = await HandleWebhook1AsyncWithHttpInfo(id, requestParams);
+            return localVarResponse.Data;
 
         }
 
@@ -485,7 +485,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="requestParams"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> HandleWebhook1AsyncWithHttpInfo (string id, Dictionary<string, string> requestParams)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> HandleWebhook1AsyncWithHttpInfo(string id, Dictionary<string, string> requestParams)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -524,11 +524,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -538,7 +538,7 @@ namespace Conductor.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
     }

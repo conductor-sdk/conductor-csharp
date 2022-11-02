@@ -12,7 +12,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IGroupResourceApi : IApiAccessor
+    public interface IGroupResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -25,7 +25,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Object</returns>
-        Object AddUserToGroup (string groupId, string userId);
+        Object AddUserToGroup(string groupId, string userId);
 
         /// <summary>
         /// Add user to group
@@ -37,7 +37,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> AddUserToGroupWithHttpInfo (string groupId, string userId);
+        ApiResponse<Object> AddUserToGroupWithHttpInfo(string groupId, string userId);
         /// <summary>
         /// Add users to group
         /// </summary>
@@ -48,7 +48,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns></returns>
-        void AddUsersToGroup (List<string> body, string groupId);
+        void AddUsersToGroup(List<string> body, string groupId);
 
         /// <summary>
         /// Add users to group
@@ -60,7 +60,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddUsersToGroupWithHttpInfo (List<string> body, string groupId);
+        ApiResponse<Object> AddUsersToGroupWithHttpInfo(List<string> body, string groupId);
         /// <summary>
         /// Delete a group
         /// </summary>
@@ -70,7 +70,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Response</returns>
-        Response DeleteGroup (string id);
+        Response DeleteGroup(string id);
 
         /// <summary>
         /// Delete a group
@@ -81,7 +81,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Response</returns>
-        ApiResponse<Response> DeleteGroupWithHttpInfo (string id);
+        ApiResponse<Response> DeleteGroupWithHttpInfo(string id);
         /// <summary>
         /// Get the permissions this group has over workflows and tasks
         /// </summary>
@@ -91,7 +91,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Object</returns>
-        Object GetGrantedPermissions1 (string groupId);
+        Object GetGrantedPermissions1(string groupId);
 
         /// <summary>
         /// Get the permissions this group has over workflows and tasks
@@ -102,7 +102,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetGrantedPermissions1WithHttpInfo (string groupId);
+        ApiResponse<Object> GetGrantedPermissions1WithHttpInfo(string groupId);
         /// <summary>
         /// Get a group by id
         /// </summary>
@@ -112,7 +112,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object GetGroup (string id);
+        Object GetGroup(string id);
 
         /// <summary>
         /// Get a group by id
@@ -123,7 +123,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetGroupWithHttpInfo (string id);
+        ApiResponse<Object> GetGroupWithHttpInfo(string id);
         /// <summary>
         /// Get all users in group
         /// </summary>
@@ -133,7 +133,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object GetUsersInGroup (string id);
+        Object GetUsersInGroup(string id);
 
         /// <summary>
         /// Get all users in group
@@ -144,7 +144,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetUsersInGroupWithHttpInfo (string id);
+        ApiResponse<Object> GetUsersInGroupWithHttpInfo(string id);
         /// <summary>
         /// Get all groups
         /// </summary>
@@ -153,7 +153,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Group&gt;</returns>
-        List<Group> ListGroups ();
+        List<Group> ListGroups();
 
         /// <summary>
         /// Get all groups
@@ -163,7 +163,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Group&gt;</returns>
-        ApiResponse<List<Group>> ListGroupsWithHttpInfo ();
+        ApiResponse<List<Group>> ListGroupsWithHttpInfo();
         /// <summary>
         /// Remove user from group
         /// </summary>
@@ -174,7 +174,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Object</returns>
-        Object RemoveUserFromGroup (string groupId, string userId);
+        Object RemoveUserFromGroup(string groupId, string userId);
 
         /// <summary>
         /// Remove user from group
@@ -186,7 +186,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> RemoveUserFromGroupWithHttpInfo (string groupId, string userId);
+        ApiResponse<Object> RemoveUserFromGroupWithHttpInfo(string groupId, string userId);
         /// <summary>
         /// Remove users from group
         /// </summary>
@@ -197,7 +197,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns></returns>
-        void RemoveUsersFromGroup (List<string> body, string groupId);
+        void RemoveUsersFromGroup(List<string> body, string groupId);
 
         /// <summary>
         /// Remove users from group
@@ -209,7 +209,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RemoveUsersFromGroupWithHttpInfo (List<string> body, string groupId);
+        ApiResponse<Object> RemoveUsersFromGroupWithHttpInfo(List<string> body, string groupId);
         /// <summary>
         /// Create or update a group
         /// </summary>
@@ -220,7 +220,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        Object UpsertGroup (UpsertGroupRequest body, string id);
+        Object UpsertGroup(UpsertGroupRequest body, string id);
 
         /// <summary>
         /// Create or update a group
@@ -232,7 +232,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> UpsertGroupWithHttpInfo (UpsertGroupRequest body, string id);
+        ApiResponse<Object> UpsertGroupWithHttpInfo(UpsertGroupRequest body, string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -245,7 +245,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> AddUserToGroupAsync (string groupId, string userId);
+        System.Threading.Tasks.Task<Object> AddUserToGroupAsync(string groupId, string userId);
 
         /// <summary>
         /// Add user to group
@@ -257,7 +257,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddUserToGroupAsyncWithHttpInfo (string groupId, string userId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> AddUserToGroupAsyncWithHttpInfo(string groupId, string userId);
         /// <summary>
         /// Add users to group
         /// </summary>
@@ -268,7 +268,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddUsersToGroupAsync (List<string> body, string groupId);
+        System.Threading.Tasks.Task AddUsersToGroupAsync(List<string> body, string groupId);
 
         /// <summary>
         /// Add users to group
@@ -280,7 +280,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddUsersToGroupAsyncWithHttpInfo (List<string> body, string groupId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> AddUsersToGroupAsyncWithHttpInfo(List<string> body, string groupId);
         /// <summary>
         /// Delete a group
         /// </summary>
@@ -290,7 +290,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Response</returns>
-        System.Threading.Tasks.Task<Response> DeleteGroupAsync (string id);
+        System.Threading.Tasks.Task<Response> DeleteGroupAsync(string id);
 
         /// <summary>
         /// Delete a group
@@ -301,7 +301,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Response>> DeleteGroupAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Response>> DeleteGroupAsyncWithHttpInfo(string id);
         /// <summary>
         /// Get the permissions this group has over workflows and tasks
         /// </summary>
@@ -311,7 +311,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetGrantedPermissions1Async (string groupId);
+        System.Threading.Tasks.Task<Object> GetGrantedPermissions1Async(string groupId);
 
         /// <summary>
         /// Get the permissions this group has over workflows and tasks
@@ -322,7 +322,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissions1AsyncWithHttpInfo (string groupId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissions1AsyncWithHttpInfo(string groupId);
         /// <summary>
         /// Get a group by id
         /// </summary>
@@ -332,7 +332,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetGroupAsync (string id);
+        System.Threading.Tasks.Task<Object> GetGroupAsync(string id);
 
         /// <summary>
         /// Get a group by id
@@ -343,7 +343,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetGroupAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetGroupAsyncWithHttpInfo(string id);
         /// <summary>
         /// Get all users in group
         /// </summary>
@@ -353,7 +353,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetUsersInGroupAsync (string id);
+        System.Threading.Tasks.Task<Object> GetUsersInGroupAsync(string id);
 
         /// <summary>
         /// Get all users in group
@@ -364,7 +364,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetUsersInGroupAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetUsersInGroupAsyncWithHttpInfo(string id);
         /// <summary>
         /// Get all groups
         /// </summary>
@@ -373,7 +373,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Group&gt;</returns>
-        System.Threading.Tasks.Task<List<Group>> ListGroupsAsync ();
+        System.Threading.Tasks.Task<List<Group>> ListGroupsAsync();
 
         /// <summary>
         /// Get all groups
@@ -383,7 +383,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Group&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Group>>> ListGroupsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<Group>>> ListGroupsAsyncWithHttpInfo();
         /// <summary>
         /// Remove user from group
         /// </summary>
@@ -394,7 +394,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> RemoveUserFromGroupAsync (string groupId, string userId);
+        System.Threading.Tasks.Task<Object> RemoveUserFromGroupAsync(string groupId, string userId);
 
         /// <summary>
         /// Remove user from group
@@ -406,7 +406,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveUserFromGroupAsyncWithHttpInfo (string groupId, string userId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveUserFromGroupAsyncWithHttpInfo(string groupId, string userId);
         /// <summary>
         /// Remove users from group
         /// </summary>
@@ -417,7 +417,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RemoveUsersFromGroupAsync (List<string> body, string groupId);
+        System.Threading.Tasks.Task RemoveUsersFromGroupAsync(List<string> body, string groupId);
 
         /// <summary>
         /// Remove users from group
@@ -429,7 +429,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveUsersFromGroupAsyncWithHttpInfo (List<string> body, string groupId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveUsersFromGroupAsyncWithHttpInfo(List<string> body, string groupId);
         /// <summary>
         /// Create or update a group
         /// </summary>
@@ -440,7 +440,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> UpsertGroupAsync (UpsertGroupRequest body, string id);
+        System.Threading.Tasks.Task<Object> UpsertGroupAsync(UpsertGroupRequest body, string id);
 
         /// <summary>
         /// Create or update a group
@@ -452,14 +452,14 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpsertGroupAsyncWithHttpInfo (UpsertGroupRequest body, string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpsertGroupAsyncWithHttpInfo(UpsertGroupRequest body, string id);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class GroupResourceApi : IGroupResourceApi
+    public partial class GroupResourceApi : IGroupResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -524,7 +524,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -571,10 +571,10 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Object</returns>
-        public Object AddUserToGroup (string groupId, string userId)
+        public Object AddUserToGroup(string groupId, string userId)
         {
-             ApiResponse<Object> localVarResponse = AddUserToGroupWithHttpInfo(groupId, userId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = AddUserToGroupWithHttpInfo(groupId, userId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -584,7 +584,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > AddUserToGroupWithHttpInfo (string groupId, string userId)
+        public ApiResponse<Object> AddUserToGroupWithHttpInfo(string groupId, string userId)
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -623,11 +623,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -637,7 +637,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -647,10 +647,10 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> AddUserToGroupAsync (string groupId, string userId)
+        public async System.Threading.Tasks.Task<Object> AddUserToGroupAsync(string groupId, string userId)
         {
-             ApiResponse<Object> localVarResponse = await AddUserToGroupAsyncWithHttpInfo(groupId, userId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await AddUserToGroupAsyncWithHttpInfo(groupId, userId);
+            return localVarResponse.Data;
 
         }
 
@@ -661,7 +661,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddUserToGroupAsyncWithHttpInfo (string groupId, string userId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddUserToGroupAsyncWithHttpInfo(string groupId, string userId)
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -700,11 +700,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -714,7 +714,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -724,9 +724,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns></returns>
-        public void AddUsersToGroup (List<string> body, string groupId)
+        public void AddUsersToGroup(List<string> body, string groupId)
         {
-             AddUsersToGroupWithHttpInfo(body, groupId);
+            AddUsersToGroupWithHttpInfo(body, groupId);
         }
 
         /// <summary>
@@ -736,7 +736,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddUsersToGroupWithHttpInfo (List<string> body, string groupId)
+        public ApiResponse<Object> AddUsersToGroupWithHttpInfo(List<string> body, string groupId)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -782,11 +782,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -806,9 +806,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddUsersToGroupAsync (List<string> body, string groupId)
+        public async System.Threading.Tasks.Task AddUsersToGroupAsync(List<string> body, string groupId)
         {
-             await AddUsersToGroupAsyncWithHttpInfo(body, groupId);
+            await AddUsersToGroupAsyncWithHttpInfo(body, groupId);
 
         }
 
@@ -819,7 +819,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddUsersToGroupAsyncWithHttpInfo (List<string> body, string groupId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddUsersToGroupAsyncWithHttpInfo(List<string> body, string groupId)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -865,11 +865,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -888,10 +888,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Response</returns>
-        public Response DeleteGroup (string id)
+        public Response DeleteGroup(string id)
         {
-             ApiResponse<Response> localVarResponse = DeleteGroupWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Response> localVarResponse = DeleteGroupWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -900,7 +900,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Response</returns>
-        public ApiResponse< Response > DeleteGroupWithHttpInfo (string id)
+        public ApiResponse<Response> DeleteGroupWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -935,11 +935,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -949,7 +949,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Response>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Response) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+                (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
         }
 
         /// <summary>
@@ -958,10 +958,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Response</returns>
-        public async System.Threading.Tasks.Task<Response> DeleteGroupAsync (string id)
+        public async System.Threading.Tasks.Task<Response> DeleteGroupAsync(string id)
         {
-             ApiResponse<Response> localVarResponse = await DeleteGroupAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Response> localVarResponse = await DeleteGroupAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -971,7 +971,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Response>> DeleteGroupAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Response>> DeleteGroupAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1006,11 +1006,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1020,7 +1020,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Response>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Response) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+                (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
         }
 
         /// <summary>
@@ -1029,10 +1029,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Object</returns>
-        public Object GetGrantedPermissions1 (string groupId)
+        public Object GetGrantedPermissions1(string groupId)
         {
-             ApiResponse<Object> localVarResponse = GetGrantedPermissions1WithHttpInfo(groupId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetGrantedPermissions1WithHttpInfo(groupId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1041,7 +1041,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetGrantedPermissions1WithHttpInfo (string groupId)
+        public ApiResponse<Object> GetGrantedPermissions1WithHttpInfo(string groupId)
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -1076,11 +1076,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1090,7 +1090,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1099,10 +1099,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetGrantedPermissions1Async (string groupId)
+        public async System.Threading.Tasks.Task<Object> GetGrantedPermissions1Async(string groupId)
         {
-             ApiResponse<Object> localVarResponse = await GetGrantedPermissions1AsyncWithHttpInfo(groupId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await GetGrantedPermissions1AsyncWithHttpInfo(groupId);
+            return localVarResponse.Data;
 
         }
 
@@ -1112,7 +1112,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissions1AsyncWithHttpInfo (string groupId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissions1AsyncWithHttpInfo(string groupId)
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -1147,11 +1147,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1161,7 +1161,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1170,10 +1170,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object GetGroup (string id)
+        public Object GetGroup(string id)
         {
-             ApiResponse<Object> localVarResponse = GetGroupWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetGroupWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1182,7 +1182,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetGroupWithHttpInfo (string id)
+        public ApiResponse<Object> GetGroupWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1217,11 +1217,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1231,7 +1231,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1240,10 +1240,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetGroupAsync (string id)
+        public async System.Threading.Tasks.Task<Object> GetGroupAsync(string id)
         {
-             ApiResponse<Object> localVarResponse = await GetGroupAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await GetGroupAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -1253,7 +1253,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGroupAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGroupAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1288,11 +1288,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1302,7 +1302,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1311,10 +1311,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object GetUsersInGroup (string id)
+        public Object GetUsersInGroup(string id)
         {
-             ApiResponse<Object> localVarResponse = GetUsersInGroupWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetUsersInGroupWithHttpInfo(id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1323,7 +1323,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetUsersInGroupWithHttpInfo (string id)
+        public ApiResponse<Object> GetUsersInGroupWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1358,11 +1358,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1372,7 +1372,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1381,10 +1381,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetUsersInGroupAsync (string id)
+        public async System.Threading.Tasks.Task<Object> GetUsersInGroupAsync(string id)
         {
-             ApiResponse<Object> localVarResponse = await GetUsersInGroupAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await GetUsersInGroupAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
 
         }
 
@@ -1394,7 +1394,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUsersInGroupAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUsersInGroupAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1429,11 +1429,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1443,7 +1443,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1451,10 +1451,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Group&gt;</returns>
-        public List<Group> ListGroups ()
+        public List<Group> ListGroups()
         {
-             ApiResponse<List<Group>> localVarResponse = ListGroupsWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<Group>> localVarResponse = ListGroupsWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1462,7 +1462,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Group&gt;</returns>
-        public ApiResponse< List<Group> > ListGroupsWithHttpInfo ()
+        public ApiResponse<List<Group>> ListGroupsWithHttpInfo()
         {
 
             var localVarPath = "/api/groups";
@@ -1493,11 +1493,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1507,7 +1507,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Group>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Group>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Group>)));
+                (List<Group>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Group>)));
         }
 
         /// <summary>
@@ -1515,10 +1515,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Group&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Group>> ListGroupsAsync ()
+        public async System.Threading.Tasks.Task<List<Group>> ListGroupsAsync()
         {
-             ApiResponse<List<Group>> localVarResponse = await ListGroupsAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<List<Group>> localVarResponse = await ListGroupsAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -1527,7 +1527,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Group&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Group>>> ListGroupsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<Group>>> ListGroupsAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/groups";
@@ -1558,11 +1558,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1572,7 +1572,7 @@ namespace Conductor.Api
 
             return new ApiResponse<List<Group>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Group>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Group>)));
+                (List<Group>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Group>)));
         }
 
         /// <summary>
@@ -1582,10 +1582,10 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Object</returns>
-        public Object RemoveUserFromGroup (string groupId, string userId)
+        public Object RemoveUserFromGroup(string groupId, string userId)
         {
-             ApiResponse<Object> localVarResponse = RemoveUserFromGroupWithHttpInfo(groupId, userId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = RemoveUserFromGroupWithHttpInfo(groupId, userId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1595,7 +1595,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > RemoveUserFromGroupWithHttpInfo (string groupId, string userId)
+        public ApiResponse<Object> RemoveUserFromGroupWithHttpInfo(string groupId, string userId)
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -1634,11 +1634,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1648,7 +1648,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1658,10 +1658,10 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> RemoveUserFromGroupAsync (string groupId, string userId)
+        public async System.Threading.Tasks.Task<Object> RemoveUserFromGroupAsync(string groupId, string userId)
         {
-             ApiResponse<Object> localVarResponse = await RemoveUserFromGroupAsyncWithHttpInfo(groupId, userId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await RemoveUserFromGroupAsyncWithHttpInfo(groupId, userId);
+            return localVarResponse.Data;
 
         }
 
@@ -1672,7 +1672,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveUserFromGroupAsyncWithHttpInfo (string groupId, string userId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveUserFromGroupAsyncWithHttpInfo(string groupId, string userId)
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -1711,11 +1711,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1725,7 +1725,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1735,9 +1735,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns></returns>
-        public void RemoveUsersFromGroup (List<string> body, string groupId)
+        public void RemoveUsersFromGroup(List<string> body, string groupId)
         {
-             RemoveUsersFromGroupWithHttpInfo(body, groupId);
+            RemoveUsersFromGroupWithHttpInfo(body, groupId);
         }
 
         /// <summary>
@@ -1747,7 +1747,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> RemoveUsersFromGroupWithHttpInfo (List<string> body, string groupId)
+        public ApiResponse<Object> RemoveUsersFromGroupWithHttpInfo(List<string> body, string groupId)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1793,11 +1793,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1817,9 +1817,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RemoveUsersFromGroupAsync (List<string> body, string groupId)
+        public async System.Threading.Tasks.Task RemoveUsersFromGroupAsync(List<string> body, string groupId)
         {
-             await RemoveUsersFromGroupAsyncWithHttpInfo(body, groupId);
+            await RemoveUsersFromGroupAsyncWithHttpInfo(body, groupId);
 
         }
 
@@ -1830,7 +1830,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveUsersFromGroupAsyncWithHttpInfo (List<string> body, string groupId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveUsersFromGroupAsyncWithHttpInfo(List<string> body, string groupId)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1876,11 +1876,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1900,10 +1900,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Object</returns>
-        public Object UpsertGroup (UpsertGroupRequest body, string id)
+        public Object UpsertGroup(UpsertGroupRequest body, string id)
         {
-             ApiResponse<Object> localVarResponse = UpsertGroupWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = UpsertGroupWithHttpInfo(body, id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1913,7 +1913,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > UpsertGroupWithHttpInfo (UpsertGroupRequest body, string id)
+        public ApiResponse<Object> UpsertGroupWithHttpInfo(UpsertGroupRequest body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1960,11 +1960,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1974,7 +1974,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1984,10 +1984,10 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> UpsertGroupAsync (UpsertGroupRequest body, string id)
+        public async System.Threading.Tasks.Task<Object> UpsertGroupAsync(UpsertGroupRequest body, string id)
         {
-             ApiResponse<Object> localVarResponse = await UpsertGroupAsyncWithHttpInfo(body, id);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = await UpsertGroupAsyncWithHttpInfo(body, id);
+            return localVarResponse.Data;
 
         }
 
@@ -1998,7 +1998,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpsertGroupAsyncWithHttpInfo (UpsertGroupRequest body, string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpsertGroupAsyncWithHttpInfo(UpsertGroupRequest body, string id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2045,11 +2045,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2059,7 +2059,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
     }

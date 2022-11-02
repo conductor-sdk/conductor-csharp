@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// RerunWorkflowRequest
     /// </summary>
     [DataContract]
-        public partial class RerunWorkflowRequest :  IEquatable<RerunWorkflowRequest>, IValidatableObject
+    public partial class RerunWorkflowRequest : IEquatable<RerunWorkflowRequest>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RerunWorkflowRequest" /> class.
@@ -37,35 +37,35 @@ namespace Conductor.Models
             this.TaskInput = taskInput;
             this.WorkflowInput = workflowInput;
         }
-        
+
         /// <summary>
         /// Gets or Sets CorrelationId
         /// </summary>
-        [DataMember(Name="correlationId", EmitDefaultValue=false)]
+        [DataMember(Name = "correlationId", EmitDefaultValue = false)]
         public string CorrelationId { get; set; }
 
         /// <summary>
         /// Gets or Sets ReRunFromTaskId
         /// </summary>
-        [DataMember(Name="reRunFromTaskId", EmitDefaultValue=false)]
+        [DataMember(Name = "reRunFromTaskId", EmitDefaultValue = false)]
         public string ReRunFromTaskId { get; set; }
 
         /// <summary>
         /// Gets or Sets ReRunFromWorkflowId
         /// </summary>
-        [DataMember(Name="reRunFromWorkflowId", EmitDefaultValue=false)]
+        [DataMember(Name = "reRunFromWorkflowId", EmitDefaultValue = false)]
         public string ReRunFromWorkflowId { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskInput
         /// </summary>
-        [DataMember(Name="taskInput", EmitDefaultValue=false)]
+        [DataMember(Name = "taskInput", EmitDefaultValue = false)]
         public Dictionary<string, Object> TaskInput { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowInput
         /// </summary>
-        [DataMember(Name="workflowInput", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowInput", EmitDefaultValue = false)]
         public Dictionary<string, Object> WorkflowInput { get; set; }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -114,28 +114,28 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CorrelationId == input.CorrelationId ||
                     (this.CorrelationId != null &&
                     this.CorrelationId.Equals(input.CorrelationId))
-                ) && 
+                ) &&
                 (
                     this.ReRunFromTaskId == input.ReRunFromTaskId ||
                     (this.ReRunFromTaskId != null &&
                     this.ReRunFromTaskId.Equals(input.ReRunFromTaskId))
-                ) && 
+                ) &&
                 (
                     this.ReRunFromWorkflowId == input.ReRunFromWorkflowId ||
                     (this.ReRunFromWorkflowId != null &&
                     this.ReRunFromWorkflowId.Equals(input.ReRunFromWorkflowId))
-                ) && 
+                ) &&
                 (
                     this.TaskInput == input.TaskInput ||
                     this.TaskInput != null &&
                     input.TaskInput != null &&
                     this.TaskInput.SequenceEqual(input.TaskInput)
-                ) && 
+                ) &&
                 (
                     this.WorkflowInput == input.WorkflowInput ||
                     this.WorkflowInput != null &&

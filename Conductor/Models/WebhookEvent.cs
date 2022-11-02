@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// WebhookEvent
     /// </summary>
     [DataContract]
-        public partial class WebhookEvent :  IEquatable<WebhookEvent>, IValidatableObject
+    public partial class WebhookEvent : IEquatable<WebhookEvent>, IValidatableObject
     {
         /// <summary>
         /// Defines Verifier
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum VerifierEnum
+        public enum VerifierEnum
         {
             /// <summary>
             /// Enum SLACKBASED for value: SLACK_BASED
@@ -46,11 +46,12 @@ namespace Conductor.Models
             /// Enum TWITTER for value: TWITTER
             /// </summary>
             [EnumMember(Value = "TWITTER")]
-            TWITTER = 4        }
+            TWITTER = 4
+        }
         /// <summary>
         /// Gets or Sets Verifier
         /// </summary>
-        [DataMember(Name="verifier", EmitDefaultValue=false)]
+        [DataMember(Name = "verifier", EmitDefaultValue = false)]
         public VerifierEnum? Verifier { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="WebhookEvent" /> class.
@@ -84,78 +85,78 @@ namespace Conductor.Models
             this.WebhookExecutionHistory = webhookExecutionHistory;
             this.WorkflowsToStart = workflowsToStart;
         }
-        
+
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name = "createdBy", EmitDefaultValue = false)]
         public string CreatedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets HeaderKey
         /// </summary>
-        [DataMember(Name="headerKey", EmitDefaultValue=false)]
+        [DataMember(Name = "headerKey", EmitDefaultValue = false)]
         public string HeaderKey { get; set; }
 
         /// <summary>
         /// Gets or Sets Headers
         /// </summary>
-        [DataMember(Name="headers", EmitDefaultValue=false)]
+        [DataMember(Name = "headers", EmitDefaultValue = false)]
         public Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets ReceiverWorkflowNamesToVersions
         /// </summary>
-        [DataMember(Name="receiverWorkflowNamesToVersions", EmitDefaultValue=false)]
+        [DataMember(Name = "receiverWorkflowNamesToVersions", EmitDefaultValue = false)]
         public Dictionary<string, int?> ReceiverWorkflowNamesToVersions { get; set; }
 
         /// <summary>
         /// Gets or Sets SecretKey
         /// </summary>
-        [DataMember(Name="secretKey", EmitDefaultValue=false)]
+        [DataMember(Name = "secretKey", EmitDefaultValue = false)]
         public string SecretKey { get; set; }
 
         /// <summary>
         /// Gets or Sets SecretValue
         /// </summary>
-        [DataMember(Name="secretValue", EmitDefaultValue=false)]
+        [DataMember(Name = "secretValue", EmitDefaultValue = false)]
         public string SecretValue { get; set; }
 
         /// <summary>
         /// Gets or Sets SourcePlatform
         /// </summary>
-        [DataMember(Name="sourcePlatform", EmitDefaultValue=false)]
+        [DataMember(Name = "sourcePlatform", EmitDefaultValue = false)]
         public string SourcePlatform { get; set; }
 
         /// <summary>
         /// Gets or Sets UrlVerified
         /// </summary>
-        [DataMember(Name="urlVerified", EmitDefaultValue=false)]
+        [DataMember(Name = "urlVerified", EmitDefaultValue = false)]
         public bool? UrlVerified { get; set; }
 
 
         /// <summary>
         /// Gets or Sets WebhookExecutionHistory
         /// </summary>
-        [DataMember(Name="webhookExecutionHistory", EmitDefaultValue=false)]
+        [DataMember(Name = "webhookExecutionHistory", EmitDefaultValue = false)]
         public List<WebhookExecutionHistory> WebhookExecutionHistory { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowsToStart
         /// </summary>
-        [DataMember(Name="workflowsToStart", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowsToStart", EmitDefaultValue = false)]
         public Dictionary<string, int?> WorkflowsToStart { get; set; }
 
         /// <summary>
@@ -182,7 +183,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -212,70 +213,70 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
+                ) &&
                 (
                     this.HeaderKey == input.HeaderKey ||
                     (this.HeaderKey != null &&
                     this.HeaderKey.Equals(input.HeaderKey))
-                ) && 
+                ) &&
                 (
                     this.Headers == input.Headers ||
                     this.Headers != null &&
                     input.Headers != null &&
                     this.Headers.SequenceEqual(input.Headers)
-                ) && 
+                ) &&
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.ReceiverWorkflowNamesToVersions == input.ReceiverWorkflowNamesToVersions ||
                     this.ReceiverWorkflowNamesToVersions != null &&
                     input.ReceiverWorkflowNamesToVersions != null &&
                     this.ReceiverWorkflowNamesToVersions.SequenceEqual(input.ReceiverWorkflowNamesToVersions)
-                ) && 
+                ) &&
                 (
                     this.SecretKey == input.SecretKey ||
                     (this.SecretKey != null &&
                     this.SecretKey.Equals(input.SecretKey))
-                ) && 
+                ) &&
                 (
                     this.SecretValue == input.SecretValue ||
                     (this.SecretValue != null &&
                     this.SecretValue.Equals(input.SecretValue))
-                ) && 
+                ) &&
                 (
                     this.SourcePlatform == input.SourcePlatform ||
                     (this.SourcePlatform != null &&
                     this.SourcePlatform.Equals(input.SourcePlatform))
-                ) && 
+                ) &&
                 (
                     this.UrlVerified == input.UrlVerified ||
                     (this.UrlVerified != null &&
                     this.UrlVerified.Equals(input.UrlVerified))
-                ) && 
+                ) &&
                 (
                     this.Verifier == input.Verifier ||
                     (this.Verifier != null &&
                     this.Verifier.Equals(input.Verifier))
-                ) && 
+                ) &&
                 (
                     this.WebhookExecutionHistory == input.WebhookExecutionHistory ||
                     this.WebhookExecutionHistory != null &&
                     input.WebhookExecutionHistory != null &&
                     this.WebhookExecutionHistory.SequenceEqual(input.WebhookExecutionHistory)
-                ) && 
+                ) &&
                 (
                     this.WorkflowsToStart == input.WorkflowsToStart ||
                     this.WorkflowsToStart != null &&

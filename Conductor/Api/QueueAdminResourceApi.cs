@@ -11,7 +11,7 @@ namespace Conductor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IQueueAdminResourceApi : IApiAccessor
+    public interface IQueueAdminResourceApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -22,7 +22,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> Names ();
+        Dictionary<string, string> Names();
 
         /// <summary>
         /// Get Queue Names
@@ -32,7 +32,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        ApiResponse<Dictionary<string, string>> NamesWithHttpInfo ();
+        ApiResponse<Dictionary<string, string>> NamesWithHttpInfo();
         /// <summary>
         /// Get the queue length
         /// </summary>
@@ -41,7 +41,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;</returns>
-        Dictionary<string, Dictionary<string, long?>> Size1 ();
+        Dictionary<string, Dictionary<string, long?>> Size1();
 
         /// <summary>
         /// Get the queue length
@@ -51,7 +51,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;</returns>
-        ApiResponse<Dictionary<string, Dictionary<string, long?>>> Size1WithHttpInfo ();
+        ApiResponse<Dictionary<string, Dictionary<string, long?>>> Size1WithHttpInfo();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -62,7 +62,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, string>> NamesAsync ();
+        System.Threading.Tasks.Task<Dictionary<string, string>> NamesAsync();
 
         /// <summary>
         /// Get Queue Names
@@ -72,7 +72,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> NamesAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> NamesAsyncWithHttpInfo();
         /// <summary>
         /// Get the queue length
         /// </summary>
@@ -81,7 +81,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, long?>>> Size1Async ();
+        System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, long?>>> Size1Async();
 
         /// <summary>
         /// Get the queue length
@@ -91,14 +91,14 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, long?>>>> Size1AsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, long?>>>> Size1AsyncWithHttpInfo();
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class QueueAdminResourceApi : IQueueAdminResourceApi
+    public partial class QueueAdminResourceApi : IQueueAdminResourceApi
     {
         private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -163,7 +163,7 @@ namespace Conductor.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Conductor.Client.Configuration Configuration {get; set;}
+        public Conductor.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -208,10 +208,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> Names ()
+        public Dictionary<string, string> Names()
         {
-             ApiResponse<Dictionary<string, string>> localVarResponse = NamesWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, string>> localVarResponse = NamesWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        public ApiResponse< Dictionary<string, string> > NamesWithHttpInfo ()
+        public ApiResponse<Dictionary<string, string>> NamesWithHttpInfo()
         {
 
             var localVarPath = "/api/queue/";
@@ -250,11 +250,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -264,7 +264,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+                (Dictionary<string, string>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -272,10 +272,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, string>> NamesAsync ()
+        public async System.Threading.Tasks.Task<Dictionary<string, string>> NamesAsync()
         {
-             ApiResponse<Dictionary<string, string>> localVarResponse = await NamesAsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, string>> localVarResponse = await NamesAsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -284,7 +284,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> NamesAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> NamesAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/queue/";
@@ -315,11 +315,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -329,7 +329,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+                (Dictionary<string, string>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -337,10 +337,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;</returns>
-        public Dictionary<string, Dictionary<string, long?>> Size1 ()
+        public Dictionary<string, Dictionary<string, long?>> Size1()
         {
-             ApiResponse<Dictionary<string, Dictionary<string, long?>>> localVarResponse = Size1WithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Dictionary<string, long?>>> localVarResponse = Size1WithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -348,7 +348,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;</returns>
-        public ApiResponse< Dictionary<string, Dictionary<string, long?>> > Size1WithHttpInfo ()
+        public ApiResponse<Dictionary<string, Dictionary<string, long?>>> Size1WithHttpInfo()
         {
 
             var localVarPath = "/api/queue/size";
@@ -379,11 +379,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -393,7 +393,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Dictionary<string, long?>>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Dictionary<string, long?>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Dictionary<string, long?>>)));
+                (Dictionary<string, Dictionary<string, long?>>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Dictionary<string, long?>>)));
         }
 
         /// <summary>
@@ -401,10 +401,10 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, long?>>> Size1Async ()
+        public async System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, long?>>> Size1Async()
         {
-             ApiResponse<Dictionary<string, Dictionary<string, long?>>> localVarResponse = await Size1AsyncWithHttpInfo();
-             return localVarResponse.Data;
+            ApiResponse<Dictionary<string, Dictionary<string, long?>>> localVarResponse = await Size1AsyncWithHttpInfo();
+            return localVarResponse.Data;
 
         }
 
@@ -413,7 +413,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, long?>>>> Size1AsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, long?>>>> Size1AsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/queue/size";
@@ -444,11 +444,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -458,7 +458,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Dictionary<string, Dictionary<string, long?>>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Dictionary<string, long?>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Dictionary<string, long?>>)));
+                (Dictionary<string, Dictionary<string, long?>>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Dictionary<string, long?>>)));
         }
 
     }

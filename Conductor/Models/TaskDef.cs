@@ -19,13 +19,13 @@ namespace Conductor.Models
     /// TaskDef
     /// </summary>
     [DataContract]
-        public partial class TaskDef :  IEquatable<TaskDef>, IValidatableObject
+    public partial class TaskDef : IEquatable<TaskDef>, IValidatableObject
     {
         /// <summary>
         /// Defines RetryLogic
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum RetryLogicEnum
+        public enum RetryLogicEnum
         {
             /// <summary>
             /// Enum FIXED for value: FIXED
@@ -41,17 +41,18 @@ namespace Conductor.Models
             /// Enum LINEARBACKOFF for value: LINEAR_BACKOFF
             /// </summary>
             [EnumMember(Value = "LINEAR_BACKOFF")]
-            LINEARBACKOFF = 3        }
+            LINEARBACKOFF = 3
+        }
         /// <summary>
         /// Gets or Sets RetryLogic
         /// </summary>
-        [DataMember(Name="retryLogic", EmitDefaultValue=false)]
+        [DataMember(Name = "retryLogic", EmitDefaultValue = false)]
         public RetryLogicEnum? RetryLogic { get; set; }
         /// <summary>
         /// Defines TimeoutPolicy
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                public enum TimeoutPolicyEnum
+        public enum TimeoutPolicyEnum
         {
             /// <summary>
             /// Enum RETRY for value: RETRY
@@ -67,11 +68,12 @@ namespace Conductor.Models
             /// Enum ALERTONLY for value: ALERT_ONLY
             /// </summary>
             [EnumMember(Value = "ALERT_ONLY")]
-            ALERTONLY = 3        }
+            ALERTONLY = 3
+        }
         /// <summary>
         /// Gets or Sets TimeoutPolicy
         /// </summary>
-        [DataMember(Name="timeoutPolicy", EmitDefaultValue=false)]
+        [DataMember(Name = "timeoutPolicy", EmitDefaultValue = false)]
         public TimeoutPolicyEnum? TimeoutPolicy { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskDef" /> class.
@@ -143,119 +145,119 @@ namespace Conductor.Models
             this.UpdateTime = updateTime;
             this.UpdatedBy = updatedBy;
         }
-        
+
         /// <summary>
         /// Gets or Sets BackoffScaleFactor
         /// </summary>
-        [DataMember(Name="backoffScaleFactor", EmitDefaultValue=false)]
+        [DataMember(Name = "backoffScaleFactor", EmitDefaultValue = false)]
         public int? BackoffScaleFactor { get; set; }
 
         /// <summary>
         /// Gets or Sets ConcurrentExecLimit
         /// </summary>
-        [DataMember(Name="concurrentExecLimit", EmitDefaultValue=false)]
+        [DataMember(Name = "concurrentExecLimit", EmitDefaultValue = false)]
         public int? ConcurrentExecLimit { get; set; }
 
         /// <summary>
         /// Gets or Sets CreateTime
         /// </summary>
-        [DataMember(Name="createTime", EmitDefaultValue=false)]
+        [DataMember(Name = "createTime", EmitDefaultValue = false)]
         public long? CreateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name = "createdBy", EmitDefaultValue = false)]
         public string CreatedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets ExecutionNameSpace
         /// </summary>
-        [DataMember(Name="executionNameSpace", EmitDefaultValue=false)]
+        [DataMember(Name = "executionNameSpace", EmitDefaultValue = false)]
         public string ExecutionNameSpace { get; set; }
 
         /// <summary>
         /// Gets or Sets InputKeys
         /// </summary>
-        [DataMember(Name="inputKeys", EmitDefaultValue=false)]
+        [DataMember(Name = "inputKeys", EmitDefaultValue = false)]
         public List<string> InputKeys { get; set; }
 
         /// <summary>
         /// Gets or Sets InputTemplate
         /// </summary>
-        [DataMember(Name="inputTemplate", EmitDefaultValue=false)]
+        [DataMember(Name = "inputTemplate", EmitDefaultValue = false)]
         public Dictionary<string, Object> InputTemplate { get; set; }
 
         /// <summary>
         /// Gets or Sets IsolationGroupId
         /// </summary>
-        [DataMember(Name="isolationGroupId", EmitDefaultValue=false)]
+        [DataMember(Name = "isolationGroupId", EmitDefaultValue = false)]
         public string IsolationGroupId { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets OutputKeys
         /// </summary>
-        [DataMember(Name="outputKeys", EmitDefaultValue=false)]
+        [DataMember(Name = "outputKeys", EmitDefaultValue = false)]
         public List<string> OutputKeys { get; set; }
 
         /// <summary>
         /// Gets or Sets OwnerApp
         /// </summary>
-        [DataMember(Name="ownerApp", EmitDefaultValue=false)]
+        [DataMember(Name = "ownerApp", EmitDefaultValue = false)]
         public string OwnerApp { get; set; }
 
         /// <summary>
         /// Gets or Sets OwnerEmail
         /// </summary>
-        [DataMember(Name="ownerEmail", EmitDefaultValue=false)]
+        [DataMember(Name = "ownerEmail", EmitDefaultValue = false)]
         public string OwnerEmail { get; set; }
 
         /// <summary>
         /// Gets or Sets PollTimeoutSeconds
         /// </summary>
-        [DataMember(Name="pollTimeoutSeconds", EmitDefaultValue=false)]
+        [DataMember(Name = "pollTimeoutSeconds", EmitDefaultValue = false)]
         public int? PollTimeoutSeconds { get; set; }
 
         /// <summary>
         /// Gets or Sets RateLimitFrequencyInSeconds
         /// </summary>
-        [DataMember(Name="rateLimitFrequencyInSeconds", EmitDefaultValue=false)]
+        [DataMember(Name = "rateLimitFrequencyInSeconds", EmitDefaultValue = false)]
         public int? RateLimitFrequencyInSeconds { get; set; }
 
         /// <summary>
         /// Gets or Sets RateLimitPerFrequency
         /// </summary>
-        [DataMember(Name="rateLimitPerFrequency", EmitDefaultValue=false)]
+        [DataMember(Name = "rateLimitPerFrequency", EmitDefaultValue = false)]
         public int? RateLimitPerFrequency { get; set; }
 
         /// <summary>
         /// Gets or Sets ResponseTimeoutSeconds
         /// </summary>
-        [DataMember(Name="responseTimeoutSeconds", EmitDefaultValue=false)]
+        [DataMember(Name = "responseTimeoutSeconds", EmitDefaultValue = false)]
         public long? ResponseTimeoutSeconds { get; set; }
 
         /// <summary>
         /// Gets or Sets RetryCount
         /// </summary>
-        [DataMember(Name="retryCount", EmitDefaultValue=false)]
+        [DataMember(Name = "retryCount", EmitDefaultValue = false)]
         public int? RetryCount { get; set; }
 
         /// <summary>
         /// Gets or Sets RetryDelaySeconds
         /// </summary>
-        [DataMember(Name="retryDelaySeconds", EmitDefaultValue=false)]
+        [DataMember(Name = "retryDelaySeconds", EmitDefaultValue = false)]
         public int? RetryDelaySeconds { get; set; }
 
 
@@ -263,19 +265,19 @@ namespace Conductor.Models
         /// <summary>
         /// Gets or Sets TimeoutSeconds
         /// </summary>
-        [DataMember(Name="timeoutSeconds", EmitDefaultValue=false)]
+        [DataMember(Name = "timeoutSeconds", EmitDefaultValue = false)]
         public long? TimeoutSeconds { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdateTime
         /// </summary>
-        [DataMember(Name="updateTime", EmitDefaultValue=false)]
+        [DataMember(Name = "updateTime", EmitDefaultValue = false)]
         public long? UpdateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdatedBy
         /// </summary>
-        [DataMember(Name="updatedBy", EmitDefaultValue=false)]
+        [DataMember(Name = "updatedBy", EmitDefaultValue = false)]
         public string UpdatedBy { get; set; }
 
         /// <summary>
@@ -313,7 +315,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -343,125 +345,125 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.BackoffScaleFactor == input.BackoffScaleFactor ||
                     (this.BackoffScaleFactor != null &&
                     this.BackoffScaleFactor.Equals(input.BackoffScaleFactor))
-                ) && 
+                ) &&
                 (
                     this.ConcurrentExecLimit == input.ConcurrentExecLimit ||
                     (this.ConcurrentExecLimit != null &&
                     this.ConcurrentExecLimit.Equals(input.ConcurrentExecLimit))
-                ) && 
+                ) &&
                 (
                     this.CreateTime == input.CreateTime ||
                     (this.CreateTime != null &&
                     this.CreateTime.Equals(input.CreateTime))
-                ) && 
+                ) &&
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.ExecutionNameSpace == input.ExecutionNameSpace ||
                     (this.ExecutionNameSpace != null &&
                     this.ExecutionNameSpace.Equals(input.ExecutionNameSpace))
-                ) && 
+                ) &&
                 (
                     this.InputKeys == input.InputKeys ||
                     this.InputKeys != null &&
                     input.InputKeys != null &&
                     this.InputKeys.SequenceEqual(input.InputKeys)
-                ) && 
+                ) &&
                 (
                     this.InputTemplate == input.InputTemplate ||
                     this.InputTemplate != null &&
                     input.InputTemplate != null &&
                     this.InputTemplate.SequenceEqual(input.InputTemplate)
-                ) && 
+                ) &&
                 (
                     this.IsolationGroupId == input.IsolationGroupId ||
                     (this.IsolationGroupId != null &&
                     this.IsolationGroupId.Equals(input.IsolationGroupId))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.OutputKeys == input.OutputKeys ||
                     this.OutputKeys != null &&
                     input.OutputKeys != null &&
                     this.OutputKeys.SequenceEqual(input.OutputKeys)
-                ) && 
+                ) &&
                 (
                     this.OwnerApp == input.OwnerApp ||
                     (this.OwnerApp != null &&
                     this.OwnerApp.Equals(input.OwnerApp))
-                ) && 
+                ) &&
                 (
                     this.OwnerEmail == input.OwnerEmail ||
                     (this.OwnerEmail != null &&
                     this.OwnerEmail.Equals(input.OwnerEmail))
-                ) && 
+                ) &&
                 (
                     this.PollTimeoutSeconds == input.PollTimeoutSeconds ||
                     (this.PollTimeoutSeconds != null &&
                     this.PollTimeoutSeconds.Equals(input.PollTimeoutSeconds))
-                ) && 
+                ) &&
                 (
                     this.RateLimitFrequencyInSeconds == input.RateLimitFrequencyInSeconds ||
                     (this.RateLimitFrequencyInSeconds != null &&
                     this.RateLimitFrequencyInSeconds.Equals(input.RateLimitFrequencyInSeconds))
-                ) && 
+                ) &&
                 (
                     this.RateLimitPerFrequency == input.RateLimitPerFrequency ||
                     (this.RateLimitPerFrequency != null &&
                     this.RateLimitPerFrequency.Equals(input.RateLimitPerFrequency))
-                ) && 
+                ) &&
                 (
                     this.ResponseTimeoutSeconds == input.ResponseTimeoutSeconds ||
                     (this.ResponseTimeoutSeconds != null &&
                     this.ResponseTimeoutSeconds.Equals(input.ResponseTimeoutSeconds))
-                ) && 
+                ) &&
                 (
                     this.RetryCount == input.RetryCount ||
                     (this.RetryCount != null &&
                     this.RetryCount.Equals(input.RetryCount))
-                ) && 
+                ) &&
                 (
                     this.RetryDelaySeconds == input.RetryDelaySeconds ||
                     (this.RetryDelaySeconds != null &&
                     this.RetryDelaySeconds.Equals(input.RetryDelaySeconds))
-                ) && 
+                ) &&
                 (
                     this.RetryLogic == input.RetryLogic ||
                     (this.RetryLogic != null &&
                     this.RetryLogic.Equals(input.RetryLogic))
-                ) && 
+                ) &&
                 (
                     this.TimeoutPolicy == input.TimeoutPolicy ||
                     (this.TimeoutPolicy != null &&
                     this.TimeoutPolicy.Equals(input.TimeoutPolicy))
-                ) && 
+                ) &&
                 (
                     this.TimeoutSeconds == input.TimeoutSeconds ||
                     (this.TimeoutSeconds != null &&
                     this.TimeoutSeconds.Equals(input.TimeoutSeconds))
-                ) && 
+                ) &&
                 (
                     this.UpdateTime == input.UpdateTime ||
                     (this.UpdateTime != null &&
                     this.UpdateTime.Equals(input.UpdateTime))
-                ) && 
+                ) &&
                 (
                     this.UpdatedBy == input.UpdatedBy ||
                     (this.UpdatedBy != null &&

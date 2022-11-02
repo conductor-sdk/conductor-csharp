@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// UpdateWorkflowVariables
     /// </summary>
     [DataContract]
-        public partial class UpdateWorkflowVariables :  IEquatable<UpdateWorkflowVariables>, IValidatableObject
+    public partial class UpdateWorkflowVariables : IEquatable<UpdateWorkflowVariables>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateWorkflowVariables" /> class.
@@ -33,23 +33,23 @@ namespace Conductor.Models
             this.Variables = variables;
             this.WorkflowId = workflowId;
         }
-        
+
         /// <summary>
         /// Gets or Sets AppendArray
         /// </summary>
-        [DataMember(Name="appendArray", EmitDefaultValue=false)]
+        [DataMember(Name = "appendArray", EmitDefaultValue = false)]
         public bool? AppendArray { get; set; }
 
         /// <summary>
         /// Gets or Sets Variables
         /// </summary>
-        [DataMember(Name="variables", EmitDefaultValue=false)]
+        [DataMember(Name = "variables", EmitDefaultValue = false)]
         public Dictionary<string, Object> Variables { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkflowId
         /// </summary>
-        [DataMember(Name="workflowId", EmitDefaultValue=false)]
+        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
         public string WorkflowId { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,18 +96,18 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AppendArray == input.AppendArray ||
                     (this.AppendArray != null &&
                     this.AppendArray.Equals(input.AppendArray))
-                ) && 
+                ) &&
                 (
                     this.Variables == input.Variables ||
                     this.Variables != null &&
                     input.Variables != null &&
                     this.Variables.SequenceEqual(input.Variables)
-                ) && 
+                ) &&
                 (
                     this.WorkflowId == input.WorkflowId ||
                     (this.WorkflowId != null &&

@@ -19,7 +19,7 @@ namespace Conductor.Models
     /// ExternalStorageLocation
     /// </summary>
     [DataContract]
-        public partial class ExternalStorageLocation :  IEquatable<ExternalStorageLocation>, IValidatableObject
+    public partial class ExternalStorageLocation : IEquatable<ExternalStorageLocation>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ExternalStorageLocation" /> class.
@@ -31,17 +31,17 @@ namespace Conductor.Models
             this.Path = path;
             this.Uri = uri;
         }
-        
+
         /// <summary>
         /// Gets or Sets Path
         /// </summary>
-        [DataMember(Name="path", EmitDefaultValue=false)]
+        [DataMember(Name = "path", EmitDefaultValue = false)]
         public string Path { get; set; }
 
         /// <summary>
         /// Gets or Sets Uri
         /// </summary>
-        [DataMember(Name="uri", EmitDefaultValue=false)]
+        [DataMember(Name = "uri", EmitDefaultValue = false)]
         public string Uri { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Conductor.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,12 +87,12 @@ namespace Conductor.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
-                ) && 
+                ) &&
                 (
                     this.Uri == input.Uri ||
                     (this.Uri != null &&
