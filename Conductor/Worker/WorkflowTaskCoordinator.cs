@@ -15,18 +15,18 @@ namespace Conductor.Worker
         private ILogger<WorkflowTaskCoordinator> logger;
         private HashSet<Type> workerDefinitions = new HashSet<Type>();
         private Configuration configuration;
-        private ConductorAuthTokenClient conductorAuthTokenClient;
+        // private ConductorAuthTokenClient conductorAuthTokenClient;
 
         public WorkflowTaskCoordinator(IServiceProvider serviceProvider,
             ILogger<WorkflowTaskCoordinator> logger,
-            Configuration configuration,
-            ConductorAuthTokenClient conductorAuthTokenClient)
+            Configuration configuration)
+            // ConductorAuthTokenClient conductorAuthTokenClient)
         {
             this.serviceProvider = serviceProvider;
             this.logger = logger;
             concurrentWorkers = configuration.ConcurrentWorkers;
             this.configuration = configuration;
-            this.conductorAuthTokenClient = conductorAuthTokenClient;
+            // this.conductorAuthTokenClient = conductorAuthTokenClient;
         }
 
         public async Task Start()
