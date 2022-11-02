@@ -25,12 +25,12 @@ function replace_in_file_with_perl_regex {
     local filepath="${1}"
     local regex="${2}"
     local replacement="${3}"
-    perl -pi -e "s/${regex}/${replacement}/gms" "${filepath}"
+    perl -pi -e "s/${regex}/${replacement}/gs" "${filepath}"
 }
 
 function remove_header_from_file {
     local filepath="${1}"
-    local header_regex="\/\*.*?\*\/"
+    local header_regex="\/\*((.|\n)*)?\*\/"
     replace_in_file_with_perl_regex "${filepath}" "${header_regex}" ""
     remove_empty_lines_prefix_from_file "${filepath}"
 }
@@ -80,19 +80,13 @@ function update_package {
     echo "done updating package: ${package_to_update}"
 }
 
-function update_client_package_file {
+function update_package_file_custom_function {
     local filepath="${1}"
     remove_header_from_file "${filepath}"
     replace_namespace_from_file "${filepath}"
     replace_default_url_from_file "${filepath}"
 }
 
-function update_api_package_file {
-    local filepath="${1}"
-    # remove_header_from_file "${filepath}"
-    # replace_namespace_from_file "${filepath}"
-    # replace_default_url_from_file "${filepath}"
-}
-
-update_package "Client" update_client_package_file
-update_package "Api" update_api_package_file
+update_package "Client" update_package_file_custom_function
+update_package "Api" update_package_file_custom_function
+update_package "Model" update_package_file_custom_function
