@@ -7,6 +7,8 @@ using RestSharp;
 using Conductor.Client;
 using Conductor.Models;
 
+using EventHandler = Conductor.Models.EventHandler;
+
 namespace Conductor.Api
 {
     /// <summary>
@@ -24,7 +26,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
-        void AddEventHandler(Conductor.Models.EventHandler body);
+        void AddEventHandler(EventHandler body);
 
         /// <summary>
         /// Add a new event handler.
@@ -35,7 +37,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddEventHandlerWithHttpInfo(Conductor.Models.EventHandler body);
+        ApiResponse<Object> AddEventHandlerWithHttpInfo(EventHandler body);
         /// <summary>
         /// Delete queue config by name
         /// </summary>
@@ -66,8 +68,8 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;Conductor.Models.EventHandler&gt;</returns>
-        List<Conductor.Models.EventHandler> GetEventHandlers();
+        /// <returns>List&lt;EventHandler&gt;</returns>
+        List<EventHandler> GetEventHandlers();
 
         /// <summary>
         /// Get all the event handlers
@@ -76,8 +78,8 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersWithHttpInfo();
+        /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
+        ApiResponse<List<EventHandler>> GetEventHandlersWithHttpInfo();
         /// <summary>
         /// Get event handlers for a given event
         /// </summary>
@@ -87,8 +89,8 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
-        /// <returns>List&lt;Conductor.Models.EventHandler&gt;</returns>
-        List<Conductor.Models.EventHandler> GetEventHandlersForEvent(string _event, bool? activeOnly = null);
+        /// <returns>List&lt;EventHandler&gt;</returns>
+        List<EventHandler> GetEventHandlersForEvent(string _event, bool? activeOnly = null);
 
         /// <summary>
         /// Get event handlers for a given event
@@ -99,8 +101,8 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
-        /// <returns>ApiResponse of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = null);
+        /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
+        ApiResponse<List<EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = null);
         /// <summary>
         /// Get queue config by name
         /// </summary>
@@ -198,7 +200,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
-        void UpdateEventHandler(Conductor.Models.EventHandler body);
+        void UpdateEventHandler(EventHandler body);
 
         /// <summary>
         /// Update an existing event handler.
@@ -209,7 +211,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateEventHandlerWithHttpInfo(Conductor.Models.EventHandler body);
+        ApiResponse<Object> UpdateEventHandlerWithHttpInfo(EventHandler body);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -221,7 +223,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddEventHandlerAsync(Conductor.Models.EventHandler body);
+        System.Threading.Tasks.Task AddEventHandlerAsync(EventHandler body);
 
         /// <summary>
         /// Add a new event handler.
@@ -232,7 +234,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddEventHandlerAsyncWithHttpInfo(Conductor.Models.EventHandler body);
+        System.Threading.Tasks.Task<ApiResponse<Object>> AddEventHandlerAsyncWithHttpInfo(EventHandler body);
         /// <summary>
         /// Delete queue config by name
         /// </summary>
@@ -263,8 +265,8 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersAsync();
+        /// <returns>Task of List&lt;EventHandler&gt;</returns>
+        System.Threading.Tasks.Task<List<EventHandler>> GetEventHandlersAsync();
 
         /// <summary>
         /// Get all the event handlers
@@ -273,8 +275,8 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;Conductor.Models.EventHandler&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersAsyncWithHttpInfo();
+        /// <returns>Task of ApiResponse (List&lt;EventHandler&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<EventHandler>>> GetEventHandlersAsyncWithHttpInfo();
         /// <summary>
         /// Get event handlers for a given event
         /// </summary>
@@ -284,8 +286,8 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
-        /// <returns>Task of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersForEventAsync(string _event, bool? activeOnly = null);
+        /// <returns>Task of List&lt;EventHandler&gt;</returns>
+        System.Threading.Tasks.Task<List<EventHandler>> GetEventHandlersForEventAsync(string _event, bool? activeOnly = null);
 
         /// <summary>
         /// Get event handlers for a given event
@@ -296,8 +298,8 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
-        /// <returns>Task of ApiResponse (List&lt;Conductor.Models.EventHandler&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersForEventAsyncWithHttpInfo(string _event, bool? activeOnly = null);
+        /// <returns>Task of ApiResponse (List&lt;EventHandler&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<EventHandler>>> GetEventHandlersForEventAsyncWithHttpInfo(string _event, bool? activeOnly = null);
         /// <summary>
         /// Get queue config by name
         /// </summary>
@@ -395,7 +397,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateEventHandlerAsync(Conductor.Models.EventHandler body);
+        System.Threading.Tasks.Task UpdateEventHandlerAsync(EventHandler body);
 
         /// <summary>
         /// Update an existing event handler.
@@ -406,7 +408,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEventHandlerAsyncWithHttpInfo(Conductor.Models.EventHandler body);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEventHandlerAsyncWithHttpInfo(EventHandler body);
         #endregion Asynchronous Operations
     }
 
@@ -524,7 +526,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
-        public void AddEventHandler(Conductor.Models.EventHandler body)
+        public void AddEventHandler(EventHandler body)
         {
             AddEventHandlerWithHttpInfo(body);
         }
@@ -535,7 +537,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddEventHandlerWithHttpInfo(Conductor.Models.EventHandler body)
+        public ApiResponse<Object> AddEventHandlerWithHttpInfo(EventHandler body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -601,7 +603,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task AddEventHandlerAsync(Conductor.Models.EventHandler body)
+        public async System.Threading.Tasks.Task AddEventHandlerAsync(EventHandler body)
         {
             await AddEventHandlerAsyncWithHttpInfo(body);
 
@@ -614,7 +616,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddEventHandlerAsyncWithHttpInfo(Conductor.Models.EventHandler body)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddEventHandlerAsyncWithHttpInfo(EventHandler body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -828,10 +830,10 @@ namespace Conductor.Api
         /// Get all the event handlers 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;Conductor.Models.EventHandler&gt;</returns>
-        public List<Conductor.Models.EventHandler> GetEventHandlers()
+        /// <returns>List&lt;EventHandler&gt;</returns>
+        public List<EventHandler> GetEventHandlers()
         {
-            ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = GetEventHandlersWithHttpInfo();
+            ApiResponse<List<EventHandler>> localVarResponse = GetEventHandlersWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -839,8 +841,8 @@ namespace Conductor.Api
         /// Get all the event handlers 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        public ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersWithHttpInfo()
+        /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
+        public ApiResponse<List<EventHandler>> GetEventHandlersWithHttpInfo()
         {
 
             var localVarPath = "/event";
@@ -883,20 +885,20 @@ namespace Conductor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Conductor.Models.EventHandler>>(localVarStatusCode,
+            return new ApiResponse<List<EventHandler>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Conductor.Models.EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
+                (List<EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EventHandler>)));
         }
 
         /// <summary>
         /// Get all the event handlers 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;Conductor.Models.EventHandler&gt;</returns>
+        /// <returns>Task of List&lt;EventHandler&gt;</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersAsync()
+        public async System.Threading.Tasks.Task<List<EventHandler>> GetEventHandlersAsync()
         {
-            ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = await GetEventHandlersAsyncWithHttpInfo();
+            ApiResponse<List<EventHandler>> localVarResponse = await GetEventHandlersAsyncWithHttpInfo();
             return localVarResponse.Data;
 
         }
@@ -905,9 +907,9 @@ namespace Conductor.Api
         /// Get all the event handlers 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;Conductor.Models.EventHandler&gt;)</returns>
+        /// <returns>Task of ApiResponse (List&lt;EventHandler&gt;)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersAsyncWithHttpInfo()
+        public async System.Threading.Tasks.Task<ApiResponse<List<EventHandler>>> GetEventHandlersAsyncWithHttpInfo()
         {
 
             var localVarPath = "/event";
@@ -950,9 +952,9 @@ namespace Conductor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Conductor.Models.EventHandler>>(localVarStatusCode,
+            return new ApiResponse<List<EventHandler>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Conductor.Models.EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
+                (List<EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EventHandler>)));
         }
 
         /// <summary>
@@ -961,10 +963,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
-        /// <returns>List&lt;Conductor.Models.EventHandler&gt;</returns>
-        public List<Conductor.Models.EventHandler> GetEventHandlersForEvent(string _event, bool? activeOnly = null)
+        /// <returns>List&lt;EventHandler&gt;</returns>
+        public List<EventHandler> GetEventHandlersForEvent(string _event, bool? activeOnly = null)
         {
-            ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = GetEventHandlersForEventWithHttpInfo(_event, activeOnly);
+            ApiResponse<List<EventHandler>> localVarResponse = GetEventHandlersForEventWithHttpInfo(_event, activeOnly);
             return localVarResponse.Data;
         }
 
@@ -974,8 +976,8 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
-        /// <returns>ApiResponse of List&lt;Conductor.Models.EventHandler&gt;</returns>
-        public ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = null)
+        /// <returns>ApiResponse of List&lt;EventHandler&gt;</returns>
+        public ApiResponse<List<EventHandler>> GetEventHandlersForEventWithHttpInfo(string _event, bool? activeOnly = null)
         {
             // verify the required parameter '_event' is set
             if (_event == null)
@@ -1023,9 +1025,9 @@ namespace Conductor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Conductor.Models.EventHandler>>(localVarStatusCode,
+            return new ApiResponse<List<EventHandler>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Conductor.Models.EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
+                (List<EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EventHandler>)));
         }
 
         /// <summary>
@@ -1034,11 +1036,11 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
-        /// <returns>Task of List&lt;Conductor.Models.EventHandler&gt;</returns>
+        /// <returns>Task of List&lt;EventHandler&gt;</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersForEventAsync(string _event, bool? activeOnly = null)
+        public async System.Threading.Tasks.Task<List<EventHandler>> GetEventHandlersForEventAsync(string _event, bool? activeOnly = null)
         {
-            ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = await GetEventHandlersForEventAsyncWithHttpInfo(_event, activeOnly);
+            ApiResponse<List<EventHandler>> localVarResponse = await GetEventHandlersForEventAsyncWithHttpInfo(_event, activeOnly);
             return localVarResponse.Data;
 
         }
@@ -1049,9 +1051,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
-        /// <returns>Task of ApiResponse (List&lt;Conductor.Models.EventHandler&gt;)</returns>
+        /// <returns>Task of ApiResponse (List&lt;EventHandler&gt;)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersForEventAsyncWithHttpInfo(string _event, bool? activeOnly = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<EventHandler>>> GetEventHandlersForEventAsyncWithHttpInfo(string _event, bool? activeOnly = null)
         {
             // verify the required parameter '_event' is set
             if (_event == null)
@@ -1099,9 +1101,9 @@ namespace Conductor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Conductor.Models.EventHandler>>(localVarStatusCode,
+            return new ApiResponse<List<EventHandler>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Conductor.Models.EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Conductor.Models.EventHandler>)));
+                (List<EventHandler>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EventHandler>)));
         }
 
         /// <summary>
@@ -1714,7 +1716,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
-        public void UpdateEventHandler(Conductor.Models.EventHandler body)
+        public void UpdateEventHandler(EventHandler body)
         {
             UpdateEventHandlerWithHttpInfo(body);
         }
@@ -1725,7 +1727,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateEventHandlerWithHttpInfo(Conductor.Models.EventHandler body)
+        public ApiResponse<Object> UpdateEventHandlerWithHttpInfo(EventHandler body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1791,7 +1793,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task UpdateEventHandlerAsync(Conductor.Models.EventHandler body)
+        public async System.Threading.Tasks.Task UpdateEventHandlerAsync(EventHandler body)
         {
             await UpdateEventHandlerAsyncWithHttpInfo(body);
 
@@ -1804,7 +1806,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEventHandlerAsyncWithHttpInfo(Conductor.Models.EventHandler body)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEventHandlerAsyncWithHttpInfo(EventHandler body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
