@@ -9,6 +9,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Linter
-        run: docker build --target=linter .
+        run: >
+          docker build
+          --target=linter
+          .
       - name: Test
-        run: docker build --target=test .
+        run: >
+          docker build 
+          --target=test 
+          --build-arg SDK_INTEGRATION_TESTS_SERVER_API_URL=${SDK_INTEGRATION_TESTS_SERVER_API_URL}
+          --build-arg SDK_INTEGRATION_TESTS_SERVER_KEY_ID=${SDK_INTEGRATION_TESTS_SERVER_KEY_ID}
+          --build-arg SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET=${SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET}
+          .

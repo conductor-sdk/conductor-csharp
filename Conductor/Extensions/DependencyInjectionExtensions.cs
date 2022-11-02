@@ -1,5 +1,6 @@
 ﻿using Conductor.Interfaces;
 using Conductor.Worker;
+using Conductor.Client;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
@@ -20,10 +21,10 @@ namespace Conductor.Extensions
         {
             services.AddHttpClient();
             services.AddOptions();
-            services.AddSingleton(new ConductorAuthTokenClient());
+            // services.AddSingleton(new ConductorAuthTokenClient());
+            // services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
             services.AddSingleton(configuration != null ? configuration : new Configuration());
             services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
-            services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
             services.AddTransient<IWorkflowTaskExecutor, WorkflowTaskExecutor>();
 
             return services.AddConductorClient(configureHttpClient);
@@ -31,24 +32,24 @@ namespace Conductor.Extensions
 
         public static IServiceCollection AddConductorClient(this IServiceCollection services, Func<IServiceProvider, string> serverUrl)
         {
-            services.AddHttpClient<IConductorWorkerRestClient, ConductorWorkerRestClient>((provider, client) =>
-            {
-                client.BaseAddress = new Uri(serverUrl(provider));
-            });
+            // services.AddHttpClient<IConductorWorkerRestClient, ConductorWorkerRestClient>((provider, client) =>
+            // {
+            //     client.BaseAddress = new Uri(serverUrl(provider));
+            // });
 
             return services;
         }
 
         public static IServiceCollection AddConductorClient(this IServiceCollection services, Action<IServiceProvider, HttpClient> configure)
         {
-            if (configure != null)
-            {
-                services.AddHttpClient<IConductorWorkerRestClient, ConductorWorkerRestClient>(configure);
-            }
-            else
-            {
-                services.AddHttpClient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
-            }
+            // if (configure != null)
+            // {
+            //     services.AddHttpClient<IConductorWorkerRestClient, ConductorWorkerRestClient>(configure);
+            // }
+            // else
+            // {
+            //     services.AddHttpClient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
+            // }
 
             return services;
         }
