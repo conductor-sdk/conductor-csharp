@@ -1,29 +1,7 @@
 #!/bin/bash
 
-SWAGGER_API_DOCS_URL="https://pg-staging.orkesconductor.com/api-docs"
-LANGUAGE_TO_GENERATE_CODE="csharp"
+GENERATED_CODE_FOLDER="./generated-code/src/IO.Swagger"
 PACKAGE_PATH="../Conductor"
-SWAGGER_GENERATED_CODE_PACKAGE="src/IO.Swagger"
-
-TEMPORARY_FILE="temp.txt"
-REPLACEMENT_FOR_LINE_ENDING='\f'
-SWAGGER_GENERATED_CODE_FOLDER="./swagger-code"
-
-function install_dependencies {
-    brew install swagger-codegen
-}
-
-function generate_code {
-    swagger-codegen generate -l "${LANGUAGE_TO_GENERATE_CODE}" -i "${SWAGGER_API_DOCS_URL}" -o "$SWAGGER_GENERATED_CODE_FOLDER"
-}
-
-function do_line_ending_replacement {
-    tr '\n' $REPLACEMENT_FOR_LINE_ENDING <"$1" >"$TEMPORARY_FILE" && mv "$TEMPORARY_FILE" "$1"
-}
-
-function undo_line_ending_replacement {
-    tr $REPLACEMENT_FOR_LINE_ENDING '\n' <"$1" >"$TEMPORARY_FILE" && mv "$TEMPORARY_FILE" "$1"
-}
 
 function remove_empty_lines_prefix_from_file {
     local path="${1}"
@@ -32,7 +10,7 @@ function remove_empty_lines_prefix_from_file {
 
 function replace_package_files {
     local path="${1}"
-    local source_path="${SWAGGER_GENERATED_CODE_FOLDER}/${SWAGGER_GENERATED_CODE_PACKAGE}/${path}"
+    local source_path="${GENERATED_CODE_FOLDER}/${path}"
     local destination_path="${PACKAGE_PATH}/${path}"
     echo "starting to replace generated files from ${source_path} to ${destination_path}"
     rm -rf "${destination_path:?}/"*
@@ -43,38 +21,37 @@ function replace_package_files {
     echo "done copying code from ${source_path} to ${destination_path}"
 }
 
-function replace_with_sed {
+function replace_in_file_with_perl_regex {
     local filepath="${1}"
-    local pattern_regex="$2"
+    local regex="${2}"
     local replacement="${3}"
-    sed -i '' -E s/"${pattern_regex}"/"${replacement}"/g "${filepath}"
+    perl -pi -e "s/${regex}/${replacement}/gms" "${filepath}"
 }
 
 function remove_header_from_file {
     local filepath="${1}"
-    replace_with_sed "${filepath}" "^\/\*.*\*\/" ""
-    sed -i '' '/./,$!d' "${filepath}"
+    local header_regex="\/\*.*?\*\/"
+    replace_in_file_with_perl_regex "${filepath}" "${header_regex}" ""
+    remove_empty_lines_prefix_from_file "${filepath}"
 }
 
 function replace_namespace_from_file {
     local filepath="${1}"
-    replace_with_sed "${filepath}" "IO.Swagger" "Conductor"
+    replace_in_file_with_perl_regex "${filepath}" "IO.Swagger" "Conductor"
 }
 
 function replace_default_url_from_file {
     local filepath="${1}"
     old_url="https:\/\/pg-staging.orkesconductor.com\/"
     new_url="https:\/\/play.orkes.io\/"
-    sed -i '' s/"${old_url}"/"${new_url}"/g "${filepath}"
+    replace_in_file_with_perl_regex "${filepath}" "${old_url}" "${new_url}"
 }
 
 function update_package_file {
     local path="${1}"
     local update_package_file_function=${2}
     echo "starting to update package file: ${file}"
-    do_line_ending_replacement "${file}"
     ${update_package_file_function} "${file}"
-    undo_line_ending_replacement "${file}"
     remove_empty_lines_prefix_from_file "${file}"
     echo "done updating package: ${file}"
 }
@@ -103,10 +80,6 @@ function update_package {
     echo "done updating package: ${package_to_update}"
 }
 
-function update_client_package_startup {
-    echo "startup for client package"
-}
-
 function update_client_package_file {
     local filepath="${1}"
     remove_header_from_file "${filepath}"
@@ -114,8 +87,12 @@ function update_client_package_file {
     replace_default_url_from_file "${filepath}"
 }
 
-# install_dependencies
-# generate_code
+function update_api_package_file {
+    local filepath="${1}"
+    # remove_header_from_file "${filepath}"
+    # replace_namespace_from_file "${filepath}"
+    # replace_default_url_from_file "${filepath}"
+}
 
-update_package "Client" update_client_package_file update_client_package_startup
-cd ../Conductor && dotnet format
+update_package "Client" update_client_package_file
+update_package "Api" update_api_package_file
