@@ -362,7 +362,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WebhooksConfigResourceApi->CreateWebhook");
 
-            var localVarPath = "/api/metadata/webhook";
+            var localVarPath = "/metadata/webhook";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -422,6 +422,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of WebhookEvent</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<WebhookEvent> CreateWebhookAsync(WebhookEvent body)
         {
             ApiResponse<WebhookEvent> localVarResponse = await CreateWebhookAsyncWithHttpInfo(body);
@@ -435,13 +436,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (WebhookEvent)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> CreateWebhookAsyncWithHttpInfo(WebhookEvent body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WebhooksConfigResourceApi->CreateWebhook");
 
-            var localVarPath = "/api/metadata/webhook";
+            var localVarPath = "/metadata/webhook";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -518,7 +520,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WebhooksConfigResourceApi->DeleteWebhook");
 
-            var localVarPath = "/api/metadata/webhook/{id}";
+            var localVarPath = "/metadata/webhook/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -569,6 +571,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task DeleteWebhookAsync(string id)
         {
             await DeleteWebhookAsyncWithHttpInfo(id);
@@ -581,13 +584,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWebhookAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WebhooksConfigResourceApi->DeleteWebhook");
 
-            var localVarPath = "/api/metadata/webhook/{id}";
+            var localVarPath = "/metadata/webhook/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -651,7 +655,7 @@ namespace Conductor.Api
         public ApiResponse<List<WebhookEvent>> GetAllWebhookWithHttpInfo()
         {
 
-            var localVarPath = "/api/metadata/webhook";
+            var localVarPath = "/metadata/webhook";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -701,6 +705,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;WebhookEvent&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<WebhookEvent>> GetAllWebhookAsync()
         {
             ApiResponse<List<WebhookEvent>> localVarResponse = await GetAllWebhookAsyncWithHttpInfo();
@@ -713,10 +718,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;WebhookEvent&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<WebhookEvent>>> GetAllWebhookAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/metadata/webhook";
+            var localVarPath = "/metadata/webhook";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -785,7 +791,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WebhooksConfigResourceApi->GetWebhook");
 
-            var localVarPath = "/api/metadata/webhook/{id}";
+            var localVarPath = "/metadata/webhook/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -837,6 +843,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of WebhookEvent</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<WebhookEvent> GetWebhookAsync(string id)
         {
             ApiResponse<WebhookEvent> localVarResponse = await GetWebhookAsyncWithHttpInfo(id);
@@ -850,13 +857,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (WebhookEvent)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> GetWebhookAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WebhooksConfigResourceApi->GetWebhook");
 
-            var localVarPath = "/api/metadata/webhook/{id}";
+            var localVarPath = "/metadata/webhook/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -931,7 +939,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WebhooksConfigResourceApi->UpdateWebhook");
 
-            var localVarPath = "/api/metadata/webhook/{id}";
+            var localVarPath = "/metadata/webhook/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -993,6 +1001,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of WebhookEvent</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<WebhookEvent> UpdateWebhookAsync(WebhookEvent body, string id)
         {
             ApiResponse<WebhookEvent> localVarResponse = await UpdateWebhookAsyncWithHttpInfo(body, id);
@@ -1007,6 +1016,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (WebhookEvent)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<WebhookEvent>> UpdateWebhookAsyncWithHttpInfo(WebhookEvent body, string id)
         {
             // verify the required parameter 'body' is set
@@ -1016,7 +1026,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WebhooksConfigResourceApi->UpdateWebhook");
 
-            var localVarPath = "/api/metadata/webhook/{id}";
+            var localVarPath = "/metadata/webhook/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

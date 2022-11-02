@@ -1,4 +1,5 @@
-﻿using Conductor.Interfaces;
+﻿using Conductor.Client;
+using Conductor.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,6 @@ namespace Conductor.Worker
             concurrentWorkers = configuration.ConcurrentWorkers;
             this.configuration = configuration;
             this.conductorAuthTokenClient = conductorAuthTokenClient;
-
         }
 
         public async Task Start()

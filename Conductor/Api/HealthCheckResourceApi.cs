@@ -234,6 +234,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, Object>> DoCheckAsync()
         {
             ApiResponse<Dictionary<string, Object>> localVarResponse = await DoCheckAsyncWithHttpInfo();
@@ -246,6 +247,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> DoCheckAsyncWithHttpInfo()
         {
 

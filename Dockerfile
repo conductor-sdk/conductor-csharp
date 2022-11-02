@@ -6,7 +6,7 @@ FROM raw_base_image AS linter
 WORKDIR /package/Conductor
 RUN dotnet format --verify-no-changes ./*.csproj
 
-FROM linter AS build
+FROM raw_base_image AS build
 WORKDIR /package/Conductor
 RUN dotnet build ./*.csproj
 

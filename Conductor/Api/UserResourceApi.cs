@@ -412,7 +412,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling UserResourceApi->DeleteUser");
 
-            var localVarPath = "/api/users/{id}";
+            var localVarPath = "/users/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -464,6 +464,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Response</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Response> DeleteUserAsync(string id)
         {
             ApiResponse<Response> localVarResponse = await DeleteUserAsyncWithHttpInfo(id);
@@ -477,13 +478,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Response>> DeleteUserAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling UserResourceApi->DeleteUser");
 
-            var localVarPath = "/api/users/{id}";
+            var localVarPath = "/users/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -553,7 +555,7 @@ namespace Conductor.Api
             if (userId == null)
                 throw new ApiException(400, "Missing required parameter 'userId' when calling UserResourceApi->GetGrantedPermissions");
 
-            var localVarPath = "/api/users/{userId}/permissions";
+            var localVarPath = "/users/{userId}/permissions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -605,6 +607,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetGrantedPermissionsAsync(string userId)
         {
             ApiResponse<Object> localVarResponse = await GetGrantedPermissionsAsyncWithHttpInfo(userId);
@@ -618,13 +621,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissionsAsyncWithHttpInfo(string userId)
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
                 throw new ApiException(400, "Missing required parameter 'userId' when calling UserResourceApi->GetGrantedPermissions");
 
-            var localVarPath = "/api/users/{userId}/permissions";
+            var localVarPath = "/users/{userId}/permissions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -694,7 +698,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling UserResourceApi->GetUser");
 
-            var localVarPath = "/api/users/{id}";
+            var localVarPath = "/users/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -746,6 +750,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetUserAsync(string id)
         {
             ApiResponse<Object> localVarResponse = await GetUserAsyncWithHttpInfo(id);
@@ -759,13 +764,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUserAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling UserResourceApi->GetUser");
 
-            var localVarPath = "/api/users/{id}";
+            var localVarPath = "/users/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -832,7 +838,7 @@ namespace Conductor.Api
         public ApiResponse<List<ConductorUser>> ListUsersWithHttpInfo(bool? apps = null)
         {
 
-            var localVarPath = "/api/users";
+            var localVarPath = "/users";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -884,6 +890,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="apps"> (optional, default to false)</param>
         /// <returns>Task of List&lt;ConductorUser&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<ConductorUser>> ListUsersAsync(bool? apps = null)
         {
             ApiResponse<List<ConductorUser>> localVarResponse = await ListUsersAsyncWithHttpInfo(apps);
@@ -897,10 +904,11 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="apps"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (List&lt;ConductorUser&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<ConductorUser>>> ListUsersAsyncWithHttpInfo(bool? apps = null)
         {
 
-            var localVarPath = "/api/users";
+            var localVarPath = "/users";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -972,7 +980,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling UserResourceApi->SendInviteEmail");
 
-            var localVarPath = "/api/users/{id}/sendInviteEmail";
+            var localVarPath = "/users/{id}/sendInviteEmail";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1034,6 +1042,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> SendInviteEmailAsync(string id, ConductorUser body = null)
         {
             ApiResponse<Object> localVarResponse = await SendInviteEmailAsyncWithHttpInfo(id, body);
@@ -1048,13 +1057,14 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> SendInviteEmailAsyncWithHttpInfo(string id, ConductorUser body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling UserResourceApi->SendInviteEmail");
 
-            var localVarPath = "/api/users/{id}/sendInviteEmail";
+            var localVarPath = "/users/{id}/sendInviteEmail";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1138,7 +1148,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling UserResourceApi->UpsertUser");
 
-            var localVarPath = "/api/users/{id}";
+            var localVarPath = "/users/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1200,6 +1210,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> UpsertUserAsync(UpsertUserRequest body, string id)
         {
             ApiResponse<Object> localVarResponse = await UpsertUserAsyncWithHttpInfo(body, id);
@@ -1214,6 +1225,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UpsertUserAsyncWithHttpInfo(UpsertUserRequest body, string id)
         {
             // verify the required parameter 'body' is set
@@ -1223,7 +1235,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling UserResourceApi->UpsertUser");
 
-            var localVarPath = "/api/users/{id}";
+            var localVarPath = "/users/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

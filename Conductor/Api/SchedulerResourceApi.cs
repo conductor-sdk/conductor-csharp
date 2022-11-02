@@ -802,7 +802,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->DeleteSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}";
+            var localVarPath = "/scheduler/schedules/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -854,6 +854,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> DeleteScheduleAsync(string name)
         {
             ApiResponse<Object> localVarResponse = await DeleteScheduleAsyncWithHttpInfo(name);
@@ -867,13 +868,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteScheduleAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->DeleteSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}";
+            var localVarPath = "/scheduler/schedules/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -944,7 +946,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->DeleteTagForSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}/tags";
+            var localVarPath = "/scheduler/schedules/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1005,6 +1007,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task DeleteTagForScheduleAsync(string name, string body = null)
         {
             await DeleteTagForScheduleAsyncWithHttpInfo(name, body);
@@ -1018,13 +1021,14 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForScheduleAsyncWithHttpInfo(string name, string body = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->DeleteTagForSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}/tags";
+            var localVarPath = "/scheduler/schedules/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1099,7 +1103,7 @@ namespace Conductor.Api
         public ApiResponse<List<WorkflowSchedule>> GetAllSchedulesWithHttpInfo(string workflowName = null)
         {
 
-            var localVarPath = "/api/scheduler/schedules";
+            var localVarPath = "/scheduler/schedules";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1151,6 +1155,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowName"> (optional)</param>
         /// <returns>Task of List&lt;WorkflowSchedule&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<WorkflowSchedule>> GetAllSchedulesAsync(string workflowName = null)
         {
             ApiResponse<List<WorkflowSchedule>> localVarResponse = await GetAllSchedulesAsyncWithHttpInfo(workflowName);
@@ -1164,10 +1169,11 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowName"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;WorkflowSchedule&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<WorkflowSchedule>>> GetAllSchedulesAsyncWithHttpInfo(string workflowName = null)
         {
 
-            var localVarPath = "/api/scheduler/schedules";
+            var localVarPath = "/scheduler/schedules";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1243,7 +1249,7 @@ namespace Conductor.Api
             if (cronExpression == null)
                 throw new ApiException(400, "Missing required parameter 'cronExpression' when calling SchedulerResourceApi->GetNextFewSchedules");
 
-            var localVarPath = "/api/scheduler/nextFewSchedules";
+            var localVarPath = "/scheduler/nextFewSchedules";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1301,6 +1307,7 @@ namespace Conductor.Api
         /// <param name="scheduleEndTime"> (optional)</param>
         /// <param name="limit"> (optional, default to 3)</param>
         /// <returns>Task of List&lt;long?&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<long?>> GetNextFewSchedulesAsync(string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null)
         {
             ApiResponse<List<long?>> localVarResponse = await GetNextFewSchedulesAsyncWithHttpInfo(cronExpression, scheduleStartTime, scheduleEndTime, limit);
@@ -1317,13 +1324,14 @@ namespace Conductor.Api
         /// <param name="scheduleEndTime"> (optional)</param>
         /// <param name="limit"> (optional, default to 3)</param>
         /// <returns>Task of ApiResponse (List&lt;long?&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<long?>>> GetNextFewSchedulesAsyncWithHttpInfo(string cronExpression, long? scheduleStartTime = null, long? scheduleEndTime = null, int? limit = null)
         {
             // verify the required parameter 'cronExpression' is set
             if (cronExpression == null)
                 throw new ApiException(400, "Missing required parameter 'cronExpression' when calling SchedulerResourceApi->GetNextFewSchedules");
 
-            var localVarPath = "/api/scheduler/nextFewSchedules";
+            var localVarPath = "/scheduler/nextFewSchedules";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1396,7 +1404,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->GetSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}";
+            var localVarPath = "/scheduler/schedules/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1448,6 +1456,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of WorkflowSchedule</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<WorkflowSchedule> GetScheduleAsync(string name)
         {
             ApiResponse<WorkflowSchedule> localVarResponse = await GetScheduleAsyncWithHttpInfo(name);
@@ -1461,13 +1470,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (WorkflowSchedule)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<WorkflowSchedule>> GetScheduleAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->GetSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}";
+            var localVarPath = "/scheduler/schedules/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1537,7 +1547,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->GetTagsForSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}/tags";
+            var localVarPath = "/scheduler/schedules/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1589,6 +1599,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<TagObject>> GetTagsForScheduleAsync(string name)
         {
             ApiResponse<List<TagObject>> localVarResponse = await GetTagsForScheduleAsyncWithHttpInfo(name);
@@ -1602,13 +1613,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsForScheduleAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->GetTagsForSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}/tags";
+            var localVarPath = "/scheduler/schedules/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1673,7 +1685,7 @@ namespace Conductor.Api
         public ApiResponse<Dictionary<string, Object>> PauseAllSchedulesWithHttpInfo()
         {
 
-            var localVarPath = "/api/scheduler/admin/pause";
+            var localVarPath = "/scheduler/admin/pause";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1723,6 +1735,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, Object>> PauseAllSchedulesAsync()
         {
             ApiResponse<Dictionary<string, Object>> localVarResponse = await PauseAllSchedulesAsyncWithHttpInfo();
@@ -1735,10 +1748,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> PauseAllSchedulesAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/scheduler/admin/pause";
+            var localVarPath = "/scheduler/admin/pause";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1807,7 +1821,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->PauseSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}/pause";
+            var localVarPath = "/scheduler/schedules/{name}/pause";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1859,6 +1873,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> PauseScheduleAsync(string name)
         {
             ApiResponse<Object> localVarResponse = await PauseScheduleAsyncWithHttpInfo(name);
@@ -1872,13 +1887,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> PauseScheduleAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->PauseSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}/pause";
+            var localVarPath = "/scheduler/schedules/{name}/pause";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1949,7 +1965,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->PutTagForSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}/tags";
+            var localVarPath = "/scheduler/schedules/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2010,6 +2026,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task PutTagForScheduleAsync(string name, string body = null)
         {
             await PutTagForScheduleAsyncWithHttpInfo(name, body);
@@ -2023,13 +2040,14 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForScheduleAsyncWithHttpInfo(string name, string body = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->PutTagForSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}/tags";
+            var localVarPath = "/scheduler/schedules/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2102,7 +2120,7 @@ namespace Conductor.Api
         public ApiResponse<Dictionary<string, Object>> RequeueAllExecutionRecordsWithHttpInfo()
         {
 
-            var localVarPath = "/api/scheduler/admin/requeue";
+            var localVarPath = "/scheduler/admin/requeue";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2152,6 +2170,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, Object>> RequeueAllExecutionRecordsAsync()
         {
             ApiResponse<Dictionary<string, Object>> localVarResponse = await RequeueAllExecutionRecordsAsyncWithHttpInfo();
@@ -2164,10 +2183,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> RequeueAllExecutionRecordsAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/scheduler/admin/requeue";
+            var localVarPath = "/scheduler/admin/requeue";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2231,7 +2251,7 @@ namespace Conductor.Api
         public ApiResponse<Dictionary<string, Object>> ResumeAllSchedulesWithHttpInfo()
         {
 
-            var localVarPath = "/api/scheduler/admin/resume";
+            var localVarPath = "/scheduler/admin/resume";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2281,6 +2301,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, Object>> ResumeAllSchedulesAsync()
         {
             ApiResponse<Dictionary<string, Object>> localVarResponse = await ResumeAllSchedulesAsyncWithHttpInfo();
@@ -2293,10 +2314,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> ResumeAllSchedulesAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/scheduler/admin/resume";
+            var localVarPath = "/scheduler/admin/resume";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2365,7 +2387,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->ResumeSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}/resume";
+            var localVarPath = "/scheduler/schedules/{name}/resume";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2417,6 +2439,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> ResumeScheduleAsync(string name)
         {
             ApiResponse<Object> localVarResponse = await ResumeScheduleAsyncWithHttpInfo(name);
@@ -2430,13 +2453,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ResumeScheduleAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->ResumeSchedule");
 
-            var localVarPath = "/api/scheduler/schedules/{name}/resume";
+            var localVarPath = "/scheduler/schedules/{name}/resume";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2506,7 +2530,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling SchedulerResourceApi->SaveSchedule");
 
-            var localVarPath = "/api/scheduler/schedules";
+            var localVarPath = "/scheduler/schedules";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2566,6 +2590,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> SaveScheduleAsync(SaveScheduleRequest body)
         {
             ApiResponse<Object> localVarResponse = await SaveScheduleAsyncWithHttpInfo(body);
@@ -2579,13 +2604,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> SaveScheduleAsyncWithHttpInfo(SaveScheduleRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling SchedulerResourceApi->SaveSchedule");
 
-            var localVarPath = "/api/scheduler/schedules";
+            var localVarPath = "/scheduler/schedules";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2668,7 +2694,7 @@ namespace Conductor.Api
         public ApiResponse<SearchResultWorkflowScheduleExecutionModel> SearchV22WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/scheduler/search/executions";
+            var localVarPath = "/scheduler/search/executions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2728,6 +2754,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflowScheduleExecutionModel</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<SearchResultWorkflowScheduleExecutionModel> SearchV22Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
             ApiResponse<SearchResultWorkflowScheduleExecutionModel> localVarResponse = await SearchV22AsyncWithHttpInfo(start, size, sort, freeText, query);
@@ -2745,10 +2772,11 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflowScheduleExecutionModel)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowScheduleExecutionModel>> SearchV22AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/scheduler/search/executions";
+            var localVarPath = "/scheduler/search/executions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2816,7 +2844,7 @@ namespace Conductor.Api
         public ApiResponse<Object> TestTimeoutWithHttpInfo()
         {
 
-            var localVarPath = "/api/scheduler/test/timeout";
+            var localVarPath = "/scheduler/test/timeout";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2865,6 +2893,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task TestTimeoutAsync()
         {
             await TestTimeoutAsyncWithHttpInfo();
@@ -2876,10 +2905,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> TestTimeoutAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/scheduler/test/timeout";
+            var localVarPath = "/scheduler/test/timeout";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

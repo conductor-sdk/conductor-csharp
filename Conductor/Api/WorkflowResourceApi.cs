@@ -1443,7 +1443,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Decide");
 
-            var localVarPath = "/api/workflow/decide/{workflowId}";
+            var localVarPath = "/workflow/decide/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1494,6 +1494,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task DecideAsync(string workflowId)
         {
             await DecideAsyncWithHttpInfo(workflowId);
@@ -1506,13 +1507,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DecideAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Decide");
 
-            var localVarPath = "/api/workflow/decide/{workflowId}";
+            var localVarPath = "/workflow/decide/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1582,7 +1584,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Delete");
 
-            var localVarPath = "/api/workflow/{workflowId}/remove";
+            var localVarPath = "/workflow/{workflowId}/remove";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1635,6 +1637,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task DeleteAsync(string workflowId, bool? archiveWorkflow = null)
         {
             await DeleteAsyncWithHttpInfo(workflowId, archiveWorkflow);
@@ -1648,13 +1651,14 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="archiveWorkflow"> (optional, default to true)</param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAsyncWithHttpInfo(string workflowId, bool? archiveWorkflow = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Delete");
 
-            var localVarPath = "/api/workflow/{workflowId}/remove";
+            var localVarPath = "/workflow/{workflowId}/remove";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1741,7 +1745,7 @@ namespace Conductor.Api
             if (version == null)
                 throw new ApiException(400, "Missing required parameter 'version' when calling WorkflowResourceApi->ExecuteWorkflow");
 
-            var localVarPath = "/api/workflow/execute/{name}/{version}";
+            var localVarPath = "/workflow/execute/{name}/{version}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1809,6 +1813,7 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <param name="waitUntilTaskRef"> (optional)</param>
         /// <returns>Task of WorkflowRun</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<WorkflowRun> ExecuteWorkflowAsync(StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null)
         {
             ApiResponse<WorkflowRun> localVarResponse = await ExecuteWorkflowAsyncWithHttpInfo(body, requestId, name, version, waitUntilTaskRef);
@@ -1826,6 +1831,7 @@ namespace Conductor.Api
         /// <param name="version"></param>
         /// <param name="waitUntilTaskRef"> (optional)</param>
         /// <returns>Task of ApiResponse (WorkflowRun)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<WorkflowRun>> ExecuteWorkflowAsyncWithHttpInfo(StartWorkflowRequest body, string requestId, string name, int? version, string waitUntilTaskRef = null)
         {
             // verify the required parameter 'body' is set
@@ -1841,7 +1847,7 @@ namespace Conductor.Api
             if (version == null)
                 throw new ApiException(400, "Missing required parameter 'version' when calling WorkflowResourceApi->ExecuteWorkflow");
 
-            var localVarPath = "/api/workflow/execute/{name}/{version}";
+            var localVarPath = "/workflow/execute/{name}/{version}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1927,7 +1933,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatus");
 
-            var localVarPath = "/api/workflow/{workflowId}";
+            var localVarPath = "/workflow/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1983,6 +1989,7 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Task of Workflow</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Workflow> GetExecutionStatusAsync(string workflowId, bool? includeTasks = null, bool? summarize = null)
         {
             ApiResponse<Workflow> localVarResponse = await GetExecutionStatusAsyncWithHttpInfo(workflowId, includeTasks, summarize);
@@ -1998,13 +2005,14 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to true)</param>
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Workflow)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Workflow>> GetExecutionStatusAsyncWithHttpInfo(string workflowId, bool? includeTasks = null, bool? summarize = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatus");
 
-            var localVarPath = "/api/workflow/{workflowId}";
+            var localVarPath = "/workflow/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2082,7 +2090,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatusTaskList");
 
-            var localVarPath = "/api/workflow/{workflowId}/tasks";
+            var localVarPath = "/workflow/{workflowId}/tasks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2140,6 +2148,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 15)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>Task of SearchResultTask</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<SearchResultTask> GetExecutionStatusTaskListAsync(string workflowId, int? start = null, int? count = null, string status = null)
         {
             ApiResponse<SearchResultTask> localVarResponse = await GetExecutionStatusTaskListAsyncWithHttpInfo(workflowId, start, count, status);
@@ -2156,13 +2165,14 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 15)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTask)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> GetExecutionStatusTaskListAsyncWithHttpInfo(string workflowId, int? start = null, int? count = null, string status = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetExecutionStatusTaskList");
 
-            var localVarPath = "/api/workflow/{workflowId}/tasks";
+            var localVarPath = "/workflow/{workflowId}/tasks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2245,7 +2255,7 @@ namespace Conductor.Api
             if (payloadType == null)
                 throw new ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation");
 
-            var localVarPath = "/api/workflow/externalstoragelocation";
+            var localVarPath = "/workflow/externalstoragelocation";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2301,6 +2311,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ExternalStorageLocation</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocationAsync(string path, string operation, string payloadType)
         {
             ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocationAsyncWithHttpInfo(path, operation, payloadType);
@@ -2316,6 +2327,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocationAsyncWithHttpInfo(string path, string operation, string payloadType)
         {
             // verify the required parameter 'path' is set
@@ -2328,7 +2340,7 @@ namespace Conductor.Api
             if (payloadType == null)
                 throw new ApiException(400, "Missing required parameter 'payloadType' when calling WorkflowResourceApi->GetExternalStorageLocation");
 
-            var localVarPath = "/api/workflow/externalstoragelocation";
+            var localVarPath = "/workflow/externalstoragelocation";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2406,7 +2418,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetRunningWorkflow");
 
-            var localVarPath = "/api/workflow/running/{name}";
+            var localVarPath = "/workflow/running/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2464,6 +2476,7 @@ namespace Conductor.Api
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>Task of List&lt;string&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<string>> GetRunningWorkflowAsync(string name, int? version = null, long? startTime = null, long? endTime = null)
         {
             ApiResponse<List<string>> localVarResponse = await GetRunningWorkflowAsyncWithHttpInfo(name, version, startTime, endTime);
@@ -2480,13 +2493,14 @@ namespace Conductor.Api
         /// <param name="startTime"> (optional)</param>
         /// <param name="endTime"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<string>>> GetRunningWorkflowAsyncWithHttpInfo(string name, int? version = null, long? startTime = null, long? endTime = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetRunningWorkflow");
 
-            var localVarPath = "/api/workflow/running/{name}";
+            var localVarPath = "/workflow/running/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2563,7 +2577,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetWorkflowStatusSummary");
 
-            var localVarPath = "/api/workflow/{workflowId}/status";
+            var localVarPath = "/workflow/{workflowId}/status";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2619,6 +2633,7 @@ namespace Conductor.Api
         /// <param name="includeOutput"> (optional, default to false)</param>
         /// <param name="includeVariables"> (optional, default to false)</param>
         /// <returns>Task of WorkflowStatus</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<WorkflowStatus> GetWorkflowStatusSummaryAsync(string workflowId, bool? includeOutput = null, bool? includeVariables = null)
         {
             ApiResponse<WorkflowStatus> localVarResponse = await GetWorkflowStatusSummaryAsyncWithHttpInfo(workflowId, includeOutput, includeVariables);
@@ -2634,13 +2649,14 @@ namespace Conductor.Api
         /// <param name="includeOutput"> (optional, default to false)</param>
         /// <param name="includeVariables"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (WorkflowStatus)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<WorkflowStatus>> GetWorkflowStatusSummaryAsyncWithHttpInfo(string workflowId, bool? includeOutput = null, bool? includeVariables = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->GetWorkflowStatusSummary");
 
-            var localVarPath = "/api/workflow/{workflowId}/status";
+            var localVarPath = "/workflow/{workflowId}/status";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2721,7 +2737,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
 
-            var localVarPath = "/api/workflow/{name}/correlated";
+            var localVarPath = "/workflow/{name}/correlated";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2787,6 +2803,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of Dictionary&lt;string, List&lt;Workflow&gt;&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, List<Workflow>>> GetWorkflowsAsync(List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null)
         {
             ApiResponse<Dictionary<string, List<Workflow>>> localVarResponse = await GetWorkflowsAsyncWithHttpInfo(body, name, includeClosed, includeTasks);
@@ -2803,6 +2820,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, List&lt;Workflow&gt;&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, List<Workflow>>>> GetWorkflowsAsyncWithHttpInfo(List<string> body, string name, bool? includeClosed = null, bool? includeTasks = null)
         {
             // verify the required parameter 'body' is set
@@ -2812,7 +2830,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
 
-            var localVarPath = "/api/workflow/{name}/correlated";
+            var localVarPath = "/workflow/{name}/correlated";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2902,7 +2920,7 @@ namespace Conductor.Api
             if (correlationId == null)
                 throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
 
-            var localVarPath = "/api/workflow/{name}/correlated/{correlationId}";
+            var localVarPath = "/workflow/{name}/correlated/{correlationId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2960,6 +2978,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of List&lt;Workflow&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<Workflow>> GetWorkflows1Async(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
         {
             ApiResponse<List<Workflow>> localVarResponse = await GetWorkflows1AsyncWithHttpInfo(name, correlationId, includeClosed, includeTasks);
@@ -2976,6 +2995,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (List&lt;Workflow&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflows1AsyncWithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
         {
             // verify the required parameter 'name' is set
@@ -2985,7 +3005,7 @@ namespace Conductor.Api
             if (correlationId == null)
                 throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
 
-            var localVarPath = "/api/workflow/{name}/correlated/{correlationId}";
+            var localVarPath = "/workflow/{name}/correlated/{correlationId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3058,7 +3078,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->NotifyWorkflowCompletion");
 
-            var localVarPath = "/api/workflow/notifyWorkflowCompletion";
+            var localVarPath = "/workflow/notifyWorkflowCompletion";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3110,6 +3130,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> NotifyWorkflowCompletionAsync(string workflowId)
         {
             ApiResponse<string> localVarResponse = await NotifyWorkflowCompletionAsyncWithHttpInfo(workflowId);
@@ -3123,13 +3144,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> NotifyWorkflowCompletionAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->NotifyWorkflowCompletion");
 
-            var localVarPath = "/api/workflow/notifyWorkflowCompletion";
+            var localVarPath = "/workflow/notifyWorkflowCompletion";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3198,7 +3220,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow");
 
-            var localVarPath = "/api/workflow/{workflowId}/pause";
+            var localVarPath = "/workflow/{workflowId}/pause";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3249,6 +3271,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task PauseWorkflowAsync(string workflowId)
         {
             await PauseWorkflowAsyncWithHttpInfo(workflowId);
@@ -3261,13 +3284,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> PauseWorkflowAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->PauseWorkflow");
 
-            var localVarPath = "/api/workflow/{workflowId}/pause";
+            var localVarPath = "/workflow/{workflowId}/pause";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3341,7 +3365,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Rerun");
 
-            var localVarPath = "/api/workflow/{workflowId}/rerun";
+            var localVarPath = "/workflow/{workflowId}/rerun";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3403,6 +3427,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> RerunAsync(RerunWorkflowRequest body, string workflowId)
         {
             ApiResponse<string> localVarResponse = await RerunAsyncWithHttpInfo(body, workflowId);
@@ -3417,6 +3442,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> RerunAsyncWithHttpInfo(RerunWorkflowRequest body, string workflowId)
         {
             // verify the required parameter 'body' is set
@@ -3426,7 +3452,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Rerun");
 
-            var localVarPath = "/api/workflow/{workflowId}/rerun";
+            var localVarPath = "/workflow/{workflowId}/rerun";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3504,7 +3530,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResetWorkflow");
 
-            var localVarPath = "/api/workflow/{workflowId}/resetcallbacks";
+            var localVarPath = "/workflow/{workflowId}/resetcallbacks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3555,6 +3581,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task ResetWorkflowAsync(string workflowId)
         {
             await ResetWorkflowAsyncWithHttpInfo(workflowId);
@@ -3567,13 +3594,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ResetWorkflowAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResetWorkflow");
 
-            var localVarPath = "/api/workflow/{workflowId}/resetcallbacks";
+            var localVarPath = "/workflow/{workflowId}/resetcallbacks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3643,7 +3671,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Restart");
 
-            var localVarPath = "/api/workflow/{workflowId}/restart";
+            var localVarPath = "/workflow/{workflowId}/restart";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3696,6 +3724,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task RestartAsync(string workflowId, bool? useLatestDefinitions = null)
         {
             await RestartAsyncWithHttpInfo(workflowId, useLatestDefinitions);
@@ -3709,13 +3738,14 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> RestartAsyncWithHttpInfo(string workflowId, bool? useLatestDefinitions = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Restart");
 
-            var localVarPath = "/api/workflow/{workflowId}/restart";
+            var localVarPath = "/workflow/{workflowId}/restart";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3784,7 +3814,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow");
 
-            var localVarPath = "/api/workflow/{workflowId}/resume";
+            var localVarPath = "/workflow/{workflowId}/resume";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3835,6 +3865,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task ResumeWorkflowAsync(string workflowId)
         {
             await ResumeWorkflowAsyncWithHttpInfo(workflowId);
@@ -3847,13 +3878,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ResumeWorkflowAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->ResumeWorkflow");
 
-            var localVarPath = "/api/workflow/{workflowId}/resume";
+            var localVarPath = "/workflow/{workflowId}/resume";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3923,7 +3955,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry");
 
-            var localVarPath = "/api/workflow/{workflowId}/retry";
+            var localVarPath = "/workflow/{workflowId}/retry";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3976,6 +4008,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task RetryAsync(string workflowId, bool? resumeSubworkflowTasks = null)
         {
             await RetryAsyncWithHttpInfo(workflowId, resumeSubworkflowTasks);
@@ -3989,13 +4022,14 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="resumeSubworkflowTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> RetryAsyncWithHttpInfo(string workflowId, bool? resumeSubworkflowTasks = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Retry");
 
-            var localVarPath = "/api/workflow/{workflowId}/retry";
+            var localVarPath = "/workflow/{workflowId}/retry";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4074,7 +4108,7 @@ namespace Conductor.Api
         public ApiResponse<ScrollableSearchResultWorkflowSummary> SearchWithHttpInfo(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
         {
 
-            var localVarPath = "/api/workflow/search";
+            var localVarPath = "/workflow/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4138,6 +4172,7 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="skipCache"> (optional, default to false)</param>
         /// <returns>Task of ScrollableSearchResultWorkflowSummary</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ScrollableSearchResultWorkflowSummary> SearchAsync(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
         {
             ApiResponse<ScrollableSearchResultWorkflowSummary> localVarResponse = await SearchAsyncWithHttpInfo(queryId, start, size, sort, freeText, query, skipCache);
@@ -4157,10 +4192,11 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <param name="skipCache"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (ScrollableSearchResultWorkflowSummary)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<ScrollableSearchResultWorkflowSummary>> SearchAsyncWithHttpInfo(string queryId = null, int? start = null, int? size = null, string sort = null, string freeText = null, string query = null, bool? skipCache = null)
         {
 
-            var localVarPath = "/api/workflow/search";
+            var localVarPath = "/workflow/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4241,7 +4277,7 @@ namespace Conductor.Api
         public ApiResponse<SearchResultWorkflow> SearchV2WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/workflow/search-v2";
+            var localVarPath = "/workflow/search-v2";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4301,6 +4337,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflow</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<SearchResultWorkflow> SearchV2Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
             ApiResponse<SearchResultWorkflow> localVarResponse = await SearchV2AsyncWithHttpInfo(start, size, sort, freeText, query);
@@ -4318,10 +4355,11 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchV2AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/workflow/search-v2";
+            var localVarPath = "/workflow/search-v2";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4400,7 +4438,7 @@ namespace Conductor.Api
         public ApiResponse<SearchResultWorkflowSummary> SearchWorkflowsByTasksWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/workflow/search-by-tasks";
+            var localVarPath = "/workflow/search-by-tasks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4460,6 +4498,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflowSummary</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<SearchResultWorkflowSummary> SearchWorkflowsByTasksAsync(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
             ApiResponse<SearchResultWorkflowSummary> localVarResponse = await SearchWorkflowsByTasksAsyncWithHttpInfo(start, size, sort, freeText, query);
@@ -4477,10 +4516,11 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflowSummary)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflowSummary>> SearchWorkflowsByTasksAsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/workflow/search-by-tasks";
+            var localVarPath = "/workflow/search-by-tasks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4559,7 +4599,7 @@ namespace Conductor.Api
         public ApiResponse<SearchResultWorkflow> SearchWorkflowsByTasksV2WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/workflow/search-by-tasks-v2";
+            var localVarPath = "/workflow/search-by-tasks-v2";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4619,6 +4659,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultWorkflow</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<SearchResultWorkflow> SearchWorkflowsByTasksV2Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
             ApiResponse<SearchResultWorkflow> localVarResponse = await SearchWorkflowsByTasksV2AsyncWithHttpInfo(start, size, sort, freeText, query);
@@ -4636,10 +4677,11 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultWorkflow)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<SearchResultWorkflow>> SearchWorkflowsByTasksV2AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/workflow/search-by-tasks-v2";
+            var localVarPath = "/workflow/search-by-tasks-v2";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4722,7 +4764,7 @@ namespace Conductor.Api
             if (skipTaskRequest == null)
                 throw new ApiException(400, "Missing required parameter 'skipTaskRequest' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
 
-            var localVarPath = "/api/workflow/{workflowId}/skiptask/{taskReferenceName}";
+            var localVarPath = "/workflow/{workflowId}/skiptask/{taskReferenceName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4777,6 +4819,7 @@ namespace Conductor.Api
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task SkipTaskFromWorkflowAsync(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest)
         {
             await SkipTaskFromWorkflowAsyncWithHttpInfo(workflowId, taskReferenceName, skipTaskRequest);
@@ -4791,6 +4834,7 @@ namespace Conductor.Api
         /// <param name="taskReferenceName"></param>
         /// <param name="skipTaskRequest"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> SkipTaskFromWorkflowAsyncWithHttpInfo(string workflowId, string taskReferenceName, SkipTaskRequest skipTaskRequest)
         {
             // verify the required parameter 'workflowId' is set
@@ -4803,7 +4847,7 @@ namespace Conductor.Api
             if (skipTaskRequest == null)
                 throw new ApiException(400, "Missing required parameter 'skipTaskRequest' when calling WorkflowResourceApi->SkipTaskFromWorkflow");
 
-            var localVarPath = "/api/workflow/{workflowId}/skiptask/{taskReferenceName}";
+            var localVarPath = "/workflow/{workflowId}/skiptask/{taskReferenceName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4874,7 +4918,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowResourceApi->StartWorkflow");
 
-            var localVarPath = "/api/workflow";
+            var localVarPath = "/workflow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4934,6 +4978,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> StartWorkflowAsync(StartWorkflowRequest body)
         {
             ApiResponse<string> localVarResponse = await StartWorkflowAsyncWithHttpInfo(body);
@@ -4947,13 +4992,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflowAsyncWithHttpInfo(StartWorkflowRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowResourceApi->StartWorkflow");
 
-            var localVarPath = "/api/workflow";
+            var localVarPath = "/workflow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5042,7 +5088,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow1");
 
-            var localVarPath = "/api/workflow/{name}";
+            var localVarPath = "/workflow/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5110,6 +5156,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> StartWorkflow1Async(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
         {
             ApiResponse<string> localVarResponse = await StartWorkflow1AsyncWithHttpInfo(body, name, version, correlationId, priority);
@@ -5127,6 +5174,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflow1AsyncWithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
         {
             // verify the required parameter 'body' is set
@@ -5136,7 +5184,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow1");
 
-            var localVarPath = "/api/workflow/{name}";
+            var localVarPath = "/workflow/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5219,7 +5267,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate1");
 
-            var localVarPath = "/api/workflow/{workflowId}";
+            var localVarPath = "/workflow/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5272,6 +5320,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task Terminate1Async(string workflowId, string reason = null)
         {
             await Terminate1AsyncWithHttpInfo(workflowId, reason);
@@ -5285,13 +5334,14 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> Terminate1AsyncWithHttpInfo(string workflowId, string reason = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate1");
 
-            var localVarPath = "/api/workflow/{workflowId}";
+            var localVarPath = "/workflow/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5356,7 +5406,7 @@ namespace Conductor.Api
         public ApiResponse<Object> UploadCompletedWorkflowsWithHttpInfo()
         {
 
-            var localVarPath = "/api/workflow/document-store/upload";
+            var localVarPath = "/workflow/document-store/upload";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5406,6 +5456,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> UploadCompletedWorkflowsAsync()
         {
             ApiResponse<Object> localVarResponse = await UploadCompletedWorkflowsAsyncWithHttpInfo();
@@ -5418,10 +5469,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadCompletedWorkflowsAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/workflow/document-store/upload";
+            var localVarPath = "/workflow/document-store/upload";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

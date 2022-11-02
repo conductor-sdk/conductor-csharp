@@ -184,7 +184,7 @@ namespace Conductor.Api
         public ApiResponse<string> GetVersionWithHttpInfo()
         {
 
-            var localVarPath = "/api/version";
+            var localVarPath = "/version";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -234,6 +234,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> GetVersionAsync()
         {
             ApiResponse<string> localVarResponse = await GetVersionAsyncWithHttpInfo();
@@ -246,10 +247,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> GetVersionAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/version";
+            var localVarPath = "/version";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

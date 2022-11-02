@@ -534,7 +534,7 @@ namespace Conductor.Api
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->DeleteSecret");
 
-            var localVarPath = "/api/secrets/{key}";
+            var localVarPath = "/secrets/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -586,6 +586,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> DeleteSecretAsync(string key)
         {
             ApiResponse<Object> localVarResponse = await DeleteSecretAsyncWithHttpInfo(key);
@@ -599,13 +600,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSecretAsyncWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->DeleteSecret");
 
-            var localVarPath = "/api/secrets/{key}";
+            var localVarPath = "/secrets/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -676,7 +678,7 @@ namespace Conductor.Api
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->DeleteTagForSecret");
 
-            var localVarPath = "/api/secrets/{key}/tags";
+            var localVarPath = "/secrets/{key}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -737,6 +739,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task DeleteTagForSecretAsync(string key, string body = null)
         {
             await DeleteTagForSecretAsyncWithHttpInfo(key, body);
@@ -750,13 +753,14 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForSecretAsyncWithHttpInfo(string key, string body = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->DeleteTagForSecret");
 
-            var localVarPath = "/api/secrets/{key}/tags";
+            var localVarPath = "/secrets/{key}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -834,7 +838,7 @@ namespace Conductor.Api
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->GetSecret");
 
-            var localVarPath = "/api/secrets/{key}";
+            var localVarPath = "/secrets/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -886,6 +890,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetSecretAsync(string key)
         {
             ApiResponse<Object> localVarResponse = await GetSecretAsyncWithHttpInfo(key);
@@ -899,13 +904,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetSecretAsyncWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->GetSecret");
 
-            var localVarPath = "/api/secrets/{key}";
+            var localVarPath = "/secrets/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -975,7 +981,7 @@ namespace Conductor.Api
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->GetTags");
 
-            var localVarPath = "/api/secrets/{key}/tags";
+            var localVarPath = "/secrets/{key}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1027,6 +1033,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<TagObject>> GetTagsAsync(string key)
         {
             ApiResponse<List<TagObject>> localVarResponse = await GetTagsAsyncWithHttpInfo(key);
@@ -1040,13 +1047,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsAsyncWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->GetTags");
 
-            var localVarPath = "/api/secrets/{key}/tags";
+            var localVarPath = "/secrets/{key}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1111,7 +1119,7 @@ namespace Conductor.Api
         public ApiResponse<Object> ListAllSecretNamesWithHttpInfo()
         {
 
-            var localVarPath = "/api/secrets";
+            var localVarPath = "/secrets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1161,6 +1169,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> ListAllSecretNamesAsync()
         {
             ApiResponse<Object> localVarResponse = await ListAllSecretNamesAsyncWithHttpInfo();
@@ -1173,10 +1182,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ListAllSecretNamesAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/secrets";
+            var localVarPath = "/secrets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1240,7 +1250,7 @@ namespace Conductor.Api
         public ApiResponse<List<string>> ListSecretsThatUserCanGrantAccessToWithHttpInfo()
         {
 
-            var localVarPath = "/api/secrets";
+            var localVarPath = "/secrets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1290,6 +1300,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<string>> ListSecretsThatUserCanGrantAccessToAsync()
         {
             ApiResponse<List<string>> localVarResponse = await ListSecretsThatUserCanGrantAccessToAsyncWithHttpInfo();
@@ -1302,10 +1313,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<string>>> ListSecretsThatUserCanGrantAccessToAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/secrets";
+            var localVarPath = "/secrets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1379,7 +1391,7 @@ namespace Conductor.Api
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->PutSecret");
 
-            var localVarPath = "/api/secrets/{key}";
+            var localVarPath = "/secrets/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1441,6 +1453,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> PutSecretAsync(string body, string key)
         {
             ApiResponse<Object> localVarResponse = await PutSecretAsyncWithHttpInfo(body, key);
@@ -1455,6 +1468,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> PutSecretAsyncWithHttpInfo(string body, string key)
         {
             // verify the required parameter 'body' is set
@@ -1464,7 +1478,7 @@ namespace Conductor.Api
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->PutSecret");
 
-            var localVarPath = "/api/secrets/{key}";
+            var localVarPath = "/secrets/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1544,7 +1558,7 @@ namespace Conductor.Api
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->PutTagForSecret");
 
-            var localVarPath = "/api/secrets/{key}/tags";
+            var localVarPath = "/secrets/{key}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1605,6 +1619,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task PutTagForSecretAsync(string key, string body = null)
         {
             await PutTagForSecretAsyncWithHttpInfo(key, body);
@@ -1618,13 +1633,14 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForSecretAsyncWithHttpInfo(string key, string body = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->PutTagForSecret");
 
-            var localVarPath = "/api/secrets/{key}/tags";
+            var localVarPath = "/secrets/{key}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1702,7 +1718,7 @@ namespace Conductor.Api
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->SecretExists");
 
-            var localVarPath = "/api/secrets/{key}/exists";
+            var localVarPath = "/secrets/{key}/exists";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1754,6 +1770,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> SecretExistsAsync(string key)
         {
             ApiResponse<Object> localVarResponse = await SecretExistsAsyncWithHttpInfo(key);
@@ -1767,13 +1784,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> SecretExistsAsyncWithHttpInfo(string key)
         {
             // verify the required parameter 'key' is set
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->SecretExists");
 
-            var localVarPath = "/api/secrets/{key}/exists";
+            var localVarPath = "/secrets/{key}/exists";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

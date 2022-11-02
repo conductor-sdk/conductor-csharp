@@ -236,7 +236,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling TokenResourceApi->GenerateToken");
 
-            var localVarPath = "/api/token";
+            var localVarPath = "/token";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -296,6 +296,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Response</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Response> GenerateTokenAsync(GenerateTokenRequest body)
         {
             ApiResponse<Response> localVarResponse = await GenerateTokenAsyncWithHttpInfo(body);
@@ -309,13 +310,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Response>> GenerateTokenAsyncWithHttpInfo(GenerateTokenRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling TokenResourceApi->GenerateToken");
 
-            var localVarPath = "/api/token";
+            var localVarPath = "/token";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -390,7 +392,7 @@ namespace Conductor.Api
         public ApiResponse<Object> GetUserInfoWithHttpInfo(bool? claims = null)
         {
 
-            var localVarPath = "/api/token/userInfo";
+            var localVarPath = "/token/userInfo";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -442,6 +444,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="claims"> (optional, default to false)</param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetUserInfoAsync(bool? claims = null)
         {
             ApiResponse<Object> localVarResponse = await GetUserInfoAsyncWithHttpInfo(claims);
@@ -455,10 +458,11 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="claims"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUserInfoAsyncWithHttpInfo(bool? claims = null)
         {
 
-            var localVarPath = "/api/token/userInfo";
+            var localVarPath = "/token/userInfo";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

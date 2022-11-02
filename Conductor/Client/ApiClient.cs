@@ -44,12 +44,12 @@ namespace Conductor.Client
         public ApiClient()
         {
             Configuration = Conductor.Client.Configuration.Default;
-            RestClient = new RestClient("https://play.orkes.io/");
+            RestClient = new RestClient("https://play.orkes.io/api");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://play.orkes.io/).
+        /// with default base path (https://play.orkes.io/api).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config)
@@ -64,7 +64,7 @@ namespace Conductor.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://play.orkes.io/")
+        public ApiClient(String basePath = "https://play.orkes.io/api")
         {
             if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
@@ -125,7 +125,7 @@ namespace Conductor.Client
             // add file parameter, if any
             foreach (var param in fileParams)
             {
-                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentType);
+                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentLength, param.Value.ContentType);
             }
 
             if (postBody != null) // http body (model or byte[]) parameter

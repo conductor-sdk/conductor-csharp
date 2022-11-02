@@ -319,7 +319,7 @@ namespace Conductor.Api
         public ApiResponse<Dictionary<string, Object>> GetRedisUsageWithHttpInfo()
         {
 
-            var localVarPath = "/api/admin/redisUsage";
+            var localVarPath = "/admin/redisUsage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -369,6 +369,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, Object>> GetRedisUsageAsync()
         {
             ApiResponse<Dictionary<string, Object>> localVarResponse = await GetRedisUsageAsyncWithHttpInfo();
@@ -381,10 +382,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetRedisUsageAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/admin/redisUsage";
+            var localVarPath = "/admin/redisUsage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -453,7 +455,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling AdminResourceApi->RequeueSweep");
 
-            var localVarPath = "/api/admin/sweep/requeue/{workflowId}";
+            var localVarPath = "/admin/sweep/requeue/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -505,6 +507,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> RequeueSweepAsync(string workflowId)
         {
             ApiResponse<string> localVarResponse = await RequeueSweepAsyncWithHttpInfo(workflowId);
@@ -518,13 +521,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> RequeueSweepAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling AdminResourceApi->RequeueSweep");
 
-            var localVarPath = "/api/admin/sweep/requeue/{workflowId}";
+            var localVarPath = "/admin/sweep/requeue/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -594,7 +598,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling AdminResourceApi->VerifyAndRepairWorkflowConsistency");
 
-            var localVarPath = "/api/admin/consistency/verifyAndRepair/{workflowId}";
+            var localVarPath = "/admin/consistency/verifyAndRepair/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -646,6 +650,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> VerifyAndRepairWorkflowConsistencyAsync(string workflowId)
         {
             ApiResponse<string> localVarResponse = await VerifyAndRepairWorkflowConsistencyAsyncWithHttpInfo(workflowId);
@@ -659,13 +664,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="workflowId"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> VerifyAndRepairWorkflowConsistencyAsyncWithHttpInfo(string workflowId)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling AdminResourceApi->VerifyAndRepairWorkflowConsistency");
 
-            var localVarPath = "/api/admin/consistency/verifyAndRepair/{workflowId}";
+            var localVarPath = "/admin/consistency/verifyAndRepair/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -739,7 +745,7 @@ namespace Conductor.Api
             if (tasktype == null)
                 throw new ApiException(400, "Missing required parameter 'tasktype' when calling AdminResourceApi->View");
 
-            var localVarPath = "/api/admin/task/{tasktype}";
+            var localVarPath = "/admin/task/{tasktype}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -795,6 +801,7 @@ namespace Conductor.Api
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 100)</param>
         /// <returns>Task of List&lt;Task&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<Task>> ViewAsync(string tasktype, int? start = null, int? count = null)
         {
             ApiResponse<List<Task>> localVarResponse = await ViewAsyncWithHttpInfo(tasktype, start, count);
@@ -810,13 +817,14 @@ namespace Conductor.Api
         /// <param name="start"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 100)</param>
         /// <returns>Task of ApiResponse (List&lt;Task&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<Task>>> ViewAsyncWithHttpInfo(string tasktype, int? start = null, int? count = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
                 throw new ApiException(400, "Missing required parameter 'tasktype' when calling AdminResourceApi->View");
 
-            var localVarPath = "/api/admin/task/{tasktype}";
+            var localVarPath = "/admin/task/{tasktype}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

@@ -541,7 +541,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling EventResourceApi->AddEventHandler");
 
-            var localVarPath = "/api/event";
+            var localVarPath = "/event";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -600,6 +600,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task AddEventHandlerAsync(Conductor.Models.EventHandler body)
         {
             await AddEventHandlerAsyncWithHttpInfo(body);
@@ -612,13 +613,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> AddEventHandlerAsyncWithHttpInfo(Conductor.Models.EventHandler body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling EventResourceApi->AddEventHandler");
 
-            var localVarPath = "/api/event";
+            var localVarPath = "/event";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -699,7 +701,7 @@ namespace Conductor.Api
             if (queueName == null)
                 throw new ApiException(400, "Missing required parameter 'queueName' when calling EventResourceApi->DeleteQueueConfig");
 
-            var localVarPath = "/api/event/queue/config/{queueType}/{queueName}";
+            var localVarPath = "/event/queue/config/{queueType}/{queueName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -752,6 +754,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task DeleteQueueConfigAsync(string queueType, string queueName)
         {
             await DeleteQueueConfigAsyncWithHttpInfo(queueType, queueName);
@@ -765,6 +768,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteQueueConfigAsyncWithHttpInfo(string queueType, string queueName)
         {
             // verify the required parameter 'queueType' is set
@@ -774,7 +778,7 @@ namespace Conductor.Api
             if (queueName == null)
                 throw new ApiException(400, "Missing required parameter 'queueName' when calling EventResourceApi->DeleteQueueConfig");
 
-            var localVarPath = "/api/event/queue/config/{queueType}/{queueName}";
+            var localVarPath = "/event/queue/config/{queueType}/{queueName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -839,7 +843,7 @@ namespace Conductor.Api
         public ApiResponse<List<Conductor.Models.EventHandler>> GetEventHandlersWithHttpInfo()
         {
 
-            var localVarPath = "/api/event";
+            var localVarPath = "/event";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -889,6 +893,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Conductor.Models.EventHandler&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersAsync()
         {
             ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = await GetEventHandlersAsyncWithHttpInfo();
@@ -901,10 +906,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Conductor.Models.EventHandler&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/event";
+            var localVarPath = "/event";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -975,7 +981,7 @@ namespace Conductor.Api
             if (_event == null)
                 throw new ApiException(400, "Missing required parameter '_event' when calling EventResourceApi->GetEventHandlersForEvent");
 
-            var localVarPath = "/api/event/{event}";
+            var localVarPath = "/event/{event}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1029,6 +1035,7 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>Task of List&lt;Conductor.Models.EventHandler&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<Conductor.Models.EventHandler>> GetEventHandlersForEventAsync(string _event, bool? activeOnly = null)
         {
             ApiResponse<List<Conductor.Models.EventHandler>> localVarResponse = await GetEventHandlersForEventAsyncWithHttpInfo(_event, activeOnly);
@@ -1043,13 +1050,14 @@ namespace Conductor.Api
         /// <param name="_event"></param>
         /// <param name="activeOnly"> (optional, default to true)</param>
         /// <returns>Task of ApiResponse (List&lt;Conductor.Models.EventHandler&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<Conductor.Models.EventHandler>>> GetEventHandlersForEventAsyncWithHttpInfo(string _event, bool? activeOnly = null)
         {
             // verify the required parameter '_event' is set
             if (_event == null)
                 throw new ApiException(400, "Missing required parameter '_event' when calling EventResourceApi->GetEventHandlersForEvent");
 
-            var localVarPath = "/api/event/{event}";
+            var localVarPath = "/event/{event}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1125,7 +1133,7 @@ namespace Conductor.Api
             if (queueName == null)
                 throw new ApiException(400, "Missing required parameter 'queueName' when calling EventResourceApi->GetQueueConfig");
 
-            var localVarPath = "/api/event/queue/config/{queueType}/{queueName}";
+            var localVarPath = "/event/queue/config/{queueType}/{queueName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1179,6 +1187,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, Object>> GetQueueConfigAsync(string queueType, string queueName)
         {
             ApiResponse<Dictionary<string, Object>> localVarResponse = await GetQueueConfigAsyncWithHttpInfo(queueType, queueName);
@@ -1193,6 +1202,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetQueueConfigAsyncWithHttpInfo(string queueType, string queueName)
         {
             // verify the required parameter 'queueType' is set
@@ -1202,7 +1212,7 @@ namespace Conductor.Api
             if (queueName == null)
                 throw new ApiException(400, "Missing required parameter 'queueName' when calling EventResourceApi->GetQueueConfig");
 
-            var localVarPath = "/api/event/queue/config/{queueType}/{queueName}";
+            var localVarPath = "/event/queue/config/{queueType}/{queueName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1268,7 +1278,7 @@ namespace Conductor.Api
         public ApiResponse<Dictionary<string, string>> GetQueueNamesWithHttpInfo()
         {
 
-            var localVarPath = "/api/event/queue/config";
+            var localVarPath = "/event/queue/config";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1318,6 +1328,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, string>> GetQueueNamesAsync()
         {
             ApiResponse<Dictionary<string, string>> localVarResponse = await GetQueueNamesAsyncWithHttpInfo();
@@ -1330,10 +1341,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetQueueNamesAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/event/queue/config";
+            var localVarPath = "/event/queue/config";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1411,7 +1423,7 @@ namespace Conductor.Api
             if (queueName == null)
                 throw new ApiException(400, "Missing required parameter 'queueName' when calling EventResourceApi->PutQueueConfig");
 
-            var localVarPath = "/api/event/queue/config/{queueType}/{queueName}";
+            var localVarPath = "/event/queue/config/{queueType}/{queueName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1474,6 +1486,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task PutQueueConfigAsync(string body, string queueType, string queueName)
         {
             await PutQueueConfigAsyncWithHttpInfo(body, queueType, queueName);
@@ -1488,6 +1501,7 @@ namespace Conductor.Api
         /// <param name="queueType"></param>
         /// <param name="queueName"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> PutQueueConfigAsyncWithHttpInfo(string body, string queueType, string queueName)
         {
             // verify the required parameter 'body' is set
@@ -1500,7 +1514,7 @@ namespace Conductor.Api
             if (queueName == null)
                 throw new ApiException(400, "Missing required parameter 'queueName' when calling EventResourceApi->PutQueueConfig");
 
-            var localVarPath = "/api/event/queue/config/{queueType}/{queueName}";
+            var localVarPath = "/event/queue/config/{queueType}/{queueName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1578,7 +1592,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling EventResourceApi->RemoveEventHandlerStatus");
 
-            var localVarPath = "/api/event/{name}";
+            var localVarPath = "/event/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1629,6 +1643,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task RemoveEventHandlerStatusAsync(string name)
         {
             await RemoveEventHandlerStatusAsyncWithHttpInfo(name);
@@ -1641,13 +1656,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveEventHandlerStatusAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling EventResourceApi->RemoveEventHandlerStatus");
 
-            var localVarPath = "/api/event/{name}";
+            var localVarPath = "/event/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1715,7 +1731,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling EventResourceApi->UpdateEventHandler");
 
-            var localVarPath = "/api/event";
+            var localVarPath = "/event";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1774,6 +1790,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task UpdateEventHandlerAsync(Conductor.Models.EventHandler body)
         {
             await UpdateEventHandlerAsyncWithHttpInfo(body);
@@ -1786,13 +1803,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEventHandlerAsyncWithHttpInfo(Conductor.Models.EventHandler body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling EventResourceApi->UpdateEventHandler");
 
-            var localVarPath = "/api/event";
+            var localVarPath = "/event";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

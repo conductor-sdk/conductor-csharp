@@ -769,7 +769,7 @@ namespace Conductor.Api
             if (role == null)
                 throw new ApiException(400, "Missing required parameter 'role' when calling ApplicationResourceApi->AddRoleToApplicationUser");
 
-            var localVarPath = "/api/applications/{applicationId}/roles/{role}";
+            var localVarPath = "/applications/{applicationId}/roles/{role}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -823,6 +823,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> AddRoleToApplicationUserAsync(string applicationId, string role)
         {
             ApiResponse<Object> localVarResponse = await AddRoleToApplicationUserAsyncWithHttpInfo(applicationId, role);
@@ -837,6 +838,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> AddRoleToApplicationUserAsyncWithHttpInfo(string applicationId, string role)
         {
             // verify the required parameter 'applicationId' is set
@@ -846,7 +848,7 @@ namespace Conductor.Api
             if (role == null)
                 throw new ApiException(400, "Missing required parameter 'role' when calling ApplicationResourceApi->AddRoleToApplicationUser");
 
-            var localVarPath = "/api/applications/{applicationId}/roles/{role}";
+            var localVarPath = "/applications/{applicationId}/roles/{role}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -917,7 +919,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->CreateAccessKey");
 
-            var localVarPath = "/api/applications/{id}/accessKeys";
+            var localVarPath = "/applications/{id}/accessKeys";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -969,6 +971,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> CreateAccessKeyAsync(string id)
         {
             ApiResponse<Object> localVarResponse = await CreateAccessKeyAsyncWithHttpInfo(id);
@@ -982,13 +985,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateAccessKeyAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->CreateAccessKey");
 
-            var localVarPath = "/api/applications/{id}/accessKeys";
+            var localVarPath = "/applications/{id}/accessKeys";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1058,7 +1062,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling ApplicationResourceApi->CreateApplication");
 
-            var localVarPath = "/api/applications";
+            var localVarPath = "/applications";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1118,6 +1122,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> CreateApplicationAsync(CreateOrUpdateApplicationRequest body)
         {
             ApiResponse<Object> localVarResponse = await CreateApplicationAsyncWithHttpInfo(body);
@@ -1131,13 +1136,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateApplicationAsyncWithHttpInfo(CreateOrUpdateApplicationRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling ApplicationResourceApi->CreateApplication");
 
-            var localVarPath = "/api/applications";
+            var localVarPath = "/applications";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1220,7 +1226,7 @@ namespace Conductor.Api
             if (keyId == null)
                 throw new ApiException(400, "Missing required parameter 'keyId' when calling ApplicationResourceApi->DeleteAccessKey");
 
-            var localVarPath = "/api/applications/{applicationId}/accessKeys/{keyId}";
+            var localVarPath = "/applications/{applicationId}/accessKeys/{keyId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1274,6 +1280,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> DeleteAccessKeyAsync(string applicationId, string keyId)
         {
             ApiResponse<Object> localVarResponse = await DeleteAccessKeyAsyncWithHttpInfo(applicationId, keyId);
@@ -1288,6 +1295,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccessKeyAsyncWithHttpInfo(string applicationId, string keyId)
         {
             // verify the required parameter 'applicationId' is set
@@ -1297,7 +1305,7 @@ namespace Conductor.Api
             if (keyId == null)
                 throw new ApiException(400, "Missing required parameter 'keyId' when calling ApplicationResourceApi->DeleteAccessKey");
 
-            var localVarPath = "/api/applications/{applicationId}/accessKeys/{keyId}";
+            var localVarPath = "/applications/{applicationId}/accessKeys/{keyId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1368,7 +1376,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->DeleteApplication");
 
-            var localVarPath = "/api/applications/{id}";
+            var localVarPath = "/applications/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1420,6 +1428,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> DeleteApplicationAsync(string id)
         {
             ApiResponse<Object> localVarResponse = await DeleteApplicationAsyncWithHttpInfo(id);
@@ -1433,13 +1442,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteApplicationAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->DeleteApplication");
 
-            var localVarPath = "/api/applications/{id}";
+            var localVarPath = "/applications/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1510,7 +1520,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->DeleteTagForApplication");
 
-            var localVarPath = "/api/applications/{id}/tags";
+            var localVarPath = "/applications/{id}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1571,6 +1581,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task DeleteTagForApplicationAsync(string id, string body = null)
         {
             await DeleteTagForApplicationAsyncWithHttpInfo(id, body);
@@ -1584,13 +1595,14 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTagForApplicationAsyncWithHttpInfo(string id, string body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->DeleteTagForApplication");
 
-            var localVarPath = "/api/applications/{id}/tags";
+            var localVarPath = "/applications/{id}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1668,7 +1680,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->GetAccessKeys");
 
-            var localVarPath = "/api/applications/{id}/accessKeys";
+            var localVarPath = "/applications/{id}/accessKeys";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1720,6 +1732,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetAccessKeysAsync(string id)
         {
             ApiResponse<Object> localVarResponse = await GetAccessKeysAsyncWithHttpInfo(id);
@@ -1733,13 +1746,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetAccessKeysAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->GetAccessKeys");
 
-            var localVarPath = "/api/applications/{id}/accessKeys";
+            var localVarPath = "/applications/{id}/accessKeys";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1809,7 +1823,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->GetApplication");
 
-            var localVarPath = "/api/applications/{id}";
+            var localVarPath = "/applications/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1861,6 +1875,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetApplicationAsync(string id)
         {
             ApiResponse<Object> localVarResponse = await GetApplicationAsyncWithHttpInfo(id);
@@ -1874,13 +1889,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetApplicationAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->GetApplication");
 
-            var localVarPath = "/api/applications/{id}";
+            var localVarPath = "/applications/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1950,7 +1966,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->GetTagsForApplication");
 
-            var localVarPath = "/api/applications/{id}/tags";
+            var localVarPath = "/applications/{id}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2002,6 +2018,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<TagObject>> GetTagsForApplicationAsync(string id)
         {
             ApiResponse<List<TagObject>> localVarResponse = await GetTagsForApplicationAsyncWithHttpInfo(id);
@@ -2015,13 +2032,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsForApplicationAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->GetTagsForApplication");
 
-            var localVarPath = "/api/applications/{id}/tags";
+            var localVarPath = "/applications/{id}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2086,7 +2104,7 @@ namespace Conductor.Api
         public ApiResponse<List<ConductorApplication>> ListApplicationsWithHttpInfo()
         {
 
-            var localVarPath = "/api/applications";
+            var localVarPath = "/applications";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2136,6 +2154,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;ConductorApplication&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<ConductorApplication>> ListApplicationsAsync()
         {
             ApiResponse<List<ConductorApplication>> localVarResponse = await ListApplicationsAsyncWithHttpInfo();
@@ -2148,10 +2167,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;ConductorApplication&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<ConductorApplication>>> ListApplicationsAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/applications";
+            var localVarPath = "/applications";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2221,7 +2241,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->PutTagForApplication");
 
-            var localVarPath = "/api/applications/{id}/tags";
+            var localVarPath = "/applications/{id}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2282,6 +2302,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task PutTagForApplicationAsync(string id, string body = null)
         {
             await PutTagForApplicationAsyncWithHttpInfo(id, body);
@@ -2295,13 +2316,14 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> PutTagForApplicationAsyncWithHttpInfo(string id, string body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->PutTagForApplication");
 
-            var localVarPath = "/api/applications/{id}/tags";
+            var localVarPath = "/applications/{id}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2384,7 +2406,7 @@ namespace Conductor.Api
             if (role == null)
                 throw new ApiException(400, "Missing required parameter 'role' when calling ApplicationResourceApi->RemoveRoleFromApplicationUser");
 
-            var localVarPath = "/api/applications/{applicationId}/roles/{role}";
+            var localVarPath = "/applications/{applicationId}/roles/{role}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2438,6 +2460,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> RemoveRoleFromApplicationUserAsync(string applicationId, string role)
         {
             ApiResponse<Object> localVarResponse = await RemoveRoleFromApplicationUserAsyncWithHttpInfo(applicationId, role);
@@ -2452,6 +2475,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="role"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveRoleFromApplicationUserAsyncWithHttpInfo(string applicationId, string role)
         {
             // verify the required parameter 'applicationId' is set
@@ -2461,7 +2485,7 @@ namespace Conductor.Api
             if (role == null)
                 throw new ApiException(400, "Missing required parameter 'role' when calling ApplicationResourceApi->RemoveRoleFromApplicationUser");
 
-            var localVarPath = "/api/applications/{applicationId}/roles/{role}";
+            var localVarPath = "/applications/{applicationId}/roles/{role}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2537,7 +2561,7 @@ namespace Conductor.Api
             if (keyId == null)
                 throw new ApiException(400, "Missing required parameter 'keyId' when calling ApplicationResourceApi->ToggleAccessKeyStatus");
 
-            var localVarPath = "/api/applications/{applicationId}/accessKeys/{keyId}/status";
+            var localVarPath = "/applications/{applicationId}/accessKeys/{keyId}/status";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2591,6 +2615,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> ToggleAccessKeyStatusAsync(string applicationId, string keyId)
         {
             ApiResponse<Object> localVarResponse = await ToggleAccessKeyStatusAsyncWithHttpInfo(applicationId, keyId);
@@ -2605,6 +2630,7 @@ namespace Conductor.Api
         /// <param name="applicationId"></param>
         /// <param name="keyId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ToggleAccessKeyStatusAsyncWithHttpInfo(string applicationId, string keyId)
         {
             // verify the required parameter 'applicationId' is set
@@ -2614,7 +2640,7 @@ namespace Conductor.Api
             if (keyId == null)
                 throw new ApiException(400, "Missing required parameter 'keyId' when calling ApplicationResourceApi->ToggleAccessKeyStatus");
 
-            var localVarPath = "/api/applications/{applicationId}/accessKeys/{keyId}/status";
+            var localVarPath = "/applications/{applicationId}/accessKeys/{keyId}/status";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2690,7 +2716,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->UpdateApplication");
 
-            var localVarPath = "/api/applications/{id}";
+            var localVarPath = "/applications/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2752,6 +2778,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> UpdateApplicationAsync(CreateOrUpdateApplicationRequest body, string id)
         {
             ApiResponse<Object> localVarResponse = await UpdateApplicationAsyncWithHttpInfo(body, id);
@@ -2766,6 +2793,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateApplicationAsyncWithHttpInfo(CreateOrUpdateApplicationRequest body, string id)
         {
             // verify the required parameter 'body' is set
@@ -2775,7 +2803,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->UpdateApplication");
 
-            var localVarPath = "/api/applications/{id}";
+            var localVarPath = "/applications/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

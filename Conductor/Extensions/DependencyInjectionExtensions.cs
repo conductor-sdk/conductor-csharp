@@ -1,5 +1,6 @@
 ﻿using Conductor.Interfaces;
 using Conductor.Worker;
+using Conductor.Client;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
@@ -21,9 +22,9 @@ namespace Conductor.Extensions
             services.AddHttpClient();
             services.AddOptions();
             services.AddSingleton(new ConductorAuthTokenClient());
+            services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
             services.AddSingleton(configuration != null ? configuration : new Configuration());
             services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
-            services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
             services.AddTransient<IWorkflowTaskExecutor, WorkflowTaskExecutor>();
 
             return services.AddConductorClient(configureHttpClient);

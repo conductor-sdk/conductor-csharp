@@ -370,7 +370,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->PauseWorkflow1");
 
-            var localVarPath = "/api/workflow/bulk/pause";
+            var localVarPath = "/workflow/bulk/pause";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -430,6 +430,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of BulkResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<BulkResponse> PauseWorkflow1Async(List<string> body)
         {
             ApiResponse<BulkResponse> localVarResponse = await PauseWorkflow1AsyncWithHttpInfo(body);
@@ -443,13 +444,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> PauseWorkflow1AsyncWithHttpInfo(List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->PauseWorkflow1");
 
-            var localVarPath = "/api/workflow/bulk/pause";
+            var localVarPath = "/workflow/bulk/pause";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -529,7 +531,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Restart1");
 
-            var localVarPath = "/api/workflow/bulk/restart";
+            var localVarPath = "/workflow/bulk/restart";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -591,6 +593,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of BulkResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<BulkResponse> Restart1Async(List<string> body, bool? useLatestDefinitions = null)
         {
             ApiResponse<BulkResponse> localVarResponse = await Restart1AsyncWithHttpInfo(body, useLatestDefinitions);
@@ -605,13 +608,14 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> Restart1AsyncWithHttpInfo(List<string> body, bool? useLatestDefinitions = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Restart1");
 
-            var localVarPath = "/api/workflow/bulk/restart";
+            var localVarPath = "/workflow/bulk/restart";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -690,7 +694,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->ResumeWorkflow1");
 
-            var localVarPath = "/api/workflow/bulk/resume";
+            var localVarPath = "/workflow/bulk/resume";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -750,6 +754,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of BulkResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<BulkResponse> ResumeWorkflow1Async(List<string> body)
         {
             ApiResponse<BulkResponse> localVarResponse = await ResumeWorkflow1AsyncWithHttpInfo(body);
@@ -763,13 +768,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> ResumeWorkflow1AsyncWithHttpInfo(List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->ResumeWorkflow1");
 
-            var localVarPath = "/api/workflow/bulk/resume";
+            var localVarPath = "/workflow/bulk/resume";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -847,7 +853,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Retry1");
 
-            var localVarPath = "/api/workflow/bulk/retry";
+            var localVarPath = "/workflow/bulk/retry";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -907,6 +913,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of BulkResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<BulkResponse> Retry1Async(List<string> body)
         {
             ApiResponse<BulkResponse> localVarResponse = await Retry1AsyncWithHttpInfo(body);
@@ -920,13 +927,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> Retry1AsyncWithHttpInfo(List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Retry1");
 
-            var localVarPath = "/api/workflow/bulk/retry";
+            var localVarPath = "/workflow/bulk/retry";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1006,7 +1014,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Terminate");
 
-            var localVarPath = "/api/workflow/bulk/terminate";
+            var localVarPath = "/workflow/bulk/terminate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1068,6 +1076,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of BulkResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<BulkResponse> TerminateAsync(List<string> body, string reason = null)
         {
             ApiResponse<BulkResponse> localVarResponse = await TerminateAsyncWithHttpInfo(body, reason);
@@ -1082,13 +1091,14 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> TerminateAsyncWithHttpInfo(List<string> body, string reason = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Terminate");
 
-            var localVarPath = "/api/workflow/bulk/terminate";
+            var localVarPath = "/workflow/bulk/terminate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

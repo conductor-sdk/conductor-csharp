@@ -319,7 +319,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling PublisherConfigResourceApi->DeleteConfig");
 
-            var localVarPath = "/api/publishers/{id}";
+            var localVarPath = "/publishers/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -371,6 +371,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> DeleteConfigAsync(string id)
         {
             ApiResponse<Object> localVarResponse = await DeleteConfigAsyncWithHttpInfo(id);
@@ -384,13 +385,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteConfigAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling PublisherConfigResourceApi->DeleteConfig");
 
-            var localVarPath = "/api/publishers/{id}";
+            var localVarPath = "/publishers/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -460,7 +462,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling PublisherConfigResourceApi->DownloadConfig");
 
-            var localVarPath = "/api/publishers/{id}";
+            var localVarPath = "/publishers/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -512,6 +514,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> DownloadConfigAsync(string id)
         {
             ApiResponse<string> localVarResponse = await DownloadConfigAsyncWithHttpInfo(id);
@@ -525,13 +528,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> DownloadConfigAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling PublisherConfigResourceApi->DownloadConfig");
 
-            var localVarPath = "/api/publishers/{id}";
+            var localVarPath = "/publishers/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -596,7 +600,7 @@ namespace Conductor.Api
         public ApiResponse<Object> ListAllConfigsWithHttpInfo()
         {
 
-            var localVarPath = "/api/publishers";
+            var localVarPath = "/publishers";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -646,6 +650,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> ListAllConfigsAsync()
         {
             ApiResponse<Object> localVarResponse = await ListAllConfigsAsyncWithHttpInfo();
@@ -658,10 +663,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ListAllConfigsAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/publishers";
+            var localVarPath = "/publishers";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -735,7 +741,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling PublisherConfigResourceApi->UploadConfig");
 
-            var localVarPath = "/api/publishers/{id}";
+            var localVarPath = "/publishers/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -797,6 +803,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> UploadConfigAsync(string body, string id)
         {
             ApiResponse<Object> localVarResponse = await UploadConfigAsyncWithHttpInfo(body, id);
@@ -811,6 +818,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadConfigAsyncWithHttpInfo(string body, string id)
         {
             // verify the required parameter 'body' is set
@@ -820,7 +828,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling PublisherConfigResourceApi->UploadConfig");
 
-            var localVarPath = "/api/publishers/{id}";
+            var localVarPath = "/publishers/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

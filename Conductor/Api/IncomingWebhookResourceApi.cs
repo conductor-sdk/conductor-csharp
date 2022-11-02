@@ -310,6 +310,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> HandleWebhookAsync(string body, string id)
         {
             ApiResponse<string> localVarResponse = await HandleWebhookAsyncWithHttpInfo(body, id);
@@ -324,6 +325,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> HandleWebhookAsyncWithHttpInfo(string body, string id)
         {
             // verify the required parameter 'body' is set
@@ -471,6 +473,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="requestParams"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> HandleWebhook1Async(string id, Dictionary<string, string> requestParams)
         {
             ApiResponse<string> localVarResponse = await HandleWebhook1AsyncWithHttpInfo(id, requestParams);
@@ -485,6 +488,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <param name="requestParams"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> HandleWebhook1AsyncWithHttpInfo(string id, Dictionary<string, string> requestParams)
         {
             // verify the required parameter 'id' is set

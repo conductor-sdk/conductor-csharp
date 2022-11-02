@@ -593,7 +593,7 @@ namespace Conductor.Api
             if (userId == null)
                 throw new ApiException(400, "Missing required parameter 'userId' when calling GroupResourceApi->AddUserToGroup");
 
-            var localVarPath = "/api/groups/{groupId}/users/{userId}";
+            var localVarPath = "/groups/{groupId}/users/{userId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -647,6 +647,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> AddUserToGroupAsync(string groupId, string userId)
         {
             ApiResponse<Object> localVarResponse = await AddUserToGroupAsyncWithHttpInfo(groupId, userId);
@@ -661,6 +662,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> AddUserToGroupAsyncWithHttpInfo(string groupId, string userId)
         {
             // verify the required parameter 'groupId' is set
@@ -670,7 +672,7 @@ namespace Conductor.Api
             if (userId == null)
                 throw new ApiException(400, "Missing required parameter 'userId' when calling GroupResourceApi->AddUserToGroup");
 
-            var localVarPath = "/api/groups/{groupId}/users/{userId}";
+            var localVarPath = "/groups/{groupId}/users/{userId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -745,7 +747,7 @@ namespace Conductor.Api
             if (groupId == null)
                 throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->AddUsersToGroup");
 
-            var localVarPath = "/api/groups/{groupId}/users";
+            var localVarPath = "/groups/{groupId}/users";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -806,6 +808,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task AddUsersToGroupAsync(List<string> body, string groupId)
         {
             await AddUsersToGroupAsyncWithHttpInfo(body, groupId);
@@ -819,6 +822,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> AddUsersToGroupAsyncWithHttpInfo(List<string> body, string groupId)
         {
             // verify the required parameter 'body' is set
@@ -828,7 +832,7 @@ namespace Conductor.Api
             if (groupId == null)
                 throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->AddUsersToGroup");
 
-            var localVarPath = "/api/groups/{groupId}/users";
+            var localVarPath = "/groups/{groupId}/users";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -906,7 +910,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->DeleteGroup");
 
-            var localVarPath = "/api/groups/{id}";
+            var localVarPath = "/groups/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -958,6 +962,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Response</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Response> DeleteGroupAsync(string id)
         {
             ApiResponse<Response> localVarResponse = await DeleteGroupAsyncWithHttpInfo(id);
@@ -971,13 +976,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Response>> DeleteGroupAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->DeleteGroup");
 
-            var localVarPath = "/api/groups/{id}";
+            var localVarPath = "/groups/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1047,7 +1053,7 @@ namespace Conductor.Api
             if (groupId == null)
                 throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->GetGrantedPermissions1");
 
-            var localVarPath = "/api/groups/{groupId}/permissions";
+            var localVarPath = "/groups/{groupId}/permissions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1099,6 +1105,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetGrantedPermissions1Async(string groupId)
         {
             ApiResponse<Object> localVarResponse = await GetGrantedPermissions1AsyncWithHttpInfo(groupId);
@@ -1112,13 +1119,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissions1AsyncWithHttpInfo(string groupId)
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
                 throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->GetGrantedPermissions1");
 
-            var localVarPath = "/api/groups/{groupId}/permissions";
+            var localVarPath = "/groups/{groupId}/permissions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1188,7 +1196,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->GetGroup");
 
-            var localVarPath = "/api/groups/{id}";
+            var localVarPath = "/groups/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1240,6 +1248,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetGroupAsync(string id)
         {
             ApiResponse<Object> localVarResponse = await GetGroupAsyncWithHttpInfo(id);
@@ -1253,13 +1262,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGroupAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->GetGroup");
 
-            var localVarPath = "/api/groups/{id}";
+            var localVarPath = "/groups/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1329,7 +1339,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->GetUsersInGroup");
 
-            var localVarPath = "/api/groups/{id}/users";
+            var localVarPath = "/groups/{id}/users";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1381,6 +1391,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetUsersInGroupAsync(string id)
         {
             ApiResponse<Object> localVarResponse = await GetUsersInGroupAsyncWithHttpInfo(id);
@@ -1394,13 +1405,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUsersInGroupAsyncWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->GetUsersInGroup");
 
-            var localVarPath = "/api/groups/{id}/users";
+            var localVarPath = "/groups/{id}/users";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1465,7 +1477,7 @@ namespace Conductor.Api
         public ApiResponse<List<Group>> ListGroupsWithHttpInfo()
         {
 
-            var localVarPath = "/api/groups";
+            var localVarPath = "/groups";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1515,6 +1527,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Group&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<Group>> ListGroupsAsync()
         {
             ApiResponse<List<Group>> localVarResponse = await ListGroupsAsyncWithHttpInfo();
@@ -1527,10 +1540,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Group&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<Group>>> ListGroupsAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/groups";
+            var localVarPath = "/groups";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1604,7 +1618,7 @@ namespace Conductor.Api
             if (userId == null)
                 throw new ApiException(400, "Missing required parameter 'userId' when calling GroupResourceApi->RemoveUserFromGroup");
 
-            var localVarPath = "/api/groups/{groupId}/users/{userId}";
+            var localVarPath = "/groups/{groupId}/users/{userId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1658,6 +1672,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> RemoveUserFromGroupAsync(string groupId, string userId)
         {
             ApiResponse<Object> localVarResponse = await RemoveUserFromGroupAsyncWithHttpInfo(groupId, userId);
@@ -1672,6 +1687,7 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <param name="userId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveUserFromGroupAsyncWithHttpInfo(string groupId, string userId)
         {
             // verify the required parameter 'groupId' is set
@@ -1681,7 +1697,7 @@ namespace Conductor.Api
             if (userId == null)
                 throw new ApiException(400, "Missing required parameter 'userId' when calling GroupResourceApi->RemoveUserFromGroup");
 
-            var localVarPath = "/api/groups/{groupId}/users/{userId}";
+            var localVarPath = "/groups/{groupId}/users/{userId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1756,7 +1772,7 @@ namespace Conductor.Api
             if (groupId == null)
                 throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->RemoveUsersFromGroup");
 
-            var localVarPath = "/api/groups/{groupId}/users";
+            var localVarPath = "/groups/{groupId}/users";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1817,6 +1833,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task RemoveUsersFromGroupAsync(List<string> body, string groupId)
         {
             await RemoveUsersFromGroupAsyncWithHttpInfo(body, groupId);
@@ -1830,6 +1847,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveUsersFromGroupAsyncWithHttpInfo(List<string> body, string groupId)
         {
             // verify the required parameter 'body' is set
@@ -1839,7 +1857,7 @@ namespace Conductor.Api
             if (groupId == null)
                 throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->RemoveUsersFromGroup");
 
-            var localVarPath = "/api/groups/{groupId}/users";
+            var localVarPath = "/groups/{groupId}/users";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1922,7 +1940,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->UpsertGroup");
 
-            var localVarPath = "/api/groups/{id}";
+            var localVarPath = "/groups/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1984,6 +2002,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> UpsertGroupAsync(UpsertGroupRequest body, string id)
         {
             ApiResponse<Object> localVarResponse = await UpsertGroupAsyncWithHttpInfo(body, id);
@@ -1998,6 +2017,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UpsertGroupAsyncWithHttpInfo(UpsertGroupRequest body, string id)
         {
             // verify the required parameter 'body' is set
@@ -2007,7 +2027,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->UpsertGroup");
 
-            var localVarPath = "/api/groups/{id}";
+            var localVarPath = "/groups/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

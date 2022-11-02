@@ -268,7 +268,7 @@ namespace Conductor.Api
         public ApiResponse<int?> MigrateIndexWithHttpInfo()
         {
 
-            var localVarPath = "/api/admin/migrate_index";
+            var localVarPath = "/admin/migrate_index";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -318,6 +318,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of int?</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<int?> MigrateIndexAsync()
         {
             ApiResponse<int?> localVarResponse = await MigrateIndexAsyncWithHttpInfo();
@@ -330,10 +331,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (int?)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<int?>> MigrateIndexAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/admin/migrate_index";
+            var localVarPath = "/admin/migrate_index";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -396,7 +398,7 @@ namespace Conductor.Api
         public ApiResponse<Object> MigrateMetadataWithHttpInfo()
         {
 
-            var localVarPath = "/api/admin/migrate_metadata";
+            var localVarPath = "/admin/migrate_metadata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -445,6 +447,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task MigrateMetadataAsync()
         {
             await MigrateMetadataAsyncWithHttpInfo();
@@ -456,10 +459,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> MigrateMetadataAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/admin/migrate_metadata";
+            var localVarPath = "/admin/migrate_metadata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -532,7 +536,7 @@ namespace Conductor.Api
             if (startFromTimestamp == null)
                 throw new ApiException(400, "Missing required parameter 'startFromTimestamp' when calling MigrationResourceApi->MigrateWorkflows");
 
-            var localVarPath = "/api/admin/migrate_workflow";
+            var localVarPath = "/admin/migrate_workflow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -586,6 +590,7 @@ namespace Conductor.Api
         /// <param name="batchSize"></param>
         /// <param name="startFromTimestamp"></param>
         /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, Object>> MigrateWorkflowsAsync(int? batchSize, long? startFromTimestamp)
         {
             ApiResponse<Dictionary<string, Object>> localVarResponse = await MigrateWorkflowsAsyncWithHttpInfo(batchSize, startFromTimestamp);
@@ -600,6 +605,7 @@ namespace Conductor.Api
         /// <param name="batchSize"></param>
         /// <param name="startFromTimestamp"></param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> MigrateWorkflowsAsyncWithHttpInfo(int? batchSize, long? startFromTimestamp)
         {
             // verify the required parameter 'batchSize' is set
@@ -609,7 +615,7 @@ namespace Conductor.Api
             if (startFromTimestamp == null)
                 throw new ApiException(400, "Missing required parameter 'startFromTimestamp' when calling MigrationResourceApi->MigrateWorkflows");
 
-            var localVarPath = "/api/admin/migrate_workflow";
+            var localVarPath = "/admin/migrate_workflow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

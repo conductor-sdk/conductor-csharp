@@ -287,7 +287,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AuthorizationResourceApi->GetPermissions");
 
-            var localVarPath = "/api/auth/authorization/{type}/{id}";
+            var localVarPath = "/auth/authorization/{type}/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -341,6 +341,7 @@ namespace Conductor.Api
         /// <param name="type"></param>
         /// <param name="id"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetPermissionsAsync(string type, string id)
         {
             ApiResponse<Object> localVarResponse = await GetPermissionsAsyncWithHttpInfo(type, id);
@@ -355,6 +356,7 @@ namespace Conductor.Api
         /// <param name="type"></param>
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetPermissionsAsyncWithHttpInfo(string type, string id)
         {
             // verify the required parameter 'type' is set
@@ -364,7 +366,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AuthorizationResourceApi->GetPermissions");
 
-            var localVarPath = "/api/auth/authorization/{type}/{id}";
+            var localVarPath = "/auth/authorization/{type}/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -435,7 +437,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling AuthorizationResourceApi->GrantPermissions");
 
-            var localVarPath = "/api/auth/authorization";
+            var localVarPath = "/auth/authorization";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -495,6 +497,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Response</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Response> GrantPermissionsAsync(AuthorizationRequest body)
         {
             ApiResponse<Response> localVarResponse = await GrantPermissionsAsyncWithHttpInfo(body);
@@ -508,13 +511,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Response>> GrantPermissionsAsyncWithHttpInfo(AuthorizationRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling AuthorizationResourceApi->GrantPermissions");
 
-            var localVarPath = "/api/auth/authorization";
+            var localVarPath = "/auth/authorization";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -592,7 +596,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling AuthorizationResourceApi->RemovePermissions");
 
-            var localVarPath = "/api/auth/authorization";
+            var localVarPath = "/auth/authorization";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -652,6 +656,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Response</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Response> RemovePermissionsAsync(AuthorizationRequest body)
         {
             ApiResponse<Response> localVarResponse = await RemovePermissionsAsyncWithHttpInfo(body);
@@ -665,13 +670,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Response)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Response>> RemovePermissionsAsyncWithHttpInfo(AuthorizationRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling AuthorizationResourceApi->RemovePermissions");
 
-            var localVarPath = "/api/auth/authorization";
+            var localVarPath = "/auth/authorization";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

@@ -213,6 +213,14 @@ namespace Conductor.Client
             }
         }
 
+        public int ConcurrentWorkers { get; set; } = 1;
+        public int SleepInterval { get; set; } = 1_000;
+        public string Domain { get; set; } = null;
+
+        public string keyId { get; set; } = null;
+        public string keySecret { get; set; } = null;
+
+
         private String _basePath = null;
         /// <summary>
         /// Gets or sets the base path for API access.

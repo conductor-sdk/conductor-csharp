@@ -660,7 +660,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling MetadataResourceApi->Create");
 
-            var localVarPath = "/api/metadata/workflow";
+            var localVarPath = "/metadata/workflow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -722,6 +722,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to false)</param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> CreateAsync(WorkflowDef body, bool? overwrite = null)
         {
             ApiResponse<Object> localVarResponse = await CreateAsyncWithHttpInfo(body, overwrite);
@@ -736,13 +737,14 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateAsyncWithHttpInfo(WorkflowDef body, bool? overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling MetadataResourceApi->Create");
 
-            var localVarPath = "/api/metadata/workflow";
+            var localVarPath = "/metadata/workflow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -825,7 +827,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->Get");
 
-            var localVarPath = "/api/metadata/workflow/{name}";
+            var localVarPath = "/metadata/workflow/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -881,6 +883,7 @@ namespace Conductor.Api
         /// <param name="version"> (optional)</param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of WorkflowDef</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<WorkflowDef> GetAsync(string name, int? version = null, bool? metadata = null)
         {
             ApiResponse<WorkflowDef> localVarResponse = await GetAsyncWithHttpInfo(name, version, metadata);
@@ -896,13 +899,14 @@ namespace Conductor.Api
         /// <param name="version"> (optional)</param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (WorkflowDef)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<WorkflowDef>> GetAsyncWithHttpInfo(string name, int? version = null, bool? metadata = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling MetadataResourceApi->Get");
 
-            var localVarPath = "/api/metadata/workflow/{name}";
+            var localVarPath = "/metadata/workflow/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -977,7 +981,7 @@ namespace Conductor.Api
         public ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
 
-            var localVarPath = "/api/metadata/workflow";
+            var localVarPath = "/metadata/workflow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1035,6 +1039,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of List&lt;WorkflowDef&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<WorkflowDef>> GetAllWorkflowsAsync(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
             ApiResponse<List<WorkflowDef>> localVarResponse = await GetAllWorkflowsAsyncWithHttpInfo(access, metadata, tagKey, tagValue);
@@ -1051,10 +1056,11 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;WorkflowDef&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<WorkflowDef>>> GetAllWorkflowsAsyncWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
 
-            var localVarPath = "/api/metadata/workflow";
+            var localVarPath = "/metadata/workflow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1129,7 +1135,7 @@ namespace Conductor.Api
             if (tasktype == null)
                 throw new ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->GetTaskDef");
 
-            var localVarPath = "/api/metadata/taskdefs/{tasktype}";
+            var localVarPath = "/metadata/taskdefs/{tasktype}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1183,6 +1189,7 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> GetTaskDefAsync(string tasktype, bool? metadata = null)
         {
             ApiResponse<Object> localVarResponse = await GetTaskDefAsyncWithHttpInfo(tasktype, metadata);
@@ -1197,13 +1204,14 @@ namespace Conductor.Api
         /// <param name="tasktype"></param>
         /// <param name="metadata"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetTaskDefAsyncWithHttpInfo(string tasktype, bool? metadata = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
                 throw new ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->GetTaskDef");
 
-            var localVarPath = "/api/metadata/taskdefs/{tasktype}";
+            var localVarPath = "/metadata/taskdefs/{tasktype}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1277,7 +1285,7 @@ namespace Conductor.Api
         public ApiResponse<List<TaskDef>> GetTaskDefsWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
 
-            var localVarPath = "/api/metadata/taskdefs";
+            var localVarPath = "/metadata/taskdefs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1335,6 +1343,7 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of List&lt;TaskDef&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<TaskDef>> GetTaskDefsAsync(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
             ApiResponse<List<TaskDef>> localVarResponse = await GetTaskDefsAsyncWithHttpInfo(access, metadata, tagKey, tagValue);
@@ -1351,10 +1360,11 @@ namespace Conductor.Api
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;TaskDef&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<TaskDef>>> GetTaskDefsAsyncWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
         {
 
-            var localVarPath = "/api/metadata/taskdefs";
+            var localVarPath = "/metadata/taskdefs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1427,7 +1437,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling MetadataResourceApi->RegisterTaskDef");
 
-            var localVarPath = "/api/metadata/taskdefs";
+            var localVarPath = "/metadata/taskdefs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1487,6 +1497,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> RegisterTaskDefAsync(List<TaskDef> body)
         {
             ApiResponse<Object> localVarResponse = await RegisterTaskDefAsyncWithHttpInfo(body);
@@ -1500,13 +1511,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> RegisterTaskDefAsyncWithHttpInfo(List<TaskDef> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling MetadataResourceApi->RegisterTaskDef");
 
-            var localVarPath = "/api/metadata/taskdefs";
+            var localVarPath = "/metadata/taskdefs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1583,7 +1595,7 @@ namespace Conductor.Api
             if (tasktype == null)
                 throw new ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->UnregisterTaskDef");
 
-            var localVarPath = "/api/metadata/taskdefs/{tasktype}";
+            var localVarPath = "/metadata/taskdefs/{tasktype}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1634,6 +1646,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task UnregisterTaskDefAsync(string tasktype)
         {
             await UnregisterTaskDefAsyncWithHttpInfo(tasktype);
@@ -1646,13 +1659,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tasktype"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterTaskDefAsyncWithHttpInfo(string tasktype)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
                 throw new ApiException(400, "Missing required parameter 'tasktype' when calling MetadataResourceApi->UnregisterTaskDef");
 
-            var localVarPath = "/api/metadata/taskdefs/{tasktype}";
+            var localVarPath = "/metadata/taskdefs/{tasktype}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1725,7 +1739,7 @@ namespace Conductor.Api
             if (version == null)
                 throw new ApiException(400, "Missing required parameter 'version' when calling MetadataResourceApi->UnregisterWorkflowDef");
 
-            var localVarPath = "/api/metadata/workflow/{name}/{version}";
+            var localVarPath = "/metadata/workflow/{name}/{version}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1778,6 +1792,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task UnregisterWorkflowDefAsync(string name, int? version)
         {
             await UnregisterWorkflowDefAsyncWithHttpInfo(name, version);
@@ -1791,6 +1806,7 @@ namespace Conductor.Api
         /// <param name="name"></param>
         /// <param name="version"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UnregisterWorkflowDefAsyncWithHttpInfo(string name, int? version)
         {
             // verify the required parameter 'name' is set
@@ -1800,7 +1816,7 @@ namespace Conductor.Api
             if (version == null)
                 throw new ApiException(400, "Missing required parameter 'version' when calling MetadataResourceApi->UnregisterWorkflowDef");
 
-            var localVarPath = "/api/metadata/workflow/{name}/{version}";
+            var localVarPath = "/metadata/workflow/{name}/{version}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1872,7 +1888,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling MetadataResourceApi->Update");
 
-            var localVarPath = "/api/metadata/workflow";
+            var localVarPath = "/metadata/workflow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1934,6 +1950,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> UpdateAsync(List<WorkflowDef> body, bool? overwrite = null)
         {
             ApiResponse<Object> localVarResponse = await UpdateAsyncWithHttpInfo(body, overwrite);
@@ -1948,13 +1965,14 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAsyncWithHttpInfo(List<WorkflowDef> body, bool? overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling MetadataResourceApi->Update");
 
-            var localVarPath = "/api/metadata/workflow";
+            var localVarPath = "/metadata/workflow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2033,7 +2051,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling MetadataResourceApi->UpdateTaskDef");
 
-            var localVarPath = "/api/metadata/taskdefs";
+            var localVarPath = "/metadata/taskdefs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2093,6 +2111,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> UpdateTaskDefAsync(TaskDef body)
         {
             ApiResponse<Object> localVarResponse = await UpdateTaskDefAsyncWithHttpInfo(body);
@@ -2106,13 +2125,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateTaskDefAsyncWithHttpInfo(TaskDef body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling MetadataResourceApi->UpdateTaskDef");
 
-            var localVarPath = "/api/metadata/taskdefs";
+            var localVarPath = "/metadata/taskdefs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2185,7 +2205,7 @@ namespace Conductor.Api
         public ApiResponse<Object> UploadWorkflowsAndTasksDefinitionsToS3WithHttpInfo()
         {
 
-            var localVarPath = "/api/metadata/workflow-task-defs/upload";
+            var localVarPath = "/metadata/workflow-task-defs/upload";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2235,6 +2255,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> UploadWorkflowsAndTasksDefinitionsToS3Async()
         {
             ApiResponse<Object> localVarResponse = await UploadWorkflowsAndTasksDefinitionsToS3AsyncWithHttpInfo();
@@ -2247,10 +2268,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadWorkflowsAndTasksDefinitionsToS3AsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/metadata/workflow-task-defs/upload";
+            var localVarPath = "/metadata/workflow-task-defs/upload";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

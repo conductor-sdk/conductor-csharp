@@ -555,7 +555,7 @@ namespace Conductor.Api
             if (taskName == null)
                 throw new ApiException(400, "Missing required parameter 'taskName' when calling TagsApi->AddTaskTag");
 
-            var localVarPath = "/api/metadata/task/{taskName}/tags";
+            var localVarPath = "/metadata/task/{taskName}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -617,6 +617,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskName"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> AddTaskTagAsync(TagObject body, string taskName)
         {
             ApiResponse<Object> localVarResponse = await AddTaskTagAsyncWithHttpInfo(body, taskName);
@@ -631,6 +632,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskName"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> AddTaskTagAsyncWithHttpInfo(TagObject body, string taskName)
         {
             // verify the required parameter 'body' is set
@@ -640,7 +642,7 @@ namespace Conductor.Api
             if (taskName == null)
                 throw new ApiException(400, "Missing required parameter 'taskName' when calling TagsApi->AddTaskTag");
 
-            var localVarPath = "/api/metadata/task/{taskName}/tags";
+            var localVarPath = "/metadata/task/{taskName}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -724,7 +726,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling TagsApi->AddWorkflowTag");
 
-            var localVarPath = "/api/metadata/workflow/{name}/tags";
+            var localVarPath = "/metadata/workflow/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -786,6 +788,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> AddWorkflowTagAsync(TagObject body, string name)
         {
             ApiResponse<Object> localVarResponse = await AddWorkflowTagAsyncWithHttpInfo(body, name);
@@ -800,6 +803,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> AddWorkflowTagAsyncWithHttpInfo(TagObject body, string name)
         {
             // verify the required parameter 'body' is set
@@ -809,7 +813,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling TagsApi->AddWorkflowTag");
 
-            var localVarPath = "/api/metadata/workflow/{name}/tags";
+            var localVarPath = "/metadata/workflow/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -893,7 +897,7 @@ namespace Conductor.Api
             if (taskName == null)
                 throw new ApiException(400, "Missing required parameter 'taskName' when calling TagsApi->DeleteTaskTag");
 
-            var localVarPath = "/api/metadata/task/{taskName}/tags";
+            var localVarPath = "/metadata/task/{taskName}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -955,6 +959,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskName"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> DeleteTaskTagAsync(TagString body, string taskName)
         {
             ApiResponse<Object> localVarResponse = await DeleteTaskTagAsyncWithHttpInfo(body, taskName);
@@ -969,6 +974,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskName"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTaskTagAsyncWithHttpInfo(TagString body, string taskName)
         {
             // verify the required parameter 'body' is set
@@ -978,7 +984,7 @@ namespace Conductor.Api
             if (taskName == null)
                 throw new ApiException(400, "Missing required parameter 'taskName' when calling TagsApi->DeleteTaskTag");
 
-            var localVarPath = "/api/metadata/task/{taskName}/tags";
+            var localVarPath = "/metadata/task/{taskName}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1062,7 +1068,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling TagsApi->DeleteWorkflowTag");
 
-            var localVarPath = "/api/metadata/workflow/{name}/tags";
+            var localVarPath = "/metadata/workflow/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1124,6 +1130,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> DeleteWorkflowTagAsync(TagObject body, string name)
         {
             ApiResponse<Object> localVarResponse = await DeleteWorkflowTagAsyncWithHttpInfo(body, name);
@@ -1138,6 +1145,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWorkflowTagAsyncWithHttpInfo(TagObject body, string name)
         {
             // verify the required parameter 'body' is set
@@ -1147,7 +1155,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling TagsApi->DeleteWorkflowTag");
 
-            var localVarPath = "/api/metadata/workflow/{name}/tags";
+            var localVarPath = "/metadata/workflow/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1221,7 +1229,7 @@ namespace Conductor.Api
         public ApiResponse<List<TagObject>> GetTags1WithHttpInfo()
         {
 
-            var localVarPath = "/api/metadata/tags";
+            var localVarPath = "/metadata/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1271,6 +1279,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<TagObject>> GetTags1Async()
         {
             ApiResponse<List<TagObject>> localVarResponse = await GetTags1AsyncWithHttpInfo();
@@ -1283,10 +1292,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTags1AsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/metadata/tags";
+            var localVarPath = "/metadata/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1355,7 +1365,7 @@ namespace Conductor.Api
             if (taskName == null)
                 throw new ApiException(400, "Missing required parameter 'taskName' when calling TagsApi->GetTaskTags");
 
-            var localVarPath = "/api/metadata/task/{taskName}/tags";
+            var localVarPath = "/metadata/task/{taskName}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1407,6 +1417,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskName"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<TagObject>> GetTaskTagsAsync(string taskName)
         {
             ApiResponse<List<TagObject>> localVarResponse = await GetTaskTagsAsyncWithHttpInfo(taskName);
@@ -1420,13 +1431,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskName"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTaskTagsAsyncWithHttpInfo(string taskName)
         {
             // verify the required parameter 'taskName' is set
             if (taskName == null)
                 throw new ApiException(400, "Missing required parameter 'taskName' when calling TagsApi->GetTaskTags");
 
-            var localVarPath = "/api/metadata/task/{taskName}/tags";
+            var localVarPath = "/metadata/task/{taskName}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1496,7 +1508,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling TagsApi->GetWorkflowTags");
 
-            var localVarPath = "/api/metadata/workflow/{name}/tags";
+            var localVarPath = "/metadata/workflow/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1548,6 +1560,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<TagObject>> GetWorkflowTagsAsync(string name)
         {
             ApiResponse<List<TagObject>> localVarResponse = await GetWorkflowTagsAsyncWithHttpInfo(name);
@@ -1561,13 +1574,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetWorkflowTagsAsyncWithHttpInfo(string name)
         {
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling TagsApi->GetWorkflowTags");
 
-            var localVarPath = "/api/metadata/workflow/{name}/tags";
+            var localVarPath = "/metadata/workflow/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1642,7 +1656,7 @@ namespace Conductor.Api
             if (taskName == null)
                 throw new ApiException(400, "Missing required parameter 'taskName' when calling TagsApi->SetTaskTags");
 
-            var localVarPath = "/api/metadata/task/{taskName}/tags";
+            var localVarPath = "/metadata/task/{taskName}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1704,6 +1718,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskName"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> SetTaskTagsAsync(List<TagObject> body, string taskName)
         {
             ApiResponse<Object> localVarResponse = await SetTaskTagsAsyncWithHttpInfo(body, taskName);
@@ -1718,6 +1733,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskName"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> SetTaskTagsAsyncWithHttpInfo(List<TagObject> body, string taskName)
         {
             // verify the required parameter 'body' is set
@@ -1727,7 +1743,7 @@ namespace Conductor.Api
             if (taskName == null)
                 throw new ApiException(400, "Missing required parameter 'taskName' when calling TagsApi->SetTaskTags");
 
-            var localVarPath = "/api/metadata/task/{taskName}/tags";
+            var localVarPath = "/metadata/task/{taskName}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1811,7 +1827,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling TagsApi->SetWorkflowTags");
 
-            var localVarPath = "/api/metadata/workflow/{name}/tags";
+            var localVarPath = "/metadata/workflow/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1873,6 +1889,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="name"></param>
         /// <returns>Task of Object</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Object> SetWorkflowTagsAsync(List<TagObject> body, string name)
         {
             ApiResponse<Object> localVarResponse = await SetWorkflowTagsAsyncWithHttpInfo(body, name);
@@ -1887,6 +1904,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="name"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> SetWorkflowTagsAsyncWithHttpInfo(List<TagObject> body, string name)
         {
             // verify the required parameter 'body' is set
@@ -1896,7 +1914,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling TagsApi->SetWorkflowTags");
 
-            var localVarPath = "/api/metadata/workflow/{name}/tags";
+            var localVarPath = "/metadata/workflow/{name}/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

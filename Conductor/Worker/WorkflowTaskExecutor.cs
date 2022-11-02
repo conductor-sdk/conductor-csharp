@@ -1,6 +1,7 @@
 ﻿using Conductor.Exceptions;
 using Conductor.Extensions;
 using Conductor.Interfaces;
+using Conductor.Client;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;

@@ -24,7 +24,7 @@ namespace Conductor.Definition
                 tasks: GetWorkflowTasks()
             );
             workflowDef.Description = _description;
-            workflowDef._Version = _version;
+            workflowDef.Version = _version;
             workflowDef.FailureWorkflow = _failureWorkflow;
             workflowDef.OwnerEmail = _ownerEmail;
             workflowDef.TimeoutPolicy = _timeoutPolicy;

@@ -887,7 +887,7 @@ namespace Conductor.Api
         public ApiResponse<Dictionary<string, long?>> AllWithHttpInfo()
         {
 
-            var localVarPath = "/api/tasks/queue/all";
+            var localVarPath = "/tasks/queue/all";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -937,6 +937,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, long?&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, long?>> AllAsync()
         {
             ApiResponse<Dictionary<string, long?>> localVarResponse = await AllAsyncWithHttpInfo();
@@ -949,10 +950,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, long?&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, long?>>> AllAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/tasks/queue/all";
+            var localVarPath = "/tasks/queue/all";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1016,7 +1018,7 @@ namespace Conductor.Api
         public ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> AllVerboseWithHttpInfo()
         {
 
-            var localVarPath = "/api/tasks/queue/all/verbose";
+            var localVarPath = "/tasks/queue/all/verbose";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1066,6 +1068,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> AllVerboseAsync()
         {
             ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>> localVarResponse = await AllVerboseAsyncWithHttpInfo();
@@ -1078,10 +1081,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, Dictionary<string, long?>>>>> AllVerboseAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/tasks/queue/all/verbose";
+            var localVarPath = "/tasks/queue/all/verbose";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1158,7 +1162,7 @@ namespace Conductor.Api
             if (tasktype == null)
                 throw new ApiException(400, "Missing required parameter 'tasktype' when calling TaskResourceApi->BatchPoll");
 
-            var localVarPath = "/api/tasks/poll/batch/{tasktype}";
+            var localVarPath = "/tasks/poll/batch/{tasktype}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1218,6 +1222,7 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>Task of List&lt;Task&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<Task>> BatchPollAsync(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
         {
             ApiResponse<List<Task>> localVarResponse = await BatchPollAsyncWithHttpInfo(tasktype, workerid, domain, count, timeout);
@@ -1235,13 +1240,14 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>Task of ApiResponse (List&lt;Task&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<Task>>> BatchPollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
                 throw new ApiException(400, "Missing required parameter 'tasktype' when calling TaskResourceApi->BatchPoll");
 
-            var localVarPath = "/api/tasks/poll/batch/{tasktype}";
+            var localVarPath = "/tasks/poll/batch/{tasktype}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1310,7 +1316,7 @@ namespace Conductor.Api
         public ApiResponse<List<PollData>> GetAllPollDataWithHttpInfo()
         {
 
-            var localVarPath = "/api/tasks/queue/polldata/all";
+            var localVarPath = "/tasks/queue/polldata/all";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1360,6 +1366,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;PollData&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<PollData>> GetAllPollDataAsync()
         {
             ApiResponse<List<PollData>> localVarResponse = await GetAllPollDataAsyncWithHttpInfo();
@@ -1372,10 +1379,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;PollData&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetAllPollDataAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/tasks/queue/polldata/all";
+            var localVarPath = "/tasks/queue/polldata/all";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1454,7 +1462,7 @@ namespace Conductor.Api
             if (payloadType == null)
                 throw new ApiException(400, "Missing required parameter 'payloadType' when calling TaskResourceApi->GetExternalStorageLocation1");
 
-            var localVarPath = "/api/tasks/externalstoragelocation";
+            var localVarPath = "/tasks/externalstoragelocation";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1510,6 +1518,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ExternalStorageLocation</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocation1Async(string path, string operation, string payloadType)
         {
             ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocation1AsyncWithHttpInfo(path, operation, payloadType);
@@ -1525,6 +1534,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1AsyncWithHttpInfo(string path, string operation, string payloadType)
         {
             // verify the required parameter 'path' is set
@@ -1537,7 +1547,7 @@ namespace Conductor.Api
             if (payloadType == null)
                 throw new ApiException(400, "Missing required parameter 'payloadType' when calling TaskResourceApi->GetExternalStorageLocation1");
 
-            var localVarPath = "/api/tasks/externalstoragelocation";
+            var localVarPath = "/tasks/externalstoragelocation";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1609,7 +1619,7 @@ namespace Conductor.Api
             if (taskType == null)
                 throw new ApiException(400, "Missing required parameter 'taskType' when calling TaskResourceApi->GetPollData");
 
-            var localVarPath = "/api/tasks/queue/polldata";
+            var localVarPath = "/tasks/queue/polldata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1661,6 +1671,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of List&lt;PollData&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<PollData>> GetPollDataAsync(string taskType)
         {
             ApiResponse<List<PollData>> localVarResponse = await GetPollDataAsyncWithHttpInfo(taskType);
@@ -1674,13 +1685,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of ApiResponse (List&lt;PollData&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<PollData>>> GetPollDataAsyncWithHttpInfo(string taskType)
         {
             // verify the required parameter 'taskType' is set
             if (taskType == null)
                 throw new ApiException(400, "Missing required parameter 'taskType' when calling TaskResourceApi->GetPollData");
 
-            var localVarPath = "/api/tasks/queue/polldata";
+            var localVarPath = "/tasks/queue/polldata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1750,7 +1762,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling TaskResourceApi->GetTask");
 
-            var localVarPath = "/api/tasks/{taskId}";
+            var localVarPath = "/tasks/{taskId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1802,6 +1814,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of Task</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Task> GetTaskAsync(string taskId)
         {
             ApiResponse<Task> localVarResponse = await GetTaskAsyncWithHttpInfo(taskId);
@@ -1815,13 +1828,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of ApiResponse (Task)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Task>> GetTaskAsyncWithHttpInfo(string taskId)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling TaskResourceApi->GetTask");
 
-            var localVarPath = "/api/tasks/{taskId}";
+            var localVarPath = "/tasks/{taskId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1891,7 +1905,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling TaskResourceApi->GetTaskLogs");
 
-            var localVarPath = "/api/tasks/{taskId}/log";
+            var localVarPath = "/tasks/{taskId}/log";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1943,6 +1957,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of List&lt;TaskExecLog&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<TaskExecLog>> GetTaskLogsAsync(string taskId)
         {
             ApiResponse<List<TaskExecLog>> localVarResponse = await GetTaskLogsAsyncWithHttpInfo(taskId);
@@ -1956,13 +1971,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of ApiResponse (List&lt;TaskExecLog&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<List<TaskExecLog>>> GetTaskLogsAsyncWithHttpInfo(string taskId)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling TaskResourceApi->GetTaskLogs");
 
-            var localVarPath = "/api/tasks/{taskId}/log";
+            var localVarPath = "/tasks/{taskId}/log";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2036,7 +2052,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling TaskResourceApi->Log");
 
-            var localVarPath = "/api/tasks/{taskId}/log";
+            var localVarPath = "/tasks/{taskId}/log";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2097,6 +2113,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskId"></param>
         /// <returns>Task of void</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task LogAsync(string body, string taskId)
         {
             await LogAsyncWithHttpInfo(body, taskId);
@@ -2110,6 +2127,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="taskId"></param>
         /// <returns>Task of ApiResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Object>> LogAsyncWithHttpInfo(string body, string taskId)
         {
             // verify the required parameter 'body' is set
@@ -2119,7 +2137,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling TaskResourceApi->Log");
 
-            var localVarPath = "/api/tasks/{taskId}/log";
+            var localVarPath = "/tasks/{taskId}/log";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2201,7 +2219,7 @@ namespace Conductor.Api
             if (tasktype == null)
                 throw new ApiException(400, "Missing required parameter 'tasktype' when calling TaskResourceApi->Poll");
 
-            var localVarPath = "/api/tasks/poll/{tasktype}";
+            var localVarPath = "/tasks/poll/{tasktype}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2257,6 +2275,7 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>Task of Task</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Task> PollAsync(string tasktype, string workerid = null, string domain = null)
         {
             ApiResponse<Task> localVarResponse = await PollAsyncWithHttpInfo(tasktype, workerid, domain);
@@ -2272,13 +2291,14 @@ namespace Conductor.Api
         /// <param name="workerid"> (optional)</param>
         /// <param name="domain"> (optional)</param>
         /// <returns>Task of ApiResponse (Task)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Task>> PollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null)
         {
             // verify the required parameter 'tasktype' is set
             if (tasktype == null)
                 throw new ApiException(400, "Missing required parameter 'tasktype' when calling TaskResourceApi->Poll");
 
-            var localVarPath = "/api/tasks/poll/{tasktype}";
+            var localVarPath = "/tasks/poll/{tasktype}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2350,7 +2370,7 @@ namespace Conductor.Api
             if (taskType == null)
                 throw new ApiException(400, "Missing required parameter 'taskType' when calling TaskResourceApi->RequeuePendingTask");
 
-            var localVarPath = "/api/tasks/queue/requeue/{taskType}";
+            var localVarPath = "/tasks/queue/requeue/{taskType}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2402,6 +2422,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> RequeuePendingTaskAsync(string taskType)
         {
             ApiResponse<string> localVarResponse = await RequeuePendingTaskAsyncWithHttpInfo(taskType);
@@ -2415,13 +2436,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> RequeuePendingTaskAsyncWithHttpInfo(string taskType)
         {
             // verify the required parameter 'taskType' is set
             if (taskType == null)
                 throw new ApiException(400, "Missing required parameter 'taskType' when calling TaskResourceApi->RequeuePendingTask");
 
-            var localVarPath = "/api/tasks/queue/requeue/{taskType}";
+            var localVarPath = "/tasks/queue/requeue/{taskType}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2496,7 +2518,7 @@ namespace Conductor.Api
         public ApiResponse<SearchResultTaskSummary> Search1WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/tasks/search";
+            var localVarPath = "/tasks/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2556,6 +2578,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultTaskSummary</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<SearchResultTaskSummary> Search1Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
             ApiResponse<SearchResultTaskSummary> localVarResponse = await Search1AsyncWithHttpInfo(start, size, sort, freeText, query);
@@ -2573,10 +2596,11 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTaskSummary)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> Search1AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/tasks/search";
+            var localVarPath = "/tasks/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2655,7 +2679,7 @@ namespace Conductor.Api
         public ApiResponse<SearchResultTask> SearchV21WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/tasks/search-v2";
+            var localVarPath = "/tasks/search-v2";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2715,6 +2739,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultTask</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<SearchResultTask> SearchV21Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
             ApiResponse<SearchResultTask> localVarResponse = await SearchV21AsyncWithHttpInfo(start, size, sort, freeText, query);
@@ -2732,10 +2757,11 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTask)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<SearchResultTask>> SearchV21AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
-            var localVarPath = "/api/tasks/search-v2";
+            var localVarPath = "/tasks/search-v2";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2806,7 +2832,7 @@ namespace Conductor.Api
         public ApiResponse<Dictionary<string, int?>> SizeWithHttpInfo(List<string> taskType = null)
         {
 
-            var localVarPath = "/api/tasks/queue/sizes";
+            var localVarPath = "/tasks/queue/sizes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2858,6 +2884,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>Task of Dictionary&lt;string, int?&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, int?>> SizeAsync(List<string> taskType = null)
         {
             ApiResponse<Dictionary<string, int?>> localVarResponse = await SizeAsyncWithHttpInfo(taskType);
@@ -2871,10 +2898,11 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskType"> (optional)</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, int?&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, int?>>> SizeAsyncWithHttpInfo(List<string> taskType = null)
         {
 
-            var localVarPath = "/api/tasks/queue/sizes";
+            var localVarPath = "/tasks/queue/sizes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2944,7 +2972,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling TaskResourceApi->UpdateTask");
 
-            var localVarPath = "/api/tasks";
+            var localVarPath = "/tasks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3004,6 +3032,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> UpdateTaskAsync(TaskResult body)
         {
             ApiResponse<string> localVarResponse = await UpdateTaskAsyncWithHttpInfo(body);
@@ -3017,13 +3046,14 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo(TaskResult body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling TaskResourceApi->UpdateTask");
 
-            var localVarPath = "/api/tasks";
+            var localVarPath = "/tasks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3116,7 +3146,7 @@ namespace Conductor.Api
             if (status == null)
                 throw new ApiException(400, "Missing required parameter 'status' when calling TaskResourceApi->UpdateTask1");
 
-            var localVarPath = "/api/tasks/{workflowId}/{taskRefName}/{status}";
+            var localVarPath = "/tasks/{workflowId}/{taskRefName}/{status}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3182,6 +3212,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>Task of string</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<string> UpdateTask1Async(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
         {
             ApiResponse<string> localVarResponse = await UpdateTask1AsyncWithHttpInfo(body, workflowId, taskRefName, status);
@@ -3198,6 +3229,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTask1AsyncWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
         {
             // verify the required parameter 'body' is set
@@ -3213,7 +3245,7 @@ namespace Conductor.Api
             if (status == null)
                 throw new ApiException(400, "Missing required parameter 'status' when calling TaskResourceApi->UpdateTask1");
 
-            var localVarPath = "/api/tasks/{workflowId}/{taskRefName}/{status}";
+            var localVarPath = "/tasks/{workflowId}/{taskRefName}/{status}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

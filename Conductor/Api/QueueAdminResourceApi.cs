@@ -222,7 +222,7 @@ namespace Conductor.Api
         public ApiResponse<Dictionary<string, string>> NamesWithHttpInfo()
         {
 
-            var localVarPath = "/api/queue/";
+            var localVarPath = "/queue/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -272,6 +272,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, string>> NamesAsync()
         {
             ApiResponse<Dictionary<string, string>> localVarResponse = await NamesAsyncWithHttpInfo();
@@ -284,10 +285,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> NamesAsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/queue/";
+            var localVarPath = "/queue/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -351,7 +353,7 @@ namespace Conductor.Api
         public ApiResponse<Dictionary<string, Dictionary<string, long?>>> Size1WithHttpInfo()
         {
 
-            var localVarPath = "/api/queue/size";
+            var localVarPath = "/queue/size";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -401,6 +403,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Dictionary<string, Dictionary<string, long?>>> Size1Async()
         {
             ApiResponse<Dictionary<string, Dictionary<string, long?>>> localVarResponse = await Size1AsyncWithHttpInfo();
@@ -413,10 +416,11 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, Dictionary&lt;string, long?&gt;&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Dictionary<string, long?>>>> Size1AsyncWithHttpInfo()
         {
 
-            var localVarPath = "/api/queue/size";
+            var localVarPath = "/queue/size";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
