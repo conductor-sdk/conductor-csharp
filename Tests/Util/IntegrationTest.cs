@@ -1,18 +1,14 @@
-using Conductor.Authentication;
-using Conductor.Api;
+using Conductor.Executor;
 
 namespace Tests.Util
 {
     public abstract class IntegrationTest
     {
-        private static OrkesApiClient _orkesApiClient;
-
-        protected static MetadataResourceApi _metadataClient;
+        protected static WorkflowExecutor _workflowExecutor;
 
         static IntegrationTest()
         {
-            _orkesApiClient = ApiUtil.GetApiClient();
-            _metadataClient = (MetadataResourceApi)_orkesApiClient.GetMetadataClient();
+            _workflowExecutor = ApiUtil.GetWorkflowExecutor();
         }
     }
 }

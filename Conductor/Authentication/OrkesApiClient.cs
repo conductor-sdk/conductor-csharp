@@ -25,15 +25,17 @@ namespace Conductor.Authentication
             _authenticationSettings = authenticationSettings;
             _configuration = configuration;
             _tokenClient = new TokenResourceApi(_configuration);
-            SetAuthenticationHeader();
+            RefreshAuthenticationHeader();
         }
 
-        public IMetadataResourceApi GetMetadataClient()
+        public T GetClient<T>() where T : IApiAccessor, new()
         {
-            return new MetadataResourceApi(_configuration);
+            T client = new T();
+            client.Configuration = _configuration;
+            return client;
         }
 
-        private void SetAuthenticationHeader()
+        public void RefreshAuthenticationHeader()
         {
             _configuration.ApiKey[AUTHORIZATION_HEADER] = GetToken();
         }

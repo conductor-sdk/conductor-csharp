@@ -1,8 +1,10 @@
-namespace Conductor.Definition.TaskType.SimpleTask
+using Conductor.Models;
+
+namespace Conductor.Definition.TaskType
 {
     public class SimpleTask : Task
     {
-        public SimpleTask(string taskName, string taskReferenceName) : base(taskReferenceName, Models.WorkflowTask.WorkflowTaskTypeEnum.SIMPLE.ToString())
+        public SimpleTask(string taskName, string taskReferenceName) : base(taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum.SIMPLE)
         {
             Name(taskName);
         }

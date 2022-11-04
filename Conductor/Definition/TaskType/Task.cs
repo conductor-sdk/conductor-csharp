@@ -1,13 +1,13 @@
+using Conductor.Models;
 using System.Collections.Generic;
 
 namespace Conductor.Definition.TaskType
 {
     public abstract class Task
     {
-        protected Models.TaskDef _taskDef;
         protected string _name { get; set; }
 
-        protected string _taskType { get; set; }
+        protected WorkflowTask.WorkflowTaskTypeEnum _taskType { get; set; }
 
         protected string _description { get; set; }
 
@@ -17,25 +17,27 @@ namespace Conductor.Definition.TaskType
 
         protected int _startDelay { get; set; }
 
-        protected Models.WorkflowTask.WorkflowTaskTypeEnum _workflowTaskType { get; set; }
-
         protected Dictionary<string, object> _input { get; set; }
 
-        public Task(string taskReferenceName, string taskType)
+        public Task(string taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum taskType)
         {
             _name = taskReferenceName;
             _taskReferenceName = taskReferenceName;
             _taskType = taskType;
+            _input = new Dictionary<string, object>();
         }
 
-        public Models.WorkflowTask ToWorkflowTask()
+        public WorkflowTask ToWorkflowTask()
         {
-            Models.WorkflowTask workflowTask = default(Models.WorkflowTask);
-            workflowTask.Name = _name;
-            workflowTask.TaskReferenceName = _taskReferenceName;
-            workflowTask.Type = _taskType;
-            workflowTask.InputParameters = _input;
-            return workflowTask;
+            return new WorkflowTask(
+                name: _name,
+                description: _description,
+                taskReferenceName: _taskReferenceName,
+                optional: _optional,
+                startDelay: _startDelay,
+                type: _taskType.ToString(),
+                inputParameters: _input
+            );
         }
 
         public Task Name(string name)

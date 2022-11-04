@@ -1,26 +1,25 @@
 using System.Collections.Generic;
+using Conductor.Definition;
+using Conductor.Api;
 
 namespace Conductor.Executor
 {
     public class WorkflowExecutor
     {
-        private Api.TaskResourceApi _taskClient;
-        private Api.WorkflowResourceApi _workflowClient;
-        private Api.MetadataResourceApi _metadataClient;
+        private WorkflowResourceApi _workflowClient;
+        private MetadataResourceApi _metadataClient;
 
         public WorkflowExecutor
         (
-            Api.TaskResourceApi taskClient,
-            Api.WorkflowResourceApi workflowClient,
-            Api.MetadataResourceApi metadataClient
+            WorkflowResourceApi workflowClient,
+            MetadataResourceApi metadataClient
         )
         {
-            _taskClient = taskClient;
             _workflowClient = workflowClient;
             _metadataClient = metadataClient;
         }
 
-        public void RegisterWorkflow(Conductor.Definition.ConductorWorkflow conductorWorkflow, bool overwrite)
+        public void RegisterWorkflow(ConductorWorkflow conductorWorkflow, bool overwrite)
         {
             Models.WorkflowDef workflowDef = conductorWorkflow.ToWorkflowDef();
             if (overwrite)
@@ -36,7 +35,7 @@ namespace Conductor.Executor
             }
         }
 
-        public string StartWorkflow(Conductor.Definition.ConductorWorkflow conductorWorkflow)
+        public string StartWorkflow(ConductorWorkflow conductorWorkflow)
         {
             return _workflowClient.StartWorkflow
             (

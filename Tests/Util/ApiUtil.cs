@@ -1,5 +1,7 @@
+using Conductor.Api;
 using Conductor.Authentication;
 using Conductor.Client;
+using Conductor.Executor;
 using System;
 using System.Diagnostics;
 
@@ -23,7 +25,16 @@ namespace Tests.Util
             _keySecret = GetEnvironmentVariable(ENV_SECRET);
         }
 
-        public static OrkesApiClient GetApiClient()
+        public static WorkflowExecutor GetWorkflowExecutor()
+        {
+            OrkesApiClient apiClient = GetApiClient();
+            return new WorkflowExecutor(
+                workflowClient: apiClient.GetClient<WorkflowResourceApi>(),
+                metadataClient: apiClient.GetClient<MetadataResourceApi>()
+            );
+        }
+
+        private static OrkesApiClient GetApiClient()
         {
             Configuration configuration = new Configuration();
             configuration.BasePath = _basePath;

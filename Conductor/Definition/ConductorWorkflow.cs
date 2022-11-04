@@ -13,26 +13,33 @@ namespace Conductor.Definition
         private Models.WorkflowDef.TimeoutPolicyEnum _timeoutPolicy { get; set; }
         private Dictionary<string, object> _workflowOutput { get; set; }
         private long _timeoutSeconds { get; set; }
-        private bool _restartable { get; set; }
+        private bool _restartable { get; set; } = true;
         private Dictionary<string, object> _variables { get; set; }
         private List<Definition.TaskType.Task> _tasks { get; set; }
 
+        public ConductorWorkflow()
+        {
+            _workflowOutput = new Dictionary<string, object>();
+            _restartable = false;
+            _tasks = new List<TaskType.Task>();
+            _timeoutSeconds = 0;
+        }
+
         public WorkflowDef ToWorkflowDef()
         {
-            WorkflowDef workflowDef = new WorkflowDef(
+            return new WorkflowDef(
                 name: _name,
-                tasks: GetWorkflowTasks()
+                tasks: GetWorkflowTasks(),
+                description: _description,
+                version: _version,
+                failureWorkflow: _failureWorkflow,
+                ownerEmail: _ownerEmail,
+                timeoutPolicy: _timeoutPolicy,
+                timeoutSeconds: _timeoutSeconds,
+                restartable: _restartable,
+                outputParameters: _workflowOutput,
+                variables: _variables
             );
-            workflowDef.Description = _description;
-            workflowDef.Version = _version;
-            workflowDef.FailureWorkflow = _failureWorkflow;
-            workflowDef.OwnerEmail = _ownerEmail;
-            workflowDef.TimeoutPolicy = _timeoutPolicy;
-            workflowDef.TimeoutSeconds = _timeoutSeconds;
-            workflowDef.Restartable = _restartable;
-            workflowDef.OutputParameters = _workflowOutput;
-            workflowDef.Variables = _variables;
-            return workflowDef;
         }
 
         public ConductorWorkflow WithName(string name)
@@ -78,9 +85,9 @@ namespace Conductor.Definition
             return this;
         }
 
-        public ConductorWorkflow WithOutputParameters(Dictionary<string, object> workflowOutput)
+        public ConductorWorkflow WithOutputParameter(string key, object value)
         {
-            _workflowOutput = workflowOutput;
+            _workflowOutput.Add(key, value);
             return this;
         }
 
@@ -100,10 +107,10 @@ namespace Conductor.Definition
 
         private List<WorkflowTask> GetWorkflowTasks()
         {
-            List<WorkflowTask> workflowTasks = new List<WorkflowTask>(_tasks.Count);
+            List<WorkflowTask> workflowTasks = new List<WorkflowTask>();
             for (int i = 0; i < _tasks.Count; i += 1)
             {
-                workflowTasks[i] = _tasks[i].ToWorkflowTask();
+                workflowTasks.Add(_tasks[i].ToWorkflowTask());
             }
             return workflowTasks;
         }
