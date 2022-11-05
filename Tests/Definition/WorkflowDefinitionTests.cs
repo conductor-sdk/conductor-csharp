@@ -14,7 +14,7 @@ namespace Tests.Definition
         private const string TASK_NAME = "test-sdk-csharp-task";
 
         [Fact]
-        public void Test()
+        public void TestKitchenSinkWorkflow()
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, overwrite: true);
