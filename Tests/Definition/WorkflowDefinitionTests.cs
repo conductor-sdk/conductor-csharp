@@ -2,6 +2,7 @@ using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Tests.Util;
 using Xunit;
+using System;
 
 namespace Tests.Definition
 {
@@ -32,6 +33,7 @@ namespace Tests.Definition
                     .WithTask(GetHttpTask())
                     .WithTask(GetEventTask())
                     .WithTask(GetJQTask())
+                    .WithTask(GetWaitTask())
                     .WithTask(GetTerminateTask())
             ;
         }
@@ -62,6 +64,11 @@ namespace Tests.Definition
         private Task GetTerminateTask()
         {
             return new TerminateTask("terminate_task_reference_name");
+        }
+
+        private Task GetWaitTask()
+        {
+            return new WaitTask("wait_task_reference_name", new TimeSpan(1));
         }
     }
 }
