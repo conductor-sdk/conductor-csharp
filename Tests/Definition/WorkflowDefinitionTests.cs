@@ -2,6 +2,7 @@ using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Tests.Util;
 using Xunit;
+using System;
 
 namespace Tests.Definition
 {
@@ -28,6 +29,7 @@ namespace Tests.Definition
                 .WithDescription(WORKFLOW_DESCRIPTION)
                 .WithTask(GetSimpleTask())
                 .WithTask(GetHttpTask())
+                .WithTask(GetEventTask())
             ;
         }
 
@@ -42,6 +44,11 @@ namespace Tests.Definition
             settings.uri = "https://jsonplaceholder.typicode.com/posts/${workflow.input.queryid}";
             return new HttpTask("http_task_reference_name")
                 .WithSettings(settings);
+        }
+
+        private Task GetEventTask()
+        {
+            return new EventTask("event_task_reference_name", "event_sink_name");
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Conductor.Definition.TaskType
             _input = new Dictionary<string, object>();
         }
 
-        public WorkflowTask ToWorkflowTask()
+        public virtual WorkflowTask ToWorkflowTask()
         {
             return new WorkflowTask(
                 name: _name,
