@@ -16,8 +16,10 @@ namespace Tests.Definition
         [Fact]
         public void TestKitchenSinkWorkflow()
         {
-            ConductorWorkflow workflow = GetConductorWorkflow();
-            _workflowExecutor.RegisterWorkflow(workflow, overwrite: true);
+            _workflowExecutor.RegisterWorkflow(
+                conductorWorkflow: GetConductorWorkflow(),
+                overwrite: true
+            );
         }
 
         private ConductorWorkflow GetConductorWorkflow()
@@ -26,10 +28,10 @@ namespace Tests.Definition
                 .WithName(WORKFLOW_NAME)
                 .WithVersion(WORKFLOW_VERSION)
                 .WithDescription(WORKFLOW_DESCRIPTION)
-                .WithTask(GetSimpleTask())
-                .WithTask(GetHttpTask())
-                .WithTask(GetEventTask())
-                .WithTask(GetJQTask())
+                    .WithTask(GetSimpleTask())
+                    .WithTask(GetHttpTask())
+                    .WithTask(GetEventTask())
+                    .WithTask(GetJQTask())
             ;
         }
 
