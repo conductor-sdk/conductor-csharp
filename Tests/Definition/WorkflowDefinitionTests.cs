@@ -2,7 +2,6 @@ using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Tests.Util;
 using Xunit;
-using System;
 
 namespace Tests.Definition
 {
@@ -30,6 +29,7 @@ namespace Tests.Definition
                 .WithTask(GetSimpleTask())
                 .WithTask(GetHttpTask())
                 .WithTask(GetEventTask())
+                .WithTask(GetJQTask())
             ;
         }
 
@@ -49,6 +49,11 @@ namespace Tests.Definition
         private Task GetEventTask()
         {
             return new EventTask("event_task_reference_name", "event_sink_name");
+        }
+
+        private Task GetJQTask()
+        {
+            return new JQTask("jq_task_reference_name", "{ key3: (.key1.value1 + .key2.value2) }");
         }
     }
 }
