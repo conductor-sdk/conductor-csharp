@@ -3,7 +3,7 @@ name: Continuous Integration
 on: pull_request
 
 jobs:
-  linter:
+  lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
