@@ -32,6 +32,7 @@ namespace Tests.Definition
                     .WithTask(GetHttpTask())
                     .WithTask(GetEventTask())
                     .WithTask(GetJQTask())
+                    .WithTask(GetTerminateTask())
             ;
         }
 
@@ -56,6 +57,11 @@ namespace Tests.Definition
         private Task GetJQTask()
         {
             return new JQTask("jq_task_reference_name", "{ key3: (.key1.value1 + .key2.value2) }");
+        }
+
+        private Task GetTerminateTask()
+        {
+            return new TerminateTask("terminate_task_reference_name");
         }
     }
 }
