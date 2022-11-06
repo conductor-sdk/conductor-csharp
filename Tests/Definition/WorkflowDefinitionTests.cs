@@ -34,6 +34,7 @@ namespace Tests.Definition
                     .WithTask(GetEventTask())
                     .WithTask(GetJQTask())
                     .WithTask(GetWaitTask())
+                    .WithTask(GetSetVariableTask())
                     .WithTask(GetTerminateTask())
             ;
         }
@@ -69,6 +70,12 @@ namespace Tests.Definition
         private Task GetWaitTask()
         {
             return new WaitTask("wait_task_reference_name", new TimeSpan(1));
+        }
+
+        private Task GetSetVariableTask()
+        {
+            return new SetVariableTask("set_variable_task_reference_name")
+                .Input("variable_name", "variable_content");
         }
     }
 }
