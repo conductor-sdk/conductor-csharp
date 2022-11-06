@@ -26,12 +26,22 @@ namespace Tests.Definition
                 .WithName(WORKFLOW_NAME)
                 .WithVersion(WORKFLOW_VERSION)
                 .WithDescription(WORKFLOW_DESCRIPTION)
-                .WithTask(GetTask());
+                .WithTask(GetSimpleTask())
+                .WithTask(GetHttpTask())
+            ;
         }
 
-        private Task GetTask()
+        private Task GetSimpleTask()
         {
             return new SimpleTask(TASK_NAME, TASK_NAME);
+        }
+
+        private Task GetHttpTask()
+        {
+            HttpTaskSettings settings = new HttpTaskSettings();
+            settings.uri = "https://jsonplaceholder.typicode.com/posts/${workflow.input.queryid}";
+            return new HttpTask("http_task_reference_name")
+                .WithSettings(settings);
         }
     }
 }
