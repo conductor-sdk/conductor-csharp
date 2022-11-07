@@ -6,7 +6,7 @@ namespace Conductor.Definition.TaskType
     {
         public SimpleTask(string taskName, string taskReferenceName) : base(taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum.SIMPLE)
         {
-            WithName(taskName);
+            Name = taskName;
         }
     }
 }

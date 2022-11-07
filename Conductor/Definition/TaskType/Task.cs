@@ -10,24 +10,14 @@ namespace Conductor.Definition.TaskType
                 name: taskReferenceName,
                 taskReferenceName: taskReferenceName,
                 workflowTaskType: taskType)
-        {
-            InputParameters = new Dictionary<string, object>();
-        }
-
-        public Task WithName(string name)
-        {
-            Name = name;
-            return this;
-        }
-
-        public Task WithDescription(string description)
-        {
-            Description = description;
-            return this;
-        }
+        { }
 
         public Task WithInput(string key, object value)
         {
+            if (InputParameters == null)
+            {
+                InputParameters = new Dictionary<string, object>();
+            }
             InputParameters.Add(key, value);
             return this;
         }
