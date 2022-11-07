@@ -48,8 +48,7 @@ namespace Tests.Definition
         {
             HttpTaskSettings settings = new HttpTaskSettings();
             settings.uri = "https://jsonplaceholder.typicode.com/posts/${workflow.input.queryid}";
-            return new HttpTask("http_task_reference_name")
-                .WithSettings(settings);
+            return new HttpTask("http_task_reference_name", settings);
         }
 
         private Task GetEventTask()
@@ -75,7 +74,7 @@ namespace Tests.Definition
         private Task GetSetVariableTask()
         {
             return new SetVariableTask("set_variable_task_reference_name")
-                .Input("variable_name", "variable_content");
+                .WithInput("variable_name", "variable_content");
         }
     }
 }

@@ -7,13 +7,11 @@ namespace Conductor.Definition.TaskType
 {
     public class HttpTask : Task
     {
+        private static string HTTP_PARAMETER = "http_request";
 
-        public HttpTask(string taskReferenceName) : base(taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum.HTTP) { }
-
-        public HttpTask WithSettings(HttpTaskSettings input)
+        public HttpTask(string taskReferenceName, HttpTaskSettings input = default(HttpTaskSettings)) : base(taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum.HTTP)
         {
-            Input("http_request", input.ToDictionary());
-            return this;
+            WithInput(HTTP_PARAMETER, input.ToDictionary());
         }
     }
 

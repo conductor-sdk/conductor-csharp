@@ -110,7 +110,7 @@ namespace Conductor.Definition
             List<WorkflowTask> workflowTasks = new List<WorkflowTask>();
             for (int i = 0; i < _tasks.Count; i += 1)
             {
-                workflowTasks.Add(_tasks[i].ToWorkflowTask());
+                workflowTasks.Add(_tasks[i]);
             }
             return workflowTasks;
         }

@@ -10,12 +10,12 @@ namespace Conductor.Definition.TaskType
 
         public WaitTask(string taskReferenceName, TimeSpan duration) : base(taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum.WAIT)
         {
-            Input(DURATION_PARAMETER, duration.Seconds.ToString() + "s");
+            WithInput(DURATION_PARAMETER, duration.Seconds.ToString() + "s");
         }
 
         public WaitTask(string taskReferenceName, DateTime until) : base(taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum.WAIT)
         {
-            Input(UNTIL_PARAMETER, until.ToString("yyyy-MM-dd HH:mm z"));
+            WithInput(UNTIL_PARAMETER, until.ToString("yyyy-MM-dd HH:mm z"));
         }
     }
 }

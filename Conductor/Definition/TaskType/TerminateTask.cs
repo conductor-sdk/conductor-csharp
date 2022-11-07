@@ -10,14 +10,14 @@ namespace Conductor.Definition.TaskType
 
         public TerminateTask(string taskReferenceName, WorkflowStatus.StatusEnum terminationStatus = WorkflowStatus.StatusEnum.FAILED, string workflowId = null, string terminationReason = null) : base(taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum.TERMINATE)
         {
-            Input(TERMINATION_STATUS_PARAMETER, terminationStatus);
+            WithInput(TERMINATION_STATUS_PARAMETER, terminationStatus);
             if (workflowId != null)
             {
-                Input(WORKFLOW_ID_PARAMETER, workflowId);
+                WithInput(WORKFLOW_ID_PARAMETER, workflowId);
             }
             if (terminationReason != null)
             {
-                Input(TERMINATION_REASON_PARAMETER, terminationReason);
+                WithInput(TERMINATION_REASON_PARAMETER, terminationReason);
             }
         }
     }

@@ -8,7 +8,7 @@ namespace Conductor.Definition.TaskType
 
         public JQTask(string taskReferenceName, string queryExpression) : base(taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum.JSONJQTRANSFORM)
         {
-            Input(QUERY_EXPRESSION_PARAMETER, queryExpression);
+            WithInput(QUERY_EXPRESSION_PARAMETER, queryExpression);
         }
     }
 }
