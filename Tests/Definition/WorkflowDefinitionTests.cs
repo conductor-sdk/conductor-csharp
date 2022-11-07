@@ -1,8 +1,8 @@
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
+using System;
 using Tests.Util;
 using Xunit;
-using System;
 
 namespace Tests.Definition
 {
@@ -18,7 +18,7 @@ namespace Tests.Definition
         public void TestKitchenSinkWorkflow()
         {
             _workflowExecutor.RegisterWorkflow(
-                conductorWorkflow: GetConductorWorkflow(),
+                workflow: GetConductorWorkflow(),
                 overwrite: true
             );
         }

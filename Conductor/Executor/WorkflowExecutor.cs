@@ -1,6 +1,7 @@
-using System.Collections.Generic;
-using Conductor.Definition;
 using Conductor.Api;
+using Conductor.Definition;
+using Conductor.Models;
+using System.Collections.Generic;
 
 namespace Conductor.Executor
 {
@@ -9,38 +10,32 @@ namespace Conductor.Executor
         private WorkflowResourceApi _workflowClient;
         private MetadataResourceApi _metadataClient;
 
-        public WorkflowExecutor
-        (
-            WorkflowResourceApi workflowClient,
-            MetadataResourceApi metadataClient
-        )
+        public WorkflowExecutor(WorkflowResourceApi workflowClient, MetadataResourceApi metadataClient)
         {
             _workflowClient = workflowClient;
             _metadataClient = metadataClient;
         }
 
-        public void RegisterWorkflow(ConductorWorkflow conductorWorkflow, bool overwrite)
+        public void RegisterWorkflow(WorkflowDef workflow, bool overwrite)
         {
-            Models.WorkflowDef workflowDef = conductorWorkflow.ToWorkflowDef();
             if (overwrite)
             {
-                _metadataClient.Update
-                (
-                    new List<Models.WorkflowDef>(1) { workflowDef }
-                );
+                _metadataClient.Update(new List<WorkflowDef>(1) { workflow });
             }
             else
             {
-                _metadataClient.Create(workflowDef);
+                _metadataClient.Create(workflow);
             }
         }
 
         public string StartWorkflow(ConductorWorkflow conductorWorkflow)
         {
-            return _workflowClient.StartWorkflow
-            (
-                conductorWorkflow.GetStartWorkflowRequest()
-            );
+            return StartWorkflow(conductorWorkflow.GetStartWorkflowRequest());
+        }
+
+        public string StartWorkflow(StartWorkflowRequest startWorkflowRequest)
+        {
+            return _workflowClient.StartWorkflow(startWorkflowRequest);
         }
     }
 }

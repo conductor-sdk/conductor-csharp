@@ -1,118 +1,78 @@
-using System.Collections.Generic;
 using Conductor.Models;
+using System.Collections.Generic;
 
 namespace Conductor.Definition
 {
-    public class ConductorWorkflow
+    public class ConductorWorkflow : WorkflowDef
     {
-        private string _name { get; set; }
-        private string _description { get; set; }
-        private int _version { get; set; }
-        private string _failureWorkflow { get; set; }
-        private string _ownerEmail { get; set; }
-        private Models.WorkflowDef.TimeoutPolicyEnum _timeoutPolicy { get; set; }
-        private Dictionary<string, object> _workflowOutput { get; set; }
-        private long _timeoutSeconds { get; set; }
-        private bool _restartable { get; set; } = true;
-        private Dictionary<string, object> _variables { get; set; }
-        private List<Definition.TaskType.Task> _tasks { get; set; }
-
-        public ConductorWorkflow()
-        {
-            _workflowOutput = new Dictionary<string, object>();
-            _restartable = false;
-            _tasks = new List<TaskType.Task>();
-            _timeoutSeconds = 0;
-        }
-
-        public WorkflowDef ToWorkflowDef()
-        {
-            return new WorkflowDef(
-                name: _name,
-                tasks: GetWorkflowTasks(),
-                description: _description,
-                version: _version,
-                failureWorkflow: _failureWorkflow,
-                ownerEmail: _ownerEmail,
-                timeoutPolicy: _timeoutPolicy,
-                timeoutSeconds: _timeoutSeconds,
-                restartable: _restartable,
-                outputParameters: _workflowOutput,
-                variables: _variables
-            );
-        }
+        public ConductorWorkflow() : base(
+                name: "",
+                tasks: new List<WorkflowTask>(),
+                timeoutSeconds: 0
+            )
+        { }
 
         public ConductorWorkflow WithName(string name)
         {
-            _name = name;
+            Name = name;
             return this;
         }
 
         public ConductorWorkflow WithVersion(int version)
         {
-            _version = version;
+            Version = version;
             return this;
         }
 
         public ConductorWorkflow WithDescription(string description)
         {
-            _description = description;
+            Description = description;
             return this;
         }
 
         public ConductorWorkflow WithTimeoutPolicy(WorkflowDef.TimeoutPolicyEnum timeoutPolicy, int timeoutSeconds)
         {
-            _timeoutPolicy = timeoutPolicy;
-            _timeoutSeconds = timeoutSeconds;
+            TimeoutPolicy = timeoutPolicy;
+            TimeoutSeconds = timeoutSeconds;
             return this;
         }
 
         public ConductorWorkflow WithTask(Definition.TaskType.Task task)
         {
-            _tasks.Add(task);
+            Tasks.Add(task);
             return this;
         }
 
         public ConductorWorkflow WithFailureWorkflow(string failureWorkflow)
         {
-            _failureWorkflow = failureWorkflow;
+            FailureWorkflow = failureWorkflow;
             return this;
         }
 
         public ConductorWorkflow WithRestartable(bool restartable)
         {
-            _restartable = restartable;
+            Restartable = restartable;
             return this;
         }
 
         public ConductorWorkflow WithOutputParameter(string key, object value)
         {
-            _workflowOutput.Add(key, value);
+            OutputParameters.Add(key, value);
             return this;
         }
 
         public ConductorWorkflow WithOwner(string ownerEmail)
         {
-            _ownerEmail = ownerEmail;
+            OwnerEmail = ownerEmail;
             return this;
         }
 
         public StartWorkflowRequest GetStartWorkflowRequest()
         {
             return new StartWorkflowRequest(
-                name: _name,
-                version: _version
+                name: Name,
+                version: Version
             );
-        }
-
-        private List<WorkflowTask> GetWorkflowTasks()
-        {
-            List<WorkflowTask> workflowTasks = new List<WorkflowTask>();
-            for (int i = 0; i < _tasks.Count; i += 1)
-            {
-                workflowTasks.Add(_tasks[i]);
-            }
-            return workflowTasks;
         }
     }
 }
