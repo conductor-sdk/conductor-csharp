@@ -31,6 +31,7 @@ namespace Tests.Definition
                 .WithDescription(WORKFLOW_DESCRIPTION)
                     .WithTask(GetSimpleTask())
                     .WithTask(GetHttpTask())
+                    .WithTask(GetDoWhileTask())
                     .WithTask(GetEventTask())
                     .WithTask(GetJQTask())
                     .WithTask(GetWaitTask())
@@ -75,6 +76,18 @@ namespace Tests.Definition
         {
             return new SetVariableTask("set_variable_task_reference_name")
                 .WithInput("variable_name", "variable_content");
+        }
+
+        private Task GetDoWhileTask()
+        {
+            return new LoopTask(
+                taskReferenceName: "do_while_task_reference_name",
+                iterations: 5,
+                loopOver: new SimpleTask(
+                    "do_while_inner_task_reference_name",
+                    "do_while_inner_task_reference_name"
+                )
+            );
         }
     }
 }
