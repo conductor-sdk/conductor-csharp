@@ -13,6 +13,7 @@ namespace Tests.Definition
         private const int WORKFLOW_VERSION = 1;
         private const string WORKFLOW_DESCRIPTION = "Test SDK C# Workflow";
         private const string WORKFLOW_OWNER_EMAIL = "test@test";
+        private const string WORKFLOW_INPUT_PARAMETER = "number";
         private const string TASK_NAME = "test-sdk-csharp-task";
 
         [Fact]
@@ -31,7 +32,7 @@ namespace Tests.Definition
                 .WithName(WORKFLOW_NAME)
                 .WithVersion(WORKFLOW_VERSION)
                 .WithDescription(WORKFLOW_DESCRIPTION)
-                .WithInputParameter("number")
+                .WithInputParameter(WORKFLOW_INPUT_PARAMETER)
                     .WithTask(GetSimpleTask())
                     .WithTask(GetSubWorkflowTask())
                     .WithTask(GetHttpTask())
@@ -145,7 +146,7 @@ namespace Tests.Definition
             return new SwitchTask
             (
                 taskReferenceName: taskReferenceName,
-                caseExpression: "$.number < 15 ? 'LONG':'LONG'",
+                caseExpression: "$.variable < 15 ? 'LONG':'LONG'",
                 useJavascript: true
             ).WithDecisionCase
             (
@@ -160,7 +161,7 @@ namespace Tests.Definition
                 GetHttpTask("switch_http_inner_task_reference_name")
             ).WithInput
             (
-                "number", "${workflow.input.number}"
+                "variable", "${workflow.input." + WORKFLOW_INPUT_PARAMETER + "}"
             );
         }
     }
