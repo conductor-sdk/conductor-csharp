@@ -32,9 +32,12 @@ namespace Conductor.Definition
             return this;
         }
 
-        public ConductorWorkflow WithTask(WorkflowTask task)
+        public ConductorWorkflow WithTask(params WorkflowTask[] tasks)
         {
-            Tasks.Add(task);
+            foreach (WorkflowTask task in tasks)
+            {
+                Tasks.Add(task);
+            }
             return this;
         }
 

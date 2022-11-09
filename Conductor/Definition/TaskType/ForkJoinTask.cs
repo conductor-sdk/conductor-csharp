@@ -12,19 +12,7 @@ namespace Conductor.Definition.TaskType
             {
                 ForkTasks.Add(new List<WorkflowTask>(forkTask));
             }
-        }
-
-        public ForkJoinTask WithJoinOn(params WorkflowTask[] tasks)
-        {
-            if (JoinOn == null)
-            {
-                JoinOn = new List<string>();
-            }
-            foreach (WorkflowTask task in tasks)
-            {
-                JoinOn.Add(task.TaskReferenceName);
-            }
-            return this;
+            JoinOn = new List<string>();
         }
     }
 }

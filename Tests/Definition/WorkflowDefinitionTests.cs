@@ -18,7 +18,8 @@ namespace Tests.Definition
         [Fact]
         public void TestKitchenSinkWorkflow()
         {
-            _workflowExecutor.RegisterWorkflow(
+            _workflowExecutor.RegisterWorkflow
+            (
                 workflow: GetConductorWorkflow(),
                 overwrite: true
             );
@@ -83,7 +84,8 @@ namespace Tests.Definition
 
         private WorkflowTask GetDoWhileTask(string taskReferenceName = "do_while_task_reference_name")
         {
-            return new LoopTask(
+            return new LoopTask
+            (
                 taskReferenceName: taskReferenceName,
                 iterations: 5,
                 GetWaitTask("do_while_wait_inner_task_reference_name")
@@ -92,28 +94,39 @@ namespace Tests.Definition
 
         private WorkflowTask GetSubWorkflowTask(string taskReferenceName = "sub_workflow_task_reference_name")
         {
-            return new SubWorkflowTask(
+            return new SubWorkflowTask
+            (
                 taskReferenceName: taskReferenceName,
-                subWorkflowParams: new SubWorkflowParams(
+                subWorkflowParams: new SubWorkflowParams
+                (
                     name: "test-sdk-java-workflow"
                 )
             );
         }
 
-        private WorkflowTask GetForkJoinTask(string taskReferenceName = "fork_join_task_reference_name")
+        private WorkflowTask[] GetForkJoinTask(string taskReferenceName = "fork_join_task_reference_name")
         {
-            return new ForkJoinTask(
-                taskReferenceName: taskReferenceName,
-                new WorkflowTask[] {
-                    GetSetVariableTask("fork_join_set_variable_inner_task_reference_name"),
-                    GetTerminateTask("fork_join_terminate_inner_task_reference_name")
-                },
-                new WorkflowTask[] {
+            return new WorkflowTask[]
+            {
+                new ForkJoinTask
+                (
+                    taskReferenceName: taskReferenceName,
+                    new WorkflowTask[]
+                    {
+                        GetSetVariableTask("fork_join_set_variable_inner_task_reference_name"),
+                        GetTerminateTask("fork_join_terminate_inner_task_reference_name")
+                    },
+                    new WorkflowTask[]
+                    {
+                        GetWaitTask("fork_join_wait_inner_task_reference_name")
+                    }
+                ),
+                new JoinTask
+                (
+                    taskReferenceName: taskReferenceName + "_join",
                     GetWaitTask("fork_join_wait_inner_task_reference_name")
-                }
-            ).WithJoinOn(
-                GetSetVariableTask("fork_join_set_variable_inner_task_reference_name")
-            );
+                )
+            };
         }
     }
 }
