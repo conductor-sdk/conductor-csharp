@@ -5,7 +5,10 @@ namespace Conductor.Definition
 {
     public class ConductorWorkflow : WorkflowDef
     {
-        public ConductorWorkflow() : base(name: "", tasks: new List<WorkflowTask>(), timeoutSeconds: 0) { }
+        public ConductorWorkflow() : base(name: "", tasks: new List<WorkflowTask>(), timeoutSeconds: 0)
+        {
+            InputParameters = new List<string>();
+        }
 
         public ConductorWorkflow WithName(string name)
         {
@@ -62,6 +65,12 @@ namespace Conductor.Definition
         public ConductorWorkflow WithOwner(string ownerEmail)
         {
             OwnerEmail = ownerEmail;
+            return this;
+        }
+
+        public ConductorWorkflow WithInputParameter(string key)
+        {
+            InputParameters.Add(key);
             return this;
         }
 

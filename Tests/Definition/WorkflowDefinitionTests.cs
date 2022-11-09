@@ -31,6 +31,7 @@ namespace Tests.Definition
                 .WithName(WORKFLOW_NAME)
                 .WithVersion(WORKFLOW_VERSION)
                 .WithDescription(WORKFLOW_DESCRIPTION)
+                .WithInputParameter("number")
                     .WithTask(GetSimpleTask())
                     .WithTask(GetSubWorkflowTask())
                     .WithTask(GetHttpTask())
@@ -39,6 +40,7 @@ namespace Tests.Definition
                     .WithTask(GetDoWhileTask())
                     .WithTask(GetEventTask())
                     .WithTask(GetJQTask())
+                    .WithTask(GetSwitchTask())
                     .WithTask(GetWaitTask())
                     .WithTask(GetSetVariableTask())
                     .WithTask(GetTerminateTask())
@@ -135,6 +137,30 @@ namespace Tests.Definition
             return new JavascriptTask(
                 taskReferenceName: taskReferenceName,
                 script: "{ key3: (.key1.value1 + .key2.value2) }"
+            );
+        }
+
+        private WorkflowTask GetSwitchTask(string taskReferenceName = "switch_task_reference_name")
+        {
+            return new SwitchTask
+            (
+                taskReferenceName: taskReferenceName,
+                caseExpression: "$.number < 15 ? 'LONG':'LONG'",
+                useJavascript: true
+            ).WithDecisionCase
+            (
+                key: "LONG",
+                GetWaitTask("switch_wait_inner_task_reference_name")
+            ).WithDecisionCase
+            (
+                key: "SHORT",
+                GetTerminateTask("switch_terminate_inner_task_reference_name")
+            ).WithDefaultCase
+            (
+                GetHttpTask("switch_http_inner_task_reference_name")
+            ).WithInput
+            (
+                "number", "${workflow.input.number}"
             );
         }
     }
