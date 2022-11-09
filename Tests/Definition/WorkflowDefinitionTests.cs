@@ -33,6 +33,7 @@ namespace Tests.Definition
                     .WithTask(GetSimpleTask())
                     .WithTask(GetSubWorkflowTask())
                     .WithTask(GetHttpTask())
+                    .WithTask(GetForkJoinTask())
                     .WithTask(GetDoWhileTask())
                     .WithTask(GetEventTask())
                     .WithTask(GetJQTask())
@@ -42,63 +43,76 @@ namespace Tests.Definition
             ;
         }
 
-        private WorkflowTask GetSimpleTask()
+        private WorkflowTask GetSimpleTask(string taskReferenceName = TASK_NAME)
         {
-            return new SimpleTask(TASK_NAME, TASK_NAME);
+            return new SimpleTask(taskReferenceName, taskReferenceName);
         }
 
-        private WorkflowTask GetHttpTask()
+        private WorkflowTask GetHttpTask(string taskReferenceName = "http_task_reference_name")
         {
             HttpTaskSettings settings = new HttpTaskSettings();
             settings.uri = "https://jsonplaceholder.typicode.com/posts/${workflow.input.queryid}";
-            return new HttpTask("http_task_reference_name", settings);
+            return new HttpTask(taskReferenceName, settings);
         }
 
-        private WorkflowTask GetEventTask()
+        private WorkflowTask GetEventTask(string taskReferenceName = "event_task_reference_name")
         {
-            return new EventTask("event_task_reference_name", "event_sink_name");
+            return new EventTask(taskReferenceName, "event_sink_name");
         }
 
-        private WorkflowTask GetJQTask()
+        private WorkflowTask GetJQTask(string taskReferenceName = "jq_task_reference_name")
         {
-            return new JQTask("jq_task_reference_name", "{ key3: (.key1.value1 + .key2.value2) }");
+            return new JQTask(taskReferenceName, "{ key3: (.key1.value1 + .key2.value2) }");
         }
 
-        private WorkflowTask GetTerminateTask()
+        private WorkflowTask GetTerminateTask(string taskReferenceName = "terminate_task_reference_name")
         {
-            return new TerminateTask("terminate_task_reference_name");
+            return new TerminateTask(taskReferenceName);
         }
 
-        private WorkflowTask GetWaitTask()
+        private WorkflowTask GetWaitTask(string taskReferenceName = "wait_task_reference_name")
         {
-            return new WaitTask("wait_task_reference_name", new TimeSpan(1));
+            return new WaitTask(taskReferenceName, new TimeSpan(1));
         }
 
-        private WorkflowTask GetSetVariableTask()
+        private WorkflowTask GetSetVariableTask(string taskReferenceName = "set_variable_task_reference_name")
         {
-            return new SetVariableTask("set_variable_task_reference_name")
+            return new SetVariableTask(taskReferenceName)
                 .WithInput("variable_name", "variable_content");
         }
 
-        private WorkflowTask GetDoWhileTask()
+        private WorkflowTask GetDoWhileTask(string taskReferenceName = "do_while_task_reference_name")
         {
             return new LoopTask(
-                taskReferenceName: "do_while_task_reference_name",
+                taskReferenceName: taskReferenceName,
                 iterations: 5,
-                loopOver: new SimpleTask(
-                    "do_while_inner_task_reference_name",
-                    "do_while_inner_task_reference_name"
+                GetWaitTask("do_while_wait_inner_task_reference_name")
+            );
+        }
+
+        private WorkflowTask GetSubWorkflowTask(string taskReferenceName = "sub_workflow_task_reference_name")
+        {
+            return new SubWorkflowTask(
+                taskReferenceName: taskReferenceName,
+                subWorkflowParams: new SubWorkflowParams(
+                    name: "test-sdk-java-workflow"
                 )
             );
         }
 
-        private WorkflowTask GetSubWorkflowTask()
+        private WorkflowTask GetForkJoinTask(string taskReferenceName = "fork_join_task_reference_name")
         {
-            return new SubWorkflowTask(
-                taskReferenceName: "sub_workflow_task_reference_name",
-                subWorkflowParams: new SubWorkflowParams(
-                    name: "test-sdk-java-workflow"
-                )
+            return new ForkJoinTask(
+                taskReferenceName: taskReferenceName,
+                new WorkflowTask[] {
+                    GetSetVariableTask("fork_join_set_variable_inner_task_reference_name"),
+                    GetTerminateTask("fork_join_terminate_inner_task_reference_name")
+                },
+                new WorkflowTask[] {
+                    GetWaitTask("fork_join_wait_inner_task_reference_name")
+                }
+            ).WithJoinOn(
+                GetSetVariableTask("fork_join_set_variable_inner_task_reference_name")
             );
         }
     }

@@ -8,14 +8,7 @@ namespace Conductor.Definition.TaskType
         public DoWhileTask(string taskReferenceName, string loopCondition, params WorkflowTask[] loopOver) : base(taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum.DOWHILE)
         {
             LoopCondition = loopCondition;
-            if (LoopOver == null)
-            {
-                LoopOver = new List<WorkflowTask>();
-            }
-            foreach (WorkflowTask task in loopOver)
-            {
-                LoopOver.Add(task);
-            }
+            LoopOver = new List<WorkflowTask>(loopOver);
         }
     }
 
