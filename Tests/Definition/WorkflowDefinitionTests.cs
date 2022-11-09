@@ -35,6 +35,7 @@ namespace Tests.Definition
                     .WithTask(GetSubWorkflowTask())
                     .WithTask(GetHttpTask())
                     .WithTask(GetForkJoinTask())
+                    .WithTask(GetJavascriptTask())
                     .WithTask(GetDoWhileTask())
                     .WithTask(GetEventTask())
                     .WithTask(GetJQTask())
@@ -127,6 +128,14 @@ namespace Tests.Definition
                     GetWaitTask("fork_join_wait_inner_task_reference_name")
                 )
             };
+        }
+
+        private WorkflowTask GetJavascriptTask(string taskReferenceName = "javascript_task_reference_name")
+        {
+            return new JavascriptTask(
+                taskReferenceName: taskReferenceName,
+                script: "{ key3: (.key1.value1 + .key2.value2) }"
+            );
         }
     }
 }
