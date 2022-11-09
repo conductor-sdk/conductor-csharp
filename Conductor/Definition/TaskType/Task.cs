@@ -5,19 +5,17 @@ namespace Conductor.Definition.TaskType
 {
     public abstract class Task : WorkflowTask
     {
-        public Task(string taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum taskType)
-            : base(
+        public Task(string taskReferenceName, WorkflowTask.WorkflowTaskTypeEnum taskType) :
+            base(
                 name: taskReferenceName,
                 taskReferenceName: taskReferenceName,
-                workflowTaskType: taskType)
+                workflowTaskType: taskType,
+                inputParameters: new Dictionary<string, object>()
+            )
         { }
 
         public Task WithInput(string key, object value)
         {
-            if (InputParameters == null)
-            {
-                InputParameters = new Dictionary<string, object>();
-            }
             InputParameters.Add(key, value);
             return this;
         }

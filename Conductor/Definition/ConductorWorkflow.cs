@@ -5,12 +5,7 @@ namespace Conductor.Definition
 {
     public class ConductorWorkflow : WorkflowDef
     {
-        public ConductorWorkflow() : base(
-                name: "",
-                tasks: new List<WorkflowTask>(),
-                timeoutSeconds: 0
-            )
-        { }
+        public ConductorWorkflow() : base(name: "", tasks: new List<WorkflowTask>(), timeoutSeconds: 0) { }
 
         public ConductorWorkflow WithName(string name)
         {
@@ -37,7 +32,7 @@ namespace Conductor.Definition
             return this;
         }
 
-        public ConductorWorkflow WithTask(Definition.TaskType.Task task)
+        public ConductorWorkflow WithTask(WorkflowTask task)
         {
             Tasks.Add(task);
             return this;
