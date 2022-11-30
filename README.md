@@ -1,15 +1,15 @@
 # Netflix Conductor C# SDK
 
-`conductor-C#` repository provides the client SDKs to build Task Workers in C#
+`conductor-csharp` repository provides the client SDKs to build Task Workers in C#
 
 ## Quick Start
 
-1. [Setup conductor-C# package](#Setup-conductor-C#-package)
-2. [Create and run Task Workers](workers_sdk.md)
-3. [Create workflows using Code](workflow_sdk.md)
-4. [API Documentation](docs/)
+1. [Setup conductor-csharp package](#Setup-conductor-csharp-package)
+2. [Create and run Task Workers](/docs/readme/workers.md)
+3. [Create workflows using Code](/docs/readme/workflow.md)
+4. [API Documentation](/docs/api/)
    
-### Setup conductor C# package
+### Setup conductor-csharp package
 
 <!-- TODO -->
 
@@ -20,7 +20,7 @@ Use if your conductor server requires authentication
 * keyId: Key
 * keySecret: Secret for the Key
 
-```C#
+```csharp
 // TODO
 authenticationSettings := settings.NewAuthenticationSettings(
   "keyId",
@@ -32,7 +32,7 @@ authenticationSettings := settings.NewAuthenticationSettings(
 See [Access Control](https://orkes.io/content/docs/getting-started/concepts/access-control) for more details on role based access control with Conductor and generating API keys for your environment.
 
 ### Configure API Client
-```C#
+```csharp
 // TODO
 apiClient := client.NewAPIClient(
     settings.NewAuthenticationSettings(
@@ -47,7 +47,7 @@ apiClient := client.NewAPIClient(
 
 ### Setup Logging
 
-```C#
+```csharp
 // TODO
 // SDK uses [logrus](https://github.com/sirupsen/logrus) for the logging.
 func init() {
@@ -57,4 +57,4 @@ func init() {
 }
 ```
 
-### Next: [Create and run Task Workers](workers_sdk.md)
+### Next: [Create and run Task Workers](/docs/readme/workers.md)
