@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Conductor.Client;
-using Conductor.Models;
+using Conductor.Client.Models;
 
 namespace Conductor.Api
 {

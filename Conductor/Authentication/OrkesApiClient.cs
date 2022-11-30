@@ -62,7 +62,7 @@ namespace Conductor.Authentication
         {
             return _tokenClient.GenerateToken
             (
-                new Models.GenerateTokenRequest
+                new Client.Models.GenerateTokenRequest
                 (
                     keyId: _authenticationSettings.KeyId,
                     keySecret: _authenticationSettings.KeySecret

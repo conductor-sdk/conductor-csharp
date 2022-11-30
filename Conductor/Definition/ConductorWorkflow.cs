@@ -1,4 +1,4 @@
-using Conductor.Models;
+using Conductor.Client.Models;
 using System.Collections.Generic;
 
 namespace Conductor.Definition

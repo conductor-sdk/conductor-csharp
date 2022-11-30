@@ -1,5 +1,5 @@
 using Conductor.Definition;
-using Conductor.Models;
+using Conductor.Client.Models;
 using Conductor.Definition.TaskType;
 using System;
 using Tests.Util;

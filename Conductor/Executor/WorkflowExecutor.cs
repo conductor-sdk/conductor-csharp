@@ -1,6 +1,6 @@
 using Conductor.Api;
 using Conductor.Definition;
-using Conductor.Models;
+using Conductor.Client.Models;
 using System.Collections.Generic;
 
 namespace Conductor.Executor

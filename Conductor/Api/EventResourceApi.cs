@@ -5,9 +5,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Conductor.Client;
-using Conductor.Models;
 
-using EventHandler = Conductor.Models.EventHandler;
+using EventHandler = Conductor.Client.Models.EventHandler;
 
 namespace Conductor.Api
 {

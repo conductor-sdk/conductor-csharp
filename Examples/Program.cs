@@ -1,6 +1,6 @@
 ﻿using Conductor;
 using Conductor.Api;
-using Conductor.Models;
+using Conductor.Client.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

@@ -1,5 +1,5 @@
-﻿using Conductor.Interfaces;
-using Conductor.Worker;
+﻿using Conductor.Client.Interfaces;
+using Conductor.Client.Worker;
 using Conductor.Client;
 using Microsoft.Extensions.DependencyInjection;
 using System;

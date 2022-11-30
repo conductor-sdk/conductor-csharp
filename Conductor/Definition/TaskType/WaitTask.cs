@@ -1,4 +1,4 @@
-using Conductor.Models;
+using Conductor.Client.Models;
 using System;
 
 namespace Conductor.Definition.TaskType

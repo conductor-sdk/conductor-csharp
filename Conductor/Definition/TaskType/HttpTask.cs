@@ -1,4 +1,4 @@
-using Conductor.Models;
+using Conductor.Client.Models;
 using System.Net.Http;
 using System.Collections.Generic;
 using Newtonsoft.Json;
