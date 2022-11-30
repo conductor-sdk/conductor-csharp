@@ -61,7 +61,7 @@ workflowId, err := executor.StartWorkflow(&model.StartWorkflowRequest{
 })
 ```
 ### Workflow Management APIs
-See [Docs](docs/executor.md) for APIs to start, pause, resume, terminate, search and get workflow execution status.
+See [Docs](/docs/readme/executor.md) for APIs to start, pause, resume, terminate, search and get workflow execution status.
 
 ### More Examples
 You can find more examples at the following GitHub repository:
