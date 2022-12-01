@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Conductor.Authentication
+namespace Conductor.Client.Authentication
 {
     public class OrkesAuthenticationSettings
     {

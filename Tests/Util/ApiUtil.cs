@@ -1,5 +1,5 @@
 using Conductor.Api;
-using Conductor.Authentication;
+using Conductor.Client.Authentication;
 using Conductor.Client;
 using Conductor.Executor;
 using System;

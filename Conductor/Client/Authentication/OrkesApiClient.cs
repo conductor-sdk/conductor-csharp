@@ -1,10 +1,9 @@
 using Microsoft.Extensions.Caching.Memory;
 using System;
-using Conductor.Client;
 using Conductor.Api;
 using RestSharp;
 
-namespace Conductor.Authentication
+namespace Conductor.Client.Authentication
 {
     public class OrkesApiClient
     {
