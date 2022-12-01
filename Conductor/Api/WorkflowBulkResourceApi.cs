@@ -24,7 +24,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>BulkResponse</returns>
-        BulkResponse PauseWorkflow1(List<string> body);
+        BulkResponse PauseWorkflow(List<string> body);
 
         /// <summary>
         /// Pause the list of workflows
@@ -35,7 +35,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> PauseWorkflow1WithHttpInfo(List<string> body);
+        ApiResponse<BulkResponse> PauseWorkflowWithHttpInfo(List<string> body);
         /// <summary>
         /// Restart the list of completed workflow
         /// </summary>
@@ -46,7 +46,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>BulkResponse</returns>
-        BulkResponse Restart1(List<string> body, bool? useLatestDefinitions = null);
+        BulkResponse Restart(List<string> body, bool? useLatestDefinitions = null);
 
         /// <summary>
         /// Restart the list of completed workflow
@@ -58,7 +58,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> Restart1WithHttpInfo(List<string> body, bool? useLatestDefinitions = null);
+        ApiResponse<BulkResponse> RestartWithHttpInfo(List<string> body, bool? useLatestDefinitions = null);
         /// <summary>
         /// Resume the list of workflows
         /// </summary>
@@ -68,7 +68,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>BulkResponse</returns>
-        BulkResponse ResumeWorkflow1(List<string> body);
+        BulkResponse ResumeWorkflow(List<string> body);
 
         /// <summary>
         /// Resume the list of workflows
@@ -79,7 +79,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> ResumeWorkflow1WithHttpInfo(List<string> body);
+        ApiResponse<BulkResponse> ResumeWorkflowWithHttpInfo(List<string> body);
         /// <summary>
         /// Retry the last failed task for each workflow from the list
         /// </summary>
@@ -89,7 +89,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>BulkResponse</returns>
-        BulkResponse Retry1(List<string> body);
+        BulkResponse Retry(List<string> body);
 
         /// <summary>
         /// Retry the last failed task for each workflow from the list
@@ -100,7 +100,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> Retry1WithHttpInfo(List<string> body);
+        ApiResponse<BulkResponse> RetryWithHttpInfo(List<string> body);
         /// <summary>
         /// Terminate workflows execution
         /// </summary>
@@ -135,7 +135,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> PauseWorkflow1Async(List<string> body);
+        System.Threading.Tasks.Task<BulkResponse> PauseWorkflowAsync(List<string> body);
 
         /// <summary>
         /// Pause the list of workflows
@@ -146,7 +146,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> PauseWorkflow1AsyncWithHttpInfo(List<string> body);
+        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> PauseWorkflowAsyncWithHttpInfo(List<string> body);
         /// <summary>
         /// Restart the list of completed workflow
         /// </summary>
@@ -157,7 +157,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> Restart1Async(List<string> body, bool? useLatestDefinitions = null);
+        System.Threading.Tasks.Task<BulkResponse> RestartAsync(List<string> body, bool? useLatestDefinitions = null);
 
         /// <summary>
         /// Restart the list of completed workflow
@@ -169,7 +169,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> Restart1AsyncWithHttpInfo(List<string> body, bool? useLatestDefinitions = null);
+        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> RestartAsyncWithHttpInfo(List<string> body, bool? useLatestDefinitions = null);
         /// <summary>
         /// Resume the list of workflows
         /// </summary>
@@ -179,7 +179,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> ResumeWorkflow1Async(List<string> body);
+        System.Threading.Tasks.Task<BulkResponse> ResumeWorkflowAsync(List<string> body);
 
         /// <summary>
         /// Resume the list of workflows
@@ -190,7 +190,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> ResumeWorkflow1AsyncWithHttpInfo(List<string> body);
+        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> ResumeWorkflowAsyncWithHttpInfo(List<string> body);
         /// <summary>
         /// Retry the last failed task for each workflow from the list
         /// </summary>
@@ -200,7 +200,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> Retry1Async(List<string> body);
+        System.Threading.Tasks.Task<BulkResponse> RetryAsync(List<string> body);
 
         /// <summary>
         /// Retry the last failed task for each workflow from the list
@@ -211,7 +211,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> Retry1AsyncWithHttpInfo(List<string> body);
+        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> RetryAsyncWithHttpInfo(List<string> body);
         /// <summary>
         /// Terminate workflows execution
         /// </summary>
@@ -352,9 +352,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>BulkResponse</returns>
-        public BulkResponse PauseWorkflow1(List<string> body)
+        public BulkResponse PauseWorkflow(List<string> body)
         {
-            ApiResponse<BulkResponse> localVarResponse = PauseWorkflow1WithHttpInfo(body);
+            ApiResponse<BulkResponse> localVarResponse = PauseWorkflowWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -364,11 +364,11 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> PauseWorkflow1WithHttpInfo(List<string> body)
+        public ApiResponse<BulkResponse> PauseWorkflowWithHttpInfo(List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->PauseWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->PauseWorkflow");
 
             var localVarPath = "/workflow/bulk/pause";
             var localVarPathParams = new Dictionary<String, String>();
@@ -415,7 +415,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PauseWorkflow1", localVarResponse);
+                Exception exception = ExceptionFactory("PauseWorkflow", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -431,9 +431,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>Task of BulkResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<BulkResponse> PauseWorkflow1Async(List<string> body)
+        public async System.Threading.Tasks.Task<BulkResponse> PauseWorkflowAsync(List<string> body)
         {
-            ApiResponse<BulkResponse> localVarResponse = await PauseWorkflow1AsyncWithHttpInfo(body);
+            ApiResponse<BulkResponse> localVarResponse = await PauseWorkflowAsyncWithHttpInfo(body);
             return localVarResponse.Data;
 
         }
@@ -445,11 +445,11 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> PauseWorkflow1AsyncWithHttpInfo(List<string> body)
+        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> PauseWorkflowAsyncWithHttpInfo(List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->PauseWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->PauseWorkflow");
 
             var localVarPath = "/workflow/bulk/pause";
             var localVarPathParams = new Dictionary<String, String>();
@@ -496,7 +496,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PauseWorkflow1", localVarResponse);
+                Exception exception = ExceptionFactory("PauseWorkflow", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -512,9 +512,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>BulkResponse</returns>
-        public BulkResponse Restart1(List<string> body, bool? useLatestDefinitions = null)
+        public BulkResponse Restart(List<string> body, bool? useLatestDefinitions = null)
         {
-            ApiResponse<BulkResponse> localVarResponse = Restart1WithHttpInfo(body, useLatestDefinitions);
+            ApiResponse<BulkResponse> localVarResponse = RestartWithHttpInfo(body, useLatestDefinitions);
             return localVarResponse.Data;
         }
 
@@ -525,11 +525,11 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> Restart1WithHttpInfo(List<string> body, bool? useLatestDefinitions = null)
+        public ApiResponse<BulkResponse> RestartWithHttpInfo(List<string> body, bool? useLatestDefinitions = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Restart1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Restart");
 
             var localVarPath = "/workflow/bulk/restart";
             var localVarPathParams = new Dictionary<String, String>();
@@ -577,7 +577,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Restart1", localVarResponse);
+                Exception exception = ExceptionFactory("Restart", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -594,9 +594,9 @@ namespace Conductor.Api
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of BulkResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<BulkResponse> Restart1Async(List<string> body, bool? useLatestDefinitions = null)
+        public async System.Threading.Tasks.Task<BulkResponse> RestartAsync(List<string> body, bool? useLatestDefinitions = null)
         {
-            ApiResponse<BulkResponse> localVarResponse = await Restart1AsyncWithHttpInfo(body, useLatestDefinitions);
+            ApiResponse<BulkResponse> localVarResponse = await RestartAsyncWithHttpInfo(body, useLatestDefinitions);
             return localVarResponse.Data;
 
         }
@@ -609,11 +609,11 @@ namespace Conductor.Api
         /// <param name="useLatestDefinitions"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> Restart1AsyncWithHttpInfo(List<string> body, bool? useLatestDefinitions = null)
+        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> RestartAsyncWithHttpInfo(List<string> body, bool? useLatestDefinitions = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Restart1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Restart");
 
             var localVarPath = "/workflow/bulk/restart";
             var localVarPathParams = new Dictionary<String, String>();
@@ -661,7 +661,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Restart1", localVarResponse);
+                Exception exception = ExceptionFactory("Restart", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -676,9 +676,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>BulkResponse</returns>
-        public BulkResponse ResumeWorkflow1(List<string> body)
+        public BulkResponse ResumeWorkflow(List<string> body)
         {
-            ApiResponse<BulkResponse> localVarResponse = ResumeWorkflow1WithHttpInfo(body);
+            ApiResponse<BulkResponse> localVarResponse = ResumeWorkflowWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -688,11 +688,11 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> ResumeWorkflow1WithHttpInfo(List<string> body)
+        public ApiResponse<BulkResponse> ResumeWorkflowWithHttpInfo(List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->ResumeWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->ResumeWorkflow");
 
             var localVarPath = "/workflow/bulk/resume";
             var localVarPathParams = new Dictionary<String, String>();
@@ -739,7 +739,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ResumeWorkflow1", localVarResponse);
+                Exception exception = ExceptionFactory("ResumeWorkflow", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -755,9 +755,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>Task of BulkResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<BulkResponse> ResumeWorkflow1Async(List<string> body)
+        public async System.Threading.Tasks.Task<BulkResponse> ResumeWorkflowAsync(List<string> body)
         {
-            ApiResponse<BulkResponse> localVarResponse = await ResumeWorkflow1AsyncWithHttpInfo(body);
+            ApiResponse<BulkResponse> localVarResponse = await ResumeWorkflowAsyncWithHttpInfo(body);
             return localVarResponse.Data;
 
         }
@@ -769,11 +769,11 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> ResumeWorkflow1AsyncWithHttpInfo(List<string> body)
+        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> ResumeWorkflowAsyncWithHttpInfo(List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->ResumeWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->ResumeWorkflow");
 
             var localVarPath = "/workflow/bulk/resume";
             var localVarPathParams = new Dictionary<String, String>();
@@ -820,7 +820,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ResumeWorkflow1", localVarResponse);
+                Exception exception = ExceptionFactory("ResumeWorkflow", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -835,9 +835,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>BulkResponse</returns>
-        public BulkResponse Retry1(List<string> body)
+        public BulkResponse Retry(List<string> body)
         {
-            ApiResponse<BulkResponse> localVarResponse = Retry1WithHttpInfo(body);
+            ApiResponse<BulkResponse> localVarResponse = RetryWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -847,11 +847,11 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> Retry1WithHttpInfo(List<string> body)
+        public ApiResponse<BulkResponse> RetryWithHttpInfo(List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Retry1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Retry");
 
             var localVarPath = "/workflow/bulk/retry";
             var localVarPathParams = new Dictionary<String, String>();
@@ -898,7 +898,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Retry1", localVarResponse);
+                Exception exception = ExceptionFactory("Retry", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -914,9 +914,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>Task of BulkResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<BulkResponse> Retry1Async(List<string> body)
+        public async System.Threading.Tasks.Task<BulkResponse> RetryAsync(List<string> body)
         {
-            ApiResponse<BulkResponse> localVarResponse = await Retry1AsyncWithHttpInfo(body);
+            ApiResponse<BulkResponse> localVarResponse = await RetryAsyncWithHttpInfo(body);
             return localVarResponse.Data;
 
         }
@@ -928,11 +928,11 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (BulkResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> Retry1AsyncWithHttpInfo(List<string> body)
+        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> RetryAsyncWithHttpInfo(List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Retry1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Retry");
 
             var localVarPath = "/workflow/bulk/retry";
             var localVarPathParams = new Dictionary<String, String>();
@@ -979,7 +979,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Retry1", localVarResponse);
+                Exception exception = ExceptionFactory("Retry", localVarResponse);
                 if (exception != null) throw exception;
             }
 

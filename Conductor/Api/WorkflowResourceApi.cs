@@ -256,7 +256,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>List&lt;Workflow&gt;</returns>
-        List<Workflow> GetWorkflows1(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
+        List<Workflow> GetWorkflows(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
 
         /// <summary>
         /// Lists workflows for the given correlation id
@@ -270,7 +270,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-        ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
+        ApiResponse<List<Workflow>> GetWorkflowsWithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
         /// <summary>
         /// 
         /// </summary>
@@ -603,7 +603,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>string</returns>
-        string StartWorkflow1(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
+        string StartWorkflow(string name, Dictionary<string, Object> body, int? version = null, string correlationId = null, int? priority = null);
 
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
@@ -618,7 +618,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> StartWorkflow1WithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
+        ApiResponse<string> StartWorkflowWithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
         /// <summary>
         /// Terminate workflow execution
         /// </summary>
@@ -629,7 +629,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns></returns>
-        void Terminate1(string workflowId, string reason = null);
+        void Terminate(string workflowId, string reason = null);
 
         /// <summary>
         /// Terminate workflow execution
@@ -641,7 +641,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> Terminate1WithHttpInfo(string workflowId, string reason = null);
+        ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = null);
         /// <summary>
         /// Force upload all completed workflows to document store
         /// </summary>
@@ -904,7 +904,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of List&lt;Workflow&gt;</returns>
-        System.Threading.Tasks.Task<List<Workflow>> GetWorkflows1Async(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
+        System.Threading.Tasks.Task<List<Workflow>> GetWorkflowsAsync(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
 
         /// <summary>
         /// Lists workflows for the given correlation id
@@ -918,7 +918,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (List&lt;Workflow&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflows1AsyncWithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflowsAsyncWithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1251,7 +1251,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> StartWorkflow1Async(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
+        System.Threading.Tasks.Task<string> StartWorkflowAsync(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
 
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
@@ -1266,7 +1266,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflow1AsyncWithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
+        System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflowAsyncWithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
         /// <summary>
         /// Terminate workflow execution
         /// </summary>
@@ -1277,7 +1277,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task Terminate1Async(string workflowId, string reason = null);
+        System.Threading.Tasks.Task TerminateAsync(string workflowId, string reason = null);
 
         /// <summary>
         /// Terminate workflow execution
@@ -1289,7 +1289,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> Terminate1AsyncWithHttpInfo(string workflowId, string reason = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> TerminateAsyncWithHttpInfo(string workflowId, string reason = null);
         /// <summary>
         /// Force upload all completed workflows to document store
         /// </summary>
@@ -2896,9 +2896,9 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>List&lt;Workflow&gt;</returns>
-        public List<Workflow> GetWorkflows1(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
+        public List<Workflow> GetWorkflows(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
         {
-            ApiResponse<List<Workflow>> localVarResponse = GetWorkflows1WithHttpInfo(name, correlationId, includeClosed, includeTasks);
+            ApiResponse<List<Workflow>> localVarResponse = GetWorkflowsWithHttpInfo(name, correlationId, includeClosed, includeTasks);
             return localVarResponse.Data;
         }
 
@@ -2911,14 +2911,14 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-        public ApiResponse<List<Workflow>> GetWorkflows1WithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
+        public ApiResponse<List<Workflow>> GetWorkflowsWithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
-                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows1");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
             // verify the required parameter 'correlationId' is set
             if (correlationId == null)
-                throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
+                throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows");
 
             var localVarPath = "/workflow/{name}/correlated/{correlationId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2960,7 +2960,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetWorkflows1", localVarResponse);
+                Exception exception = ExceptionFactory("GetWorkflows", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -2979,9 +2979,9 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of List&lt;Workflow&gt;</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<List<Workflow>> GetWorkflows1Async(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
+        public async System.Threading.Tasks.Task<List<Workflow>> GetWorkflowsAsync(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
         {
-            ApiResponse<List<Workflow>> localVarResponse = await GetWorkflows1AsyncWithHttpInfo(name, correlationId, includeClosed, includeTasks);
+            ApiResponse<List<Workflow>> localVarResponse = await GetWorkflowsAsyncWithHttpInfo(name, correlationId, includeClosed, includeTasks);
             return localVarResponse.Data;
 
         }
@@ -2996,14 +2996,14 @@ namespace Conductor.Api
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (List&lt;Workflow&gt;)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflows1AsyncWithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Workflow>>> GetWorkflowsAsyncWithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null)
         {
             // verify the required parameter 'name' is set
             if (name == null)
-                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows1");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->GetWorkflows");
             // verify the required parameter 'correlationId' is set
             if (correlationId == null)
-                throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows1");
+                throw new ApiException(400, "Missing required parameter 'correlationId' when calling WorkflowResourceApi->GetWorkflows");
 
             var localVarPath = "/workflow/{name}/correlated/{correlationId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3045,7 +3045,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetWorkflows1", localVarResponse);
+                Exception exception = ExceptionFactory("GetWorkflows", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -5063,9 +5063,9 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>string</returns>
-        public string StartWorkflow1(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
+        public string StartWorkflow(string name, Dictionary<string, Object> body, int? version = null, string correlationId = null, int? priority = null)
         {
-            ApiResponse<string> localVarResponse = StartWorkflow1WithHttpInfo(body, name, version, correlationId, priority);
+            ApiResponse<string> localVarResponse = StartWorkflowWithHttpInfo(body, name, version, correlationId, priority);
             return localVarResponse.Data;
         }
 
@@ -5079,14 +5079,14 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse<string> StartWorkflow1WithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
+        public ApiResponse<string> StartWorkflowWithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowResourceApi->StartWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowResourceApi->StartWorkflow");
             // verify the required parameter 'name' is set
             if (name == null)
-                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow");
 
             var localVarPath = "/workflow/{name}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -5137,7 +5137,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("StartWorkflow1", localVarResponse);
+                Exception exception = ExceptionFactory("StartWorkflow", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -5157,9 +5157,9 @@ namespace Conductor.Api
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>Task of string</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<string> StartWorkflow1Async(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
+        public async System.Threading.Tasks.Task<string> StartWorkflowAsync(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
         {
-            ApiResponse<string> localVarResponse = await StartWorkflow1AsyncWithHttpInfo(body, name, version, correlationId, priority);
+            ApiResponse<string> localVarResponse = await StartWorkflowAsyncWithHttpInfo(body, name, version, correlationId, priority);
             return localVarResponse.Data;
 
         }
@@ -5175,14 +5175,14 @@ namespace Conductor.Api
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>Task of ApiResponse (string)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflow1AsyncWithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> StartWorkflowAsyncWithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowResourceApi->StartWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowResourceApi->StartWorkflow");
             // verify the required parameter 'name' is set
             if (name == null)
-                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow1");
+                throw new ApiException(400, "Missing required parameter 'name' when calling WorkflowResourceApi->StartWorkflow");
 
             var localVarPath = "/workflow/{name}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -5233,7 +5233,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("StartWorkflow1", localVarResponse);
+                Exception exception = ExceptionFactory("StartWorkflow", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -5249,9 +5249,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns></returns>
-        public void Terminate1(string workflowId, string reason = null)
+        public void Terminate(string workflowId, string reason = null)
         {
-            Terminate1WithHttpInfo(workflowId, reason);
+            TerminateWithHttpInfo(workflowId, reason);
         }
 
         /// <summary>
@@ -5261,11 +5261,11 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> Terminate1WithHttpInfo(string workflowId, string reason = null)
+        public ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
-                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate1");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate");
 
             var localVarPath = "/workflow/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -5304,7 +5304,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Terminate1", localVarResponse);
+                Exception exception = ExceptionFactory("Terminate", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -5321,9 +5321,9 @@ namespace Conductor.Api
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of void</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task Terminate1Async(string workflowId, string reason = null)
+        public async System.Threading.Tasks.Task TerminateAsync(string workflowId, string reason = null)
         {
-            await Terminate1AsyncWithHttpInfo(workflowId, reason);
+            await TerminateAsyncWithHttpInfo(workflowId, reason);
 
         }
 
@@ -5335,11 +5335,11 @@ namespace Conductor.Api
         /// <param name="reason"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> Terminate1AsyncWithHttpInfo(string workflowId, string reason = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TerminateAsyncWithHttpInfo(string workflowId, string reason = null)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
-                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate1");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->Terminate");
 
             var localVarPath = "/workflow/{workflowId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -5378,7 +5378,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Terminate1", localVarResponse);
+                Exception exception = ExceptionFactory("Terminate", localVarResponse);
                 if (exception != null) throw exception;
             }
 

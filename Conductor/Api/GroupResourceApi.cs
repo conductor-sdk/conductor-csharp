@@ -91,7 +91,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Object</returns>
-        Object GetGrantedPermissions1(string groupId);
+        Object GetGrantedPermissions(string groupId);
 
         /// <summary>
         /// Get the permissions this group has over workflows and tasks
@@ -102,7 +102,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetGrantedPermissions1WithHttpInfo(string groupId);
+        ApiResponse<Object> GetGrantedPermissionsWithHttpInfo(string groupId);
         /// <summary>
         /// Get a group by id
         /// </summary>
@@ -311,7 +311,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetGrantedPermissions1Async(string groupId);
+        System.Threading.Tasks.Task<Object> GetGrantedPermissionsAsync(string groupId);
 
         /// <summary>
         /// Get the permissions this group has over workflows and tasks
@@ -322,7 +322,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissions1AsyncWithHttpInfo(string groupId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissionsAsyncWithHttpInfo(string groupId);
         /// <summary>
         /// Get a group by id
         /// </summary>
@@ -1035,9 +1035,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>Object</returns>
-        public Object GetGrantedPermissions1(string groupId)
+        public Object GetGrantedPermissions(string groupId)
         {
-            ApiResponse<Object> localVarResponse = GetGrantedPermissions1WithHttpInfo(groupId);
+            ApiResponse<Object> localVarResponse = GetGrantedPermissionsWithHttpInfo(groupId);
             return localVarResponse.Data;
         }
 
@@ -1047,11 +1047,11 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> GetGrantedPermissions1WithHttpInfo(string groupId)
+        public ApiResponse<Object> GetGrantedPermissionsWithHttpInfo(string groupId)
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
-                throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->GetGrantedPermissions1");
+                throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->GetGrantedPermissions");
 
             var localVarPath = "/groups/{groupId}/permissions";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1090,7 +1090,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetGrantedPermissions1", localVarResponse);
+                Exception exception = ExceptionFactory("GetGrantedPermissions", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1106,9 +1106,9 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <returns>Task of Object</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Object> GetGrantedPermissions1Async(string groupId)
+        public async System.Threading.Tasks.Task<Object> GetGrantedPermissionsAsync(string groupId)
         {
-            ApiResponse<Object> localVarResponse = await GetGrantedPermissions1AsyncWithHttpInfo(groupId);
+            ApiResponse<Object> localVarResponse = await GetGrantedPermissionsAsyncWithHttpInfo(groupId);
             return localVarResponse.Data;
 
         }
@@ -1120,11 +1120,11 @@ namespace Conductor.Api
         /// <param name="groupId"></param>
         /// <returns>Task of ApiResponse (Object)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissions1AsyncWithHttpInfo(string groupId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetGrantedPermissionsAsyncWithHttpInfo(string groupId)
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
-                throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->GetGrantedPermissions1");
+                throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->GetGrantedPermissions");
 
             var localVarPath = "/groups/{groupId}/permissions";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1163,7 +1163,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetGrantedPermissions1", localVarResponse);
+                Exception exception = ExceptionFactory("GetGrantedPermissions", localVarResponse);
                 if (exception != null) throw exception;
             }
 

@@ -215,7 +215,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>Object</returns>
-        Object Update(List<WorkflowDef> body, bool? overwrite = null);
+        Object UpdateWorkflowDefinitions(List<WorkflowDef> body, bool? overwrite = null);
 
         /// <summary>
         /// Create or update workflow definition(s)
@@ -1869,7 +1869,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="overwrite"> (optional, default to true)</param>
         /// <returns>Object</returns>
-        public Object Update(List<WorkflowDef> body, bool? overwrite = null)
+        public Object UpdateWorkflowDefinitions(List<WorkflowDef> body, bool? overwrite = null)
         {
             ApiResponse<Object> localVarResponse = UpdateWithHttpInfo(body, overwrite);
             return localVarResponse.Data;

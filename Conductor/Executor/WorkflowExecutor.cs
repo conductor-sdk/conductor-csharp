@@ -20,7 +20,7 @@ namespace Conductor.Executor
         {
             if (overwrite)
             {
-                _metadataClient.Update(new List<WorkflowDef>(1) { workflow });
+                _metadataClient.UpdateWorkflowDefinitions(new List<WorkflowDef>(1) { workflow });
             }
             else
             {

@@ -112,7 +112,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ExternalStorageLocation</returns>
-        ExternalStorageLocation GetExternalStorageLocation1(string path, string operation, string payloadType);
+        ExternalStorageLocation GetExternalStorageLocation(string path, string operation, string payloadType);
 
         /// <summary>
         /// Get the external uri where the task payload is to be stored
@@ -125,7 +125,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo(string path, string operation, string payloadType);
+        ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType);
         /// <summary>
         /// Get the last poll data for a given task type
         /// </summary>
@@ -271,7 +271,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTaskSummary</returns>
-        SearchResultTaskSummary Search1(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        SearchResultTaskSummary Search(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for tasks based in payload and other parameters
@@ -286,7 +286,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTaskSummary</returns>
-        ApiResponse<SearchResultTaskSummary> Search1WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        ApiResponse<SearchResultTaskSummary> SearchWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Search for tasks based in payload and other parameters
         /// </summary>
@@ -370,7 +370,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>string</returns>
-        string UpdateTask1(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
+        string UpdateTask(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
 
         /// <summary>
         /// Update a task By Ref Name
@@ -384,7 +384,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> UpdateTask1WithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
+        ApiResponse<string> UpdateTaskWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -484,7 +484,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ExternalStorageLocation</returns>
-        System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocation1Async(string path, string operation, string payloadType);
+        System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocationAsync(string path, string operation, string payloadType);
 
         /// <summary>
         /// Get the external uri where the task payload is to be stored
@@ -497,7 +497,7 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1AsyncWithHttpInfo(string path, string operation, string payloadType);
+        System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocationAsyncWithHttpInfo(string path, string operation, string payloadType);
         /// <summary>
         /// Get the last poll data for a given task type
         /// </summary>
@@ -643,7 +643,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultTaskSummary</returns>
-        System.Threading.Tasks.Task<SearchResultTaskSummary> Search1Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<SearchResultTaskSummary> SearchAsync(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for tasks based in payload and other parameters
@@ -658,7 +658,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTaskSummary)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> Search1AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> SearchAsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Search for tasks based in payload and other parameters
         /// </summary>
@@ -742,7 +742,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> UpdateTask1Async(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
+        System.Threading.Tasks.Task<string> UpdateTaskAsync(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
 
         /// <summary>
         /// Update a task By Ref Name
@@ -756,7 +756,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> UpdateTask1AsyncWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
+        System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
         #endregion Asynchronous Operations
     }
 
@@ -1436,9 +1436,9 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ExternalStorageLocation</returns>
-        public ExternalStorageLocation GetExternalStorageLocation1(string path, string operation, string payloadType)
+        public ExternalStorageLocation GetExternalStorageLocation(string path, string operation, string payloadType)
         {
-            ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocation1WithHttpInfo(path, operation, payloadType);
+            ApiResponse<ExternalStorageLocation> localVarResponse = GetExternalStorageLocationWithHttpInfo(path, operation, payloadType);
             return localVarResponse.Data;
         }
 
@@ -1450,17 +1450,17 @@ namespace Conductor.Api
         /// <param name="operation"></param>
         /// <param name="payloadType"></param>
         /// <returns>ApiResponse of ExternalStorageLocation</returns>
-        public ApiResponse<ExternalStorageLocation> GetExternalStorageLocation1WithHttpInfo(string path, string operation, string payloadType)
+        public ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType)
         {
             // verify the required parameter 'path' is set
             if (path == null)
-                throw new ApiException(400, "Missing required parameter 'path' when calling TaskResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'path' when calling TaskResourceApi->GetExternalStorageLocation");
             // verify the required parameter 'operation' is set
             if (operation == null)
-                throw new ApiException(400, "Missing required parameter 'operation' when calling TaskResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'operation' when calling TaskResourceApi->GetExternalStorageLocation");
             // verify the required parameter 'payloadType' is set
             if (payloadType == null)
-                throw new ApiException(400, "Missing required parameter 'payloadType' when calling TaskResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'payloadType' when calling TaskResourceApi->GetExternalStorageLocation");
 
             var localVarPath = "/tasks/externalstoragelocation";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1501,7 +1501,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetExternalStorageLocation1", localVarResponse);
+                Exception exception = ExceptionFactory("GetExternalStorageLocation", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1519,9 +1519,9 @@ namespace Conductor.Api
         /// <param name="payloadType"></param>
         /// <returns>Task of ExternalStorageLocation</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocation1Async(string path, string operation, string payloadType)
+        public async System.Threading.Tasks.Task<ExternalStorageLocation> GetExternalStorageLocationAsync(string path, string operation, string payloadType)
         {
-            ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocation1AsyncWithHttpInfo(path, operation, payloadType);
+            ApiResponse<ExternalStorageLocation> localVarResponse = await GetExternalStorageLocationAsyncWithHttpInfo(path, operation, payloadType);
             return localVarResponse.Data;
 
         }
@@ -1535,17 +1535,17 @@ namespace Conductor.Api
         /// <param name="payloadType"></param>
         /// <returns>Task of ApiResponse (ExternalStorageLocation)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocation1AsyncWithHttpInfo(string path, string operation, string payloadType)
+        public async System.Threading.Tasks.Task<ApiResponse<ExternalStorageLocation>> GetExternalStorageLocationAsyncWithHttpInfo(string path, string operation, string payloadType)
         {
             // verify the required parameter 'path' is set
             if (path == null)
-                throw new ApiException(400, "Missing required parameter 'path' when calling TaskResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'path' when calling TaskResourceApi->GetExternalStorageLocation");
             // verify the required parameter 'operation' is set
             if (operation == null)
-                throw new ApiException(400, "Missing required parameter 'operation' when calling TaskResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'operation' when calling TaskResourceApi->GetExternalStorageLocation");
             // verify the required parameter 'payloadType' is set
             if (payloadType == null)
-                throw new ApiException(400, "Missing required parameter 'payloadType' when calling TaskResourceApi->GetExternalStorageLocation1");
+                throw new ApiException(400, "Missing required parameter 'payloadType' when calling TaskResourceApi->GetExternalStorageLocation");
 
             var localVarPath = "/tasks/externalstoragelocation";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1586,7 +1586,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetExternalStorageLocation1", localVarResponse);
+                Exception exception = ExceptionFactory("GetExternalStorageLocation", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -2499,9 +2499,9 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTaskSummary</returns>
-        public SearchResultTaskSummary Search1(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public SearchResultTaskSummary Search(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-            ApiResponse<SearchResultTaskSummary> localVarResponse = Search1WithHttpInfo(start, size, sort, freeText, query);
+            ApiResponse<SearchResultTaskSummary> localVarResponse = SearchWithHttpInfo(start, size, sort, freeText, query);
             return localVarResponse.Data;
         }
 
@@ -2515,7 +2515,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTaskSummary</returns>
-        public ApiResponse<SearchResultTaskSummary> Search1WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public ApiResponse<SearchResultTaskSummary> SearchWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/tasks/search";
@@ -2559,7 +2559,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Search1", localVarResponse);
+                Exception exception = ExceptionFactory("Search", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -2579,9 +2579,9 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <returns>Task of SearchResultTaskSummary</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<SearchResultTaskSummary> Search1Async(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<SearchResultTaskSummary> SearchAsync(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-            ApiResponse<SearchResultTaskSummary> localVarResponse = await Search1AsyncWithHttpInfo(start, size, sort, freeText, query);
+            ApiResponse<SearchResultTaskSummary> localVarResponse = await SearchAsyncWithHttpInfo(start, size, sort, freeText, query);
             return localVarResponse.Data;
 
         }
@@ -2597,7 +2597,7 @@ namespace Conductor.Api
         /// <param name="query"> (optional)</param>
         /// <returns>Task of ApiResponse (SearchResultTaskSummary)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> Search1AsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResultTaskSummary>> SearchAsyncWithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/tasks/search";
@@ -2641,7 +2641,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Search1", localVarResponse);
+                Exception exception = ExceptionFactory("Search", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -3116,9 +3116,9 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>string</returns>
-        public string UpdateTask1(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
+        public string UpdateTask(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
         {
-            ApiResponse<string> localVarResponse = UpdateTask1WithHttpInfo(body, workflowId, taskRefName, status);
+            ApiResponse<string> localVarResponse = UpdateTaskWithHttpInfo(body, workflowId, taskRefName, status);
             return localVarResponse.Data;
         }
 
@@ -3131,20 +3131,20 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse<string> UpdateTask1WithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
+        public ApiResponse<string> UpdateTaskWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling TaskResourceApi->UpdateTask1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling TaskResourceApi->UpdateTask");
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
-                throw new ApiException(400, "Missing required parameter 'workflowId' when calling TaskResourceApi->UpdateTask1");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling TaskResourceApi->UpdateTask");
             // verify the required parameter 'taskRefName' is set
             if (taskRefName == null)
-                throw new ApiException(400, "Missing required parameter 'taskRefName' when calling TaskResourceApi->UpdateTask1");
+                throw new ApiException(400, "Missing required parameter 'taskRefName' when calling TaskResourceApi->UpdateTask");
             // verify the required parameter 'status' is set
             if (status == null)
-                throw new ApiException(400, "Missing required parameter 'status' when calling TaskResourceApi->UpdateTask1");
+                throw new ApiException(400, "Missing required parameter 'status' when calling TaskResourceApi->UpdateTask");
 
             var localVarPath = "/tasks/{workflowId}/{taskRefName}/{status}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3194,7 +3194,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("UpdateTask1", localVarResponse);
+                Exception exception = ExceptionFactory("UpdateTask", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -3213,9 +3213,9 @@ namespace Conductor.Api
         /// <param name="status"></param>
         /// <returns>Task of string</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<string> UpdateTask1Async(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
+        public async System.Threading.Tasks.Task<string> UpdateTaskAsync(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
         {
-            ApiResponse<string> localVarResponse = await UpdateTask1AsyncWithHttpInfo(body, workflowId, taskRefName, status);
+            ApiResponse<string> localVarResponse = await UpdateTaskAsyncWithHttpInfo(body, workflowId, taskRefName, status);
             return localVarResponse.Data;
 
         }
@@ -3230,20 +3230,20 @@ namespace Conductor.Api
         /// <param name="status"></param>
         /// <returns>Task of ApiResponse (string)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTask1AsyncWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling TaskResourceApi->UpdateTask1");
+                throw new ApiException(400, "Missing required parameter 'body' when calling TaskResourceApi->UpdateTask");
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
-                throw new ApiException(400, "Missing required parameter 'workflowId' when calling TaskResourceApi->UpdateTask1");
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling TaskResourceApi->UpdateTask");
             // verify the required parameter 'taskRefName' is set
             if (taskRefName == null)
-                throw new ApiException(400, "Missing required parameter 'taskRefName' when calling TaskResourceApi->UpdateTask1");
+                throw new ApiException(400, "Missing required parameter 'taskRefName' when calling TaskResourceApi->UpdateTask");
             // verify the required parameter 'status' is set
             if (status == null)
-                throw new ApiException(400, "Missing required parameter 'status' when calling TaskResourceApi->UpdateTask1");
+                throw new ApiException(400, "Missing required parameter 'status' when calling TaskResourceApi->UpdateTask");
 
             var localVarPath = "/tasks/{workflowId}/{taskRefName}/{status}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3293,7 +3293,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("UpdateTask1", localVarResponse);
+                Exception exception = ExceptionFactory("UpdateTask", localVarResponse);
                 if (exception != null) throw exception;
             }
 

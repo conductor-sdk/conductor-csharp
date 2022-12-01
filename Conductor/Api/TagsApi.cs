@@ -115,7 +115,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;TagObject&gt;</returns>
-        List<TagObject> GetTags1();
+        List<TagObject> GetTags();
 
         /// <summary>
         /// List all tags
@@ -125,7 +125,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;TagObject&gt;</returns>
-        ApiResponse<List<TagObject>> GetTags1WithHttpInfo();
+        ApiResponse<List<TagObject>> GetTagsWithHttpInfo();
         /// <summary>
         /// Returns all the tags of the task
         /// </summary>
@@ -316,7 +316,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
-        System.Threading.Tasks.Task<List<TagObject>> GetTags1Async();
+        System.Threading.Tasks.Task<List<TagObject>> GetTagsAsync();
 
         /// <summary>
         /// List all tags
@@ -326,7 +326,7 @@ namespace Conductor.Api
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTags1AsyncWithHttpInfo();
+        System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsAsyncWithHttpInfo();
         /// <summary>
         /// Returns all the tags of the task
         /// </summary>
@@ -1215,9 +1215,9 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;TagObject&gt;</returns>
-        public List<TagObject> GetTags1()
+        public List<TagObject> GetTags()
         {
-            ApiResponse<List<TagObject>> localVarResponse = GetTags1WithHttpInfo();
+            ApiResponse<List<TagObject>> localVarResponse = GetTagsWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -1226,7 +1226,7 @@ namespace Conductor.Api
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;TagObject&gt;</returns>
-        public ApiResponse<List<TagObject>> GetTags1WithHttpInfo()
+        public ApiResponse<List<TagObject>> GetTagsWithHttpInfo()
         {
 
             var localVarPath = "/metadata/tags";
@@ -1265,7 +1265,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetTags1", localVarResponse);
+                Exception exception = ExceptionFactory("GetTags", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1280,9 +1280,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;TagObject&gt;</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<List<TagObject>> GetTags1Async()
+        public async System.Threading.Tasks.Task<List<TagObject>> GetTagsAsync()
         {
-            ApiResponse<List<TagObject>> localVarResponse = await GetTags1AsyncWithHttpInfo();
+            ApiResponse<List<TagObject>> localVarResponse = await GetTagsAsyncWithHttpInfo();
             return localVarResponse.Data;
 
         }
@@ -1293,7 +1293,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;TagObject&gt;)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTags1AsyncWithHttpInfo()
+        public async System.Threading.Tasks.Task<ApiResponse<List<TagObject>>> GetTagsAsyncWithHttpInfo()
         {
 
             var localVarPath = "/metadata/tags";
@@ -1332,7 +1332,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetTags1", localVarResponse);
+                Exception exception = ExceptionFactory("GetTags", localVarResponse);
                 if (exception != null) throw exception;
             }
 
