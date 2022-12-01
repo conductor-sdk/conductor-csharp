@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Conductor.Extensions
+namespace Conductor.Client.Extensions
 {
     public static class ConductorTaskExtensions
     {

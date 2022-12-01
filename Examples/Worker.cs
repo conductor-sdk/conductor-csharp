@@ -1,5 +1,5 @@
 ﻿using System;
-using Conductor.Extensions;
+using Conductor.Client.Extensions;
 using Conductor.Interfaces;
 using Conductor.Client.Models;
 using System.Collections.Generic;

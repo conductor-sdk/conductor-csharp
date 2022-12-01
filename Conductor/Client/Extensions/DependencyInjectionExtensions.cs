@@ -1,11 +1,10 @@
 ﻿using Conductor.Client.Interfaces;
 using Conductor.Client.Worker;
-using Conductor.Client;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
 
-namespace Conductor.Extensions
+namespace Conductor.Client.Extensions
 {
     public static class DependencyInjectionExtensions
     {

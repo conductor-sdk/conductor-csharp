@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Conductor.Extensions
+namespace Conductor.Client.Extensions
 {
     public static class SystemTaskExtensions
     {
