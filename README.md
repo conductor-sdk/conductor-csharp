@@ -1,26 +1,26 @@
 # Netflix Conductor C# SDK
 
-`conductor-csharp` repository provides the client SDKs to build Task Workers in C#
+The `conductor-csharp` repository provides the client SDKs to build task workers in Go.
 
-## Quick Start
+Building the task workers in C# mainly consists of the following steps:
 
-1. [Setup conductor-csharp package](#Setup-conductor-csharp-package)
-2. [Create and run Task Workers](/docs/readme/workers.md)
-3. [Create workflows using Code](/docs/readme/workflow.md)
-4. [API Documentation](/docs/api/)
+1. Setup conductor-csharp package
+2. Create and run task workers
+3. Create workflows using code
    
-### Setup conductor-csharp package
+### Setup Conductor C# Package​
 
+* Create a folder to build your package
 ```csharp
 // TODO
 ```
 
-## Configuration
+## Configurations
 
-### Authentication settings (optional)
-Use if your conductor server requires authentication
-* keyId: Key
-* keySecret: Secret for the Key
+### Authentication Settings (Optional)
+Configure the authentication settings if your Conductor server requires authentication.
+* keyId: Key for authentication.
+* keySecret: Secret for the key.
 
 ```csharp
 // TODO
@@ -31,7 +31,7 @@ authenticationSettings := settings.NewAuthenticationSettings(
 ```
 
 ### Access Control Setup
-See [Access Control](https://orkes.io/content/docs/getting-started/concepts/access-control) for more details on role based access control with Conductor and generating API keys for your environment.
+See [Access Control](https://orkes.io/content/docs/getting-started/concepts/access-control) for more details on role-based access control with Conductor and generating API keys for your environment.
 
 ### Configure API Client
 ```csharp
@@ -51,7 +51,7 @@ apiClient := client.NewAPIClient(
 
 ```csharp
 // TODO
-// SDK uses [logrus](https://github.com/sirupsen/logrus) for the logging.
+// SDK uses [logrus](https://github.com/sirupsen/logrus) for logging.
 func init() {
 	log.SetFormatter(&log.TextFormatter{})
 	log.SetOutput(os.Stdout)
@@ -59,4 +59,4 @@ func init() {
 }
 ```
 
-### Next: [Create and run Task Workers](/docs/readme/workers.md)
+### Next: [Create and run task workers](/docs/readme/workers.md)
