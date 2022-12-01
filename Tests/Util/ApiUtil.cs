@@ -17,7 +17,6 @@ namespace Tests.Util
         private static string _keyId = null;
         private static string _keySecret = null;
 
-
         static ApiUtil()
         {
             _basePath = GetEnvironmentVariable(ENV_ROOT_URI);
@@ -34,10 +33,15 @@ namespace Tests.Util
             );
         }
 
-        private static OrkesApiClient GetApiClient()
+        public static OrkesApiClient GetApiClient()
         {
             Configuration configuration = new Configuration();
             configuration.BasePath = _basePath;
+            return GetApiClient(configuration);
+        }
+
+        private static OrkesApiClient GetApiClient(Configuration configuration)
+        {
             return new OrkesApiClient
             (
                 configuration: configuration,
@@ -48,6 +52,7 @@ namespace Tests.Util
                 )
             );
         }
+
 
         private static string GetEnvironmentVariable(string variable)
         {

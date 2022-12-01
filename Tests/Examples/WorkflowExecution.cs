@@ -1,21 +1,20 @@
-﻿using Conductor;
-using Conductor.Api;
+﻿using Conductor.Api;
+using Conductor.Client.Authentication;
 using Conductor.Client.Models;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
+using Tests.Util;
+using Xunit;
 
-namespace Examples
+namespace Tests.Examples
 {
-    class SDK
+    public class WorkflowExecutionExampleTests : IntegrationTest
     {
-        [Obsolete]
-        static void Main(string[] args)
+        [Fact]
+        public void TestWorkflowExecutionExample()
         {
-            Configuration configuration = new Configuration(new ConcurrentDictionary<string, string>(), null, null,
-                "http://localhost:8080/");
-            //Create task definition
-            MetadataResourceApi metadataResourceApi = new MetadataResourceApi(configuration);
+            OrkesApiClient apiClient = ApiUtil.GetApiClient();
+            MetadataResourceApi metadataResourceApi = apiClient.GetClient<MetadataResourceApi>();
             TaskDef taskDef = new TaskDef(name: "simple_task_0", ownerEmail: "test@orkes.io");
             taskDef.OwnerEmail = "test@orkes.io";
             metadataResourceApi.RegisterTaskDef(new List<TaskDef>() { taskDef });
@@ -36,7 +35,7 @@ namespace Examples
             metadataResourceApi.UpdateWorkflowDefinitions(new List<WorkflowDef>() { workflowDef });
 
             //Start workflow
-            WorkflowResourceApi workflowResourceApi = new WorkflowResourceApi(configuration);
+            WorkflowResourceApi workflowResourceApi = apiClient.GetClient<WorkflowResourceApi>();
             String workflowId = workflowResourceApi.StartWorkflow("new_load_test", new Dictionary<string, object>(), version);
             Console.WriteLine("WorkflowId " + workflowId);
 
