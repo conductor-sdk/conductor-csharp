@@ -1,6 +1,6 @@
 using Conductor.Api;
-using Conductor.Client.Authentication;
 using Conductor.Client;
+using Conductor.Client.Authentication;
 using Conductor.Executor;
 using System;
 using System.Diagnostics;
@@ -26,31 +26,40 @@ namespace Tests.Util
 
         public static WorkflowExecutor GetWorkflowExecutor()
         {
-            OrkesApiClient apiClient = GetApiClient();
             return new WorkflowExecutor(
-                workflowClient: apiClient.GetClient<WorkflowResourceApi>(),
-                metadataClient: apiClient.GetClient<MetadataResourceApi>()
+                metadataClient: GetClient<MetadataResourceApi>(),
+                workflowClient: GetClient<WorkflowResourceApi>()
             );
         }
 
-        public static OrkesApiClient GetApiClient()
+        public static T GetClient<T>() where T : IApiAccessor, new()
         {
-            Configuration configuration = new Configuration();
-            configuration.BasePath = _basePath;
-            return GetApiClient(configuration);
+            OrkesApiClient apiClient = GetApiClient();
+            return apiClient.GetClient<T>();
         }
 
-        private static OrkesApiClient GetApiClient(Configuration configuration)
+        private static OrkesApiClient GetApiClient()
         {
-            return new OrkesApiClient
-            (
+            Configuration configuration = GetConfiguration(_basePath);
+            return GetApiClient(configuration, _keyId, _keySecret);
+        }
+
+        private static OrkesApiClient GetApiClient(Configuration configuration, string keyId, string keySecret)
+        {
+            return new OrkesApiClient(
                 configuration: configuration,
-                authenticationSettings: new OrkesAuthenticationSettings
-                (
-                    keyId: _keyId,
-                    keySecret: _keySecret
+                authenticationSettings: new OrkesAuthenticationSettings(
+                    keyId, keySecret
                 )
             );
+        }
+
+        private static Configuration GetConfiguration(string basePath)
+        {
+            return new Configuration()
+            {
+                BasePath = basePath
+            };
         }
 
 
