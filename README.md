@@ -1,17 +1,17 @@
-# Netflix Conductor Client SDK
+# Netflix Conductor Client SDK - C#
 
-`conductor-csharp` repository provides the client SDKs to build Task Workers and Clients in C#
+The `conductor-csharp` repository provides the client SDKs to build task workers and clients in C#.
 
-## Quick Start
-1. [Get Secrets](#Get-Secrets)
-2. [Write workers](#Write-workers)
-3. [Run workers](#Run-workers)
-4. [Worker Configurations](#Worker-Configurations)
+Building the task workers in C# mainly consists of the following steps:
+1. Get Secrets
+2. Write Workers
+3. Run Workers
+4. Worker Configurations
 
-### Dependencies
+## Dependencies
 `conductor-csharp` packages are published to NuGet package manager.  You can find the latest releases [here](https://www.nuget.org/packages/conductor-csharp/).
 
-### Write workers  
+## Write Workers  
 
 ```csharp
  internal class MyWorkflowTask : IWorkflowTask
@@ -46,7 +46,7 @@
     }
 ```
 
-### Run workers
+## Run Workers
 
 ```csharp
 using System;
@@ -73,7 +73,7 @@ namespace TestOrkesSDK
             new HostBuilder()
                  .ConfigureServices((ctx, services) =>
                  {
-                    // First argument is optional headers which client wasnt to pass.
+                    // First argument is optional headers that the client wasn't to pass
                      Configuration configuration = new Configuration(new ConcurrentDictionary<string, string>(), 
                          "KEY",
                          "SECRET");
@@ -110,10 +110,9 @@ namespace TestOrkesSDK
 
 >***Note***
 >
->Replace KEY and SECRET by obtaining a new key and secret from [Orkes Playground](https://play.orkes.io/)
+>Replace KEY and SECRET by obtaining a new key and secret from [Orkes Playground](https://play.orkes.io/). See [generating access keys](https://orkes.io/content/docs/getting-started/concepts/access-control-applications#access-keys) for more details.
 >
 
-See [Generating Access Keys for Programmatic Access](https://orkes.io/content/docs/getting-started/concepts/access-control#access-keys) for details./
 
 ```csharp
     internal class WorkflowsWorkerService : BackgroundService
@@ -136,20 +135,20 @@ See [Generating Access Keys for Programmatic Access](https://orkes.io/content/do
             {
                 workflowTaskCoordinator.RegisterWorker(worker);
             }
-            // start all the workers so that it can poll for the tasks
+            // Start all the workers so that they can poll for the tasks
             await workflowTaskCoordinator.Start();
         }
     }
 ```
 
-### Worker Configurations
-Worker configuration is handled via Configuration object passed when initializing TaskHandler.
+## Worker Configurations
+Worker configuration is handled via the Configuration object passed when initializing TaskHandler.
 ```csharp
 Configuration configuration = 
     new Configuration(new ConcurrentDictionary<string, string>(), "KEY", "SECRET", "https://play.orkes.io/");
 ```
 
-### Registering and starting the workflow using SDK.
+## Registering and Starting Workflow using SDK
 
 Below is the code snippet that shows how to register a simple workflow and start execution:
 
@@ -184,8 +183,8 @@ workflowDef.Tasks = new List<WorkflowTask>() { workflowTask };
 WorkflowResourceApi workflowResourceApi = new WorkflowResourceApi(configuration);
 Dictionary<string, Object> input = new Dictionary<string, Object>();
 
-//Fill the input map which workflow consumes.
+//Fill in the input map that workflow consumes.
 workflowResourceApi.StartWorkflow("test_workflow", input, 1);
 Console.ReadLine();
 ```
-Please see [Conductor.Api](https://github.com/conductor-sdk/conductor-csharp/tree/main/Api) for the APIs.
+Please refer [Conductor.API](https://github.com/conductor-sdk/conductor-csharp/tree/main/Api) for the APIs.
