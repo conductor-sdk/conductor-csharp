@@ -21,7 +21,7 @@ ENV SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET=${SDK_INTEGRATION_TESTS_SERVER_KEY_S
 FROM build_with_env AS test
 COPY ./Tests /package/Tests
 WORKDIR /package/Tests
-RUN dotnet test
+RUN dotnet test -l "console;verbosity=normal"
 
 # RUN [ ! -z "${NUGET_SRC}" ] & \
 #     [ ! -z "${NUGET_API_KEY}" ] & \
