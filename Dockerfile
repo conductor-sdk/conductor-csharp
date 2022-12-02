@@ -4,10 +4,10 @@ COPY /Conductor /package/Conductor
 WORKDIR /package/Conductor
 
 FROM raw_base_image AS linter
-RUN dotnet format --verify-no-changes ./*.csproj
+RUN dotnet format --verify-no-changes *.csproj
 
 FROM raw_base_image AS build
-RUN dotnet build ./*.csproj
+RUN dotnet build *.csproj
 
 FROM build as build_with_integration_tests_env
 ARG SDK_INTEGRATION_TESTS_SERVER_API_URL
@@ -24,18 +24,16 @@ RUN dotnet test -l "console;verbosity=normal"
 
 FROM raw_base_image as pack_release
 ARG SDK_VERSION
-RUN dotnet pack \
-    -o ./build \
+RUN dotnet pack *.csproj \
+    -o /build \
     --include-symbols \
     --include-source \
     -v n \
-    -c Release "/p:Version=${SDK_VERSION}" \
-    ./*.csproj
+    -c Release "/p:Version=${SDK_VERSION}"
 
 FROM pack_release as publish_release
 ARG NUGET_SRC
 ARG NUGET_API_KEY
-RUN dotnet nuget push \
+RUN dotnet nuget push "/build/*.nupkg" \
     -s "${NUGET_SRC}" \
-    -k "${NUGET_API_KEY}" \
-    "./build/*.symbols.nupkg"
+    -k "${NUGET_API_KEY}"
