@@ -1,16 +1,9 @@
-using Tests.Util;
 using Xunit;
-
 
 namespace Tests.Worker
 {
-    public class WorkerTests : IntegrationTest
+    public class WorkerTests
     {
-        public WorkerTests()
-        {
-
-        }
-
         [Fact]
         public void TestWorkflowAsyncExecution()
         {

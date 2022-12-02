@@ -34,34 +34,26 @@ namespace Tests.Util
 
         public static T GetClient<T>() where T : IApiAccessor, new()
         {
-            OrkesApiClient apiClient = GetApiClient();
+            OrkesApiClient apiClient = GetApiClient(
+                basePath: _basePath,
+                keyId: _keyId,
+                keySecret: _keySecret
+            );
             return apiClient.GetClient<T>();
         }
 
-        private static OrkesApiClient GetApiClient()
-        {
-            Configuration configuration = GetConfiguration(_basePath);
-            return GetApiClient(configuration, _keyId, _keySecret);
-        }
-
-        private static OrkesApiClient GetApiClient(Configuration configuration, string keyId, string keySecret)
+        private static OrkesApiClient GetApiClient(string basePath, string keyId, string keySecret)
         {
             return new OrkesApiClient(
-                configuration: configuration,
+                configuration: new Configuration()
+                {
+                    BasePath = basePath
+                },
                 authenticationSettings: new OrkesAuthenticationSettings(
                     keyId, keySecret
                 )
             );
         }
-
-        private static Configuration GetConfiguration(string basePath)
-        {
-            return new Configuration()
-            {
-                BasePath = basePath
-            };
-        }
-
 
         private static string GetEnvironmentVariable(string variable)
         {

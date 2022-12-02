@@ -1,13 +1,14 @@
-using Conductor.Definition;
 using Conductor.Client.Models;
+using Conductor.Definition;
 using Conductor.Definition.TaskType;
+using Conductor.Executor;
 using System;
 using Tests.Util;
 using Xunit;
 
 namespace Tests.Definition
 {
-    public class WorkflowDefTests : IntegrationTest
+    public class WorkflowDefTests
     {
         private const string WORKFLOW_NAME = "test-sdk-csharp-workflow";
         private const int WORKFLOW_VERSION = 1;
@@ -15,6 +16,12 @@ namespace Tests.Definition
         private const string WORKFLOW_OWNER_EMAIL = "test@test";
         private const string WORKFLOW_INPUT_PARAMETER = "number";
         private const string TASK_NAME = "test-sdk-csharp-task";
+
+        private WorkflowExecutor _workflowExecutor = null;
+
+        public WorkflowDefTests() {
+            _workflowExecutor = ApiUtil.GetWorkflowExecutor();
+        }
 
         [Fact]
         public void TestKitchenSinkWorkflow()
