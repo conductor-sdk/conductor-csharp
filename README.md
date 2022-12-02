@@ -12,7 +12,9 @@ Building the task workers in C# mainly consists of the following steps:
    
 ### Setup Conductor C# Package​
 
-<!-- TODO -->
+```shell
+dotnet add package conductor-csharp
+```
 
 ## Configurations
 
