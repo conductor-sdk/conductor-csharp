@@ -2,13 +2,37 @@
 
 ## A simple two-step workflow
 
-<!-- TODO add snippet -->
+```csharp
+GetSimpleTask(string taskReferenceName)
+{
+    return new SimpleTask(taskReferenceName, taskReferenceName);
+}
 
-### Execute Workflow
+ConductorWorkflow GetConductorWorkflow()
+{
+    return new ConductorWorkflow()
+        .WithName("my_first_workflow")
+        .WithVersion(1)
+        .WithOwner("developers@orkes.io")
+            .WithTask(new SimpleTask("simple_task_2", "simple_task_1"))
+            .WithTask(new SimpleTask("simple_task_1", "simple_task_2"));
 
-#### Using Workflow Executor to start previously registered workflow
+WorkflowExecutor GetWorkflowExecutor()
+{
+    return new WorkflowExecutor(
+        metadataClient: GetClient<MetadataResourceApi>(),
+        workflowClient: GetClient<WorkflowResourceApi>()
+    );
+}
 
-<!-- TODO add snippet -->
+ConductorWorkflow conductorWorkflow = GetConductorWorkflow();
+WorkflowExecutor workflowExecutor = GetWorkflowExecutor();
+workflowExecutor.RegisterWorkflow(
+    workflow: conductorWorkflow
+    overwrite: true
+);
+String workflowId = workflowExecutor.StartWorkflow(conductorWorkflow);
+```
 
 ### Workflow Management APIs
 See [Docs](/docs/readme/executor.md) for APIs to start, pause, resume, terminate, search and get workflow execution status.
