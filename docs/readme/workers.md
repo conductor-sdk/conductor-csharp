@@ -15,121 +15,51 @@ Each worker embodies design pattern and follows certain basic principles:
 
 ### Creating Task Workers
 Task worker is implemented using a function that confirms to the following function
-```csharp
-// TODO
-type ExecuteTaskFunction func(t *Task) (interface{}, error)
-```
+
+<!-- TODO add snippet -->
 
 Worker returns a struct as the output of the task execution.  The struct MUST be serializable to a JSON map.
 If an `error` is returned, the task is marked as `FAILED`
 
 #### Task worker that returns a struct
 
-```csharp
-// TODO
-//TaskOutput struct that represents the output of the task execution
-type TaskOutput struct {
-    Keys    []string
-    Message string
-    Value   float64
-}
-
-//SimpleWorker function accepts Task as input and returns TaskOutput as result
-//If there is a failure, error can be returned and the task will be marked as FAILED
-func SimpleWorker(t *model.Task) (interface{}, error) {
-    taskResult := &TaskOutput{
-        Keys:    []string{"Key1", "Key2"},
-        Message: "Hello World",
-        Value:   rand.ExpFloat64(),
-    }
-    return taskResult, nil
-}
-```
+<!-- TODO add snippet -->
 
 #### Controlling execution for long-running tasks
 For the long-running tasks you might want to spawn another process/routine and update the status of the task at a later point and complete the
 execution function without actually marking the task as `COMPLETED`.  Use `TaskResult` struct that allows you to specify more fined grained control.
 
 Here is an example of a task execution function that returns with `IN_PROGERSS` status asking server to push the task again in 60 seconds.
-```csharp
-// TODO
-func LongRunningTaskWorker(t *model.Task) (interface{}, error) {
-	taskResult := model.NewTaskResult(t)
-	taskResult.OutputData = map[string]interface{}{}
-    
-	//Keep the status as IN_PROGRESS
-	taskResult.Status = task_result_status.IN_PROGRESS
-	//Time after which the task should be sent back to worker
-	taskResult.CallbackAfterSeconds = 60
-	return taskResult, nil
-}
-```
+
+<!-- TODO add snippet -->
 
 ## Starting Workers
 `TaskRunner` interface is used to start the workers, which takes care of polling server for the work, executing worker code and updating the results back to the server.
 
-```csharp
-// TODO
-apiClient := client.NewAPIClient(
-    settings.NewAuthenticationSettings(
-        KEY,
-        SECRET,
-    ),
-    settings.NewHttpSettings(
-    "https://play.orkes.io/api",
-))
-
-taskRunner := worker.NewTaskRunnerWithApiClient(apiClient)
-//Start polling for a task by name "simple_task", with a batch size of 1 and 1 second interval
-//Between polls if there are no tasks available to execute
-taskRunner.StartWorker("simple_task", examples.SimpleWorker, 1, time.Second*1)
-//Add more StartWorker calls as needed
-
-//Block
-taskRunner.WaitWorkers()
-```
+<!-- TODO add snippet -->
 
 ## Task Management APIs
 
 ### Get Task Details
-```csharp
-// TODO
-task, err := executor.GetTask(taskId)
-```
+
+<!-- TODO add snippet -->
 
 ### Updating the Task result outside the worker implementation
 #### Update task by id
-```csharp
-// TODO
-output :=  &TaskOutput{
-Keys:    []string{"Key1", "Key2"},
-Message: "Hello World",
-Value:   rand.ExpFloat64(),
-}
-executor.UpdateTask(taskId, workflowInstanceId, task_result_status.COMPLETED, ouptut)
-```
+
+<!-- TODO add snippet -->
 
 #### Update task by Reference Name
-```csharp
-// TODO
-output :=  &TaskOutput{
-Keys:    []string{"Key1", "Key2"},
-Message: "Hello World",
-Value:   rand.ExpFloat64(),
-}
-executor.UpdateTaskByRefName("task_ref_name", workflowInstanceId, task_result_status.COMPLETED, ouptut)
-```
+
+<!-- TODO add snippet -->
 
 ### Worker Metrics
 We use [Prometheus](https://prometheus.io/) to collect metrics.
 When enabled the worker starts an HTTP server which is used to publish metrics, which can be hooked up to a prometheus server to scrap and collect metrics.
 
 #### Starting metrics collection
-```csharp
-// TODO
-//Start a go routine.  The default settings  exposes port 2112 on /metrics endpoint
-go ProvideMetrics(settings.NewDefaultMetricsSettings())
-```
+
+<!-- TODO add snippet -->
 
 Worker SDK collects the following metrics:
 
