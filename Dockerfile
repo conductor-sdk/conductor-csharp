@@ -1,6 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS raw_base_image
 RUN mkdir /package
 COPY /Conductor /package/Conductor
+COPY /README.md /package/Conductor/README.md
 WORKDIR /package/Conductor
 
 FROM raw_base_image AS linter
@@ -24,16 +25,15 @@ RUN dotnet test -l "console;verbosity=normal"
 
 FROM raw_base_image as pack_release
 ARG SDK_VERSION
-RUN dotnet pack *.csproj \
+RUN dotnet pack "*.csproj" \
     -o /build \
     --include-symbols \
     --include-source \
-    -v n \
     -c Release "/p:Version=${SDK_VERSION}"
 
 FROM pack_release as publish_release
 ARG NUGET_SRC
 ARG NUGET_API_KEY
-RUN dotnet nuget push "/build/*.nupkg" \
-    -s "${NUGET_SRC}" \
-    -k "${NUGET_API_KEY}"
+RUN dotnet nuget push "/build/*.symbols.nupkg" \
+    --source "${NUGET_SRC}" \
+    --api-key "${NUGET_API_KEY}"
