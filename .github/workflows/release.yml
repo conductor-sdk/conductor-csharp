@@ -1,0 +1,20 @@
+name: Continuous Delivery
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  pack_and_publish_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Publish Release
+        run: >
+          docker build .
+            --target=publish_release
+            --build-arg SDK_VERSION=${{ github.ref_name }}
+            --build-arg NUGET_SRC=${{ secrets.NUGET_SRC }}
+            --build-arg NUGET_API_KEY=${{ secrets.NUGET_API_KEY }}
+            --progress=plain

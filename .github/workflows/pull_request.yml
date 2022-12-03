@@ -1,0 +1,23 @@
+name: Continuous Integration
+
+on: pull_request
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Linter
+        run: >
+          docker build
+          --target=linter
+          .
+      - name: Test
+        run: >
+          docker build 
+          --target=test 
+          --build-arg SDK_INTEGRATION_TESTS_SERVER_API_URL=${{ secrets.SDK_INTEGRATION_TESTS_SERVER_API_URL }}
+          --build-arg SDK_INTEGRATION_TESTS_SERVER_KEY_ID=${{ secrets.SDK_INTEGRATION_TESTS_SERVER_KEY_ID }}
+          --build-arg SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET=${{ secrets.SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET }}
+          .
