@@ -1,7 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS raw_base_image
 RUN mkdir /package
 COPY /Conductor /package/Conductor
-COPY /README.md /package/Conductor/README.md
 WORKDIR /package/Conductor
 
 FROM raw_base_image AS linter
@@ -23,9 +22,9 @@ COPY /Tests /package/Tests
 WORKDIR /package/Tests
 RUN dotnet test -l "console;verbosity=normal"
 
-FROM raw_base_image as pack_release
+FROM build as pack_release
 ARG SDK_VERSION
-RUN dotnet pack "*.csproj" \
+RUN dotnet pack "conductor-csharp.csproj" \
     -o /build \
     --include-symbols \
     --include-source \
