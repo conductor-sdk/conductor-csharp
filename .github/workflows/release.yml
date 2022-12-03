@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  pack_and_publis_release:
+  pack_and_publish_release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
