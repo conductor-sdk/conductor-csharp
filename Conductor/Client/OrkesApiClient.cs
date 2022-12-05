@@ -47,7 +47,14 @@ namespace Conductor.Client
             {
                 return;
             }
-            _configuration.ApiKey[AUTHORIZATION_HEADER] = GetToken();
+            try
+            {
+                _configuration.ApiKey[AUTHORIZATION_HEADER] = GetToken();
+            }
+            catch (ApiException)
+            {
+                // TODO
+            }
         }
 
         private string GetToken()
