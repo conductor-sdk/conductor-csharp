@@ -24,7 +24,9 @@ namespace Conductor.Client.Authentication
             _authenticationSettings = authenticationSettings;
             _configuration = configuration;
             _tokenClient = new TokenResourceApi(_configuration);
-            RefreshAuthenticationHeader();
+            if (!String.IsNullOrEmpty(_authenticationSettings.KeyId) && !String.IsNullOrEmpty(_authenticationSettings.KeySecret)) {
+                RefreshAuthenticationHeader();
+            }
         }
 
         public T GetClient<T>() where T : IApiAccessor, new()
