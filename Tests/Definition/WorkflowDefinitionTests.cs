@@ -40,6 +40,7 @@ namespace Tests.Definition
                 .WithVersion(WORKFLOW_VERSION)
                 .WithDescription(WORKFLOW_DESCRIPTION)
                 .WithInputParameter(WORKFLOW_INPUT_PARAMETER)
+                .WithOwner(WORKFLOW_OWNER_EMAIL)
                     .WithTask(GetSimpleTask())
                     .WithTask(GetSubWorkflowTask())
                     .WithTask(GetHttpTask())
