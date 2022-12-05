@@ -12,7 +12,6 @@ namespace Conductor.Definition.TaskType
             {
                 ForkTasks.Add(new List<WorkflowTask>(forkTask));
             }
-            JoinOn = new List<string>();
         }
     }
 }

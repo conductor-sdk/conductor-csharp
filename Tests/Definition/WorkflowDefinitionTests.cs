@@ -19,7 +19,8 @@ namespace Tests.Definition
 
         private WorkflowExecutor _workflowExecutor = null;
 
-        public WorkflowDefTests() {
+        public WorkflowDefTests()
+        {
             _workflowExecutor = ApiUtil.GetWorkflowExecutor();
         }
 
@@ -44,6 +45,7 @@ namespace Tests.Definition
                     .WithTask(GetSubWorkflowTask())
                     .WithTask(GetHttpTask())
                     .WithTask(GetForkJoinTask())
+                    .WithTask(GetDynamicForkJoinTask())
                     .WithTask(GetJavascriptTask())
                     .WithTask(GetDoWhileTask())
                     .WithTask(GetEventTask())
@@ -137,6 +139,14 @@ namespace Tests.Definition
                     taskReferenceName: taskReferenceName + "_join",
                     GetWaitTask("fork_join_wait_inner_task_reference_name")
                 )
+            };
+        }
+
+        private WorkflowTask[] GetDynamicForkJoinTask(string taskReferenceName = "dynamic_fork_join_task_reference_name")
+        {
+            return new WorkflowTask[]{
+                new DynamicForkTask(taskReferenceName, GetSimpleTask().Name),
+                new JoinTask(taskReferenceName + "_join")
             };
         }
 
