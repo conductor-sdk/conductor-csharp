@@ -14,18 +14,15 @@ namespace Conductor.Client.Worker
         private ILogger<WorkflowTaskCoordinator> logger;
         private HashSet<Type> workerDefinitions = new HashSet<Type>();
         private Configuration configuration;
-        // private ConductorAuthTokenClient conductorAuthTokenClient;
 
         public WorkflowTaskCoordinator(IServiceProvider serviceProvider,
             ILogger<WorkflowTaskCoordinator> logger,
             Configuration configuration)
-        // ConductorAuthTokenClient conductorAuthTokenClient)
         {
             this.serviceProvider = serviceProvider;
             this.logger = logger;
             concurrentWorkers = configuration.ConcurrentWorkers;
             this.configuration = configuration;
-            // this.conductorAuthTokenClient = conductorAuthTokenClient;
         }
 
         public async Task Start()
@@ -37,7 +34,6 @@ namespace Conductor.Client.Worker
                 var executor = serviceProvider.GetService(typeof(IWorkflowTaskExecutor)) as IWorkflowTaskExecutor;
                 pollers.Add(executor.StartPoller(workerDefinitions.ToList()));
             }
-
             await Task.WhenAll(pollers);
         }
 
