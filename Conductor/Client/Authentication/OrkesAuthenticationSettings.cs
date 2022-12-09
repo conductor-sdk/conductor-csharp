@@ -7,7 +7,15 @@ namespace Conductor.Client.Authentication
 
         public OrkesAuthenticationSettings(string keyId, string keySecret)
         {
+            if (string.IsNullOrEmpty(keyId))
+            {
+                throw new System.Exception("keyId should not be empty");
+            }
             KeyId = keyId;
+            if (string.IsNullOrEmpty(keySecret))
+            {
+                throw new System.Exception("keySecret should not be empty");
+            }
             KeySecret = keySecret;
         }
 

@@ -3,11 +3,6 @@
 ## A simple two-step workflow
 
 ```csharp
-GetSimpleTask(string taskReferenceName)
-{
-    return new SimpleTask(taskReferenceName, taskReferenceName);
-}
-
 ConductorWorkflow GetConductorWorkflow()
 {
     return new ConductorWorkflow()
