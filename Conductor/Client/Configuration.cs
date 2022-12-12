@@ -119,34 +119,18 @@ namespace Conductor.Client
         /// </summary>
         public Configuration(
             IDictionary<string, string> defaultHeader,
-            IDictionary<string, string> apiKey,
-            IDictionary<string, string> apiKeyPrefix,
             string basePath = "https://play.orkes.io/") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");
             if (defaultHeader == null)
                 throw new ArgumentNullException("defaultHeader");
-            if (apiKey == null)
-                throw new ArgumentNullException("apiKey");
-            if (apiKeyPrefix == null)
-                throw new ArgumentNullException("apiKeyPrefix");
 
             BasePath = basePath;
 
             foreach (var keyValuePair in defaultHeader)
             {
                 DefaultHeader.Add(keyValuePair);
-            }
-
-            foreach (var keyValuePair in apiKey)
-            {
-                ApiKey.Add(keyValuePair);
-            }
-
-            foreach (var keyValuePair in apiKeyPrefix)
-            {
-                ApiKeyPrefix.Add(keyValuePair);
             }
         }
 
