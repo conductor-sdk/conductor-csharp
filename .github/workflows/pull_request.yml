@@ -3,7 +3,7 @@ name: Continuous Integration
 on: pull_request
 
 jobs:
-  lint-and-test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -14,6 +14,11 @@ jobs:
           --target=linter
           --progress=plain
           .
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Test
         run: >
           DOCKER_BUILDKIT=1 docker build
