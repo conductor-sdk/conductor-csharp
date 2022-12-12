@@ -1,17 +1,16 @@
-using Conductor.Client.Extensions;
-using Conductor.Client.Interfaces;
-using Conductor.Definition;
 using Conductor.Api;
+using Conductor.Client.Extensions;
+using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Conductor.Executor;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Tests.Util;
-using System.Threading;
-using System.Collections.Generic;
-using Xunit;
-
+using Conductor.Client.Worker;
+using Conductor.Client.Interfaces;
 using System;
+using System.Threading;
+using Tests.Util;
+using Xunit;
 
 namespace Tests.Worker
 {
@@ -35,7 +34,7 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            StartWorkers();
+            GetWorkerHost().Run();
             string workflowId = _workflowExecutor.StartWorkflow(workflow);
             Console.WriteLine("workflowId: " + workflowId);
             Thread.Sleep(WORKFLOW_EXECUTION_TIMEOUT_SECONDS * 1000);
@@ -57,47 +56,23 @@ namespace Tests.Worker
                 );
         }
 
-        private void StartWorkers()
+        private IHost GetWorkerHost()
         {
-            //     System.Threading.Tasks.Task host = new HostBuilder()
-            //         .ConfigureServices(
-            //             (ctx, services) =>
-            //                 {
-            //                     services.AddConductorWorker(ApiUtil.GetApiClient());
-            //                     services.AddConductorWorkflowTask<SimpleWorker>();
-            //                     services.AddWorkflowsWorkerService<WorkflowsWorkerService>();
-            //                 }
-            //         ).ConfigureLogging(
-            //             logging =>
-            //                 {
-            //                     logging.SetMinimumLevel(LogLevel.Debug);
-            //                     logging.AddConsole();
-            //                 }
-            //         ).RunConsoleAsync();
+            return new HostBuilder()
+                .ConfigureServices(
+                    (ctx, services) =>
+                        {
+                            services.WithOrkesApiClient(ApiUtil.GetApiClient());
+                            services.WithConductorWorker<SimpleWorker>();
+                            services.WithHostedService<WorkerService>();
+                        }
+                ).ConfigureLogging(
+                    logging =>
+                        {
+                            logging.SetMinimumLevel(LogLevel.Debug);
+                            logging.AddConsole();
+                        }
+                ).Build();
         }
     }
-
-    // internal class WorkflowsWorkerService : BackgroundService
-    // {
-    //     private readonly IWorkflowTaskCoordinator _workflowTaskCoordinator;
-    //     private readonly IEnumerable<IWorkflowTask> _workers;
-
-    //     public WorkflowsWorkerService(
-    //         IWorkflowTaskCoordinator workflowTaskCoordinator,
-    //         List<IWorkflowTask> workers
-    //     )
-    //     {
-    //         _workflowTaskCoordinator = workflowTaskCoordinator;
-    //         _workers = workers;
-    //     }
-
-    //     protected override System.Threading.Tasks.Task ExecuteAsync(CancellationToken stoppingToken)
-    //     {
-    //         foreach (var worker in _workers)
-    //         {
-    //             _workflowTaskCoordinator.RegisterWorker(worker);
-    //         }
-    //         return _workflowTaskCoordinator.Start();
-    //     }
-    // }
 }

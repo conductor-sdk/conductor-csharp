@@ -11,7 +11,7 @@ namespace Tests.Util
         public string TaskType { get; }
         public int? Priority { get; }
 
-        public SimpleWorker(string taskType)
+        public SimpleWorker(string taskType = "test-sdk-csharp-task")
         {
             TaskType = taskType;
         }
