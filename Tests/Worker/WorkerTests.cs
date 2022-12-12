@@ -5,9 +5,8 @@ using Conductor.Definition.TaskType;
 using Conductor.Executor;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Conductor.Client.Worker;
-using Conductor.Client.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using Tests.Util;
 using Xunit;
@@ -20,13 +19,18 @@ namespace Tests.Worker
         private const int WORKFLOW_VERSION = 1;
 
         private const string TASK_NAME = "test-sdk-csharp-task";
-        private const int WORKFLOW_EXECUTION_TIMEOUT_SECONDS = 5;
+        private const int WORKFLOW_EXECUTION_TIMEOUT_SECONDS = 15;
+
+        private const int WORKFLOW_QTY = 4;
 
         private WorkflowExecutor _workflowExecutor = null;
+
+        private WorkflowResourceApi _workflowClient;
 
         public WorkerTests()
         {
             _workflowExecutor = ApiUtil.GetWorkflowExecutor();
+            _workflowClient = ApiUtil.GetClient<WorkflowResourceApi>();
         }
 
         [Fact]
@@ -34,12 +38,29 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            GetWorkerHost().Run();
-            string workflowId = _workflowExecutor.StartWorkflow(workflow);
-            Console.WriteLine("workflowId: " + workflowId);
+            GetWorkerHost().RunAsync();
+            List<String> workflowIds = StartWorkflows(workflow);
             Thread.Sleep(WORKFLOW_EXECUTION_TIMEOUT_SECONDS * 1000);
-            WorkflowResourceApi workflowClient = ApiUtil.GetClient<WorkflowResourceApi>();
-            Conductor.Client.Models.WorkflowStatus workflowStatus = workflowClient.GetWorkflowStatusSummary(workflowId);
+            foreach (string workflowId in workflowIds)
+            {
+                ValidateWorkflowCompletion(workflowId);
+            }
+        }
+
+        private List<String> StartWorkflows(ConductorWorkflow workflow)
+        {
+            List<String> workflowIds = new List<string>();
+            for (int i = 0; i < WORKFLOW_QTY; i += 1)
+            {
+                string workflowId = _workflowExecutor.StartWorkflow(workflow);
+                workflowIds.Add(workflowId);
+            }
+            return workflowIds;
+        }
+
+        private void ValidateWorkflowCompletion(string workflowId)
+        {
+            Conductor.Client.Models.WorkflowStatus workflowStatus = _workflowClient.GetWorkflowStatusSummary(workflowId);
             Assert.Equal(
                 Conductor.Client.Models.WorkflowStatus.StatusEnum.COMPLETED,
                 workflowStatus.Status

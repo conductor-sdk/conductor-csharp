@@ -16,19 +16,9 @@ namespace Tests.Util
             TaskType = taskType;
         }
 
-        public Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
+        public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
         {
-            return new System.Threading.Tasks.Task<TaskResult>(
-                () =>
-                {
-                    return Execute(task);
-                }
-            );
-        }
-
-        private static TaskResult Execute(Conductor.Client.Models.Task task)
-        {
-            return ConductorTaskExtensions.Completed(task);
+            return task.Completed();
         }
     }
 }
