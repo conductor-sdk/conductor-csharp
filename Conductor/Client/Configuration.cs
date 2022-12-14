@@ -380,28 +380,6 @@ namespace Conductor.Client
 
             return report;
         }
-
-        /// <summary>
-        /// Add Api Key Header.
-        /// </summary>
-        /// <param name="key">Api Key name.</param>
-        /// <param name="value">Api Key value.</param>
-        /// <returns></returns>
-        public void AddApiKey(string key, string value)
-        {
-            ApiKey[key] = value;
-        }
-
-        /// <summary>
-        /// Sets the API key prefix.
-        /// </summary>
-        /// <param name="key">Api Key name.</param>
-        /// <param name="value">Api Key value.</param>
-        public void AddApiKeyPrefix(string key, string value)
-        {
-            ApiKeyPrefix[key] = value;
-        }
-
         #endregion Methods
     }
 }

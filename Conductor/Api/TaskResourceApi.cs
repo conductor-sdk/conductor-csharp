@@ -444,6 +444,27 @@ namespace Conductor.Api
         /// <param name="domain"> (optional)</param>
         /// <returns>Task of ApiResponse (Task)</returns>
         System.Threading.Tasks.Task<ApiResponse<Task>> PollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null);
+        /// <summary>
+        /// Update a task
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> UpdateTaskAsync(TaskResult body);
+
+        /// <summary>
+        /// Update a task
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo(TaskResult body);
         #endregion Asynchronous Operations
     }
 
@@ -1670,6 +1691,85 @@ namespace Conductor.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (SearchResultTask)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTask)));
         }
+
+        /// <summary>
+        /// Update a task 
+        /// <param name="body"></param>
+        /// <returns>Task of string</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<string> UpdateTaskAsync(TaskResult body)
+        {
+            ApiResponse<string> localVarResponse = await UpdateTaskAsyncWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a task 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo(TaskResult body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling TaskResourceApi->UpdateTask");
+
+            var localVarPath = "/tasks";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateTask", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
 
         /// <summary>
         /// Get Task type queue sizes 

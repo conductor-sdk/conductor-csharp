@@ -18,7 +18,7 @@ namespace Tests.Util
 
         public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
         {
-            return task.Completed();
+            return await System.Threading.Tasks.Task.FromResult(task.Completed());
         }
     }
 }
