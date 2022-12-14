@@ -34,12 +34,17 @@ namespace Tests.Util
 
         public static T GetClient<T>() where T : IApiAccessor, new()
         {
-            OrkesApiClient apiClient = GetApiClient(
+            OrkesApiClient apiClient = GetApiClient();
+            return apiClient.GetClient<T>();
+        }
+
+        public static OrkesApiClient GetApiClient()
+        {
+            return GetApiClient(
                 basePath: _basePath,
                 keyId: _keyId,
                 keySecret: _keySecret
             );
-            return apiClient.GetClient<T>();
         }
 
         private static OrkesApiClient GetApiClient(string basePath, string keyId, string keySecret)

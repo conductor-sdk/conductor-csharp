@@ -1,4 +1,5 @@
-﻿using Conductor.Client.Interfaces;
+﻿using Conductor.Api;
+using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -9,42 +10,40 @@ namespace Conductor.Client.Worker
 {
     internal class WorkflowTaskCoordinator : IWorkflowTaskCoordinator
     {
-        private int concurrentWorkers;
-        private IServiceProvider serviceProvider;
-        private ILogger<WorkflowTaskCoordinator> logger;
-        private HashSet<Type> workerDefinitions = new HashSet<Type>();
-        private Configuration configuration;
-        // private ConductorAuthTokenClient conductorAuthTokenClient;
+        private int _concurrentWorkers;
+        private IServiceProvider _serviceProvider;
+        private ILogger<WorkflowTaskCoordinator> _logger;
+        private HashSet<Type> _workerDefinitions;
+        private TaskResourceApi _client;
 
-        public WorkflowTaskCoordinator(IServiceProvider serviceProvider,
-            ILogger<WorkflowTaskCoordinator> logger,
-            Configuration configuration)
-        // ConductorAuthTokenClient conductorAuthTokenClient)
+        public WorkflowTaskCoordinator(IServiceProvider serviceProvider, ILogger<WorkflowTaskCoordinator> logger, OrkesApiClient orkesApiClient, int? concurrentWorkers = null)
         {
-            this.serviceProvider = serviceProvider;
-            this.logger = logger;
-            concurrentWorkers = configuration.ConcurrentWorkers;
-            this.configuration = configuration;
-            // this.conductorAuthTokenClient = conductorAuthTokenClient;
+            _serviceProvider = serviceProvider;
+            _logger = logger;
+            _workerDefinitions = new HashSet<Type>();
+            if (concurrentWorkers == null)
+            {
+                concurrentWorkers = 1;
+            }
+            _concurrentWorkers = concurrentWorkers.Value;
+            _client = orkesApiClient.GetClient<TaskResourceApi>();
         }
 
         public async Task Start()
         {
-            logger.LogInformation("Starting WorkflowCoordinator");
+            _logger.LogInformation("Starting WorkflowCoordinator");
             var pollers = new List<Task>();
-            for (var i = 0; i < concurrentWorkers; i++)
+            for (var i = 0; i < _concurrentWorkers; i++)
             {
-                var executor = serviceProvider.GetService(typeof(IWorkflowTaskExecutor)) as IWorkflowTaskExecutor;
-                pollers.Add(executor.StartPoller(workerDefinitions.ToList()));
+                var executor = _serviceProvider.GetService(typeof(IWorkflowTaskExecutor)) as IWorkflowTaskExecutor;
+                pollers.Add(executor.StartPoller(_workerDefinitions.ToList()));
             }
-
             await Task.WhenAll(pollers);
         }
 
         public void RegisterWorker<T>(T task) where T : IWorkflowTask
         {
-            workerDefinitions.Add(task.GetType());
+            _workerDefinitions.Add(task.GetType());
         }
-
     }
 }

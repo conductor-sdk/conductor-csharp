@@ -1,4 +1,5 @@
 ﻿using Conductor.Exceptions;
+using Conductor.Client.Extensions;
 using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Conductor.Client.Worker
 {
-    internal class WorkflowTaskExecutor : Interfaces.IWorkflowTaskExecutor
+    internal class WorkflowTaskExecutor : IWorkflowTaskExecutor
     {
         private List<Type> workers;
         private ILogger<WorkflowTaskExecutor> logger;
@@ -39,7 +40,7 @@ namespace Conductor.Client.Worker
             return $"Worker : {workerId} ";
         }
 
-        public async System.Threading.Tasks.Task StartPoller(List<Type> workers)
+        public async Task StartPoller(List<Type> workers)
         {
             this.workers = workers;
             if (this.workers is null || this.workers.Count == 0) throw new NullReferenceException("Workers not set");
@@ -50,7 +51,7 @@ namespace Conductor.Client.Worker
             }
         }
 
-        private async System.Threading.Tasks.Task Poll()
+        private async Task Poll()
         {
             //TODO: Move to queue based polling to better parallel node worker
             //TODO: Polling failure backoff
@@ -80,13 +81,13 @@ namespace Conductor.Client.Worker
             await Sleep();
         }
 
-        private async System.Threading.Tasks.Task Sleep()
+        private async Task Sleep()
         {
             var delay = configuration.SleepInterval;
 
             logger.LogDebug($"Waiting for {delay}ms");
 
-            await System.Threading.Tasks.Task.Delay(delay);
+            await Task.Delay(delay);
         }
 
         private List<IWorkflowTask> DetermineOrderOfPolling(List<Type> workersToBePolled)
@@ -95,16 +96,16 @@ namespace Conductor.Client.Worker
 
             foreach (var taskType in workersToBePolled)
             {
-                var worklfowTask = serviceProvider.GetService(taskType) as IWorkflowTask;
-                if (worklfowTask is null)
+                var workflowTask = serviceProvider.GetService(taskType) as IWorkflowTask;
+                if (workflowTask is null)
                     throw new WorkerNotFoundException(taskType.GetType().Name);
-                workflowTasks.Add(worklfowTask);
+                workflowTasks.Add(workflowTask);
             }
 
-            var prio = workflowTasks.Where(p => p.Priority != null).OrderByDescending(p => p.Priority).ToList();
+            var priority = workflowTasks.Where(p => p.Priority != null).OrderByDescending(p => p.Priority).ToList();
             var random = workflowTasks.Where(p => p.Priority == null).ToList();
             ShuffleList(random);
-            return prio.Concat(random).ToList();
+            return priority.Concat(random).ToList();
         }
 
         public Task<Models.Task> PollForTask(string taskType)
@@ -112,7 +113,7 @@ namespace Conductor.Client.Worker
             return taskClient.PollTask(taskType, workerId, configuration.Domain);
         }
 
-        private async System.Threading.Tasks.Task ProcessTask(Models.Task task, IWorkflowTask workflowTask)
+        private async Task ProcessTask(Models.Task task, IWorkflowTask workflowTask)
         {
             logger.LogInformation($"{GetWorkerName()} - Processing task:{task.TaskDefName} id:{task.TaskId}");
 
@@ -126,7 +127,7 @@ namespace Conductor.Client.Worker
                 {
                     var timeout = task.ResponseTimeoutSeconds * 1000;
                     cts.CancelAfter(timeout > int.MaxValue ? int.MaxValue : (int)timeout);
-                    result = await workflowTask.Execute(task, cts.Token);
+                    result = await workflowTask.Execute(task, cts.Token).WaitOrCancel(cts.Token);
                 }
                 else
                 {
@@ -143,19 +144,14 @@ namespace Conductor.Client.Worker
             catch (Exception e)
             {
                 logger.LogError(e, $"{GetWorkerName()} - Failed to execute task");
-                Models.TaskResult result = new Models.TaskResult(
-                    taskId: task.TaskId,
-                    workflowInstanceId: task.WorkflowInstanceId,
-                    reasonForIncompletion: e.ToString()
-                );
-                await UpdateTask(result);
+                await UpdateTask(task.Failed(e.ToString()));
             }
         }
 
-        private async System.Threading.Tasks.Task UpdateTask(Models.TaskResult taskResult)
+        private async Task UpdateTask(Models.TaskResult taskResult)
         {
             var result = await taskClient.UpdateTask(taskResult);
-            logger.LogDebug($"{GetWorkerName()} - Update task respone {result}");
+            logger.LogDebug($"{GetWorkerName()} - Update task response {result}");
         }
 
         private void ShuffleList<T>(List<T> list)

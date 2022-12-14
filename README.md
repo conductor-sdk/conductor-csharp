@@ -48,17 +48,13 @@ OrkesApiClient GetApiClient(string basePath, string keyId, string keySecret)
     );
 }
 
-T GetClient<T>() where T : IApiAccessor, new()
-{
-    OrkesApiClient apiClient = GetApiClient(
-        basePath: "https://play.orkes.io/",
-        keyId: "key",
-        keySecret: "secret"
-    );
-    return apiClient.GetClient<T>();
-}
+OrkesApiClient apiClient = GetApiClient(
+    basePath: "https://play.orkes.io/",
+    keyId: "key",
+    keySecret: "secret"
+);
+WorkflowResourceApi workflowClient = apiClient.GetClient<WorkflowResourceApi>();
 
-WorkflowResourceApi workflowClient = GetClient<WorkflowResourceApi>();
 workflowClient.StartWorkflow(
     name: "test-sdk-csharp-workflow",
     body: new Dictionary<string, object>(),
