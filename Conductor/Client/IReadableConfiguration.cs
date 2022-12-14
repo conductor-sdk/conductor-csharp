@@ -16,18 +16,6 @@ namespace Conductor.Client
         string AccessToken { get; }
 
         /// <summary>
-        /// Gets the API key.
-        /// </summary>
-        /// <value>API key.</value>
-        IDictionary<string, string> ApiKey { get; }
-
-        /// <summary>
-        /// Gets the API key prefix.
-        /// </summary>
-        /// <value>API key prefix.</value>
-        IDictionary<string, string> ApiKeyPrefix { get; }
-
-        /// <summary>
         /// Gets the base path.
         /// </summary>
         /// <value>Base path.</value>
@@ -74,12 +62,5 @@ namespace Conductor.Client
         /// </summary>
         /// <value>Password.</value>
         string Password { get; }
-
-        /// <summary>
-        /// Gets the API key with prefix.
-        /// </summary>
-        /// <param name="apiKeyIdentifier">API key identifier (authentication scheme).</param>
-        /// <returns>API key with prefix.</returns>
-        string GetApiKeyWithPrefix(string apiKeyIdentifier);
     }
 }

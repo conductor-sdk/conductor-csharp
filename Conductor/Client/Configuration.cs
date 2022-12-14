@@ -108,8 +108,8 @@ namespace Conductor.Client
             UserAgent = "Swagger-Codegen/1.0.0/csharp";
             BasePath = "https://play.orkes.io/";
             DefaultHeader = new ConcurrentDictionary<string, string>();
-            ApiKey = new ConcurrentDictionary<string, string>();
-            ApiKeyPrefix = new ConcurrentDictionary<string, string>();
+            keyId = string.Empty;
+            keySecret = string.Empty;
 
             Timeout = 100000;
         }
@@ -275,22 +275,6 @@ namespace Conductor.Client
         public virtual string Password { get; set; }
 
         /// <summary>
-        /// Gets the API key with prefix.
-        /// </summary>
-        /// <param name="apiKeyIdentifier">API key identifier (authentication scheme).</param>
-        /// <returns>API key with prefix.</returns>
-        public string GetApiKeyWithPrefix(string apiKeyIdentifier)
-        {
-            var apiKeyValue = "";
-            ApiKey.TryGetValue(apiKeyIdentifier, out apiKeyValue);
-            var apiKeyPrefix = "";
-            if (ApiKeyPrefix.TryGetValue(apiKeyIdentifier, out apiKeyPrefix))
-                return apiKeyPrefix + " " + apiKeyValue;
-            else
-                return apiKeyValue;
-        }
-
-        /// <summary>
         /// Gets or sets the access token for OAuth2 authentication.
         /// </summary>
         /// <value>The access token.</value>
@@ -357,39 +341,6 @@ namespace Conductor.Client
             }
         }
 
-        /// <summary>
-        /// Gets or sets the prefix (e.g. Token) of the API key based on the authentication name.
-        /// </summary>
-        /// <value>The prefix of the API key.</value>
-        public virtual IDictionary<string, string> ApiKeyPrefix
-        {
-            get { return _apiKeyPrefix; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new InvalidOperationException("ApiKeyPrefix collection may not be null.");
-                }
-                _apiKeyPrefix = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the API key based on the authentication name.
-        /// </summary>
-        /// <value>The API key.</value>
-        public virtual IDictionary<string, string> ApiKey
-        {
-            get { return _apiKey; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new InvalidOperationException("ApiKey collection may not be null.");
-                }
-                _apiKey = value;
-            }
-        }
 
         #endregion Properties
 

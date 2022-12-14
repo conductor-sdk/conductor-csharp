@@ -8,8 +8,6 @@ namespace Conductor.Client
 {
     public class OrkesApiClient
     {
-        private const string AUTHORIZATION_HEADER = "X-Authorization";
-
         private Configuration _configuration;
         private MemoryCache _memoryCache;
 
@@ -49,7 +47,7 @@ namespace Conductor.Client
             }
             try
             {
-                _configuration.ApiKey[AUTHORIZATION_HEADER] = GetToken();
+                _configuration.AccessToken = GetToken();
             }
             catch (ApiException)
             {
