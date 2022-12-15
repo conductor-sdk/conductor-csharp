@@ -13,14 +13,14 @@ namespace Conductor.Client.Worker
         private int _concurrentWorkers;
         private IServiceProvider _serviceProvider;
         private ILogger<WorkflowTaskCoordinator> _logger;
-        private HashSet<Type> _workerDefinitions;
+        private HashSet<IWorkflowTask> _workerDefinitions;
         private TaskResourceApi _client;
 
         public WorkflowTaskCoordinator(IServiceProvider serviceProvider, ILogger<WorkflowTaskCoordinator> logger, OrkesApiClient orkesApiClient, int? concurrentWorkers = null)
         {
             _serviceProvider = serviceProvider;
             _logger = logger;
-            _workerDefinitions = new HashSet<Type>();
+            _workerDefinitions = new HashSet<IWorkflowTask>();
             if (concurrentWorkers == null)
             {
                 concurrentWorkers = 1;
@@ -41,9 +41,9 @@ namespace Conductor.Client.Worker
             await Task.WhenAll(pollers);
         }
 
-        public void RegisterWorker<T>(T task) where T : IWorkflowTask
+        public void RegisterWorker(IWorkflowTask task)
         {
-            _workerDefinitions.Add(task.GetType());
+            _workerDefinitions.Add(task);
         }
     }
 }
