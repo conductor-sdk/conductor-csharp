@@ -38,7 +38,7 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            GetWorkerHost().RunAsync();
+            GetWorkerHost().Run();
             List<String> workflowIds = StartWorkflows(workflow);
             Thread.Sleep(WORKFLOW_EXECUTION_TIMEOUT_SECONDS * 1000);
             foreach (string workflowId in workflowIds)
@@ -83,8 +83,8 @@ namespace Tests.Worker
                 .ConfigureServices(
                     (ctx, services) =>
                         {
-                            services.WithOrkesApiClient(ApiUtil.GetApiClient());
-                            services.WithConductorWorker<SimpleWorker>();
+                            services.AddConductorWorker(ApiUtil.GetConfiguration());
+                            services.AddConductorWorkflowTask<SimpleWorker>();
                             services.WithHostedService<WorkerService>();
                         }
                 ).ConfigureLogging(
