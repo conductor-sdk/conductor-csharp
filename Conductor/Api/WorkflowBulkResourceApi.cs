@@ -125,117 +125,6 @@ namespace Conductor.Api
         /// <returns>ApiResponse of BulkResponse</returns>
         ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> body, string reason = null);
         #endregion Synchronous Operations
-        #region Asynchronous Operations
-        /// <summary>
-        /// Pause the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> PauseWorkflowAsync(List<string> body);
-
-        /// <summary>
-        /// Pause the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> PauseWorkflowAsyncWithHttpInfo(List<string> body);
-        /// <summary>
-        /// Restart the list of completed workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> RestartAsync(List<string> body, bool? useLatestDefinitions = null);
-
-        /// <summary>
-        /// Restart the list of completed workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> RestartAsyncWithHttpInfo(List<string> body, bool? useLatestDefinitions = null);
-        /// <summary>
-        /// Resume the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> ResumeWorkflowAsync(List<string> body);
-
-        /// <summary>
-        /// Resume the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> ResumeWorkflowAsyncWithHttpInfo(List<string> body);
-        /// <summary>
-        /// Retry the last failed task for each workflow from the list
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> RetryAsync(List<string> body);
-
-        /// <summary>
-        /// Retry the last failed task for each workflow from the list
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> RetryAsyncWithHttpInfo(List<string> body);
-        /// <summary>
-        /// Terminate workflows execution
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <returns>Task of BulkResponse</returns>
-        System.Threading.Tasks.Task<BulkResponse> TerminateAsync(List<string> body, string reason = null);
-
-        /// <summary>
-        /// Terminate workflows execution
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BulkResponse>> TerminateAsyncWithHttpInfo(List<string> body, string reason = null);
-        #endregion Asynchronous Operations
     }
 
     /// <summary>
@@ -401,94 +290,13 @@ namespace Conductor.Api
                 localVarPostBody = body; // byte array
             }
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.GetApiKeyWithPrefix("X-Authorization");
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PauseWorkflow", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<BulkResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
-        }
-
-        /// <summary>
-        /// Pause the list of workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of BulkResponse</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<BulkResponse> PauseWorkflowAsync(List<string> body)
-        {
-            ApiResponse<BulkResponse> localVarResponse = await PauseWorkflowAsyncWithHttpInfo(body);
-            return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Pause the list of workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> PauseWorkflowAsyncWithHttpInfo(List<string> body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->PauseWorkflow");
-
-            var localVarPath = "/workflow/bulk/pause";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.GetApiKeyWithPrefix("X-Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -563,97 +371,13 @@ namespace Conductor.Api
                 localVarPostBody = body; // byte array
             }
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.GetApiKeyWithPrefix("X-Authorization");
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Restart", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<BulkResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
-        }
-
-        /// <summary>
-        /// Restart the list of completed workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <returns>Task of BulkResponse</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<BulkResponse> RestartAsync(List<string> body, bool? useLatestDefinitions = null)
-        {
-            ApiResponse<BulkResponse> localVarResponse = await RestartAsyncWithHttpInfo(body, useLatestDefinitions);
-            return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Restart the list of completed workflow 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> RestartAsyncWithHttpInfo(List<string> body, bool? useLatestDefinitions = null)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Restart");
-
-            var localVarPath = "/workflow/bulk/restart";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (useLatestDefinitions != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "useLatestDefinitions", useLatestDefinitions)); // query parameter
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.GetApiKeyWithPrefix("X-Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -725,94 +449,13 @@ namespace Conductor.Api
                 localVarPostBody = body; // byte array
             }
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.GetApiKeyWithPrefix("X-Authorization");
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ResumeWorkflow", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<BulkResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
-        }
-
-        /// <summary>
-        /// Resume the list of workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of BulkResponse</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<BulkResponse> ResumeWorkflowAsync(List<string> body)
-        {
-            ApiResponse<BulkResponse> localVarResponse = await ResumeWorkflowAsyncWithHttpInfo(body);
-            return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Resume the list of workflows 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> ResumeWorkflowAsyncWithHttpInfo(List<string> body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->ResumeWorkflow");
-
-            var localVarPath = "/workflow/bulk/resume";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.GetApiKeyWithPrefix("X-Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -884,94 +527,13 @@ namespace Conductor.Api
                 localVarPostBody = body; // byte array
             }
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.GetApiKeyWithPrefix("X-Authorization");
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Retry", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<BulkResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
-        }
-
-        /// <summary>
-        /// Retry the last failed task for each workflow from the list 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of BulkResponse</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<BulkResponse> RetryAsync(List<string> body)
-        {
-            ApiResponse<BulkResponse> localVarResponse = await RetryAsyncWithHttpInfo(body);
-            return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Retry the last failed task for each workflow from the list 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> RetryAsyncWithHttpInfo(List<string> body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Retry");
-
-            var localVarPath = "/workflow/bulk/retry";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.GetApiKeyWithPrefix("X-Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -1046,9 +608,9 @@ namespace Conductor.Api
                 localVarPostBody = body; // byte array
             }
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.GetApiKeyWithPrefix("X-Authorization");
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1068,90 +630,5 @@ namespace Conductor.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
         }
-
-        /// <summary>
-        /// Terminate workflows execution 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <returns>Task of BulkResponse</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<BulkResponse> TerminateAsync(List<string> body, string reason = null)
-        {
-            ApiResponse<BulkResponse> localVarResponse = await TerminateAsyncWithHttpInfo(body, reason);
-            return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Terminate workflows execution 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <returns>Task of ApiResponse (BulkResponse)</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<BulkResponse>> TerminateAsyncWithHttpInfo(List<string> body, string reason = null)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowBulkResourceApi->Terminate");
-
-            var localVarPath = "/workflow/bulk/terminate";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (reason != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "reason", reason)); // query parameter
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Authorization")))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.GetApiKeyWithPrefix("X-Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Terminate", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<BulkResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
-        }
-
     }
 }
