@@ -49,7 +49,7 @@ OrkesApiClient GetApiClient(string basePath, string keyId, string keySecret)
 }
 
 OrkesApiClient apiClient = GetApiClient(
-    basePath: "https://play.orkes.io/",
+    basePath: "https://play.orkes.io/api",
     keyId: "key",
     keySecret: "secret"
 );
