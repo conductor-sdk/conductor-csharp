@@ -20,10 +20,17 @@ namespace Conductor.Client.Extensions
         {
             services.AddHttpClient();
             services.AddOptions();
-            services.AddSingleton(configuration != null ? configuration : new Configuration());
-            services.AddSingleton(new OrkesApiClient(configuration));
-            services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
+            if (configuration == null)
+            {
+                configuration = new Configuration();
+            }
+            services.AddSingleton(configuration);
+            OrkesApiClient orkesApiClient = new OrkesApiClient(configuration);
+            services.AddSingleton(orkesApiClient);
             services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
+            ConductorWorkerRestClient conductorWorkerRestClient = new ConductorWorkerRestClient(orkesApiClient);
+            services.AddSingleton(conductorWorkerRestClient);
+            services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
             services.AddTransient<IWorkflowTaskExecutor, WorkflowTaskExecutor>();
             return services.AddConductorClient(configureHttpClient);
         }

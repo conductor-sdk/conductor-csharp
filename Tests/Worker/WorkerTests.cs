@@ -89,7 +89,6 @@ namespace Tests.Worker
                             services.AddConductorWorker(ApiUtil.GetConfiguration());
                             services.AddConductorWorkflowTask<SimpleWorker>();
                             services.WithHostedService<WorkerService>();
-                            services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
                         }
                 ).ConfigureLogging(
                     logging =>
