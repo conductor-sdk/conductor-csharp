@@ -76,18 +76,6 @@ namespace Conductor.Client
 
         #region Private Members
 
-        /// <summary>
-        /// Gets or sets the API key based on the authentication name.
-        /// </summary>
-        /// <value>The API key.</value>
-        private IDictionary<string, string> _apiKey = null;
-
-        /// <summary>
-        /// Gets or sets the prefix (e.g. Token) of the API key based on the authentication name.
-        /// </summary>
-        /// <value>The prefix of the API key.</value>
-        private IDictionary<string, string> _apiKeyPrefix = null;
-
         private string _dateTimeFormat = ISO8601_DATETIME_FORMAT;
         private string _tempFolderPath = Path.GetTempPath();
 
