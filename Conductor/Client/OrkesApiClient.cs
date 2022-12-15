@@ -10,22 +10,24 @@ namespace Conductor.Client
     {
         private Configuration _configuration;
         private MemoryCache _memoryCache;
-
-        private OrkesAuthenticationSettings _authenticationSettings;
         private TokenResourceApi _tokenClient;
+        private OrkesAuthenticationSettings _authenticationSettings;
 
         private OrkesApiClient()
         {
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _configuration = null;
-            _authenticationSettings = null;
             _tokenClient = null;
+            _authenticationSettings = null;
         }
 
-        public OrkesApiClient(Configuration configuration = null, OrkesAuthenticationSettings authenticationSettings = null) : this()
+        public OrkesApiClient(Configuration configuration = null) : this()
         {
-            _authenticationSettings = authenticationSettings;
             _configuration = configuration;
+            if (_configuration != null && !string.IsNullOrEmpty(_configuration.keyId) && !string.IsNullOrEmpty(_configuration.keySecret))
+            {
+                _authenticationSettings = new OrkesAuthenticationSettings(_configuration.keyId, _configuration.keySecret);
+            }
             RefreshAuthenticationHeader();
         }
 

@@ -1,7 +1,7 @@
+using Conductor.Api;
 using Conductor.Client.Interfaces;
 using Conductor.Client.Models;
 using System.Threading.Tasks;
-using Conductor.Api;
 
 namespace Conductor.Client
 {

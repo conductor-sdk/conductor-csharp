@@ -13,6 +13,7 @@ namespace Conductor.Client.Worker
 {
     internal class WorkflowTaskExecutor : IWorkflowTaskExecutor
     {
+        private IServiceProvider _serviceProvider;
         private List<Type> workers;
         private ILogger<WorkflowTaskExecutor> logger;
         private readonly Configuration configuration;
@@ -24,12 +25,11 @@ namespace Conductor.Client.Worker
         private readonly string workerId = Environment.MachineName + "_" + new Random(epoch).Next();
 
         public WorkflowTaskExecutor(
-            IConductorWorkerRestClient taskClient,
             IServiceProvider serviceProvider,
             ILogger<WorkflowTaskExecutor> logger,
             IOptions<Configuration> configuration)
         {
-            this.taskClient = taskClient;
+            this.taskClient = serviceProvider.GetService(typeof(ConductorWorkerRestClient)) as ConductorWorkerRestClient;
             this.serviceProvider = serviceProvider;
             this.logger = logger;
             this.configuration = configuration.Value;

@@ -1,6 +1,5 @@
 using Conductor.Api;
 using Conductor.Client;
-using Conductor.Client.Authentication;
 using Conductor.Executor;
 using System;
 using System.Diagnostics;
@@ -34,30 +33,17 @@ namespace Tests.Util
 
         public static T GetClient<T>() where T : IApiAccessor, new()
         {
-            OrkesApiClient apiClient = GetApiClient();
+            OrkesApiClient apiClient = new OrkesApiClient(GetConfiguration());
             return apiClient.GetClient<T>();
         }
 
-        public static OrkesApiClient GetApiClient()
+        public static Configuration GetConfiguration()
         {
-            return GetApiClient(
-                basePath: _basePath,
-                keyId: _keyId,
-                keySecret: _keySecret
-            );
-        }
-
-        private static OrkesApiClient GetApiClient(string basePath, string keyId, string keySecret)
-        {
-            return new OrkesApiClient(
-                configuration: new Configuration()
-                {
-                    BasePath = basePath
-                },
-                authenticationSettings: new OrkesAuthenticationSettings(
-                    keyId, keySecret
-                )
-            );
+            Configuration configuration = new Configuration();
+            configuration.keyId = _keyId;
+            configuration.keySecret = _keySecret;
+            configuration.BasePath = _basePath;
+            return configuration;
         }
 
         private static string GetEnvironmentVariable(string variable)

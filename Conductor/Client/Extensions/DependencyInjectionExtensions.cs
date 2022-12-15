@@ -9,41 +9,36 @@ namespace Conductor.Client.Extensions
 {
     public static class DependencyInjectionExtensions
     {
-        public static IServiceCollection WithConductorWorker<T>(this IServiceCollection services) where T : IWorkflowTask
+        public static IServiceCollection AddConductorWorkflowTask<T>(this IServiceCollection services) where T : IWorkflowTask
         {
             services.AddTransient(typeof(IWorkflowTask), typeof(T));
             services.AddTransient(typeof(T));
             return services;
         }
 
-        public static IServiceCollection WithOrkesApiClient(this IServiceCollection services, OrkesApiClient orkesApiClient)
+        public static IServiceCollection AddConductorWorker(this IServiceCollection services, Configuration configuration = null, Action<IServiceProvider, HttpClient> configureHttpClient = null)
         {
             services.AddHttpClient();
             services.AddOptions();
-            services.AddSingleton(orkesApiClient);
-            services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
-            services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
-            services.AddTransient<IWorkflowTaskExecutor, WorkflowTaskExecutor>();
-            services.AddSingleton(orkesApiClient);
-            return services;
-        }
-
-        public static IServiceCollection WithHostedService<T>(this IServiceCollection services) where T : BackgroundService
-        {
-            services.AddHostedService<T>();
-            return services;
-        }
-
-        public static IServiceCollection WithConfiguration(this IServiceCollection services, Configuration configuration)
-        {
             if (configuration == null)
             {
-                services.AddSingleton<Configuration>();
+                configuration = new Configuration();
             }
-            else
+            services.AddSingleton(configuration);
+            OrkesApiClient orkesApiClient = new OrkesApiClient(configuration);
+            services.AddSingleton(orkesApiClient);
+            services.AddSingleton(new ConductorWorkerRestClient(orkesApiClient));
+            services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
+            services.AddTransient<IWorkflowTaskExecutor, WorkflowTaskExecutor>();
+            return services.AddConductorClient(configureHttpClient);
+        }
+
+        public static IServiceCollection AddConductorClient(this IServiceCollection services, Func<IServiceProvider, string> serverUrl)
+        {
+            services.AddHttpClient<IConductorWorkerRestClient, ConductorWorkerRestClient>((provider, client) =>
             {
-                services.AddSingleton(configuration);
-            }
+                client.BaseAddress = new Uri(serverUrl(provider));
+            });
             return services;
         }
 
@@ -59,5 +54,12 @@ namespace Conductor.Client.Extensions
             }
             return services;
         }
+
+        public static IServiceCollection WithHostedService<T>(this IServiceCollection services) where T : BackgroundService
+        {
+            services.AddHostedService<T>();
+            return services;
+        }
+
     }
 }

@@ -1,8 +1,11 @@
 using Conductor.Api;
+using Conductor.Client;
 using Conductor.Client.Extensions;
+using Conductor.Client.Interfaces;
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Conductor.Executor;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
@@ -83,8 +86,8 @@ namespace Tests.Worker
                 .ConfigureServices(
                     (ctx, services) =>
                         {
-                            services.WithOrkesApiClient(ApiUtil.GetApiClient());
-                            services.WithConductorWorker<SimpleWorker>();
+                            services.AddConductorWorker(ApiUtil.GetConfiguration());
+                            services.AddConductorWorkflowTask<SimpleWorker>();
                             services.WithHostedService<WorkerService>();
                         }
                 ).ConfigureLogging(
