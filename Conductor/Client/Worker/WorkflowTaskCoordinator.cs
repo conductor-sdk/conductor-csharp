@@ -1,5 +1,4 @@
-﻿using Conductor.Api;
-using Conductor.Client.Interfaces;
+﻿using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,6 @@ namespace Conductor.Client.Worker
         private ILogger<WorkflowTaskCoordinator> _logger;
         private IWorkflowTaskExecutor _workflowTaskExecutor;
         private HashSet<IWorkflowTask> _workerDefinitions;
-        private TaskResourceApi _client;
 
         public WorkflowTaskCoordinator(IServiceProvider serviceProvider, ILogger<WorkflowTaskCoordinator> logger, OrkesApiClient orkesApiClient, int? concurrentWorkers = null)
         {
@@ -25,7 +23,6 @@ namespace Conductor.Client.Worker
                 concurrentWorkers = 1;
             }
             _concurrentWorkers = concurrentWorkers.Value;
-            _client = orkesApiClient.GetClient<TaskResourceApi>();
             _workflowTaskExecutor = serviceProvider.GetService(typeof(IWorkflowTaskExecutor)) as IWorkflowTaskExecutor;
         }
 
