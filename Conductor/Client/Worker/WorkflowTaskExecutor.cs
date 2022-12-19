@@ -1,7 +1,6 @@
 ﻿using Conductor.Client.Extensions;
 using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -13,18 +12,20 @@ namespace Conductor.Client.Worker
     {
         private List<IWorkflowTask> workers;
         private ILogger<WorkflowTaskExecutor> logger;
-        private readonly Configuration configuration;
+        private readonly int _sleepInterval;
+        private readonly string _domain;
         private readonly IConductorWorkerRestClient taskClient;
         private readonly string workerId = Environment.MachineName;
 
         public WorkflowTaskExecutor(
             IServiceProvider serviceProvider,
             ILogger<WorkflowTaskExecutor> logger,
-            IOptions<Configuration> configuration)
+            Configuration configuration)
         {
             this.taskClient = serviceProvider.GetService(typeof(ConductorWorkerRestClient)) as ConductorWorkerRestClient;
             this.logger = logger;
-            this.configuration = configuration.Value;
+            _sleepInterval = configuration.SleepInterval;
+            _domain = configuration.Domain;
         }
 
         private string GetWorkerName()
@@ -73,16 +74,13 @@ namespace Conductor.Client.Worker
 
         private async Task Sleep()
         {
-            var delay = configuration.SleepInterval;
-
-            logger.LogDebug($"Waiting for {delay}ms");
-
-            await Task.Delay(delay);
+            logger.LogDebug($"Waiting for {_sleepInterval}ms");
+            await Task.Delay(_sleepInterval);
         }
 
         public Task<Models.Task> PollForTask(string taskType)
         {
-            return taskClient.PollTask(taskType, workerId, configuration.Domain);
+            return taskClient.PollTask(taskType, workerId, _domain);
         }
 
         private async Task ProcessTask(Models.Task task, IWorkflowTask workflowTask)
