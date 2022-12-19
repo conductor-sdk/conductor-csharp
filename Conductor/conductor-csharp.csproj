@@ -4,6 +4,7 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/conductor-sdk/conductor-csharp</RepositoryUrl>
     <Description>C# sdk for conductor</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
