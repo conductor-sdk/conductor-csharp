@@ -12,12 +12,10 @@ namespace Conductor.Client.Worker
 {
     internal class WorkflowTaskExecutor : IWorkflowTaskExecutor
     {
-        private IServiceProvider _serviceProvider;
         private List<IWorkflowTask> workers;
         private ILogger<WorkflowTaskExecutor> logger;
         private readonly Configuration configuration;
         private readonly IConductorWorkerRestClient taskClient;
-        private readonly IServiceProvider serviceProvider;
         private readonly string workerId = Environment.MachineName;
 
         public WorkflowTaskExecutor(
@@ -26,7 +24,6 @@ namespace Conductor.Client.Worker
             IOptions<Configuration> configuration)
         {
             this.taskClient = serviceProvider.GetService(typeof(ConductorWorkerRestClient)) as ConductorWorkerRestClient;
-            this.serviceProvider = serviceProvider;
             this.logger = logger;
             this.configuration = configuration.Value;
         }
@@ -82,21 +79,6 @@ namespace Conductor.Client.Worker
             logger.LogDebug($"Waiting for {delay}ms");
 
             await Task.Delay(delay);
-        }
-
-        private List<IWorkflowTask> DetermineOrderOfPolling(List<Type> workersToBePolled)
-        {
-            var workflowTasks = new List<IWorkflowTask>();
-            foreach (var taskType in workersToBePolled)
-            {
-                var workflowTask = serviceProvider.GetService(taskType) as IWorkflowTask;
-                if (workflowTask is null)
-                {
-                    throw new WorkerNotFoundException(taskType.GetType().Name);
-                }
-                workflowTasks.Add(workflowTask);
-            }
-            return workflowTasks;
         }
 
         public Task<Models.Task> PollForTask(string taskType)
