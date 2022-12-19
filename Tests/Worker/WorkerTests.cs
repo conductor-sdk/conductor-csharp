@@ -83,8 +83,8 @@ namespace Tests.Worker
                 .ConfigureServices(
                     (ctx, services) =>
                         {
-                            services.WithOrkesApiClient(ApiUtil.GetApiClient());
-                            services.WithConductorWorker<SimpleWorker>();
+                            services.AddConductorWorker(ApiUtil.GetConfiguration());
+                            services.AddConductorWorkflowTask<SimpleWorker>();
                             services.WithHostedService<WorkerService>();
                         }
                 ).ConfigureLogging(

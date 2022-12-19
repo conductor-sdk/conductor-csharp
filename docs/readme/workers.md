@@ -29,7 +29,7 @@ public class SimpleWorker : IWorkflowTask
 
     public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
     {
-        return task.Completed();
+        return await System.Threading.Tasks.Task.FromResult(task.Completed());
     }
 }
 ```
@@ -44,8 +44,8 @@ private IHost GetWorkerHost()
         .ConfigureServices(
             (ctx, services) =>
                 {
-                    services.WithOrkesApiClient(ApiUtil.GetApiClient());
-                    services.WithConductorWorker<SimpleWorker>();
+                    services.AddConductorWorker(ApiUtil.GetConfiguration());
+                    services.AddConductorWorkflowTask<SimpleWorker>();
                     services.WithHostedService<WorkerService>();
                 }
         ).ConfigureLogging(
@@ -59,6 +59,8 @@ private IHost GetWorkerHost()
 
 GetWorkerHost().RunAsync();
 ```
+
+Check out our [integration tests](https://github.com/conductor-sdk/conductor-csharp/blob/92c7580156a89322717c94aeaea9e5201fe577eb/Tests/Worker/WorkerTests.cs#L37) for more examples
 
 Worker SDK collects the following metrics:
 

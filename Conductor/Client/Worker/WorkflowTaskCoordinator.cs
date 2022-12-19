@@ -11,14 +11,13 @@ namespace Conductor.Client.Worker
     internal class WorkflowTaskCoordinator : IWorkflowTaskCoordinator
     {
         private int _concurrentWorkers;
-        private IServiceProvider _serviceProvider;
         private ILogger<WorkflowTaskCoordinator> _logger;
+        private IWorkflowTaskExecutor _workflowTaskExecutor;
         private HashSet<IWorkflowTask> _workerDefinitions;
         private TaskResourceApi _client;
 
         public WorkflowTaskCoordinator(IServiceProvider serviceProvider, ILogger<WorkflowTaskCoordinator> logger, OrkesApiClient orkesApiClient, int? concurrentWorkers = null)
         {
-            _serviceProvider = serviceProvider;
             _logger = logger;
             _workerDefinitions = new HashSet<IWorkflowTask>();
             if (concurrentWorkers == null)
@@ -27,6 +26,7 @@ namespace Conductor.Client.Worker
             }
             _concurrentWorkers = concurrentWorkers.Value;
             _client = orkesApiClient.GetClient<TaskResourceApi>();
+            _workflowTaskExecutor = serviceProvider.GetService(typeof(IWorkflowTaskExecutor)) as IWorkflowTaskExecutor;
         }
 
         public async Task Start()
@@ -35,8 +35,7 @@ namespace Conductor.Client.Worker
             var pollers = new List<Task>();
             for (var i = 0; i < _concurrentWorkers; i++)
             {
-                var executor = _serviceProvider.GetService(typeof(IWorkflowTaskExecutor)) as IWorkflowTaskExecutor;
-                pollers.Add(executor.StartPoller(_workerDefinitions.ToList()));
+                pollers.Add(_workflowTaskExecutor.StartPoller(_workerDefinitions.ToList()));
             }
             await Task.WhenAll(pollers);
         }
