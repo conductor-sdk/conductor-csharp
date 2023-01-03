@@ -22,6 +22,7 @@ namespace Conductor.Definition.TaskType
             else
             {
                 EvaluatorType = VALUE_PARAM_NAME;
+                Expression = SWITCH_CASE_PARAM_NAME;
                 WithInput(SWITCH_CASE_PARAM_NAME, caseExpression);
             }
         }
