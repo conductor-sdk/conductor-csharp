@@ -58,6 +58,8 @@ namespace Conductor.Client.Worker
             //TODO: Less generic logging - Log only when needed and better context to what is happening
             logger.LogDebug($"{GetWorkerName()} - Poll started");
             var workersToBePolled = DetermineOrderOfPolling(workers);
+            var taskCount = 0;
+
             foreach (var workerToBePolled in workersToBePolled)
             {
                 logger.LogDebug($"{GetWorkerName()} - Polling for task type: {workerToBePolled.TaskType}");
@@ -68,6 +70,7 @@ namespace Conductor.Client.Worker
 
                     if (task != null)
                     {
+                        taskCount++;
                         await ProcessTask(task, workerToBePolled);
                         break;
                     }
@@ -78,7 +81,9 @@ namespace Conductor.Client.Worker
                 }
             }
             logger.LogDebug($"{GetWorkerName()} - Poll ended");
-            await Sleep();
+
+            if (taskCount == 0)
+                await Sleep();
         }
 
         private async Task Sleep()
