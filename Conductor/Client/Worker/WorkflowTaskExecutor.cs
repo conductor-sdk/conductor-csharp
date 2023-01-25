@@ -13,7 +13,6 @@ namespace Conductor.Client.Worker
 {
     internal class WorkflowTaskExecutor : IWorkflowTaskExecutor
     {
-        private IServiceProvider _serviceProvider;
         private List<Type> workers;
         private ILogger<WorkflowTaskExecutor> logger;
         private readonly Configuration configuration;
@@ -58,7 +57,7 @@ namespace Conductor.Client.Worker
             //TODO: Less generic logging - Log only when needed and better context to what is happening
             logger.LogDebug($"{GetWorkerName()} - Poll started");
             var workersToBePolled = DetermineOrderOfPolling(workers);
-            var taskCount = 0;
+            var hasPolledAnyTask = false;
 
             foreach (var workerToBePolled in workersToBePolled)
             {
@@ -70,7 +69,7 @@ namespace Conductor.Client.Worker
 
                     if (task != null)
                     {
-                        taskCount++;
+                        hasPolledAnyTask = true;
                         await ProcessTask(task, workerToBePolled);
                         break;
                     }
@@ -82,8 +81,9 @@ namespace Conductor.Client.Worker
             }
             logger.LogDebug($"{GetWorkerName()} - Poll ended");
 
-            if (taskCount == 0)
+            if (!hasPolledAnyTask) {
                 await Sleep();
+            }
         }
 
         private async Task Sleep()
