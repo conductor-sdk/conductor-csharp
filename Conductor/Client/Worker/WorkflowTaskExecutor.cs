@@ -81,7 +81,8 @@ namespace Conductor.Client.Worker
             }
             logger.LogDebug($"{GetWorkerName()} - Poll ended");
 
-            if (!hasPolledAnyTask) {
+            if (!hasPolledAnyTask)
+            {
                 await Sleep();
             }
         }

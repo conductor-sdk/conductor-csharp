@@ -8,9 +8,9 @@ namespace Tests.Util
 {
     public class ApiUtil
     {
-        private const string ENV_ROOT_URI = "SDK_INTEGRATION_TESTS_SERVER_API_URL";
-        private const string ENV_KEY_ID = "SDK_INTEGRATION_TESTS_SERVER_KEY_ID";
-        private const string ENV_SECRET = "SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET";
+        private const string ENV_ROOT_URI = "CONDUCTOR_SERVER_URL";
+        private const string ENV_KEY_ID = "KEY";
+        private const string ENV_SECRET = "SECRET";
 
         private static string _basePath = null;
         private static string _keyId = null;
