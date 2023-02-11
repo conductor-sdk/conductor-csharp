@@ -629,7 +629,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns></returns>
-        void Terminate(string workflowId, string reason = null);
+        void Terminate(string workflowId, string reason = null, bool triggerFailureWorkflow = false);
 
         /// <summary>
         /// Terminate workflow execution
@@ -641,7 +641,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = null);
+        ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = null, bool triggerFailureWorkflow = false);
         /// <summary>
         /// Force upload all completed workflows to document store
         /// </summary>
@@ -2653,9 +2653,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns></returns>
-        public void Terminate(string workflowId, string reason = null)
+        public void Terminate(string workflowId, string reason = null, bool triggerFailureWorkflow = false)
         {
-            TerminateWithHttpInfo(workflowId, reason);
+            TerminateWithHttpInfo(workflowId, reason, triggerFailureWorkflow);
         }
 
         /// <summary>
@@ -2665,7 +2665,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = null)
+        public ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = null, bool triggerFailureWorkflow = false)
         {
             // verify the required parameter 'workflowId' is set
             if (workflowId == null)
@@ -2693,6 +2693,7 @@ namespace Conductor.Api
 
             if (workflowId != null) localVarPathParams.Add("workflowId", this.Configuration.ApiClient.ParameterToString(workflowId)); // path parameter
             if (reason != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "reason", reason)); // query parameter
+            if (triggerFailureWorkflow != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "triggerFailureWorkflow", triggerFailureWorkflow)); // query parameter
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
