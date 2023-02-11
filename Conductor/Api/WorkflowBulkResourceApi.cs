@@ -111,7 +111,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>BulkResponse</returns>
-        BulkResponse Terminate(List<string> body, string reason = null);
+        BulkResponse Terminate(List<string> body, string reason = null, bool triggerFailureWorkflow = false);
 
         /// <summary>
         /// Terminate workflows execution
@@ -123,7 +123,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> body, string reason = null);
+        ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> body, string reason = null, bool triggerFailureWorkflow = false);
         #endregion Synchronous Operations
     }
 

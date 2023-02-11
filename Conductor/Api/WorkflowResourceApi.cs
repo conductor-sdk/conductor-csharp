@@ -629,7 +629,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns></returns>
-        void Terminate(string workflowId, string reason = null);
+        void Terminate(string workflowId, string reason = null, bool triggerFailureWorkflow = false);
 
         /// <summary>
         /// Terminate workflow execution
@@ -641,7 +641,7 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = null);
+        ApiResponse<Object> TerminateWithHttpInfo(string workflowId, string reason = null, bool triggerFailureWorkflow = false);
         /// <summary>
         /// Force upload all completed workflows to document store
         /// </summary>
