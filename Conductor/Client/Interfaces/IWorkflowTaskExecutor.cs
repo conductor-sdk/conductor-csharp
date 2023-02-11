@@ -6,6 +6,6 @@ namespace Conductor.Client.Interfaces
 {
     public interface IWorkflowTaskExecutor
     {
-        Task StartPoller(List<Type> workerDefinitions);
+        Task StartPoller(List<IWorkflowTask> workerDefinitions);
     }
 }

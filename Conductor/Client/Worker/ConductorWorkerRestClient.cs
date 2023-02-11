@@ -3,9 +3,10 @@ using Conductor.Client.Interfaces;
 using Conductor.Client.Models;
 using System.Threading.Tasks;
 
-namespace Conductor.Client
+
+namespace Conductor.Client.Worker
 {
-    public class ConductorWorkerRestClient : IConductorWorkerRestClient
+    internal class ConductorWorkerRestClient : IConductorWorkerRestClient
     {
         private TaskResourceApi _client;
         public ConductorWorkerRestClient(OrkesApiClient apiClient)

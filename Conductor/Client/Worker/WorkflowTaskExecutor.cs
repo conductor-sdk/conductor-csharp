@@ -1,11 +1,8 @@
-﻿using Conductor.Exceptions;
-using Conductor.Client.Extensions;
+﻿using Conductor.Client.Extensions;
 using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,25 +10,22 @@ namespace Conductor.Client.Worker
 {
     internal class WorkflowTaskExecutor : IWorkflowTaskExecutor
     {
-        private List<Type> workers;
+        private List<IWorkflowTask> workers;
         private ILogger<WorkflowTaskExecutor> logger;
-        private readonly Configuration configuration;
+        private readonly int _sleepInterval;
+        private readonly string _domain;
         private readonly IConductorWorkerRestClient taskClient;
-        private readonly IServiceProvider serviceProvider;
-        private readonly static int epoch = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-
-        //TODO: better worker ids?
-        private readonly string workerId = Environment.MachineName + "_" + new Random(epoch).Next();
+        private readonly string workerId = Environment.MachineName;
 
         public WorkflowTaskExecutor(
             IServiceProvider serviceProvider,
             ILogger<WorkflowTaskExecutor> logger,
-            IOptions<Configuration> configuration)
+            Configuration configuration)
         {
             this.taskClient = serviceProvider.GetService(typeof(ConductorWorkerRestClient)) as ConductorWorkerRestClient;
-            this.serviceProvider = serviceProvider;
             this.logger = logger;
-            this.configuration = configuration.Value;
+            _sleepInterval = configuration.SleepInterval;
+            _domain = configuration.Domain;
         }
 
         private string GetWorkerName()
@@ -39,7 +33,7 @@ namespace Conductor.Client.Worker
             return $"Worker : {workerId} ";
         }
 
-        public async Task StartPoller(List<Type> workers)
+        public async Task StartPoller(List<IWorkflowTask> workers)
         {
             this.workers = workers;
             if (this.workers is null || this.workers.Count == 0) throw new NullReferenceException("Workers not set");
@@ -56,27 +50,25 @@ namespace Conductor.Client.Worker
             //TODO: Polling failure backoff
             //TODO: Less generic logging - Log only when needed and better context to what is happening
             logger.LogDebug($"{GetWorkerName()} - Poll started");
-            var workersToBePolled = DetermineOrderOfPolling(workers);
             var hasPolledAnyTask = false;
 
-            foreach (var workerToBePolled in workersToBePolled)
+            foreach (var worker in workers)
             {
-                logger.LogDebug($"{GetWorkerName()} - Polling for task type: {workerToBePolled.TaskType}");
-
+                logger.LogDebug($"{GetWorkerName()} - Polling for task type: {worker.TaskType}");
                 try
                 {
-                    var task = await PollForTask(workerToBePolled.TaskType);
+                    var task = await PollForTask(worker.TaskType);
 
                     if (task != null)
                     {
                         hasPolledAnyTask = true;
-                        await ProcessTask(task, workerToBePolled);
+                        await ProcessTask(task, worker);
                         break;
                     }
                 }
                 catch (Exception e)
                 {
-                    logger.LogError(e, $"{GetWorkerName()} -  Polling connection failed for task type: {workerToBePolled.TaskType}");
+                    logger.LogError(e, $"{GetWorkerName()} -  Polling connection failed for task type: {worker.TaskType}");
                 }
             }
             logger.LogDebug($"{GetWorkerName()} - Poll ended");
@@ -89,34 +81,13 @@ namespace Conductor.Client.Worker
 
         private async Task Sleep()
         {
-            var delay = configuration.SleepInterval;
-
-            logger.LogDebug($"Waiting for {delay}ms");
-
-            await Task.Delay(delay);
-        }
-
-        private List<IWorkflowTask> DetermineOrderOfPolling(List<Type> workersToBePolled)
-        {
-            var workflowTasks = new List<IWorkflowTask>();
-
-            foreach (var taskType in workersToBePolled)
-            {
-                var workflowTask = serviceProvider.GetService(taskType) as IWorkflowTask;
-                if (workflowTask is null)
-                    throw new WorkerNotFoundException(taskType.GetType().Name);
-                workflowTasks.Add(workflowTask);
-            }
-
-            var priority = workflowTasks.Where(p => p.Priority != null).OrderByDescending(p => p.Priority).ToList();
-            var random = workflowTasks.Where(p => p.Priority == null).ToList();
-            ShuffleList(random);
-            return priority.Concat(random).ToList();
+            logger.LogDebug($"Waiting for {_sleepInterval}ms");
+            await Task.Delay(_sleepInterval);
         }
 
         public Task<Models.Task> PollForTask(string taskType)
         {
-            return taskClient.PollTask(taskType, workerId, configuration.Domain);
+            return taskClient.PollTask(taskType, workerId, _domain);
         }
 
         private async Task ProcessTask(Models.Task task, IWorkflowTask workflowTask)
@@ -158,20 +129,6 @@ namespace Conductor.Client.Worker
         {
             var result = await taskClient.UpdateTask(taskResult);
             logger.LogDebug($"{GetWorkerName()} - Update task response {result}");
-        }
-
-        private void ShuffleList<T>(List<T> list)
-        {
-            var rng = new Random();
-            var n = list.Count;
-            while (n > 1)
-            {
-                n--;
-                var k = rng.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
-            }
         }
     }
 }
