@@ -557,9 +557,9 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>BulkResponse</returns>
-        public BulkResponse Terminate(List<string> body, string reason = null)
+        public BulkResponse Terminate(List<string> body, string reason = null, bool triggerFailureWorkflow = false)
         {
-            ApiResponse<BulkResponse> localVarResponse = TerminateWithHttpInfo(body, reason);
+            ApiResponse<BulkResponse> localVarResponse = TerminateWithHttpInfo(body, reason, triggerFailureWorkflow);
             return localVarResponse.Data;
         }
 
@@ -570,7 +570,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <param name="reason"> (optional)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> body, string reason = null)
+        public ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> body, string reason = null, bool triggerFailureWorkflow = false)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -599,6 +599,7 @@ namespace Conductor.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (reason != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "reason", reason)); // query parameter
+            if (triggerFailureWorkflow != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "triggerFailureWorkflow", triggerFailureWorkflow)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
