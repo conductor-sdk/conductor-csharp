@@ -23,7 +23,7 @@ jobs:
         run: >
           DOCKER_BUILDKIT=1 docker build
           --target=test
-          --build-arg SDK_INTEGRATION_TESTS_SERVER_API_URL=${{ secrets.SDK_INTEGRATION_TESTS_SERVER_API_URL }}
-          --build-arg SDK_INTEGRATION_TESTS_SERVER_KEY_ID=${{ secrets.SDK_INTEGRATION_TESTS_SERVER_KEY_ID }}
-          --build-arg SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET=${{ secrets.SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET }}
+          --build-arg KEY=${{ secrets.KEY }}
+          --build-arg SECRET=${{ secrets.SECRET }}
+          --build-arg CONDUCTOR_SERVER_URL=${{ secrets.CONDUCTOR_SERVER_URL }}
           .

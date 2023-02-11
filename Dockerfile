@@ -1,23 +1,21 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS raw_base_image
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS csharp-sdk
 RUN mkdir /package
 COPY /Conductor /package/Conductor
 WORKDIR /package/Conductor
 
-FROM raw_base_image AS linter
+FROM csharp-sdk AS linter
 RUN dotnet format --verify-no-changes *.csproj
 
-FROM raw_base_image AS build
+FROM csharp-sdk AS build
 RUN dotnet build *.csproj
 
-FROM build as build_with_integration_tests_env
-ARG SDK_INTEGRATION_TESTS_SERVER_API_URL
-ENV SDK_INTEGRATION_TESTS_SERVER_API_URL=${SDK_INTEGRATION_TESTS_SERVER_API_URL}
-ARG SDK_INTEGRATION_TESTS_SERVER_KEY_ID
-ENV SDK_INTEGRATION_TESTS_SERVER_KEY_ID=${SDK_INTEGRATION_TESTS_SERVER_KEY_ID}
-ARG SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET
-ENV SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET=${SDK_INTEGRATION_TESTS_SERVER_KEY_SECRET}
-
-FROM build_with_integration_tests_env AS test
+FROM build as test
+ARG KEY
+ARG SECRET
+ARG CONDUCTOR_SERVER_URL
+ENV KEY=${KEY}
+ENV SECRET=${SECRET}
+ENV CONDUCTOR_SERVER_URL=${CONDUCTOR_SERVER_URL}
 COPY /Tests /package/Tests
 WORKDIR /package/Tests
 RUN dotnet test -l "console;verbosity=normal"

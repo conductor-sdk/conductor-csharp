@@ -50,6 +50,8 @@ namespace Conductor.Client.Worker
             //TODO: Polling failure backoff
             //TODO: Less generic logging - Log only when needed and better context to what is happening
             logger.LogDebug($"{GetWorkerName()} - Poll started");
+            var hasPolledAnyTask = false;
+
             foreach (var worker in workers)
             {
                 logger.LogDebug($"{GetWorkerName()} - Polling for task type: {worker.TaskType}");
@@ -59,6 +61,7 @@ namespace Conductor.Client.Worker
 
                     if (task != null)
                     {
+                        hasPolledAnyTask = true;
                         await ProcessTask(task, worker);
                         break;
                     }
@@ -69,7 +72,11 @@ namespace Conductor.Client.Worker
                 }
             }
             logger.LogDebug($"{GetWorkerName()} - Poll ended");
-            await Sleep();
+
+            if (!hasPolledAnyTask)
+            {
+                await Sleep();
+            }
         }
 
         private async Task Sleep()
