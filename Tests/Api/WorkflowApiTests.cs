@@ -22,6 +22,12 @@ namespace Tests.Examples
             _client.ResumeWorkflow(workflowId);
             workflow = _client.GetExecutionStatus(workflowId);
             Assert.Equal("RUNNING", workflow.Status.ToString());
+            _client.Terminate(
+                workflowId: workflowId,
+                triggerFailureWorkflow: true
+            );
+            workflow = _client.GetExecutionStatus(workflowId);
+            Assert.Equal(Workflow.StatusEnum.TERMINATED, workflow.Status);
         }
     }
 }
