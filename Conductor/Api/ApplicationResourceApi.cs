@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -131,10 +130,10 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="id"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void DeleteTagForApplication(string id, string body = null);
+        void DeleteTagForApplication(List<TagObject> body, string id);
 
         /// <summary>
         /// Delete a tag for application
@@ -143,10 +142,10 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="id"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteTagForApplicationWithHttpInfo(string id, string body = null);
+        ApiResponse<Object> DeleteTagForApplicationWithHttpInfo(List<TagObject> body, string id);
         /// <summary>
         /// Get application&#x27;s access keys
         /// </summary>
@@ -168,6 +167,27 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> GetAccessKeysWithHttpInfo(string id);
+        /// <summary>
+        /// Get application id by access key id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accessKeyId"></param>
+        /// <returns>Object</returns>
+        Object GetAppByAccessKeyId(string accessKeyId);
+
+        /// <summary>
+        /// Get application id by access key id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accessKeyId"></param>
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> GetAppByAccessKeyIdWithHttpInfo(string accessKeyId);
         /// <summary>
         /// Get an application by id
         /// </summary>
@@ -217,8 +237,8 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;ConductorApplication&gt;</returns>
-        List<ConductorApplication> ListApplications();
+        /// <returns>List&lt;ExtendedConductorApplication&gt;</returns>
+        List<ExtendedConductorApplication> ListApplications();
 
         /// <summary>
         /// Get all applications
@@ -227,8 +247,8 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;ConductorApplication&gt;</returns>
-        ApiResponse<List<ConductorApplication>> ListApplicationsWithHttpInfo();
+        /// <returns>ApiResponse of List&lt;ExtendedConductorApplication&gt;</returns>
+        ApiResponse<List<ExtendedConductorApplication>> ListApplicationsWithHttpInfo();
         /// <summary>
         /// Put a tag to application
         /// </summary>
@@ -236,10 +256,10 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="id"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void PutTagForApplication(string id, string body = null);
+        void PutTagForApplication(List<TagObject> body, string id);
 
         /// <summary>
         /// Put a tag to application
@@ -248,10 +268,10 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="id"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PutTagForApplicationWithHttpInfo(string id, string body = null);
+        ApiResponse<Object> PutTagForApplicationWithHttpInfo(List<TagObject> body, string id);
         /// <summary>
         /// 
         /// </summary>
@@ -322,6 +342,7 @@ namespace Conductor.Api
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> UpdateApplicationWithHttpInfo(CreateOrUpdateApplicationRequest body, string id);
         #endregion Synchronous Operations
+
     }
 
     /// <summary>
@@ -492,6 +513,70 @@ namespace Conductor.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddRoleToApplicationUser", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="applicationId"></param>
+        /// <param name="role"></param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddRoleToApplicationUserAsyncWithHttpInfo(string applicationId, string role)
+        {
+            // verify the required parameter 'applicationId' is set
+            if (applicationId == null)
+                throw new ApiException(400, "Missing required parameter 'applicationId' when calling ApplicationResourceApi->AddRoleToApplicationUser");
+            // verify the required parameter 'role' is set
+            if (role == null)
+                throw new ApiException(400, "Missing required parameter 'role' when calling ApplicationResourceApi->AddRoleToApplicationUser");
+
+            var localVarPath = "/applications/{applicationId}/roles/{role}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (applicationId != null) localVarPathParams.Add("applicationId", this.Configuration.ApiClient.ParameterToString(applicationId)); // path parameter
+            if (role != null) localVarPathParams.Add("role", this.Configuration.ApiClient.ParameterToString(role)); // path parameter
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -806,23 +891,26 @@ namespace Conductor.Api
         /// Delete a tag for application 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="id"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void DeleteTagForApplication(string id, string body = null)
+        public void DeleteTagForApplication(List<TagObject> body, string id)
         {
-            DeleteTagForApplicationWithHttpInfo(id, body);
+            DeleteTagForApplicationWithHttpInfo(body, id);
         }
 
         /// <summary>
         /// Delete a tag for application 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="id"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteTagForApplicationWithHttpInfo(string id, string body = null)
+        public ApiResponse<Object> DeleteTagForApplicationWithHttpInfo(List<TagObject> body, string id)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling ApplicationResourceApi->DeleteTagForApplication");
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->DeleteTagForApplication");
@@ -949,6 +1037,76 @@ namespace Conductor.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+        }
+
+        /// <summary>
+        /// Get application id by access key id 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accessKeyId"></param>
+        /// <returns>Object</returns>
+        public Object GetAppByAccessKeyId (string accessKeyId)
+        {
+             ApiResponse<Object> localVarResponse = GetAppByAccessKeyIdWithHttpInfo(accessKeyId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get application id by access key id 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accessKeyId"></param>
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > GetAppByAccessKeyIdWithHttpInfo (string accessKeyId)
+        {
+            // verify the required parameter 'accessKeyId' is set
+            if (accessKeyId == null)
+                throw new ApiException(400, "Missing required parameter 'accessKeyId' when calling ApplicationResourceApi->GetAppByAccessKeyId");
+
+            var localVarPath = "/applications/key/{accessKeyId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (accessKeyId != null) localVarPathParams.Add("accessKeyId", this.Configuration.ApiClient.ParameterToString(accessKeyId)); // path parameter
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAppByAccessKeyId", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1095,10 +1253,10 @@ namespace Conductor.Api
         /// Get all applications 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;ConductorApplication&gt;</returns>
-        public List<ConductorApplication> ListApplications()
+        /// <returns>List&lt;ExtendedConductorApplication&gt;</returns>
+        public List<ExtendedConductorApplication> ListApplications()
         {
-            ApiResponse<List<ConductorApplication>> localVarResponse = ListApplicationsWithHttpInfo();
+            ApiResponse<List<ExtendedConductorApplication>> localVarResponse = ListApplicationsWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -1106,8 +1264,8 @@ namespace Conductor.Api
         /// Get all applications 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;ConductorApplication&gt;</returns>
-        public ApiResponse<List<ConductorApplication>> ListApplicationsWithHttpInfo()
+        /// <returns>ApiResponse of List&lt;ExtendedConductorApplication&gt;</returns>
+        public ApiResponse<List<ExtendedConductorApplication>> ListApplicationsWithHttpInfo()
         {
 
             var localVarPath = "/applications";
@@ -1150,32 +1308,35 @@ namespace Conductor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<ConductorApplication>>(localVarStatusCode,
+            return new ApiResponse<List<ExtendedConductorApplication>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<ConductorApplication>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ConductorApplication>)));
+                (List<ExtendedConductorApplication>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExtendedConductorApplication>)));
         }
 
         /// <summary>
         /// Put a tag to application 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="id"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void PutTagForApplication(string id, string body = null)
+        public void PutTagForApplication(List<TagObject> body, string id)
         {
-            PutTagForApplicationWithHttpInfo(id, body);
+            PutTagForApplicationWithHttpInfo(body, id);
         }
 
         /// <summary>
         /// Put a tag to application 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="id"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PutTagForApplicationWithHttpInfo(string id, string body = null)
+        public ApiResponse<Object> PutTagForApplicationWithHttpInfo(List<TagObject> body, string id)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling ApplicationResourceApi->PutTagForApplication");
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationResourceApi->PutTagForApplication");
@@ -1469,6 +1630,5 @@ namespace Conductor.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
-
     }
 }
