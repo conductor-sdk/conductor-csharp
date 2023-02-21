@@ -5,7 +5,7 @@ using System.Linq;
 using RestSharp;
 using EventHandler = Conductor.Client.Models.EventHandler;
 
-namespace Conductor.Client.Api
+namespace Conductor.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
