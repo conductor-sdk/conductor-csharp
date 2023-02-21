@@ -1,14 +1,11 @@
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
-using Conductor.Client;
-
 using EventHandler = Conductor.Client.Models.EventHandler;
 
-namespace Conductor.Api
+namespace Conductor.Client.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
