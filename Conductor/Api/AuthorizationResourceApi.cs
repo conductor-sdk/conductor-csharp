@@ -209,7 +209,7 @@ namespace Conductor.Client.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AuthorizationResourceApi->GetPermissions");
 
-            var localVarPath = "/api/auth/authorization/{type}/{id}";
+            var localVarPath = "/auth/authorization/{type}/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -280,7 +280,7 @@ namespace Conductor.Client.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling AuthorizationResourceApi->GrantPermissions");
 
-            var localVarPath = "/api/auth/authorization";
+            var localVarPath = "/auth/authorization";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -358,7 +358,7 @@ namespace Conductor.Client.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling AuthorizationResourceApi->RemovePermissions");
 
-            var localVarPath = "/api/auth/authorization";
+            var localVarPath = "/auth/authorization";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
