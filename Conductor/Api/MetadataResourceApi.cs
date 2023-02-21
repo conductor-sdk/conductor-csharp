@@ -1,7 +1,5 @@
-
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Conductor.Client;
@@ -74,8 +72,9 @@ namespace Conductor.Api
         /// <param name="metadata"> (optional, default to false)</param>
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
+        /// <param name="_short"> (optional, default to false)</param>
         /// <returns>List&lt;WorkflowDef&gt;</returns>
-        List<WorkflowDef> GetAllWorkflows(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
+        List<WorkflowDef> GetAllWorkflows(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null, bool? _short = null);
 
         /// <summary>
         /// Retrieves all workflow definition along with blueprint
@@ -88,8 +87,9 @@ namespace Conductor.Api
         /// <param name="metadata"> (optional, default to false)</param>
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
+        /// <param name="_short"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;WorkflowDef&gt;</returns>
-        ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null);
+        ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null, bool? _short = null);
         /// <summary>
         /// Gets the task definition
         /// </summary>
@@ -326,16 +326,6 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
-        }
-
-        /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
@@ -355,28 +345,6 @@ namespace Conductor.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
-        }
-
-        /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
         }
 
         /// <summary>
@@ -544,10 +512,11 @@ namespace Conductor.Api
         /// <param name="metadata"> (optional, default to false)</param>
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
+        /// <param name="_short"> (optional, default to false)</param>
         /// <returns>List&lt;WorkflowDef&gt;</returns>
-        public List<WorkflowDef> GetAllWorkflows(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
+        public List<WorkflowDef> GetAllWorkflows(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null, bool? _short = null)
         {
-            ApiResponse<List<WorkflowDef>> localVarResponse = GetAllWorkflowsWithHttpInfo(access, metadata, tagKey, tagValue);
+            ApiResponse<List<WorkflowDef>> localVarResponse = GetAllWorkflowsWithHttpInfo(access, metadata, tagKey, tagValue, _short);
             return localVarResponse.Data;
         }
 
@@ -559,8 +528,9 @@ namespace Conductor.Api
         /// <param name="metadata"> (optional, default to false)</param>
         /// <param name="tagKey"> (optional)</param>
         /// <param name="tagValue"> (optional)</param>
+        /// <param name="_short"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;WorkflowDef&gt;</returns>
-        public ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null)
+        public ApiResponse<List<WorkflowDef>> GetAllWorkflowsWithHttpInfo(string access = null, bool? metadata = null, string tagKey = null, string tagValue = null, bool? _short = null)
         {
 
             var localVarPath = "/metadata/workflow";
@@ -588,6 +558,7 @@ namespace Conductor.Api
             if (metadata != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "metadata", metadata)); // query parameter
             if (tagKey != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tagKey", tagKey)); // query parameter
             if (tagValue != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tagValue", tagValue)); // query parameter
+            if (_short != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "short", _short)); // query parameter
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
