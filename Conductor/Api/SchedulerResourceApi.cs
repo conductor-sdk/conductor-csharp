@@ -1,7 +1,5 @@
-
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Conductor.Client;
@@ -43,10 +41,10 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="name"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void DeleteTagForSchedule(string name, string body = null);
+        void DeleteTagForSchedule(List<TagObject> body, string name);
 
         /// <summary>
         /// Delete a tag for schedule
@@ -55,10 +53,10 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="name"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteTagForScheduleWithHttpInfo(string name, string body = null);
+        ApiResponse<Object> DeleteTagForScheduleWithHttpInfo(List<TagObject> body, string name);
         /// <summary>
         /// Get all existing workflow schedules and optionally filter by workflow name
         /// </summary>
@@ -196,10 +194,10 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="name"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void PutTagForSchedule(string name, string body = null);
+        void PutTagForSchedule(List<TagObject> body, string name);
 
         /// <summary>
         /// Put a tag to schedule
@@ -208,10 +206,10 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="name"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PutTagForScheduleWithHttpInfo(string name, string body = null);
+        ApiResponse<Object> PutTagForScheduleWithHttpInfo(List<TagObject> body, string name);
         /// <summary>
         /// Requeue all execution records
         /// </summary>
@@ -341,6 +339,7 @@ namespace Conductor.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> TestTimeoutWithHttpInfo();
         #endregion Synchronous Operations
+
     }
 
     /// <summary>
@@ -398,16 +397,6 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
-        }
-
-        /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
@@ -427,28 +416,6 @@ namespace Conductor.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
-        }
-
-        /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
         }
 
         /// <summary>
@@ -525,23 +492,26 @@ namespace Conductor.Api
         /// Delete a tag for schedule 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="name"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void DeleteTagForSchedule(string name, string body = null)
+        public void DeleteTagForSchedule(List<TagObject> body, string name)
         {
-            DeleteTagForScheduleWithHttpInfo(name, body);
+            DeleteTagForScheduleWithHttpInfo(body, name);
         }
 
         /// <summary>
         /// Delete a tag for schedule 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="name"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteTagForScheduleWithHttpInfo(string name, string body = null)
+        public ApiResponse<Object> DeleteTagForScheduleWithHttpInfo(List<TagObject> body, string name)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling SchedulerResourceApi->DeleteTagForSchedule");
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->DeleteTagForSchedule");
@@ -1024,23 +994,26 @@ namespace Conductor.Api
         /// Put a tag to schedule 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="name"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void PutTagForSchedule(string name, string body = null)
+        public void PutTagForSchedule(List<TagObject> body, string name)
         {
-            PutTagForScheduleWithHttpInfo(name, body);
+            PutTagForScheduleWithHttpInfo(body, name);
         }
 
         /// <summary>
         /// Put a tag to schedule 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="name"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PutTagForScheduleWithHttpInfo(string name, string body = null)
+        public ApiResponse<Object> PutTagForScheduleWithHttpInfo(List<TagObject> body, string name)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling SchedulerResourceApi->PutTagForSchedule");
             // verify the required parameter 'name' is set
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling SchedulerResourceApi->PutTagForSchedule");
@@ -1147,6 +1120,71 @@ namespace Conductor.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RequeueAllExecutionRecords", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
+        }
+
+        /// <summary>
+        /// Requeue all execution records 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> RequeueAllExecutionRecordsAsync()
+        {
+            ApiResponse<Dictionary<string, Object>> localVarResponse = await RequeueAllExecutionRecordsAsyncWithHttpInfo();
+            return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Requeue all execution records 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> RequeueAllExecutionRecordsAsyncWithHttpInfo()
+        {
+
+            var localVarPath = "/scheduler/admin/requeue";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
