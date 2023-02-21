@@ -268,8 +268,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> UploadWorkflowsAndTasksDefinitionsToS3WithHttpInfo();
-        #endregion Synchronous Operations
-    }
+        #endregion Synchronous Operations    }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints

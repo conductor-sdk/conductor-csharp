@@ -232,8 +232,7 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> UpsertGroupWithHttpInfo(UpsertGroupRequest body, string id);
-        #endregion Synchronous Operations
-    }
+        #endregion Synchronous Operations    }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints

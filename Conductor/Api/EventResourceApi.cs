@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
+using Conductor.Client;
 using EventHandler = Conductor.Client.Models.EventHandler;
 
 namespace Conductor.Api
@@ -208,8 +208,7 @@ namespace Conductor.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateEventHandlerWithHttpInfo(EventHandler body);
-        #endregion Synchronous Operations
-    }
+        #endregion Synchronous Operations    }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints

@@ -80,7 +80,6 @@ namespace Conductor.Api
         /// <returns>ApiResponse of Response</returns>
         ApiResponse<Response> RemovePermissionsWithHttpInfo(AuthorizationRequest body);
         #endregion Synchronous Operations
-
     }
 
     /// <summary>

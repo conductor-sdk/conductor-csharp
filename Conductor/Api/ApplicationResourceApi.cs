@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Conductor.Client;
@@ -342,7 +341,6 @@ namespace Conductor.Api
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> UpdateApplicationWithHttpInfo(CreateOrUpdateApplicationRequest body, string id);
         #endregion Synchronous Operations
-
     }
 
     /// <summary>
