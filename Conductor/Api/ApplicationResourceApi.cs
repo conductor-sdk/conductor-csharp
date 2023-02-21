@@ -1042,7 +1042,7 @@ namespace Conductor.Api
         /// <summary>
         /// Get application id by access key id 
         /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accessKeyId"></param>
         /// <returns>Object</returns>
         public Object GetAppByAccessKeyId (string accessKeyId)
@@ -1054,7 +1054,7 @@ namespace Conductor.Api
         /// <summary>
         /// Get application id by access key id 
         /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accessKeyId"></param>
         /// <returns>ApiResponse of Object</returns>
         public ApiResponse< Object > GetAppByAccessKeyIdWithHttpInfo (string accessKeyId)
