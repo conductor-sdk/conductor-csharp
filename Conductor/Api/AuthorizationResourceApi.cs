@@ -1,13 +1,11 @@
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
-using Conductor.Client;
 using Conductor.Client.Models;
 
-namespace Conductor.Api
+namespace Conductor.Client.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -81,6 +79,7 @@ namespace Conductor.Api
         /// <returns>ApiResponse of Response</returns>
         ApiResponse<Response> RemovePermissionsWithHttpInfo(AuthorizationRequest body);
         #endregion Synchronous Operations
+
     }
 
     /// <summary>
@@ -135,16 +134,6 @@ namespace Conductor.Api
         public String GetBasePath()
         {
             return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
-        }
-
-        /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
         }
 
         /// <summary>
@@ -220,7 +209,7 @@ namespace Conductor.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AuthorizationResourceApi->GetPermissions");
 
-            var localVarPath = "/auth/authorization/{type}/{id}";
+            var localVarPath = "/api/auth/authorization/{type}/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -291,7 +280,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling AuthorizationResourceApi->GrantPermissions");
 
-            var localVarPath = "/auth/authorization";
+            var localVarPath = "/api/auth/authorization";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -369,7 +358,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling AuthorizationResourceApi->RemovePermissions");
 
-            var localVarPath = "/auth/authorization";
+            var localVarPath = "/api/auth/authorization";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
