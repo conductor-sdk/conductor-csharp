@@ -279,7 +279,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>List&lt;Workflow&gt;</returns>
-        List<Workflow> GetWorkflows2(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
+        List<Workflow> GetWorkflows(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
 
         /// <summary>
         /// Lists workflows for the given correlation id
@@ -293,7 +293,7 @@ namespace Conductor.Api
         /// <param name="includeClosed"> (optional, default to false)</param>
         /// <param name="includeTasks"> (optional, default to false)</param>
         /// <returns>ApiResponse of List&lt;Workflow&gt;</returns>
-        ApiResponse<List<Workflow>> GetWorkflows2WithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
+        ApiResponse<List<Workflow>> GetWorkflowsWithHttpInfo(string name, string correlationId, bool? includeClosed = null, bool? includeTasks = null);
         /// <summary>
         /// Pauses the workflow
         /// </summary>
