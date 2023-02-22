@@ -223,7 +223,7 @@ namespace Conductor.Api
         /// <param name="key"></param>
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> SecretExistsWithHttpInfo(string key);
-        #endregion Synchronous Operations        
+        #endregion Synchronous Operations
     }
 
     /// <summary>
@@ -269,15 +269,6 @@ namespace Conductor.Api
                 this.Configuration = configuration;
 
             ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
-        }
-
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public String GetBasePath()
-        {
-            return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
         }
 
         /// <summary>
