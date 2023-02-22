@@ -947,10 +947,10 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accessKeyId"></param>
         /// <returns>Object</returns>
-        public Object GetAppByAccessKeyId (string accessKeyId)
+        public Object GetAppByAccessKeyId(string accessKeyId)
         {
-             ApiResponse<Object> localVarResponse = GetAppByAccessKeyIdWithHttpInfo(accessKeyId);
-             return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = GetAppByAccessKeyIdWithHttpInfo(accessKeyId);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -959,7 +959,7 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accessKeyId"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > GetAppByAccessKeyIdWithHttpInfo (string accessKeyId)
+        public ApiResponse<Object> GetAppByAccessKeyIdWithHttpInfo(string accessKeyId)
         {
             // verify the required parameter 'accessKeyId' is set
             if (accessKeyId == null)
@@ -994,11 +994,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1008,7 +1008,7 @@ namespace Conductor.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
