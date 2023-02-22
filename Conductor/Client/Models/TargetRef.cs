@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.IO;
@@ -63,7 +62,22 @@ namespace Conductor.Client.Models
             /// Enum USER for value: USER
             /// </summary>
             [EnumMember(Value = "USER")]
-            USER = 4
+            USER = 4,
+            /// <summary>
+            /// Enum SECRET for value: SECRET
+            /// </summary>
+            [EnumMember(Value = "SECRET")]
+            SECRET = 5,
+            /// <summary>
+            /// Enum TAG for value: TAG
+            /// </summary>
+            [EnumMember(Value = "TAG")]
+            TAG = 6,
+            /// <summary>
+            /// Enum DOMAIN for value: DOMAIN
+            /// </summary>
+            [EnumMember(Value = "DOMAIN")]
+            DOMAIN = 7
         }
         /// <summary>
         /// Gets or Sets Type
@@ -77,8 +91,24 @@ namespace Conductor.Client.Models
         /// <param name="type">type (required).</param>
         public TargetRef(IdEnum id = default(IdEnum), TypeEnum type = default(TypeEnum))
         {
-            this.Id = id;
-            this.Type = type;
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new InvalidDataException("id is a required property for TargetRef and cannot be null");
+            }
+            else
+            {
+                this.Id = id;
+            }
+            // to ensure "type" is required (not null)
+            if (type == null)
+            {
+                throw new InvalidDataException("type is a required property for TargetRef and cannot be null");
+            }
+            else
+            {
+                this.Type = type;
+            }
         }
 
 
@@ -129,11 +159,13 @@ namespace Conductor.Client.Models
             return
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) &&
                 (
                     this.Type == input.Type ||
-                    this.Type.Equals(input.Type)
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 );
         }
 
@@ -146,8 +178,10 @@ namespace Conductor.Client.Models
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Id.GetHashCode();
-                hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;
             }
         }
