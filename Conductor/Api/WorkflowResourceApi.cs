@@ -605,7 +605,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>string</returns>
-        string StartWorkflow(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
+        string StartWorkflow(string name, Dictionary<string, Object> body, int? version = null, string correlationId = null, int? priority = null);
 
         /// <summary>
         /// Start a new workflow. Returns the ID of the workflow instance that can be later used for tracking
@@ -620,7 +620,7 @@ namespace Conductor.Api
         /// <param name="correlationId"> (optional)</param>
         /// <param name="priority"> (optional, default to 0)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> StartWorkflowWithHttpInfo(Dictionary<string, Object> body, string name, int? version = null, string correlationId = null, int? priority = null);
+        ApiResponse<string> StartWorkflowWithHttpInfo(string name, Dictionary<string, Object> body, int? version = null, string correlationId = null, int? priority = null);
         /// <summary>
         /// Terminate workflow execution
         /// </summary>
