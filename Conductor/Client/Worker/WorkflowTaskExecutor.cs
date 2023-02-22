@@ -57,7 +57,7 @@ namespace Conductor.Client.Worker
                 logger.LogDebug($"{GetWorkerName()} - Polling for task type: {worker.TaskType}");
                 try
                 {
-                    var task = await PollForTask(worker.TaskType);
+                    var task = PollForTask(worker.TaskType);
 
                     if (task != null)
                     {
@@ -85,7 +85,7 @@ namespace Conductor.Client.Worker
             await Task.Delay(_sleepInterval);
         }
 
-        public Task<Models.Task> PollForTask(string taskType)
+        public Models.Task PollForTask(string taskType)
         {
             return taskClient.PollTask(taskType, workerId, _domain);
         }
@@ -112,7 +112,7 @@ namespace Conductor.Client.Worker
                 }
 
                 result.WorkerId = workerId;
-                await UpdateTask(result);
+                UpdateTask(result);
             }
             catch (OperationCanceledException)
             {
@@ -121,13 +121,13 @@ namespace Conductor.Client.Worker
             catch (Exception e)
             {
                 logger.LogError(e, $"{GetWorkerName()} - Failed to execute task");
-                await UpdateTask(task.Failed(e.ToString()));
+                UpdateTask(task.Failed(e.ToString()));
             }
         }
 
-        private async Task UpdateTask(Models.TaskResult taskResult)
+        private void UpdateTask(Models.TaskResult taskResult)
         {
-            var result = await taskClient.UpdateTask(taskResult);
+            var result = taskClient.UpdateTask(taskResult);
             logger.LogDebug($"{GetWorkerName()} - Update task response {result}");
         }
     }

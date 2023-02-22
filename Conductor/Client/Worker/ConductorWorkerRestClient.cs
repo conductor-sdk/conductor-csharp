@@ -14,14 +14,14 @@ namespace Conductor.Client.Worker
             _client = apiClient.GetClient<TaskResourceApi>();
         }
 
-        public Task<Models.Task> PollTask(string taskType, string workerId, string domain)
+        public Models.Task PollTask(string taskType, string workerId, string domain)
         {
-            return _client.PollAsync(taskType, workerId, domain);
+            return _client.Poll(taskType, workerId, domain);
         }
 
-        public Task<string> UpdateTask(TaskResult result)
+        public string UpdateTask(TaskResult result)
         {
-            return _client.UpdateTaskAsync(result);
+            return _client.UpdateTask(result);
         }
     }
 }
