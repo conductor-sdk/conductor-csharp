@@ -1,7 +1,5 @@
-
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Conductor.Client;
@@ -110,8 +108,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="reason"> (optional)</param>
+        /// <param name="triggerFailureWorkflow"> (optional, default to false)</param>
         /// <returns>BulkResponse</returns>
-        BulkResponse Terminate(List<string> body, string reason = null, bool triggerFailureWorkflow = false);
+        BulkResponse Terminate(List<string> body, string reason = null, bool? triggerFailureWorkflow = null);
 
         /// <summary>
         /// Terminate workflows execution
@@ -122,8 +121,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="reason"> (optional)</param>
+        /// <param name="triggerFailureWorkflow"> (optional, default to false)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> body, string reason = null, bool triggerFailureWorkflow = false);
+        ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> body, string reason = null, bool? triggerFailureWorkflow = null);
         #endregion Synchronous Operations
     }
 
@@ -173,25 +173,6 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public String GetBasePath()
-        {
-            return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
-        }
-
-        /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
-        }
-
-        /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
@@ -211,28 +192,6 @@ namespace Conductor.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
-        }
-
-        /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
         }
 
         /// <summary>
@@ -556,8 +515,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="reason"> (optional)</param>
+        /// <param name="triggerFailureWorkflow"> (optional, default to false)</param>
         /// <returns>BulkResponse</returns>
-        public BulkResponse Terminate(List<string> body, string reason = null, bool triggerFailureWorkflow = false)
+        public BulkResponse Terminate(List<string> body, string reason = null, bool? triggerFailureWorkflow = null)
         {
             ApiResponse<BulkResponse> localVarResponse = TerminateWithHttpInfo(body, reason, triggerFailureWorkflow);
             return localVarResponse.Data;
@@ -569,8 +529,9 @@ namespace Conductor.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="reason"> (optional)</param>
+        /// <param name="triggerFailureWorkflow"> (optional, default to false)</param>
         /// <returns>ApiResponse of BulkResponse</returns>
-        public ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> body, string reason = null, bool triggerFailureWorkflow = false)
+        public ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> body, string reason = null, bool? triggerFailureWorkflow = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -599,7 +560,7 @@ namespace Conductor.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (reason != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "reason", reason)); // query parameter
-            localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "triggerFailureWorkflow", triggerFailureWorkflow)); // query parameter
+            if (triggerFailureWorkflow != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "triggerFailureWorkflow", triggerFailureWorkflow)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
