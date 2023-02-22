@@ -232,826 +232,827 @@ namespace Conductor.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> UpsertGroupWithHttpInfo(UpsertGroupRequest body, string id);
-        #endregion Synchronous Operations    }
+        #endregion Synchronous Operations    
+    }
+
+    /// <summary>
+    /// Represents a collection of functions to interact with the API endpoints
+    /// </summary>
+    public partial class GroupResourceApi : IGroupResourceApi
+    {
+        private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Represents a collection of functions to interact with the API endpoints
+        /// Initializes a new instance of the <see cref="GroupResourceApi"/> class.
         /// </summary>
-        public partial class GroupResourceApi : IGroupResourceApi
+        /// <returns></returns>
+        public GroupResourceApi(String basePath)
         {
-            private Conductor.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+            this.Configuration = new Conductor.Client.Configuration { BasePath = basePath };
 
-            /// <summary>
-            /// Initializes a new instance of the <see cref="GroupResourceApi"/> class.
-            /// </summary>
-            /// <returns></returns>
-            public GroupResourceApi(String basePath)
-            {
-                this.Configuration = new Conductor.Client.Configuration { BasePath = basePath };
+            ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+        }
 
-                ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
-            }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GroupResourceApi"/> class
+        /// </summary>
+        /// <returns></returns>
+        public GroupResourceApi()
+        {
+            this.Configuration = Conductor.Client.Configuration.Default;
 
-            /// <summary>
-            /// Initializes a new instance of the <see cref="GroupResourceApi"/> class
-            /// </summary>
-            /// <returns></returns>
-            public GroupResourceApi()
-            {
+            ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GroupResourceApi"/> class
+        /// using Configuration object
+        /// </summary>
+        /// <param name="configuration">An instance of Configuration</param>
+        /// <returns></returns>
+        public GroupResourceApi(Conductor.Client.Configuration configuration = null)
+        {
+            if (configuration == null) // use the default one in Configuration
                 this.Configuration = Conductor.Client.Configuration.Default;
+            else
+                this.Configuration = configuration;
 
-                ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
-            }
+            ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
+        }
 
-            /// <summary>
-            /// Initializes a new instance of the <see cref="GroupResourceApi"/> class
-            /// using Configuration object
-            /// </summary>
-            /// <param name="configuration">An instance of Configuration</param>
-            /// <returns></returns>
-            public GroupResourceApi(Conductor.Client.Configuration configuration = null)
+        /// <summary>
+        /// Gets or sets the configuration object
+        /// </summary>
+        /// <value>An instance of the Configuration</value>
+        public Conductor.Client.Configuration Configuration { get; set; }
+
+        /// <summary>
+        /// Provides a factory method hook for the creation of exceptions.
+        /// </summary>
+        public Conductor.Client.ExceptionFactory ExceptionFactory
+        {
+            get
             {
-                if (configuration == null) // use the default one in Configuration
-                    this.Configuration = Conductor.Client.Configuration.Default;
-                else
-                    this.Configuration = configuration;
-
-                ExceptionFactory = Conductor.Client.Configuration.DefaultExceptionFactory;
-            }
-
-            /// <summary>
-            /// Gets or sets the configuration object
-            /// </summary>
-            /// <value>An instance of the Configuration</value>
-            public Conductor.Client.Configuration Configuration { get; set; }
-
-            /// <summary>
-            /// Provides a factory method hook for the creation of exceptions.
-            /// </summary>
-            public Conductor.Client.ExceptionFactory ExceptionFactory
-            {
-                get
+                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
                 {
-                    if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                    {
-                        throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                    }
-                    return _exceptionFactory;
+                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
-                set { _exceptionFactory = value; }
+                return _exceptionFactory;
             }
+            set { _exceptionFactory = value; }
+        }
 
-            /// <summary>
-            /// Gets the base path of the API client.
-            /// </summary>
-            /// <value>The base path</value>
-            public String GetBasePath()
-            {
-                return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
-            }
+        /// <summary>
+        /// Gets the base path of the API client.
+        /// </summary>
+        /// <value>The base path</value>
+        public String GetBasePath()
+        {
+            return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
+        }
 
-            /// <summary>
-            /// Add user to group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="groupId"></param>
-            /// <param name="userId"></param>
-            /// <returns>Object</returns>
-            public Object AddUserToGroup(string groupId, string userId)
-            {
-                ApiResponse<Object> localVarResponse = AddUserToGroupWithHttpInfo(groupId, userId);
-                return localVarResponse.Data;
-            }
+        /// <summary>
+        /// Add user to group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="groupId"></param>
+        /// <param name="userId"></param>
+        /// <returns>Object</returns>
+        public Object AddUserToGroup(string groupId, string userId)
+        {
+            ApiResponse<Object> localVarResponse = AddUserToGroupWithHttpInfo(groupId, userId);
+            return localVarResponse.Data;
+        }
 
-            /// <summary>
-            /// Add user to group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="groupId"></param>
-            /// <param name="userId"></param>
-            /// <returns>ApiResponse of Object</returns>
-            public ApiResponse<Object> AddUserToGroupWithHttpInfo(string groupId, string userId)
-            {
-                // verify the required parameter 'groupId' is set
-                if (groupId == null)
-                    throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->AddUserToGroup");
-                // verify the required parameter 'userId' is set
-                if (userId == null)
-                    throw new ApiException(400, "Missing required parameter 'userId' when calling GroupResourceApi->AddUserToGroup");
+        /// <summary>
+        /// Add user to group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="groupId"></param>
+        /// <param name="userId"></param>
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse<Object> AddUserToGroupWithHttpInfo(string groupId, string userId)
+        {
+            // verify the required parameter 'groupId' is set
+            if (groupId == null)
+                throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->AddUserToGroup");
+            // verify the required parameter 'userId' is set
+            if (userId == null)
+                throw new ApiException(400, "Missing required parameter 'userId' when calling GroupResourceApi->AddUserToGroup");
 
-                var localVarPath = "/groups/{groupId}/users/{userId}";
-                var localVarPathParams = new Dictionary<String, String>();
-                var localVarQueryParams = new List<KeyValuePair<String, String>>();
-                var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-                var localVarFormParams = new Dictionary<String, String>();
-                var localVarFileParams = new Dictionary<String, FileParameter>();
-                Object localVarPostBody = null;
+            var localVarPath = "/groups/{groupId}/users/{userId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
 
-                // to determine the Content-Type header
-                String[] localVarHttpContentTypes = new String[] {
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
             };
-                String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-                // to determine the Accept header
-                String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-                String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-                if (localVarHttpHeaderAccept != null)
-                    localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-                if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
-                if (userId != null) localVarPathParams.Add("userId", this.Configuration.ApiClient.ParameterToString(userId)); // path parameter
-                                                                                                                              // authentication (api_key) required
-                if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-                }
-
-                // make the HTTP request
-                IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                    Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                    localVarPathParams, localVarHttpContentType);
-
-                int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-                if (ExceptionFactory != null)
-                {
-                    Exception exception = ExceptionFactory("AddUserToGroup", localVarResponse);
-                    if (exception != null) throw exception;
-                }
-
-                return new ApiResponse<Object>(localVarStatusCode,
-                    localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (userId != null) localVarPathParams.Add("userId", this.Configuration.ApiClient.ParameterToString(userId)); // path parameter
+                                                                                                                          // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
-            /// <summary>
-            /// Add users to group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="body"></param>
-            /// <param name="groupId"></param>
-            /// <returns></returns>
-            public void AddUsersToGroup(List<string> body, string groupId)
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
             {
-                AddUsersToGroupWithHttpInfo(body, groupId);
+                Exception exception = ExceptionFactory("AddUserToGroup", localVarResponse);
+                if (exception != null) throw exception;
             }
 
-            /// <summary>
-            /// Add users to group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="body"></param>
-            /// <param name="groupId"></param>
-            /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<Object> AddUsersToGroupWithHttpInfo(List<string> body, string groupId)
-            {
-                // verify the required parameter 'body' is set
-                if (body == null)
-                    throw new ApiException(400, "Missing required parameter 'body' when calling GroupResourceApi->AddUsersToGroup");
-                // verify the required parameter 'groupId' is set
-                if (groupId == null)
-                    throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->AddUsersToGroup");
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+        }
 
-                var localVarPath = "/groups/{groupId}/users";
-                var localVarPathParams = new Dictionary<String, String>();
-                var localVarQueryParams = new List<KeyValuePair<String, String>>();
-                var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-                var localVarFormParams = new Dictionary<String, String>();
-                var localVarFileParams = new Dictionary<String, FileParameter>();
-                Object localVarPostBody = null;
+        /// <summary>
+        /// Add users to group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="groupId"></param>
+        /// <returns></returns>
+        public void AddUsersToGroup(List<string> body, string groupId)
+        {
+            AddUsersToGroupWithHttpInfo(body, groupId);
+        }
 
-                // to determine the Content-Type header
-                String[] localVarHttpContentTypes = new String[] {
+        /// <summary>
+        /// Add users to group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="groupId"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> AddUsersToGroupWithHttpInfo(List<string> body, string groupId)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling GroupResourceApi->AddUsersToGroup");
+            // verify the required parameter 'groupId' is set
+            if (groupId == null)
+                throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->AddUsersToGroup");
+
+            var localVarPath = "/groups/{groupId}/users";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-                String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-                // to determine the Accept header
-                String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
             };
-                String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-                if (localVarHttpHeaderAccept != null)
-                    localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-                if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
-                if (body != null && body.GetType() != typeof(byte[]))
-                {
-                    localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-                }
-                else
-                {
-                    localVarPostBody = body; // byte array
-                }
-                // authentication (api_key) required
-                if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-                }
-
-                // make the HTTP request
-                IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                    Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                    localVarPathParams, localVarHttpContentType);
-
-                int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-                if (ExceptionFactory != null)
-                {
-                    Exception exception = ExceptionFactory("AddUsersToGroup", localVarResponse);
-                    if (exception != null) throw exception;
-                }
-
-                return new ApiResponse<Object>(localVarStatusCode,
-                    localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    null);
+            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
-            /// <summary>
-            /// Delete a group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="id"></param>
-            /// <returns>Response</returns>
-            public Response DeleteGroup(string id)
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
             {
-                ApiResponse<Response> localVarResponse = DeleteGroupWithHttpInfo(id);
-                return localVarResponse.Data;
+                Exception exception = ExceptionFactory("AddUsersToGroup", localVarResponse);
+                if (exception != null) throw exception;
             }
 
-            /// <summary>
-            /// Delete a group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="id"></param>
-            /// <returns>ApiResponse of Response</returns>
-            public ApiResponse<Response> DeleteGroupWithHttpInfo(string id)
-            {
-                // verify the required parameter 'id' is set
-                if (id == null)
-                    throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->DeleteGroup");
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
 
-                var localVarPath = "/groups/{id}";
-                var localVarPathParams = new Dictionary<String, String>();
-                var localVarQueryParams = new List<KeyValuePair<String, String>>();
-                var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-                var localVarFormParams = new Dictionary<String, String>();
-                var localVarFileParams = new Dictionary<String, FileParameter>();
-                Object localVarPostBody = null;
+        /// <summary>
+        /// Delete a group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>Response</returns>
+        public Response DeleteGroup(string id)
+        {
+            ApiResponse<Response> localVarResponse = DeleteGroupWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
 
-                // to determine the Content-Type header
-                String[] localVarHttpContentTypes = new String[] {
+        /// <summary>
+        /// Delete a group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Response</returns>
+        public ApiResponse<Response> DeleteGroupWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->DeleteGroup");
+
+            var localVarPath = "/groups/{id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
             };
-                String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-                // to determine the Accept header
-                String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-                String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-                if (localVarHttpHeaderAccept != null)
-                    localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-                if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-                                                                                                                  // authentication (api_key) required
-                if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-                }
-
-                // make the HTTP request
-                IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                    Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                    localVarPathParams, localVarHttpContentType);
-
-                int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-                if (ExceptionFactory != null)
-                {
-                    Exception exception = ExceptionFactory("DeleteGroup", localVarResponse);
-                    if (exception != null) throw exception;
-                }
-
-                return new ApiResponse<Response>(localVarStatusCode,
-                    localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+                                                                                                              // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
-            /// <summary>
-            /// Get the permissions this group has over workflows and tasks 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="groupId"></param>
-            /// <returns>Object</returns>
-            public Object GetGrantedPermissions(string groupId)
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
             {
-                ApiResponse<Object> localVarResponse = GetGrantedPermissionsWithHttpInfo(groupId);
-                return localVarResponse.Data;
+                Exception exception = ExceptionFactory("DeleteGroup", localVarResponse);
+                if (exception != null) throw exception;
             }
 
-            /// <summary>
-            /// Get the permissions this group has over workflows and tasks 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="groupId"></param>
-            /// <returns>ApiResponse of Object</returns>
-            public ApiResponse<Object> GetGrantedPermissionsWithHttpInfo(string groupId)
-            {
-                // verify the required parameter 'groupId' is set
-                if (groupId == null)
-                    throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->GetGrantedPermissions");
+            return new ApiResponse<Response>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+        }
 
-                var localVarPath = "/groups/{groupId}/permissions";
-                var localVarPathParams = new Dictionary<String, String>();
-                var localVarQueryParams = new List<KeyValuePair<String, String>>();
-                var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-                var localVarFormParams = new Dictionary<String, String>();
-                var localVarFileParams = new Dictionary<String, FileParameter>();
-                Object localVarPostBody = null;
+        /// <summary>
+        /// Get the permissions this group has over workflows and tasks 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="groupId"></param>
+        /// <returns>Object</returns>
+        public Object GetGrantedPermissions(string groupId)
+        {
+            ApiResponse<Object> localVarResponse = GetGrantedPermissionsWithHttpInfo(groupId);
+            return localVarResponse.Data;
+        }
 
-                // to determine the Content-Type header
-                String[] localVarHttpContentTypes = new String[] {
+        /// <summary>
+        /// Get the permissions this group has over workflows and tasks 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="groupId"></param>
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse<Object> GetGrantedPermissionsWithHttpInfo(string groupId)
+        {
+            // verify the required parameter 'groupId' is set
+            if (groupId == null)
+                throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->GetGrantedPermissions");
+
+            var localVarPath = "/groups/{groupId}/permissions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
             };
-                String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-                // to determine the Accept header
-                String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-                String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-                if (localVarHttpHeaderAccept != null)
-                    localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-                if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
-                                                                                                                                 // authentication (api_key) required
-                if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-                }
-
-                // make the HTTP request
-                IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                    Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                    localVarPathParams, localVarHttpContentType);
-
-                int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-                if (ExceptionFactory != null)
-                {
-                    Exception exception = ExceptionFactory("GetGrantedPermissions", localVarResponse);
-                    if (exception != null) throw exception;
-                }
-
-                return new ApiResponse<Object>(localVarStatusCode,
-                    localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+                                                                                                                             // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
-            /// <summary>
-            /// Get a group by id 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="id"></param>
-            /// <returns>Object</returns>
-            public Object GetGroup(string id)
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
             {
-                ApiResponse<Object> localVarResponse = GetGroupWithHttpInfo(id);
-                return localVarResponse.Data;
+                Exception exception = ExceptionFactory("GetGrantedPermissions", localVarResponse);
+                if (exception != null) throw exception;
             }
 
-            /// <summary>
-            /// Get a group by id 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="id"></param>
-            /// <returns>ApiResponse of Object</returns>
-            public ApiResponse<Object> GetGroupWithHttpInfo(string id)
-            {
-                // verify the required parameter 'id' is set
-                if (id == null)
-                    throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->GetGroup");
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+        }
 
-                var localVarPath = "/groups/{id}";
-                var localVarPathParams = new Dictionary<String, String>();
-                var localVarQueryParams = new List<KeyValuePair<String, String>>();
-                var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-                var localVarFormParams = new Dictionary<String, String>();
-                var localVarFileParams = new Dictionary<String, FileParameter>();
-                Object localVarPostBody = null;
+        /// <summary>
+        /// Get a group by id 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>Object</returns>
+        public Object GetGroup(string id)
+        {
+            ApiResponse<Object> localVarResponse = GetGroupWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
 
-                // to determine the Content-Type header
-                String[] localVarHttpContentTypes = new String[] {
+        /// <summary>
+        /// Get a group by id 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse<Object> GetGroupWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->GetGroup");
+
+            var localVarPath = "/groups/{id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
             };
-                String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-                // to determine the Accept header
-                String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-                String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-                if (localVarHttpHeaderAccept != null)
-                    localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-                if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-                                                                                                                  // authentication (api_key) required
-                if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-                }
-
-                // make the HTTP request
-                IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                    Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                    localVarPathParams, localVarHttpContentType);
-
-                int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-                if (ExceptionFactory != null)
-                {
-                    Exception exception = ExceptionFactory("GetGroup", localVarResponse);
-                    if (exception != null) throw exception;
-                }
-
-                return new ApiResponse<Object>(localVarStatusCode,
-                    localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+                                                                                                              // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
-            /// <summary>
-            /// Get all users in group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="id"></param>
-            /// <returns>Object</returns>
-            public Object GetUsersInGroup(string id)
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
             {
-                ApiResponse<Object> localVarResponse = GetUsersInGroupWithHttpInfo(id);
-                return localVarResponse.Data;
+                Exception exception = ExceptionFactory("GetGroup", localVarResponse);
+                if (exception != null) throw exception;
             }
 
-            /// <summary>
-            /// Get all users in group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="id"></param>
-            /// <returns>ApiResponse of Object</returns>
-            public ApiResponse<Object> GetUsersInGroupWithHttpInfo(string id)
-            {
-                // verify the required parameter 'id' is set
-                if (id == null)
-                    throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->GetUsersInGroup");
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+        }
 
-                var localVarPath = "/groups/{id}/users";
-                var localVarPathParams = new Dictionary<String, String>();
-                var localVarQueryParams = new List<KeyValuePair<String, String>>();
-                var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-                var localVarFormParams = new Dictionary<String, String>();
-                var localVarFileParams = new Dictionary<String, FileParameter>();
-                Object localVarPostBody = null;
+        /// <summary>
+        /// Get all users in group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>Object</returns>
+        public Object GetUsersInGroup(string id)
+        {
+            ApiResponse<Object> localVarResponse = GetUsersInGroupWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
 
-                // to determine the Content-Type header
-                String[] localVarHttpContentTypes = new String[] {
+        /// <summary>
+        /// Get all users in group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse<Object> GetUsersInGroupWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->GetUsersInGroup");
+
+            var localVarPath = "/groups/{id}/users";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
             };
-                String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-                // to determine the Accept header
-                String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-                String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-                if (localVarHttpHeaderAccept != null)
-                    localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-                if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-                                                                                                                  // authentication (api_key) required
-                if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-                }
-
-                // make the HTTP request
-                IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                    Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                    localVarPathParams, localVarHttpContentType);
-
-                int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-                if (ExceptionFactory != null)
-                {
-                    Exception exception = ExceptionFactory("GetUsersInGroup", localVarResponse);
-                    if (exception != null) throw exception;
-                }
-
-                return new ApiResponse<Object>(localVarStatusCode,
-                    localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+                                                                                                              // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
-            /// <summary>
-            /// Get all groups 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <returns>List&lt;Group&gt;</returns>
-            public List<Group> ListGroups()
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
             {
-                ApiResponse<List<Group>> localVarResponse = ListGroupsWithHttpInfo();
-                return localVarResponse.Data;
+                Exception exception = ExceptionFactory("GetUsersInGroup", localVarResponse);
+                if (exception != null) throw exception;
             }
 
-            /// <summary>
-            /// Get all groups 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <returns>ApiResponse of List&lt;Group&gt;</returns>
-            public ApiResponse<List<Group>> ListGroupsWithHttpInfo()
-            {
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+        }
 
-                var localVarPath = "/groups";
-                var localVarPathParams = new Dictionary<String, String>();
-                var localVarQueryParams = new List<KeyValuePair<String, String>>();
-                var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-                var localVarFormParams = new Dictionary<String, String>();
-                var localVarFileParams = new Dictionary<String, FileParameter>();
-                Object localVarPostBody = null;
+        /// <summary>
+        /// Get all groups 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;Group&gt;</returns>
+        public List<Group> ListGroups()
+        {
+            ApiResponse<List<Group>> localVarResponse = ListGroupsWithHttpInfo();
+            return localVarResponse.Data;
+        }
 
-                // to determine the Content-Type header
-                String[] localVarHttpContentTypes = new String[] {
+        /// <summary>
+        /// Get all groups 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;Group&gt;</returns>
+        public ApiResponse<List<Group>> ListGroupsWithHttpInfo()
+        {
+
+            var localVarPath = "/groups";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
             };
-                String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-                // to determine the Accept header
-                String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-                String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-                if (localVarHttpHeaderAccept != null)
-                    localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-                // authentication (api_key) required
-                if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-                }
-
-                // make the HTTP request
-                IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                    Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                    localVarPathParams, localVarHttpContentType);
-
-                int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-                if (ExceptionFactory != null)
-                {
-                    Exception exception = ExceptionFactory("ListGroups", localVarResponse);
-                    if (exception != null) throw exception;
-                }
-
-                return new ApiResponse<List<Group>>(localVarStatusCode,
-                    localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    (List<Group>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Group>)));
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
-            /// <summary>
-            /// Remove user from group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="groupId"></param>
-            /// <param name="userId"></param>
-            /// <returns>Object</returns>
-            public Object RemoveUserFromGroup(string groupId, string userId)
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
             {
-                ApiResponse<Object> localVarResponse = RemoveUserFromGroupWithHttpInfo(groupId, userId);
-                return localVarResponse.Data;
+                Exception exception = ExceptionFactory("ListGroups", localVarResponse);
+                if (exception != null) throw exception;
             }
 
-            /// <summary>
-            /// Remove user from group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="groupId"></param>
-            /// <param name="userId"></param>
-            /// <returns>ApiResponse of Object</returns>
-            public ApiResponse<Object> RemoveUserFromGroupWithHttpInfo(string groupId, string userId)
-            {
-                // verify the required parameter 'groupId' is set
-                if (groupId == null)
-                    throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->RemoveUserFromGroup");
-                // verify the required parameter 'userId' is set
-                if (userId == null)
-                    throw new ApiException(400, "Missing required parameter 'userId' when calling GroupResourceApi->RemoveUserFromGroup");
+            return new ApiResponse<List<Group>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<Group>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Group>)));
+        }
 
-                var localVarPath = "/groups/{groupId}/users/{userId}";
-                var localVarPathParams = new Dictionary<String, String>();
-                var localVarQueryParams = new List<KeyValuePair<String, String>>();
-                var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-                var localVarFormParams = new Dictionary<String, String>();
-                var localVarFileParams = new Dictionary<String, FileParameter>();
-                Object localVarPostBody = null;
+        /// <summary>
+        /// Remove user from group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="groupId"></param>
+        /// <param name="userId"></param>
+        /// <returns>Object</returns>
+        public Object RemoveUserFromGroup(string groupId, string userId)
+        {
+            ApiResponse<Object> localVarResponse = RemoveUserFromGroupWithHttpInfo(groupId, userId);
+            return localVarResponse.Data;
+        }
 
-                // to determine the Content-Type header
-                String[] localVarHttpContentTypes = new String[] {
+        /// <summary>
+        /// Remove user from group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="groupId"></param>
+        /// <param name="userId"></param>
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse<Object> RemoveUserFromGroupWithHttpInfo(string groupId, string userId)
+        {
+            // verify the required parameter 'groupId' is set
+            if (groupId == null)
+                throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->RemoveUserFromGroup");
+            // verify the required parameter 'userId' is set
+            if (userId == null)
+                throw new ApiException(400, "Missing required parameter 'userId' when calling GroupResourceApi->RemoveUserFromGroup");
+
+            var localVarPath = "/groups/{groupId}/users/{userId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
             };
-                String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-                // to determine the Accept header
-                String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-                String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-                if (localVarHttpHeaderAccept != null)
-                    localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-                if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
-                if (userId != null) localVarPathParams.Add("userId", this.Configuration.ApiClient.ParameterToString(userId)); // path parameter
-                                                                                                                              // authentication (api_key) required
-                if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-                }
-
-                // make the HTTP request
-                IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                    Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                    localVarPathParams, localVarHttpContentType);
-
-                int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-                if (ExceptionFactory != null)
-                {
-                    Exception exception = ExceptionFactory("RemoveUserFromGroup", localVarResponse);
-                    if (exception != null) throw exception;
-                }
-
-                return new ApiResponse<Object>(localVarStatusCode,
-                    localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (userId != null) localVarPathParams.Add("userId", this.Configuration.ApiClient.ParameterToString(userId)); // path parameter
+                                                                                                                          // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
-            /// <summary>
-            /// Remove users from group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="body"></param>
-            /// <param name="groupId"></param>
-            /// <returns></returns>
-            public void RemoveUsersFromGroup(List<string> body, string groupId)
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
             {
-                RemoveUsersFromGroupWithHttpInfo(body, groupId);
+                Exception exception = ExceptionFactory("RemoveUserFromGroup", localVarResponse);
+                if (exception != null) throw exception;
             }
 
-            /// <summary>
-            /// Remove users from group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="body"></param>
-            /// <param name="groupId"></param>
-            /// <returns>ApiResponse of Object(void)</returns>
-            public ApiResponse<Object> RemoveUsersFromGroupWithHttpInfo(List<string> body, string groupId)
-            {
-                // verify the required parameter 'body' is set
-                if (body == null)
-                    throw new ApiException(400, "Missing required parameter 'body' when calling GroupResourceApi->RemoveUsersFromGroup");
-                // verify the required parameter 'groupId' is set
-                if (groupId == null)
-                    throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->RemoveUsersFromGroup");
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+        }
 
-                var localVarPath = "/groups/{groupId}/users";
-                var localVarPathParams = new Dictionary<String, String>();
-                var localVarQueryParams = new List<KeyValuePair<String, String>>();
-                var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-                var localVarFormParams = new Dictionary<String, String>();
-                var localVarFileParams = new Dictionary<String, FileParameter>();
-                Object localVarPostBody = null;
+        /// <summary>
+        /// Remove users from group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="groupId"></param>
+        /// <returns></returns>
+        public void RemoveUsersFromGroup(List<string> body, string groupId)
+        {
+            RemoveUsersFromGroupWithHttpInfo(body, groupId);
+        }
 
-                // to determine the Content-Type header
-                String[] localVarHttpContentTypes = new String[] {
+        /// <summary>
+        /// Remove users from group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="groupId"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> RemoveUsersFromGroupWithHttpInfo(List<string> body, string groupId)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling GroupResourceApi->RemoveUsersFromGroup");
+            // verify the required parameter 'groupId' is set
+            if (groupId == null)
+                throw new ApiException(400, "Missing required parameter 'groupId' when calling GroupResourceApi->RemoveUsersFromGroup");
+
+            var localVarPath = "/groups/{groupId}/users";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-                String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-                // to determine the Accept header
-                String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
             };
-                String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-                if (localVarHttpHeaderAccept != null)
-                    localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-                if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
-                if (body != null && body.GetType() != typeof(byte[]))
-                {
-                    localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-                }
-                else
-                {
-                    localVarPostBody = body; // byte array
-                }
-                // authentication (api_key) required
-                if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-                }
-
-                // make the HTTP request
-                IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                    Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                    localVarPathParams, localVarHttpContentType);
-
-                int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-                if (ExceptionFactory != null)
-                {
-                    Exception exception = ExceptionFactory("RemoveUsersFromGroup", localVarResponse);
-                    if (exception != null) throw exception;
-                }
-
-                return new ApiResponse<Object>(localVarStatusCode,
-                    localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    null);
+            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
-            /// <summary>
-            /// Create or update a group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="body"></param>
-            /// <param name="id"></param>
-            /// <returns>Object</returns>
-            public Object UpsertGroup(UpsertGroupRequest body, string id)
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
             {
-                ApiResponse<Object> localVarResponse = UpsertGroupWithHttpInfo(body, id);
-                return localVarResponse.Data;
+                Exception exception = ExceptionFactory("RemoveUsersFromGroup", localVarResponse);
+                if (exception != null) throw exception;
             }
 
-            /// <summary>
-            /// Create or update a group 
-            /// </summary>
-            /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-            /// <param name="body"></param>
-            /// <param name="id"></param>
-            /// <returns>ApiResponse of Object</returns>
-            public ApiResponse<Object> UpsertGroupWithHttpInfo(UpsertGroupRequest body, string id)
-            {
-                // verify the required parameter 'body' is set
-                if (body == null)
-                    throw new ApiException(400, "Missing required parameter 'body' when calling GroupResourceApi->UpsertGroup");
-                // verify the required parameter 'id' is set
-                if (id == null)
-                    throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->UpsertGroup");
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
 
-                var localVarPath = "/groups/{id}";
-                var localVarPathParams = new Dictionary<String, String>();
-                var localVarQueryParams = new List<KeyValuePair<String, String>>();
-                var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-                var localVarFormParams = new Dictionary<String, String>();
-                var localVarFileParams = new Dictionary<String, FileParameter>();
-                Object localVarPostBody = null;
+        /// <summary>
+        /// Create or update a group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="id"></param>
+        /// <returns>Object</returns>
+        public Object UpsertGroup(UpsertGroupRequest body, string id)
+        {
+            ApiResponse<Object> localVarResponse = UpsertGroupWithHttpInfo(body, id);
+            return localVarResponse.Data;
+        }
 
-                // to determine the Content-Type header
-                String[] localVarHttpContentTypes = new String[] {
+        /// <summary>
+        /// Create or update a group 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse<Object> UpsertGroupWithHttpInfo(UpsertGroupRequest body, string id)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling GroupResourceApi->UpsertGroup");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling GroupResourceApi->UpsertGroup");
+
+            var localVarPath = "/groups/{id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-                String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-                // to determine the Accept header
-                String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-                String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-                if (localVarHttpHeaderAccept != null)
-                    localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-                if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-                if (body != null && body.GetType() != typeof(byte[]))
-                {
-                    localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-                }
-                else
-                {
-                    localVarPostBody = body; // byte array
-                }
-                // authentication (api_key) required
-                if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-                }
-
-                // make the HTTP request
-                IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                    Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                    localVarPathParams, localVarHttpContentType);
-
-                int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-                if (ExceptionFactory != null)
-                {
-                    Exception exception = ExceptionFactory("UpsertGroup", localVarResponse);
-                    if (exception != null) throw exception;
-                }
-
-                return new ApiResponse<Object>(localVarStatusCode,
-                    localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpsertGroup", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
     }
+}
