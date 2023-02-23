@@ -14,15 +14,10 @@ namespace Conductor.Client.Worker
         private IWorkflowTaskExecutor _workflowTaskExecutor;
         private HashSet<IWorkflowTask> _workerDefinitions;
 
-        public WorkflowTaskCoordinator(IServiceProvider serviceProvider, ILogger<WorkflowTaskCoordinator> logger, OrkesApiClient orkesApiClient, int? concurrentWorkers = null)
+        public WorkflowTaskCoordinator(IServiceProvider serviceProvider, ILogger<WorkflowTaskCoordinator> logger)
         {
             _logger = logger;
             _workerDefinitions = new HashSet<IWorkflowTask>();
-            if (concurrentWorkers == null)
-            {
-                concurrentWorkers = 1;
-            }
-            _concurrentWorkers = concurrentWorkers.Value;
             _workflowTaskExecutor = serviceProvider.GetService(typeof(IWorkflowTaskExecutor)) as IWorkflowTaskExecutor;
         }
 
