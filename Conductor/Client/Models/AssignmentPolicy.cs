@@ -1,17 +1,11 @@
-using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using JsonSubTypes;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Conductor.Client.SwaggerDateConverter;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Text;
 
 namespace Conductor.Client.Models
 {

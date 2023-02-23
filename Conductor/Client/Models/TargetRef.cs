@@ -1,16 +1,11 @@
-using System;
-using System.Linq;
 using System.IO;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Conductor.Client.SwaggerDateConverter;
 
 namespace Conductor.Client.Models
 {
@@ -91,24 +86,8 @@ namespace Conductor.Client.Models
         /// <param name="type">type (required).</param>
         public TargetRef(IdEnum id = default(IdEnum), TypeEnum type = default(TypeEnum))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new InvalidDataException("id is a required property for TargetRef and cannot be null");
-            }
-            else
-            {
-                this.Id = id;
-            }
-            // to ensure "type" is required (not null)
-            if (type == null)
-            {
-                throw new InvalidDataException("type is a required property for TargetRef and cannot be null");
-            }
-            else
-            {
-                this.Type = type;
-            }
+            this.Id = id;
+            this.Type = type;
         }
 
 
@@ -156,17 +135,8 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) &&
-                (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
-                );
+            return (this.Id == input.Id || this.Id.Equals(input.Id)) &&
+                (this.Type == input.Type || this.Type.Equals(input.Type));
         }
 
         /// <summary>
@@ -178,10 +148,8 @@ namespace Conductor.Client.Models
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                hashCode = hashCode * 59 + this.Id.GetHashCode();
+                hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;
             }
         }
