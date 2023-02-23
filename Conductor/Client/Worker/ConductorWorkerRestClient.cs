@@ -1,20 +1,20 @@
 using Conductor.Api;
 using Conductor.Client.Interfaces;
 using Conductor.Client.Models;
-using System.Threading.Tasks;
-
+using System;
 
 namespace Conductor.Client.Worker
 {
     internal class ConductorWorkerRestClient : IConductorWorkerRestClient
     {
         private TaskResourceApi _client;
-        public ConductorWorkerRestClient(OrkesApiClient apiClient)
+        public ConductorWorkerRestClient(IServiceProvider serviceProvider)
         {
+            OrkesApiClient apiClient = serviceProvider.GetService(typeof(OrkesApiClient)) as OrkesApiClient;
             _client = apiClient.GetClient<TaskResourceApi>();
         }
 
-        public Models.Task PollTask(string taskType, string workerId, string domain)
+        public Task PollTask(string taskType, string workerId, string domain)
         {
             return _client.Poll(taskType, workerId, domain);
         }

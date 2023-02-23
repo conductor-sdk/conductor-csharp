@@ -25,9 +25,8 @@ namespace Conductor.Client.Extensions
                 configuration = new Configuration();
             }
             services.AddSingleton(configuration);
-            OrkesApiClient orkesApiClient = new OrkesApiClient(configuration);
-            services.AddSingleton(orkesApiClient);
-            services.AddSingleton(new ConductorWorkerRestClient(orkesApiClient));
+            services.AddSingleton<OrkesApiClient>();
+            services.AddSingleton<ConductorWorkerRestClient>();
             services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
             services.AddTransient<IWorkflowTaskExecutor, WorkflowTaskExecutor>();
             return services.AddConductorClient(configureHttpClient);

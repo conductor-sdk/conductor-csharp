@@ -13,7 +13,7 @@ namespace Conductor.Client
         private TokenResourceApi _tokenClient;
         private OrkesAuthenticationSettings _authenticationSettings;
 
-        private OrkesApiClient()
+        public OrkesApiClient()
         {
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _configuration = null;
@@ -21,15 +21,16 @@ namespace Conductor.Client
             _authenticationSettings = null;
         }
 
-        public OrkesApiClient(Configuration configuration = null) : this()
+        public OrkesApiClient(IServiceProvider serviceProvider) : this()
         {
-            _configuration = configuration;
-            if (_configuration != null && !string.IsNullOrEmpty(_configuration.keyId) && !string.IsNullOrEmpty(_configuration.keySecret))
-            {
-                _authenticationSettings = new OrkesAuthenticationSettings(_configuration.keyId, _configuration.keySecret);
-            }
-            RefreshAuthenticationHeader();
+            Configuration configuration = serviceProvider.GetService(typeof(Configuration)) as Configuration;
+            WithConfiguration(configuration);
         }
+
+        // public OrkesApiClient(Configuration configuration = null) : this()
+        // {
+        //     SetConfiguration(configuration);
+        // }
 
         public T GetClient<T>() where T : IApiAccessor, new()
         {
@@ -39,6 +40,17 @@ namespace Conductor.Client
                 client.Configuration = _configuration;
             }
             return client;
+        }
+
+        public OrkesApiClient WithConfiguration(Configuration configuration)
+        {
+            _configuration = configuration;
+            if (_configuration != null && !string.IsNullOrEmpty(_configuration.keyId) && !string.IsNullOrEmpty(_configuration.keySecret))
+            {
+                _authenticationSettings = new OrkesAuthenticationSettings(_configuration.keyId, _configuration.keySecret);
+                RefreshAuthenticationHeader();
+            }
+            return this;
         }
 
         private void RefreshAuthenticationHeader()
