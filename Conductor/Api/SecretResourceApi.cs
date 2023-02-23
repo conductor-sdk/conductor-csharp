@@ -1,7 +1,5 @@
-
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Conductor.Client;
@@ -37,28 +35,28 @@ namespace Conductor.Api
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> DeleteSecretWithHttpInfo(string key);
         /// <summary>
-        /// Delete a tag by secret
+        /// Delete tags of the secret
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="key"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void DeleteTagForSecret(string key, string body = null);
+        void DeleteTagForSecret(List<TagObject> body, string key);
 
         /// <summary>
-        /// Delete a tag by secret
+        /// Delete tags of the secret
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="key"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteTagForSecretWithHttpInfo(string key, string body = null);
+        ApiResponse<Object> DeleteTagForSecretWithHttpInfo(List<TagObject> body, string key);
         /// <summary>
         /// Get secret value by key
         /// </summary>
@@ -140,6 +138,25 @@ namespace Conductor.Api
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
         ApiResponse<List<string>> ListSecretsThatUserCanGrantAccessToWithHttpInfo();
         /// <summary>
+        /// List all secret names along with tags user can grant access to
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;ExtendedSecret&gt;</returns>
+        List<ExtendedSecret> ListSecretsWithTagsThatUserCanGrantAccessTo();
+
+        /// <summary>
+        /// List all secret names along with tags user can grant access to
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;ExtendedSecret&gt;</returns>
+        ApiResponse<List<ExtendedSecret>> ListSecretsWithTagsThatUserCanGrantAccessToWithHttpInfo();
+        /// <summary>
         /// Put a secret value by key
         /// </summary>
         /// <remarks>
@@ -163,28 +180,28 @@ namespace Conductor.Api
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> PutSecretWithHttpInfo(string body, string key);
         /// <summary>
-        /// Put a tag by secret
+        /// Tag a secret
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="key"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void PutTagForSecret(string key, string body = null);
+        void PutTagForSecret(List<TagObject> body, string key);
 
         /// <summary>
-        /// Put a tag by secret
+        /// Tag a secret
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="key"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PutTagForSecretWithHttpInfo(string key, string body = null);
+        ApiResponse<Object> PutTagForSecretWithHttpInfo(List<TagObject> body, string key);
         /// <summary>
         /// Check if secret exists
         /// </summary>
@@ -264,16 +281,6 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
-        }
-
-        /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
@@ -293,28 +300,6 @@ namespace Conductor.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
-        }
-
-        /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
         }
 
         /// <summary>
@@ -388,26 +373,29 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Delete a tag by secret 
+        /// Delete tags of the secret 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="key"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void DeleteTagForSecret(string key, string body = null)
+        public void DeleteTagForSecret(List<TagObject> body, string key)
         {
-            DeleteTagForSecretWithHttpInfo(key, body);
+            DeleteTagForSecretWithHttpInfo(body, key);
         }
 
         /// <summary>
-        /// Delete a tag by secret 
+        /// Delete tags of the secret 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="key"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteTagForSecretWithHttpInfo(string key, string body = null)
+        public ApiResponse<Object> DeleteTagForSecretWithHttpInfo(List<TagObject> body, string key)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling SecretResourceApi->DeleteTagForSecret");
             // verify the required parameter 'key' is set
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->DeleteTagForSecret");
@@ -735,6 +723,70 @@ namespace Conductor.Api
         }
 
         /// <summary>
+        /// List all secret names along with tags user can grant access to 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;ExtendedSecret&gt;</returns>
+        public List<ExtendedSecret> ListSecretsWithTagsThatUserCanGrantAccessTo()
+        {
+            ApiResponse<List<ExtendedSecret>> localVarResponse = ListSecretsWithTagsThatUserCanGrantAccessToWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List all secret names along with tags user can grant access to 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;ExtendedSecret&gt;</returns>
+        public ApiResponse<List<ExtendedSecret>> ListSecretsWithTagsThatUserCanGrantAccessToWithHttpInfo()
+        {
+
+            var localVarPath = "/secrets-v2";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ListSecretsWithTagsThatUserCanGrantAccessTo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ExtendedSecret>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<ExtendedSecret>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExtendedSecret>)));
+        }
+
+        /// <summary>
         /// Put a secret value by key 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
@@ -819,26 +871,29 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Put a tag by secret 
+        /// Tag a secret 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="key"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void PutTagForSecret(string key, string body = null)
+        public void PutTagForSecret(List<TagObject> body, string key)
         {
-            PutTagForSecretWithHttpInfo(key, body);
+            PutTagForSecretWithHttpInfo(body, key);
         }
 
         /// <summary>
-        /// Put a tag by secret 
+        /// Tag a secret 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="key"></param>
-        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PutTagForSecretWithHttpInfo(string key, string body = null)
+        public ApiResponse<Object> PutTagForSecretWithHttpInfo(List<TagObject> body, string key)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling SecretResourceApi->PutTagForSecret");
             // verify the required parameter 'key' is set
             if (key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling SecretResourceApi->PutTagForSecret");

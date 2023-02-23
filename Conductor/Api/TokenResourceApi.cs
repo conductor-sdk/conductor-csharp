@@ -1,7 +1,5 @@
-
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Conductor.Client;
@@ -115,16 +113,6 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
-        }
-
-        /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
@@ -144,28 +132,6 @@ namespace Conductor.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
-        }
-
-        /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
         }
 
         /// <summary>

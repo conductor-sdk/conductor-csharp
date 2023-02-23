@@ -10,10 +10,10 @@ using System.ComponentModel.DataAnnotations;
 namespace Conductor.Client.Models
 {
     /// <summary>
-    /// WorkflowStatus
+    /// TaskMock
     /// </summary>
     [DataContract]
-    public partial class WorkflowStatus : IEquatable<WorkflowStatus>, IValidatableObject
+    public partial class TaskMock : IEquatable<TaskMock>, IValidatableObject
     {
         /// <summary>
         /// Defines Status
@@ -22,35 +22,25 @@ namespace Conductor.Client.Models
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum RUNNING for value: RUNNING
+            /// Enum INPROGRESS for value: IN_PROGRESS
             /// </summary>
-            [EnumMember(Value = "RUNNING")]
-            RUNNING = 1,
-            /// <summary>
-            /// Enum COMPLETED for value: COMPLETED
-            /// </summary>
-            [EnumMember(Value = "COMPLETED")]
-            COMPLETED = 2,
+            [EnumMember(Value = "IN_PROGRESS")]
+            INPROGRESS = 1,
             /// <summary>
             /// Enum FAILED for value: FAILED
             /// </summary>
             [EnumMember(Value = "FAILED")]
-            FAILED = 3,
+            FAILED = 2,
             /// <summary>
-            /// Enum TIMEDOUT for value: TIMED_OUT
+            /// Enum FAILEDWITHTERMINALERROR for value: FAILED_WITH_TERMINAL_ERROR
             /// </summary>
-            [EnumMember(Value = "TIMED_OUT")]
-            TIMEDOUT = 4,
+            [EnumMember(Value = "FAILED_WITH_TERMINAL_ERROR")]
+            FAILEDWITHTERMINALERROR = 3,
             /// <summary>
-            /// Enum TERMINATED for value: TERMINATED
+            /// Enum COMPLETED for value: COMPLETED
             /// </summary>
-            [EnumMember(Value = "TERMINATED")]
-            TERMINATED = 5,
-            /// <summary>
-            /// Enum PAUSED for value: PAUSED
-            /// </summary>
-            [EnumMember(Value = "PAUSED")]
-            PAUSED = 6
+            [EnumMember(Value = "COMPLETED")]
+            COMPLETED = 4
         }
         /// <summary>
         /// Gets or Sets Status
@@ -58,27 +48,25 @@ namespace Conductor.Client.Models
         [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="WorkflowStatus" /> class.
+        /// Initializes a new instance of the <see cref="TaskMock" /> class.
         /// </summary>
-        /// <param name="correlationId">correlationId.</param>
+        /// <param name="executionTime">executionTime.</param>
         /// <param name="output">output.</param>
+        /// <param name="queueWaitTime">queueWaitTime.</param>
         /// <param name="status">status.</param>
-        /// <param name="variables">variables.</param>
-        /// <param name="workflowId">workflowId.</param>
-        public WorkflowStatus(string correlationId = default(string), Dictionary<string, Object> output = default(Dictionary<string, Object>), StatusEnum? status = default(StatusEnum?), Dictionary<string, Object> variables = default(Dictionary<string, Object>), string workflowId = default(string))
+        public TaskMock(long? executionTime = default(long?), Dictionary<string, Object> output = default(Dictionary<string, Object>), long? queueWaitTime = default(long?), StatusEnum? status = default(StatusEnum?))
         {
-            this.CorrelationId = correlationId;
+            this.ExecutionTime = executionTime;
             this.Output = output;
+            this.QueueWaitTime = queueWaitTime;
             this.Status = status;
-            this.Variables = variables;
-            this.WorkflowId = workflowId;
         }
 
         /// <summary>
-        /// Gets or Sets CorrelationId
+        /// Gets or Sets ExecutionTime
         /// </summary>
-        [DataMember(Name = "correlationId", EmitDefaultValue = false)]
-        public string CorrelationId { get; set; }
+        [DataMember(Name = "executionTime", EmitDefaultValue = false)]
+        public long? ExecutionTime { get; set; }
 
         /// <summary>
         /// Gets or Sets Output
@@ -86,18 +74,12 @@ namespace Conductor.Client.Models
         [DataMember(Name = "output", EmitDefaultValue = false)]
         public Dictionary<string, Object> Output { get; set; }
 
-
         /// <summary>
-        /// Gets or Sets Variables
+        /// Gets or Sets QueueWaitTime
         /// </summary>
-        [DataMember(Name = "variables", EmitDefaultValue = false)]
-        public Dictionary<string, Object> Variables { get; set; }
+        [DataMember(Name = "queueWaitTime", EmitDefaultValue = false)]
+        public long? QueueWaitTime { get; set; }
 
-        /// <summary>
-        /// Gets or Sets WorkflowId
-        /// </summary>
-        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
-        public string WorkflowId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,12 +88,11 @@ namespace Conductor.Client.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class WorkflowStatus {\n");
-            sb.Append("  CorrelationId: ").Append(CorrelationId).Append("\n");
+            sb.Append("class TaskMock {\n");
+            sb.Append("  ExecutionTime: ").Append(ExecutionTime).Append("\n");
             sb.Append("  Output: ").Append(Output).Append("\n");
+            sb.Append("  QueueWaitTime: ").Append(QueueWaitTime).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Variables: ").Append(Variables).Append("\n");
-            sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -132,24 +113,24 @@ namespace Conductor.Client.Models
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WorkflowStatus);
+            return this.Equals(input as TaskMock);
         }
 
         /// <summary>
-        /// Returns true if WorkflowStatus instances are equal
+        /// Returns true if TaskMock instances are equal
         /// </summary>
-        /// <param name="input">Instance of WorkflowStatus to be compared</param>
+        /// <param name="input">Instance of TaskMock to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WorkflowStatus input)
+        public bool Equals(TaskMock input)
         {
             if (input == null)
                 return false;
 
             return
                 (
-                    this.CorrelationId == input.CorrelationId ||
-                    (this.CorrelationId != null &&
-                    this.CorrelationId.Equals(input.CorrelationId))
+                    this.ExecutionTime == input.ExecutionTime ||
+                    (this.ExecutionTime != null &&
+                    this.ExecutionTime.Equals(input.ExecutionTime))
                 ) &&
                 (
                     this.Output == input.Output ||
@@ -158,20 +139,14 @@ namespace Conductor.Client.Models
                     this.Output.SequenceEqual(input.Output)
                 ) &&
                 (
+                    this.QueueWaitTime == input.QueueWaitTime ||
+                    (this.QueueWaitTime != null &&
+                    this.QueueWaitTime.Equals(input.QueueWaitTime))
+                ) &&
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) &&
-                (
-                    this.Variables == input.Variables ||
-                    this.Variables != null &&
-                    input.Variables != null &&
-                    this.Variables.SequenceEqual(input.Variables)
-                ) &&
-                (
-                    this.WorkflowId == input.WorkflowId ||
-                    (this.WorkflowId != null &&
-                    this.WorkflowId.Equals(input.WorkflowId))
                 );
         }
 
@@ -184,16 +159,14 @@ namespace Conductor.Client.Models
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.CorrelationId != null)
-                    hashCode = hashCode * 59 + this.CorrelationId.GetHashCode();
+                if (this.ExecutionTime != null)
+                    hashCode = hashCode * 59 + this.ExecutionTime.GetHashCode();
                 if (this.Output != null)
                     hashCode = hashCode * 59 + this.Output.GetHashCode();
+                if (this.QueueWaitTime != null)
+                    hashCode = hashCode * 59 + this.QueueWaitTime.GetHashCode();
                 if (this.Status != null)
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
-                if (this.Variables != null)
-                    hashCode = hashCode * 59 + this.Variables.GetHashCode();
-                if (this.WorkflowId != null)
-                    hashCode = hashCode * 59 + this.WorkflowId.GetHashCode();
                 return hashCode;
             }
         }

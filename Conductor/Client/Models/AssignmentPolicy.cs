@@ -1,66 +1,46 @@
-using Newtonsoft.Json.Converters;
-using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
+using JsonSubTypes;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Text;
 
 namespace Conductor.Client.Models
 {
     /// <summary>
-    /// TagObject
+    /// AssignmentPolicy
     /// </summary>
     [DataContract]
-    public partial class TagObject : IEquatable<TagObject>, IValidatableObject
+    [JsonConverter(typeof(JsonSubtypes), "type")]
+    [JsonSubtypes.KnownSubType(typeof(LeastBusyAssignment), "LeastBusyAssignment")]
+    [JsonSubtypes.KnownSubType(typeof(ListAssignment), "ListAssignment")]
+    [JsonSubtypes.KnownSubType(typeof(FFAAssignment), "FFAAssignment")]
+    public partial class AssignmentPolicy : IEquatable<AssignmentPolicy>, IValidatableObject
     {
         /// <summary>
-        /// Defines Type
+        /// Initializes a new instance of the <see cref="AssignmentPolicy" /> class.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum TypeEnum
+        /// <param name="type">type (required).</param>
+        public AssignmentPolicy(string type = default(string))
         {
-            /// <summary>
-            /// Enum METADATA for value: METADATA
-            /// </summary>
-            [EnumMember(Value = "METADATA")]
-            METADATA = 1,
-            /// <summary>
-            /// Enum RATELIMIT for value: RATE_LIMIT
-            /// </summary>
-            [EnumMember(Value = "RATE_LIMIT")]
-            RATELIMIT = 2
+            // to ensure "type" is required (not null)
+            if (type == null)
+            {
+                throw new InvalidDataException("type is a required property for AssignmentPolicy and cannot be null");
+            }
+            else
+            {
+                this.Type = type;
+            }
         }
+
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "type", EmitDefaultValue = false)]
-        public TypeEnum? Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TagObject" /> class.
-        /// </summary>
-        /// <param name="key">key.</param>
-        /// <param name="type">type.</param>
-        /// <param name="value">value.</param>
-        public TagObject(string key = default(string), TypeEnum? type = default(TypeEnum?), Object value = default(Object))
-        {
-            this.Key = key;
-            this.Type = type;
-            this.Value = value;
-        }
-
-        /// <summary>
-        /// Gets or Sets Key
-        /// </summary>
-        [DataMember(Name = "key", EmitDefaultValue = false)]
-        public string Key { get; set; }
-
-
-        /// <summary>
-        /// Gets or Sets Value
-        /// </summary>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public Object Value { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,10 +49,8 @@ namespace Conductor.Client.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class TagObject {\n");
-            sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("class AssignmentPolicy {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -93,34 +71,24 @@ namespace Conductor.Client.Models
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TagObject);
+            return this.Equals(input as AssignmentPolicy);
         }
 
         /// <summary>
-        /// Returns true if TagObject instances are equal
+        /// Returns true if AssignmentPolicy instances are equal
         /// </summary>
-        /// <param name="input">Instance of TagObject to be compared</param>
+        /// <param name="input">Instance of AssignmentPolicy to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TagObject input)
+        public bool Equals(AssignmentPolicy input)
         {
             if (input == null)
                 return false;
 
             return
                 (
-                    this.Key == input.Key ||
-                    (this.Key != null &&
-                    this.Key.Equals(input.Key))
-                ) &&
-                (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) &&
-                (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
                 );
         }
 
@@ -133,12 +101,8 @@ namespace Conductor.Client.Models
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Value != null)
-                    hashCode = hashCode * 59 + this.Value.GetHashCode();
                 return hashCode;
             }
         }
@@ -149,6 +113,16 @@ namespace Conductor.Client.Models
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            return this.BaseValidate(validationContext);
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        protected IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> BaseValidate(ValidationContext validationContext)
         {
             yield break;
         }

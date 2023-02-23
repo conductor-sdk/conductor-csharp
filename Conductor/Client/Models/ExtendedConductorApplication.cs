@@ -1,37 +1,32 @@
-
-using System;
 using System.Linq;
-using System.IO;
+using System;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Conductor.Client.SwaggerDateConverter;
 
 namespace Conductor.Client.Models
 {
     /// <summary>
-    /// ConductorApplication
+    /// ExtendedConductorApplication
     /// </summary>
     [DataContract]
-    public partial class ConductorApplication : IEquatable<ConductorApplication>, IValidatableObject
+    public partial class ExtendedConductorApplication : IEquatable<ExtendedConductorApplication>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConductorApplication" /> class.
+        /// Initializes a new instance of the <see cref="ExtendedConductorApplication" /> class.
         /// </summary>
         /// <param name="createdBy">createdBy.</param>
         /// <param name="id">id.</param>
         /// <param name="name">name.</param>
-        public ConductorApplication(string createdBy = default(string), string id = default(string), string name = default(string))
+        /// <param name="tags">tags.</param>
+        public ExtendedConductorApplication(string createdBy = default(string), string id = default(string), string name = default(string), List<TagObject> tags = default(List<TagObject>))
         {
             this.CreatedBy = createdBy;
             this.Id = id;
             this.Name = name;
+            this.Tags = tags;
         }
 
         /// <summary>
@@ -53,16 +48,23 @@ namespace Conductor.Client.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or Sets Tags
+        /// </summary>
+        [DataMember(Name = "tags", EmitDefaultValue = false)]
+        public List<TagObject> Tags { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ConductorApplication {\n");
+            sb.Append("class ExtendedConductorApplication {\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,15 +85,15 @@ namespace Conductor.Client.Models
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ConductorApplication);
+            return this.Equals(input as ExtendedConductorApplication);
         }
 
         /// <summary>
-        /// Returns true if ConductorApplication instances are equal
+        /// Returns true if ExtendedConductorApplication instances are equal
         /// </summary>
-        /// <param name="input">Instance of ConductorApplication to be compared</param>
+        /// <param name="input">Instance of ExtendedConductorApplication to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ConductorApplication input)
+        public bool Equals(ExtendedConductorApplication input)
         {
             if (input == null)
                 return false;
@@ -111,6 +113,12 @@ namespace Conductor.Client.Models
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) &&
+                (
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
                 );
         }
 
@@ -129,6 +137,8 @@ namespace Conductor.Client.Models
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Tags != null)
+                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 return hashCode;
             }
         }

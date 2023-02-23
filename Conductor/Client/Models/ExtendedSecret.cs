@@ -1,48 +1,41 @@
-
-using System;
 using System.Linq;
-using System.IO;
+using System;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Conductor.Client.SwaggerDateConverter;
 
 namespace Conductor.Client.Models
 {
     /// <summary>
-    /// TerminateWorkflow
+    /// ExtendedSecret
     /// </summary>
     [DataContract]
-    public partial class TerminateWorkflow : IEquatable<TerminateWorkflow>, IValidatableObject
+    public partial class ExtendedSecret : IEquatable<ExtendedSecret>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TerminateWorkflow" /> class.
+        /// Initializes a new instance of the <see cref="ExtendedSecret" /> class.
         /// </summary>
-        /// <param name="terminationReason">terminationReason.</param>
-        /// <param name="workflowId">workflowId.</param>
-        public TerminateWorkflow(string terminationReason = default(string), string workflowId = default(string))
+        /// <param name="name">name.</param>
+        /// <param name="tags">tags.</param>
+        public ExtendedSecret(string name = default(string), List<TagObject> tags = default(List<TagObject>))
         {
-            this.TerminationReason = terminationReason;
-            this.WorkflowId = workflowId;
+            this.Name = name;
+            this.Tags = tags;
         }
 
         /// <summary>
-        /// Gets or Sets TerminationReason
+        /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "terminationReason", EmitDefaultValue = false)]
-        public string TerminationReason { get; set; }
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets WorkflowId
+        /// Gets or Sets Tags
         /// </summary>
-        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
-        public string WorkflowId { get; set; }
+        [DataMember(Name = "tags", EmitDefaultValue = false)]
+        public List<TagObject> Tags { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -51,9 +44,9 @@ namespace Conductor.Client.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class TerminateWorkflow {\n");
-            sb.Append("  TerminationReason: ").Append(TerminationReason).Append("\n");
-            sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
+            sb.Append("class ExtendedSecret {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,29 +67,30 @@ namespace Conductor.Client.Models
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TerminateWorkflow);
+            return this.Equals(input as ExtendedSecret);
         }
 
         /// <summary>
-        /// Returns true if TerminateWorkflow instances are equal
+        /// Returns true if ExtendedSecret instances are equal
         /// </summary>
-        /// <param name="input">Instance of TerminateWorkflow to be compared</param>
+        /// <param name="input">Instance of ExtendedSecret to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TerminateWorkflow input)
+        public bool Equals(ExtendedSecret input)
         {
             if (input == null)
                 return false;
 
             return
                 (
-                    this.TerminationReason == input.TerminationReason ||
-                    (this.TerminationReason != null &&
-                    this.TerminationReason.Equals(input.TerminationReason))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) &&
                 (
-                    this.WorkflowId == input.WorkflowId ||
-                    (this.WorkflowId != null &&
-                    this.WorkflowId.Equals(input.WorkflowId))
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
                 );
         }
 
@@ -109,10 +103,10 @@ namespace Conductor.Client.Models
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.TerminationReason != null)
-                    hashCode = hashCode * 59 + this.TerminationReason.GetHashCode();
-                if (this.WorkflowId != null)
-                    hashCode = hashCode * 59 + this.WorkflowId.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Tags != null)
+                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 return hashCode;
             }
         }

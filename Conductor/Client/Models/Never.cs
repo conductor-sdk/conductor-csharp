@@ -8,33 +8,17 @@ using System.ComponentModel.DataAnnotations;
 namespace Conductor.Client.Models
 {
     /// <summary>
-    /// ExternalStorageLocation
+    /// Never
     /// </summary>
     [DataContract]
-    public partial class ExternalStorageLocation : IEquatable<ExternalStorageLocation>, IValidatableObject
+    public partial class Never : TimeoutPolicy, IEquatable<Never>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExternalStorageLocation" /> class.
+        /// Initializes a new instance of the <see cref="Never" /> class.
         /// </summary>
-        /// <param name="path">path.</param>
-        /// <param name="uri">uri.</param>
-        public ExternalStorageLocation(string path = default(string), string uri = default(string))
+        public Never(string type = default(string)) : base(type)
         {
-            this.Path = path;
-            this.Uri = uri;
         }
-
-        /// <summary>
-        /// Gets or Sets Path
-        /// </summary>
-        [DataMember(Name = "path", EmitDefaultValue = false)]
-        public string Path { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Uri
-        /// </summary>
-        [DataMember(Name = "uri", EmitDefaultValue = false)]
-        public string Uri { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -43,9 +27,8 @@ namespace Conductor.Client.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ExternalStorageLocation {\n");
-            sb.Append("  Path: ").Append(Path).Append("\n");
-            sb.Append("  Uri: ").Append(Uri).Append("\n");
+            sb.Append("class Never {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -54,7 +37,7 @@ namespace Conductor.Client.Models
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public override string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -66,30 +49,20 @@ namespace Conductor.Client.Models
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ExternalStorageLocation);
+            return this.Equals(input as Never);
         }
 
         /// <summary>
-        /// Returns true if ExternalStorageLocation instances are equal
+        /// Returns true if Never instances are equal
         /// </summary>
-        /// <param name="input">Instance of ExternalStorageLocation to be compared</param>
+        /// <param name="input">Instance of Never to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ExternalStorageLocation input)
+        public bool Equals(Never input)
         {
             if (input == null)
                 return false;
 
-            return
-                (
-                    this.Path == input.Path ||
-                    (this.Path != null &&
-                    this.Path.Equals(input.Path))
-                ) &&
-                (
-                    this.Uri == input.Uri ||
-                    (this.Uri != null &&
-                    this.Uri.Equals(input.Uri))
-                );
+            return base.Equals(input);
         }
 
         /// <summary>
@@ -100,11 +73,7 @@ namespace Conductor.Client.Models
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
-                if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
-                if (this.Uri != null)
-                    hashCode = hashCode * 59 + this.Uri.GetHashCode();
+                int hashCode = base.GetHashCode();
                 return hashCode;
             }
         }

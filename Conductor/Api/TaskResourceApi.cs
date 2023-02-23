@@ -1,7 +1,5 @@
-
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Conductor.Client;
@@ -89,8 +87,14 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;PollData&gt;</returns>
-        List<PollData> GetAllPollData();
+        /// <param name="workerSize"> (optional)</param>
+        /// <param name="workerOpt"> (optional)</param>
+        /// <param name="queueSize"> (optional)</param>
+        /// <param name="queueOpt"> (optional)</param>
+        /// <param name="lastPollTimeSize"> (optional)</param>
+        /// <param name="lastPollTimeOpt"> (optional)</param>
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        Dictionary<string, Object> GetAllPollData(long? workerSize = null, string workerOpt = null, long? queueSize = null, string queueOpt = null, long? lastPollTimeSize = null, string lastPollTimeOpt = null);
 
         /// <summary>
         /// Get the last poll data for all task types
@@ -99,8 +103,14 @@ namespace Conductor.Api
         /// 
         /// </remarks>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;PollData&gt;</returns>
-        ApiResponse<List<PollData>> GetAllPollDataWithHttpInfo();
+        /// <param name="workerSize"> (optional)</param>
+        /// <param name="workerOpt"> (optional)</param>
+        /// <param name="queueSize"> (optional)</param>
+        /// <param name="queueOpt"> (optional)</param>
+        /// <param name="lastPollTimeSize"> (optional)</param>
+        /// <param name="lastPollTimeOpt"> (optional)</param>
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        ApiResponse<Dictionary<string, Object>> GetAllPollDataWithHttpInfo(long? workerSize = null, string workerOpt = null, long? queueSize = null, string queueOpt = null, long? lastPollTimeSize = null, string lastPollTimeOpt = null);
         /// <summary>
         /// Get the external uri where the task payload is to be stored
         /// </summary>
@@ -300,7 +310,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTask</returns>
-        SearchResultTask SearchV21(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        SearchResultTask SearchV2(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
 
         /// <summary>
         /// Search for tasks based in payload and other parameters
@@ -315,7 +325,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTask</returns>
-        ApiResponse<SearchResultTask> SearchV21WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
+        ApiResponse<SearchResultTask> SearchV2WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null);
         /// <summary>
         /// Get Task type queue sizes
         /// </summary>
@@ -386,86 +396,6 @@ namespace Conductor.Api
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> UpdateTaskWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
         #endregion Synchronous Operations
-        #region Asynchronous Operations
-
-
-        /// <summary>
-        /// Batch poll for a task of a certain type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="count"> (optional, default to 1)</param>
-        /// <param name="timeout"> (optional, default to 100)</param>
-        /// <returns>Task of List&lt;Task&gt;</returns>
-        System.Threading.Tasks.Task<List<Task>> BatchPollAsync(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null);
-
-        /// <summary>
-        /// Batch poll for a task of a certain type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="count"> (optional, default to 1)</param>
-        /// <param name="timeout"> (optional, default to 100)</param>
-        /// <returns>Task of ApiResponse (List&lt;Task&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Task>>> BatchPollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null);
-
-        /// <summary>
-        /// Poll for a task of a certain type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <returns>Task of Task</returns>
-        System.Threading.Tasks.Task<Task> PollAsync(string tasktype, string workerid = null, string domain = null);
-
-        /// <summary>
-        /// Poll for a task of a certain type
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <returns>Task of ApiResponse (Task)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Task>> PollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null);
-        /// <summary>
-        /// Update a task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> UpdateTaskAsync(TaskResult body);
-
-        /// <summary>
-        /// Update a task
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo(TaskResult body);
-        #endregion Asynchronous Operations
     }
 
     /// <summary>
@@ -523,16 +453,6 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
-        }
-
-        /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
@@ -552,28 +472,6 @@ namespace Conductor.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
-        }
-
-        /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
         }
 
         /// <summary>
@@ -796,89 +694,21 @@ namespace Conductor.Api
         /// <param name="count"> (optional, default to 1)</param>
         /// <param name="timeout"> (optional, default to 100)</param>
         /// <returns>Task of List&lt;Task&gt;</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<List<Task>> BatchPollAsync(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
-        {
-            ApiResponse<List<Task>> localVarResponse = await BatchPollAsyncWithHttpInfo(tasktype, workerid, domain, count, timeout);
-            return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Batch poll for a task of a certain type 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <param name="count"> (optional, default to 1)</param>
-        /// <param name="timeout"> (optional, default to 100)</param>
-        /// <returns>Task of ApiResponse (List&lt;Task&gt;)</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<List<Task>>> BatchPollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null, int? count = null, int? timeout = null)
-        {
-            // verify the required parameter 'tasktype' is set
-            if (tasktype == null)
-                throw new ApiException(400, "Missing required parameter 'tasktype' when calling TaskResourceApi->BatchPoll");
-
-            var localVarPath = "/tasks/poll/batch/{tasktype}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (tasktype != null) localVarPathParams.Add("tasktype", this.Configuration.ApiClient.ParameterToString(tasktype)); // path parameter
-            if (workerid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "workerid", workerid)); // query parameter
-            if (domain != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "domain", domain)); // query parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (timeout != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timeout", timeout)); // query parameter
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("BatchPoll", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<Task>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Task>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Task>)));
-        }
 
         /// <summary>
         /// Get the last poll data for all task types 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;PollData&gt;</returns>
-        public List<PollData> GetAllPollData()
+        /// <param name="workerSize"> (optional)</param>
+        /// <param name="workerOpt"> (optional)</param>
+        /// <param name="queueSize"> (optional)</param>
+        /// <param name="queueOpt"> (optional)</param>
+        /// <param name="lastPollTimeSize"> (optional)</param>
+        /// <param name="lastPollTimeOpt"> (optional)</param>
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        public Dictionary<string, Object> GetAllPollData(long? workerSize = null, string workerOpt = null, long? queueSize = null, string queueOpt = null, long? lastPollTimeSize = null, string lastPollTimeOpt = null)
         {
-            ApiResponse<List<PollData>> localVarResponse = GetAllPollDataWithHttpInfo();
+            ApiResponse<Dictionary<string, Object>> localVarResponse = GetAllPollDataWithHttpInfo(workerSize, workerOpt, queueSize, queueOpt, lastPollTimeSize, lastPollTimeOpt);
             return localVarResponse.Data;
         }
 
@@ -886,8 +716,14 @@ namespace Conductor.Api
         /// Get the last poll data for all task types 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;PollData&gt;</returns>
-        public ApiResponse<List<PollData>> GetAllPollDataWithHttpInfo()
+        /// <param name="workerSize"> (optional)</param>
+        /// <param name="workerOpt"> (optional)</param>
+        /// <param name="queueSize"> (optional)</param>
+        /// <param name="queueOpt"> (optional)</param>
+        /// <param name="lastPollTimeSize"> (optional)</param>
+        /// <param name="lastPollTimeOpt"> (optional)</param>
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        public ApiResponse<Dictionary<string, Object>> GetAllPollDataWithHttpInfo(long? workerSize = null, string workerOpt = null, long? queueSize = null, string queueOpt = null, long? lastPollTimeSize = null, string lastPollTimeOpt = null)
         {
 
             var localVarPath = "/tasks/queue/polldata/all";
@@ -911,6 +747,12 @@ namespace Conductor.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (workerSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "workerSize", workerSize)); // query parameter
+            if (workerOpt != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "workerOpt", workerOpt)); // query parameter
+            if (queueSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "queueSize", queueSize)); // query parameter
+            if (queueOpt != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "queueOpt", queueOpt)); // query parameter
+            if (lastPollTimeSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "lastPollTimeSize", lastPollTimeSize)); // query parameter
+            if (lastPollTimeOpt != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "lastPollTimeOpt", lastPollTimeOpt)); // query parameter
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
@@ -930,9 +772,9 @@ namespace Conductor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<PollData>>(localVarStatusCode,
+            return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<PollData>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PollData>)));
+                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
@@ -1386,85 +1228,6 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// Poll for a task of a certain type 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <returns>Task of Task</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<Task> PollAsync(string tasktype, string workerid = null, string domain = null)
-        {
-            ApiResponse<Task> localVarResponse = await PollAsyncWithHttpInfo(tasktype, workerid, domain);
-            return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Poll for a task of a certain type 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tasktype"></param>
-        /// <param name="workerid"> (optional)</param>
-        /// <param name="domain"> (optional)</param>
-        /// <returns>Task of ApiResponse (Task)</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<Task>> PollAsyncWithHttpInfo(string tasktype, string workerid = null, string domain = null)
-        {
-            // verify the required parameter 'tasktype' is set
-            if (tasktype == null)
-                throw new ApiException(400, "Missing required parameter 'tasktype' when calling TaskResourceApi->Poll");
-
-            var localVarPath = "/tasks/poll/{tasktype}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (tasktype != null) localVarPathParams.Add("tasktype", this.Configuration.ApiClient.ParameterToString(tasktype)); // path parameter
-            if (workerid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "workerid", workerid)); // query parameter
-            if (domain != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "domain", domain)); // query parameter
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Poll", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Task>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Task)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Task)));
-        }
-
-        /// <summary>
         /// Requeue pending tasks 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1623,9 +1386,9 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>SearchResultTask</returns>
-        public SearchResultTask SearchV21(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public SearchResultTask SearchV2(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
-            ApiResponse<SearchResultTask> localVarResponse = SearchV21WithHttpInfo(start, size, sort, freeText, query);
+            ApiResponse<SearchResultTask> localVarResponse = SearchV2WithHttpInfo(start, size, sort, freeText, query);
             return localVarResponse.Data;
         }
 
@@ -1639,7 +1402,7 @@ namespace Conductor.Api
         /// <param name="freeText"> (optional, default to *)</param>
         /// <param name="query"> (optional)</param>
         /// <returns>ApiResponse of SearchResultTask</returns>
-        public ApiResponse<SearchResultTask> SearchV21WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
+        public ApiResponse<SearchResultTask> SearchV2WithHttpInfo(int? start = null, int? size = null, string sort = null, string freeText = null, string query = null)
         {
 
             var localVarPath = "/tasks/search-v2";
@@ -1683,7 +1446,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("SearchV21", localVarResponse);
+                Exception exception = ExceptionFactory("SearchV2", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1691,85 +1454,6 @@ namespace Conductor.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (SearchResultTask)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResultTask)));
         }
-
-        /// <summary>
-        /// Update a task 
-        /// <param name="body"></param>
-        /// <returns>Task of string</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<string> UpdateTaskAsync(TaskResult body)
-        {
-            ApiResponse<string> localVarResponse = await UpdateTaskAsyncWithHttpInfo(body);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Update a task 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateTaskAsyncWithHttpInfo(TaskResult body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling TaskResourceApi->UpdateTask");
-
-            var localVarPath = "/tasks";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("UpdateTask", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<string>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
-        }
-
 
         /// <summary>
         /// Get Task type queue sizes 
@@ -2011,5 +1695,15 @@ namespace Conductor.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
+
+        // public ExternalStorageLocation GetExternalStorageLocation(string path, string operation, string payloadType)
+        // {
+        //     throw new NotImplementedException();
+        // }
+
+        // public ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType)
+        // {
+        //     throw new NotImplementedException();
+        // }
     }
 }

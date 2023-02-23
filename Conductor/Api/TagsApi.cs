@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -393,78 +392,6 @@ namespace Conductor.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("AddTaskTag", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
-        }
-
-        /// <summary>
-        /// Adds the tag to the task 
-        /// </summary>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="taskName"></param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        [Obsolete]
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddTaskTagAsyncWithHttpInfo(TagObject body, string taskName)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling TagsApi->AddTaskTag");
-            // verify the required parameter 'taskName' is set
-            if (taskName == null)
-                throw new ApiException(400, "Missing required parameter 'taskName' when calling TagsApi->AddTaskTag");
-
-            var localVarPath = "/metadata/task/{taskName}/tags";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (taskName != null) localVarPathParams.Add("taskName", this.Configuration.ApiClient.ParameterToString(taskName)); // path parameter
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 

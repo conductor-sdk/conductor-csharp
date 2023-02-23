@@ -9,19 +9,21 @@ using System.ComponentModel.DataAnnotations;
 namespace Conductor.Client.Models
 {
     /// <summary>
-    /// SearchResultWorkflowSummary
+    /// TaskListSearchResultSummary
     /// </summary>
     [DataContract]
-    public partial class SearchResultWorkflowSummary : IEquatable<SearchResultWorkflowSummary>, IValidatableObject
+    public partial class TaskListSearchResultSummary : IEquatable<TaskListSearchResultSummary>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchResultWorkflowSummary" /> class.
+        /// Initializes a new instance of the <see cref="TaskListSearchResultSummary" /> class.
         /// </summary>
         /// <param name="results">results.</param>
+        /// <param name="summary">summary.</param>
         /// <param name="totalHits">totalHits.</param>
-        public SearchResultWorkflowSummary(List<WorkflowSummary> results = default(List<WorkflowSummary>), long? totalHits = default(long?))
+        public TaskListSearchResultSummary(List<Task> results = default(List<Task>), Dictionary<string, long?> summary = default(Dictionary<string, long?>), long? totalHits = default(long?))
         {
             this.Results = results;
+            this.Summary = summary;
             this.TotalHits = totalHits;
         }
 
@@ -29,7 +31,13 @@ namespace Conductor.Client.Models
         /// Gets or Sets Results
         /// </summary>
         [DataMember(Name = "results", EmitDefaultValue = false)]
-        public List<WorkflowSummary> Results { get; set; }
+        public List<Task> Results { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Summary
+        /// </summary>
+        [DataMember(Name = "summary", EmitDefaultValue = false)]
+        public Dictionary<string, long?> Summary { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalHits
@@ -44,8 +52,9 @@ namespace Conductor.Client.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SearchResultWorkflowSummary {\n");
+            sb.Append("class TaskListSearchResultSummary {\n");
             sb.Append("  Results: ").Append(Results).Append("\n");
+            sb.Append("  Summary: ").Append(Summary).Append("\n");
             sb.Append("  TotalHits: ").Append(TotalHits).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -67,15 +76,15 @@ namespace Conductor.Client.Models
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SearchResultWorkflowSummary);
+            return this.Equals(input as TaskListSearchResultSummary);
         }
 
         /// <summary>
-        /// Returns true if SearchResultWorkflowSummary instances are equal
+        /// Returns true if TaskListSearchResultSummary instances are equal
         /// </summary>
-        /// <param name="input">Instance of SearchResultWorkflowSummary to be compared</param>
+        /// <param name="input">Instance of TaskListSearchResultSummary to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SearchResultWorkflowSummary input)
+        public bool Equals(TaskListSearchResultSummary input)
         {
             if (input == null)
                 return false;
@@ -86,6 +95,12 @@ namespace Conductor.Client.Models
                     this.Results != null &&
                     input.Results != null &&
                     this.Results.SequenceEqual(input.Results)
+                ) &&
+                (
+                    this.Summary == input.Summary ||
+                    this.Summary != null &&
+                    input.Summary != null &&
+                    this.Summary.SequenceEqual(input.Summary)
                 ) &&
                 (
                     this.TotalHits == input.TotalHits ||
@@ -105,6 +120,8 @@ namespace Conductor.Client.Models
                 int hashCode = 41;
                 if (this.Results != null)
                     hashCode = hashCode * 59 + this.Results.GetHashCode();
+                if (this.Summary != null)
+                    hashCode = hashCode * 59 + this.Summary.GetHashCode();
                 if (this.TotalHits != null)
                     hashCode = hashCode * 59 + this.TotalHits.GetHashCode();
                 return hashCode;

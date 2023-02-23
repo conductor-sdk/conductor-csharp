@@ -1,41 +1,49 @@
-using System.Linq;
+
+using System.IO;
 using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using JsonSubTypes;
 using System.ComponentModel.DataAnnotations;
 
 namespace Conductor.Client.Models
 {
     /// <summary>
-    /// SearchResultWorkflowSummary
+    /// TimeoutPolicy
     /// </summary>
     [DataContract]
-    public partial class SearchResultWorkflowSummary : IEquatable<SearchResultWorkflowSummary>, IValidatableObject
+    [JsonConverter(typeof(JsonSubtypes), "type")]
+    [JsonSubtypes.KnownSubType(typeof(Terminate), "Terminate")]
+    [JsonSubtypes.KnownSubType(typeof(BackToAssigment), "BackToAssigment")]
+    [JsonSubtypes.KnownSubType(typeof(Never), "Never")]
+    [JsonSubtypes.KnownSubType(typeof(Escalate), "Escalate")]
+    [JsonSubtypes.KnownSubType(typeof(ClearAssigment), "ClearAssigment")]
+    public partial class TimeoutPolicy : IEquatable<TimeoutPolicy>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchResultWorkflowSummary" /> class.
+        /// Initializes a new instance of the <see cref="TimeoutPolicy" /> class.
         /// </summary>
-        /// <param name="results">results.</param>
-        /// <param name="totalHits">totalHits.</param>
-        public SearchResultWorkflowSummary(List<WorkflowSummary> results = default(List<WorkflowSummary>), long? totalHits = default(long?))
+        /// <param name="type">type (required).</param>
+        public TimeoutPolicy(string type = default(string))
         {
-            this.Results = results;
-            this.TotalHits = totalHits;
+            // to ensure "type" is required (not null)
+            if (type == null)
+            {
+                throw new InvalidDataException("type is a required property for TimeoutPolicy and cannot be null");
+            }
+            else
+            {
+                this.Type = type;
+            }
         }
 
         /// <summary>
-        /// Gets or Sets Results
+        /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name = "results", EmitDefaultValue = false)]
-        public List<WorkflowSummary> Results { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TotalHits
-        /// </summary>
-        [DataMember(Name = "totalHits", EmitDefaultValue = false)]
-        public long? TotalHits { get; set; }
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public string Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -44,9 +52,8 @@ namespace Conductor.Client.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SearchResultWorkflowSummary {\n");
-            sb.Append("  Results: ").Append(Results).Append("\n");
-            sb.Append("  TotalHits: ").Append(TotalHits).Append("\n");
+            sb.Append("class TimeoutPolicy {\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -67,30 +74,24 @@ namespace Conductor.Client.Models
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SearchResultWorkflowSummary);
+            return this.Equals(input as TimeoutPolicy);
         }
 
         /// <summary>
-        /// Returns true if SearchResultWorkflowSummary instances are equal
+        /// Returns true if TimeoutPolicy instances are equal
         /// </summary>
-        /// <param name="input">Instance of SearchResultWorkflowSummary to be compared</param>
+        /// <param name="input">Instance of TimeoutPolicy to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SearchResultWorkflowSummary input)
+        public bool Equals(TimeoutPolicy input)
         {
             if (input == null)
                 return false;
 
             return
                 (
-                    this.Results == input.Results ||
-                    this.Results != null &&
-                    input.Results != null &&
-                    this.Results.SequenceEqual(input.Results)
-                ) &&
-                (
-                    this.TotalHits == input.TotalHits ||
-                    (this.TotalHits != null &&
-                    this.TotalHits.Equals(input.TotalHits))
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 );
         }
 
@@ -103,10 +104,8 @@ namespace Conductor.Client.Models
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Results != null)
-                    hashCode = hashCode * 59 + this.Results.GetHashCode();
-                if (this.TotalHits != null)
-                    hashCode = hashCode * 59 + this.TotalHits.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;
             }
         }
@@ -117,6 +116,16 @@ namespace Conductor.Client.Models
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            return this.BaseValidate(validationContext);
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        protected IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> BaseValidate(ValidationContext validationContext)
         {
             yield break;
         }

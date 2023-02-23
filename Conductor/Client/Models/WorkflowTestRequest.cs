@@ -10,13 +10,13 @@ using System.ComponentModel.DataAnnotations;
 namespace Conductor.Client.Models
 {
     /// <summary>
-    /// StartWorkflowRequest
+    /// WorkflowTestRequest
     /// </summary>
     [DataContract]
-    public partial class StartWorkflowRequest : IEquatable<StartWorkflowRequest>, IValidatableObject
+    public partial class WorkflowTestRequest : IEquatable<WorkflowTestRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StartWorkflowRequest" /> class.
+        /// Initializes a new instance of the <see cref="WorkflowTestRequest" /> class.
         /// </summary>
         /// <param name="correlationId">correlationId.</param>
         /// <param name="createdBy">createdBy.</param>
@@ -24,15 +24,17 @@ namespace Conductor.Client.Models
         /// <param name="input">input.</param>
         /// <param name="name">name (required).</param>
         /// <param name="priority">priority.</param>
+        /// <param name="subWorkflowTestRequest">subWorkflowTestRequest.</param>
+        /// <param name="taskRefToMockOutput">taskRefToMockOutput.</param>
         /// <param name="taskToDomain">taskToDomain.</param>
         /// <param name="version">version.</param>
         /// <param name="workflowDef">workflowDef.</param>
-        public StartWorkflowRequest(string correlationId = default(string), string createdBy = default(string), string externalInputPayloadStoragePath = default(string), Dictionary<string, Object> input = default(Dictionary<string, Object>), string name = default(string), int? priority = default(int?), Dictionary<string, string> taskToDomain = default(Dictionary<string, string>), int? version = default(int?), WorkflowDef workflowDef = default(WorkflowDef))
+        public WorkflowTestRequest(string correlationId = default(string), string createdBy = default(string), string externalInputPayloadStoragePath = default(string), Dictionary<string, Object> input = default(Dictionary<string, Object>), string name = default(string), int? priority = default(int?), Dictionary<string, WorkflowTestRequest> subWorkflowTestRequest = default(Dictionary<string, WorkflowTestRequest>), Dictionary<string, List<TaskMock>> taskRefToMockOutput = default(Dictionary<string, List<TaskMock>>), Dictionary<string, string> taskToDomain = default(Dictionary<string, string>), int? version = default(int?), WorkflowDef workflowDef = default(WorkflowDef))
         {
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new InvalidDataException("name is a required property for StartWorkflowRequest and cannot be null");
+                throw new InvalidDataException("name is a required property for WorkflowTestRequest and cannot be null");
             }
             else
             {
@@ -43,6 +45,8 @@ namespace Conductor.Client.Models
             this.ExternalInputPayloadStoragePath = externalInputPayloadStoragePath;
             this.Input = input;
             this.Priority = priority;
+            this.SubWorkflowTestRequest = subWorkflowTestRequest;
+            this.TaskRefToMockOutput = taskRefToMockOutput;
             this.TaskToDomain = taskToDomain;
             this.Version = version;
             this.WorkflowDef = workflowDef;
@@ -85,6 +89,18 @@ namespace Conductor.Client.Models
         public int? Priority { get; set; }
 
         /// <summary>
+        /// Gets or Sets SubWorkflowTestRequest
+        /// </summary>
+        [DataMember(Name = "subWorkflowTestRequest", EmitDefaultValue = false)]
+        public Dictionary<string, WorkflowTestRequest> SubWorkflowTestRequest { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TaskRefToMockOutput
+        /// </summary>
+        [DataMember(Name = "taskRefToMockOutput", EmitDefaultValue = false)]
+        public Dictionary<string, List<TaskMock>> TaskRefToMockOutput { get; set; }
+
+        /// <summary>
         /// Gets or Sets TaskToDomain
         /// </summary>
         [DataMember(Name = "taskToDomain", EmitDefaultValue = false)]
@@ -109,13 +125,15 @@ namespace Conductor.Client.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class StartWorkflowRequest {\n");
+            sb.Append("class WorkflowTestRequest {\n");
             sb.Append("  CorrelationId: ").Append(CorrelationId).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  ExternalInputPayloadStoragePath: ").Append(ExternalInputPayloadStoragePath).Append("\n");
             sb.Append("  Input: ").Append(Input).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Priority: ").Append(Priority).Append("\n");
+            sb.Append("  SubWorkflowTestRequest: ").Append(SubWorkflowTestRequest).Append("\n");
+            sb.Append("  TaskRefToMockOutput: ").Append(TaskRefToMockOutput).Append("\n");
             sb.Append("  TaskToDomain: ").Append(TaskToDomain).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("  WorkflowDef: ").Append(WorkflowDef).Append("\n");
@@ -139,15 +157,15 @@ namespace Conductor.Client.Models
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as StartWorkflowRequest);
+            return this.Equals(input as WorkflowTestRequest);
         }
 
         /// <summary>
-        /// Returns true if StartWorkflowRequest instances are equal
+        /// Returns true if WorkflowTestRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of StartWorkflowRequest to be compared</param>
+        /// <param name="input">Instance of WorkflowTestRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(StartWorkflowRequest input)
+        public bool Equals(WorkflowTestRequest input)
         {
             if (input == null)
                 return false;
@@ -183,6 +201,18 @@ namespace Conductor.Client.Models
                     this.Priority == input.Priority ||
                     (this.Priority != null &&
                     this.Priority.Equals(input.Priority))
+                ) &&
+                (
+                    this.SubWorkflowTestRequest == input.SubWorkflowTestRequest ||
+                    this.SubWorkflowTestRequest != null &&
+                    input.SubWorkflowTestRequest != null &&
+                    this.SubWorkflowTestRequest.SequenceEqual(input.SubWorkflowTestRequest)
+                ) &&
+                (
+                    this.TaskRefToMockOutput == input.TaskRefToMockOutput ||
+                    this.TaskRefToMockOutput != null &&
+                    input.TaskRefToMockOutput != null &&
+                    this.TaskRefToMockOutput.SequenceEqual(input.TaskRefToMockOutput)
                 ) &&
                 (
                     this.TaskToDomain == input.TaskToDomain ||
@@ -223,6 +253,10 @@ namespace Conductor.Client.Models
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Priority != null)
                     hashCode = hashCode * 59 + this.Priority.GetHashCode();
+                if (this.SubWorkflowTestRequest != null)
+                    hashCode = hashCode * 59 + this.SubWorkflowTestRequest.GetHashCode();
+                if (this.TaskRefToMockOutput != null)
+                    hashCode = hashCode * 59 + this.TaskRefToMockOutput.GetHashCode();
                 if (this.TaskToDomain != null)
                     hashCode = hashCode * 59 + this.TaskToDomain.GetHashCode();
                 if (this.Version != null)

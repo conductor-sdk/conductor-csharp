@@ -9,33 +9,25 @@ using System.ComponentModel.DataAnnotations;
 namespace Conductor.Client.Models
 {
     /// <summary>
-    /// SearchResultWorkflowSummary
+    /// ListAssignment
     /// </summary>
     [DataContract]
-    public partial class SearchResultWorkflowSummary : IEquatable<SearchResultWorkflowSummary>, IValidatableObject
+    public partial class ListAssignment : AssignmentPolicy, IEquatable<ListAssignment>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchResultWorkflowSummary" /> class.
+        /// Initializes a new instance of the <see cref="ListAssignment" /> class.
         /// </summary>
-        /// <param name="results">results.</param>
-        /// <param name="totalHits">totalHits.</param>
-        public SearchResultWorkflowSummary(List<WorkflowSummary> results = default(List<WorkflowSummary>), long? totalHits = default(long?))
+        /// <param name="subjects">subjects.</param>
+        public ListAssignment(List<string> subjects = default(List<string>), string type = default(string)) : base(type)
         {
-            this.Results = results;
-            this.TotalHits = totalHits;
+            this.Subjects = subjects;
         }
 
         /// <summary>
-        /// Gets or Sets Results
+        /// Gets or Sets Subjects
         /// </summary>
-        [DataMember(Name = "results", EmitDefaultValue = false)]
-        public List<WorkflowSummary> Results { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TotalHits
-        /// </summary>
-        [DataMember(Name = "totalHits", EmitDefaultValue = false)]
-        public long? TotalHits { get; set; }
+        [DataMember(Name = "subjects", EmitDefaultValue = false)]
+        public List<string> Subjects { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -44,9 +36,9 @@ namespace Conductor.Client.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SearchResultWorkflowSummary {\n");
-            sb.Append("  Results: ").Append(Results).Append("\n");
-            sb.Append("  TotalHits: ").Append(TotalHits).Append("\n");
+            sb.Append("class ListAssignment {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
+            sb.Append("  Subjects: ").Append(Subjects).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -55,7 +47,7 @@ namespace Conductor.Client.Models
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public override string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -67,30 +59,25 @@ namespace Conductor.Client.Models
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SearchResultWorkflowSummary);
+            return this.Equals(input as ListAssignment);
         }
 
         /// <summary>
-        /// Returns true if SearchResultWorkflowSummary instances are equal
+        /// Returns true if ListAssignment instances are equal
         /// </summary>
-        /// <param name="input">Instance of SearchResultWorkflowSummary to be compared</param>
+        /// <param name="input">Instance of ListAssignment to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SearchResultWorkflowSummary input)
+        public bool Equals(ListAssignment input)
         {
             if (input == null)
                 return false;
 
-            return
+            return base.Equals(input) &&
                 (
-                    this.Results == input.Results ||
-                    this.Results != null &&
-                    input.Results != null &&
-                    this.Results.SequenceEqual(input.Results)
-                ) &&
-                (
-                    this.TotalHits == input.TotalHits ||
-                    (this.TotalHits != null &&
-                    this.TotalHits.Equals(input.TotalHits))
+                    this.Subjects == input.Subjects ||
+                    this.Subjects != null &&
+                    input.Subjects != null &&
+                    this.Subjects.SequenceEqual(input.Subjects)
                 );
         }
 
@@ -102,11 +89,9 @@ namespace Conductor.Client.Models
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
-                if (this.Results != null)
-                    hashCode = hashCode * 59 + this.Results.GetHashCode();
-                if (this.TotalHits != null)
-                    hashCode = hashCode * 59 + this.TotalHits.GetHashCode();
+                int hashCode = base.GetHashCode();
+                if (this.Subjects != null)
+                    hashCode = hashCode * 59 + this.Subjects.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,17 +1,10 @@
-
-using System;
 using System.Linq;
-using System.IO;
+using System;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Conductor.Client.SwaggerDateConverter;
 
 namespace Conductor.Client.Models
 {
@@ -34,9 +27,10 @@ namespace Conductor.Client.Models
         /// <param name="scheduleEndTime">scheduleEndTime.</param>
         /// <param name="scheduleStartTime">scheduleStartTime.</param>
         /// <param name="startWorkflowRequest">startWorkflowRequest.</param>
+        /// <param name="tags">tags.</param>
         /// <param name="updatedBy">updatedBy.</param>
         /// <param name="updatedTime">updatedTime.</param>
-        public WorkflowSchedule(long? createTime = default(long?), string createdBy = default(string), string cronExpression = default(string), string name = default(string), bool? paused = default(bool?), string pausedReason = default(string), bool? runCatchupScheduleInstances = default(bool?), long? scheduleEndTime = default(long?), long? scheduleStartTime = default(long?), StartWorkflowRequest startWorkflowRequest = default(StartWorkflowRequest), string updatedBy = default(string), long? updatedTime = default(long?))
+        public WorkflowSchedule(long? createTime = default(long?), string createdBy = default(string), string cronExpression = default(string), string name = default(string), bool? paused = default(bool?), string pausedReason = default(string), bool? runCatchupScheduleInstances = default(bool?), long? scheduleEndTime = default(long?), long? scheduleStartTime = default(long?), StartWorkflowRequest startWorkflowRequest = default(StartWorkflowRequest), List<TagObject> tags = default(List<TagObject>), string updatedBy = default(string), long? updatedTime = default(long?))
         {
             this.CreateTime = createTime;
             this.CreatedBy = createdBy;
@@ -48,6 +42,7 @@ namespace Conductor.Client.Models
             this.ScheduleEndTime = scheduleEndTime;
             this.ScheduleStartTime = scheduleStartTime;
             this.StartWorkflowRequest = startWorkflowRequest;
+            this.Tags = tags;
             this.UpdatedBy = updatedBy;
             this.UpdatedTime = updatedTime;
         }
@@ -113,6 +108,12 @@ namespace Conductor.Client.Models
         public StartWorkflowRequest StartWorkflowRequest { get; set; }
 
         /// <summary>
+        /// Gets or Sets Tags
+        /// </summary>
+        [DataMember(Name = "tags", EmitDefaultValue = false)]
+        public List<TagObject> Tags { get; set; }
+
+        /// <summary>
         /// Gets or Sets UpdatedBy
         /// </summary>
         [DataMember(Name = "updatedBy", EmitDefaultValue = false)]
@@ -142,6 +143,7 @@ namespace Conductor.Client.Models
             sb.Append("  ScheduleEndTime: ").Append(ScheduleEndTime).Append("\n");
             sb.Append("  ScheduleStartTime: ").Append(ScheduleStartTime).Append("\n");
             sb.Append("  StartWorkflowRequest: ").Append(StartWorkflowRequest).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  UpdatedBy: ").Append(UpdatedBy).Append("\n");
             sb.Append("  UpdatedTime: ").Append(UpdatedTime).Append("\n");
             sb.Append("}\n");
@@ -229,6 +231,12 @@ namespace Conductor.Client.Models
                     this.StartWorkflowRequest.Equals(input.StartWorkflowRequest))
                 ) &&
                 (
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
+                ) &&
+                (
                     this.UpdatedBy == input.UpdatedBy ||
                     (this.UpdatedBy != null &&
                     this.UpdatedBy.Equals(input.UpdatedBy))
@@ -269,6 +277,8 @@ namespace Conductor.Client.Models
                     hashCode = hashCode * 59 + this.ScheduleStartTime.GetHashCode();
                 if (this.StartWorkflowRequest != null)
                     hashCode = hashCode * 59 + this.StartWorkflowRequest.GetHashCode();
+                if (this.Tags != null)
+                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.UpdatedBy != null)
                     hashCode = hashCode * 59 + this.UpdatedBy.GetHashCode();
                 if (this.UpdatedTime != null)

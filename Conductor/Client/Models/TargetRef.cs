@@ -1,17 +1,11 @@
-
-using System;
-using System.Linq;
 using System.IO;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Conductor.Client.SwaggerDateConverter;
 
 namespace Conductor.Client.Models
 {
@@ -63,7 +57,22 @@ namespace Conductor.Client.Models
             /// Enum USER for value: USER
             /// </summary>
             [EnumMember(Value = "USER")]
-            USER = 4
+            USER = 4,
+            /// <summary>
+            /// Enum SECRET for value: SECRET
+            /// </summary>
+            [EnumMember(Value = "SECRET")]
+            SECRET = 5,
+            /// <summary>
+            /// Enum TAG for value: TAG
+            /// </summary>
+            [EnumMember(Value = "TAG")]
+            TAG = 6,
+            /// <summary>
+            /// Enum DOMAIN for value: DOMAIN
+            /// </summary>
+            [EnumMember(Value = "DOMAIN")]
+            DOMAIN = 7
         }
         /// <summary>
         /// Gets or Sets Type
@@ -126,15 +135,8 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return
-                (
-                    this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
-                ) &&
-                (
-                    this.Type == input.Type ||
-                    this.Type.Equals(input.Type)
-                );
+            return (this.Id == input.Id || this.Id.Equals(input.Id)) &&
+                (this.Type == input.Type || this.Type.Equals(input.Type));
         }
 
         /// <summary>
