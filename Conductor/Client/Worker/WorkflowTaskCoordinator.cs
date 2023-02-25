@@ -1,40 +1,49 @@
 ﻿using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace Conductor.Client.Worker
 {
-    internal class WorkflowTaskCoordinator : IWorkflowTaskCoordinator
+    public class WorkflowTaskCoordinator : IWorkflowTaskCoordinator
     {
-        private int _concurrentWorkers;
-        private ILogger<WorkflowTaskCoordinator> _logger;
-        private IWorkflowTaskExecutor _workflowTaskExecutor;
-        private HashSet<IWorkflowTask> _workerDefinitions;
+        private readonly ILogger<WorkflowTaskCoordinator> _logger;
+        private readonly HashSet<IWorkflowTask> _workerDefinitions;
+        private readonly IWorkflowTaskExecutor _workflowTaskExecutor;
+        private readonly Dictionary<string, Task> _runningWorkers;
 
-        public WorkflowTaskCoordinator(IServiceProvider serviceProvider, ILogger<WorkflowTaskCoordinator> logger)
+        public WorkflowTaskCoordinator(IWorkflowTaskExecutor workflowTaskExecutor, ILogger<WorkflowTaskCoordinator> logger = default)
         {
             _logger = logger;
             _workerDefinitions = new HashSet<IWorkflowTask>();
-            _workflowTaskExecutor = serviceProvider.GetService(typeof(IWorkflowTaskExecutor)) as IWorkflowTaskExecutor;
+            _runningWorkers = new Dictionary<string, Task>();
+            _workflowTaskExecutor = workflowTaskExecutor;
         }
 
-        public async Task Start()
+        public void Start()
         {
-            _logger.LogInformation("Starting WorkflowCoordinator");
-            var pollers = new List<Task>();
-            for (var i = 0; i < _concurrentWorkers; i++)
+            _logger.LogDebug("Starting workers...");
+            foreach (var worker in _workerDefinitions)
             {
-                pollers.Add(_workflowTaskExecutor.StartPoller(_workerDefinitions.ToList()));
+                var runningWorker = _workflowTaskExecutor.StartPoller(worker);
+                _runningWorkers[worker.TaskType] = runningWorker;
             }
-            await Task.WhenAll(pollers);
+            _logger.LogDebug("Started all workers");
         }
 
         public void RegisterWorker(IWorkflowTask task)
         {
             _workerDefinitions.Add(task);
+        }
+
+        public void Stop(string taskName)
+        {
+            if (!_runningWorkers.ContainsKey(taskName))
+            {
+                throw new Exception($"worker not found for {taskName}");
+            }
+            _runningWorkers[taskName].
         }
     }
 }

@@ -16,17 +16,14 @@ namespace Conductor.Client.Extensions
             return services;
         }
 
-        public static IServiceCollection AddConductorWorker(this IServiceCollection services, Configuration configuration = null, Action<IServiceProvider, HttpClient> configureHttpClient = null)
+        public static IServiceCollection AddConductorWorker(this IServiceCollection services, Configuration configuration = default(Configuration), Action<IServiceProvider, HttpClient> configureHttpClient = null)
         {
             services.AddHttpClient();
             services.AddOptions();
-            if (configuration == null)
-            {
-                configuration = new Configuration();
-            }
-            services.AddSingleton(configuration);
+            services.AddSingleton<Configuration>(configuration);
             services.AddSingleton<OrkesApiClient>();
-            services.AddSingleton<ConductorWorkerRestClient>();
+            services.AddSingleton<IConductorWorkerRestClient, ConductorWorkerRestClient>();
+            services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
             services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
             services.AddTransient<IWorkflowTaskExecutor, WorkflowTaskExecutor>();
             return services.AddConductorClient(configureHttpClient);
