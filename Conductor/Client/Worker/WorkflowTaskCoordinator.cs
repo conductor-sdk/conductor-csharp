@@ -9,41 +9,36 @@ namespace Conductor.Client.Worker
     public class WorkflowTaskCoordinator : IWorkflowTaskCoordinator
     {
         private readonly ILogger<WorkflowTaskCoordinator> _logger;
-        private readonly HashSet<IWorkflowTask> _workerDefinitions;
-        private readonly IWorkflowTaskExecutor _workflowTaskExecutor;
-        private readonly Dictionary<string, Task> _runningWorkers;
+        private readonly ILogger<WorkflowTaskExecutor> _logger2;
+        private readonly HashSet<IWorkflowTaskExecutor> _workers;
 
-        public WorkflowTaskCoordinator(IWorkflowTaskExecutor workflowTaskExecutor, ILogger<WorkflowTaskCoordinator> logger = default)
+        private readonly IConductorWorkerClient _client;
+
+        public WorkflowTaskCoordinator(ILogger<WorkflowTaskCoordinator> logger, ILogger<WorkflowTaskExecutor> logger2, IConductorWorkerClient client)
         {
             _logger = logger;
-            _workerDefinitions = new HashSet<IWorkflowTask>();
-            _runningWorkers = new Dictionary<string, Task>();
-            _workflowTaskExecutor = workflowTaskExecutor;
+            _workers = new HashSet<IWorkflowTaskExecutor>();
+            _client = client;
+            _logger2 = logger2;
         }
 
-        public void Start()
+        public async Task Start()
         {
             _logger.LogDebug("Starting workers...");
-            foreach (var worker in _workerDefinitions)
+            List<Task> runningWorkers = new List<Task>();
+            foreach (var worker in _workers)
             {
-                var runningWorker = _workflowTaskExecutor.StartPoller(worker);
-                _runningWorkers[worker.TaskType] = runningWorker;
+                var runningWorker = worker.Start();
+                runningWorkers.Add(runningWorker);
             }
             _logger.LogDebug("Started all workers");
+            await Task.WhenAll(runningWorkers);
         }
 
-        public void RegisterWorker(IWorkflowTask task)
+        public void RegisterWorker(IWorkflowTask worker, WorkerSettings workerSettings)
         {
-            _workerDefinitions.Add(task);
-        }
-
-        public void Stop(string taskName)
-        {
-            if (!_runningWorkers.ContainsKey(taskName))
-            {
-                throw new Exception($"worker not found for {taskName}");
-            }
-            _runningWorkers[taskName].
+            var workflowTaskExecutor = new WorkflowTaskExecutor(_logger2, _client, worker, workerSettings);
+            _workers.Add(workflowTaskExecutor);
         }
     }
 }

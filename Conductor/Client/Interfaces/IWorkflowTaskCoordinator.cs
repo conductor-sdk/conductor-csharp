@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using Conductor.Client.Worker;
+using System.Threading.Tasks;
 
 namespace Conductor.Client.Interfaces
 {
     public interface IWorkflowTaskCoordinator
     {
-        void Start();
-        void RegisterWorker(IWorkflowTask task);
+        Task Start();
+        void RegisterWorker(IWorkflowTask worker, WorkerSettings workerSettings);
     }
 }

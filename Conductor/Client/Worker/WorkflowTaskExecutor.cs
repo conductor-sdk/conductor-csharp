@@ -14,16 +14,17 @@ namespace Conductor.Client.Worker
 
         private readonly ILogger<WorkflowTaskExecutor> _logger;
         private readonly IWorkflowTask _worker;
-        private readonly IConductorWorkerRestClient _taskClient;
+        private readonly IConductorWorkerClient _taskClient;
         private readonly WorkerSettings _workerSettings;
 
         public WorkflowTaskExecutor(
-            IConductorWorkerRestClient restClient,
+            ILogger<WorkflowTaskExecutor> logger,
+            IConductorWorkerClient client,
             IWorkflowTask worker,
             WorkerSettings workerSettings)
         {
-            _logger = default;
-            _taskClient = restClient;
+            _logger = logger;
+            _taskClient = client;
             _worker = worker;
             _workerSettings = workerSettings;
         }
@@ -84,7 +85,7 @@ namespace Conductor.Client.Worker
                 tasks = new List<Models.Task>();
             }
             _logger.LogTrace(
-                $"[{_workerSettings.WorkerId}] Polled {tasks.Count} for worker"
+                $"[{_workerSettings.WorkerId}] Polled {tasks.Count} tasks"
                 + $", taskType: {_worker.TaskType}"
                 + $", domain: {_workerSettings.Domain}"
                 + $", batchSize: {_workerSettings.BatchSize}"
@@ -140,6 +141,7 @@ namespace Conductor.Client.Worker
                         await Sleep(TimeSpan.FromSeconds(attemptCounter << 1));
                     }
                     _taskClient.UpdateTask(taskResult);
+                    return;
                 }
                 catch (Exception e)
                 {

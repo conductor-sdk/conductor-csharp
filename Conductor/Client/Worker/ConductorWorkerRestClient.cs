@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Conductor.Client.Worker
 {
-    public class ConductorWorkerRestClient : IConductorWorkerRestClient
+    public class ConductorWorkerRestClient : IConductorWorkerClient
     {
         private readonly TaskResourceApi _client;
         public ConductorWorkerRestClient(OrkesApiClient apiClient)

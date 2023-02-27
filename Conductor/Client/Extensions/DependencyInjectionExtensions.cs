@@ -20,34 +20,10 @@ namespace Conductor.Client.Extensions
         {
             services.AddHttpClient();
             services.AddOptions();
-            services.AddSingleton<Configuration>(configuration);
-            services.AddSingleton<OrkesApiClient>();
-            services.AddSingleton<IConductorWorkerRestClient, ConductorWorkerRestClient>();
-            services.AddTransient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
-            services.AddSingleton<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
-            services.AddTransient<IWorkflowTaskExecutor, WorkflowTaskExecutor>();
-            return services.AddConductorClient(configureHttpClient);
-        }
-
-        public static IServiceCollection AddConductorClient(this IServiceCollection services, Func<IServiceProvider, string> serverUrl)
-        {
-            services.AddHttpClient<IConductorWorkerRestClient, ConductorWorkerRestClient>((provider, client) =>
-            {
-                client.BaseAddress = new Uri(serverUrl(provider));
-            });
-            return services;
-        }
-
-        public static IServiceCollection AddConductorClient(this IServiceCollection services, Action<IServiceProvider, HttpClient> configure)
-        {
-            if (configure != null)
-            {
-                services.AddHttpClient<IConductorWorkerRestClient, ConductorWorkerRestClient>(configure);
-            }
-            else
-            {
-                services.AddHttpClient<IConductorWorkerRestClient, ConductorWorkerRestClient>();
-            }
+            services.AddSingleton(configuration);
+            services.AddSingleton<OrkesApiClient>(new OrkesApiClient(configuration));
+            services.AddSingleton<IConductorWorkerClient, ConductorWorkerRestClient>();
+            services.AddTransient<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
             return services;
         }
 
@@ -56,6 +32,5 @@ namespace Conductor.Client.Extensions
             services.AddHostedService<T>();
             return services;
         }
-
     }
 }

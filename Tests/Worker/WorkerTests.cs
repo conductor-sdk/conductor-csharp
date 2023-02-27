@@ -23,9 +23,9 @@ namespace Tests.Worker
 
         private const int WORKFLOW_QTY = 4;
 
-        private WorkflowExecutor _workflowExecutor = null;
+        private readonly WorkflowExecutor _workflowExecutor;
 
-        private WorkflowResourceApi _workflowClient;
+        private readonly WorkflowResourceApi _workflowClient;
 
         public WorkerTests()
         {
@@ -80,18 +80,20 @@ namespace Tests.Worker
         private IHost GetWorkerHost()
         {
             return new HostBuilder()
+                .ConfigureLogging(
+                    logging =>
+                        {
+                            logging.ClearProviders();
+                            logging.AddConsole();
+                            logging.SetMinimumLevel(LogLevel.Trace);
+                        }
+                )
                 .ConfigureServices(
                     (ctx, services) =>
                         {
                             services.AddConductorWorker(ApiUtil.GetConfiguration());
                             services.AddConductorWorkflowTask<SimpleWorker>();
                             services.WithHostedService<WorkerService>();
-                        }
-                ).ConfigureLogging(
-                    logging =>
-                        {
-                            logging.SetMinimumLevel(LogLevel.Debug);
-                            logging.AddConsole();
                         }
                 ).Build();
         }
