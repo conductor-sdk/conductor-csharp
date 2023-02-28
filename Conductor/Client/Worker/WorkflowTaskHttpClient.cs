@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace Conductor.Client.Worker
 {
-    public class ConductorWorkerRestClient : IConductorWorkerClient
+    public class WorkflowTaskHttpClient : IWorkflowTaskClient
     {
         private readonly TaskResourceApi _client;
-        public ConductorWorkerRestClient(OrkesApiClient apiClient)
+        public WorkflowTaskHttpClient(OrkesApiClient apiClient)
         {
             _client = apiClient.GetClient<TaskResourceApi>();
         }

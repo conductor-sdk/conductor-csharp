@@ -2,30 +2,26 @@
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System;
 
 namespace Conductor.Client.Worker
 {
     public class WorkflowTaskCoordinator : IWorkflowTaskCoordinator
     {
         private readonly ILogger<WorkflowTaskCoordinator> _logger;
-        private readonly ILogger<WorkflowTaskExecutor> _logger2;
         private readonly HashSet<IWorkflowTaskExecutor> _workers;
+        private readonly IWorkflowTaskClient _client;
 
-        private readonly IConductorWorkerClient _client;
-
-        public WorkflowTaskCoordinator(ILogger<WorkflowTaskCoordinator> logger, ILogger<WorkflowTaskExecutor> logger2, IConductorWorkerClient client)
+        public WorkflowTaskCoordinator(ILogger<WorkflowTaskCoordinator> logger, IWorkflowTaskClient client)
         {
             _logger = logger;
-            _workers = new HashSet<IWorkflowTaskExecutor>();
             _client = client;
-            _logger2 = logger2;
+            _workers = new HashSet<IWorkflowTaskExecutor>();
         }
 
         public async Task Start()
         {
             _logger.LogDebug("Starting workers...");
-            List<Task> runningWorkers = new List<Task>();
+            var runningWorkers = new List<Task>();
             foreach (var worker in _workers)
             {
                 var runningWorker = worker.Start();
@@ -35,9 +31,8 @@ namespace Conductor.Client.Worker
             await Task.WhenAll(runningWorkers);
         }
 
-        public void RegisterWorker(IWorkflowTask worker, WorkerSettings workerSettings)
+        public void RegisterWorker(IWorkflowTaskExecutor workflowTaskExecutor)
         {
-            var workflowTaskExecutor = new WorkflowTaskExecutor(_logger2, _client, worker, workerSettings);
             _workers.Add(workflowTaskExecutor);
         }
     }

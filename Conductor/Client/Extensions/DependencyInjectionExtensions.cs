@@ -22,7 +22,7 @@ namespace Conductor.Client.Extensions
             services.AddOptions();
             services.AddSingleton(configuration);
             services.AddSingleton<OrkesApiClient>(new OrkesApiClient(configuration));
-            services.AddSingleton<IConductorWorkerClient, ConductorWorkerRestClient>();
+            services.AddSingleton<IWorkflowTaskClient, WorkflowTaskHttpClient>();
             services.AddTransient<IWorkflowTaskCoordinator, WorkflowTaskCoordinator>();
             return services;
         }

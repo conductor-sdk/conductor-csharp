@@ -10,31 +10,35 @@ namespace Conductor.Client.Worker
 {
     public class WorkflowTaskExecutor : IWorkflowTaskExecutor
     {
+        private static TimeSpan SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR = TimeSpan.FromMilliseconds(5);
         private static int UPDATE_TASK_RETRY_COUNT_LIMIT = 5;
 
         private readonly ILogger<WorkflowTaskExecutor> _logger;
         private readonly IWorkflowTask _worker;
-        private readonly IConductorWorkerClient _taskClient;
+        private readonly IWorkflowTaskClient _taskClient;
         private readonly WorkerSettings _workerSettings;
+        private readonly WorkflowTaskMonitor _workflowTaskMonitor;
 
         public WorkflowTaskExecutor(
             ILogger<WorkflowTaskExecutor> logger,
-            IConductorWorkerClient client,
+            IWorkflowTaskClient client,
             IWorkflowTask worker,
-            WorkerSettings workerSettings)
+            WorkerSettings workerSettings,
+            WorkflowTaskMonitor workflowTaskMonitor)
         {
             _logger = logger;
             _taskClient = client;
             _worker = worker;
             _workerSettings = workerSettings;
+            _workflowTaskMonitor = workflowTaskMonitor;
         }
 
         public Task Start()
         {
             var thread = Task.Run(() => Work4Ever());
             _logger.LogInformation(
-                $"Started worker with"
-                + $"taskName: {_worker.TaskType}"
+                $"[{_workerSettings.WorkerId}] Started worker"
+                + $", taskName: {_worker.TaskType}"
                 + $", domain: {_workerSettings.Domain}"
                 + $", pollInterval: {_workerSettings.PollInterval}"
                 + $", batchSize: {_workerSettings.BatchSize}"
@@ -53,10 +57,11 @@ namespace Conductor.Client.Worker
                 catch (Exception e)
                 {
                     _logger.LogInformation(
-                        $"worker error: {e.Message}"
+                        $"[{_workerSettings.WorkerId}] worker error: {e.Message}"
                         + ", taskName: {_worker.TaskType}"
                         + ", domain: {_worker.Domain}"
                     );
+                    await Sleep(SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR);
                 }
             }
         }
@@ -79,7 +84,8 @@ namespace Conductor.Client.Worker
                 + $", domain: {_workerSettings.Domain}"
                 + $", batchSize: {_workerSettings.BatchSize}"
             );
-            var tasks = _taskClient.PollTask(_worker.TaskType, _workerSettings.WorkerId, _workerSettings.Domain, _workerSettings.BatchSize);
+            var availableWorkerCounter = _workerSettings.BatchSize - _workflowTaskMonitor.GetRunningWorkers();
+            var tasks = _taskClient.PollTask(_worker.TaskType, _workerSettings.WorkerId, _workerSettings.Domain, availableWorkerCounter);
             if (tasks == null)
             {
                 tasks = new List<Models.Task>();
@@ -99,7 +105,7 @@ namespace Conductor.Client.Worker
             {
                 return;
             }
-            List<Task> runningWorkers = new List<Task>();
+            var runningWorkers = new List<Task>();
             foreach (var task in tasks)
             {
                 var runningWorker = Task.Run(() => ProcessTask(task));
@@ -112,20 +118,28 @@ namespace Conductor.Client.Worker
         {
             _logger.LogTrace(
                 $"[{_workerSettings.WorkerId}] Processing task for worker,"
-                + $"taskType: {_worker.TaskType}"
-                + $"domain: {_workerSettings.Domain}"
-                + $"taskId: {task.TaskId}"
-                + $"workflowId: {task.WorkflowInstanceId}"
+                + $", taskType: {_worker.TaskType}"
+                + $", domain: {_workerSettings.Domain}"
+                + $", taskId: {task.TaskId}"
+                + $", workflowId: {task.WorkflowInstanceId}"
             );
-            var taskResult = await _worker.Execute(task, CancellationToken.None);
-            taskResult.WorkerId = _workerSettings.WorkerId;
-            UpdateTask(taskResult);
+            try
+            {
+                _workflowTaskMonitor.IncrementRunningWorker();
+                var taskResult = await _worker.Execute(task, CancellationToken.None);
+                taskResult.WorkerId = _workerSettings.WorkerId;
+                UpdateTask(taskResult);
+            }
+            finally
+            {
+                _workflowTaskMonitor.RunningWorkerDone();
+            }
             _logger.LogTrace(
                 $"[{_workerSettings.WorkerId}] Done processing task for worker,"
-                + $"taskType: {_worker.TaskType}"
-                + $"domain: {_workerSettings.Domain}"
-                + $"taskId: {task.TaskId}"
-                + $"workflowId: {task.WorkflowInstanceId}"
+                + $", taskType: {_worker.TaskType}"
+                + $", domain: {_workerSettings.Domain}"
+                + $", taskId: {task.TaskId}"
+                + $", workflowId: {task.WorkflowInstanceId}"
             );
         }
 
@@ -141,16 +155,23 @@ namespace Conductor.Client.Worker
                         await Sleep(TimeSpan.FromSeconds(attemptCounter << 1));
                     }
                     _taskClient.UpdateTask(taskResult);
+                    _logger.LogTrace(
+                        $"[{_workerSettings.WorkerId}] Done updating task"
+                        + $", taskType: {_worker.TaskType}"
+                        + $", domain: {_workerSettings.Domain}"
+                        + $", taskId: {taskResult.TaskId}"
+                        + $", workflowId: {taskResult.WorkflowInstanceId}"
+                    );
                     return;
                 }
                 catch (Exception e)
                 {
                     _logger.LogTrace(
-                        $"Failed to update task, reason: {e.Message}"
-                        + $"taskType: {_worker.TaskType}"
-                        + $"domain: {_workerSettings.Domain}"
-                        + $"taskId: {taskResult.TaskId}"
-                        + $"workflowId: {taskResult.WorkflowInstanceId}"
+                        $"[{_workerSettings.WorkerId}] Failed to update task, reason: {e.Message}"
+                        + $", taskType: {_worker.TaskType}"
+                        + $", domain: {_workerSettings.Domain}"
+                        + $", taskId: {taskResult.TaskId}"
+                        + $", workflowId: {taskResult.WorkflowInstanceId}"
                     );
                 }
             }
@@ -159,7 +180,7 @@ namespace Conductor.Client.Worker
 
         private async Task Sleep(TimeSpan timeSpan)
         {
-            _logger.LogDebug($"Sleeping for {timeSpan.Milliseconds}ms");
+            _logger.LogDebug($"[{_workerSettings.WorkerId}] Sleeping for {timeSpan.Milliseconds}ms");
             await Task.Delay(timeSpan);
         }
     }

@@ -38,7 +38,7 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            GetWorkerHost().RunAsync();
+            GetWorkerHost().Run();
             List<String> workflowIds = StartWorkflows(workflow);
             Thread.Sleep(WORKFLOW_EXECUTION_TIMEOUT_SECONDS * 1000);
             foreach (string workflowId in workflowIds)
@@ -86,16 +86,15 @@ namespace Tests.Worker
                             logging.ClearProviders();
                             logging.AddConsole();
                             logging.SetMinimumLevel(LogLevel.Trace);
-                        }
-                )
+                        })
                 .ConfigureServices(
                     (ctx, services) =>
                         {
                             services.AddConductorWorker(ApiUtil.GetConfiguration());
                             services.AddConductorWorkflowTask<SimpleWorker>();
                             services.WithHostedService<WorkerService>();
-                        }
-                ).Build();
+                        })
+                .Build();
         }
     }
 }
