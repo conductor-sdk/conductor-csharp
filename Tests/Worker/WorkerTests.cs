@@ -19,13 +19,14 @@ namespace Tests.Worker
         private const int WORKFLOW_VERSION = 1;
 
         private const string TASK_NAME = "test-sdk-csharp-task";
-        private const int WORKFLOW_EXECUTION_TIMEOUT_SECONDS = 5;
 
-        private const int WORKFLOW_QTY = 15;
+        private const int WORKFLOW_QTY = 101;
 
-        private WorkflowExecutor _workflowExecutor = null;
+        private readonly TimeSpan WORKFLOW_COMPLETION_TIMEOUT = TimeSpan.FromSeconds(5);
 
-        private WorkflowResourceApi _workflowClient;
+        private readonly WorkflowExecutor _workflowExecutor;
+
+        private readonly WorkflowResourceApi _workflowClient;
 
         public WorkerTests()
         {
@@ -40,7 +41,7 @@ namespace Tests.Worker
             _workflowExecutor.RegisterWorkflow(workflow, true);
             GetWorkerHost().RunAsync();
             List<String> workflowIds = StartWorkflows(workflow);
-            Thread.Sleep(WORKFLOW_EXECUTION_TIMEOUT_SECONDS * 1000);
+            Thread.Sleep(WORKFLOW_COMPLETION_TIMEOUT);
             foreach (string workflowId in workflowIds)
             {
                 ValidateWorkflowCompletion(workflowId);
