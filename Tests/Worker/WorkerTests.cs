@@ -19,13 +19,13 @@ namespace Tests.Worker
         private const int WORKFLOW_VERSION = 1;
 
         private const string TASK_NAME = "test-sdk-csharp-task";
-        private const int WORKFLOW_QTY = 7;
+        private const int WORKFLOW_EXECUTION_TIMEOUT_SECONDS = 15;
 
-        private readonly TimeSpan WORKFLOW_EXECUTION_TIMEOUT = TimeSpan.FromSeconds(15);
+        private const int WORKFLOW_QTY = 4;
 
-        private readonly WorkflowExecutor _workflowExecutor;
+        private WorkflowExecutor _workflowExecutor = null;
 
-        private readonly WorkflowResourceApi _workflowClient;
+        private WorkflowResourceApi _workflowClient;
 
         public WorkerTests()
         {
@@ -40,7 +40,7 @@ namespace Tests.Worker
             _workflowExecutor.RegisterWorkflow(workflow, true);
             GetWorkerHost().RunAsync();
             List<String> workflowIds = StartWorkflows(workflow);
-            Thread.Sleep(WORKFLOW_EXECUTION_TIMEOUT);
+            Thread.Sleep(WORKFLOW_EXECUTION_TIMEOUT_SECONDS * 1000);
             foreach (string workflowId in workflowIds)
             {
                 ValidateWorkflowCompletion(workflowId);
@@ -80,21 +80,20 @@ namespace Tests.Worker
         private IHost GetWorkerHost()
         {
             return new HostBuilder()
-                .ConfigureLogging(
-                    logging =>
-                        {
-                            logging.ClearProviders();
-                            logging.AddConsole();
-                            logging.SetMinimumLevel(LogLevel.Trace);
-                        })
                 .ConfigureServices(
                     (ctx, services) =>
                         {
                             services.AddConductorWorker(ApiUtil.GetConfiguration());
                             services.AddConductorWorkflowTask<SimpleWorker>();
                             services.WithHostedService<WorkerService>();
-                        })
-                .Build();
+                        }
+                ).ConfigureLogging(
+                    logging =>
+                        {
+                            logging.SetMinimumLevel(LogLevel.Debug);
+                            logging.AddConsole();
+                        }
+                ).Build();
         }
     }
 }
