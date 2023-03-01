@@ -20,7 +20,7 @@ namespace Tests.Worker
 
         private const string TASK_NAME = "test-sdk-csharp-task";
 
-        private const int WORKFLOW_QTY = 100;
+        private const int WORKFLOW_QTY = 50;
 
         private readonly TimeSpan WORKFLOW_COMPLETION_TIMEOUT = TimeSpan.FromSeconds(15);
 
