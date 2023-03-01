@@ -39,7 +39,8 @@ namespace Conductor.Client.Worker
         public void RegisterWorker(IWorkflowTask worker, WorkflowTaskExecutorConfiguration workerSettings = null)
         {
             var workflowTaskMonitor = new WorkflowTaskMonitor(_loggerWorkflowTaskMonitor);
-            if (workerSettings == null) {
+            if (workerSettings == null)
+            {
                 workerSettings = new WorkflowTaskExecutorConfiguration();
             }
             var workflowTaskExecutor = new WorkflowTaskExecutor(
