@@ -19,9 +19,9 @@ namespace Tests.Worker
         private const int WORKFLOW_VERSION = 1;
 
         private const string TASK_NAME = "test-sdk-csharp-task";
-        private const int WORKFLOW_EXECUTION_TIMEOUT_SECONDS = 15;
+        private const int WORKFLOW_EXECUTION_TIMEOUT_SECONDS = 5;
 
-        private const int WORKFLOW_QTY = 4;
+        private const int WORKFLOW_QTY = 15;
 
         private WorkflowExecutor _workflowExecutor = null;
 
