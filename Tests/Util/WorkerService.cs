@@ -3,7 +3,6 @@ using Conductor.Client.Worker;
 using Microsoft.Extensions.Hosting;
 using System.Collections.Generic;
 using System.Threading;
-using Microsoft.Extensions.Logging;
 
 namespace Tests.Util
 {
