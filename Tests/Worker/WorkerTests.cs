@@ -1,12 +1,13 @@
 using Conductor.Api;
 using Conductor.Client.Extensions;
+using Conductor.Client.Models;
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Conductor.Executor;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
+
 using System.Threading;
 using Tests.Util;
 using Xunit;
@@ -19,10 +20,6 @@ namespace Tests.Worker
         private const int WORKFLOW_VERSION = 1;
 
         private const string TASK_NAME = "test-sdk-csharp-task";
-
-        private const int WORKFLOW_QTY = 50;
-
-        private readonly TimeSpan WORKFLOW_COMPLETION_TIMEOUT = TimeSpan.FromSeconds(15);
 
         private readonly WorkflowExecutor _workflowExecutor;
 
@@ -39,41 +36,17 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            GetWorkerHost().RunAsync();
-            var startedWorkflows = StartWorkflows(workflow);
+            var startedWorkflows = WorkflowUtil.StartWorkflows(_workflowClient, workflow, 5, 100);
             startedWorkflows.Wait();
-            Thread.Sleep(WORKFLOW_COMPLETION_TIMEOUT);
-            foreach (string workflowId in startedWorkflows.Result)
-            {
-                ValidateWorkflowCompletion(workflowId);
-            }
-        }
-
-        private async System.Threading.Tasks.Task<List<String>> StartWorkflows(ConductorWorkflow workflow)
-        {
-            List<System.Threading.Tasks.Task> startedWorkflows = new List<System.Threading.Tasks.Task>();
-            List<string> workflowIds = new List<string>();
-            for (int i = 0; i < WORKFLOW_QTY; i += 1)
-            {
-                var thread = System.Threading.Tasks.Task.Run(
-                    () =>
-                    {
-                        string workflowId = _workflowExecutor.StartWorkflow(workflow);
-                        workflowIds.Add(workflowId);
-                    }
-                );
-                startedWorkflows.Add(thread);
-            }
-            await System.Threading.Tasks.Task.WhenAll(startedWorkflows);
-            return workflowIds;
-        }
-
-        private void ValidateWorkflowCompletion(string workflowId)
-        {
-            Conductor.Client.Models.WorkflowStatus workflowStatus = _workflowClient.GetWorkflowStatusSummary(workflowId);
-            Assert.Equal(
-                Conductor.Client.Models.WorkflowStatus.StatusEnum.COMPLETED,
-                workflowStatus.Status
+            GetWorkerHost().RunAsync();
+            Thread.Sleep(TimeSpan.FromSeconds(10));
+            var workflowStatusList = WorkflowUtil.GetWorkflowStatus(_workflowClient, 5, startedWorkflows.Result);
+            workflowStatusList.Wait();
+            workflowStatusList.Result.ForEach(
+                workflowStatus =>
+                {
+                    Assert.Equal(Workflow.StatusEnum.COMPLETED.ToString(), workflowStatus.Status.ToString());
+                }
             );
         }
 

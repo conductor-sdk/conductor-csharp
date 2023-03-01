@@ -43,7 +43,7 @@ namespace Tests.Examples
             Assert.Equal(Workflow.StatusEnum.TERMINATED, workflow.Status);
         }
 
-        public void RegisterWorkflow()
+        private void RegisterWorkflow()
         {
             _metadataClient.RegisterTaskDef(GetTaskDefs());
             _metadataClient.UpdateWorkflowDefinitions(GetWorkflowDefs());
