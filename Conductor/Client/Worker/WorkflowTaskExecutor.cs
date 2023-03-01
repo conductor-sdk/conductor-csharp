@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Conductor.Client.Worker
 {
-    public class WorkflowTaskExecutor : IWorkflowTaskExecutor
+    internal class WorkflowTaskExecutor : IWorkflowTaskExecutor
     {
         private static TimeSpan SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR = TimeSpan.FromMilliseconds(5);
         private static int UPDATE_TASK_RETRY_COUNT_LIMIT = 5;
@@ -16,20 +16,20 @@ namespace Conductor.Client.Worker
         private readonly ILogger<WorkflowTaskExecutor> _logger;
         private readonly IWorkflowTask _worker;
         private readonly IWorkflowTaskClient _taskClient;
-        private readonly WorkerSettings _workerSettings;
+        private readonly WorkflowTaskExecutorConfiguration _workerSettings;
         private readonly WorkflowTaskMonitor _workflowTaskMonitor;
 
         public WorkflowTaskExecutor(
             ILogger<WorkflowTaskExecutor> logger,
             IWorkflowTaskClient client,
             IWorkflowTask worker,
-            WorkerSettings workerSettings,
+            WorkflowTaskExecutorConfiguration workflowTaskConfiguration,
             WorkflowTaskMonitor workflowTaskMonitor)
         {
             _logger = logger;
             _taskClient = client;
             _worker = worker;
-            _workerSettings = workerSettings;
+            _workerSettings = workflowTaskConfiguration;
             _workflowTaskMonitor = workflowTaskMonitor;
         }
 

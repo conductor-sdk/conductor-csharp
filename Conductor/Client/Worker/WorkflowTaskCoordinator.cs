@@ -5,17 +5,22 @@ using System.Threading.Tasks;
 
 namespace Conductor.Client.Worker
 {
-    public class WorkflowTaskCoordinator : IWorkflowTaskCoordinator
+    internal class WorkflowTaskCoordinator : IWorkflowTaskCoordinator
     {
         private readonly ILogger<WorkflowTaskCoordinator> _logger;
+
+        private readonly ILogger<WorkflowTaskExecutor> _loggerWorkflowTaskExecutor;
+        private readonly ILogger<WorkflowTaskMonitor> _loggerWorkflowTaskMonitor;
         private readonly HashSet<IWorkflowTaskExecutor> _workers;
         private readonly IWorkflowTaskClient _client;
 
-        public WorkflowTaskCoordinator(ILogger<WorkflowTaskCoordinator> logger, IWorkflowTaskClient client)
+        public WorkflowTaskCoordinator(IWorkflowTaskClient client, ILogger<WorkflowTaskCoordinator> logger, ILogger<WorkflowTaskExecutor> loggerWorkflowTaskExecutor, ILogger<WorkflowTaskMonitor> loggerWorkflowTaskMonitor)
         {
             _logger = logger;
             _client = client;
             _workers = new HashSet<IWorkflowTaskExecutor>();
+            _loggerWorkflowTaskExecutor = loggerWorkflowTaskExecutor;
+            _loggerWorkflowTaskMonitor = loggerWorkflowTaskMonitor;
         }
 
         public async Task Start()
@@ -31,8 +36,19 @@ namespace Conductor.Client.Worker
             await Task.WhenAll(runningWorkers);
         }
 
-        public void RegisterWorker(IWorkflowTaskExecutor workflowTaskExecutor)
+        public void RegisterWorker(IWorkflowTask worker, WorkflowTaskExecutorConfiguration workerSettings = null)
         {
+            var workflowTaskMonitor = new WorkflowTaskMonitor(_loggerWorkflowTaskMonitor);
+            if (workerSettings == null) {
+                workerSettings = new WorkflowTaskExecutorConfiguration();
+            }
+            var workflowTaskExecutor = new WorkflowTaskExecutor(
+                _loggerWorkflowTaskExecutor,
+                _client,
+                worker,
+                workerSettings,
+                workflowTaskMonitor
+            );
             _workers.Add(workflowTaskExecutor);
         }
     }

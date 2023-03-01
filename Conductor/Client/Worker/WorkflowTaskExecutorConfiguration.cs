@@ -2,7 +2,7 @@ using System;
 
 namespace Conductor.Client.Worker
 {
-    public class WorkerSettings
+    public class WorkflowTaskExecutorConfiguration
     {
         public int BatchSize { get; set; } = 1;
         public string Domain { get; set; } = null;
