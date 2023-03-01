@@ -98,7 +98,6 @@ namespace Conductor.Client
             DefaultHeader = new ConcurrentDictionary<string, string>();
             keyId = string.Empty;
             keySecret = string.Empty;
-
             Timeout = 100000;
         }
 
@@ -120,51 +119,6 @@ namespace Conductor.Client
             {
                 DefaultHeader.Add(keyValuePair);
             }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Configuration" /> class with different settings
-        /// </summary>
-        /// <param name="apiClient">Api client</param>
-        /// <param name="defaultHeader">Dictionary of default HTTP header</param>
-        /// <param name="username">Username</param>
-        /// <param name="password">Password</param>
-        /// <param name="accessToken">accessToken</param>
-        /// <param name="apiKey">Dictionary of API key</param>
-        /// <param name="apiKeyPrefix">Dictionary of API key prefix</param>
-        /// <param name="tempFolderPath">Temp folder path</param>
-        /// <param name="dateTimeFormat">DateTime format string</param>
-        /// <param name="timeout">HTTP connection timeout (in milliseconds)</param>
-        /// <param name="userAgent">HTTP user agent</param>
-        [Obsolete("Use explicit object construction and setting of properties.", true)]
-        public Configuration(
-            // ReSharper disable UnusedParameter.Local
-            ApiClient apiClient = null,
-            IDictionary<string, string> defaultHeader = null,
-            string username = null,
-            string password = null,
-            string accessToken = null,
-            IDictionary<string, string> apiKey = null,
-            IDictionary<string, string> apiKeyPrefix = null,
-            string tempFolderPath = null,
-            string dateTimeFormat = null,
-            int timeout = 100000,
-            string userAgent = "Swagger-Codegen/1.0.0/csharp"
-            // ReSharper restore UnusedParameter.Local
-            )
-        {
-
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Configuration class.
-        /// </summary>
-        /// <param name="apiClient">Api client.</param>
-        [Obsolete("This constructor caused unexpected sharing of static data. It is no longer supported.", true)]
-        // ReSharper disable once UnusedParameter.Local
-        public Configuration(ApiClient apiClient)
-        {
-
         }
 
         #endregion Constructors
