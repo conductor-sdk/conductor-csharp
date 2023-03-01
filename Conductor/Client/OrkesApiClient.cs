@@ -8,6 +8,7 @@ namespace Conductor.Client
 {
     public class OrkesApiClient
     {
+        private static int REFRESH_TOKEN_RETRY_COUNTER_LIMIT = 5;
         private Configuration _configuration;
         private MemoryCache _memoryCache;
         private TokenResourceApi _tokenClient;
@@ -22,7 +23,7 @@ namespace Conductor.Client
             if (_configuration != null && !string.IsNullOrEmpty(_configuration.keyId) && !string.IsNullOrEmpty(_configuration.keySecret))
             {
                 _authenticationSettings = new OrkesAuthenticationSettings(_configuration.keyId, _configuration.keySecret);
-                RefreshAuthenticationHeader();
+                RefreshAuthenticationHeader(0);
             }
         }
 
@@ -36,7 +37,7 @@ namespace Conductor.Client
             return client;
         }
 
-        private void RefreshAuthenticationHeader()
+        private void RefreshAuthenticationHeader(int attemptCounter)
         {
             if (_authenticationSettings == null)
             {
@@ -48,7 +49,10 @@ namespace Conductor.Client
             }
             catch (ApiException)
             {
-                // TODO
+                if (attemptCounter < REFRESH_TOKEN_RETRY_COUNTER_LIMIT)
+                {
+                    RefreshAuthenticationHeader(attemptCounter + 1);
+                }
             }
         }
 
