@@ -40,22 +40,31 @@ namespace Tests.Worker
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
             GetWorkerHost().RunAsync();
-            List<String> workflowIds = StartWorkflows(workflow);
+            var startedWorkflows = StartWorkflows(workflow);
+            startedWorkflows.Wait();
             Thread.Sleep(WORKFLOW_COMPLETION_TIMEOUT);
-            foreach (string workflowId in workflowIds)
+            foreach (string workflowId in startedWorkflows.Result)
             {
                 ValidateWorkflowCompletion(workflowId);
             }
         }
 
-        private List<String> StartWorkflows(ConductorWorkflow workflow)
+        private async System.Threading.Tasks.Task<List<String>> StartWorkflows(ConductorWorkflow workflow)
         {
-            List<String> workflowIds = new List<string>();
+            List<System.Threading.Tasks.Task> startedWorkflows = new List<System.Threading.Tasks.Task>();
+            List<string> workflowIds = new List<string>();
             for (int i = 0; i < WORKFLOW_QTY; i += 1)
             {
-                string workflowId = _workflowExecutor.StartWorkflow(workflow);
-                workflowIds.Add(workflowId);
+                var thread = System.Threading.Tasks.Task.Run(
+                    () =>
+                    {
+                        string workflowId = _workflowExecutor.StartWorkflow(workflow);
+                        workflowIds.Add(workflowId);
+                    }
+                );
+                startedWorkflows.Add(thread);
             }
+            await System.Threading.Tasks.Task.WhenAll(startedWorkflows);
             return workflowIds;
         }
 
@@ -73,9 +82,7 @@ namespace Tests.Worker
             return new ConductorWorkflow()
                 .WithName(WORKFLOW_NAME)
                 .WithVersion(WORKFLOW_VERSION)
-                .WithTask(
-                    new SimpleTask(TASK_NAME, TASK_NAME)
-                );
+                .WithTask(new SimpleTask(TASK_NAME, TASK_NAME));
         }
 
         private IHost GetWorkerHost()

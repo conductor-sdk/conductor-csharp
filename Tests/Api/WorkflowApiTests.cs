@@ -9,7 +9,13 @@ namespace Tests.Examples
 {
     public class WorkflowApiTests : ApiTest<WorkflowResourceApi>
     {
+        private readonly MetadataResourceApi _metadataClient;
         private static int WORKFLOW_VERSION = 1;
+
+        public WorkflowApiTests()
+        {
+            _metadataClient = ApiUtil.GetClient<MetadataResourceApi>();
+        }
 
         [Fact]
         public override void TestMethods()
@@ -39,9 +45,8 @@ namespace Tests.Examples
 
         public void RegisterWorkflow()
         {
-            var client = ApiUtil.GetClient<MetadataResourceApi>();
-            client.RegisterTaskDef(GetTaskDefs());
-            client.UpdateWorkflowDefinitions(GetWorkflowDefs());
+            _metadataClient.RegisterTaskDef(GetTaskDefs());
+            _metadataClient.UpdateWorkflowDefinitions(GetWorkflowDefs());
         }
 
         private List<TaskDef> GetTaskDefs()
