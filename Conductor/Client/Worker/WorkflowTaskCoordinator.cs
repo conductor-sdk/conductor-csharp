@@ -36,18 +36,14 @@ namespace Conductor.Client.Worker
             await Task.WhenAll(runningWorkers);
         }
 
-        public void RegisterWorker(IWorkflowTask worker, WorkflowTaskExecutorConfiguration workerSettings = null)
+        public void RegisterWorker(IWorkflowTask worker)
         {
             var workflowTaskMonitor = new WorkflowTaskMonitor(_loggerWorkflowTaskMonitor);
-            if (workerSettings == null)
-            {
-                workerSettings = new WorkflowTaskExecutorConfiguration();
-            }
             var workflowTaskExecutor = new WorkflowTaskExecutor(
                 _loggerWorkflowTaskExecutor,
                 _client,
                 worker,
-                workerSettings,
+                worker.WorkerSettings,
                 workflowTaskMonitor
             );
             _workers.Add(workflowTaskExecutor);

@@ -36,18 +36,16 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            var startedWorkflows = WorkflowUtil.StartWorkflows(_workflowClient, workflow, 15, 50);
+            var startedWorkflows = WorkflowUtil.StartWorkflows(_workflowClient, workflow, 11, 50);
             startedWorkflows.Wait();
             GetWorkerHost().RunAsync();
-            Thread.Sleep(TimeSpan.FromSeconds(15));
-            var workflowStatusList = WorkflowUtil.GetWorkflowStatus(_workflowClient, 15, startedWorkflows.Result);
+            Thread.Sleep(TimeSpan.FromSeconds(30));
+            var workflowStatusList = WorkflowUtil.GetWorkflowStatusList(_workflowClient, 11, startedWorkflows.Result.ToArray());
             workflowStatusList.Wait();
-            workflowStatusList.Result.ForEach(
-                workflowStatus =>
-                {
-                    Assert.Equal(Workflow.StatusEnum.COMPLETED.ToString(), workflowStatus.Status.ToString());
-                }
-            );
+            foreach (var workflowStatus in workflowStatusList.Result)
+            {
+                Assert.Equal(Workflow.StatusEnum.COMPLETED.ToString(), workflowStatus.Status.ToString());
+            }
         }
 
         private ConductorWorkflow GetConductorWorkflow()

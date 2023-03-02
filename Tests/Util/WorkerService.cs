@@ -21,11 +21,9 @@ namespace Tests.Util
 
         protected override System.Threading.Tasks.Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var workerSettings = new WorkflowTaskExecutorConfiguration();
-            workerSettings.BatchSize = 15;
             foreach (var worker in _workers)
             {
-                _workflowTaskCoordinator.RegisterWorker(worker, workerSettings);
+                _workflowTaskCoordinator.RegisterWorker(worker);
             }
             return _workflowTaskCoordinator.Start();
         }
