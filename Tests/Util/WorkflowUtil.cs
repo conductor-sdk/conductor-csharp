@@ -1,7 +1,9 @@
 using Conductor.Api;
 using Conductor.Client.Models;
 using Conductor.Definition;
+using Conductor.Exceptions;
 using System.Collections.Generic;
+using System;
 
 namespace Tests.Util
 {
@@ -18,6 +20,7 @@ namespace Tests.Util
             {
                 await StartWorkflows(workflowClient, workflow, maxAllowedInParallel, workflowIds);
             }
+            Console.WriteLine($"Started {workflowIds.Count} workflows");
             return workflowIds;
         }
 
@@ -33,23 +36,36 @@ namespace Tests.Util
             }
             if (size % maxAllowedInParallel != 0)
             {
-                var startIndex = size - maxAllowedInParallel;
+                var startIndex = Math.Max(0, size - maxAllowedInParallel);
                 var finishIndex = size;
                 await GetWorkflowStatus(workflowClient, workflowStatusList, workflowIds, startIndex, finishIndex);
             }
+            Console.WriteLine($"Got ${workflowStatusList.Count} workflow statuses");
             return workflowStatusList;
         }
 
         private static async System.Threading.Tasks.Task GetWorkflowStatus(WorkflowResourceApi workflowClient, List<WorkflowStatus> workflowStatusList, List<string> workflowIds, int startIndex, int finishIndex)
         {
+            Console.WriteLine($"startIndex: {startIndex}, finishIndex: {finishIndex}, length: {workflowIds.Count}");
             var runningThreads = new List<System.Threading.Tasks.Task>();
             for (int i = startIndex; i < finishIndex; i += 1)
             {
                 var workflowId = workflowIds[i];
                 var thread = System.Threading.Tasks.Task.Run(() =>
                     {
-                        var workflowStatus = workflowClient.GetWorkflowStatusSummary(workflowId);
-                        workflowStatusList.Add(workflowStatus);
+                        for (int attempt = 0; attempt < 3; attempt += 1)
+                        {
+                            try
+                            {
+                                workflowStatusList.Add(workflowClient.GetWorkflowStatusSummary(workflowId));
+                                break;
+                            }
+                            catch (ConductorApiException e)
+                            {
+                                Console.WriteLine($"Failed to get workflow status, reason: {e}");
+                                System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1 << attempt));
+                            }
+                        }
                     }
                 );
                 runningThreads.Add(thread);
@@ -65,8 +81,19 @@ namespace Tests.Util
                 var thread = System.Threading.Tasks.Task.Run(() =>
                 {
                     var startWorkflowRequest = workflow.GetStartWorkflowRequest();
-                    var workflowId = workflowClient.StartWorkflow(startWorkflowRequest);
-                    workflowIds.Add(workflowId);
+                    for (int attempt = 0; attempt < 3; attempt += 1)
+                    {
+                        try
+                        {
+                            workflowIds.Add(workflowClient.StartWorkflow(startWorkflowRequest));
+                            break;
+                        }
+                        catch (ConductorApiException e)
+                        {
+                            Console.WriteLine($"Failed to start workflow, reason: {e}");
+                            System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1 << attempt));
+                        }
+                    }
                 });
                 startedWorkflows.Add(thread);
             }
