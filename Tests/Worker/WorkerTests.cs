@@ -40,7 +40,7 @@ namespace Tests.Worker
                 _workflowClient, workflow, Environment.ProcessorCount << 1, 1 << 4);
             startedWorkflows.Wait();
             GetWorkerHost().RunAsync();
-            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Thread.Sleep(TimeSpan.FromSeconds(1 << 2));
             var workflowStatusList = WorkflowUtil.GetWorkflowStatusList(
                 _workflowClient, Environment.ProcessorCount << 1, startedWorkflows.Result.ToArray());
             workflowStatusList.Wait();
