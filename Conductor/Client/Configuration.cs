@@ -98,8 +98,6 @@ namespace Conductor.Client
             DefaultHeader = new ConcurrentDictionary<string, string>();
             keyId = string.Empty;
             keySecret = string.Empty;
-
-            Timeout = 100000;
         }
 
         /// <summary>
@@ -171,9 +169,9 @@ namespace Conductor.Client
         /// </summary>
         public virtual IDictionary<string, string> DefaultHeader { get; set; }
 
-        private int _timeout = 100000;
+        private int _timeout = 10000;
         /// <summary>
-        /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
+        /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 10000 milliseconds.
         /// </summary>
         public virtual int Timeout
         {
