@@ -1,5 +1,4 @@
-﻿using Conductor.Client.Extensions;
-using Conductor.Client.Interfaces;
+﻿using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -73,7 +72,7 @@ namespace Conductor.Client.Worker
             {
                 await Sleep(_workerSettings.PollInterval);
             }
-            await ProcessTasks(tasks);
+            ProcessTasks(tasks);
         }
 
         private List<Models.Task> PollTasks()
@@ -99,19 +98,17 @@ namespace Conductor.Client.Worker
             return tasks;
         }
 
-        private async Task ProcessTasks(List<Models.Task> tasks)
+        private void ProcessTasks(List<Models.Task> tasks)
         {
             if (tasks == null || tasks.Count == 0)
             {
                 return;
             }
-            var runningWorkers = new List<Task>();
             foreach (var task in tasks)
             {
-                var runningWorker = Task.Run(() => ProcessTask(task));
-                runningWorkers.Add(runningWorker);
+                _workflowTaskMonitor.IncrementRunningWorker();
+                Task.Run(() => ProcessTask(task));
             }
-            await Task.WhenAll(runningWorkers);
         }
 
         private async Task ProcessTask(Models.Task task)
@@ -125,7 +122,6 @@ namespace Conductor.Client.Worker
             );
             try
             {
-                _workflowTaskMonitor.IncrementRunningWorker();
                 var taskResult = await _worker.Execute(task, CancellationToken.None);
                 taskResult.WorkerId = _workerSettings.WorkerId;
                 UpdateTask(taskResult);

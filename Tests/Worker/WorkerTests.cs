@@ -37,10 +37,10 @@ namespace Tests.Worker
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
             var startedWorkflows = WorkflowUtil.StartWorkflows(
-                _workflowClient, workflow, Environment.ProcessorCount << 1, 1 << 4);
+                _workflowClient, workflow, Environment.ProcessorCount * 2, 15);
             startedWorkflows.Wait();
             GetWorkerHost().RunAsync();
-            Thread.Sleep(TimeSpan.FromSeconds(1 << 2));
+            Thread.Sleep(TimeSpan.FromSeconds(10));
             var workflowStatusList = WorkflowUtil.GetWorkflowStatusList(
                 _workflowClient, Environment.ProcessorCount << 1, startedWorkflows.Result.ToArray());
             workflowStatusList.Wait();
