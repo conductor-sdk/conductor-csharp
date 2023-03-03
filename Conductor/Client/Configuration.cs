@@ -98,6 +98,7 @@ namespace Conductor.Client
             DefaultHeader = new ConcurrentDictionary<string, string>();
             keyId = string.Empty;
             keySecret = string.Empty;
+
             Timeout = 100000;
         }
 
