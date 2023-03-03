@@ -1,8 +1,8 @@
 using Conductor.Client.Interfaces;
-using Conductor.Client.Worker;
 using Microsoft.Extensions.Hosting;
-using System.Collections.Generic;
 using System.Threading;
+using System.Collections.Generic;
+using System;
 
 namespace Tests.Util
 {
@@ -13,7 +13,8 @@ namespace Tests.Util
 
         public WorkerService(
             IWorkflowTaskCoordinator workflowTaskCoordinator,
-            IEnumerable<IWorkflowTask> workers)
+            IEnumerable<IWorkflowTask> workers
+        )
         {
             _workflowTaskCoordinator = workflowTaskCoordinator;
             _workers = workers;
