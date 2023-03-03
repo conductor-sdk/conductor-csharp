@@ -31,9 +31,14 @@ namespace Tests.Util
             );
         }
 
+        public static OrkesApiClient GetApiClient()
+        {
+            return new OrkesApiClient(GetConfiguration());
+        }
+
         public static T GetClient<T>() where T : IApiAccessor, new()
         {
-            OrkesApiClient apiClient = new OrkesApiClient(GetConfiguration());
+            var apiClient = GetApiClient();
             return apiClient.GetClient<T>();
         }
 
