@@ -19,18 +19,29 @@ namespace Tests.Definition
 
         private WorkflowExecutor _workflowExecutor = null;
 
-        public WorkflowDefTests() {
+        public WorkflowDefTests()
+        {
             _workflowExecutor = ApiUtil.GetWorkflowExecutor();
         }
 
         [Fact]
         public void TestKitchenSinkWorkflow()
         {
-            _workflowExecutor.RegisterWorkflow
-            (
-                workflow: GetConductorWorkflow(),
-                overwrite: true
-            );
+            for (int i = 0; i < 3; i += 1)
+            {
+                try
+                {
+                    _workflowExecutor.RegisterWorkflow(
+                        workflow: GetConductorWorkflow(),
+                        overwrite: true
+                    );
+                    return;
+                }
+                catch (Conductor.Client.ApiException)
+                {
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1 << i));
+                }
+            }
         }
 
         private ConductorWorkflow GetConductorWorkflow()
