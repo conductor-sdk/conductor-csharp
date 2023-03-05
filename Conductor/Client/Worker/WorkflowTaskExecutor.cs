@@ -71,6 +71,7 @@ namespace Conductor.Client.Worker
             if (tasks.Count == 0)
             {
                 await Sleep(_workerSettings.PollInterval);
+                return;
             }
             ProcessTasks(tasks);
         }
@@ -148,7 +149,7 @@ namespace Conductor.Client.Worker
                     // Retries in increasing time intervals (0s, 2s, 4s, 8s...)
                     if (attemptCounter > 0)
                     {
-                        await Sleep(TimeSpan.FromSeconds(attemptCounter << 1));
+                        await Sleep(TimeSpan.FromSeconds(1 << attemptCounter));
                     }
                     _taskClient.UpdateTask(taskResult);
                     _logger.LogTrace(
