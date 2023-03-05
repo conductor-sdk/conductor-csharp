@@ -9,7 +9,7 @@ namespace Conductor.Client.Worker
 {
     internal class WorkflowTaskExecutor : IWorkflowTaskExecutor
     {
-        private static TimeSpan SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR = TimeSpan.FromMilliseconds(5);
+        private static TimeSpan SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR = TimeSpan.FromMilliseconds(3);
         private static int UPDATE_TASK_RETRY_COUNT_LIMIT = 5;
 
         private readonly ILogger<WorkflowTaskExecutor> _logger;
@@ -55,10 +55,11 @@ namespace Conductor.Client.Worker
                 }
                 catch (Exception e)
                 {
-                    _logger.LogInformation(
+                    _logger.LogDebug(
                         $"[{_workerSettings.WorkerId}] worker error: {e.Message}"
-                        + ", taskName: {_worker.TaskType}"
-                        + ", domain: {_worker.Domain}"
+                        + $", taskName: {_worker.TaskType}"
+                        + $", domain: {_worker.WorkerSettings.Domain}"
+                        + $", batchSize: {_workerSettings.BatchSize}"
                     );
                     await Sleep(SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR);
                 }
@@ -85,6 +86,10 @@ namespace Conductor.Client.Worker
                 + $", batchSize: {_workerSettings.BatchSize}"
             );
             var availableWorkerCounter = _workerSettings.BatchSize - _workflowTaskMonitor.GetRunningWorkers();
+            if (availableWorkerCounter < 1)
+            {
+                throw new Exception("no worker available");
+            }
             var tasks = _taskClient.PollTask(_worker.TaskType, _workerSettings.WorkerId, _workerSettings.Domain, availableWorkerCounter);
             if (tasks == null)
             {
