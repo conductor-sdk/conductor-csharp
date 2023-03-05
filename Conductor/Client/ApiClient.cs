@@ -153,10 +153,7 @@ namespace Conductor.Client
                 pathParams, contentType);
 
             // set timeout
-
             RestClient.Timeout = Configuration.Timeout;
-            // set user agent
-            RestClient.UserAgent = Configuration.UserAgent;
 
             InterceptRequest(request);
             var response = RestClient.Execute(request);

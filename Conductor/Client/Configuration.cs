@@ -17,12 +17,6 @@ namespace Conductor.Client
         #region Constants
 
         /// <summary>
-        /// Version of the package.
-        /// </summary>
-        /// <value>Version of the package.</value>
-        public const string Version = "1.0.0";
-
-        /// <summary>
         /// Identifier for ISO 8601 DateTime Format
         /// </summary>
         /// <remarks>See https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8 for more information.</remarks>
@@ -83,17 +77,11 @@ namespace Conductor.Client
 
         #region Constructors
 
-        static Configuration()
-        {
-            _globalConfiguration = new GlobalConfiguration();
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration" /> class
         /// </summary>
         public Configuration()
         {
-            UserAgent = "Swagger-Codegen/1.0.0/csharp";
             BasePath = "https://play.orkes.io/api";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             keyId = string.Empty;
@@ -137,10 +125,6 @@ namespace Conductor.Client
                 return _apiClient;
             }
         }
-
-        public int ConcurrentWorkers { get; set; } = 1;
-        public int SleepInterval { get; set; } = 1_000;
-        public string Domain { get; set; } = null;
 
         public string keyId { get; set; } = null;
         public string keySecret { get; set; } = null;
@@ -198,12 +182,6 @@ namespace Conductor.Client
         }
 
         /// <summary>
-        /// Gets or sets the HTTP user agent.
-        /// </summary>
-        /// <value>Http user agent.</value>
-        public virtual string UserAgent { get; set; }
-
-        /// <summary>
         /// Gets or sets the username (HTTP basic authentication).
         /// </summary>
         /// <value>The username.</value>
@@ -233,7 +211,6 @@ namespace Conductor.Client
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    // Possible breaking change since swagger-codegen 2.2.1, enforce a valid temporary path on set.
                     _tempFolderPath = Path.GetTempPath();
                     return;
                 }

@@ -46,12 +46,6 @@ namespace Conductor.Client
         int Timeout { get; }
 
         /// <summary>
-        /// Gets the user agent.
-        /// </summary>
-        /// <value>User agent.</value>
-        string UserAgent { get; }
-
-        /// <summary>
         /// Gets the username.
         /// </summary>
         /// <value>Username.</value>
