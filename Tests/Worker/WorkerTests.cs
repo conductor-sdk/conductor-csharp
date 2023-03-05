@@ -1,11 +1,9 @@
 using Conductor.Api;
-using Conductor.Client.Extensions;
 using Conductor.Client.Models;
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Conductor.Executor;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
 
 using System.Threading;
@@ -39,7 +37,7 @@ namespace Tests.Worker
             var startedWorkflows = WorkflowUtil.StartWorkflows(
                 _workflowClient, workflow, Environment.ProcessorCount * 2, 15);
             startedWorkflows.Wait();
-            GetWorkerHost().RunAsync();
+            WorkerUtil.GetWorkerHost().RunAsync();
             Thread.Sleep(TimeSpan.FromSeconds(10));
             var workflowStatusList = WorkflowUtil.GetWorkflowStatusList(
                 _workflowClient, Environment.ProcessorCount << 1, startedWorkflows.Result.ToArray());
@@ -56,25 +54,6 @@ namespace Tests.Worker
                 .WithName(WORKFLOW_NAME)
                 .WithVersion(WORKFLOW_VERSION)
                 .WithTask(new SimpleTask(TASK_NAME, TASK_NAME));
-        }
-
-        private IHost GetWorkerHost()
-        {
-            return new HostBuilder()
-                .ConfigureServices(
-                    (ctx, services) =>
-                        {
-                            services.AddConductorWorker(ApiUtil.GetConfiguration());
-                            services.AddConductorWorkflowTask<SimpleWorker>();
-                            services.WithHostedService<WorkerService>();
-                        }
-                ).ConfigureLogging(
-                    logging =>
-                        {
-                            logging.SetMinimumLevel(LogLevel.Debug);
-                            logging.AddConsole();
-                        }
-                ).Build();
         }
     }
 }
