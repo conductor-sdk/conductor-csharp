@@ -126,6 +126,9 @@ namespace Conductor.Client
             }
         }
 
+        public int SleepInterval { get; set; } = 1_000;
+        public string Domain { get; set; } = null;
+
         public string keyId { get; set; } = null;
         public string keySecret { get; set; } = null;
 
