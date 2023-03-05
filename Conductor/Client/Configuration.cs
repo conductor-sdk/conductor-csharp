@@ -126,9 +126,6 @@ namespace Conductor.Client
             }
         }
 
-        public int SleepInterval { get; set; } = 1_000;
-        public string Domain { get; set; } = null;
-
         public string keyId { get; set; } = null;
         public string keySecret { get; set; } = null;
 
@@ -183,18 +180,6 @@ namespace Conductor.Client
                 }
             }
         }
-
-        /// <summary>
-        /// Gets or sets the username (HTTP basic authentication).
-        /// </summary>
-        /// <value>The username.</value>
-        public virtual string Username { get; set; }
-
-        /// <summary>
-        /// Gets or sets the password (HTTP basic authentication).
-        /// </summary>
-        /// <value>The password.</value>
-        public virtual string Password { get; set; }
 
         /// <summary>
         /// Gets or sets the access token for OAuth2 authentication.
@@ -287,20 +272,6 @@ namespace Conductor.Client
             return new ApiClient(BasePath) { Configuration = this };
         }
 
-
-        /// <summary>
-        /// Returns a string with essential information for debugging.
-        /// </summary>
-        public static String ToDebugReport()
-        {
-            String report = "C# SDK (Conductor) Debug Report:\n";
-            report += "    OS: " + System.Environment.OSVersion + "\n";
-            report += "    .NET Framework Version: " + System.Environment.Version + "\n";
-            report += "    Version of the API: v2\n";
-            report += "    SDK Package Version: 1.0.0\n";
-
-            return report;
-        }
         #endregion Methods
     }
 }

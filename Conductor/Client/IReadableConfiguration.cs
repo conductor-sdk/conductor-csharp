@@ -44,17 +44,5 @@ namespace Conductor.Client
         /// </summary>
         /// <value>HTTP connection timeout.</value>
         int Timeout { get; }
-
-        /// <summary>
-        /// Gets the username.
-        /// </summary>
-        /// <value>Username.</value>
-        string Username { get; }
-
-        /// <summary>
-        /// Gets the password.
-        /// </summary>
-        /// <value>Password.</value>
-        string Password { get; }
     }
 }
