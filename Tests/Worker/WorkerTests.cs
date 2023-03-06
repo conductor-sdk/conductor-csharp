@@ -34,7 +34,7 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            var workflowIdList = StartWorkflows(workflow, 20);
+            var workflowIdList = StartWorkflows(workflow, quantity: 20);
             CompleteWorkflows(TimeSpan.FromSeconds(7));
             ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
@@ -58,17 +58,27 @@ namespace Tests.Worker
             return startedWorkflows.Result;
         }
 
-        private void CompleteWorkflows(TimeSpan timeSpan)
+        private async void CompleteWorkflows(TimeSpan timeSpan)
         {
-            var host = WorkerUtil.GetWorkerHost();
             var cts = new CancellationTokenSource();
-            host.RunAsync(cts.Token);
+            var host = WorkerUtil.GetWorkerHost().RunAsync(cts.Token);
             Thread.Sleep(timeSpan);
-            cts.Cancel();
-            host.WaitForShutdown();
+            for (int i = 0; i < 3; i += 1)
+            {
+                try
+                {
+                    cts.Cancel();
+                    break;
+                }
+                catch (Exception)
+                {
+                    Thread.Sleep(TimeSpan.FromSeconds(1 << i));
+                }
+            }
+            await host;
         }
 
-        private void ValidateWorkflowCompletion(string[] workflowIdList)
+        private void ValidateWorkflowCompletion(params string[] workflowIdList)
         {
             var workflowStatusList = WorkflowUtil.GetWorkflowStatusList(
                 _workflowClient,
