@@ -3,13 +3,12 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Conductor.Client.Worker
 {
     internal class WorkflowTaskExecutor : IWorkflowTaskExecutor
     {
-        private static TimeSpan SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR = TimeSpan.FromMilliseconds(3);
+        private static TimeSpan SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR = TimeSpan.FromMilliseconds(10);
         private static int UPDATE_TASK_RETRY_COUNT_LIMIT = 5;
 
         private readonly ILogger<WorkflowTaskExecutor> _logger;
@@ -32,9 +31,9 @@ namespace Conductor.Client.Worker
             _workflowTaskMonitor = workflowTaskMonitor;
         }
 
-        public Task Start()
+        public System.Threading.Tasks.Task Start()
         {
-            var thread = Task.Run(() => Work4Ever());
+            var thread = System.Threading.Tasks.Task.Run(() => Work4Ever());
             _logger.LogInformation(
                 $"[{_workerSettings.WorkerId}] Started worker"
                 + $", taskName: {_worker.TaskType}"
@@ -45,13 +44,13 @@ namespace Conductor.Client.Worker
             return thread;
         }
 
-        private async Task Work4Ever()
+        private void Work4Ever()
         {
             while (true)
             {
                 try
                 {
-                    await WorkOnce();
+                    WorkOnce();
                 }
                 catch (Exception e)
                 {
@@ -61,17 +60,17 @@ namespace Conductor.Client.Worker
                         + $", domain: {_worker.WorkerSettings.Domain}"
                         + $", batchSize: {_workerSettings.BatchSize}"
                     );
-                    await Sleep(SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR);
+                    Sleep(SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR);
                 }
             }
         }
 
-        private async Task WorkOnce()
+        private void WorkOnce()
         {
             var tasks = PollTasks();
             if (tasks.Count == 0)
             {
-                await Sleep(_workerSettings.PollInterval);
+                Sleep(_workerSettings.PollInterval);
                 return;
             }
             ProcessTasks(tasks);
@@ -113,11 +112,11 @@ namespace Conductor.Client.Worker
             foreach (var task in tasks)
             {
                 _workflowTaskMonitor.IncrementRunningWorker();
-                Task.Run(() => ProcessTask(task));
+                System.Threading.Tasks.Task.Run(() => ProcessTask(task));
             }
         }
 
-        private async Task ProcessTask(Models.Task task)
+        private void ProcessTask(Models.Task task)
         {
             _logger.LogTrace(
                 $"[{_workerSettings.WorkerId}] Processing task for worker,"
@@ -128,7 +127,7 @@ namespace Conductor.Client.Worker
             );
             try
             {
-                var taskResult = await _worker.Execute(task, CancellationToken.None);
+                var taskResult = _worker.Execute(task);
                 taskResult.WorkerId = _workerSettings.WorkerId;
                 UpdateTask(taskResult);
             }
@@ -145,7 +144,7 @@ namespace Conductor.Client.Worker
             );
         }
 
-        private async void UpdateTask(Models.TaskResult taskResult)
+        private void UpdateTask(Models.TaskResult taskResult)
         {
             for (var attemptCounter = 0; attemptCounter < UPDATE_TASK_RETRY_COUNT_LIMIT; attemptCounter += 1)
             {
@@ -154,7 +153,7 @@ namespace Conductor.Client.Worker
                     // Retries in increasing time intervals (0s, 2s, 4s, 8s...)
                     if (attemptCounter > 0)
                     {
-                        await Sleep(TimeSpan.FromSeconds(1 << attemptCounter));
+                        Sleep(TimeSpan.FromSeconds(1 << attemptCounter));
                     }
                     _taskClient.UpdateTask(taskResult);
                     _logger.LogTrace(
@@ -180,10 +179,10 @@ namespace Conductor.Client.Worker
             throw new Exception("Failed to update task after retries");
         }
 
-        private async Task Sleep(TimeSpan timeSpan)
+        private void Sleep(TimeSpan timeSpan)
         {
             _logger.LogDebug($"[{_workerSettings.WorkerId}] Sleeping for {timeSpan.Milliseconds}ms");
-            await Task.Delay(timeSpan);
+            Thread.Sleep(timeSpan);
         }
     }
 }

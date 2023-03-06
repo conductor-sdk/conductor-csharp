@@ -5,7 +5,7 @@ using Conductor.Definition.TaskType;
 using Conductor.Executor;
 using Microsoft.Extensions.Hosting;
 using System;
-
+using System.Collections.Concurrent;
 using System.Threading;
 using Tests.Util;
 using Xunit;
@@ -34,18 +34,9 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            var startedWorkflows = WorkflowUtil.StartWorkflows(
-                _workflowClient, workflow, Environment.ProcessorCount * 2, 15);
-            startedWorkflows.Wait();
-            WorkerUtil.GetWorkerHost().RunAsync();
-            Thread.Sleep(TimeSpan.FromSeconds(10));
-            var workflowStatusList = WorkflowUtil.GetWorkflowStatusList(
-                _workflowClient, Environment.ProcessorCount << 1, startedWorkflows.Result.ToArray());
-            workflowStatusList.Wait();
-            foreach (var workflowStatus in workflowStatusList.Result)
-            {
-                Assert.Equal(Workflow.StatusEnum.COMPLETED.ToString(), workflowStatus.Status.ToString());
-            }
+            var workflowIdList = StartWorkflows(workflow, quantity: 20);
+            CompleteWorkflows(TimeSpan.FromSeconds(7));
+            ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
 
         private ConductorWorkflow GetConductorWorkflow()
@@ -54,6 +45,50 @@ namespace Tests.Worker
                 .WithName(WORKFLOW_NAME)
                 .WithVersion(WORKFLOW_VERSION)
                 .WithTask(new SimpleTask(TASK_NAME, TASK_NAME));
+        }
+
+        private ConcurrentBag<string> StartWorkflows(ConductorWorkflow workflow, int quantity)
+        {
+            var startedWorkflows = WorkflowUtil.StartWorkflows(
+                _workflowClient,
+                workflow,
+                Math.Max(5, Environment.ProcessorCount << 1),
+                quantity);
+            startedWorkflows.Wait();
+            return startedWorkflows.Result;
+        }
+
+        private async void CompleteWorkflows(TimeSpan timeSpan)
+        {
+            var cts = new CancellationTokenSource();
+            var host = WorkerUtil.GetWorkerHost().RunAsync(cts.Token);
+            Thread.Sleep(timeSpan);
+            for (int i = 0; i < 3; i += 1)
+            {
+                try
+                {
+                    cts.Cancel();
+                    break;
+                }
+                catch (Exception)
+                {
+                    Thread.Sleep(TimeSpan.FromSeconds(1 << i));
+                }
+            }
+            await host;
+        }
+
+        private void ValidateWorkflowCompletion(params string[] workflowIdList)
+        {
+            var workflowStatusList = WorkflowUtil.GetWorkflowStatusList(
+                _workflowClient,
+                Math.Max(5, Environment.ProcessorCount << 1),
+                workflowIdList);
+            workflowStatusList.Wait();
+            foreach (var workflowStatus in workflowStatusList.Result)
+            {
+                Assert.Equal(Workflow.StatusEnum.COMPLETED.ToString(), workflowStatus.Status.ToString());
+            }
         }
     }
 }

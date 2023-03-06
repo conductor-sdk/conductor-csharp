@@ -1,8 +1,7 @@
 using Conductor.Client.Interfaces;
 using Conductor.Client.Extensions;
+using Conductor.Client.Models;
 using Conductor.Client.Worker;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Tests.Worker
 {
@@ -17,9 +16,9 @@ namespace Tests.Worker
             WorkerSettings = new WorkflowTaskExecutorConfiguration();
         }
 
-        public async Task<Conductor.Client.Models.TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
+        public TaskResult Execute(Task task)
         {
-            return await Task.FromResult(task.Completed());
+            return task.Completed();
         }
     }
 }
