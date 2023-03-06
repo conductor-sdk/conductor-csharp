@@ -20,11 +20,12 @@ Example worker
 public class SimpleWorker : IWorkflowTask
 {
     public string TaskType { get; }
-    public int? Priority { get; }
+    public WorkflowTaskExecutorConfiguration WorkerSettings { get; }
 
     public SimpleWorker(string taskType = "test-sdk-csharp-task")
     {
         TaskType = taskType;
+        WorkerSettings = new WorkflowTaskExecutorConfiguration();
     }
 
     public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)

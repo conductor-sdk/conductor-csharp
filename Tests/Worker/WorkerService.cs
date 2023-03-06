@@ -2,9 +2,8 @@ using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Hosting;
 using System.Threading;
 using System.Collections.Generic;
-using System;
 
-namespace Tests.Util
+namespace Tests.Worker
 {
     public class WorkerService : BackgroundService
     {

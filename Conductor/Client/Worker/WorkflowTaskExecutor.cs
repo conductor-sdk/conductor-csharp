@@ -1,5 +1,4 @@
-﻿using Conductor.Client.Extensions;
-using Conductor.Client.Interfaces;
+﻿using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,125 +9,181 @@ namespace Conductor.Client.Worker
 {
     internal class WorkflowTaskExecutor : IWorkflowTaskExecutor
     {
-        private List<IWorkflowTask> workers;
-        private ILogger<WorkflowTaskExecutor> logger;
-        private readonly int _sleepInterval;
-        private readonly string _domain;
-        private readonly IConductorWorkerRestClient taskClient;
-        private readonly string workerId = Environment.MachineName;
+        private static TimeSpan SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR = TimeSpan.FromMilliseconds(3);
+        private static int UPDATE_TASK_RETRY_COUNT_LIMIT = 5;
+
+        private readonly ILogger<WorkflowTaskExecutor> _logger;
+        private readonly IWorkflowTask _worker;
+        private readonly IWorkflowTaskClient _taskClient;
+        private readonly WorkflowTaskExecutorConfiguration _workerSettings;
+        private readonly WorkflowTaskMonitor _workflowTaskMonitor;
 
         public WorkflowTaskExecutor(
-            IServiceProvider serviceProvider,
             ILogger<WorkflowTaskExecutor> logger,
-            Configuration configuration)
+            IWorkflowTaskClient client,
+            IWorkflowTask worker,
+            WorkflowTaskExecutorConfiguration workflowTaskConfiguration,
+            WorkflowTaskMonitor workflowTaskMonitor)
         {
-            this.taskClient = serviceProvider.GetService(typeof(ConductorWorkerRestClient)) as ConductorWorkerRestClient;
-            this.logger = logger;
-            _sleepInterval = configuration.SleepInterval;
-            _domain = configuration.Domain;
+            _logger = logger;
+            _taskClient = client;
+            _worker = worker;
+            _workerSettings = workflowTaskConfiguration;
+            _workflowTaskMonitor = workflowTaskMonitor;
         }
 
-        private string GetWorkerName()
+        public Task Start()
         {
-            return $"Worker : {workerId} ";
+            var thread = Task.Run(() => Work4Ever());
+            _logger.LogInformation(
+                $"[{_workerSettings.WorkerId}] Started worker"
+                + $", taskName: {_worker.TaskType}"
+                + $", domain: {_workerSettings.Domain}"
+                + $", pollInterval: {_workerSettings.PollInterval}"
+                + $", batchSize: {_workerSettings.BatchSize}"
+            );
+            return thread;
         }
 
-        public async Task StartPoller(List<IWorkflowTask> workers)
+        private async Task Work4Ever()
         {
-            this.workers = workers;
-            if (this.workers is null || this.workers.Count == 0) throw new NullReferenceException("Workers not set");
-
             while (true)
             {
-                await Poll();
-            }
-        }
-
-        private async Task Poll()
-        {
-            //TODO: Move to queue based polling to better parallel node worker
-            //TODO: Polling failure backoff
-            //TODO: Less generic logging - Log only when needed and better context to what is happening
-            logger.LogDebug($"{GetWorkerName()} - Poll started");
-            var hasPolledAnyTask = false;
-
-            foreach (var worker in workers)
-            {
-                logger.LogDebug($"{GetWorkerName()} - Polling for task type: {worker.TaskType}");
                 try
                 {
-                    var task = PollForTask(worker.TaskType);
-
-                    if (task != null)
-                    {
-                        hasPolledAnyTask = true;
-                        await ProcessTask(task, worker);
-                        break;
-                    }
+                    await WorkOnce();
                 }
                 catch (Exception e)
                 {
-                    logger.LogError(e, $"{GetWorkerName()} -  Polling connection failed for task type: {worker.TaskType}");
+                    _logger.LogDebug(
+                        $"[{_workerSettings.WorkerId}] worker error: {e.Message}"
+                        + $", taskName: {_worker.TaskType}"
+                        + $", domain: {_worker.WorkerSettings.Domain}"
+                        + $", batchSize: {_workerSettings.BatchSize}"
+                    );
+                    await Sleep(SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR);
                 }
             }
-            logger.LogDebug($"{GetWorkerName()} - Poll ended");
+        }
 
-            if (!hasPolledAnyTask)
+        private async Task WorkOnce()
+        {
+            var tasks = PollTasks();
+            if (tasks.Count == 0)
             {
-                await Sleep();
+                await Sleep(_workerSettings.PollInterval);
+                return;
+            }
+            ProcessTasks(tasks);
+        }
+
+        private List<Models.Task> PollTasks()
+        {
+            _logger.LogTrace(
+                $"[{_workerSettings.WorkerId}] Polling for worker"
+                + $", taskType: {_worker.TaskType}"
+                + $", domain: {_workerSettings.Domain}"
+                + $", batchSize: {_workerSettings.BatchSize}"
+            );
+            var availableWorkerCounter = _workerSettings.BatchSize - _workflowTaskMonitor.GetRunningWorkers();
+            if (availableWorkerCounter < 1)
+            {
+                throw new Exception("no worker available");
+            }
+            var tasks = _taskClient.PollTask(_worker.TaskType, _workerSettings.WorkerId, _workerSettings.Domain, availableWorkerCounter);
+            if (tasks == null)
+            {
+                tasks = new List<Models.Task>();
+            }
+            _logger.LogTrace(
+                $"[{_workerSettings.WorkerId}] Polled {tasks.Count} tasks"
+                + $", taskType: {_worker.TaskType}"
+                + $", domain: {_workerSettings.Domain}"
+                + $", batchSize: {_workerSettings.BatchSize}"
+            );
+            return tasks;
+        }
+
+        private void ProcessTasks(List<Models.Task> tasks)
+        {
+            if (tasks == null || tasks.Count == 0)
+            {
+                return;
+            }
+            foreach (var task in tasks)
+            {
+                _workflowTaskMonitor.IncrementRunningWorker();
+                Task.Run(() => ProcessTask(task));
             }
         }
 
-        private async Task Sleep()
+        private async Task ProcessTask(Models.Task task)
         {
-            logger.LogDebug($"Waiting for {_sleepInterval}ms");
-            await Task.Delay(_sleepInterval);
-        }
-
-        public Models.Task PollForTask(string taskType)
-        {
-            return taskClient.PollTask(taskType, workerId, _domain);
-        }
-
-        private async Task ProcessTask(Models.Task task, IWorkflowTask workflowTask)
-        {
-            logger.LogInformation($"{GetWorkerName()} - Processing task:{task.TaskDefName} id:{task.TaskId}");
-
-            //TODO: handle shutdowns?
-            var cts = new CancellationTokenSource();
+            _logger.LogTrace(
+                $"[{_workerSettings.WorkerId}] Processing task for worker,"
+                + $", taskType: {_worker.TaskType}"
+                + $", domain: {_workerSettings.Domain}"
+                + $", taskId: {task.TaskId}"
+                + $", workflowId: {task.WorkflowInstanceId}"
+            );
             try
             {
-                Models.TaskResult result = null;
-
-                if (task.ResponseTimeoutSeconds > 0)
-                {
-                    var timeout = task.ResponseTimeoutSeconds * 1000;
-                    cts.CancelAfter(timeout > int.MaxValue ? int.MaxValue : (int)timeout);
-                    result = await workflowTask.Execute(task, cts.Token).WaitOrCancel(cts.Token);
-                }
-                else
-                {
-                    result = await workflowTask.Execute(task, CancellationToken.None);
-                }
-
-                result.WorkerId = workerId;
-                UpdateTask(result);
+                var taskResult = await _worker.Execute(task, CancellationToken.None);
+                taskResult.WorkerId = _workerSettings.WorkerId;
+                UpdateTask(taskResult);
             }
-            catch (OperationCanceledException)
+            finally
             {
-                logger.LogError($"{GetWorkerName()} - Task timed out.");
+                _workflowTaskMonitor.RunningWorkerDone();
             }
-            catch (Exception e)
-            {
-                logger.LogError(e, $"{GetWorkerName()} - Failed to execute task");
-                UpdateTask(task.Failed(e.ToString()));
-            }
+            _logger.LogTrace(
+                $"[{_workerSettings.WorkerId}] Done processing task for worker,"
+                + $", taskType: {_worker.TaskType}"
+                + $", domain: {_workerSettings.Domain}"
+                + $", taskId: {task.TaskId}"
+                + $", workflowId: {task.WorkflowInstanceId}"
+            );
         }
 
-        private void UpdateTask(Models.TaskResult taskResult)
+        private async void UpdateTask(Models.TaskResult taskResult)
         {
-            var result = taskClient.UpdateTask(taskResult);
-            logger.LogDebug($"{GetWorkerName()} - Update task response {result}");
+            for (var attemptCounter = 0; attemptCounter < UPDATE_TASK_RETRY_COUNT_LIMIT; attemptCounter += 1)
+            {
+                try
+                {
+                    // Retries in increasing time intervals (0s, 2s, 4s, 8s...)
+                    if (attemptCounter > 0)
+                    {
+                        await Sleep(TimeSpan.FromSeconds(1 << attemptCounter));
+                    }
+                    _taskClient.UpdateTask(taskResult);
+                    _logger.LogTrace(
+                        $"[{_workerSettings.WorkerId}] Done updating task"
+                        + $", taskType: {_worker.TaskType}"
+                        + $", domain: {_workerSettings.Domain}"
+                        + $", taskId: {taskResult.TaskId}"
+                        + $", workflowId: {taskResult.WorkflowInstanceId}"
+                    );
+                    return;
+                }
+                catch (Exception e)
+                {
+                    _logger.LogTrace(
+                        $"[{_workerSettings.WorkerId}] Failed to update task, reason: {e.Message}"
+                        + $", taskType: {_worker.TaskType}"
+                        + $", domain: {_workerSettings.Domain}"
+                        + $", taskId: {taskResult.TaskId}"
+                        + $", workflowId: {taskResult.WorkflowInstanceId}"
+                    );
+                }
+            }
+            throw new Exception("Failed to update task after retries");
+        }
+
+        private async Task Sleep(TimeSpan timeSpan)
+        {
+            _logger.LogDebug($"[{_workerSettings.WorkerId}] Sleeping for {timeSpan.Milliseconds}ms");
+            await Task.Delay(timeSpan);
         }
     }
 }
