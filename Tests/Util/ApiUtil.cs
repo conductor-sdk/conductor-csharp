@@ -48,6 +48,7 @@ namespace Tests.Util
             configuration.keyId = _keyId;
             configuration.keySecret = _keySecret;
             configuration.BasePath = _basePath;
+            configuration.Timeout = 5000;
             return configuration;
         }
 

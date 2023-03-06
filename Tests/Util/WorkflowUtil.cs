@@ -10,6 +10,7 @@ namespace Tests.Util
 {
     public class WorkflowUtil
     {
+        private static int RETRY_ATTEMPT_LIMIT = 5;
         public static async System.Threading.Tasks.Task<ConcurrentBag<string>> StartWorkflows(WorkflowResourceApi workflowClient, ConductorWorkflow workflow, int maxAllowedInParallel, int total)
         {
             var workflowIds = new ConcurrentBag<string>();
@@ -61,38 +62,34 @@ namespace Tests.Util
 
         private static void GetWorkflowStatus(WorkflowResourceApi workflowClient, ConcurrentBag<WorkflowStatus> workflowStatusList, string[] workflowIds, int index)
         {
-            WorkflowStatus workflowStatus = null;
-            for (int attempt = 0; attempt < 3; attempt += 1)
+            for (int attempt = 0; attempt < RETRY_ATTEMPT_LIMIT; attempt += 1)
             {
                 try
                 {
-                    workflowStatus = workflowClient.GetWorkflowStatusSummary(workflowIds[index]);
-                    workflowStatusList.Add(workflowStatus);
+                    workflowStatusList.Add(workflowClient.GetWorkflowStatusSummary(workflowIds[index]));
                     return;
                 }
                 catch (ApiException e)
                 {
                     Console.WriteLine($"Failed to get workflow status, reason: {e}");
-                    System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1 << attempt));
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
                 }
             }
         }
 
         private static void StartWorkflow(WorkflowResourceApi workflowClient, StartWorkflowRequest startWorkflowRequest, ConcurrentBag<string> workflowIds)
         {
-            string workflowId = null;
-            for (int attempt = 0; attempt < 3; attempt += 1)
+            for (int attempt = 0; attempt < RETRY_ATTEMPT_LIMIT; attempt += 1)
             {
                 try
                 {
-                    workflowId = workflowClient.StartWorkflow(startWorkflowRequest);
-                    workflowIds.Add(workflowId);
+                    workflowIds.Add(workflowClient.StartWorkflow(startWorkflowRequest));
                     return;
                 }
                 catch (ApiException e)
                 {
                     Console.WriteLine($"Failed to start workflow, reason: {e}");
-                    System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1 << attempt));
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
                 }
             }
         }
