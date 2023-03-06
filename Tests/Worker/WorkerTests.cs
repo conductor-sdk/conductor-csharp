@@ -34,8 +34,8 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            var workflowIdList = StartWorkflows(workflow, 15);
-            CompleteWorkflows(TimeSpan.FromSeconds(10));
+            var workflowIdList = StartWorkflows(workflow, 20);
+            CompleteWorkflows(TimeSpan.FromSeconds(7));
             ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
 
@@ -50,7 +50,10 @@ namespace Tests.Worker
         private ConcurrentBag<string> StartWorkflows(ConductorWorkflow workflow, int quantity)
         {
             var startedWorkflows = WorkflowUtil.StartWorkflows(
-                _workflowClient, workflow, Environment.ProcessorCount * 2, quantity);
+                _workflowClient,
+                workflow,
+                Math.Max(5, Environment.ProcessorCount << 1),
+                quantity);
             startedWorkflows.Wait();
             return startedWorkflows.Result;
         }
@@ -68,7 +71,9 @@ namespace Tests.Worker
         private void ValidateWorkflowCompletion(string[] workflowIdList)
         {
             var workflowStatusList = WorkflowUtil.GetWorkflowStatusList(
-                _workflowClient, Environment.ProcessorCount << 1, workflowIdList);
+                _workflowClient,
+                Math.Max(5, Environment.ProcessorCount << 1),
+                workflowIdList);
             workflowStatusList.Wait();
             foreach (var workflowStatus in workflowStatusList.Result)
             {
