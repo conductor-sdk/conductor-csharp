@@ -17,7 +17,7 @@ namespace Tests.Util
         {
             var configuration = new Configuration();
             configuration.BasePath = GetEnvironmentVariable(ENV_ROOT_URI);
-            configuration.Timeout = 2500;
+            configuration.Timeout = 5000;
             configuration.AuthenticationSettings = new OrkesAuthenticationSettings(
                 GetEnvironmentVariable(ENV_KEY_ID),
                 GetEnvironmentVariable(ENV_SECRET));

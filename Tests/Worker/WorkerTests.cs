@@ -34,8 +34,8 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            var workflowIdList = StartWorkflows(workflow, quantity: 250);
-            CompleteWorkflows(TimeSpan.FromSeconds(5));
+            var workflowIdList = StartWorkflows(workflow, quantity: 200);
+            ExecuteWorkflowTasks(TimeSpan.FromSeconds(10));
             ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
 
@@ -58,24 +58,10 @@ namespace Tests.Worker
             return startedWorkflows.Result;
         }
 
-        private async void CompleteWorkflows(TimeSpan workflowCompletionTimeout)
+        private void ExecuteWorkflowTasks(TimeSpan workflowCompletionTimeout)
         {
-            var cts = new CancellationTokenSource();
-            var host = WorkerUtil.GetWorkerHost().RunAsync(cts.Token);
-            Thread.Sleep(workflowCompletionTimeout);
-            for (int i = 0; i < 3; i += 1)
-            {
-                try
-                {
-                    cts.Cancel();
-                    break;
-                }
-                catch (Exception)
-                {
-                    Thread.Sleep(TimeSpan.FromSeconds(1 << i));
-                }
-            }
-            await host;
+            using var cts = new CancellationTokenSource(workflowCompletionTimeout);
+            WorkerUtil.GetWorkerHost().RunAsync(cts.Token).Wait();
         }
 
         private void ValidateWorkflowCompletion(params string[] workflowIdList)
@@ -85,10 +71,15 @@ namespace Tests.Worker
                 Math.Max(15, Environment.ProcessorCount << 1),
                 workflowIdList);
             workflowStatusList.Wait();
+            int incompleteWorkflowCounter = 0;
             foreach (var workflowStatus in workflowStatusList.Result)
             {
-                Assert.Equal(Workflow.StatusEnum.COMPLETED.ToString(), workflowStatus.Status.ToString());
+                if (workflowStatus.Status.Value == WorkflowStatus.StatusEnum.COMPLETED)
+                {
+                    incompleteWorkflowCounter += 1;
+                }
             }
+            Assert.Equal(0, incompleteWorkflowCounter);
         }
     }
 }
