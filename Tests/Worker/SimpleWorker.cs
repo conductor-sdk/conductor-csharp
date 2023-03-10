@@ -15,8 +15,7 @@ namespace Tests.Worker
         {
             TaskType = taskType;
             WorkerSettings = new WorkflowTaskExecutorConfiguration();
-            WorkerSettings.BatchSize = Math.Max(10, Environment.ProcessorCount * 2);
-            WorkerSettings.PollInterval = TimeSpan.FromMilliseconds(350);
+            WorkerSettings.BatchSize = Math.Max(15, Environment.ProcessorCount * 2);
         }
 
         public TaskResult Execute(Task task)

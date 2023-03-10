@@ -119,7 +119,7 @@ namespace Conductor.Client.Worker
         private void ProcessTask(Models.Task task)
         {
             _logger.LogTrace(
-                $"[{_workerSettings.WorkerId}] Processing task for worker,"
+                $"[{_workerSettings.WorkerId}] Processing task for worker"
                 + $", taskType: {_worker.TaskType}"
                 + $", domain: {_workerSettings.Domain}"
                 + $", taskId: {task.TaskId}"
@@ -136,7 +136,7 @@ namespace Conductor.Client.Worker
                 _workflowTaskMonitor.RunningWorkerDone();
             }
             _logger.LogTrace(
-                $"[{_workerSettings.WorkerId}] Done processing task for worker,"
+                $"[{_workerSettings.WorkerId}] Done processing task for worker"
                 + $", taskType: {_worker.TaskType}"
                 + $", domain: {_workerSettings.Domain}"
                 + $", taskId: {task.TaskId}"
