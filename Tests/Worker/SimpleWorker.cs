@@ -2,6 +2,7 @@ using Conductor.Client.Interfaces;
 using Conductor.Client.Extensions;
 using Conductor.Client.Models;
 using Conductor.Client.Worker;
+using System;
 
 namespace Tests.Worker
 {
@@ -14,6 +15,7 @@ namespace Tests.Worker
         {
             TaskType = taskType;
             WorkerSettings = new WorkflowTaskExecutorConfiguration();
+            WorkerSettings.BatchSize = Math.Max(10, Environment.ProcessorCount * 2);
         }
 
         public TaskResult Execute(Task task)
