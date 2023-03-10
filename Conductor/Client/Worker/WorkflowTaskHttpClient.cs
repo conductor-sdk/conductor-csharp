@@ -8,9 +8,9 @@ namespace Conductor.Client.Worker
     public class WorkflowTaskHttpClient : IWorkflowTaskClient
     {
         private readonly TaskResourceApi _client;
-        public WorkflowTaskHttpClient(OrkesApiClient apiClient)
+        public WorkflowTaskHttpClient(Configuration configuration)
         {
-            _client = apiClient.GetClient<TaskResourceApi>();
+            _client = configuration.GetClient<TaskResourceApi>();
         }
 
         public List<Task> PollTask(string taskType, string workerId, string domain, int count = 1)

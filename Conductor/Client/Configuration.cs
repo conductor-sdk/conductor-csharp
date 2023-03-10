@@ -1,11 +1,9 @@
-
-using System;
-using System.Reflection;
+using Conductor.Api;
+using Conductor.Client.Authentication;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
+using System;
 
 namespace Conductor.Client
 {
@@ -73,6 +71,10 @@ namespace Conductor.Client
         private string _dateTimeFormat = ISO8601_DATETIME_FORMAT;
         private string _tempFolderPath = Path.GetTempPath();
 
+        private readonly TokenHandler _tokenHandler = new TokenHandler();
+
+        private TokenResourceApi _tokenClient = null;
+
         #endregion Private Members
 
         #region Constructors
@@ -84,108 +86,63 @@ namespace Conductor.Client
         {
             BasePath = "https://play.orkes.io/api";
             DefaultHeader = new ConcurrentDictionary<string, string>();
-            keyId = string.Empty;
-            keySecret = string.Empty;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Configuration" /> class
-        /// </summary>
-        public Configuration(
-            IDictionary<string, string> defaultHeader,
-            string basePath = "https://play.orkes.io/api") : this()
-        {
-            if (string.IsNullOrWhiteSpace(basePath))
-                throw new ArgumentException("The provided basePath is invalid.", "basePath");
-            if (defaultHeader == null)
-                throw new ArgumentNullException("defaultHeader");
-
-            BasePath = basePath;
-
-            foreach (var keyValuePair in defaultHeader)
-            {
-                DefaultHeader.Add(keyValuePair);
-            }
+            Timeout = 10000;
         }
 
         #endregion Constructors
 
-
         #region Properties
 
-        private ApiClient _apiClient = null;
-        /// <summary>
-        /// Gets an instance of an ApiClient for this configuration
-        /// </summary>
-        public virtual ApiClient ApiClient
-        {
-            get
-            {
-                if (_apiClient == null) _apiClient = CreateApiClient();
-                return _apiClient;
-            }
-        }
+        public readonly ApiClient ApiClient = new ApiClient();
 
-        public string keyId { get; set; } = null;
-        public string keySecret { get; set; } = null;
+        public OrkesAuthenticationSettings AuthenticationSettings { get; set; }
 
-
-        private String _basePath = null;
         /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
-        public virtual string BasePath
+        public string BasePath
         {
-            get { return _basePath; }
+            get
+            {
+                return ApiClient.RestClient.BaseUrl.ToString();
+            }
             set
             {
-                _basePath = value;
-                // pass-through to ApiClient if it's set.
-                if (_apiClient != null)
-                {
-                    _apiClient.RestClient.BaseUrl = new Uri(_basePath);
-                }
+                ApiClient.RestClient.BaseUrl = new Uri(value);
             }
         }
 
         /// <summary>
         /// Gets or sets the default header.
         /// </summary>
-        public virtual IDictionary<string, string> DefaultHeader { get; set; }
+        public IDictionary<string, string> DefaultHeader { get; set; } = null;
 
-        private int _timeout = 10000;
         /// <summary>
         /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 10000 milliseconds.
         /// </summary>
-        public virtual int Timeout
+        public int Timeout
         {
-
             get
             {
-                if (_apiClient == null)
-                {
-                    return _timeout;
-                }
-                else
-                {
-                    return ApiClient.RestClient.Timeout;
-                }
+                return ApiClient.RestClient.Timeout;
             }
             set
             {
-                _timeout = value;
-                if (_apiClient != null)
-                {
-                    ApiClient.RestClient.Timeout = _timeout;
-                }
+                ApiClient.RestClient.Timeout = value;
             }
         }
 
-        /// <summary>
-        /// Gets or sets the access token for OAuth2 authentication.
-        /// </summary>
-        /// <value>The access token.</value>
-        public virtual string AccessToken { get; set; }
+        public string AccessToken
+        {
+            get
+            {
+                if (_tokenClient == null)
+                {
+                    _tokenClient = GetClient<TokenResourceApi>();
+                }
+                return _tokenHandler.GetToken(AuthenticationSettings, _tokenClient);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the temporary folder path to store the files downloaded from the server.
@@ -263,13 +220,11 @@ namespace Conductor.Client
             DefaultHeader[key] = value;
         }
 
-        /// <summary>
-        /// Creates a new <see cref="ApiClient" /> based on this <see cref="Configuration" /> instance.
-        /// </summary>
-        /// <returns></returns>
-        public ApiClient CreateApiClient()
+        public T GetClient<T>() where T : IApiAccessor, new()
         {
-            return new ApiClient(BasePath) { Configuration = this };
+            T client = new T();
+            client.Configuration = this;
+            return client;
         }
 
         #endregion Methods
