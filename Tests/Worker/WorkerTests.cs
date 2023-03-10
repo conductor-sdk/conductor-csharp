@@ -34,7 +34,7 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            var workflowIdList = StartWorkflows(workflow, quantity: 50);
+            var workflowIdList = StartWorkflows(workflow, quantity: 100);
             CompleteWorkflows(TimeSpan.FromSeconds(5));
             ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
