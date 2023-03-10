@@ -34,8 +34,8 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            var workflowIdList = StartWorkflows(workflow, quantity: 20);
-            CompleteWorkflows(TimeSpan.FromSeconds(7));
+            var workflowIdList = StartWorkflows(workflow, quantity: 30);
+            CompleteWorkflows(TimeSpan.FromSeconds(5));
             ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
 
@@ -58,11 +58,11 @@ namespace Tests.Worker
             return startedWorkflows.Result;
         }
 
-        private async void CompleteWorkflows(TimeSpan timeSpan)
+        private async void CompleteWorkflows(TimeSpan workflowCompletionTimeout)
         {
             var cts = new CancellationTokenSource();
             var host = WorkerUtil.GetWorkerHost().RunAsync(cts.Token);
-            Thread.Sleep(timeSpan);
+            Thread.Sleep(workflowCompletionTimeout);
             for (int i = 0; i < 3; i += 1)
             {
                 try
