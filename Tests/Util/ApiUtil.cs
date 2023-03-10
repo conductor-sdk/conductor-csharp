@@ -13,10 +13,6 @@ namespace Tests.Util
         private const string ENV_KEY_ID = "KEY";
         private const string ENV_SECRET = "SECRET";
 
-        private static string _basePath = null;
-        private static string _keyId = null;
-        private static string _keySecret = null;
-
         static ApiUtil()
         {
             var configuration = new Configuration();
