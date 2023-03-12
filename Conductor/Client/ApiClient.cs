@@ -152,9 +152,6 @@ namespace Conductor.Client
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
 
-            // set timeout
-            RestClient.Timeout = Configuration.Timeout;
-
             InterceptRequest(request);
             var response = RestClient.Execute(request);
             InterceptResponse(request, response);

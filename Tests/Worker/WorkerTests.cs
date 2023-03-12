@@ -3,7 +3,6 @@ using Conductor.Client.Models;
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Conductor.Executor;
-using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
@@ -30,13 +29,13 @@ namespace Tests.Worker
         }
 
         [Fact]
-        public void TestWorkflowAsyncExecution()
+        public async System.Threading.Tasks.Task TestWorkflowAsyncExecution()
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            var workflowIdList = StartWorkflows(workflow, quantity: 20);
-            CompleteWorkflows(TimeSpan.FromSeconds(7));
-            ValidateWorkflowCompletion(workflowIdList.ToArray());
+            var workflowIdList = await StartWorkflows(workflow, quantity: 64);
+            await ExecuteWorkflowTasks(TimeSpan.FromSeconds(16));
+            await ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
 
         private ConductorWorkflow GetConductorWorkflow()
@@ -47,48 +46,40 @@ namespace Tests.Worker
                 .WithTask(new SimpleTask(TASK_NAME, TASK_NAME));
         }
 
-        private ConcurrentBag<string> StartWorkflows(ConductorWorkflow workflow, int quantity)
+        private async System.Threading.Tasks.Task<ConcurrentBag<string>> StartWorkflows(ConductorWorkflow workflow, int quantity)
         {
-            var startedWorkflows = WorkflowUtil.StartWorkflows(
+            var startedWorkflows = await WorkflowUtil.StartWorkflows(
                 _workflowClient,
                 workflow,
-                Math.Max(5, Environment.ProcessorCount << 1),
+                Math.Max(15, Environment.ProcessorCount << 1),
                 quantity);
-            startedWorkflows.Wait();
-            return startedWorkflows.Result;
+            return startedWorkflows;
         }
 
-        private async void CompleteWorkflows(TimeSpan timeSpan)
+        private async System.Threading.Tasks.Task ExecuteWorkflowTasks(TimeSpan workflowCompletionTimeout)
         {
-            var cts = new CancellationTokenSource();
-            var host = WorkerUtil.GetWorkerHost().RunAsync(cts.Token);
-            Thread.Sleep(timeSpan);
-            for (int i = 0; i < 3; i += 1)
-            {
-                try
-                {
-                    cts.Cancel();
-                    break;
-                }
-                catch (Exception)
-                {
-                    Thread.Sleep(TimeSpan.FromSeconds(1 << i));
-                }
-            }
-            await host;
+            var host = WorkerUtil.GetWorkerHost();
+            await host.StartAsync();
+            Thread.Sleep(workflowCompletionTimeout);
+            await host.StopAsync();
         }
 
-        private void ValidateWorkflowCompletion(params string[] workflowIdList)
+        private async System.Threading.Tasks.Task ValidateWorkflowCompletion(params string[] workflowIdList)
         {
-            var workflowStatusList = WorkflowUtil.GetWorkflowStatusList(
+            var workflowStatusList = await WorkflowUtil.GetWorkflowStatusList(
                 _workflowClient,
-                Math.Max(5, Environment.ProcessorCount << 1),
+                Math.Max(15, Environment.ProcessorCount << 1),
                 workflowIdList);
-            workflowStatusList.Wait();
-            foreach (var workflowStatus in workflowStatusList.Result)
+            int incompleteWorkflowCounter = 0;
+            foreach (var workflowStatus in workflowStatusList)
             {
-                Assert.Equal(Workflow.StatusEnum.COMPLETED.ToString(), workflowStatus.Status.ToString());
+                if (workflowStatus.Status.Value != WorkflowStatus.StatusEnum.COMPLETED)
+                {
+                    incompleteWorkflowCounter += 1;
+                    Console.WriteLine($"Workflow not completed, workflowId: {workflowStatus.WorkflowId}");
+                }
             }
+            Assert.Equal(0, incompleteWorkflowCounter);
         }
     }
 }

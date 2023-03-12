@@ -1,6 +1,7 @@
 using Conductor.Api;
 using Conductor.Client;
 using Conductor.Executor;
+using Conductor.Client.Authentication;
 using System;
 using System.Diagnostics;
 
@@ -12,15 +13,15 @@ namespace Tests.Util
         private const string ENV_KEY_ID = "KEY";
         private const string ENV_SECRET = "SECRET";
 
-        private static string _basePath = null;
-        private static string _keyId = null;
-        private static string _keySecret = null;
-
         static ApiUtil()
         {
-            _basePath = GetEnvironmentVariable(ENV_ROOT_URI);
-            _keyId = GetEnvironmentVariable(ENV_KEY_ID);
-            _keySecret = GetEnvironmentVariable(ENV_SECRET);
+            var configuration = new Configuration();
+            configuration.BasePath = GetEnvironmentVariable(ENV_ROOT_URI);
+            configuration.Timeout = 5000;
+            configuration.AuthenticationSettings = new OrkesAuthenticationSettings(
+                GetEnvironmentVariable(ENV_KEY_ID),
+                GetEnvironmentVariable(ENV_SECRET));
+            Configuration.Default = configuration;
         }
 
         public static WorkflowExecutor GetWorkflowExecutor()
@@ -31,25 +32,9 @@ namespace Tests.Util
             );
         }
 
-        public static OrkesApiClient GetApiClient()
-        {
-            return new OrkesApiClient(GetConfiguration());
-        }
-
         public static T GetClient<T>() where T : IApiAccessor, new()
         {
-            var apiClient = GetApiClient();
-            return apiClient.GetClient<T>();
-        }
-
-        public static Configuration GetConfiguration()
-        {
-            Configuration configuration = new Configuration();
-            configuration.keyId = _keyId;
-            configuration.keySecret = _keySecret;
-            configuration.BasePath = _basePath;
-            configuration.Timeout = 5000;
-            return configuration;
+            return Configuration.Default.GetClient<T>();
         }
 
         private static string GetEnvironmentVariable(string variable)
