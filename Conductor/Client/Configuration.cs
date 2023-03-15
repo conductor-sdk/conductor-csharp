@@ -136,6 +136,11 @@ namespace Conductor.Client
         {
             get
             {
+                if (AuthenticationSettings is null)
+                {
+                    return null;
+                }
+
                 if (_tokenClient == null)
                 {
                     _tokenClient = GetClient<TokenResourceApi>();
