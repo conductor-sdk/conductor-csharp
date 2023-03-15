@@ -379,8 +379,9 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
+        /// <param name="workerid"> (optional)</param>
         /// <returns>string</returns>
-        string UpdateTask(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
+        string UpdateTask(Dictionary<string, Object> body, string workflowId, string taskRefName, string status, string workerid = null);
 
         /// <summary>
         /// Update a task By Ref Name
@@ -394,7 +395,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> UpdateTaskWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status);
+        ApiResponse<string> UpdateTaskWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status, string workerid = null);
         #endregion Synchronous Operations
     }
 
@@ -1608,10 +1609,11 @@ namespace Conductor.Api
         /// <param name="workflowId"></param>
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
+        /// <param name="workerid"> (optional)</param>
         /// <returns>string</returns>
-        public string UpdateTask(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
+        public string UpdateTask(Dictionary<string, Object> body, string workflowId, string taskRefName, string status, string workerid = null)
         {
-            ApiResponse<string> localVarResponse = UpdateTaskWithHttpInfo(body, workflowId, taskRefName, status);
+            ApiResponse<string> localVarResponse = UpdateTaskWithHttpInfo(body, workflowId, taskRefName, status, workerid);
             return localVarResponse.Data;
         }
 
@@ -1624,7 +1626,7 @@ namespace Conductor.Api
         /// <param name="taskRefName"></param>
         /// <param name="status"></param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse<string> UpdateTaskWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status)
+        public ApiResponse<string> UpdateTaskWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status, string workerid = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1661,9 +1663,15 @@ namespace Conductor.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (workerid == null)
+            {
+                workerid = Environment.MachineName;
+            }
+
             if (workflowId != null) localVarPathParams.Add("workflowId", this.Configuration.ApiClient.ParameterToString(workflowId)); // path parameter
             if (taskRefName != null) localVarPathParams.Add("taskRefName", this.Configuration.ApiClient.ParameterToString(taskRefName)); // path parameter
             if (status != null) localVarPathParams.Add("status", this.Configuration.ApiClient.ParameterToString(status)); // path parameter
+            if (workerid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "workerid", workerid)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
