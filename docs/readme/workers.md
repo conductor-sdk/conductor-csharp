@@ -28,9 +28,9 @@ public class SimpleWorker : IWorkflowTask
         WorkerSettings = new WorkflowTaskExecutorConfiguration();
     }
 
-    public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
+    public TaskResult Execute(Task task)
     {
-        return await System.Threading.Tasks.Task.FromResult(task.Completed());
+        return task.Completed();
     }
 }
 ```
