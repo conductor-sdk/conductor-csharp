@@ -35,26 +35,11 @@ See [Access Control](https://orkes.io/content/docs/getting-started/concepts/acce
 
 ### Configure API Client
 ```csharp
-OrkesApiClient GetApiClient(string basePath, string keyId, string keySecret)
-{
-    return new OrkesApiClient(
-        configuration: new Configuration()
-        {
-            BasePath = basePath
-        },
-        authenticationSettings: new OrkesAuthenticationSettings(
-            keyId, keySecret
-        )
-    );
-}
-
-OrkesApiClient apiClient = GetApiClient(
-    basePath: "https://play.orkes.io/api",
-    keyId: "key",
-    keySecret: "secret"
-);
-WorkflowResourceApi workflowClient = apiClient.GetClient<WorkflowResourceApi>();
-
+var configuration = new Configuration();
+configuration.BasePath = basePath;
+configuration.AuthenticationSettings = new OrkesAuthenticationSettings(keyId, keySecret);
+    
+var workflowClient = configuration.GetClient<WorkflowResourceApi>();
 workflowClient.StartWorkflow(
     name: "test-sdk-csharp-workflow",
     body: new Dictionary<string, object>(),
