@@ -13,7 +13,7 @@ namespace Tests.Util
                 .ConfigureServices(
                     (ctx, services) =>
                         {
-                            services.AddConductorWorker();
+                            services.AddConductorWorker(ApiUtil.GetConfiguration());
                             services.AddConductorWorkflowTask<SimpleWorker>();
                             services.WithHostedService<WorkerService>();
                         }

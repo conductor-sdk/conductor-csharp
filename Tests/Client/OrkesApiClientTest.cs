@@ -1,5 +1,6 @@
 using Conductor.Api;
 using Conductor.Client;
+using Tests.Util;
 using Xunit;
 
 namespace Tests.Client
@@ -9,11 +10,13 @@ namespace Tests.Client
         [Fact]
         public void TestOrkesApiClient()
         {
-            Configuration.Default = new Configuration();
-            var orkesApiClient = new OrkesApiClient(Configuration.Default, null);
+            var configuration = ApiUtil.GetConfiguration();
+            var orkesApiClient = new OrkesApiClient(configuration, null);
             var workflowClient = orkesApiClient.GetClient<WorkflowResourceApi>();
-            var expectedWorkflowClient = Configuration.Default.GetClient<WorkflowResourceApi>();
-            Assert.Equal(expectedWorkflowClient.Configuration.AccessToken, workflowClient.Configuration.AccessToken);
+            var expectedWorkflowClient = configuration.GetClient<WorkflowResourceApi>();
+            var token = workflowClient.Configuration.AccessToken;
+            var expectedToken = expectedWorkflowClient.Configuration.AccessToken;
+            Assert.Equal(expectedToken, token);
         }
     }
 }
