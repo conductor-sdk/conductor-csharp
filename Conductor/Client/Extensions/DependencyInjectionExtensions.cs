@@ -22,7 +22,7 @@ namespace Conductor.Client.Extensions
             services.AddOptions();
             if (configuration == null)
             {
-                configuration = Configuration.Default;
+                configuration = new Configuration();
             }
             services.AddSingleton<Configuration>(configuration);
             services.AddSingleton<IWorkflowTaskClient, WorkflowTaskHttpClient>();
