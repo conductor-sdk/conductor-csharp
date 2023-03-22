@@ -13,15 +13,18 @@ namespace Tests.Util
         private const string ENV_KEY_ID = "KEY";
         private const string ENV_SECRET = "SECRET";
 
+        private static Configuration _configuration = null;
+
         static ApiUtil()
         {
-            var configuration = new Configuration();
-            configuration.BasePath = GetEnvironmentVariable(ENV_ROOT_URI);
-            configuration.Timeout = 5000;
-            configuration.AuthenticationSettings = new OrkesAuthenticationSettings(
-                GetEnvironmentVariable(ENV_KEY_ID),
-                GetEnvironmentVariable(ENV_SECRET));
-            Configuration.Default = configuration;
+            _configuration = new Configuration()
+            {
+                Timeout = 30000,
+                BasePath = GetEnvironmentVariable(ENV_ROOT_URI),
+                AuthenticationSettings = new OrkesAuthenticationSettings(
+                    GetEnvironmentVariable(ENV_KEY_ID),
+                    GetEnvironmentVariable(ENV_SECRET))
+            };
         }
 
         public static WorkflowExecutor GetWorkflowExecutor()
@@ -34,7 +37,12 @@ namespace Tests.Util
 
         public static T GetClient<T>() where T : IApiAccessor, new()
         {
-            return Configuration.Default.GetClient<T>();
+            return _configuration.GetClient<T>();
+        }
+
+        public static Configuration GetConfiguration()
+        {
+            return _configuration;
         }
 
         private static string GetEnvironmentVariable(string variable)
