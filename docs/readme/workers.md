@@ -39,13 +39,13 @@ public class SimpleWorker : IWorkflowTask
 `TaskRunner` interface is used to start the workers, which takes care of polling server for the work, executing worker code and updating the results back to the server.
 
 ```csharp
-private IHost GetWorkerHost()
+private IHost GetWorkerHost(Configuration configuration)
 {
     return new HostBuilder()
         .ConfigureServices(
             (ctx, services) =>
                 {
-                    services.AddConductorWorker(ApiUtil.GetConfiguration());
+                    services.AddConductorWorker(configuration);
                     services.AddConductorWorkflowTask<SimpleWorker>();
                     services.WithHostedService<WorkerService>();
                 }

@@ -3,17 +3,14 @@ using Microsoft.Extensions.Hosting;
 using System.Threading;
 using System.Collections.Generic;
 
-namespace Tests.Worker
+namespace Conductor.Client.Worker
 {
-    public class WorkerService : BackgroundService
+    public class WorkflowTaskService : BackgroundService
     {
         private readonly IWorkflowTaskCoordinator _workflowTaskCoordinator;
         private readonly IEnumerable<IWorkflowTask> _workers;
 
-        public WorkerService(
-            IWorkflowTaskCoordinator workflowTaskCoordinator,
-            IEnumerable<IWorkflowTask> workers
-        )
+        public WorkflowTaskService(IWorkflowTaskCoordinator workflowTaskCoordinator, IEnumerable<IWorkflowTask> workers)
         {
             _workflowTaskCoordinator = workflowTaskCoordinator;
             _workers = workers;

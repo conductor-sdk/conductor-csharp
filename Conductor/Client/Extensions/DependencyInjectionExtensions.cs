@@ -16,6 +16,13 @@ namespace Conductor.Client.Extensions
             return services;
         }
 
+        public static IServiceCollection AddConductorWorkflowTask<T>(this IServiceCollection services, T worker) where T : IWorkflowTask
+        {
+            services.AddTransient(typeof(IWorkflowTask), typeof(T));
+            services.AddTransient(typeof(T));
+            return services;
+        }
+
         public static IServiceCollection AddConductorWorker(this IServiceCollection services, Configuration configuration = null, Action<IServiceProvider, HttpClient> configureHttpClient = null)
         {
             services.AddHttpClient();
@@ -33,6 +40,12 @@ namespace Conductor.Client.Extensions
         public static IServiceCollection WithHostedService<T>(this IServiceCollection services) where T : BackgroundService
         {
             services.AddHostedService<T>();
+            return services;
+        }
+
+        public static IServiceCollection WithHostedService(this IServiceCollection services)
+        {
+            services.AddHostedService<WorkflowTaskService>();
             return services;
         }
     }
