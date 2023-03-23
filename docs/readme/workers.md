@@ -36,29 +36,16 @@ public class SimpleWorker : IWorkflowTask
 ```
 
 ## Starting Workers
-`TaskRunner` interface is used to start the workers, which takes care of polling server for the work, executing worker code and updating the results back to the server.
+You can use `WorkflowTaskHost` to create a worker host, it requires a configuration object and then you can add your workers.
 
 ```csharp
-private IHost GetWorkerHost(Configuration configuration)
-{
-    return new HostBuilder()
-        .ConfigureServices(
-            (ctx, services) =>
-                {
-                    services.AddConductorWorker(configuration);
-                    services.AddConductorWorkflowTask<SimpleWorker>();
-                    services.WithHostedService<WorkerService>();
-                }
-        ).ConfigureLogging(
-            logging =>
-                {
-                    logging.SetMinimumLevel(LogLevel.Debug);
-                    logging.AddConsole();
-                }
-        ).Build();
-}
+using Conductor.Client.Worker;
+using System;
+using System.Threading.Thread;
 
-GetWorkerHost().RunAsync();
+var host = WorkflowTaskHost.CreateWorkerHost(configuration, new SimpleWorker());
+await host.startAsync();
+Thread.Sleep(TimeSpan.FromSeconds(100));
 ```
 
 Check out our [integration tests](https://github.com/conductor-sdk/conductor-csharp/blob/92c7580156a89322717c94aeaea9e5201fe577eb/Tests/Worker/WorkerTests.cs#L37) for more examples
