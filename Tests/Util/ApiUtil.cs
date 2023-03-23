@@ -19,7 +19,7 @@ namespace Tests.Util
         {
             _configuration = new Configuration()
             {
-                Timeout = 10000,
+                Timeout = 7500,
                 BasePath = GetEnvironmentVariable(ENV_ROOT_URI),
                 AuthenticationSettings = new OrkesAuthenticationSettings(
                     GetEnvironmentVariable(ENV_KEY_ID),
