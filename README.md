@@ -41,7 +41,7 @@ using Conductor.Client.Authentication;
 
 var configuration = new Configuration() {
     BasePath = basePath,
-    AuthenticationSettings = new OrkesAuthenticationSettings(keyId, keySecret)
+    AuthenticationSettings = new OrkesAuthenticationSettings("keyId", "keySecret")
 };
 
 var workflowClient = configuration.GetClient<WorkflowResourceApi>();

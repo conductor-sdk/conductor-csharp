@@ -1,6 +1,7 @@
 using Conductor.Api;
-using Conductor.Definition;
+using Conductor.Client;
 using Conductor.Client.Models;
+using Conductor.Definition;
 using System.Collections.Generic;
 
 namespace Conductor.Executor
@@ -9,6 +10,12 @@ namespace Conductor.Executor
     {
         private WorkflowResourceApi _workflowClient;
         private MetadataResourceApi _metadataClient;
+
+        public WorkflowExecutor(Configuration configuration)
+        {
+            _workflowClient = configuration.GetClient<WorkflowResourceApi>();
+            _metadataClient = configuration.GetClient<MetadataResourceApi>();
+        }
 
         public WorkflowExecutor(WorkflowResourceApi workflowClient, MetadataResourceApi metadataClient)
         {

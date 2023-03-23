@@ -3,6 +3,10 @@
 ## A simple two-step workflow
 
 ```csharp
+using Conductor.Client;
+using Conductor.Definition;
+using Conductor.Executor;
+
 ConductorWorkflow GetConductorWorkflow()
 {
     return new ConductorWorkflow()
@@ -11,26 +15,18 @@ ConductorWorkflow GetConductorWorkflow()
         .WithOwner("developers@orkes.io")
             .WithTask(new SimpleTask("simple_task_2", "simple_task_1"))
             .WithTask(new SimpleTask("simple_task_1", "simple_task_2"));
-
-WorkflowExecutor GetWorkflowExecutor()
-{
-    return new WorkflowExecutor(
-        metadataClient: GetClient<MetadataResourceApi>(),
-        workflowClient: GetClient<WorkflowResourceApi>()
-    );
 }
 
-ConductorWorkflow conductorWorkflow = GetConductorWorkflow();
-WorkflowExecutor workflowExecutor = GetWorkflowExecutor();
+var configuration = new Configuration();
+
+var conductorWorkflow = GetConductorWorkflow();
+var workflowExecutor = new WorkflowExecutor(configuration);
 workflowExecutor.RegisterWorkflow(
     workflow: conductorWorkflow
     overwrite: true
 );
-String workflowId = workflowExecutor.StartWorkflow(conductorWorkflow);
+var workflowId = workflowExecutor.StartWorkflow(conductorWorkflow);
 ```
-
-### Workflow Management APIs
-See [Docs](/docs/readme/executor.md) for APIs to start, pause, resume, terminate, search and get workflow execution status.
 
 ### More Examples
 You can find more examples at the following GitHub repository:
