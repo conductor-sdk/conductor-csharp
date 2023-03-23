@@ -29,9 +29,6 @@ workflowExecutor.RegisterWorkflow(
 String workflowId = workflowExecutor.StartWorkflow(conductorWorkflow);
 ```
 
-### Workflow Management APIs
-See [Docs](/docs/readme/executor.md) for APIs to start, pause, resume, terminate, search and get workflow execution status.
-
 ### More Examples
 You can find more examples at the following GitHub repository:
 

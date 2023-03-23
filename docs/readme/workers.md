@@ -65,4 +65,4 @@ Worker SDK collects the following metrics:
 
 Metrics on client side supplements the one collected from server in identifying the network as well as client side issues.
 
-### Next: [Create and Execute Workflows](/docs/readme/workflow.md)
+### Next: [Create and Execute Workflows](https://github.com/conductor-sdk/conductor-csharp/blob/main/docs/readme/workflow.md)
