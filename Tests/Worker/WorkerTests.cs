@@ -31,9 +31,9 @@ namespace Tests.Worker
         [Fact]
         public async System.Threading.Tasks.Task TestWorkflowAsyncExecution()
         {
-            ConductorWorkflow workflow = GetConductorWorkflow();
+            var workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            var workflowIdList = await StartWorkflows(workflow, quantity: 50);
+            var workflowIdList = await StartWorkflows(workflow, quantity: 64);
             await ExecuteWorkflowTasks(TimeSpan.FromSeconds(16));
             await ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
@@ -70,7 +70,7 @@ namespace Tests.Worker
                 _workflowClient,
                 Math.Max(15, Environment.ProcessorCount << 1),
                 workflowIdList);
-            int incompleteWorkflowCounter = 0;
+            var incompleteWorkflowCounter = 0;
             foreach (var workflowStatus in workflowStatusList)
             {
                 if (workflowStatus.Status.Value != WorkflowStatus.StatusEnum.COMPLETED)
