@@ -21,13 +21,25 @@ namespace Conductor.Client.Worker
             ILogger<WorkflowTaskExecutor> logger,
             IWorkflowTaskClient client,
             IWorkflowTask worker,
+            WorkflowTaskMonitor workflowTaskMonitor)
+        {
+            _logger = logger;
+            _taskClient = client;
+            _worker = worker;
+            _workerSettings = worker.WorkerSettings;
+            _workflowTaskMonitor = workflowTaskMonitor;
+        }
+
+        public WorkflowTaskExecutor(
+            ILogger<WorkflowTaskExecutor> logger,
+            IWorkflowTaskClient client,
+            IWorkflowTask worker,
             WorkflowTaskExecutorConfiguration workflowTaskConfiguration,
             WorkflowTaskMonitor workflowTaskMonitor)
         {
             _logger = logger;
             _taskClient = client;
             _worker = worker;
-            _workerSettings = workflowTaskConfiguration;
             _workflowTaskMonitor = workflowTaskMonitor;
         }
 
@@ -130,18 +142,28 @@ namespace Conductor.Client.Worker
                 var taskResult = _worker.Execute(task);
                 taskResult.WorkerId = _workerSettings.WorkerId;
                 UpdateTask(taskResult);
+                _logger.LogTrace(
+                    $"[{_workerSettings.WorkerId}] Done processing task for worker"
+                    + $", taskType: {_worker.TaskType}"
+                    + $", domain: {_workerSettings.Domain}"
+                    + $", taskId: {task.TaskId}"
+                    + $", workflowId: {task.WorkflowInstanceId}"
+                );
+            }
+            catch (Exception e)
+            {
+                _logger.LogDebug(
+                    $"[{_workerSettings.WorkerId}] Failed to process task for worker, reason: {e.Message}"
+                    + $", taskType: {_worker.TaskType}"
+                    + $", domain: {_workerSettings.Domain}"
+                    + $", taskId: {task.TaskId}"
+                    + $", workflowId: {task.WorkflowInstanceId}"
+                );
             }
             finally
             {
                 _workflowTaskMonitor.RunningWorkerDone();
             }
-            _logger.LogTrace(
-                $"[{_workerSettings.WorkerId}] Done processing task for worker"
-                + $", taskType: {_worker.TaskType}"
-                + $", domain: {_workerSettings.Domain}"
-                + $", taskId: {task.TaskId}"
-                + $", workflowId: {task.WorkflowInstanceId}"
-            );
         }
 
         private void UpdateTask(Models.TaskResult taskResult)

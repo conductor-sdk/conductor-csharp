@@ -1,13 +1,12 @@
 using Conductor.Api;
-using Conductor.Client;
 using Conductor.Executor;
 using Conductor.Client.Authentication;
 using System;
 using System.Diagnostics;
 
-namespace Tests.Util
+namespace Conductor.Client.Extensions
 {
-    public class ApiUtil
+    public class ApiExtensions
     {
         private const string ENV_ROOT_URI = "CONDUCTOR_SERVER_URL";
         private const string ENV_KEY_ID = "KEY";
@@ -15,7 +14,7 @@ namespace Tests.Util
 
         private static Configuration _configuration = null;
 
-        static ApiUtil()
+        static ApiExtensions()
         {
             _configuration = new Configuration()
             {
@@ -23,7 +22,8 @@ namespace Tests.Util
                 BasePath = GetEnvironmentVariable(ENV_ROOT_URI),
                 AuthenticationSettings = new OrkesAuthenticationSettings(
                     GetEnvironmentVariable(ENV_KEY_ID),
-                    GetEnvironmentVariable(ENV_SECRET))
+                    GetEnvironmentVariable(ENV_SECRET)
+                )
             };
         }
 

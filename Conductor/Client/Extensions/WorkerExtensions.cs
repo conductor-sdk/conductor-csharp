@@ -1,18 +1,17 @@
 using Conductor.Client.Worker;
 using Microsoft.Extensions.Hosting;
-using Tests.Worker;
+using Microsoft.Extensions.Logging;
 
-namespace Tests.Util
+namespace Conductor.Client.Extensions
 {
-    public class WorkerUtil
+    public class WorkerExtensions
     {
         private static IHost _host = null;
 
-        static WorkerUtil()
+        static WorkerExtensions()
         {
             _host = WorkflowTaskHost.CreateWorkerHost(
-                ApiUtil.GetConfiguration(),
-                new SimpleWorker()
+                ApiExtensions.GetConfiguration(), LogLevel.Trace
             );
         }
 

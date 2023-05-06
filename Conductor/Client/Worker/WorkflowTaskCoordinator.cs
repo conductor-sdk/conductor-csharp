@@ -1,6 +1,8 @@
 ﻿using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Conductor.Client.Worker
@@ -8,7 +10,6 @@ namespace Conductor.Client.Worker
     internal class WorkflowTaskCoordinator : IWorkflowTaskCoordinator
     {
         private readonly ILogger<WorkflowTaskCoordinator> _logger;
-
         private readonly ILogger<WorkflowTaskExecutor> _loggerWorkflowTaskExecutor;
         private readonly ILogger<WorkflowTaskMonitor> _loggerWorkflowTaskMonitor;
         private readonly HashSet<IWorkflowTaskExecutor> _workers;
@@ -26,6 +27,7 @@ namespace Conductor.Client.Worker
         public async Task Start()
         {
             _logger.LogDebug("Starting workers...");
+            DiscoverWorkers();
             var runningWorkers = new List<Task>();
             foreach (var worker in _workers)
             {
@@ -43,10 +45,38 @@ namespace Conductor.Client.Worker
                 _loggerWorkflowTaskExecutor,
                 _client,
                 worker,
-                worker.WorkerSettings,
                 workflowTaskMonitor
             );
             _workers.Add(workflowTaskExecutor);
+        }
+
+        private void DiscoverWorkers()
+        {
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                foreach (var type in assembly.GetTypes())
+                {
+                    if (type.GetCustomAttribute<WorkerTask>() == null)
+                    {
+                        continue;
+                    }
+                    foreach (var method in type.GetMethods())
+                    {
+                        var workerTask = method.GetCustomAttribute<WorkerTask>();
+                        if (workerTask == null)
+                        {
+                            continue;
+                        }
+                        var worker = Activator.CreateInstance(
+                            typeof(GenericWorker),
+                            workerTask.TaskType,
+                            workerTask.WorkerSettings,
+                            method
+                        );
+                        RegisterWorker((IWorkflowTask)worker);
+                    }
+                }
+            }
         }
     }
 }

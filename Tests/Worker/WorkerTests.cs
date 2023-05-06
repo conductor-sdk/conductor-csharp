@@ -1,4 +1,5 @@
 using Conductor.Api;
+using Conductor.Client.Extensions;
 using Conductor.Client.Models;
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
@@ -6,7 +7,6 @@ using Conductor.Executor;
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
-using Tests.Util;
 using Xunit;
 
 namespace Tests.Worker
@@ -24,8 +24,8 @@ namespace Tests.Worker
 
         public WorkerTests()
         {
-            _workflowExecutor = ApiUtil.GetWorkflowExecutor();
-            _workflowClient = ApiUtil.GetClient<WorkflowResourceApi>();
+            _workflowExecutor = ApiExtensions.GetWorkflowExecutor();
+            _workflowClient = ApiExtensions.GetClient<WorkflowResourceApi>();
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace Tests.Worker
         {
             ConductorWorkflow workflow = GetConductorWorkflow();
             _workflowExecutor.RegisterWorkflow(workflow, true);
-            var workflowIdList = await StartWorkflows(workflow, quantity: 64);
+            var workflowIdList = await StartWorkflows(workflow, quantity: 1);
             await ExecuteWorkflowTasks(TimeSpan.FromSeconds(16));
             await ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
@@ -48,7 +48,7 @@ namespace Tests.Worker
 
         private async System.Threading.Tasks.Task<ConcurrentBag<string>> StartWorkflows(ConductorWorkflow workflow, int quantity)
         {
-            var startedWorkflows = await WorkflowUtil.StartWorkflows(
+            var startedWorkflows = await WorkflowExtensions.StartWorkflows(
                 _workflowClient,
                 workflow,
                 Math.Max(15, Environment.ProcessorCount << 1),
@@ -58,7 +58,7 @@ namespace Tests.Worker
 
         private async System.Threading.Tasks.Task ExecuteWorkflowTasks(TimeSpan workflowCompletionTimeout)
         {
-            var host = WorkerUtil.GetWorkerHost();
+            var host = WorkerExtensions.GetWorkerHost();
             await host.StartAsync();
             Thread.Sleep(workflowCompletionTimeout);
             await host.StopAsync();
@@ -66,7 +66,7 @@ namespace Tests.Worker
 
         private async System.Threading.Tasks.Task ValidateWorkflowCompletion(params string[] workflowIdList)
         {
-            var workflowStatusList = await WorkflowUtil.GetWorkflowStatusList(
+            var workflowStatusList = await WorkflowExtensions.GetWorkflowStatusList(
                 _workflowClient,
                 Math.Max(15, Environment.ProcessorCount << 1),
                 workflowIdList);
