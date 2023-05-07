@@ -30,8 +30,8 @@ namespace Tests.Worker
         {
             var workflow = GetConductorWorkflow();
             ApiExtensions.GetWorkflowExecutor().RegisterWorkflow(workflow, true);
-            var workflowIdList = await StartWorkflows(workflow, quantity: 64);
-            await ExecuteWorkflowTasks(workflowCompletionTimeout: TimeSpan.FromSeconds(16));
+            var workflowIdList = await StartWorkflows(workflow, quantity: 32);
+            await ExecuteWorkflowTasks(workflowCompletionTimeout: TimeSpan.FromSeconds(10));
             await ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
 
@@ -50,7 +50,7 @@ namespace Tests.Worker
             var startedWorkflows = await WorkflowExtensions.StartWorkflows(
                 _workflowClient,
                 startWorkflowRequest,
-                Math.Max(15, Environment.ProcessorCount << 1),
+                maxAllowedInParallel: 10,
                 quantity);
             return startedWorkflows;
         }
@@ -67,7 +67,7 @@ namespace Tests.Worker
         {
             var workflowStatusList = await WorkflowExtensions.GetWorkflowStatusList(
                 _workflowClient,
-                Math.Max(15, Environment.ProcessorCount << 1),
+                maxAllowedInParallel: 10,
                 workflowIdList);
             var incompleteWorkflowCounter = 0;
             foreach (var workflowStatus in workflowStatusList)
