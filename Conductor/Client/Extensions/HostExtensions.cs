@@ -1,12 +1,29 @@
-using Conductor.Client.Extensions;
 using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
-namespace Conductor.Client.Worker
+namespace Conductor.Client.Extensions
 {
-    public static class WorkflowTaskHost
+    public class HostExtensions
     {
+        private static Dictionary<LogLevel, IHost> _hostByLogLevel;
+
+        static HostExtensions()
+        {
+            _hostByLogLevel = new Dictionary<LogLevel, IHost>();
+        }
+
+        public static IHost GetWorkerHost(LogLevel logLevel = LogLevel.Information)
+        {
+            if (!_hostByLogLevel.ContainsKey(logLevel))
+            {
+                var host = CreateWorkerHost(ApiExtensions.GetConfiguration(), logLevel);
+                _hostByLogLevel[logLevel] = host;
+            }
+            return _hostByLogLevel[logLevel];
+        }
+
         public static IHost CreateWorkerHost(Configuration configuration, LogLevel logLevel = LogLevel.Information)
         {
             return new HostBuilder()

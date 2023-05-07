@@ -57,7 +57,7 @@ namespace Tests.Worker
 
         private async System.Threading.Tasks.Task ExecuteWorkflowTasks(TimeSpan workflowCompletionTimeout)
         {
-            var host = WorkerExtensions.GetWorkerHost();
+            var host = HostExtensions.GetWorkerHost();
             await host.StartAsync();
             Thread.Sleep(workflowCompletionTimeout);
             await host.StopAsync();
