@@ -48,16 +48,16 @@ namespace Tests.Worker
             var startWorkflowRequest = workflow.GetStartWorkflowRequest();
             startWorkflowRequest.TaskToDomain = new Dictionary<string, string> { { TASK_NAME, TASK_DOMAIN } };
             var startedWorkflows = await WorkflowExtensions.StartWorkflows(
-                _workflowClient,
-                startWorkflowRequest,
+                workflowClient: _workflowClient,
+                startWorkflowRequest: startWorkflowRequest,
                 maxAllowedInParallel: 10,
-                quantity);
+                total: quantity);
             return startedWorkflows;
         }
 
         private async System.Threading.Tasks.Task ExecuteWorkflowTasks(TimeSpan workflowCompletionTimeout)
         {
-            var host = HostExtensions.GetWorkerHost();
+            var host = HostExtensions.GetWorkerHost(Microsoft.Extensions.Logging.LogLevel.Debug);
             await host.StartAsync();
             Thread.Sleep(workflowCompletionTimeout);
             await host.StopAsync();
@@ -66,9 +66,10 @@ namespace Tests.Worker
         private async System.Threading.Tasks.Task ValidateWorkflowCompletion(params string[] workflowIdList)
         {
             var workflowStatusList = await WorkflowExtensions.GetWorkflowStatusList(
-                _workflowClient,
+                workflowClient: _workflowClient,
                 maxAllowedInParallel: 10,
-                workflowIdList);
+                workflowIds: workflowIdList
+            );
             var incompleteWorkflowCounter = 0;
             foreach (var workflowStatus in workflowStatusList)
             {

@@ -1,6 +1,4 @@
 using Conductor.Api;
-using Conductor.Client;
-using Conductor.Definition;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System;
@@ -29,25 +27,26 @@ namespace Conductor.Client.Extensions
             var workflowStatusList = new ConcurrentBag<Models.WorkflowStatus>();
             for (int index = 0; index < workflowIds.Length; index += maxAllowedInParallel)
             {
-                await GetWorkflowStatusBatch(workflowClient, workflowStatusList, workflowIds, index, index + maxAllowedInParallel);
+                await GetWorkflowStatusBatch(workflowClient, workflowStatusList, index, index + maxAllowedInParallel, workflowIds);
             }
             Console.WriteLine($"Got ${workflowStatusList.Count} workflow statuses");
             return workflowStatusList;
         }
 
-        private static async Task GetWorkflowStatusBatch(WorkflowResourceApi workflowClient, ConcurrentBag<Models.WorkflowStatus> workflowStatusList, string[] workflowIds, int startIndex, int finishIndex)
+        private static async Task GetWorkflowStatusBatch(WorkflowResourceApi workflowClient, ConcurrentBag<Models.WorkflowStatus> workflowStatusList, int startIndex, int finishIndex, params string[] workflowIds)
         {
             var threads = new List<Task>();
-            for (int i = Math.Max(0, startIndex); i < Math.Min(workflowIds.Length, finishIndex); i += 1)
+            for (int index = Math.Max(0, startIndex); index < Math.Min(workflowIds.Length, finishIndex); index += 1)
             {
-                threads.Add(Task.Run(() => GetWorkflowStatus(workflowClient, workflowStatusList, workflowIds[i])));
+                var workflowId = workflowIds[index];
+                threads.Add(Task.Run(() => GetWorkflowStatus(workflowClient, workflowStatusList, workflowId)));
             }
             await Task.WhenAll(threads);
         }
 
         private static async Task StartWorkflowBatch(WorkflowResourceApi workflowClient, Models.StartWorkflowRequest startWorkflowRequest, int quantity, ConcurrentBag<string> workflowIds)
         {
-            List<Task> threads = new List<Task>();
+            var threads = new List<Task>();
             for (int counter = 0; counter < quantity; counter += 1)
             {
                 threads.Add(Task.Run(() => StartWorkflow(workflowClient, startWorkflowRequest, workflowIds)));
