@@ -3,9 +3,9 @@ using Conductor.Client.Extensions;
 using Conductor.Client.Models;
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
-using Conductor.Executor;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading;
 using Xunit;
 
@@ -15,16 +15,13 @@ namespace Tests.Worker
     {
         private const string WORKFLOW_NAME = "test-sdk-csharp-worker";
         private const int WORKFLOW_VERSION = 1;
-
         private const string TASK_NAME = "test-sdk-csharp-task";
-
-        private readonly WorkflowExecutor _workflowExecutor;
+        private const string TASK_DOMAIN = "taskDomain";
 
         private readonly WorkflowResourceApi _workflowClient;
 
         public WorkerTests()
         {
-            _workflowExecutor = ApiExtensions.GetWorkflowExecutor();
             _workflowClient = ApiExtensions.GetClient<WorkflowResourceApi>();
         }
 
@@ -32,9 +29,9 @@ namespace Tests.Worker
         public async System.Threading.Tasks.Task TestWorkflowAsyncExecution()
         {
             var workflow = GetConductorWorkflow();
-            _workflowExecutor.RegisterWorkflow(workflow, true);
+            ApiExtensions.GetWorkflowExecutor().RegisterWorkflow(workflow, true);
             var workflowIdList = await StartWorkflows(workflow, quantity: 64);
-            await ExecuteWorkflowTasks(TimeSpan.FromSeconds(16));
+            await ExecuteWorkflowTasks(workflowCompletionTimeout: TimeSpan.FromSeconds(16));
             await ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
 
@@ -48,9 +45,11 @@ namespace Tests.Worker
 
         private async System.Threading.Tasks.Task<ConcurrentBag<string>> StartWorkflows(ConductorWorkflow workflow, int quantity)
         {
+            var startWorkflowRequest = workflow.GetStartWorkflowRequest();
+            startWorkflowRequest.TaskToDomain = new Dictionary<string, string> { { TASK_NAME, TASK_DOMAIN } };
             var startedWorkflows = await WorkflowExtensions.StartWorkflows(
                 _workflowClient,
-                workflow,
+                startWorkflowRequest,
                 Math.Max(15, Environment.ProcessorCount << 1),
                 quantity);
             return startedWorkflows;

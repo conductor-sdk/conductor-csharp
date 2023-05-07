@@ -18,7 +18,7 @@ namespace Conductor.Client.Extensions
         {
             _configuration = new Configuration()
             {
-                Timeout = 7500,
+                Timeout = 30 * 1000,
                 BasePath = GetEnvironmentVariable(ENV_ROOT_URI),
                 AuthenticationSettings = new OrkesAuthenticationSettings(
                     GetEnvironmentVariable(ENV_KEY_ID),

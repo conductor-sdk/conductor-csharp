@@ -67,13 +67,18 @@ namespace Conductor.Client.Worker
                         {
                             continue;
                         }
-                        var worker = Activator.CreateInstance(
-                            typeof(GenericWorker),
+                        object workerInstance = null;
+                        if (!method.IsStatic)
+                        {
+                            workerInstance = Activator.CreateInstance(type);
+                        }
+                        var worker = new GenericWorker(
                             workerTask.TaskType,
                             workerTask.WorkerSettings,
-                            method
+                            method,
+                            workerInstance
                         );
-                        RegisterWorker((IWorkflowTask)worker);
+                        RegisterWorker(worker);
                     }
                 }
             }

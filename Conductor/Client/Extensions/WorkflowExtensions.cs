@@ -10,15 +10,15 @@ namespace Conductor.Client.Extensions
 {
     public class WorkflowExtensions
     {
-        private static int RETRY_ATTEMPT_LIMIT = 5;
+        private static int RETRY_ATTEMPT_LIMIT = 3;
 
-        public static async Task<ConcurrentBag<string>> StartWorkflows(WorkflowResourceApi workflowClient, ConductorWorkflow workflow, int maxAllowedInParallel, int total)
+        public static async Task<ConcurrentBag<string>> StartWorkflows(WorkflowResourceApi workflowClient, Models.StartWorkflowRequest startWorkflowRequest, int maxAllowedInParallel, int total)
         {
             var workflowIds = new ConcurrentBag<string>();
-            await StartWorkflowBatch(workflowClient, workflow, total % maxAllowedInParallel, workflowIds);
+            await StartWorkflowBatch(workflowClient, startWorkflowRequest, total % maxAllowedInParallel, workflowIds);
             for (int i = 1; i * maxAllowedInParallel <= total; i += 1)
             {
-                await StartWorkflowBatch(workflowClient, workflow, maxAllowedInParallel, workflowIds);
+                await StartWorkflowBatch(workflowClient, startWorkflowRequest, maxAllowedInParallel, workflowIds);
             }
             Console.WriteLine($"Started {workflowIds.Count} workflows");
             return workflowIds;
@@ -41,22 +41,17 @@ namespace Conductor.Client.Extensions
             for (int i = Math.Max(0, startIndex); i < Math.Min(workflowIds.Length, finishIndex); i += 1)
             {
                 int copy = i;
-                threads.Add(
-                    Task.Run(
-                        () => GetWorkflowStatus(workflowClient, workflowStatusList, workflowIds, copy)));
+                threads.Add(Task.Run(() => GetWorkflowStatus(workflowClient, workflowStatusList, workflowIds, copy)));
             }
             await Task.WhenAll(threads);
         }
 
-        private static async Task StartWorkflowBatch(WorkflowResourceApi workflowClient, ConductorWorkflow workflow, int quantity, ConcurrentBag<string> workflowIds)
+        private static async Task StartWorkflowBatch(WorkflowResourceApi workflowClient, Models.StartWorkflowRequest startWorkflowRequest, int quantity, ConcurrentBag<string> workflowIds)
         {
             List<Task> threads = new List<Task>();
-            var startWorkflowRequest = workflow.GetStartWorkflowRequest();
             for (int counter = 0; counter < quantity; counter += 1)
             {
-                threads.Add(
-                    Task.Run(
-                        () => StartWorkflow(workflowClient, startWorkflowRequest, workflowIds)));
+                threads.Add(Task.Run(() => StartWorkflow(workflowClient, startWorkflowRequest, workflowIds)));
             }
             await Task.WhenAll(threads);
         }
@@ -73,7 +68,7 @@ namespace Conductor.Client.Extensions
                 catch (ApiException e)
                 {
                     Console.WriteLine($"Failed to get workflow status, reason: {e}");
-                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1 << attempt));
                 }
             }
         }
@@ -90,7 +85,7 @@ namespace Conductor.Client.Extensions
                 catch (ApiException e)
                 {
                     Console.WriteLine($"Failed to start workflow, reason: {e}");
-                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1 << attempt));
                 }
             }
         }
