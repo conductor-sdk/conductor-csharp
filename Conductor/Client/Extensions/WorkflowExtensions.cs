@@ -40,8 +40,7 @@ namespace Conductor.Client.Extensions
             var threads = new List<Task>();
             for (int i = Math.Max(0, startIndex); i < Math.Min(workflowIds.Length, finishIndex); i += 1)
             {
-                int copy = i;
-                threads.Add(Task.Run(() => GetWorkflowStatus(workflowClient, workflowStatusList, workflowIds, copy)));
+                threads.Add(Task.Run(() => GetWorkflowStatus(workflowClient, workflowStatusList, workflowIds[i])));
             }
             await Task.WhenAll(threads);
         }
@@ -56,13 +55,13 @@ namespace Conductor.Client.Extensions
             await Task.WhenAll(threads);
         }
 
-        private static void GetWorkflowStatus(WorkflowResourceApi workflowClient, ConcurrentBag<Models.WorkflowStatus> workflowStatusList, string[] workflowIds, int index)
+        private static void GetWorkflowStatus(WorkflowResourceApi workflowClient, ConcurrentBag<Models.WorkflowStatus> workflowStatusList, string workflowId)
         {
             for (int attempt = 0; attempt < RETRY_ATTEMPT_LIMIT; attempt += 1)
             {
                 try
                 {
-                    workflowStatusList.Add(workflowClient.GetWorkflowStatusSummary(workflowIds[index]));
+                    workflowStatusList.Add(workflowClient.GetWorkflowStatusSummary(workflowId));
                     return;
                 }
                 catch (ApiException e)
