@@ -48,10 +48,11 @@ namespace Tests.Worker
             var startWorkflowRequest = workflow.GetStartWorkflowRequest();
             startWorkflowRequest.TaskToDomain = new Dictionary<string, string> { { TASK_NAME, TASK_DOMAIN } };
             var startedWorkflows = await WorkflowExtensions.StartWorkflows(
-                workflowClient: _workflowClient,
-                startWorkflowRequest: startWorkflowRequest,
+                _workflowClient,
+                startWorkflowRequest,
                 maxAllowedInParallel: 10,
-                total: quantity);
+                total: quantity
+            );
             return startedWorkflows;
         }
 
@@ -66,9 +67,9 @@ namespace Tests.Worker
         private async System.Threading.Tasks.Task ValidateWorkflowCompletion(params string[] workflowIdList)
         {
             var workflowStatusList = await WorkflowExtensions.GetWorkflowStatusList(
-                workflowClient: _workflowClient,
+                _workflowClient,
                 maxAllowedInParallel: 10,
-                workflowIds: workflowIdList
+                workflowIdList
             );
             var incompleteWorkflowCounter = 0;
             foreach (var workflowStatus in workflowStatusList)
