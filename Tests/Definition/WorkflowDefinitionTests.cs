@@ -1,9 +1,9 @@
+using Conductor.Client.Extensions;
 using Conductor.Client.Models;
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Conductor.Executor;
 using System;
-using Tests.Util;
 using Xunit;
 
 namespace Tests.Definition
@@ -21,7 +21,7 @@ namespace Tests.Definition
 
         public WorkflowDefTests()
         {
-            _workflowExecutor = ApiUtil.GetWorkflowExecutor();
+            _workflowExecutor = ApiExtensions.GetWorkflowExecutor();
         }
 
         [Fact]
