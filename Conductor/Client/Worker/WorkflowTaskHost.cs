@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace Conductor.Client.Extensions
 {
-    public class HostExtensions
+    public class WorkflowTaskHost
     {
         private static Dictionary<LogLevel, IHost> _hostByLogLevel;
 
-        static HostExtensions()
+        static WorkflowTaskHost()
         {
             _hostByLogLevel = new Dictionary<LogLevel, IHost>();
         }
@@ -42,7 +42,7 @@ namespace Conductor.Client.Extensions
                 ).Build();
         }
 
-        public static IHost CreateWorkerHost<T>(Configuration configuration, params T[] workers) where T : IWorkflowTask
+        public static IHost CreateWorkerHost(Configuration configuration, LogLevel logLevel = LogLevel.Information, params IWorkflowTask[] workers)
         {
             return new HostBuilder()
                 .ConfigureServices(
@@ -58,7 +58,7 @@ namespace Conductor.Client.Extensions
                 ).ConfigureLogging(
                     logging =>
                         {
-                            logging.SetMinimumLevel(LogLevel.Debug);
+                            logging.SetMinimumLevel(logLevel);
                             logging.AddConsole();
                         }
                 ).Build();
