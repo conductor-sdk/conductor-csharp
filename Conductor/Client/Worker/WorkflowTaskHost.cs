@@ -7,42 +7,22 @@ namespace Conductor.Client.Extensions
 {
     public class WorkflowTaskHost
     {
-        private static Dictionary<LogLevel, IHost> _hostByLogLevel;
-
-        static WorkflowTaskHost()
+        public static IHost CreateWorkerHost(LogLevel logLevel = LogLevel.Information)
         {
-            _hostByLogLevel = new Dictionary<LogLevel, IHost>();
-        }
-
-        public static IHost GetWorkerHost(LogLevel logLevel = LogLevel.Information)
-        {
-            if (!_hostByLogLevel.ContainsKey(logLevel))
-            {
-                var host = CreateWorkerHost(ApiExtensions.GetConfiguration(), logLevel);
-                _hostByLogLevel[logLevel] = host;
-            }
-            return _hostByLogLevel[logLevel];
+            return CreateWorkerHost(ApiExtensions.GetConfiguration(), logLevel);
         }
 
         public static IHost CreateWorkerHost(Configuration configuration, LogLevel logLevel = LogLevel.Information)
         {
-            return new HostBuilder()
-                .ConfigureServices(
-                    (ctx, services) =>
-                        {
-                            services.AddConductorWorker(configuration);
-                            services.WithHostedService();
-                        }
-                ).ConfigureLogging(
-                    logging =>
-                        {
-                            logging.SetMinimumLevel(logLevel);
-                            logging.AddConsole();
-                        }
-                ).Build();
+            return CreateWorkerHost(configuration, logLevel);
         }
 
-        public static IHost CreateWorkerHost(Configuration configuration, LogLevel logLevel = LogLevel.Information, params IWorkflowTask[] workers)
+        public static IHost CreateWorkerHost<T>(LogLevel logLevel = LogLevel.Information, params T[] workers) where T : IWorkflowTask
+        {
+            return CreateWorkerHost(ApiExtensions.GetConfiguration(), logLevel, workers);
+        }
+
+        public static IHost CreateWorkerHost<T>(Configuration configuration, LogLevel logLevel = LogLevel.Information, params T[] workers) where T : IWorkflowTask
         {
             return new HostBuilder()
                 .ConfigureServices(
