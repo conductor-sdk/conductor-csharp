@@ -1,5 +1,4 @@
 ﻿using Conductor.Client.Models;
-using System.Threading;
 using Conductor.Client.Worker;
 
 namespace Conductor.Client.Interfaces
