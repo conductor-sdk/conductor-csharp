@@ -17,7 +17,7 @@ namespace Tests.Worker
         }
 
         // Polls for 5 task every 200ms
-        [WorkerTask("test-sdk-csharp-task", 5, "taskDomain", 200, "workerId")]
+        [WorkerTask("test-sdk-csharp-task", 5, "taskDomain", 100, "workerId")]
         public static TaskResult SimpleWorker(Task task)
         {
             return task.Completed();
@@ -27,8 +27,8 @@ namespace Tests.Worker
         [WorkerTask("test-sdk-csharp-task", 12, "taskDomain", 420, "workerId")]
         public TaskResult LazyWorker(Task task)
         {
-            var timeSpan = System.TimeSpan.FromSeconds(_random.Next(2, 6));
-            Console.WriteLine($"Lazy worker is going to rest for {timeSpan.Seconds} seconds");
+            var timeSpan = System.TimeSpan.FromMilliseconds(_random.Next(128, 2048));
+            Console.WriteLine($"Lazy worker is going to rest for {timeSpan.Milliseconds} ms");
             System.Threading.Tasks.Task.Delay(timeSpan).RunSynchronously();
             return task.Completed();
         }
