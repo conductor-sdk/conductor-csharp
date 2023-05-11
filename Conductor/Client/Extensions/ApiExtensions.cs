@@ -12,11 +12,11 @@ namespace Conductor.Client.Extensions
         private const string ENV_KEY_ID = "KEY";
         private const string ENV_SECRET = "SECRET";
 
-        private static Configuration _configuration = null;
+        public static Configuration Configuration { get; set; }
 
         static ApiExtensions()
         {
-            _configuration = new Configuration()
+            Configuration = new Configuration
             {
                 Timeout = 30 * 1000,
                 BasePath = GetEnvironmentVariable(ENV_ROOT_URI),
@@ -37,12 +37,19 @@ namespace Conductor.Client.Extensions
 
         public static T GetClient<T>() where T : IApiAccessor, new()
         {
-            return _configuration.GetClient<T>();
+            return Configuration.GetClient<T>();
         }
 
         public static Configuration GetConfiguration()
         {
-            return _configuration;
+            return Configuration;
+        }
+
+        public static string GetWorkflowExecutionURL(string workflowId)
+        {
+            var basePath = Configuration.BasePath;
+            var prefix = basePath.Remove(basePath.Length - 4);
+            return $"{prefix}/execution/{workflowId}";
         }
 
         private static string GetEnvironmentVariable(string variable)
