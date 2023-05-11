@@ -30,8 +30,8 @@ namespace Tests.Worker
         {
             var workflow = GetConductorWorkflow();
             ApiExtensions.GetWorkflowExecutor().RegisterWorkflow(workflow, true);
-            var workflowIdList = await StartWorkflows(workflow, quantity: 32);
-            await ExecuteWorkflowTasks(workflowCompletionTimeout: TimeSpan.FromSeconds(10));
+            var workflowIdList = await StartWorkflows(workflow, quantity: 35);
+            await ExecuteWorkflowTasks(workflowCompletionTimeout: TimeSpan.FromSeconds(20));
             await ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
 
@@ -58,7 +58,8 @@ namespace Tests.Worker
 
         private async System.Threading.Tasks.Task ExecuteWorkflowTasks(TimeSpan workflowCompletionTimeout)
         {
-            var host = WorkflowTaskHost.CreateWorkerHost(Microsoft.Extensions.Logging.LogLevel.Debug, new ClassWorker());
+            var host = WorkflowTaskHost.CreateWorkerHost(Microsoft.Extensions.Logging.LogLevel.Debug);
+            host = WorkflowTaskHost.CreateWorkerHost(Microsoft.Extensions.Logging.LogLevel.Debug, new ClassWorker());
             await host.StartAsync();
             Thread.Sleep(workflowCompletionTimeout);
             await host.StopAsync();
