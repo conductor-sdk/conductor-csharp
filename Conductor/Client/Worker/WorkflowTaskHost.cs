@@ -1,7 +1,6 @@
 using Conductor.Client.Interfaces;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 
 namespace Conductor.Client.Extensions
 {
@@ -14,7 +13,7 @@ namespace Conductor.Client.Extensions
 
         public static IHost CreateWorkerHost(Configuration configuration, LogLevel logLevel = LogLevel.Information)
         {
-            return CreateWorkerHost(configuration, logLevel);
+            return CreateWorkerHost(configuration, logLevel, workers: new IWorkflowTask[0]);
         }
 
         public static IHost CreateWorkerHost<T>(LogLevel logLevel = LogLevel.Information, params T[] workers) where T : IWorkflowTask
