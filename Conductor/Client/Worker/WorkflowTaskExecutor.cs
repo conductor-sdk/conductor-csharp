@@ -1,4 +1,5 @@
 ﻿using Conductor.Client.Interfaces;
+using Conductor.Client.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -140,8 +141,6 @@ namespace Conductor.Client.Worker
             try
             {
                 var taskResult = _worker.Execute(task);
-                taskResult.WorkerId = _workerSettings.WorkerId;
-                UpdateTask(taskResult);
                 _logger.LogTrace(
                     $"[{_workerSettings.WorkerId}] Done processing task for worker"
                     + $", taskType: {_worker.TaskType}"
@@ -149,6 +148,7 @@ namespace Conductor.Client.Worker
                     + $", taskId: {task.TaskId}"
                     + $", workflowId: {task.WorkflowInstanceId}"
                 );
+                UpdateTask(taskResult);
             }
             catch (Exception e)
             {
@@ -159,6 +159,8 @@ namespace Conductor.Client.Worker
                     + $", taskId: {task.TaskId}"
                     + $", workflowId: {task.WorkflowInstanceId}"
                 );
+                var taskResult = task.Failed(e.Message);
+                UpdateTask(taskResult);
             }
             finally
             {
@@ -168,6 +170,7 @@ namespace Conductor.Client.Worker
 
         private void UpdateTask(Models.TaskResult taskResult)
         {
+            taskResult.WorkerId = taskResult.WorkerId ?? _workerSettings.WorkerId;
             for (var attemptCounter = 0; attemptCounter < UPDATE_TASK_RETRY_COUNT_LIMIT; attemptCounter += 1)
             {
                 try
