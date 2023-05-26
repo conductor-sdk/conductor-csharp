@@ -1704,14 +1704,103 @@ namespace Conductor.Api
                 (string)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
-        // public ExternalStorageLocation GetExternalStorageLocation(string path, string operation, string payloadType)
-        // {
-        //     throw new NotImplementedException();
-        // }
+        /// <summary>
+        /// Update a task By Ref Name synchronously 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="taskRefName"></param>
+        /// <param name="status"></param>
+        /// <param name="workerid"> (optional)</param>
+        /// <returns>Workflow</returns>
+        public Workflow UpdateTaskSync(Dictionary<string, Object> body, string workflowId, string taskRefName, string status, string workerid = null)
+        {
+            ApiResponse<Workflow> localVarResponse = UpdateTaskSyncWithHttpInfo(body, workflowId, taskRefName, status, workerid);
+            return localVarResponse.Data;
+        }
 
-        // public ApiResponse<ExternalStorageLocation> GetExternalStorageLocationWithHttpInfo(string path, string operation, string payloadType)
-        // {
-        //     throw new NotImplementedException();
-        // }
+        /// <summary>
+        /// Update a task By Ref Name synchronously 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="taskRefName"></param>
+        /// <param name="status"></param>
+        /// <param name="workerid"> (optional)</param>
+        /// <returns>ApiResponse of Workflow</returns>
+        public ApiResponse<Workflow> UpdateTaskSyncWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskRefName, string status, string workerid = null)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling TaskResourceApi->UpdateTaskSync");
+            // verify the required parameter 'workflowId' is set
+            if (workflowId == null)
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling TaskResourceApi->UpdateTaskSync");
+            // verify the required parameter 'taskRefName' is set
+            if (taskRefName == null)
+                throw new ApiException(400, "Missing required parameter 'taskRefName' when calling TaskResourceApi->UpdateTaskSync");
+            // verify the required parameter 'status' is set
+            if (status == null)
+                throw new ApiException(400, "Missing required parameter 'status' when calling TaskResourceApi->UpdateTaskSync");
+
+            var localVarPath = "/tasks/{workflowId}/{taskRefName}/{status}/sync";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (workflowId != null) localVarPathParams.Add("workflowId", this.Configuration.ApiClient.ParameterToString(workflowId)); // path parameter
+            if (taskRefName != null) localVarPathParams.Add("taskRefName", this.Configuration.ApiClient.ParameterToString(taskRefName)); // path parameter
+            if (status != null) localVarPathParams.Add("status", this.Configuration.ApiClient.ParameterToString(status)); // path parameter
+            if (workerid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "workerid", workerid)); // query parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateTaskSync", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Workflow>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Workflow)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Workflow)));
+        }
     }
 }
