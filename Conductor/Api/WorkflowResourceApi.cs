@@ -316,6 +316,32 @@ namespace Conductor.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PauseWorkflowWithHttpInfo(string workflowId);
         /// <summary>
+        /// Jump workflow execution to given task
+        /// </summary>
+        /// <remarks>
+        /// Jump workflow execution to given task.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="input"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="taskReferenceName"> (optional)</param>
+        /// <returns></returns>
+        void JumpToTask(string workflowId, Dictionary<string, Object> input, string taskReferenceName = null);
+
+        /// <summary>
+        /// Jump workflow execution to given task
+        /// </summary>
+        /// <remarks>
+        /// Jump workflow execution to given task.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="taskReferenceName"> (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> JumpToTaskWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskReferenceName = null);
+
+        /// <summary>
         /// Reruns the workflow from a specific task
         /// </summary>
         /// <remarks>
@@ -1718,6 +1744,94 @@ namespace Conductor.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 null);
         }
+
+
+        /// <summary>
+        /// Jump workflow execution to given task Jump workflow execution to given task.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="input"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="taskReferenceName"> (optional)</param>
+        /// <returns></returns>
+        public void JumpToTask(string workflowId, Dictionary<string, Object> input, string taskReferenceName = null)
+        {
+            JumpToTaskWithHttpInfo(input, workflowId, taskReferenceName);
+        }
+
+
+        /// <summary>
+        /// Jump workflow execution to given task Jump workflow execution to given task.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="taskReferenceName"> (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> JumpToTaskWithHttpInfo(Dictionary<string, Object> body, string workflowId, string taskReferenceName = null)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'input' when calling WorkflowResourceApi->JumpToTask");
+            // verify the required parameter 'workflowId' is set
+            if (workflowId == null)
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->JumpToTask");
+
+            var localVarPath = "/workflow/{workflowId}/jump/{taskReferenceName}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (workflowId != null) localVarPathParams.Add("workflowId", this.Configuration.ApiClient.ParameterToString(workflowId)); // path parameter
+            if (taskReferenceName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "taskReferenceName", taskReferenceName)); // query parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("JumpToTask", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
 
         /// <summary>
         /// Reruns the workflow from a specific task 
