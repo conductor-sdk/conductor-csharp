@@ -14,7 +14,7 @@ jobs:
         run: >
           DOCKER_BUILDKIT=1 docker build
           --target=publish_release
-          --build-arg SDK_VERSION=${{ github.ref_name }}
+          --build-arg SDK_VERSION=${{ github.event.release.tag_name }}
           --build-arg NUGET_SRC=${{ secrets.NUGET_SRC }}
           --build-arg NUGET_API_KEY=${{ secrets.NUGET_API_KEY }}
           --progress=plain
