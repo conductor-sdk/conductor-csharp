@@ -1,4 +1,4 @@
-# Netflix Conductor C# SDK
+# Conductor OSS C# SDK
 
 The conductor-csharp repository provides the client SDKs to build task workers in C#.
 
