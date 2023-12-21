@@ -3,6 +3,8 @@ using Conductor.Client.Interfaces;
 using Conductor.Client.Models;
 using Conductor.Client.Worker;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Tests.Worker
 {
@@ -18,14 +20,14 @@ namespace Tests.Worker
 
         // Polls for 5 task every 200ms
         [WorkerTask("test-sdk-csharp-task", 5, "taskDomain", 200, "workerId")]
-        public static TaskResult SimpleWorker(Task task)
+        public static TaskResult SimpleWorker(Conductor.Client.Models.Task task)
         {
             return task.Completed();
         }
 
         // Polls for 12 tasks every 420ms
         [WorkerTask("test-sdk-csharp-task", 12, "taskDomain", 420, "workerId")]
-        public TaskResult LazyWorker(Task task)
+        public TaskResult LazyWorker(Conductor.Client.Models.Task task)
         {
             var timeSpan = System.TimeSpan.FromMilliseconds(_random.Next(128, 2048));
             Console.WriteLine($"Lazy worker is going to rest for {timeSpan.Milliseconds} ms");
@@ -46,9 +48,14 @@ namespace Tests.Worker
             WorkerSettings = new WorkflowTaskExecutorConfiguration();
         }
 
-        public TaskResult Execute(Task task)
+        public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
         {
-            throw new System.Exception("random exception");
+            if (token.IsCancellationRequested)
+            {
+                throw new Exception("Token request Cancelled");
+            }
+
+            throw new Exception("random exception");
         }
     }
 }

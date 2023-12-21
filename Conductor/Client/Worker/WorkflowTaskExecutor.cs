@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Conductor.Client.Worker
 {
@@ -44,9 +45,9 @@ namespace Conductor.Client.Worker
             _workflowTaskMonitor = workflowTaskMonitor;
         }
 
-        public System.Threading.Tasks.Task Start()
+        public Task Start()
         {
-            var thread = System.Threading.Tasks.Task.Run(() => Work4Ever());
+            var thread = Task.Run(() => Work4Ever());
             _logger.LogInformation(
                 $"[{_workerSettings.WorkerId}] Started worker"
                 + $", taskName: {_worker.TaskType}"
@@ -78,7 +79,7 @@ namespace Conductor.Client.Worker
             }
         }
 
-        private void WorkOnce()
+        private async void WorkOnce()
         {
             var tasks = PollTasks();
             if (tasks.Count == 0)
@@ -86,7 +87,18 @@ namespace Conductor.Client.Worker
                 Sleep(_workerSettings.PollInterval);
                 return;
             }
-            ProcessTasks(tasks);
+            var uniqueBatchId = Guid.NewGuid();
+            _logger.LogTrace(
+                  $"[{_workerSettings.WorkerId}] Processing tasks batch"
+                  + $", Task batch unique Id: {uniqueBatchId}"
+                  );
+
+            await Task.Run(() => ProcessTasks(tasks));
+
+            _logger.LogTrace(
+                  $"[{_workerSettings.WorkerId}] Completed tasks batch"
+                  + $", Task batch unique Id: {uniqueBatchId}"
+                  );
         }
 
         private List<Models.Task> PollTasks()
@@ -116,8 +128,9 @@ namespace Conductor.Client.Worker
             return tasks;
         }
 
-        private void ProcessTasks(List<Models.Task> tasks)
+        private async void ProcessTasks(List<Models.Task> tasks)
         {
+            List<Task> threads = new List<Task>();
             if (tasks == null || tasks.Count == 0)
             {
                 return;
@@ -125,46 +138,57 @@ namespace Conductor.Client.Worker
             foreach (var task in tasks)
             {
                 _workflowTaskMonitor.IncrementRunningWorker();
-                System.Threading.Tasks.Task.Run(() => ProcessTask(task));
+                threads.Add(Task.Run(() => ProcessTask(task)));
             }
+            await Task.WhenAll(threads);
         }
 
-        private void ProcessTask(Models.Task task)
+        private async void ProcessTask(Models.Task task)
         {
-            _logger.LogTrace(
-                $"[{_workerSettings.WorkerId}] Processing task for worker"
-                + $", taskType: {_worker.TaskType}"
-                + $", domain: {_workerSettings.Domain}"
-                + $", taskId: {task.TaskId}"
-                + $", workflowId: {task.WorkflowInstanceId}"
-            );
-            try
+            using (var cancelToken = new CancellationTokenSource())
             {
-                var taskResult = _worker.Execute(task);
+
                 _logger.LogTrace(
-                    $"[{_workerSettings.WorkerId}] Done processing task for worker"
+                    $"[{_workerSettings.WorkerId}] Processing task for worker"
                     + $", taskType: {_worker.TaskType}"
                     + $", domain: {_workerSettings.Domain}"
                     + $", taskId: {task.TaskId}"
                     + $", workflowId: {task.WorkflowInstanceId}"
+                    + $", CancelToken: {cancelToken.Token}"
                 );
-                UpdateTask(taskResult);
-            }
-            catch (Exception e)
-            {
-                _logger.LogDebug(
-                    $"[{_workerSettings.WorkerId}] Failed to process task for worker, reason: {e.Message}"
-                    + $", taskType: {_worker.TaskType}"
-                    + $", domain: {_workerSettings.Domain}"
-                    + $", taskId: {task.TaskId}"
-                    + $", workflowId: {task.WorkflowInstanceId}"
-                );
-                var taskResult = task.Failed(e.Message);
-                UpdateTask(taskResult);
-            }
-            finally
-            {
-                _workflowTaskMonitor.RunningWorkerDone();
+
+                try
+                {
+                    var taskResult = await _worker.Execute(task, cancelToken.Token);
+                    _logger.LogTrace(
+                        $"[{_workerSettings.WorkerId}] Done processing task for worker"
+                        + $", taskType: {_worker.TaskType}"
+                        + $", domain: {_workerSettings.Domain}"
+                        + $", taskId: {task.TaskId}"
+                        + $", workflowId: {task.WorkflowInstanceId}"
+                        + $", CancelToken: {cancelToken.Token}"
+                    );
+                    UpdateTask(taskResult);
+                }
+                catch (Exception e)
+                {
+                    _logger.LogDebug(
+                        $"[{_workerSettings.WorkerId}] Failed to process task for worker, reason: {e.Message}"
+                        + $", taskType: {_worker.TaskType}"
+                        + $", domain: {_workerSettings.Domain}"
+                        + $", taskId: {task.TaskId}"
+                        + $", workflowId: {task.WorkflowInstanceId}"
+                        + $", CancelToken: {cancelToken.Token}"
+                    );
+                    var taskResult = task.Failed(e.Message);
+                    UpdateTask(taskResult);
+
+                    cancelToken.Cancel();
+                }
+                finally
+                {
+                    _workflowTaskMonitor.RunningWorkerDone();
+                }
             }
         }
 

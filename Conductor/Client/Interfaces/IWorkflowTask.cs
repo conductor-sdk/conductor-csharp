@@ -1,5 +1,7 @@
 ﻿using Conductor.Client.Models;
 using Conductor.Client.Worker;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Conductor.Client.Interfaces
 {
@@ -7,6 +9,6 @@ namespace Conductor.Client.Interfaces
     {
         string TaskType { get; }
         WorkflowTaskExecutorConfiguration WorkerSettings { get; }
-        TaskResult Execute(Task task);
+        Task<TaskResult> Execute(Models.Task task, CancellationToken token);
     }
 }

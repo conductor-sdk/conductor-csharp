@@ -1,6 +1,8 @@
 using Conductor.Client.Interfaces;
 using Conductor.Client.Models;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Conductor.Client.Worker
 {
@@ -20,9 +22,13 @@ namespace Conductor.Client.Worker
             _workerInstance = workerInstance;
         }
 
-        public TaskResult Execute(Task task)
+        public async Task<TaskResult> Execute(Models.Task task, CancellationToken token)
         {
-            var taskResult = _executeTaskMethod.Invoke(_workerInstance, new object[] { task });
+
+            if (token.IsCancellationRequested)
+                return new TaskResult() { Status = TaskResult.StatusEnum.FAILEDWITHTERMINALERROR, ReasonForIncompletion = "Token Requested Cancel" };
+
+            var taskResult = await System.Threading.Tasks.Task.Run(() => _executeTaskMethod.Invoke(_workerInstance, new object[] { task }));
             return (TaskResult)taskResult;
         }
     }
