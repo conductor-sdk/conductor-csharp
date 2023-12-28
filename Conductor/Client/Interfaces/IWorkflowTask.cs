@@ -9,6 +9,7 @@ namespace Conductor.Client.Interfaces
     {
         string TaskType { get; }
         WorkflowTaskExecutorConfiguration WorkerSettings { get; }
-        Task<TaskResult> Execute(Models.Task task, CancellationToken token);
+        Task<TaskResult> Execute(Models.Task task, CancellationToken token = default);
+        TaskResult Execute(Models.Task task);
     }
 }

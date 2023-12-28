@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
+using Conductor.Client.Models;
 
 namespace Conductor.Client.Worker
 {
@@ -45,9 +45,13 @@ namespace Conductor.Client.Worker
             _workflowTaskMonitor = workflowTaskMonitor;
         }
 
-        public Task Start()
+        public System.Threading.Tasks.Task Start(CancellationToken token)
         {
-            var thread = Task.Run(() => Work4Ever());
+
+            if (token != CancellationToken.None)
+                token.ThrowIfCancellationRequested();
+
+            var thread = System.Threading.Tasks.Task.Run(() => Work4Ever(token));
             _logger.LogInformation(
                 $"[{_workerSettings.WorkerId}] Started worker"
                 + $", taskName: {_worker.TaskType}"
@@ -55,16 +59,24 @@ namespace Conductor.Client.Worker
                 + $", pollInterval: {_workerSettings.PollInterval}"
                 + $", batchSize: {_workerSettings.BatchSize}"
             );
+
+            if (token != CancellationToken.None)
+                token.ThrowIfCancellationRequested();
+
             return thread;
         }
 
-        private void Work4Ever()
+        private void Work4Ever(CancellationToken token)
         {
+
             while (true)
             {
                 try
                 {
-                    WorkOnce();
+                    if (token != CancellationToken.None)
+                        token.ThrowIfCancellationRequested();
+
+                    WorkOnce(token);
                 }
                 catch (Exception e)
                 {
@@ -79,8 +91,11 @@ namespace Conductor.Client.Worker
             }
         }
 
-        private async void WorkOnce()
+        private async void WorkOnce(CancellationToken token)
         {
+            if (token != CancellationToken.None)
+                token.ThrowIfCancellationRequested();
+
             var tasks = PollTasks();
             if (tasks.Count == 0)
             {
@@ -93,7 +108,7 @@ namespace Conductor.Client.Worker
                   + $", Task batch unique Id: {uniqueBatchId}"
                   );
 
-            await Task.Run(() => ProcessTasks(tasks));
+            await System.Threading.Tasks.Task.Run(() => ProcessTasks(tasks, token));
 
             _logger.LogTrace(
                   $"[{_workerSettings.WorkerId}] Completed tasks batch"
@@ -128,67 +143,76 @@ namespace Conductor.Client.Worker
             return tasks;
         }
 
-        private async void ProcessTasks(List<Models.Task> tasks)
+        private async void ProcessTasks(List<Models.Task> tasks, CancellationToken token)
         {
-            List<Task> threads = new List<Task>();
+
+            List<System.Threading.Tasks.Task> threads = new List<System.Threading.Tasks.Task>();
             if (tasks == null || tasks.Count == 0)
             {
                 return;
             }
             foreach (var task in tasks)
             {
+                if (token != CancellationToken.None)
+                    token.ThrowIfCancellationRequested();
+
                 _workflowTaskMonitor.IncrementRunningWorker();
-                threads.Add(Task.Run(() => ProcessTask(task)));
+                threads.Add(System.Threading.Tasks.Task.Run(() => ProcessTask(task, token)));
             }
-            await Task.WhenAll(threads);
+            await System.Threading.Tasks.Task.WhenAll(threads);
         }
 
-        private async void ProcessTask(Models.Task task)
+        private async void ProcessTask(Models.Task task, CancellationToken token)
         {
-            using (var cancelToken = new CancellationTokenSource())
-            {
+            if (token != CancellationToken.None)
+                token.ThrowIfCancellationRequested();
 
+            _logger.LogTrace(
+                $"[{_workerSettings.WorkerId}] Processing task for worker"
+                + $", taskType: {_worker.TaskType}"
+                + $", domain: {_workerSettings.Domain}"
+                + $", taskId: {task.TaskId}"
+                + $", workflowId: {task.WorkflowInstanceId}"
+                + $", CancelToken: {token}"
+            );
+
+            try
+            {
+                TaskResult taskResult = new TaskResult(taskId: task.TaskId, workflowInstanceId: task.WorkflowInstanceId);
+
+                if (token == CancellationToken.None)
+                    taskResult = _worker.Execute(task);
+                else
+                    taskResult = await _worker.Execute(task, token);
                 _logger.LogTrace(
-                    $"[{_workerSettings.WorkerId}] Processing task for worker"
+                   $"[{_workerSettings.WorkerId}] Done processing task for worker"
+                   + $", taskType: {_worker.TaskType}"
+                   + $", domain: {_workerSettings.Domain}"
+                   + $", taskId: {task.TaskId}"
+                   + $", workflowId: {task.WorkflowInstanceId}"
+                   + $", CancelToken: {token}"
+               );
+                UpdateTask(taskResult);
+            }
+            catch (Exception e)
+            {
+                _logger.LogDebug(
+                    $"[{_workerSettings.WorkerId}] Failed to process task for worker, reason: {e.Message}"
                     + $", taskType: {_worker.TaskType}"
                     + $", domain: {_workerSettings.Domain}"
                     + $", taskId: {task.TaskId}"
                     + $", workflowId: {task.WorkflowInstanceId}"
-                    + $", CancelToken: {cancelToken.Token}"
+                    + $", CancelToken: {token}"
                 );
+                var taskResult = task.Failed(e.Message);
+                UpdateTask(taskResult);
 
-                try
-                {
-                    var taskResult = await _worker.Execute(task, cancelToken.Token);
-                    _logger.LogTrace(
-                        $"[{_workerSettings.WorkerId}] Done processing task for worker"
-                        + $", taskType: {_worker.TaskType}"
-                        + $", domain: {_workerSettings.Domain}"
-                        + $", taskId: {task.TaskId}"
-                        + $", workflowId: {task.WorkflowInstanceId}"
-                        + $", CancelToken: {cancelToken.Token}"
-                    );
-                    UpdateTask(taskResult);
-                }
-                catch (Exception e)
-                {
-                    _logger.LogDebug(
-                        $"[{_workerSettings.WorkerId}] Failed to process task for worker, reason: {e.Message}"
-                        + $", taskType: {_worker.TaskType}"
-                        + $", domain: {_workerSettings.Domain}"
-                        + $", taskId: {task.TaskId}"
-                        + $", workflowId: {task.WorkflowInstanceId}"
-                        + $", CancelToken: {cancelToken.Token}"
-                    );
-                    var taskResult = task.Failed(e.Message);
-                    UpdateTask(taskResult);
-
-                    cancelToken.Cancel();
-                }
-                finally
-                {
-                    _workflowTaskMonitor.RunningWorkerDone();
-                }
+            }
+            finally
+            {
+                if (token == CancellationToken.None)
+                    token.ThrowIfCancellationRequested();
+                _workflowTaskMonitor.RunningWorkerDone();
             }
         }
 
@@ -232,6 +256,11 @@ namespace Conductor.Client.Worker
         {
             _logger.LogDebug($"[{_workerSettings.WorkerId}] Sleeping for {timeSpan.Milliseconds}ms");
             Thread.Sleep(timeSpan);
+        }
+
+        private void LogInfo()
+        {
+
         }
     }
 }

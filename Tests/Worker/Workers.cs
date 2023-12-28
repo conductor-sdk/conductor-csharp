@@ -50,12 +50,15 @@ namespace Tests.Worker
 
         public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
         {
-            if (token.IsCancellationRequested)
-            {
+            if (token != CancellationToken.None && token.IsCancellationRequested)
                 throw new Exception("Token request Cancelled");
-            }
 
             throw new Exception("random exception");
+        }
+
+        public TaskResult Execute(Conductor.Client.Models.Task task)
+        {
+            throw new NotImplementedException();
         }
     }
 }

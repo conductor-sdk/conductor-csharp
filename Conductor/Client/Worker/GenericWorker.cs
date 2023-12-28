@@ -25,11 +25,16 @@ namespace Conductor.Client.Worker
         public async Task<TaskResult> Execute(Models.Task task, CancellationToken token)
         {
 
-            if (token.IsCancellationRequested)
-                return new TaskResult() { Status = TaskResult.StatusEnum.FAILEDWITHTERMINALERROR, ReasonForIncompletion = "Token Requested Cancel" };
+            if (token != CancellationToken.None && token.IsCancellationRequested)
+                return new TaskResult() { Status = TaskResult.StatusEnum.FAILED, ReasonForIncompletion = "Token Requested Cancel" };
 
             var taskResult = await System.Threading.Tasks.Task.Run(() => _executeTaskMethod.Invoke(_workerInstance, new object[] { task }));
             return (TaskResult)taskResult;
+        }
+
+        public TaskResult Execute(Models.Task task)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

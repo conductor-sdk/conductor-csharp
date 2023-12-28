@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace Conductor.Client.Interfaces
 {
     public interface IWorkflowTaskExecutor
     {
-        Task Start();
+        Task Start(CancellationToken token = default);
     }
 }
