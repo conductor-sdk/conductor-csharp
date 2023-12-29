@@ -183,7 +183,7 @@ namespace Conductor.Client.Worker
                 if (token == CancellationToken.None)
                     taskResult = _worker.Execute(task);
                 else
-                    taskResult = await _worker.ExecuteAsync(task, token);
+                    taskResult = await _worker.Execute(task, token);
                 _logger.LogTrace(
                    $"[{_workerSettings.WorkerId}] Done processing task for worker"
                    + $", taskType: {_worker.TaskType}"

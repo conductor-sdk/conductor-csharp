@@ -22,7 +22,7 @@ namespace Conductor.Client.Worker
             _workerInstance = workerInstance;
         }
 
-        public async Task<TaskResult> ExecuteAsync(Models.Task task, CancellationToken token)
+        public async Task<TaskResult> Execute(Models.Task task, CancellationToken token)
         {
 
             if (token != CancellationToken.None && token.IsCancellationRequested)

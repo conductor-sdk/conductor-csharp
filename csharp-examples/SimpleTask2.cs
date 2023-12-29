@@ -16,7 +16,7 @@ namespace csharp.examples
             WorkerSettings = new WorkflowTaskExecutorConfiguration();
         }
 
-        public async Task<TaskResult> ExecuteAsync(Conductor.Client.Models.Task task, CancellationToken token)
+        public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
         {
             if (token != CancellationToken.None && token.IsCancellationRequested)
                 return task.Failed("Token request Cancel");
