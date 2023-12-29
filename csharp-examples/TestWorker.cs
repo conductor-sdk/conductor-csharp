@@ -13,7 +13,7 @@ public class TestWorker(string taskType) : IWorkflowTask
     public string TaskType { get; } = taskType;
     public WorkflowTaskExecutorConfiguration WorkerSettings { get; } = new WorkflowTaskExecutorConfiguration()
     {
-        BatchSize = 10
+        BatchSize = 20
     };
 
     public async Task<TaskResult> Execute(Task task, CancellationToken token)
@@ -33,8 +33,8 @@ public class TestWorker(string taskType) : IWorkflowTask
                 result.OutputData["Num_" + i] = rnd.NextDouble();
             }
 
-            //Simulate work!
-            var sleepTime = rnd.Next(0, 5); 
+            //Simulate work - once in a while
+            var sleepTime = rnd.Next(0, 2); 
             Thread.Sleep(TimeSpan.FromSeconds(sleepTime));
 
             return result;

@@ -127,7 +127,8 @@ namespace Conductor.Client.Worker
             var availableWorkerCounter = _workerSettings.BatchSize - _workflowTaskMonitor.GetRunningWorkers();
             if (availableWorkerCounter < 1)
             {
-                throw new Exception("no worker available");
+                _logger.LogDebug("All workers are busy");
+                return new List<Task>();
             }
             var tasks = _taskClient.PollTask(_worker.TaskType, _workerSettings.WorkerId, _workerSettings.Domain, availableWorkerCounter);
             if (tasks == null)
