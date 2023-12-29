@@ -34,7 +34,7 @@ public class TestWorker(string taskType) : IWorkflowTask
             }
 
             //Simulate work!
-            var sleepTime = rnd.Next(0, 5);
+            var sleepTime = rnd.Next(0, 5); 
             Thread.Sleep(TimeSpan.FromSeconds(sleepTime));
 
             return result;
