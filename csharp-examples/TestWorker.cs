@@ -33,6 +33,10 @@ public class TestWorker(string taskType) : IWorkflowTask
                 result.OutputData["Num_" + i] = rnd.NextDouble();
             }
 
+            //Simulate work!
+            var sleepTime = rnd.Next(0, 5);
+            Thread.Sleep(TimeSpan.FromSeconds(sleepTime));
+
             return result;
         });
     }
