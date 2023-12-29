@@ -1,46 +1,45 @@
-﻿using Conductor.Client.Authentication;
+﻿using Conductor.Client;
+using Conductor.Client.Authentication;
 using Conductor.Client.Extensions;
-using Conductor.Client;
 using csharp.examples;
 using Microsoft.Extensions.Logging;
 
-namespace csharp_examples
+namespace csharp_examples;
+
+public class Runner
 {
-    public class Runner
+    /// <summary>
+    ///     Running multiple task as background services
+    /// </summary>
+    public async void StartTasks()
     {
+        Console.WriteLine("here");
+        var key = Environment.GetEnvironmentVariable("KEY");
+        var secret = Environment.GetEnvironmentVariable("SECRET");
+        var url = Environment.GetEnvironmentVariable("CONDUCTOR_SERVER_URL");
 
-        /// <summary>
-        /// Running multiple task as background services
-        /// </summary>
-        public async void RunMultiSimpleTask()
+        var configuration = new Configuration
         {
-            var configuration = new Configuration()
-            {
-                AuthenticationSettings = new OrkesAuthenticationSettings("8bea4294-e16d-4437-85f0-327c29a1378c", "skZjhMzNNNm9EJDLLxD6JKYs6ADHqQ0xh1iUCqm6mOoCktHn")
-            };
-            var host = WorkflowTaskHost.CreateWorkerHost(configuration, LogLevel.Information, new SimpleTask1());
+            BasePath = url,
+            AuthenticationSettings = new OrkesAuthenticationSettings(key, secret)
+        };
+        var num = 5;
+        for (var i = 1; i <= num; i++)
+        {
+            var host = WorkflowTaskHost.CreateWorkerHost(configuration, LogLevel.Information,
+                new TestWorker("csharp_task_" + i));
             var ct = new CancellationTokenSource();
-            await host.StartAsync(ct.Token);
-            var host1 = WorkflowTaskHost.CreateWorkerHost(configuration, LogLevel.Information, new SimpleTask2());
-            var ct1 = new CancellationTokenSource();
-            await host1.StartAsync(ct.Token);
-            Thread.Sleep(TimeSpan.FromSeconds(100)); // after 100 seconds will stop the service
+            try
+            {
+                await host.StartAsync(ct.Token);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
-        /// <summary>
-        /// Run single task as background service
-        /// </summary>
-        public async void RunSimpleTask()
-        {
-            var configuration = new Configuration()
-            {
-                AuthenticationSettings = new OrkesAuthenticationSettings("8bea4294-e16d-4437-85f0-327c29a1378c", "skZjhMzNNNm9EJDLLxD6JKYs6ADHqQ0xh1iUCqm6mOoCktHn")
-            };
-
-            var host = WorkflowTaskHost.CreateWorkerHost(configuration, LogLevel.Information, new SimpleTask1());
-            var ct = new CancellationTokenSource();
-            await host.StartAsync();
-            Thread.Sleep(TimeSpan.FromSeconds(100)); // after 100 seconds will stop the service
-        }
+        while (true) Thread.Sleep(TimeSpan.FromDays(1)); // after 1 year will stop the service    
     }
 }

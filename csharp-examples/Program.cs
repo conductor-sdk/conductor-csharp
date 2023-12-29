@@ -1,13 +1,10 @@
 ﻿using csharp_examples;
 
-class Program
+internal class Program
 {
-    static void Main()
+    private static void Main()
     {
-        Runner runner = new Runner();
-
-        // call specific method based on testing scenario
-        runner.RunMultiSimpleTask();
-        //runner.RunSimpleTask();
+        var runner = new Runner();
+        runner.StartTasks();
     }
 }
