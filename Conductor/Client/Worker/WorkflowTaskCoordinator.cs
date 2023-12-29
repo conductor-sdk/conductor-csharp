@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Conductor.Client.Worker
@@ -24,14 +25,17 @@ namespace Conductor.Client.Worker
             _loggerWorkflowTaskMonitor = loggerWorkflowTaskMonitor;
         }
 
-        public async Task Start()
+        public async Task Start(CancellationToken token)
         {
+            if (token != CancellationToken.None)
+                token.ThrowIfCancellationRequested();
+
             _logger.LogDebug("Starting workers...");
             DiscoverWorkers();
             var runningWorkers = new List<Task>();
             foreach (var worker in _workers)
             {
-                var runningWorker = worker.Start();
+                var runningWorker = worker.Start(token);
                 runningWorkers.Add(runningWorker);
             }
             _logger.LogDebug("Started all workers");
