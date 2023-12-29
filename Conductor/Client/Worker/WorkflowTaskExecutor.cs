@@ -80,7 +80,7 @@ namespace Conductor.Client.Worker
                 }
                 catch (Exception e)
                 {
-                    _logger.LogDebug(
+                    _logger.LogError(
                         $"[{_workerSettings.WorkerId}] worker error: {e.Message}"
                         + $", taskName: {_worker.TaskType}"
                         + $", domain: {_worker.WorkerSettings.Domain}"
@@ -197,7 +197,7 @@ namespace Conductor.Client.Worker
             }
             catch (Exception e)
             {
-                _logger.LogDebug(
+                _logger.LogError(
                     $"[{_workerSettings.WorkerId}] Failed to process task for worker, reason: {e.Message}"
                     + $", taskType: {_worker.TaskType}"
                     + $", domain: {_workerSettings.Domain}"
@@ -241,7 +241,7 @@ namespace Conductor.Client.Worker
                 }
                 catch (Exception e)
                 {
-                    _logger.LogTrace(
+                    _logger.LogError(
                         $"[{_workerSettings.WorkerId}] Failed to update task, reason: {e.Message}"
                         + $", taskType: {_worker.TaskType}"
                         + $", domain: {_workerSettings.Domain}"
