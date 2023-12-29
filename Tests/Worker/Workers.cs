@@ -48,12 +48,12 @@ namespace Tests.Worker
             WorkerSettings = new WorkflowTaskExecutorConfiguration();
         }
 
-        public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
+        public async Task<TaskResult> ExecuteAsync(Conductor.Client.Models.Task task, CancellationToken token)
         {
             if (token != CancellationToken.None && token.IsCancellationRequested)
                 throw new Exception("Token request Cancelled");
 
-            throw new Exception("random exception");
+            throw new NotImplementedException();
         }
 
         public TaskResult Execute(Conductor.Client.Models.Task task)
