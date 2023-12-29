@@ -9,6 +9,11 @@ Building the task workers in C# mainly consists of the following steps:
 1. Create workflows using code
 1. API Documentation
 
+## ⭐ Conductor OSS
+Show support for the Conductor OSS.  Please help spread the awareness by starring Conductor repo.
+
+[![GitHub stars](https://img.shields.io/github/stars/conductor-oss/conductor.svg?style=social&label=Star&maxAge=)](https://GitHub.com/conductor-oss/conductor/)
+
    
 ### Setup Conductor C# Package​
 
