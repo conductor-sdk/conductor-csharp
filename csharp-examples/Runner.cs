@@ -1,4 +1,5 @@
-﻿using Conductor.Client;
+﻿using System.Collections;
+using Conductor.Client;
 using Conductor.Client.Authentication;
 using Conductor.Client.Extensions;
 using csharp.examples;
@@ -13,7 +14,6 @@ public class Runner
     /// </summary>
     public async void StartTasks()
     {
-        Console.WriteLine("here");
         var key = Environment.GetEnvironmentVariable("KEY");
         var secret = Environment.GetEnvironmentVariable("SECRET");
         var url = Environment.GetEnvironmentVariable("CONDUCTOR_SERVER_URL");

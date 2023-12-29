@@ -11,7 +11,10 @@ public class TestWorker(string taskType) : IWorkflowTask
     private readonly Random rnd = new();
 
     public string TaskType { get; } = taskType;
-    public WorkflowTaskExecutorConfiguration WorkerSettings { get; } = new();
+    public WorkflowTaskExecutorConfiguration WorkerSettings { get; } = new WorkflowTaskExecutorConfiguration()
+    {
+        BatchSize = 10
+    };
 
     public async Task<TaskResult> Execute(Task task, CancellationToken token)
     {
