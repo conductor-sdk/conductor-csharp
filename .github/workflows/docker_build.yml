@@ -1,0 +1,13 @@
+name: Continuous Integration
+
+on: [workflow_dispatch]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: DockerBuild
+        run: >
+          docker build -f csharp-examples/Dockerfile . -t orkesio/csharp-perf-workers:latest
