@@ -89,7 +89,7 @@ namespace Conductor.Client.Worker
                 }
                 catch (Exception e)
                 {
-                    
+
                     _logger.LogError(
                         $"[{_workerSettings.WorkerId}] worker error: {e.Message}"
                         + $", taskName: {_worker.TaskType}"
