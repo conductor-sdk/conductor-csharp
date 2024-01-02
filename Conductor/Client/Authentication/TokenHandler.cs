@@ -1,5 +1,7 @@
+using conductor.csharp.Client.Extensions;
 using Conductor.Api;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 using System;
 
 namespace Conductor.Client.Authentication
@@ -9,10 +11,12 @@ namespace Conductor.Client.Authentication
         private static int REFRESH_TOKEN_RETRY_COUNTER_LIMIT = 5;
         private static readonly object _lockObject = new object();
         private readonly MemoryCache _memoryCache;
+        private static ILogger _logger;
 
         public TokenHandler()
         {
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
+            _logger = ApplicationLogging.CreateLogger<TokenHandler>();
         }
 
         public string GetToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
@@ -50,7 +54,7 @@ namespace Conductor.Client.Authentication
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Failed to refresh authentication token, attempt = {attempt}, error = {e.Message}");
+                    _logger.LogError($"Failed to refresh authentication token, attempt = {attempt}, error = {e.Message}");
                 }
             }
             throw new Exception("Failed to refresh authentication token");

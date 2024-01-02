@@ -1,8 +1,10 @@
+using conductor.csharp.Client.Extensions;
 using Conductor.Api;
 using Conductor.Client.Extensions;
 using Conductor.Client.Models;
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -19,10 +21,12 @@ namespace Tests.Worker
         private const string TASK_DOMAIN = "taskDomain";
 
         private readonly WorkflowResourceApi _workflowClient;
+        private readonly ILogger _logger;
 
         public WorkerTests()
         {
             _workflowClient = ApiExtensions.GetClient<WorkflowResourceApi>();
+            _logger = ApplicationLogging.CreateLogger<WorkerTests>();
         }
 
         [Fact]
@@ -77,7 +81,7 @@ namespace Tests.Worker
                 if (workflowStatus.Status.Value != WorkflowStatus.StatusEnum.COMPLETED)
                 {
                     incompleteWorkflowCounter += 1;
-                    Console.WriteLine($"Workflow not completed, workflowId: {workflowStatus.WorkflowId}");
+                    _logger.LogInformation($"Workflow not completed, workflowId: {workflowStatus.WorkflowId}");
                 }
             }
             Assert.Equal(0, incompleteWorkflowCounter);
