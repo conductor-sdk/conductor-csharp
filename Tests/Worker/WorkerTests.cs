@@ -50,7 +50,7 @@ namespace Tests.Worker
             var startedWorkflows = await WorkflowExtensions.StartWorkflows(
                 _workflowClient,
                 startWorkflowRequest,
-                maxAllowedInParallel: 10,
+                maxAllowedInParallel: 3,
                 total: quantity
             );
             return startedWorkflows;

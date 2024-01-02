@@ -50,7 +50,7 @@ namespace Conductor.Client.Authentication
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Failed to refresh authentication token, attempt = {attempt}, reason: {e}, request: {tokenRequest.ToJson()}");
+                    Console.WriteLine($"Failed to refresh authentication token, attempt = {attempt}, error = {e.Message}");
                 }
             }
             throw new Exception("Failed to refresh authentication token");
