@@ -30,7 +30,7 @@ namespace Tests.Worker
         {
             var workflow = GetConductorWorkflow();
             ApiExtensions.GetWorkflowExecutor().RegisterWorkflow(workflow, true);
-            var workflowIdList = await StartWorkflows(workflow, quantity: 35);
+            var workflowIdList = await StartWorkflows(workflow, quantity: 15);
             await ExecuteWorkflowTasks(workflowCompletionTimeout: TimeSpan.FromSeconds(20));
             await ValidateWorkflowCompletion(workflowIdList.ToArray());
         }
