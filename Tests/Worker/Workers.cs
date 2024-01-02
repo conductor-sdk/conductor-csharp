@@ -30,7 +30,6 @@ namespace Tests.Worker
         public TaskResult LazyWorker(Conductor.Client.Models.Task task)
         {
             var timeSpan = System.TimeSpan.FromMilliseconds(_random.Next(128, 2048));
-            Console.WriteLine($"Lazy worker is going to rest for {timeSpan.Milliseconds} ms");
             System.Threading.Tasks.Task.Delay(timeSpan).GetAwaiter().GetResult();
             return task.Completed();
         }

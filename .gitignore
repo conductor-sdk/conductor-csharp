@@ -16,3 +16,4 @@ build
 **/*.jfm
 **/*.user
 **/key-*.xml
+csharp-examples/csharp-examples.sln

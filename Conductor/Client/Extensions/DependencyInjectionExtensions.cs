@@ -9,17 +9,10 @@ namespace Conductor.Client.Extensions
 {
     public static class DependencyInjectionExtensions
     {
-        public static IServiceCollection AddConductorWorkflowTask<T>(this IServiceCollection services) where T : IWorkflowTask
-        {
-            services.AddTransient(typeof(IWorkflowTask), typeof(T));
-            services.AddTransient(typeof(T));
-            return services;
-        }
 
         public static IServiceCollection AddConductorWorkflowTask<T>(this IServiceCollection services, T worker) where T : IWorkflowTask
         {
-            services.AddTransient(typeof(IWorkflowTask), typeof(T));
-            services.AddTransient(typeof(T));
+            services.AddSingleton<IWorkflowTask>(worker);
             return services;
         }
 
