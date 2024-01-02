@@ -47,7 +47,6 @@ namespace Conductor.Client.Worker
 
         public System.Threading.Tasks.Task Start(CancellationToken token)
         {
-
             if (token != CancellationToken.None)
                 token.ThrowIfCancellationRequested();
 
@@ -68,7 +67,6 @@ namespace Conductor.Client.Worker
 
         private void Work4Ever(CancellationToken token)
         {
-
             while (true)
             {
                 try
@@ -102,18 +100,19 @@ namespace Conductor.Client.Worker
                 Sleep(_workerSettings.PollInterval);
                 return;
             }
+
             var uniqueBatchId = Guid.NewGuid();
             _logger.LogTrace(
-                  $"[{_workerSettings.WorkerId}] Processing tasks batch"
-                  + $", Task batch unique Id: {uniqueBatchId}"
-                  );
+                $"[{_workerSettings.WorkerId}] Processing tasks batch"
+                + $", Task batch unique Id: {uniqueBatchId}"
+            );
 
             await System.Threading.Tasks.Task.Run(() => ProcessTasks(tasks, token));
 
             _logger.LogTrace(
-                  $"[{_workerSettings.WorkerId}] Completed tasks batch"
-                  + $", Task batch unique Id: {uniqueBatchId}"
-                  );
+                $"[{_workerSettings.WorkerId}] Completed tasks batch"
+                + $", Task batch unique Id: {uniqueBatchId}"
+            );
         }
 
         private List<Models.Task> PollTasks()
@@ -153,17 +152,16 @@ namespace Conductor.Client.Worker
                 _logger.LogError($"Error polling for {_worker.TaskType}.  Error = {e.Message}");
                 return new List<Task>();
             }
-            
         }
 
         private async void ProcessTasks(List<Models.Task> tasks, CancellationToken token)
         {
-
             List<System.Threading.Tasks.Task> threads = new List<System.Threading.Tasks.Task>();
             if (tasks == null || tasks.Count == 0)
             {
                 return;
             }
+
             foreach (var task in tasks)
             {
                 if (token != CancellationToken.None)
@@ -172,6 +170,7 @@ namespace Conductor.Client.Worker
                 _workflowTaskMonitor.IncrementRunningWorker();
                 threads.Add(System.Threading.Tasks.Task.Run(() => ProcessTask(task, token)));
             }
+
             await System.Threading.Tasks.Task.WhenAll(threads);
         }
 
@@ -191,20 +190,21 @@ namespace Conductor.Client.Worker
 
             try
             {
-                TaskResult taskResult = new TaskResult(taskId: task.TaskId, workflowInstanceId: task.WorkflowInstanceId);
+                TaskResult taskResult =
+                    new TaskResult(taskId: task.TaskId, workflowInstanceId: task.WorkflowInstanceId);
 
                 if (token == CancellationToken.None)
                     taskResult = _worker.Execute(task);
                 else
                     taskResult = await _worker.Execute(task, token);
                 _logger.LogTrace(
-                   $"[{_workerSettings.WorkerId}] Done processing task for worker"
-                   + $", taskType: {_worker.TaskType}"
-                   + $", domain: {_workerSettings.Domain}"
-                   + $", taskId: {task.TaskId}"
-                   + $", workflowId: {task.WorkflowInstanceId}"
-                   + $", CancelToken: {token}"
-               );
+                    $"[{_workerSettings.WorkerId}] Done processing task for worker"
+                    + $", taskType: {_worker.TaskType}"
+                    + $", domain: {_workerSettings.Domain}"
+                    + $", taskId: {task.TaskId}"
+                    + $", workflowId: {task.WorkflowInstanceId}"
+                    + $", CancelToken: {token}"
+                );
                 UpdateTask(taskResult);
             }
             catch (Exception e)
@@ -219,7 +219,6 @@ namespace Conductor.Client.Worker
                 );
                 var taskResult = task.Failed(e.Message);
                 UpdateTask(taskResult);
-
             }
             finally
             {
@@ -241,6 +240,7 @@ namespace Conductor.Client.Worker
                     {
                         Sleep(TimeSpan.FromSeconds(1 << attemptCounter));
                     }
+
                     _taskClient.UpdateTask(taskResult);
                     _logger.LogTrace(
                         $"[{_workerSettings.WorkerId}] Done updating task"
@@ -262,6 +262,7 @@ namespace Conductor.Client.Worker
                     );
                 }
             }
+
             throw new Exception("Failed to update task after retries");
         }
 
@@ -273,7 +274,6 @@ namespace Conductor.Client.Worker
 
         private void LogInfo()
         {
-
         }
     }
 }
