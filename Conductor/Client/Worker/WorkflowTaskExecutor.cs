@@ -76,8 +76,20 @@ namespace Conductor.Client.Worker
 
                     WorkOnce(token);
                 }
+                catch (System.OperationCanceledException canceledException)
+                {
+                    //Do nothing the operation was cancelled
+                    _logger.LogTrace(
+                        $"[{_workerSettings.WorkerId}] Operation Cancelled: {canceledException.Message}"
+                        + $", taskName: {_worker.TaskType}"
+                        + $", domain: {_worker.WorkerSettings.Domain}"
+                        + $", batchSize: {_workerSettings.BatchSize}"
+                    );
+                    Sleep(SLEEP_FOR_TIME_SPAN_ON_WORKER_ERROR);
+                }
                 catch (Exception e)
                 {
+                    
                     _logger.LogError(
                         $"[{_workerSettings.WorkerId}] worker error: {e.Message}"
                         + $", taskName: {_worker.TaskType}"
@@ -130,28 +142,20 @@ namespace Conductor.Client.Worker
                 return new List<Task>();
             }
 
-            try
+            var tasks = _taskClient.PollTask(_worker.TaskType, _workerSettings.WorkerId, _workerSettings.Domain,
+                availableWorkerCounter);
+            if (tasks == null)
             {
-                var tasks = _taskClient.PollTask(_worker.TaskType, _workerSettings.WorkerId, _workerSettings.Domain,
-                    availableWorkerCounter);
-                if (tasks == null)
-                {
-                    tasks = new List<Models.Task>();
-                }
+                tasks = new List<Models.Task>();
+            }
 
-                _logger.LogTrace(
-                    $"[{_workerSettings.WorkerId}] Polled {tasks.Count} tasks"
-                    + $", taskType: {_worker.TaskType}"
-                    + $", domain: {_workerSettings.Domain}"
-                    + $", batchSize: {_workerSettings.BatchSize}"
-                );
-                return tasks;
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Error polling for {_worker.TaskType}.  Error = {e.Message}");
-                return new List<Task>();
-            }
+            _logger.LogTrace(
+                $"[{_workerSettings.WorkerId}] Polled {tasks.Count} tasks"
+                + $", taskType: {_worker.TaskType}"
+                + $", domain: {_workerSettings.Domain}"
+                + $", batchSize: {_workerSettings.BatchSize}"
+            );
+            return tasks;
         }
 
         private async void ProcessTasks(List<Models.Task> tasks, CancellationToken token)
