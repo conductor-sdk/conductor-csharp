@@ -130,18 +130,30 @@ namespace Conductor.Client.Worker
                 _logger.LogDebug("All workers are busy");
                 return new List<Task>();
             }
-            var tasks = _taskClient.PollTask(_worker.TaskType, _workerSettings.WorkerId, _workerSettings.Domain, availableWorkerCounter);
-            if (tasks == null)
+
+            try
             {
-                tasks = new List<Models.Task>();
+                var tasks = _taskClient.PollTask(_worker.TaskType, _workerSettings.WorkerId, _workerSettings.Domain,
+                    availableWorkerCounter);
+                if (tasks == null)
+                {
+                    tasks = new List<Models.Task>();
+                }
+
+                _logger.LogTrace(
+                    $"[{_workerSettings.WorkerId}] Polled {tasks.Count} tasks"
+                    + $", taskType: {_worker.TaskType}"
+                    + $", domain: {_workerSettings.Domain}"
+                    + $", batchSize: {_workerSettings.BatchSize}"
+                );
+                return tasks;
             }
-            _logger.LogTrace(
-                $"[{_workerSettings.WorkerId}] Polled {tasks.Count} tasks"
-                + $", taskType: {_worker.TaskType}"
-                + $", domain: {_workerSettings.Domain}"
-                + $", batchSize: {_workerSettings.BatchSize}"
-            );
-            return tasks;
+            catch (Exception e)
+            {
+                _logger.LogError($"Error polling for {_worker.TaskType}.  Error = {e.Message}");
+                return new List<Task>();
+            }
+            
         }
 
         private async void ProcessTasks(List<Models.Task> tasks, CancellationToken token)
