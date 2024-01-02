@@ -48,9 +48,9 @@ namespace Conductor.Client.Authentication
                 {
                     return tokenClient.GenerateToken(tokenRequest)._token;
                 }
-                catch (ApiException e)
+                catch (Exception e)
                 {
-                    Console.WriteLine($"Failed to refresh authentication token, reason: {e}, request: {tokenRequest.ToJson()}");
+                    Console.WriteLine($"Failed to refresh authentication token, attempt = {attempt}, reason: {e}, request: {tokenRequest.ToJson()}");
                 }
             }
             throw new Exception("Failed to refresh authentication token");
