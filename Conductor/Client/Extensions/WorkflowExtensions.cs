@@ -3,12 +3,15 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using conductor.csharp.Client.Extensions;
 
 namespace Conductor.Client.Extensions
 {
     public class WorkflowExtensions
     {
         private static int RETRY_ATTEMPT_LIMIT = 3;
+        private static ILogger _logger = ApplicationLogging.CreateLogger<WorkflowExtensions>();
 
         public static async Task<ConcurrentBag<string>> StartWorkflows(WorkflowResourceApi workflowClient, Models.StartWorkflowRequest startWorkflowRequest, int maxAllowedInParallel, int total)
         {
@@ -18,7 +21,7 @@ namespace Conductor.Client.Extensions
             {
                 await StartWorkflowBatch(workflowClient, startWorkflowRequest, maxAllowedInParallel, workflowIds);
             }
-            Console.WriteLine($"Started {workflowIds.Count} workflows");
+            _logger.LogInformation($"Started {workflowIds.Count} workflows");
             return workflowIds;
         }
 
@@ -29,7 +32,7 @@ namespace Conductor.Client.Extensions
             {
                 await GetWorkflowStatusBatch(workflowClient, workflowStatusList, index, index + maxAllowedInParallel, workflowIds);
             }
-            Console.WriteLine($"Got ${workflowStatusList.Count} workflow statuses");
+            _logger.LogInformation($"Got ${workflowStatusList.Count} workflow statuses");
             return workflowStatusList;
         }
 
@@ -65,7 +68,7 @@ namespace Conductor.Client.Extensions
                 }
                 catch (ApiException e)
                 {
-                    Console.WriteLine($"Failed to get workflow status, reason: {e}");
+                    _logger.LogError($"Failed to get workflow status, reason: {e}");
                     System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1 << attempt));
                 }
             }
@@ -82,7 +85,7 @@ namespace Conductor.Client.Extensions
                 }
                 catch (ApiException e)
                 {
-                    Console.WriteLine($"Failed to start workflow, reason: {e}");
+                    _logger.LogError($"Failed to start workflow, reason: {e}");
                     System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1 << attempt));
                 }
             }
