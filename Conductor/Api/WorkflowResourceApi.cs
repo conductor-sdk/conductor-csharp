@@ -1037,67 +1037,67 @@ namespace Conductor.Api
 
         public Object UpdateWorkflowVariables(Workflow workflow)
         {
-        	ApiResponse<Object> localVarResponse = UpdateWorkflowVariablesWithHttpInfo(workflow);
-        	return localVarResponse.Data;
+            ApiResponse<Object> localVarResponse = UpdateWorkflowVariablesWithHttpInfo(workflow);
+            return localVarResponse.Data;
         }
 
         public ApiResponse<Object> UpdateWorkflowVariablesWithHttpInfo(Workflow workflow)
         {
-        	// verify the required parameter 'body' is set
-        	if (workflow == null)
+            // verify the required parameter 'body' is set
+            if (workflow == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowResourceApi->Update");
 
-        	if (string.IsNullOrEmpty(workflow.WorkflowId))
+            if (string.IsNullOrEmpty(workflow.WorkflowId))
                 throw new ApiException(400, "Missing required parameter 'WorkflowId' when calling WorkflowResourceApi->Update");
 
-        	if (workflow.Variables == null)
+            if (workflow.Variables == null)
                 throw new ApiException(400, "Missing required parameter 'Variables' when calling WorkflowResourceApi->Update");
 
-        	var localVarPath = $"/workflow/{workflow.WorkflowId}/variables";
-        	var localVarPathParams = new Dictionary<String, String>();
-        	var localVarQueryParams = new List<KeyValuePair<String, String>>();
-        	var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-        	var localVarFormParams = new Dictionary<String, String>();
-        	var localVarFileParams = new Dictionary<String, FileParameter>();
-        	Object localVarPostBody = null;
+            var localVarPath = $"/workflow/{workflow.WorkflowId}/variables";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
 
-        	// to determine the Content-Type header
-        	String[] localVarHttpContentTypes = new String[] {
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
                 "application/json"
-        	};
-        	String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-        	// to determine the Accept header
-        	String[] localVarHttpHeaderAccepts = new String[] {
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
                 "*/*"
-        	};
-        	String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-        	if (localVarHttpHeaderAccept != null)
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-        	if (workflow != null && workflow.GetType() != typeof(byte[]))
-        	{
+            if (workflow != null && workflow.GetType() != typeof(byte[]))
+            {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(workflow.Variables);
-        	}
+            }
 
-        	// authentication (api_key) required
-        	if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-        	{
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
                 localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-        	}
+            }
 
-        	IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
-        	int localVarStatusCode = (int)localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
-        	if (ExceptionFactory != null)
-        	{
+            if (ExceptionFactory != null)
+            {
                 Exception exception = ExceptionFactory("Update", localVarResponse);
                 if (exception != null) throw exception;
-        	}
+            }
 
-        	return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }

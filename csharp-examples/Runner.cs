@@ -50,8 +50,8 @@ public class Runner
                 }
             }
 
-            while (true) 
-              Thread.Sleep(TimeSpan.FromDays(1)); // after 1 year will stop the service    
+            while (true)
+                Thread.Sleep(TimeSpan.FromDays(1));// after 1 year will stop the service
 
         }
         catch (Exception e)
