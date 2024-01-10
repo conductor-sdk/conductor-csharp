@@ -62,14 +62,14 @@ namespace Conductor.Definition
             return this;
         }
 
-		public ConductorWorkflow WithVariable(string key, object value)
-		{
-			if (Variables == null) // if workflow does not have any variables, initialize with empty collection
-				Variables = new Dictionary<string, object>();
-			Variables.Add(key, value);
-			return this;
-		}
-		public ConductorWorkflow WithOwner(string ownerEmail)
+        public ConductorWorkflow WithVariable(string key, object value)
+        {
+        	if (Variables == null) // if workflow does not have any variables, initialize with empty collection
+                Variables = new Dictionary<string, object>();
+        	Variables.Add(key, value);
+        	return this;
+        }
+        public ConductorWorkflow WithOwner(string ownerEmail)
         {
             OwnerEmail = ownerEmail;
             return this;
