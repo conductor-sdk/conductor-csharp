@@ -27,17 +27,17 @@ namespace Conductor.Client.Models
         /// <param name="taskToDomain">taskToDomain.</param>
         /// <param name="version">version.</param>
         /// <param name="workflowDef">workflowDef.</param>
-        public StartWorkflowRequest(string correlationId = default(string), string createdBy = default(string), string externalInputPayloadStoragePath = default(string), Dictionary<string, Object> input = default(Dictionary<string, Object>), string name = default(string), int? priority = default(int?), Dictionary<string, string> taskToDomain = default(Dictionary<string, string>), int? version = default(int?), WorkflowDef workflowDef = default(WorkflowDef))
+        public StartWorkflowRequest(string correlationId = default(string), string createdBy = default(string), 
+            string externalInputPayloadStoragePath = default(string), 
+            Dictionary<string, Object> input = default(Dictionary<string, Object>), 
+            string name = default(string), 
+            int? priority = default(int?), 
+            Dictionary<string, string> taskToDomain = default(Dictionary<string, string>), 
+            int? version = default(int?), 
+            WorkflowDef workflowDef = default(WorkflowDef)
+            )
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new InvalidDataException("name is a required property for StartWorkflowRequest and cannot be null");
-            }
-            else
-            {
-                this.Name = name;
-            }
+            this.Name = name;
             this.CorrelationId = correlationId;
             this.CreatedBy = createdBy;
             this.ExternalInputPayloadStoragePath = externalInputPayloadStoragePath;
@@ -46,7 +46,13 @@ namespace Conductor.Client.Models
             this.TaskToDomain = taskToDomain;
             this.Version = version;
             this.WorkflowDef = workflowDef;
+            // this.IdempotencyKey = idempotencyKey;
+            // this.IdempotencyStrategy = idempotencyStrategy;
         }
+
+        public IdempotencyStrategy IdempotencyStrategy { get; set; }
+
+        public string IdempotencyKey { get; set; }
 
         /// <summary>
         /// Gets or Sets CorrelationId
