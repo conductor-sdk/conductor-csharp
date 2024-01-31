@@ -3,8 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Conductor.Client.Extensions;
 using Conductor.Client.Interfaces;
-using Conductor.Client.Worker;
 using Conductor.Client.Models;
+using Conductor.Client.Worker;
 using Task = System.Threading.Tasks.Task;
 
 namespace Tests.Worker;
@@ -52,8 +52,9 @@ public class ClassWorker : IWorkflowTask
     {
         if (token != CancellationToken.None && token.IsCancellationRequested)
             throw new Exception("Token request Cancelled");
-        
-        return new TaskResult(status: TaskResult.StatusEnum.COMPLETED, taskId:task.TaskId, workflowInstanceId:task.WorkflowInstanceId);
+
+        return new TaskResult(status: TaskResult.StatusEnum.COMPLETED, taskId: task.TaskId,
+            workflowInstanceId: task.WorkflowInstanceId);
     }
 
     public TaskResult Execute(Conductor.Client.Models.Task task)

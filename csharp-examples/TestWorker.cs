@@ -11,7 +11,8 @@ public class TestWorker(string taskType) : IWorkflowTask
     private readonly Random rnd = new();
 
     public string TaskType { get; } = taskType;
-    public WorkflowTaskExecutorConfiguration WorkerSettings { get; } = new WorkflowTaskExecutorConfiguration()
+
+    public WorkflowTaskExecutorConfiguration WorkerSettings { get; } = new()
     {
         BatchSize = 20
     };

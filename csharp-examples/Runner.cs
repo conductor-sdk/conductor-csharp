@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using conductor.csharp.Client.Extensions;
-using Conductor.Client;
+﻿using Conductor.Client;
 using Conductor.Client.Authentication;
 using Conductor.Client.Extensions;
+using conductor.csharp.Client.Extensions;
 using csharp.examples;
 using Microsoft.Extensions.Logging;
 
@@ -51,8 +50,7 @@ public class Runner
             }
 
             while (true)
-                Thread.Sleep(TimeSpan.FromDays(1));// after 1 year will stop the service
-
+                Thread.Sleep(TimeSpan.FromDays(1)); // after 1 year will stop the service
         }
         catch (Exception e)
         {

@@ -29,13 +29,13 @@ namespace Conductor.Client.Models
         /// <param name="workflowDef">workflowDef.</param>
         /// <param name="idempotencyKey">idempotencyKey.</param>
         /// <param name="idempotencyStrategy">idempotencyStrategy.</param>
-        public StartWorkflowRequest(string correlationId = default(string), string createdBy = default(string), 
-            string externalInputPayloadStoragePath = default(string), 
-            Dictionary<string, Object> input = default(Dictionary<string, Object>), 
-            string name = default(string), 
-            int? priority = default(int?), 
-            Dictionary<string, string> taskToDomain = default(Dictionary<string, string>), 
-            int? version = default(int?), 
+        public StartWorkflowRequest(string correlationId = default(string), string createdBy = default(string),
+            string externalInputPayloadStoragePath = default(string),
+            Dictionary<string, Object> input = default(Dictionary<string, Object>),
+            string name = default(string),
+            int? priority = default(int?),
+            Dictionary<string, string> taskToDomain = default(Dictionary<string, string>),
+            int? version = default(int?),
             WorkflowDef workflowDef = default(WorkflowDef),
             string idempotencyKey = default(string),
             IdempotencyStrategy idempotencyStrategy = IdempotencyStrategy.FAIL

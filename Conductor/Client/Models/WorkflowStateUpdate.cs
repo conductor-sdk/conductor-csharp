@@ -12,7 +12,7 @@ namespace Conductor.Client.Models
     /// WorkflowStateUpdate
     /// </summary>
     [DataContract]
-        public partial class WorkflowStateUpdate :  IEquatable<WorkflowStateUpdate>, IValidatableObject
+    public partial class WorkflowStateUpdate : IEquatable<WorkflowStateUpdate>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkflowStateUpdate" /> class.
@@ -20,29 +20,31 @@ namespace Conductor.Client.Models
         /// <param name="taskReferenceName">taskReferenceName.</param>
         /// <param name="taskResult">taskResult.</param>
         /// <param name="variables">variables.</param>
-        public WorkflowStateUpdate(string taskReferenceName = default(string), TaskResult taskResult = default(TaskResult), Dictionary<string, Object> variables = default(Dictionary<string, Object>))
+        public WorkflowStateUpdate(string taskReferenceName = default(string),
+            TaskResult taskResult = default(TaskResult),
+            Dictionary<string, Object> variables = default(Dictionary<string, Object>))
         {
             this.TaskReferenceName = taskReferenceName;
             this.TaskResult = taskResult;
             this.Variables = variables;
         }
-        
+
         /// <summary>
         /// Gets or Sets TaskReferenceName
         /// </summary>
-        [DataMember(Name="taskReferenceName", EmitDefaultValue=false)]
+        [DataMember(Name = "taskReferenceName", EmitDefaultValue = false)]
         public string TaskReferenceName { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskResult
         /// </summary>
-        [DataMember(Name="taskResult", EmitDefaultValue=false)]
+        [DataMember(Name = "taskResult", EmitDefaultValue = false)]
         public TaskResult TaskResult { get; set; }
 
         /// <summary>
         /// Gets or Sets Variables
         /// </summary>
-        [DataMember(Name="variables", EmitDefaultValue=false)]
+        [DataMember(Name = "variables", EmitDefaultValue = false)]
         public Dictionary<string, Object> Variables { get; set; }
 
         /// <summary>
@@ -59,7 +61,7 @@ namespace Conductor.Client.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -89,17 +91,17 @@ namespace Conductor.Client.Models
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TaskReferenceName == input.TaskReferenceName ||
                     (this.TaskReferenceName != null &&
-                    this.TaskReferenceName.Equals(input.TaskReferenceName))
-                ) && 
+                     this.TaskReferenceName.Equals(input.TaskReferenceName))
+                ) &&
                 (
                     this.TaskResult == input.TaskResult ||
                     (this.TaskResult != null &&
-                    this.TaskResult.Equals(input.TaskResult))
-                ) && 
+                     this.TaskResult.Equals(input.TaskResult))
+                ) &&
                 (
                     this.Variables == input.Variables ||
                     this.Variables != null &&
@@ -132,7 +134,8 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(
+            ValidationContext validationContext)
         {
             yield break;
         }

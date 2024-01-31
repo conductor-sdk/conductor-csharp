@@ -333,7 +333,7 @@ namespace Conductor.Api
             if (workflowId == null)
                 throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->UpdateWorkflowVariables");
 
-            
+
 
             if (variables == null)
                 throw new ApiException(400, "Missing required parameter 'variables' when calling WorkflowResourceApi->UpdateWorkflowVariables");
@@ -359,7 +359,7 @@ namespace Conductor.Api
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-            
+
             localVarPostBody = this.Configuration.ApiClient.Serialize(variables);
 
             // authentication (api_key) required
@@ -1101,7 +1101,7 @@ namespace Conductor.Api
         }
 
 
-        
+
 
 
         /// <summary>
@@ -2254,7 +2254,7 @@ namespace Conductor.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
-        
+
         /// <summary>
         /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
         /// </summary>
@@ -2264,14 +2264,14 @@ namespace Conductor.Api
         /// <param name="waitUntilTaskRefs"> (optional)</param>
         /// <param name="waitForSeconds"> (optional, default to 10)</param>
         /// <returns>WorkflowRun</returns>
-        public WorkflowRun UpdateWorkflow (string workflowId, WorkflowStateUpdate request,  
+        public WorkflowRun UpdateWorkflow(string workflowId, WorkflowStateUpdate request,
             List<string> waitUntilTaskRefs = null, int? waitForSeconds = null)
         {
             ApiResponse<WorkflowRun> localVarResponse = UpdateWorkflowWithHttpInfo(workflowId, request, waitUntilTaskRefs, waitForSeconds);
             return localVarResponse.Data;
         }
-        
-        
+
+
         /// <summary>
         /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
         /// </summary>
@@ -2281,13 +2281,13 @@ namespace Conductor.Api
         /// <param name="waitUntilTaskRefs"> (optional)</param>
         /// <param name="waitForSeconds"> (optional, default to 10)</param>
         /// <returns>ApiResponse of WorkflowRun</returns>
-        public ApiResponse< WorkflowRun > UpdateWorkflowWithHttpInfo (string workflowId, WorkflowStateUpdate request,
+        public ApiResponse<WorkflowRun> UpdateWorkflowWithHttpInfo(string workflowId, WorkflowStateUpdate request,
             List<string> waitUntilTaskRefs = null, int? waitForSeconds = null)
         {
             string requestId = Guid.NewGuid().ToString();
-            string waitUntilTaskRef = waitUntilTaskRefs != null && waitUntilTaskRefs.Count > 0 ? 
+            string waitUntilTaskRef = waitUntilTaskRefs != null && waitUntilTaskRefs.Count > 0 ?
                 waitUntilTaskRefs.Aggregate((a, b) => a + ", " + b) : null;
-            
+
             // verify the required parameter 'request' is set
             if (request == null)
                 throw new ApiException(400, "Missing required parameter 'request' when calling WorkflowResourceApi->UpdateWorkflowAndTaskState");
@@ -2332,7 +2332,7 @@ namespace Conductor.Api
             {
                 localVarPostBody = request; // byte array
             }
-            
+
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
@@ -2340,11 +2340,11 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2354,7 +2354,7 @@ namespace Conductor.Api
 
             return new ApiResponse<WorkflowRun>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WorkflowRun) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowRun)));
+                (WorkflowRun)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowRun)));
         }
 
         public Workflow GetWorkflow(string workflowId, bool includeTasks)
