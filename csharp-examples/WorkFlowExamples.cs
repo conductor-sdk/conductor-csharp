@@ -14,7 +14,6 @@ namespace csharp_examples
         private const string KEY_SECRET = "<REPLACE_WITH_KEY_SECRET>";
         private const string OWNER_EMAIL = "<REPLACE_WITH_OWNER_EMAIL>";
 
-        private const string WORKFLOW_ID = "<REPLACE_WITH_WORKFLOW_ID>";
         private const string WORKFLOW_NAME = "<REPLACE_WITH_WORKFLOW_NAME>";
         private const string WORKFLOW_DESCRIPTION = "<REPLACE_WITH_WORKFLOW_DESCRIPTION>";
         private const string TASK_NAME = "<REPLACE_WITH_TASK_NAME >";
@@ -22,9 +21,7 @@ namespace csharp_examples
 
         private const string VARIABLE_OLD_VALUE = "SOME_OLD_VALUE";
         private const string VARIABLE_NAME_1 = "<REPLACE_WITH_VARIABLE_NAME_1>";
-        private const string VARIABLE_NEW_VALUE_1 = "<REPLACE_WITH_OWNER_VALUE_1>";
         private const string VARIABLE_NAME_2 = "<REPLACE_WITH_VARIABLE_NAME_2>";
-        private const string VARIABLE_NEW_VALUE_2 = "<REPLACE_WITH_OWNER_VALUE_2>";
 
 
         public void RegisterWorkFlow()
@@ -55,23 +52,7 @@ namespace csharp_examples
             return conductorWorkFlow;
         }
 
-        public void UpdateWorkflowVariablesWithWorkFlowId()
-        {
-            var orkesApiClient = new OrkesApiClient(new Configuration(),
-                new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET));
-            var workflowClient = orkesApiClient.GetClient<WorkflowResourceApi>();
-            var workFlowVariables = new Dictionary<string, object>
-            {
-                { VARIABLE_NAME_1, VARIABLE_NEW_VALUE_1 },
-                { VARIABLE_NAME_2, VARIABLE_NEW_VALUE_2 }
-            };
-
-            workflowClient.UpdateWorkflowVariables(new Conductor.Client.Models.Workflow()
-            {
-                WorkflowId = WORKFLOW_ID,
-                Variables = workFlowVariables
-            });
-        }
+        
 
     }
 }
