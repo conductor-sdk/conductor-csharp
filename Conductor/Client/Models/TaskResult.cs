@@ -63,24 +63,8 @@ namespace Conductor.Client.Models
         /// <param name="workflowInstanceId">workflowInstanceId (required).</param>
         public TaskResult(long? callbackAfterSeconds = default(long?), string externalOutputPayloadStoragePath = default(string), List<TaskExecLog> logs = default(List<TaskExecLog>), Dictionary<string, Object> outputData = default(Dictionary<string, Object>), string reasonForIncompletion = default(string), StatusEnum? status = default(StatusEnum?), string subWorkflowId = default(string), string taskId = default(string), string workerId = default(string), string workflowInstanceId = default(string))
         {
-            // to ensure "taskId" is required (not null)
-            if (taskId == null)
-            {
-                throw new InvalidDataException("taskId is a required property for TaskResult and cannot be null");
-            }
-            else
-            {
-                this.TaskId = taskId;
-            }
-            // to ensure "workflowInstanceId" is required (not null)
-            if (workflowInstanceId == null)
-            {
-                throw new InvalidDataException("workflowInstanceId is a required property for TaskResult and cannot be null");
-            }
-            else
-            {
-                this.WorkflowInstanceId = workflowInstanceId;
-            }
+            this.WorkflowInstanceId = workflowInstanceId;
+            this.TaskId = taskId;
             this.CallbackAfterSeconds = callbackAfterSeconds;
             this.ExternalOutputPayloadStoragePath = externalOutputPayloadStoragePath;
             this.Logs = logs;

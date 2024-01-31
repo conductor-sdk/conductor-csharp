@@ -1,63 +1,63 @@
-using Conductor.Client.Extensions;
-using Conductor.Client.Interfaces;
-using Conductor.Client.Models;
-using Conductor.Client.Worker;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Conductor.Client.Extensions;
+using Conductor.Client.Interfaces;
+using Conductor.Client.Worker;
+using Conductor.Client.Models;
+using Task = System.Threading.Tasks.Task;
 
-namespace Tests.Worker
+namespace Tests.Worker;
+
+[WorkerTask]
+public class FunctionalWorkers
 {
-    [WorkerTask]
-    public class FunctionalWorkers
+    private static readonly Random _random;
+
+    static FunctionalWorkers()
     {
-        private static Random _random;
-
-        static FunctionalWorkers()
-        {
-            _random = new Random();
-        }
-
-        // Polls for 5 task every 200ms
-        [WorkerTask("test-sdk-csharp-task", 5, "taskDomain", 200, "workerId")]
-        public static TaskResult SimpleWorker(Conductor.Client.Models.Task task)
-        {
-            return task.Completed();
-        }
-
-        // Polls for 12 tasks every 420ms
-        [WorkerTask("test-sdk-csharp-task", 12, "taskDomain", 420, "workerId")]
-        public TaskResult LazyWorker(Conductor.Client.Models.Task task)
-        {
-            var timeSpan = System.TimeSpan.FromMilliseconds(_random.Next(128, 2048));
-            System.Threading.Tasks.Task.Delay(timeSpan).GetAwaiter().GetResult();
-            return task.Completed();
-        }
+        _random = new Random();
     }
 
-    public class ClassWorker : IWorkflowTask
+    // Polls for 5 task every 200ms
+    [WorkerTask("test-sdk-csharp-task", 5, "taskDomain", 200, "workerId")]
+    public static TaskResult SimpleWorker(Conductor.Client.Models.Task task)
     {
-        public string TaskType { get; }
+        return task.Completed();
+    }
 
-        public WorkflowTaskExecutorConfiguration WorkerSettings { get; }
+    // Polls for 12 tasks every 420ms
+    [WorkerTask("test-sdk-csharp-task", 12, "taskDomain", 420, "workerId")]
+    public TaskResult LazyWorker(Conductor.Client.Models.Task task)
+    {
+        var timeSpan = TimeSpan.FromMilliseconds(_random.Next(128, 2048));
+        Task.Delay(timeSpan).GetAwaiter().GetResult();
+        return task.Completed();
+    }
+}
 
-        public ClassWorker(string taskType = "random_task_type")
-        {
-            TaskType = taskType;
-            WorkerSettings = new WorkflowTaskExecutorConfiguration();
-        }
+public class ClassWorker : IWorkflowTask
+{
+    public ClassWorker(string taskType = "random_task_type")
+    {
+        TaskType = taskType;
+        WorkerSettings = new WorkflowTaskExecutorConfiguration();
+    }
 
-        public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
-        {
-            if (token != CancellationToken.None && token.IsCancellationRequested)
-                throw new Exception("Token request Cancelled");
+    public string TaskType { get; }
 
-            throw new NotImplementedException();
-        }
+    public WorkflowTaskExecutorConfiguration WorkerSettings { get; }
 
-        public TaskResult Execute(Conductor.Client.Models.Task task)
-        {
-            throw new NotImplementedException();
-        }
+    public async Task<TaskResult> Execute(Conductor.Client.Models.Task task, CancellationToken token)
+    {
+        if (token != CancellationToken.None && token.IsCancellationRequested)
+            throw new Exception("Token request Cancelled");
+        
+        return new TaskResult(status: TaskResult.StatusEnum.COMPLETED, taskId:task.TaskId, workflowInstanceId:task.WorkflowInstanceId);
+    }
+
+    public TaskResult Execute(Conductor.Client.Models.Task task)
+    {
+        throw new NotImplementedException();
     }
 }

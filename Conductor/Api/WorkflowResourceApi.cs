@@ -321,25 +321,24 @@ namespace Conductor.Api
                 (WorkflowRun)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowRun)));
         }
 
-        public Object UpdateWorkflowVariables(Workflow workflow)
+        public Workflow UpdateWorkflowVariables(string workflowId, Dictionary<string, Object> variables)
         {
-            ApiResponse<Object> localVarResponse = UpdateWorkflowVariablesWithHttpInfo(workflow);
+            ApiResponse<Workflow> localVarResponse = UpdateWorkflowVariablesWithHttpInfo(workflowId, variables);
             return localVarResponse.Data;
         }
 
-        public ApiResponse<Object> UpdateWorkflowVariablesWithHttpInfo(Workflow workflow)
+        public ApiResponse<Workflow> UpdateWorkflowVariablesWithHttpInfo(string workflowId, Dictionary<string, Object> variables)
         {
             // verify the required parameter 'body' is set
-            if (workflow == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WorkflowResourceApi->Update");
+            if (workflowId == null)
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->UpdateWorkflowVariables");
 
-            if (string.IsNullOrEmpty(workflow.WorkflowId))
-                throw new ApiException(400, "Missing required parameter 'WorkflowId' when calling WorkflowResourceApi->Update");
+            
 
-            if (workflow.Variables == null)
-                throw new ApiException(400, "Missing required parameter 'Variables' when calling WorkflowResourceApi->Update");
+            if (variables == null)
+                throw new ApiException(400, "Missing required parameter 'variables' when calling WorkflowResourceApi->UpdateWorkflowVariables");
 
-            var localVarPath = $"/workflow/{workflow.WorkflowId}/variables";
+            var localVarPath = $"/workflow/{workflowId}/variables";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -360,11 +359,8 @@ namespace Conductor.Api
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (workflow != null && workflow.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(workflow.Variables);
-            }
+            
+            localVarPostBody = this.Configuration.ApiClient.Serialize(variables);
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -383,9 +379,9 @@ namespace Conductor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Workflow>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Workflow)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Workflow)));
         }
 
         /// <summary>
@@ -2257,6 +2253,118 @@ namespace Conductor.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+        }
+        
+        /// <summary>
+        /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="waitUntilTaskRefs"> (optional)</param>
+        /// <param name="waitForSeconds"> (optional, default to 10)</param>
+        /// <returns>WorkflowRun</returns>
+        public WorkflowRun UpdateWorkflow (string workflowId, WorkflowStateUpdate request,  
+            List<string> waitUntilTaskRefs = null, int? waitForSeconds = null)
+        {
+            ApiResponse<WorkflowRun> localVarResponse = UpdateWorkflowWithHttpInfo(workflowId, request, waitUntilTaskRefs, waitForSeconds);
+            return localVarResponse.Data;
+        }
+        
+        
+        /// <summary>
+        /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="waitUntilTaskRefs"> (optional)</param>
+        /// <param name="waitForSeconds"> (optional, default to 10)</param>
+        /// <returns>ApiResponse of WorkflowRun</returns>
+        public ApiResponse< WorkflowRun > UpdateWorkflowWithHttpInfo (string workflowId, WorkflowStateUpdate request,
+            List<string> waitUntilTaskRefs = null, int? waitForSeconds = null)
+        {
+            string requestId = Guid.NewGuid().ToString();
+            string waitUntilTaskRef = waitUntilTaskRefs != null && waitUntilTaskRefs.Count > 0 ? 
+                waitUntilTaskRefs.Aggregate((a, b) => a + ", " + b) : null;
+            
+            // verify the required parameter 'request' is set
+            if (request == null)
+                throw new ApiException(400, "Missing required parameter 'request' when calling WorkflowResourceApi->UpdateWorkflowAndTaskState");
+            // verify the required parameter 'requestId' is set
+            if (requestId == null)
+                throw new ApiException(400, "Missing required parameter 'requestId' when calling WorkflowResourceApi->UpdateWorkflowAndTaskState");
+            // verify the required parameter 'workflowId' is set
+            if (workflowId == null)
+                throw new ApiException(400, "Missing required parameter 'workflowId' when calling WorkflowResourceApi->UpdateWorkflowAndTaskState");
+
+            var localVarPath = "/workflow/{workflowId}/state";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "*/*"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (workflowId != null) localVarPathParams.Add("workflowId", this.Configuration.ApiClient.ParameterToString(workflowId)); // path parameter
+            if (requestId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "requestId", requestId)); // query parameter
+            if (waitUntilTaskRef != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "waitUntilTaskRef", waitUntilTaskRef)); // query parameter
+            if (waitForSeconds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "waitForSeconds", waitForSeconds)); // query parameter
+            if (request != null && request.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(request); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = request; // byte array
+            }
+            
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateWorkflowAndTaskState", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<WorkflowRun>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (WorkflowRun) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkflowRun)));
+        }
+
+        public Workflow GetWorkflow(string workflowId, bool includeTasks)
+        {
+            return GetExecutionStatus(workflowId, includeTasks);
+        }
+
+        public ApiResponse<Workflow> GetWorkflowWithHttpInfo(string workflowId, bool includeTasks)
+        {
+            return GetExecutionStatusWithHttpInfo(workflowId, includeTasks);
         }
     }
 }

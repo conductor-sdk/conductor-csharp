@@ -27,6 +27,8 @@ namespace Conductor.Client.Models
         /// <param name="taskToDomain">taskToDomain.</param>
         /// <param name="version">version.</param>
         /// <param name="workflowDef">workflowDef.</param>
+        /// <param name="idempotencyKey">idempotencyKey.</param>
+        /// <param name="idempotencyStrategy">idempotencyStrategy.</param>
         public StartWorkflowRequest(string correlationId = default(string), string createdBy = default(string), 
             string externalInputPayloadStoragePath = default(string), 
             Dictionary<string, Object> input = default(Dictionary<string, Object>), 
@@ -34,7 +36,9 @@ namespace Conductor.Client.Models
             int? priority = default(int?), 
             Dictionary<string, string> taskToDomain = default(Dictionary<string, string>), 
             int? version = default(int?), 
-            WorkflowDef workflowDef = default(WorkflowDef)
+            WorkflowDef workflowDef = default(WorkflowDef),
+            string idempotencyKey = default(string),
+            IdempotencyStrategy idempotencyStrategy = IdempotencyStrategy.FAIL
             )
         {
             this.Name = name;
@@ -46,12 +50,14 @@ namespace Conductor.Client.Models
             this.TaskToDomain = taskToDomain;
             this.Version = version;
             this.WorkflowDef = workflowDef;
-            // this.IdempotencyKey = idempotencyKey;
-            // this.IdempotencyStrategy = idempotencyStrategy;
+            this.IdempotencyKey = idempotencyKey;
+            this.IdempotencyStrategy = idempotencyStrategy;
         }
 
+        [DataMember(Name = "idempotencyStrategy", EmitDefaultValue = true)]
         public IdempotencyStrategy IdempotencyStrategy { get; set; }
 
+        [DataMember(Name = "idempotencyKey", EmitDefaultValue = false)]
         public string IdempotencyKey { get; set; }
 
         /// <summary>

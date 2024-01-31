@@ -73,9 +73,19 @@ namespace Conductor.Api
         /// <summary>
         /// Update the value of the workflow variables for the given workflow id 
         /// </summary>
-        /// <param name="workflow"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        Object UpdateWorkflowVariables(Workflow workflow);
+        /// <param name="workflowId"></param>
+        /// /// <param name="variables"></param>
+        /// <returns>Workflow</returns>
+        Workflow UpdateWorkflowVariables(string workflowId, Dictionary<string, Object> variables);
+        
+        /// <summary>
+        /// Update the value of the workflow variables for the given workflow id and return api response
+        /// </summary>
+        /// <param name="workflowId"></param>
+        /// /// <param name="variables"></param>
+        /// <returns>Workflow</returns>
+        ApiResponse<Workflow> UpdateWorkflowVariablesWithHttpInfo(string workflowId, Dictionary<string, Object> variables);
+        
         /// <summary>
         /// Execute a workflow synchronously
         /// </summary>
@@ -672,6 +682,57 @@ namespace Conductor.Api
         /// <param name="request"></param>
         /// <returns>ApiResponse of Workflow</returns>
         ApiResponse<Workflow> TestWorkflowWithHttpInfo(WorkflowTestRequest request);
+
+        /// <summary>
+        /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="waitUntilTaskRefs"> (optional)</param>
+        /// <param name="waitForSeconds"> (optional, default to 10)</param>
+        /// <returns>WorkflowRun</returns>
+        WorkflowRun UpdateWorkflow(string workflowId,  WorkflowStateUpdate request, 
+            List<string> waitUntilTaskRefs = null, int? waitForSeconds = null);
+        
+        
+        /// <summary>
+        /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="waitUntilTaskRefs"> (optional)</param>
+        /// <param name="waitForSeconds"> (optional, default to 10)</param>
+        /// <returns>WorkflowRun</returns>
+        ApiResponse<WorkflowRun> UpdateWorkflowWithHttpInfo(string workflowId,  WorkflowStateUpdate request, 
+            List<string> waitUntilTaskRefs = null, int? waitForSeconds = null);
+
+        /// <summary>
+        /// Gets the workflow by workflow id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId"></param>
+        /// <param name="includeTasks"> (optional, default to true)</param>
+        /// <returns>Workflow</returns>
+        Workflow GetWorkflow(string workflowId, bool includeTasks);
+        
+        
+        /// <summary>
+        /// Gets the workflow by workflow id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId"></param>
+        /// <param name="includeTasks"> (optional, default to true)</param>
+        /// <returns>Workflow</returns>
+        ApiResponse<Workflow> GetWorkflowWithHttpInfo(string workflowId, bool includeTasks);
+
         #endregion Synchronous Operations
     }
 }
