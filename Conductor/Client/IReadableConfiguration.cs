@@ -38,11 +38,5 @@ namespace Conductor.Client
         /// </summary>
         /// <value>Temp folder path.</value>
         string TempFolderPath { get; }
-
-        /// <summary>
-        /// Gets the HTTP connection timeout (in milliseconds)
-        /// </summary>
-        /// <value>HTTP connection timeout.</value>
-        int Timeout { get; }
     }
 }

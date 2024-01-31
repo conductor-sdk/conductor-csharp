@@ -16,22 +16,21 @@ namespace Conductor.Client.Extensions
 
         static ApiExtensions()
         {
-            Configuration = new Configuration
+            Configuration = new Configuration(30 * 1000)
             {
-                Timeout = 30 * 1000,
                 BasePath = GetEnvironmentVariable(ENV_ROOT_URI),
                 AuthenticationSettings = new OrkesAuthenticationSettings(
-                    GetEnvironmentVariable(ENV_KEY_ID),
-                    GetEnvironmentVariable(ENV_SECRET)
-                )
+                GetEnvironmentVariable(ENV_KEY_ID),
+                GetEnvironmentVariable(ENV_SECRET)
+            )
             };
         }
 
         public static WorkflowExecutor GetWorkflowExecutor()
         {
             return new WorkflowExecutor(
-                metadataClient: GetClient<MetadataResourceApi>(),
-                workflowClient: GetClient<WorkflowResourceApi>()
+            metadataClient: GetClient<MetadataResourceApi>(),
+            workflowClient: GetClient<WorkflowResourceApi>()
             );
         }
 

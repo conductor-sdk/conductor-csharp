@@ -2,12 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Text.RegularExpressions;
 using System.IO;
-using System.Web;
 using System.Linq;
-using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using RestSharp;
@@ -28,23 +25,23 @@ namespace Conductor.Client
         /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
-        partial void InterceptRequest(IRestRequest request);
+        partial void InterceptRequest(RestRequest request);
 
         /// <summary>
         /// Allows for extending response processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
         /// <param name="response">The RestSharp response object</param>
-        partial void InterceptResponse(IRestRequest request, IRestResponse response);
+        partial void InterceptResponse(RestRequest request, RestResponse response);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
         /// with default configuration.
         /// </summary>
-        public ApiClient()
+        public ApiClient(int timeOut)
         {
             Configuration = Conductor.Client.Configuration.Default;
-            RestClient = new RestClient("https://play.orkes.io/api");
+            RestClient = new RestClient(options: new RestClientOptions() { BaseUrl = new Uri("https://play.orkes.io/api"), MaxTimeout = timeOut });
         }
 
         /// <summary>
@@ -90,6 +87,25 @@ namespace Conductor.Client
         /// <value>An instance of the RestClient</value>
         public RestClient RestClient { get; set; }
 
+        /// <summary>
+        /// To make stream into bytes
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private byte[] GetBytes(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
+        }
+
         // Creates and sets up a RestRequest prior to a call.
         private RestRequest PrepareRequest(
             String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
@@ -118,7 +134,7 @@ namespace Conductor.Client
             // add file parameter, if any
             foreach (var param in fileParams)
             {
-                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentLength, param.Value.ContentType);
+                request.AddFile(param.Value.Name, GetBytes(param.Value.GetFile()), param.Value.FileName, param.Value.ContentType, null);
             }
 
             if (postBody != null) // http body (model or byte[]) parameter
@@ -153,10 +169,43 @@ namespace Conductor.Client
                 pathParams, contentType);
 
             InterceptRequest(request);
-            var response = RestClient.Execute(request);
+            var response = RestClient.Execute(request, method);
             InterceptResponse(request, response);
-
+            FormatHeaders(response);
             return (Object)response;
+        }
+
+        /// <summary>
+        /// To combine the header of same key with different value into one.
+        /// </summary>
+        /// <param name="response">RestResponse Object</param>
+        /// <returns></returns>
+        private RestResponse FormatHeaders(RestResponse response)
+        {
+            if (response != null && response.Headers != null)
+            {
+                Dictionary<string, object> headerParams = new Dictionary<string, object>();
+                foreach (var item in response.Headers)
+                {
+                    if (headerParams.ContainsKey(item.Name))
+                    {
+                        headerParams[item.Name] += ", " + item.Value.ToString();
+                    }
+                    else
+                    {
+                        headerParams.Add(item.Name, item.Value);
+                    }
+                }
+
+                var headers = new List<HeaderParameter>();
+                foreach (var item in headerParams)
+                {
+                    headers.Add(new HeaderParameter(item.Key, item.Value.ToString()));
+                }
+
+                response.Headers = headers as IReadOnlyCollection<HeaderParameter>;
+            }
+            return response;
         }
 
         /// <summary>
@@ -230,9 +279,9 @@ namespace Conductor.Client
         /// <param name="response">The HTTP response.</param>
         /// <param name="type">Object type.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(IRestResponse response, Type type)
+        public object Deserialize(RestResponse response, Type type)
         {
-            IList<Parameter> headers = response.Headers;
+            IList<HeaderParameter> headers = (IList<HeaderParameter>)response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
