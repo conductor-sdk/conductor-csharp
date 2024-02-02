@@ -26,11 +26,12 @@ namespace csharp_examples
         private const string VARIABLE_NEW_VALUE_1 = "<REPLACE_WITH_OWNER_VALUE_1>";
         private const string VARIABLE_NAME_2 = "<REPLACE_WITH_VARIABLE_NAME_2>";
         private const string VARIABLE_NEW_VALUE_2 = "<REPLACE_WITH_OWNER_VALUE_2>";
+        private const int REST_CLIENT_REQUEST_TIME_OUT = 20000;
 
 
         public void RegisterWorkFlow()
         {
-            Configuration configuration = new Configuration(98765)
+            Configuration configuration = new Configuration(REST_CLIENT_REQUEST_TIME_OUT)
             {
                 AuthenticationSettings = new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET)
             };

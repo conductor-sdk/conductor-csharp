@@ -11,12 +11,13 @@ namespace Conductor.Client.Extensions
         private const string ENV_ROOT_URI = "CONDUCTOR_SERVER_URL";
         private const string ENV_KEY_ID = "KEY";
         private const string ENV_SECRET = "SECRET";
+        private const int REST_CLIENT_REQUEST_TIME_OUT = 30 * 1000;
 
         public static Configuration Configuration { get; set; }
 
         static ApiExtensions()
         {
-            Configuration = new Configuration(30 * 1000)
+            Configuration = new Configuration(REST_CLIENT_REQUEST_TIME_OUT)
             {
                 BasePath = GetEnvironmentVariable(ENV_ROOT_URI),
                 AuthenticationSettings = new OrkesAuthenticationSettings(
