@@ -28,15 +28,12 @@ namespace csharp_examples
         private const string VARIABLE_NEW_VALUE_2 = "<REPLACE_WITH_OWNER_VALUE_2>";
         private const int REST_CLIENT_REQUEST_TIME_OUT = 20000;
 
-
         public void RegisterWorkFlow()
         {
             Configuration configuration = new Configuration(REST_CLIENT_REQUEST_TIME_OUT)
             {
                 AuthenticationSettings = new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET)
             };
-            var con = ApiExtensions.Configuration;
-            Configuration configuration1 = new Configuration();
             WorkflowExecutor executor = new WorkflowExecutor(configuration);
             executor.RegisterWorkflow(GetConductorWorkflow(), true);
         }
@@ -57,25 +54,6 @@ namespace csharp_examples
             conductorWorkFlow.Variables = workflowVariableTobeAdded;
             return conductorWorkFlow;
         }
-
-        public void UpdateWorkflowVariablesWithWorkFlowId()
-        {
-            var orkesApiClient = new OrkesApiClient(new Configuration(),
-                new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET));
-            var workflowClient = orkesApiClient.GetClient<WorkflowResourceApi>();
-            var workFlowVariables = new Dictionary<string, object>
-            {
-                { VARIABLE_NAME_1, VARIABLE_NEW_VALUE_1 },
-                { VARIABLE_NAME_2, VARIABLE_NEW_VALUE_2 }
-            };
-
-            workflowClient.UpdateWorkflowVariables(new Conductor.Client.Models.Workflow()
-            {
-                WorkflowId = WORKFLOW_ID,
-                Variables = workFlowVariables
-            });
-        }
-
 
         /// <summary>
         /// To test Update variables with workflowId

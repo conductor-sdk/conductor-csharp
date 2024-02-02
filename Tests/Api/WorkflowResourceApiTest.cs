@@ -1,4 +1,4 @@
-﻿using conductor.csharp.Client.Extensions;
+using conductor.csharp.Client.Extensions;
 using Conductor.Api;
 using Conductor.Client.Extensions;
 using Conductor.Client.Models;
