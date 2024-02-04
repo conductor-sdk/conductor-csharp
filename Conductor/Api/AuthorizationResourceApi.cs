@@ -5,82 +5,12 @@ using System.Linq;
 using RestSharp;
 using Conductor.Client;
 using Conductor.Client.Models;
+using ThreadTask = System.Threading.Tasks;
+using conductor_csharp.Api;
 
 namespace Conductor.Api
 {
-    /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
-    /// </summary>
-    public interface IAuthorizationResourceApi : IApiAccessor
-    {
-        #region Synchronous Operations
-        /// <summary>
-        /// Get the access that have been granted over the given object
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type"></param>
-        /// <param name="id"></param>
-        /// <returns>Object</returns>
-        Object GetPermissions(string type, string id);
 
-        /// <summary>
-        /// Get the access that have been granted over the given object
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="type"></param>
-        /// <param name="id"></param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetPermissionsWithHttpInfo(string type, string id);
-        /// <summary>
-        /// Grant access to a user over the target
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Response</returns>
-        Response GrantPermissions(AuthorizationRequest body);
-
-        /// <summary>
-        /// Grant access to a user over the target
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of Response</returns>
-        ApiResponse<Response> GrantPermissionsWithHttpInfo(AuthorizationRequest body);
-        /// <summary>
-        /// Remove user&#x27;s access over the target
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Response</returns>
-        Response RemovePermissions(AuthorizationRequest body);
-
-        /// <summary>
-        /// Remove user&#x27;s access over the target
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of Response</returns>
-        ApiResponse<Response> RemovePermissionsWithHttpInfo(AuthorizationRequest body);
-        #endregion Synchronous Operations
-    }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -133,7 +63,7 @@ namespace Conductor.Api
         /// <value>The base path</value>
         public String GetBasePath()
         {
-            return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
+            return this.Configuration.ApiClient.RestClient.Options.BaseUrl.ToString();
         }
 
         /// <summary>
@@ -167,7 +97,20 @@ namespace Conductor.Api
         /// <returns>Object</returns>
         public Object GetPermissions(string type, string id)
         {
-            ApiResponse<Object> localVarResponse = GetPermissionsWithHttpInfo(type, id);
+            ApiResponse<object> localVarResponse = GetPermissionsWithHttpInfo(type, id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Asynchronous Get the access that have been granted over the given object 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="type"></param>
+        /// <param name="id"></param>
+        /// <returns>Object</returns>
+        public async ThreadTask.Task<object> GetPermissionsAsync(string type, string id)
+        {
+            ApiResponse<object> localVarResponse = await ThreadTask.Task.FromResult(GetPermissionsWithHttpInfo(type, id));
             return localVarResponse.Data;
         }
 
@@ -178,7 +121,7 @@ namespace Conductor.Api
         /// <param name="type"></param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse<Object> GetPermissionsWithHttpInfo(string type, string id)
+        public ApiResponse<object> GetPermissionsWithHttpInfo(string type, string id)
         {
             // verify the required parameter 'type' is set
             if (type == null)
@@ -197,29 +140,29 @@ namespace Conductor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-            };
+    };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
+      "application/json"
+    };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (type != null) localVarPathParams.Add("type", this.Configuration.ApiClient.ParameterToString(type)); // path parameter
             if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            // authentication (api_key) required
+                                                                                                              // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
                 localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+            RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+              Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+              localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -230,8 +173,8 @@ namespace Conductor.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+              localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+              (Object)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -246,6 +189,17 @@ namespace Conductor.Api
             return localVarResponse.Data;
         }
 
+        /// <summary>
+        /// Asynchronous Grant access to a user over the target 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Response</returns>
+        public async ThreadTask.Task<Response> GrantPermissionsAsync(AuthorizationRequest body)
+        {
+            ApiResponse<Response> localVarResponse = await ThreadTask.Task.FromResult(GrantPermissionsWithHttpInfo(body));
+            return localVarResponse.Data;
+        }
         /// <summary>
         /// Grant access to a user over the target 
         /// </summary>
@@ -268,14 +222,14 @@ namespace Conductor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
+      "application/json"
+    };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
+      "application/json"
+    };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
@@ -295,9 +249,9 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+            RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+              Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+              localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -308,8 +262,8 @@ namespace Conductor.Api
             }
 
             return new ApiResponse<Response>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+              localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+              (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
         }
 
         /// <summary>
@@ -321,6 +275,18 @@ namespace Conductor.Api
         public Response RemovePermissions(AuthorizationRequest body)
         {
             ApiResponse<Response> localVarResponse = RemovePermissionsWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Asynchronous Remove user&#x27;s access over the target 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Response</returns>
+        public async ThreadTask.Task<Response> RemovePermissionsAsync(AuthorizationRequest body)
+        {
+            ApiResponse<Response> localVarResponse = await ThreadTask.Task.FromResult(RemovePermissionsWithHttpInfo(body));
             return localVarResponse.Data;
         }
 
@@ -346,14 +312,14 @@ namespace Conductor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
+      "application/json"
+    };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
+      "application/json"
+    };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
@@ -373,9 +339,9 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+            RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+              Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+              localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -386,8 +352,8 @@ namespace Conductor.Api
             }
 
             return new ApiResponse<Response>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+              localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+              (Response)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
         }
     }
 }

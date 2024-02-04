@@ -4,128 +4,12 @@ using System.Linq;
 using RestSharp;
 using Conductor.Client;
 using Conductor.Client.Models;
+using ThreadTask = System.Threading.Tasks;
+using conductor_csharp.Api;
 
 namespace Conductor.Api
 {
-    /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
-    /// </summary>
-    public interface IWorkflowBulkResourceApi : IApiAccessor
-    {
-        #region Synchronous Operations
-        /// <summary>
-        /// Pause the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>BulkResponse</returns>
-        BulkResponse PauseWorkflow(List<string> body);
 
-        /// <summary>
-        /// Pause the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> PauseWorkflowWithHttpInfo(List<string> body);
-        /// <summary>
-        /// Restart the list of completed workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <returns>BulkResponse</returns>
-        BulkResponse Restart(List<string> body, bool? useLatestDefinitions = null);
-
-        /// <summary>
-        /// Restart the list of completed workflow
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
-        /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> RestartWithHttpInfo(List<string> body, bool? useLatestDefinitions = null);
-        /// <summary>
-        /// Resume the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>BulkResponse</returns>
-        BulkResponse ResumeWorkflow(List<string> body);
-
-        /// <summary>
-        /// Resume the list of workflows
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> ResumeWorkflowWithHttpInfo(List<string> body);
-        /// <summary>
-        /// Retry the last failed task for each workflow from the list
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>BulkResponse</returns>
-        BulkResponse Retry(List<string> body);
-
-        /// <summary>
-        /// Retry the last failed task for each workflow from the list
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> RetryWithHttpInfo(List<string> body);
-        /// <summary>
-        /// Terminate workflows execution
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <param name="triggerFailureWorkflow"> (optional, default to false)</param>
-        /// <returns>BulkResponse</returns>
-        BulkResponse Terminate(List<string> body, string reason = null, bool? triggerFailureWorkflow = null);
-
-        /// <summary>
-        /// Terminate workflows execution
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="reason"> (optional)</param>
-        /// <param name="triggerFailureWorkflow"> (optional, default to false)</param>
-        /// <returns>ApiResponse of BulkResponse</returns>
-        ApiResponse<BulkResponse> TerminateWithHttpInfo(List<string> body, string reason = null, bool? triggerFailureWorkflow = null);
-        #endregion Synchronous Operations
-    }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -178,7 +62,7 @@ namespace Conductor.Api
         /// <value>The base path</value>
         public String GetBasePath()
         {
-            return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
+            return this.Configuration.ApiClient.RestClient.Options.BaseUrl.ToString();
         }
 
         /// <summary>
@@ -216,6 +100,18 @@ namespace Conductor.Api
         }
 
         /// <summary>
+        /// Asynchronous Pause the list of workflows 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>BulkResponse</returns>
+        public async ThreadTask.Task<BulkResponse> PauseWorkflowAsync(List<string> body)
+        {
+            ApiResponse<BulkResponse> localVarResponse = await ThreadTask.Task.FromResult(PauseWorkflowWithHttpInfo(body));
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
         /// Pause the list of workflows 
         /// </summary>
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
@@ -237,14 +133,14 @@ namespace Conductor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
+      "application/json"
+    };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
+      "*/*"
+    };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
@@ -264,9 +160,9 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+            RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+              Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+              localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -277,8 +173,8 @@ namespace Conductor.Api
             }
 
             return new ApiResponse<BulkResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
+              localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+              (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
         }
 
         /// <summary>
@@ -291,6 +187,19 @@ namespace Conductor.Api
         public BulkResponse Restart(List<string> body, bool? useLatestDefinitions = null)
         {
             ApiResponse<BulkResponse> localVarResponse = RestartWithHttpInfo(body, useLatestDefinitions);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Asynchronous Restart the list of completed workflow 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="useLatestDefinitions"> (optional, default to false)</param>
+        /// <returns>BulkResponse</returns>
+        public async ThreadTask.Task<BulkResponse> RestartAsync(List<string> body, bool? useLatestDefinitions = null)
+        {
+            ApiResponse<BulkResponse> localVarResponse = await ThreadTask.Task.FromResult(RestartWithHttpInfo(body, useLatestDefinitions));
             return localVarResponse.Data;
         }
 
@@ -317,14 +226,14 @@ namespace Conductor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
+      "application/json"
+    };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
+      "*/*"
+    };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
@@ -345,9 +254,9 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+            RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+              Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+              localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -358,8 +267,8 @@ namespace Conductor.Api
             }
 
             return new ApiResponse<BulkResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
+              localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+              (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
         }
 
         /// <summary>
@@ -371,6 +280,18 @@ namespace Conductor.Api
         public BulkResponse ResumeWorkflow(List<string> body)
         {
             ApiResponse<BulkResponse> localVarResponse = ResumeWorkflowWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Asynchronous Resume the list of workflows 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>BulkResponse</returns>
+        public async ThreadTask.Task<BulkResponse> ResumeWorkflowAsync(List<string> body)
+        {
+            ApiResponse<BulkResponse> localVarResponse = await ThreadTask.Task.FromResult(ResumeWorkflowWithHttpInfo(body));
             return localVarResponse.Data;
         }
 
@@ -396,14 +317,14 @@ namespace Conductor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
+      "application/json"
+    };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
+      "*/*"
+    };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
@@ -423,9 +344,9 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+            RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+              Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+              localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -436,8 +357,8 @@ namespace Conductor.Api
             }
 
             return new ApiResponse<BulkResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
+              localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+              (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
         }
 
         /// <summary>
@@ -449,6 +370,18 @@ namespace Conductor.Api
         public BulkResponse Retry(List<string> body)
         {
             ApiResponse<BulkResponse> localVarResponse = RetryWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Asynchronous Retry the last failed task for each workflow from the list 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>BulkResponse</returns>
+        public async ThreadTask.Task<BulkResponse> RetryAsync(List<string> body)
+        {
+            ApiResponse<BulkResponse> localVarResponse = await ThreadTask.Task.FromResult(RetryWithHttpInfo(body));
             return localVarResponse.Data;
         }
 
@@ -474,14 +407,14 @@ namespace Conductor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
+      "application/json"
+    };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
+      "*/*"
+    };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
@@ -501,9 +434,9 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+            RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+              Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+              localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -514,8 +447,8 @@ namespace Conductor.Api
             }
 
             return new ApiResponse<BulkResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
+              localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+              (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
         }
 
         /// <summary>
@@ -529,6 +462,20 @@ namespace Conductor.Api
         public BulkResponse Terminate(List<string> body, string reason = null, bool? triggerFailureWorkflow = null)
         {
             ApiResponse<BulkResponse> localVarResponse = TerminateWithHttpInfo(body, reason, triggerFailureWorkflow);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Asynchronous Terminate workflows execution 
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="reason"> (optional)</param>
+        /// <param name="triggerFailureWorkflow"> (optional, default to false)</param>
+        /// <returns>BulkResponse</returns>
+        public async ThreadTask.Task<BulkResponse> TerminateAsync(List<string> body, string reason = null, bool? triggerFailureWorkflow = null)
+        {
+            ApiResponse<BulkResponse> localVarResponse = await ThreadTask.Task.FromResult(TerminateWithHttpInfo(body, reason, triggerFailureWorkflow));
             return localVarResponse.Data;
         }
 
@@ -556,14 +503,14 @@ namespace Conductor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
+      "application/json"
+    };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
-            };
+      "*/*"
+    };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
@@ -585,9 +532,9 @@ namespace Conductor.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+            RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+              Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+              localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -598,8 +545,8 @@ namespace Conductor.Api
             }
 
             return new ApiResponse<BulkResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
+              localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+              (BulkResponse)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BulkResponse)));
         }
     }
 }

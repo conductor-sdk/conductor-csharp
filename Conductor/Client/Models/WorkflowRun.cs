@@ -209,70 +209,70 @@ namespace Conductor.Client.Models
                 return false;
 
             return
-                (
-                    this.CorrelationId == input.CorrelationId ||
-                    (this.CorrelationId != null &&
-                    this.CorrelationId.Equals(input.CorrelationId))
-                ) &&
-                (
-                    this.CreateTime == input.CreateTime ||
-                    (this.CreateTime != null &&
-                    this.CreateTime.Equals(input.CreateTime))
-                ) &&
-                (
-                    this.CreatedBy == input.CreatedBy ||
-                    (this.CreatedBy != null &&
-                    this.CreatedBy.Equals(input.CreatedBy))
-                ) &&
-                (
-                    this.Input == input.Input ||
-                    this.Input != null &&
-                    input.Input != null &&
-                    this.Input.SequenceEqual(input.Input)
-                ) &&
-                (
-                    this.Output == input.Output ||
-                    this.Output != null &&
-                    input.Output != null &&
-                    this.Output.SequenceEqual(input.Output)
-                ) &&
-                (
-                    this.Priority == input.Priority ||
-                    (this.Priority != null &&
-                    this.Priority.Equals(input.Priority))
-                ) &&
-                (
-                    this.RequestId == input.RequestId ||
-                    (this.RequestId != null &&
-                    this.RequestId.Equals(input.RequestId))
-                ) &&
-                (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) &&
-                (
-                    this.Tasks == input.Tasks ||
-                    this.Tasks != null &&
-                    input.Tasks != null &&
-                    this.Tasks.SequenceEqual(input.Tasks)
-                ) &&
-                (
-                    this.UpdateTime == input.UpdateTime ||
-                    (this.UpdateTime != null &&
-                    this.UpdateTime.Equals(input.UpdateTime))
-                ) &&
-                (
-                    this.Variables == input.Variables ||
-                    this.Variables != null &&
-                    input.Variables != null &&
-                    this.Variables.SequenceEqual(input.Variables)
-                ) &&
-                (
-                    this.WorkflowId == input.WorkflowId ||
-                    (this.WorkflowId != null &&
-                    this.WorkflowId.Equals(input.WorkflowId))
-                );
+              (
+             this.CorrelationId == input.CorrelationId ||
+             (this.CorrelationId != null &&
+             this.CorrelationId.Equals(input.CorrelationId))
+              ) &&
+              (
+             this.CreateTime == input.CreateTime ||
+             (this.CreateTime != null &&
+             this.CreateTime.Equals(input.CreateTime))
+              ) &&
+              (
+             this.CreatedBy == input.CreatedBy ||
+             (this.CreatedBy != null &&
+             this.CreatedBy.Equals(input.CreatedBy))
+              ) &&
+              (
+             this.Input == input.Input ||
+             this.Input != null &&
+             input.Input != null &&
+             this.Input.SequenceEqual(input.Input)
+              ) &&
+              (
+             this.Output == input.Output ||
+             this.Output != null &&
+             input.Output != null &&
+             this.Output.SequenceEqual(input.Output)
+              ) &&
+              (
+             this.Priority == input.Priority ||
+             (this.Priority != null &&
+             this.Priority.Equals(input.Priority))
+              ) &&
+              (
+             this.RequestId == input.RequestId ||
+             (this.RequestId != null &&
+             this.RequestId.Equals(input.RequestId))
+              ) &&
+              (
+             this.Status == input.Status ||
+             (this.Status != null &&
+             this.Status.Equals(input.Status))
+              ) &&
+              (
+             this.Tasks == input.Tasks ||
+             this.Tasks != null &&
+             input.Tasks != null &&
+             this.Tasks.SequenceEqual(input.Tasks)
+              ) &&
+              (
+             this.UpdateTime == input.UpdateTime ||
+             (this.UpdateTime != null &&
+             this.UpdateTime.Equals(input.UpdateTime))
+              ) &&
+              (
+             this.Variables == input.Variables ||
+             this.Variables != null &&
+             input.Variables != null &&
+             this.Variables.SequenceEqual(input.Variables)
+              ) &&
+              (
+             this.WorkflowId == input.WorkflowId ||
+             (this.WorkflowId != null &&
+             this.WorkflowId.Equals(input.WorkflowId))
+              );
         }
 
         /// <summary>

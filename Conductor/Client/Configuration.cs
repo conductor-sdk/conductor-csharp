@@ -4,6 +4,8 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System;
+using RestSharp;
+using System.Net.Http;
 
 namespace Conductor.Client
 {
@@ -74,6 +76,7 @@ namespace Conductor.Client
         private readonly TokenHandler _tokenHandler = new TokenHandler();
 
         private TokenResourceApi _tokenClient = null;
+        private int Timeout = 10000;
 
         #endregion Private Members
 
@@ -82,18 +85,19 @@ namespace Conductor.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration" /> class
         /// </summary>
-        public Configuration()
+        public Configuration(int? timeOut = null)
         {
+            Timeout = timeOut ?? Timeout;
+            ApiClient = new ApiClient(Timeout);
             BasePath = "https://play.orkes.io/api";
             DefaultHeader = new ConcurrentDictionary<string, string>();
-            Timeout = 10000;
         }
 
         #endregion Constructors
 
         #region Properties
 
-        public readonly ApiClient ApiClient = new ApiClient();
+        public readonly ApiClient ApiClient;
 
         public OrkesAuthenticationSettings AuthenticationSettings { get; set; }
 
@@ -104,11 +108,11 @@ namespace Conductor.Client
         {
             get
             {
-                return ApiClient.RestClient.BaseUrl.ToString();
+                return ApiClient.RestClient.Options.BaseUrl.ToString();
             }
             set
             {
-                ApiClient.RestClient.BaseUrl = new Uri(value);
+                ApiClient.RestClient = new RestClient(new RestClientOptions() { BaseUrl = new Uri(value), MaxTimeout = Timeout });
             }
         }
 
@@ -116,21 +120,6 @@ namespace Conductor.Client
         /// Gets or sets the default header.
         /// </summary>
         public IDictionary<string, string> DefaultHeader { get; set; } = null;
-
-        /// <summary>
-        /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 10000 milliseconds.
-        /// </summary>
-        public int Timeout
-        {
-            get
-            {
-                return ApiClient.RestClient.Timeout;
-            }
-            set
-            {
-                ApiClient.RestClient.Timeout = value;
-            }
-        }
 
         public string AccessToken
         {
