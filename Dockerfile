@@ -1,6 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS csharp-sdk
 RUN mkdir /package
 COPY /Conductor /package/Conductor
+COPY /README.md /package/Conductor/README.md
 WORKDIR /package/Conductor
 
 FROM csharp-sdk AS linter
@@ -21,7 +22,6 @@ WORKDIR /package/Tests
 RUN dotnet test -l "console;verbosity=normal"
 
 FROM build as pack_release
-COPY /README.md /package/Conductor/README.md
 ARG SDK_VERSION
 RUN dotnet pack "conductor-csharp.csproj" \
     -o /build \
