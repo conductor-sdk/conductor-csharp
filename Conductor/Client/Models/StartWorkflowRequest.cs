@@ -1,22 +1,21 @@
-using System.Linq;
-using System.IO;
 using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Conductor.Client.Models
 {
     /// <summary>
-    /// StartWorkflowRequest
+    ///     StartWorkflowRequest
     /// </summary>
     [DataContract]
-    public partial class StartWorkflowRequest : IEquatable<StartWorkflowRequest>, IValidatableObject
+    public class StartWorkflowRequest : IEquatable<StartWorkflowRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StartWorkflowRequest" /> class.
+        ///     Initializes a new instance of the <see cref="StartWorkflowRequest" /> class.
         /// </summary>
         /// <param name="correlationId">correlationId.</param>
         /// <param name="createdBy">createdBy.</param>
@@ -27,7 +26,12 @@ namespace Conductor.Client.Models
         /// <param name="taskToDomain">taskToDomain.</param>
         /// <param name="version">version.</param>
         /// <param name="workflowDef">workflowDef.</param>
-        public StartWorkflowRequest(string correlationId = default(string), string createdBy = default(string), string externalInputPayloadStoragePath = default(string), Dictionary<string, Object> input = default(Dictionary<string, Object>), string name = default(string), int? priority = default(int?), Dictionary<string, string> taskToDomain = default(Dictionary<string, string>), int? version = default(int?), WorkflowDef workflowDef = default(WorkflowDef))
+        public StartWorkflowRequest(string correlationId = default, string createdBy = default,
+            string externalInputPayloadStoragePath = default, Dictionary<string, object> input = default,
+            string name = default, int? priority = default, Dictionary<string, string> taskToDomain = default,
+            int? version = default, WorkflowDef workflowDef = default,
+            string idempotencyKey = default(string),
+            IdempotencyStrategy idempotencyStrategy = IdempotencyStrategy.FAIL)
         {
             this.Name = name;
             this.CorrelationId = correlationId;
@@ -38,64 +42,142 @@ namespace Conductor.Client.Models
             this.TaskToDomain = taskToDomain;
             this.Version = version;
             this.WorkflowDef = workflowDef;
+            this.IdempotencyKey = idempotencyKey;
+            this.IdempotencyStrategy = idempotencyStrategy;
         }
+        
+        [DataMember(Name = "idempotencyStrategy", EmitDefaultValue = true)]
+        public IdempotencyStrategy IdempotencyStrategy { get; set; }
 
+        [DataMember(Name = "idempotencyKey", EmitDefaultValue = false)]
+        public string IdempotencyKey { get; set; }
+        
         /// <summary>
-        /// Gets or Sets CorrelationId
+        ///     Gets or Sets CorrelationId
         /// </summary>
         [DataMember(Name = "correlationId", EmitDefaultValue = false)]
         public string CorrelationId { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedBy
+        ///     Gets or Sets CreatedBy
         /// </summary>
         [DataMember(Name = "createdBy", EmitDefaultValue = false)]
         public string CreatedBy { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalInputPayloadStoragePath
+        ///     Gets or Sets ExternalInputPayloadStoragePath
         /// </summary>
         [DataMember(Name = "externalInputPayloadStoragePath", EmitDefaultValue = false)]
         public string ExternalInputPayloadStoragePath { get; set; }
 
         /// <summary>
-        /// Gets or Sets Input
+        ///     Gets or Sets Input
         /// </summary>
         [DataMember(Name = "input", EmitDefaultValue = false)]
-        public Dictionary<string, Object> Input { get; set; }
+        public Dictionary<string, object> Input { get; set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        ///     Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Priority
+        ///     Gets or Sets Priority
         /// </summary>
         [DataMember(Name = "priority", EmitDefaultValue = false)]
         public int? Priority { get; set; }
 
         /// <summary>
-        /// Gets or Sets TaskToDomain
+        ///     Gets or Sets TaskToDomain
         /// </summary>
         [DataMember(Name = "taskToDomain", EmitDefaultValue = false)]
         public Dictionary<string, string> TaskToDomain { get; set; }
 
         /// <summary>
-        /// Gets or Sets Version
+        ///     Gets or Sets Version
         /// </summary>
         [DataMember(Name = "version", EmitDefaultValue = false)]
         public int? Version { get; set; }
 
         /// <summary>
-        /// Gets or Sets WorkflowDef
+        ///     Gets or Sets WorkflowDef
         /// </summary>
         [DataMember(Name = "workflowDef", EmitDefaultValue = false)]
         public WorkflowDef WorkflowDef { get; set; }
 
         /// <summary>
-        /// Returns the string presentation of the object
+        ///     Returns true if StartWorkflowRequest instances are equal
+        /// </summary>
+        /// <param name="input">Instance of StartWorkflowRequest to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(StartWorkflowRequest input)
+        {
+            if (input == null)
+                return false;
+
+            return
+                (
+                    CorrelationId == input.CorrelationId ||
+                    (CorrelationId != null &&
+                     CorrelationId.Equals(input.CorrelationId))
+                ) &&
+                (
+                    CreatedBy == input.CreatedBy ||
+                    (CreatedBy != null &&
+                     CreatedBy.Equals(input.CreatedBy))
+                ) &&
+                (
+                    ExternalInputPayloadStoragePath == input.ExternalInputPayloadStoragePath ||
+                    (ExternalInputPayloadStoragePath != null &&
+                     ExternalInputPayloadStoragePath.Equals(input.ExternalInputPayloadStoragePath))
+                ) &&
+                (
+                    Input == input.Input ||
+                    (Input != null &&
+                     input.Input != null &&
+                     Input.SequenceEqual(input.Input))
+                ) &&
+                (
+                    Name == input.Name ||
+                    (Name != null &&
+                     Name.Equals(input.Name))
+                ) &&
+                (
+                    Priority == input.Priority ||
+                    (Priority != null &&
+                     Priority.Equals(input.Priority))
+                ) &&
+                (
+                    TaskToDomain == input.TaskToDomain ||
+                    (TaskToDomain != null &&
+                     input.TaskToDomain != null &&
+                     TaskToDomain.SequenceEqual(input.TaskToDomain))
+                ) &&
+                (
+                    Version == input.Version ||
+                    (Version != null &&
+                     Version.Equals(input.Version))
+                ) &&
+                (
+                    WorkflowDef == input.WorkflowDef ||
+                    (WorkflowDef != null &&
+                     WorkflowDef.Equals(input.WorkflowDef))
+                );
+        }
+
+        /// <summary>
+        ///     To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
+
+        /// <summary>
+        ///     Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
@@ -116,7 +198,7 @@ namespace Conductor.Client.Models
         }
 
         /// <summary>
-        /// Returns the JSON string presentation of the object
+        ///     Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
@@ -125,114 +207,44 @@ namespace Conductor.Client.Models
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        ///     Returns true if objects are equal
         /// </summary>
         /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as StartWorkflowRequest);
+            return Equals(input as StartWorkflowRequest);
         }
 
         /// <summary>
-        /// Returns true if StartWorkflowRequest instances are equal
-        /// </summary>
-        /// <param name="input">Instance of StartWorkflowRequest to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(StartWorkflowRequest input)
-        {
-            if (input == null)
-                return false;
-
-            return
-                (
-                    this.CorrelationId == input.CorrelationId ||
-                    (this.CorrelationId != null &&
-                    this.CorrelationId.Equals(input.CorrelationId))
-                ) &&
-                (
-                    this.CreatedBy == input.CreatedBy ||
-                    (this.CreatedBy != null &&
-                    this.CreatedBy.Equals(input.CreatedBy))
-                ) &&
-                (
-                    this.ExternalInputPayloadStoragePath == input.ExternalInputPayloadStoragePath ||
-                    (this.ExternalInputPayloadStoragePath != null &&
-                    this.ExternalInputPayloadStoragePath.Equals(input.ExternalInputPayloadStoragePath))
-                ) &&
-                (
-                    this.Input == input.Input ||
-                    this.Input != null &&
-                    input.Input != null &&
-                    this.Input.SequenceEqual(input.Input)
-                ) &&
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) &&
-                (
-                    this.Priority == input.Priority ||
-                    (this.Priority != null &&
-                    this.Priority.Equals(input.Priority))
-                ) &&
-                (
-                    this.TaskToDomain == input.TaskToDomain ||
-                    this.TaskToDomain != null &&
-                    input.TaskToDomain != null &&
-                    this.TaskToDomain.SequenceEqual(input.TaskToDomain)
-                ) &&
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                ) &&
-                (
-                    this.WorkflowDef == input.WorkflowDef ||
-                    (this.WorkflowDef != null &&
-                    this.WorkflowDef.Equals(input.WorkflowDef))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
+        ///     Gets the hash code
         /// </summary>
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
-                if (this.CorrelationId != null)
-                    hashCode = hashCode * 59 + this.CorrelationId.GetHashCode();
-                if (this.CreatedBy != null)
-                    hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
-                if (this.ExternalInputPayloadStoragePath != null)
-                    hashCode = hashCode * 59 + this.ExternalInputPayloadStoragePath.GetHashCode();
-                if (this.Input != null)
-                    hashCode = hashCode * 59 + this.Input.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Priority != null)
-                    hashCode = hashCode * 59 + this.Priority.GetHashCode();
-                if (this.TaskToDomain != null)
-                    hashCode = hashCode * 59 + this.TaskToDomain.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                if (this.WorkflowDef != null)
-                    hashCode = hashCode * 59 + this.WorkflowDef.GetHashCode();
+                var hashCode = 41;
+                if (CorrelationId != null)
+                    hashCode = hashCode * 59 + CorrelationId.GetHashCode();
+                if (CreatedBy != null)
+                    hashCode = hashCode * 59 + CreatedBy.GetHashCode();
+                if (ExternalInputPayloadStoragePath != null)
+                    hashCode = hashCode * 59 + ExternalInputPayloadStoragePath.GetHashCode();
+                if (Input != null)
+                    hashCode = hashCode * 59 + Input.GetHashCode();
+                if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Priority != null)
+                    hashCode = hashCode * 59 + Priority.GetHashCode();
+                if (TaskToDomain != null)
+                    hashCode = hashCode * 59 + TaskToDomain.GetHashCode();
+                if (Version != null)
+                    hashCode = hashCode * 59 + Version.GetHashCode();
+                if (WorkflowDef != null)
+                    hashCode = hashCode * 59 + WorkflowDef.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 }
