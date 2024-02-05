@@ -69,11 +69,7 @@ namespace csharp_examples
                 { VARIABLE_NAME_2, VARIABLE_NEW_VALUE_2 }
             };
 
-            workflowClient.UpdateWorkflowVariables(new Conductor.Client.Models.Workflow()
-            {
-                WorkflowId = WORKFLOW_ID,
-                Variables = workFlowVariables
-            });
+            workflowClient.UpdateWorkflowVariables(WORKFLOW_ID, workFlowVariables);
         }
 
         /// <summary>

@@ -99,24 +99,8 @@ namespace Conductor.Client.Models
         /// <param name="updatedBy">updatedBy.</param>
         public TaskDef(int? backoffScaleFactor = default(int?), int? concurrentExecLimit = default(int?), long? createTime = default(long?), string createdBy = default(string), string description = default(string), string executionNameSpace = default(string), List<string> inputKeys = default(List<string>), Dictionary<string, Object> inputTemplate = default(Dictionary<string, Object>), string isolationGroupId = default(string), string name = default(string), List<string> outputKeys = default(List<string>), string ownerApp = default(string), string ownerEmail = default(string), int? pollTimeoutSeconds = default(int?), int? rateLimitFrequencyInSeconds = default(int?), int? rateLimitPerFrequency = default(int?), long? responseTimeoutSeconds = default(long?), int? retryCount = default(int?), int? retryDelaySeconds = default(int?), RetryLogicEnum? retryLogic = default(RetryLogicEnum?), TimeoutPolicyEnum? timeoutPolicy = default(TimeoutPolicyEnum?), long? timeoutSeconds = default(long?), long? updateTime = default(long?), string updatedBy = default(string))
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new InvalidDataException("name is a required property for TaskDef and cannot be null");
-            }
-            else
-            {
-                this.Name = name;
-            }
-            // to ensure "timeoutSeconds" is required (not null)
-            if (timeoutSeconds == null)
-            {
-                throw new InvalidDataException("timeoutSeconds is a required property for TaskDef and cannot be null");
-            }
-            else
-            {
-                this.TimeoutSeconds = timeoutSeconds;
-            }
+            this.Name = name;
+            this.TimeoutSeconds = timeoutSeconds;
             this.BackoffScaleFactor = backoffScaleFactor;
             this.ConcurrentExecLimit = concurrentExecLimit;
             this.CreateTime = createTime;
