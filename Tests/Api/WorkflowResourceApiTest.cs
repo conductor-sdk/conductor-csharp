@@ -19,20 +19,14 @@ namespace conductor_csharp.test.Api
         private const string WORKFLOW_VARIABLE_2 = "TestVariable2";
         private const string WORKFLOW_DESC = "Test Workflow With Variables";
         private const int WORKFLOW_VERSION = 1;
-        private const string OWNER_EMAIL = "<REPLACE_WITH_OWNER_EMAIL>";
-
-        //private readonly OrkesApiClient _orkesApiClient;
+        private const string OWNER_EMAIL = "developer@orkes.io";
+        
         private readonly WorkflowResourceApi _workflowClient;
         private readonly MetadataResourceApi _metadataResourceApi;
         private readonly ILogger _logger;
 
         public WorkflowResourceApiTest()
         {
-            // Dev local test
-            //_orkesApiClient = new OrkesApiClient(new Configuration(), new OrkesAuthenticationSettings("<Key_Id>", "<Key_Secret>"));
-            //_workflowClient = _orkesApiClient.GetClient<WorkflowResourceApi>();
-            //_metadataResourceApi = _orkesApiClient.GetClient<MetadataResourceApi>();
-
             _workflowClient = ApiExtensions.GetClient<WorkflowResourceApi>();
             _metadataResourceApi = ApiExtensions.GetClient<MetadataResourceApi>();
             _logger = ApplicationLogging.CreateLogger<WorkerTests>();
