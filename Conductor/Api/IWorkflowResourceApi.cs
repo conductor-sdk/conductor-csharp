@@ -72,7 +72,7 @@ namespace conductor_csharp.Api
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Workflow</returns>
         Workflow GetExecutionStatus(string workflowId, bool? includeTasks = null, bool? summarize = null);
-        
+
         /// <summary>
         /// Gets the workflow by workflow id
         /// </summary>
@@ -397,7 +397,7 @@ namespace conductor_csharp.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
         Object UploadCompletedWorkflows();
-        
+
         /// <summary>
         /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
         /// </summary>
@@ -409,7 +409,7 @@ namespace conductor_csharp.Api
         /// <returns>WorkflowRun</returns>
         WorkflowRun UpdateWorkflow(string workflowId, WorkflowStateUpdate request,
             List<string> waitUntilTaskRefs = null, int? waitForSeconds = null);
-        
+
         #endregion Synchronous Operations
 
         #region Asynchronous Operations
@@ -472,7 +472,7 @@ namespace conductor_csharp.Api
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Workflow</returns>
         ThreadTask.Task<Workflow> GetExecutionStatusAsync(string workflowId, bool? includeTasks = null, bool? summarize = null);
-        
+
         /// <summary>
         /// Asynchronous Gets the workflow by workflow id
         /// </summary>
@@ -797,7 +797,7 @@ namespace conductor_csharp.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
         ThreadTask.Task<Object> UploadCompletedWorkflowsAsync();
-        
+
         /// <summary>
         /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
         /// </summary>

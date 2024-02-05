@@ -437,7 +437,7 @@ namespace Conductor.Api
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
-            
+
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
@@ -464,7 +464,7 @@ namespace Conductor.Api
             ApiResponse<Workflow> localVarResponse = GetExecutionStatusWithHttpInfo(workflowId, includeTasks, summarize);
             return localVarResponse.Data;
         }
-        
+
         /// <summary>
         /// Gets the workflow by workflow id 
         /// </summary>
@@ -492,7 +492,7 @@ namespace Conductor.Api
             ApiResponse<Workflow> localVarResponse = await ThreadTask.Task.FromResult(GetExecutionStatusWithHttpInfo(workflowId, includeTasks, summarize));
             return localVarResponse.Data;
         }
-        
+
         /// <summary>
         /// Asynchronous Gets the workflow by workflow id 
         /// </summary>
@@ -2805,7 +2805,7 @@ namespace Conductor.Api
             ApiResponse<WorkflowRun> localVarResponse = await ThreadTask.Task.FromResult(UpdateWorkflowWithHttpInfo(workflowId, request, waitUntilTaskRefs, waitForSeconds));
             return localVarResponse.Data;
         }
-        
+
         /// <summary>
         /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
         /// </summary>

@@ -45,13 +45,13 @@ namespace Conductor.Client.Models
             this.IdempotencyKey = idempotencyKey;
             this.IdempotencyStrategy = idempotencyStrategy;
         }
-        
+
         [DataMember(Name = "idempotencyStrategy", EmitDefaultValue = true)]
         public IdempotencyStrategy IdempotencyStrategy { get; set; }
 
         [DataMember(Name = "idempotencyKey", EmitDefaultValue = false)]
         public string IdempotencyKey { get; set; }
-        
+
         /// <summary>
         ///     Gets or Sets CorrelationId
         /// </summary>
