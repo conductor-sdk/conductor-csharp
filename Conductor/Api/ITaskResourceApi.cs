@@ -213,6 +213,22 @@ namespace conductor_csharp.Api
         /// <returns>string</returns>
         string UpdateTask(Dictionary<string, Object> body, string workflowId, string taskRefName, string status, string workerid = null);
 
+        /// <summary>
+        /// Update a task By Ref Name, evaluates the workflow and returns the updated workflow
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="output"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="taskRefName"></param>
+        /// <param name="status"></param>
+        /// <param name="workerid"> (optional)</param>
+        /// <returns>Workflow</returns>
+        Workflow UpdateTaskSync(Dictionary<string, Object> output, string workflowId, string taskRefName, TaskResult.StatusEnum status, string workerid = null);
+
+
         #endregion Synchronous Operations
 
         #region Asynchronous Operations
@@ -415,6 +431,22 @@ namespace conductor_csharp.Api
         /// <param name="workerid"> (optional)</param>
         /// <returns>string</returns>
         ThreadTask.Task<string> UpdateTaskAsync(Dictionary<string, Object> body, string workflowId, string taskRefName, string status, string workerid = null);
+
+        /// <summary>
+        /// Update a task By Ref Name, evaluates the workflow and returns the updated workflow
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="output"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="taskRefName"></param>
+        /// <param name="status"></param>
+        /// <param name="workerid"> (optional)</param>
+        /// <returns>Workflow</returns>
+        ThreadTask.Task<Workflow> UpdateTaskSyncAsync(Dictionary<string, Object> output, string workflowId, string taskRefName, TaskResult.StatusEnum status, string workerid = null);
+
         #endregion Asynchronous Operations
     }
 }
