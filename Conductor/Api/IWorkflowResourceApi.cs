@@ -55,9 +55,11 @@ namespace conductor_csharp.Api
         /// <summary>
         /// Update the value of the workflow variables for the given workflow id 
         /// </summary>
-        /// <param name="workflow"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        Object UpdateWorkflowVariables(Workflow workflow);
+        /// <param name="workflowId"></param>
+        /// <param name="variables"></param>
+        /// <returns>Workflow</returns>
+        Workflow UpdateWorkflowVariables(string workflowId, Dictionary<string, Object> variables);
+
         /// <summary>
         /// Gets the workflow by workflow id
         /// </summary>
@@ -70,6 +72,18 @@ namespace conductor_csharp.Api
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Workflow</returns>
         Workflow GetExecutionStatus(string workflowId, bool? includeTasks = null, bool? summarize = null);
+
+        /// <summary>
+        /// Gets the workflow by workflow id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId"></param>
+        /// <param name="includeTasks"> (optional, default to true)</param>
+        /// <returns>Workflow</returns>
+        Workflow GetWorkflow(string workflowId, bool? includeTasks = null);
 
         /// <summary>
         /// Gets the workflow tasks by workflow id
@@ -384,6 +398,18 @@ namespace conductor_csharp.Api
         /// <returns>Object</returns>
         Object UploadCompletedWorkflows();
 
+        /// <summary>
+        /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="waitUntilTaskRefs"> (optional)</param>
+        /// <param name="waitForSeconds"> (optional, default to 10)</param>
+        /// <returns>WorkflowRun</returns>
+        WorkflowRun UpdateWorkflow(string workflowId, WorkflowStateUpdate request,
+            List<string> waitUntilTaskRefs = null, int? waitForSeconds = null);
+
         #endregion Synchronous Operations
 
         #region Asynchronous Operations
@@ -428,9 +454,11 @@ namespace conductor_csharp.Api
         /// <summary>
         /// Asynchronous Update the value of the workflow variables for the given workflow id 
         /// </summary>
-        /// <param name="workflow"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ThreadTask.Task<Object> UpdateWorkflowVariablesAsync(Workflow workflow);
+        /// <param name="workflowId"></param>
+        /// /// <param name="variables"></param>
+        /// <returns>Workflow</returns>
+        ThreadTask.Task<Workflow> UpdateWorkflowVariablesAsync(string workflowId, Dictionary<string, Object> variables);
+
 
         /// <summary>
         /// Asynchronous Gets the workflow by workflow id
@@ -444,6 +472,18 @@ namespace conductor_csharp.Api
         /// <param name="summarize"> (optional, default to false)</param>
         /// <returns>Workflow</returns>
         ThreadTask.Task<Workflow> GetExecutionStatusAsync(string workflowId, bool? includeTasks = null, bool? summarize = null);
+
+        /// <summary>
+        /// Asynchronous Gets the workflow by workflow id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId"></param>
+        /// <param name="includeTasks"> (optional, default to true)</param>
+        /// <returns>Workflow</returns>
+        ThreadTask.Task<Workflow> GetWorkflowAsync(string workflowId, bool? includeTasks = null);
 
         /// <summary>
         /// Asynchronous Gets the workflow tasks by workflow id
@@ -757,6 +797,18 @@ namespace conductor_csharp.Api
         /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
         ThreadTask.Task<Object> UploadCompletedWorkflowsAsync();
+
+        /// <summary>
+        /// Update a workflow state by updating variables or in progress task Updates the workflow variables, tasks and triggers evaluation.
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request"></param>
+        /// <param name="workflowId"></param>
+        /// <param name="waitUntilTaskRefs"> (optional)</param>
+        /// <param name="waitForSeconds"> (optional, default to 10)</param>
+        /// <returns>WorkflowRun</returns>
+        ThreadTask.Task<WorkflowRun> UpdateWorkflowAsync(string workflowId, WorkflowStateUpdate request,
+            List<string> waitUntilTaskRefs = null, int? waitForSeconds = null);
 
         #endregion Asynchronous Operations
     }
