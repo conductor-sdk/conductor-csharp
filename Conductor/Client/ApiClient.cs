@@ -16,7 +16,7 @@ namespace Conductor.Client
     /// </summary>
     public partial class ApiClient
     {
-        private JsonSerializerSettings serializerSettings = new JsonSerializerSettings
+        public JsonSerializerSettings serializerSettings = new JsonSerializerSettings
         {
             ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
         };
@@ -341,7 +341,7 @@ namespace Conductor.Client
         {
             try
             {
-                return obj != null ? JsonConvert.SerializeObject(obj) : null;
+                return obj != null ? JsonConvert.SerializeObject(obj, serializerSettings) : null;
             }
             catch (Exception e)
             {

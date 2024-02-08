@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using RestSharp;
-using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace Conductor.Client
 {
@@ -89,6 +89,20 @@ namespace Conductor.Client
         {
             Timeout = timeOut ?? Timeout;
             ApiClient = new ApiClient(Timeout);
+            BasePath = "https://play.orkes.io/api";
+            DefaultHeader = new ConcurrentDictionary<string, string>();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Configuration" /> class
+        /// </summary>
+        /// <param name="serializerSettings">JsonSerializerSettings setting custom serialization properties</param>
+        /// <param name="timeOut">Optional rest client request time out</param>
+        public Configuration(JsonSerializerSettings serializerSettings, int? timeOut = null)
+        {
+            Timeout = timeOut ?? Timeout;
+            ApiClient = new ApiClient(Timeout);
+            ApiClient.serializerSettings = serializerSettings;
             BasePath = "https://play.orkes.io/api";
             DefaultHeader = new ConcurrentDictionary<string, string>();
         }
