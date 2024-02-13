@@ -4,7 +4,7 @@ using Conductor.Definition;
 using Conductor.Executor;
 using Conductor.Api;
 using Conductor.Client.Authentication;
-using Conductor.Client.Extensions;
+using Newtonsoft.Json;
 
 namespace csharp_examples
 {
@@ -30,12 +30,39 @@ namespace csharp_examples
 
         public void RegisterWorkFlow()
         {
-            Configuration configuration = new Configuration(REST_CLIENT_REQUEST_TIME_OUT)
+            // Method-1 for using custom serialization settings - START
+
+            // Step 1:- Prepare JsonSerializer Settings with certain properties
+            JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings()
+            {
+                Formatting = Formatting.Indented,
+                NullValueHandling = NullValueHandling.Ignore
+            };
+
+            // Step 2:- Use overloaded constructor of Configuration and pass the JsonSerializer Settings 
+            // Restclient internally use the settings to serialize on request/response while making a call to serialize/deserialize
+            Configuration configuration = new Configuration(jsonSerializerSettings, REST_CLIENT_REQUEST_TIME_OUT)
             {
                 AuthenticationSettings = new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET)
             };
+
             WorkflowExecutor executor = new WorkflowExecutor(configuration);
             executor.RegisterWorkflow(GetConductorWorkflow(), true);
+            // Method-1 for using custom serialization settings - END
+
+
+            // Method-2 for using custom serialization settings - START
+            /*
+                Configuration configuration = new Configuration();
+                configuration.ApiClient.serializerSettings = new JsonSerializerSettings()
+                                {
+                                    Formatting = Formatting.Indented,
+                                    NullValueHandling = NullValueHandling.Ignore
+                                };
+                WorkflowExecutor executor = new WorkflowExecutor(configuration);
+                executor.RegisterWorkflow(GetConductorWorkflow(), true);
+             */
+            // Method-2 for using custom serialization settings - END
         }
 
         private ConductorWorkflow GetConductorWorkflow()
