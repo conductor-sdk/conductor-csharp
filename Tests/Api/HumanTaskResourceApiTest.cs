@@ -19,7 +19,7 @@ namespace conductor_csharp.test.Api
             //_orkesApiClient = new OrkesApiClient(new Configuration(), new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             //_humanTaskResourceApi = _orkesApiClient.GetClient<HumanTaskResourceApi>();
 
-            _testOutputHelper = testOutputHelper;   
+            _testOutputHelper = testOutputHelper;
             _humanTaskResourceApi = ApiExtensions.GetClient<HumanTaskResourceApi>();
         }
 
