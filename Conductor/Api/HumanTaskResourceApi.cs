@@ -116,7 +116,7 @@ namespace Conductor.Api
             if (userId == null)
                 throw new ApiException(400, "Missing required parameter 'userId' when calling HumanTaskApi->AssignAndClaim");
 
-            var localVarPath = "/api/human/tasks/{taskId}/externalUser/{userId}";
+            var localVarPath = "/human/tasks/{taskId}/externalUser/{userId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -196,7 +196,7 @@ namespace Conductor.Api
             if (userId == null)
                 throw new ApiException(400, "Missing required parameter 'userId' when calling HumanTaskApi->AssignAndClaim");
 
-            var localVarPath = "/api/human/tasks/{taskId}/externalUser/{userId}";
+            var localVarPath = "/human/tasks/{taskId}/externalUser/{userId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -268,7 +268,7 @@ namespace Conductor.Api
             if (_100 == null)
                 throw new ApiException(400, "Missing required parameter '_100' when calling HumanTaskApi->BackPopulateFullTextIndex");
 
-            var localVarPath = "/api/human/tasks/backPopulateFullTextIndex";
+            var localVarPath = "/human/tasks/backPopulateFullTextIndex";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -339,7 +339,7 @@ namespace Conductor.Api
             if (_100 == null)
                 throw new ApiException(400, "Missing required parameter '_100' when calling HumanTaskApi->BackPopulateFullTextIndex");
 
-            var localVarPath = "/api/human/tasks/backPopulateFullTextIndex";
+            var localVarPath = "/human/tasks/backPopulateFullTextIndex";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -411,7 +411,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->ClaimTask");
 
-            var localVarPath = "/api/human/tasks/{taskId}/claim";
+            var localVarPath = "/human/tasks/{taskId}/claim";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -485,7 +485,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->ClaimTask");
 
-            var localVarPath = "/api/human/tasks/{taskId}/claim";
+            var localVarPath = "/human/tasks/{taskId}/claim";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -555,7 +555,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling HumanTaskApi->DeleteTemplateByName");
 
-            var localVarPath = "/api/human/template/{name}";
+            var localVarPath = "/human/template/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -624,7 +624,7 @@ namespace Conductor.Api
             if (name == null)
                 throw new ApiException(400, "Missing required parameter 'name' when calling HumanTaskApi->DeleteTemplateByName");
 
-            var localVarPath = "/api/human/template/{name}";
+            var localVarPath = "/human/template/{name}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -697,7 +697,7 @@ namespace Conductor.Api
             if (version == null)
                 throw new ApiException(400, "Missing required parameter 'version' when calling HumanTaskApi->DeleteTemplatesByNameAndVersion");
 
-            var localVarPath = "/api/human/template/{name}/{version}";
+            var localVarPath = "/human/template/{name}/{version}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -772,7 +772,7 @@ namespace Conductor.Api
             if (version == null)
                 throw new ApiException(400, "Missing required parameter 'version' when calling HumanTaskApi->DeleteTemplatesByNameAndVersion");
 
-            var localVarPath = "/api/human/template/{name}/{version}";
+            var localVarPath = "/human/template/{name}/{version}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -841,7 +841,7 @@ namespace Conductor.Api
         public ApiResponse<List<HumanTaskTemplate>> GetAllTemplatesWithHttpInfo(string name = null, int? version = null)
         {
 
-            var localVarPath = "/api/human/template";
+            var localVarPath = "/human/template";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -867,7 +867,8 @@ namespace Conductor.Api
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
+                localVarHeaderParams["X-Authorization"] = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtqbVlNWThEV2VOU1lKZmZSSjFXNSJ9.eyJnaXZlbl9uYW1lIjoiSml0aGVzaCIsImZhbWlseV9uYW1lIjoiUG9vamFyeSIsIm5pY2tuYW1lIjoiaml0aGVzaHBvb2phcnkwNCIsIm5hbWUiOiJKaXRoZXNoIFBvb2phcnkiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jS05XLUVyUXlvZ0JGY25fZ1BFaEs5b1o1TldUU19JUlMxTHhJQURBRkJtcmp3PXM5Ni1jIiwibG9jYWxlIjoiZW4tR0IiLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMi0yMVQwNDoyNjo1Mi42MTdaIiwiZW1haWwiOiJqaXRoZXNocG9vamFyeTA0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2F1dGgub3JrZXMuaW8vIiwiYXVkIjoiczRITGRWYm5hSk1HdlBTZ3gyWUxweW5mSmxXN0dWMmUiLCJpYXQiOjE3MDg0ODk2MTQsImV4cCI6MTcwODUyNTYxNCwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDQ0NTAzNjIwODI1MjU1MDQ3NzgiLCJzaWQiOiI0QTlJdlJ0cWJwN05EQVNCMkkwN242VXROM3piajBtViIsIm5vbmNlIjoiZFdReE1FUjFXakkwVFhZNU1UQXlTVXc1VFZKSFJVUkpkVmRRZFd4MFNrMHlkMUprUlVaMFkxbG1UQT09In0.LHrepFFKeL97ERgYT-wx2sXMvnR6jRySFSFUJwtVW5iwdUPSAIaMwaYBjJD3zXWH5Xn0_13hr1oE_xk39J4uCfzT8s4zySn7ctnKXHCvdMLynBaG-QKYn6oG5f-ChLmLuEijTyd9-2mjjVZ0z7rSZ6-6bps2t2zPZIHSGzsIn3cSJ7jTBbJSy8Aa4RUuoWiKPkyWXKWxVUdtZnvNPz69VHbG_0Ga310X1Hu87wgKVUJjt4ErZ6BU2hP6ykgsedsJ7xSwjFUX2YGspuXEt9jOV6dk0CjROAVm-Ie2sTgqjJHZq9nOX_xzaqf-kREtBM7VHaDGHK4G5ydkgtfSgSUsmg";
+                //this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -912,7 +913,7 @@ namespace Conductor.Api
         public async ThreadTask.Task<ApiResponse<List<HumanTaskTemplate>>> GetAllTemplatesAsyncWithHttpInfo(string name = null, int? version = null)
         {
 
-            var localVarPath = "/api/human/template";
+            var localVarPath = "/human/template";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -983,7 +984,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->GetTask1");
 
-            var localVarPath = "/api/human/tasks/{taskId}";
+            var localVarPath = "/human/tasks/{taskId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1054,7 +1055,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->GetTask1");
 
-            var localVarPath = "/api/human/tasks/{taskId}";
+            var localVarPath = "/human/tasks/{taskId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1124,7 +1125,7 @@ namespace Conductor.Api
             if (searchType == null)
                 throw new ApiException(400, "Missing required parameter 'searchType' when calling HumanTaskApi->GetTaskDisplayNames");
 
-            var localVarPath = "/api/human/tasks/getTaskDisplayNames";
+            var localVarPath = "/human/tasks/getTaskDisplayNames";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1195,7 +1196,7 @@ namespace Conductor.Api
             if (searchType == null)
                 throw new ApiException(400, "Missing required parameter 'searchType' when calling HumanTaskApi->GetTaskDisplayNames");
 
-            var localVarPath = "/api/human/tasks/getTaskDisplayNames";
+            var localVarPath = "/human/tasks/getTaskDisplayNames";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1270,7 +1271,7 @@ namespace Conductor.Api
             if (version == null)
                 throw new ApiException(400, "Missing required parameter 'version' when calling HumanTaskApi->GetTemplateByNameAndVersion");
 
-            var localVarPath = "/api/human/template/{name}/{version}";
+            var localVarPath = "/human/template/{name}/{version}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1347,7 +1348,7 @@ namespace Conductor.Api
             if (version == null)
                 throw new ApiException(400, "Missing required parameter 'version' when calling HumanTaskApi->GetTemplateByNameAndVersion");
 
-            var localVarPath = "/api/human/template/{name}/{version}";
+            var localVarPath = "/human/template/{name}/{version}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1418,7 +1419,7 @@ namespace Conductor.Api
             if (humanTaskId == null)
                 throw new ApiException(400, "Missing required parameter 'humanTaskId' when calling HumanTaskApi->GetTemplateByTaskId");
 
-            var localVarPath = "/api/human/template/{humanTaskId}";
+            var localVarPath = "/human/template/{humanTaskId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1489,7 +1490,7 @@ namespace Conductor.Api
             if (humanTaskId == null)
                 throw new ApiException(400, "Missing required parameter 'humanTaskId' when calling HumanTaskApi->GetTemplateByTaskId");
 
-            var localVarPath = "/api/human/template/{humanTaskId}";
+            var localVarPath = "/human/template/{humanTaskId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1563,7 +1564,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->ReassignTask");
 
-            var localVarPath = "/api/human/tasks/{taskId}/reassign";
+            var localVarPath = "/human/tasks/{taskId}/reassign";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1646,7 +1647,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->ReassignTask");
 
-            var localVarPath = "/api/human/tasks/{taskId}/reassign";
+            var localVarPath = "/human/tasks/{taskId}/reassign";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1723,7 +1724,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->ReleaseTask");
 
-            var localVarPath = "/api/human/tasks/{taskId}/release";
+            var localVarPath = "/human/tasks/{taskId}/release";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1792,7 +1793,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->ReleaseTask");
 
-            var localVarPath = "/api/human/tasks/{taskId}/release";
+            var localVarPath = "/human/tasks/{taskId}/release";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1863,7 +1864,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling HumanTaskApi->SaveTemplate");
 
-            var localVarPath = "/api/human/template";
+            var localVarPath = "/human/template";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1945,7 +1946,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling HumanTaskApi->SaveTemplate");
 
-            var localVarPath = "/api/human/template";
+            var localVarPath = "/human/template";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2026,7 +2027,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling HumanTaskApi->SaveTemplates");
 
-            var localVarPath = "/api/human/template/bulk";
+            var localVarPath = "/human/template/bulk";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2108,7 +2109,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling HumanTaskApi->SaveTemplates");
 
-            var localVarPath = "/api/human/template/bulk";
+            var localVarPath = "/human/template/bulk";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2187,7 +2188,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling HumanTaskApi->Search");
 
-            var localVarPath = "/api/human/tasks/search";
+            var localVarPath = "/human/tasks/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2266,7 +2267,7 @@ namespace Conductor.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling HumanTaskApi->Search");
 
-            var localVarPath = "/api/human/tasks/search";
+            var localVarPath = "/human/tasks/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2345,7 +2346,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->SkipTask");
 
-            var localVarPath = "/api/human/tasks/{taskId}/skip";
+            var localVarPath = "/human/tasks/{taskId}/skip";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2417,7 +2418,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->SkipTask");
 
-            var localVarPath = "/api/human/tasks/{taskId}/skip";
+            var localVarPath = "/human/tasks/{taskId}/skip";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2493,7 +2494,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->UpdateTaskOutput");
 
-            var localVarPath = "/api/human/tasks/{taskId}/update";
+            var localVarPath = "/human/tasks/{taskId}/update";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2579,7 +2580,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->UpdateTaskOutput");
 
-            var localVarPath = "/api/human/tasks/{taskId}/update";
+            var localVarPath = "/human/tasks/{taskId}/update";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2671,7 +2672,7 @@ namespace Conductor.Api
             if (taskRefName == null)
                 throw new ApiException(400, "Missing required parameter 'taskRefName' when calling HumanTaskApi->UpdateTaskOutputByRef");
 
-            var localVarPath = "/api/human/tasks/update/taskRef";
+            var localVarPath = "/human/tasks/update/taskRef";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2766,7 +2767,7 @@ namespace Conductor.Api
             if (taskRefName == null)
                 throw new ApiException(400, "Missing required parameter 'taskRefName' when calling HumanTaskApi->UpdateTaskOutputByRef");
 
-            var localVarPath = "/api/human/tasks/update/taskRef";
+            var localVarPath = "/human/tasks/update/taskRef";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2848,7 +2849,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskResourceApi->GetConductorTaskById");
 
-            var localVarPath = "/api/human/tasks/{taskId}/conductorTask";
+            var localVarPath = "/human/tasks/{taskId}/conductorTask";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2920,7 +2921,7 @@ namespace Conductor.Api
             if (taskId == null)
                 throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskResourceApi->GetConductorTaskById");
 
-            var localVarPath = "/api/human/tasks/{taskId}/conductorTask";
+            var localVarPath = "/human/tasks/{taskId}/conductorTask";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
