@@ -1,21 +1,21 @@
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RestSharp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Newtonsoft.Json;
-using RestSharp;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Conductor.Client
 {
-    /// <summary>
-    /// API client is mainly responsible for making the HTTP call to the API backend.
-    /// </summary>
-    public partial class ApiClient
+	/// <summary>
+	/// API client is mainly responsible for making the HTTP call to the API backend.
+	/// </summary>
+	public partial class ApiClient
     {
         public JsonSerializerSettings serializerSettings = new JsonSerializerSettings
         {
@@ -148,6 +148,7 @@ namespace Conductor.Client
 
         /// <summary>
         /// Makes the HTTP request (Sync).
+        /// If the token is expired then retrying the api call with refreshed Token 
         /// </summary>
         /// <param name="path">URL path.</param>
         /// <param name="method">HTTP method.</param>
@@ -160,20 +161,47 @@ namespace Conductor.Client
         /// <param name="contentType">Content Type of the request</param>
         /// <returns>Object</returns>
         public Object CallApi(
-            String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
+            String path, Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
             Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
-            String contentType)
+            String contentType, Configuration configuration = null)
         {
-            var request = PrepareRequest(
-                path, method, queryParams, postBody, headerParams, formParams, fileParams,
-                pathParams, contentType);
+            RestResponse response = null;
+            bool isRetried = false;
+            bool isTokenRefreshed = false;
+            do
+            {
+                isRetried = false;
+                var request = PrepareRequest(
+                    path, method, queryParams, postBody, headerParams, formParams, fileParams,
+                    pathParams, contentType);
 
+                response = ExecuteRestClientAPI(request, method);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    var JsonContent = JsonConvert.DeserializeObject<JObject>(response.Content);
+                    if (JsonContent["error"].ToString() == "EXPIRED_TOKEN" && !isTokenRefreshed)
+                    {
+                        string refreshToken = configuration.GetRefreshToken();
+                        headerParams["X-Authorization"] = refreshToken;
+                        isRetried = true;
+                        isTokenRefreshed = true;
+                    }
+                }
+            } while (isRetried);
+
+            return (Object)response;
+        }
+
+        private RestResponse ExecuteRestClientAPI(RestRequest request, Method method)
+        {
             InterceptRequest(request);
             var response = RestClient.Execute(request, method);
             InterceptResponse(request, response);
             FormatHeaders(response);
-            return (Object)response;
+
+            return response;
         }
 
         public async Task<object> CallApiAsync(

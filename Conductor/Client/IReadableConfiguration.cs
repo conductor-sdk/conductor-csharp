@@ -1,5 +1,3 @@
-
-
 using System.Collections.Generic;
 
 namespace Conductor.Client
@@ -38,5 +36,11 @@ namespace Conductor.Client
         /// </summary>
         /// <value>Temp folder path.</value>
         string TempFolderPath { get; }
+
+        /// <summary>
+        /// Get the refresh token
+        /// </summary>
+        /// <returns> new token</returns>
+        string GetRefreshToken();
     }
 }

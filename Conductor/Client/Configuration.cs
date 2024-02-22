@@ -235,6 +235,16 @@ namespace Conductor.Client
             return client;
         }
 
+        /// <summary>
+        /// Get the refresh token
+        /// </summary>
+        /// <returns> new token</returns>
+        public string GetRefreshToken()
+        {
+            _tokenClient = GetClient<TokenResourceApi>();
+            return _tokenHandler.RefreshToken(AuthenticationSettings, _tokenClient);
+        }
+
         #endregion Methods
     }
 }

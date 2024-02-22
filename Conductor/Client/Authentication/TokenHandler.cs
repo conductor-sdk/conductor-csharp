@@ -29,7 +29,7 @@ namespace Conductor.Client.Authentication
             return RefreshToken(authenticationSettings, tokenClient);
         }
 
-        private string RefreshToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
+        public string RefreshToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
         {
             lock (_lockObject)
             {
