@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 
 namespace Conductor.Client
 {
-	/// <summary>
-	/// API client is mainly responsible for making the HTTP call to the API backend.
-	/// </summary>
-	public partial class ApiClient
+    /// <summary>
+    /// API client is mainly responsible for making the HTTP call to the API backend.
+    /// </summary>
+    public partial class ApiClient
     {
         public JsonSerializerSettings serializerSettings = new JsonSerializerSettings
         {
