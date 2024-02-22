@@ -25,17 +25,6 @@ namespace conductor_csharp.Api
         HumanTaskEntry AssignAndClaim(string taskId, string userId, bool? overrideAssignment = null);
 
         /// <summary>
-        /// API for backpopulating index data
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="_100"></param>
-        /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        Dictionary<string, Object> BackPopulateFullTextIndex(int? _100);
-
-        /// <summary>
         /// Claim a task by authenticated Conductor user
         /// </summary>
         /// <remarks>
@@ -91,7 +80,7 @@ namespace conductor_csharp.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>HumanTaskEntry</returns>
-        HumanTaskEntry GetTask1(string taskId);
+        HumanTaskEntry GetTask(string taskId);
 
         /// <summary>
         /// Get list of task display names applicable for the user
@@ -252,17 +241,6 @@ namespace conductor_csharp.Api
         System.Threading.Tasks.Task<HumanTaskEntry> AssignAndClaimAsync(string taskId, string userId, bool? overrideAssignment = null);
 
         /// <summary>
-        /// API for backpopulating index data
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="_100"></param>
-        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, Object>> BackPopulateFullTextIndexAsync(int? _100);
-
-        /// <summary>
         /// Claim a task by authenticated Conductor user
         /// </summary>
         /// <remarks>
@@ -318,7 +296,7 @@ namespace conductor_csharp.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of HumanTaskEntry</returns>
-        System.Threading.Tasks.Task<HumanTaskEntry> GetTask1Async(string taskId);
+        System.Threading.Tasks.Task<HumanTaskEntry> GetTaskAsync(string taskId);
 
         /// <summary>
         /// Get list of task display names applicable for the user

@@ -245,147 +245,6 @@ namespace Conductor.Api
         }
 
         /// <summary>
-        /// API for backpopulating index data 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="_100"></param>
-        /// <returns>Dictionary&lt;string, Object&gt;</returns>
-        public Dictionary<string, Object> BackPopulateFullTextIndex(int? _100)
-        {
-            ApiResponse<Dictionary<string, Object>> localVarResponse = BackPopulateFullTextIndexWithHttpInfo(_100);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// API for backpopulating index data 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="_100"></param>
-        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
-        public ApiResponse<Dictionary<string, Object>> BackPopulateFullTextIndexWithHttpInfo(int? _100)
-        {
-            // verify the required parameter '_100' is set
-            if (_100 == null)
-                throw new ApiException(400, "Missing required parameter '_100' when calling HumanTaskApi->BackPopulateFullTextIndex");
-
-            var localVarPath = "/human/tasks/backPopulateFullTextIndex";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (_100 != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "100", _100)); // query parameter
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("BackPopulateFullTextIndex", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
-        }
-
-        /// <summary>
-        /// API for backpopulating index data 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="_100"></param>
-        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
-        public async ThreadTask.Task<Dictionary<string, Object>> BackPopulateFullTextIndexAsync(int? _100)
-        {
-            ApiResponse<Dictionary<string, Object>> localVarResponse = await BackPopulateFullTextIndexAsyncWithHttpInfo(_100);
-            return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// API for backpopulating index data 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="_100"></param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
-        public async ThreadTask.Task<ApiResponse<Dictionary<string, Object>>> BackPopulateFullTextIndexAsyncWithHttpInfo(int? _100)
-        {
-            // verify the required parameter '_100' is set
-            if (_100 == null)
-                throw new ApiException(400, "Missing required parameter '_100' when calling HumanTaskApi->BackPopulateFullTextIndex");
-
-            var localVarPath = "/human/tasks/backPopulateFullTextIndex";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (_100 != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "100", _100)); // query parameter
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("BackPopulateFullTextIndex", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Dictionary<string, Object>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
-        }
-
-        /// <summary>
         /// Claim a task by authenticated Conductor user 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
@@ -966,9 +825,9 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>HumanTaskEntry</returns>
-        public HumanTaskEntry GetTask1(string taskId)
+        public HumanTaskEntry GetTask(string taskId)
         {
-            ApiResponse<HumanTaskEntry> localVarResponse = GetTask1WithHttpInfo(taskId);
+            ApiResponse<HumanTaskEntry> localVarResponse = GetTaskWithHttpInfo(taskId);
             return localVarResponse.Data;
         }
 
@@ -978,11 +837,11 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>ApiResponse of HumanTaskEntry</returns>
-        public ApiResponse<HumanTaskEntry> GetTask1WithHttpInfo(string taskId)
+        public ApiResponse<HumanTaskEntry> GetTaskWithHttpInfo(string taskId)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
-                throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->GetTask1");
+                throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->GetTask");
 
             var localVarPath = "/human/tasks/{taskId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1021,7 +880,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetTask1", localVarResponse);
+                Exception exception = ExceptionFactory("GetTask", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1036,9 +895,9 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of HumanTaskEntry</returns>
-        public async ThreadTask.Task<HumanTaskEntry> GetTask1Async(string taskId)
+        public async ThreadTask.Task<HumanTaskEntry> GetTaskAsync(string taskId)
         {
-            ApiResponse<HumanTaskEntry> localVarResponse = await GetTask1AsyncWithHttpInfo(taskId);
+            ApiResponse<HumanTaskEntry> localVarResponse = await GetTaskAsyncWithHttpInfo(taskId);
             return localVarResponse.Data;
 
         }
@@ -1049,11 +908,11 @@ namespace Conductor.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <returns>Task of ApiResponse (HumanTaskEntry)</returns>
-        public async ThreadTask.Task<ApiResponse<HumanTaskEntry>> GetTask1AsyncWithHttpInfo(string taskId)
+        public async ThreadTask.Task<ApiResponse<HumanTaskEntry>> GetTaskAsyncWithHttpInfo(string taskId)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
-                throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->GetTask1");
+                throw new ApiException(400, "Missing required parameter 'taskId' when calling HumanTaskApi->GetTask");
 
             var localVarPath = "/human/tasks/{taskId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1092,7 +951,7 @@ namespace Conductor.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetTask1", localVarResponse);
+                Exception exception = ExceptionFactory("GetTask", localVarResponse);
                 if (exception != null) throw exception;
             }
 
