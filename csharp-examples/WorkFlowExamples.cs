@@ -11,10 +11,6 @@ namespace csharp_examples
     public class WorkFlowExamples
     {
 
-        private const string KEY_ID = "<REPLACE_WITH_KEY_ID>";
-        private const string KEY_SECRET = "<REPLACE_WITH_KEY_SECRET>";
-        private const string OWNER_EMAIL = "<REPLACE_WITH_OWNER_EMAIL>";
-
         private const string WORKFLOW_ID = "<REPLACE_WITH_WORKFLOW_ID>";
         private const string WORKFLOW_NAME = "<REPLACE_WITH_WORKFLOW_NAME>";
         private const string WORKFLOW_DESCRIPTION = "<REPLACE_WITH_WORKFLOW_DESCRIPTION>";
@@ -26,7 +22,6 @@ namespace csharp_examples
         private const string VARIABLE_NEW_VALUE_1 = "<REPLACE_WITH_OWNER_VALUE_1>";
         private const string VARIABLE_NAME_2 = "<REPLACE_WITH_VARIABLE_NAME_2>";
         private const string VARIABLE_NEW_VALUE_2 = "<REPLACE_WITH_OWNER_VALUE_2>";
-        private const int REST_CLIENT_REQUEST_TIME_OUT = 20000;
 
         public void RegisterWorkFlow()
         {
@@ -41,9 +36,9 @@ namespace csharp_examples
 
             // Step 2:- Use overloaded constructor of Configuration and pass the JsonSerializer Settings 
             // Restclient internally use the settings to serialize on request/response while making a call to serialize/deserialize
-            Configuration configuration = new Configuration(jsonSerializerSettings, REST_CLIENT_REQUEST_TIME_OUT)
+            Configuration configuration = new Configuration(jsonSerializerSettings, Constants.REST_CLIENT_REQUEST_TIME_OUT)
             {
-                AuthenticationSettings = new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET)
+                AuthenticationSettings = new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET)
             };
 
             WorkflowExecutor executor = new WorkflowExecutor(configuration);
@@ -70,7 +65,7 @@ namespace csharp_examples
             var conductorWorkFlow = new ConductorWorkflow()
                 .WithName(WORKFLOW_NAME).WithDescription(WORKFLOW_DESCRIPTION)
                 .WithTask(new SimpleTask(TASK_NAME, TASK_REFERENCE))
-            .WithOwner(OWNER_EMAIL);
+            .WithOwner(Constants.OWNER_EMAIL);
 
             var workflowVariableTobeAdded = new Dictionary<string, object>
             {
@@ -88,7 +83,7 @@ namespace csharp_examples
         public void TestUpdateWorkflowVariablesWithWorkFlowId()
         {
             var orkesApiClient = new OrkesApiClient(new Configuration(),
-                new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET));
+                new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             var workflowClient = orkesApiClient.GetClient<WorkflowResourceApi>();
             var workFlowVariables = new Dictionary<string, object>
             {
@@ -106,7 +101,7 @@ namespace csharp_examples
         public void TestTerminateWorkflowExecution(String WorkflowId)
         {
             var orkesApiClient = new OrkesApiClient(new Configuration(),
-            new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET));
+            new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             var workflowClient = orkesApiClient.GetClient<WorkflowResourceApi>();
             workflowClient.Terminate(WORKFLOW_ID, null, null);
         }
@@ -118,7 +113,7 @@ namespace csharp_examples
         public void TestRemoveWorkflow(String WorkflowId)
         {
             var orkesApiClient = new OrkesApiClient(new Configuration(),
-            new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET));
+            new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             var workflowClient = orkesApiClient.GetClient<WorkflowResourceApi>();
             workflowClient.Delete(WorkflowId, null);
         }
@@ -130,7 +125,7 @@ namespace csharp_examples
         public void TestRetryLastFailedTask(String WorkflowId)
         {
             var orkesApiClient = new OrkesApiClient(new Configuration(),
-            new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET));
+            new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             var workflowClient = orkesApiClient.GetClient<WorkflowResourceApi>();
             workflowClient.Retry(WorkflowId, null);
         }
@@ -142,7 +137,7 @@ namespace csharp_examples
         public void TestPauseworkflow(String WorkflowId)
         {
             var orkesApiClient = new OrkesApiClient(new Configuration(),
-            new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET));
+            new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             var workflowClient = orkesApiClient.GetClient<WorkflowResourceApi>();
             workflowClient.PauseWorkflow(WorkflowId);
         }
@@ -154,7 +149,7 @@ namespace csharp_examples
         public void TestGetWorkflowByWorkflowId(String WorkflowId)
         {
             var orkesApiClient = new OrkesApiClient(new Configuration(),
-            new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET));
+            new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             var workflowClient = orkesApiClient.GetClient<WorkflowResourceApi>();
             workflowClient.GetExecutionStatus(WorkflowId, null);
         }
@@ -169,7 +164,7 @@ namespace csharp_examples
             configuration.BasePath = "https://play.orkes.io/api";
 
             var orkesApiClient = new OrkesApiClient(new Configuration(timeOut: 20000),
-            new OrkesAuthenticationSettings(KEY_ID, KEY_SECRET));
+            new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             var workflowClient = orkesApiClient.GetClient<WorkflowResourceApi>();
             workflowClient.ResumeWorkflow(WorkflowId);
         }

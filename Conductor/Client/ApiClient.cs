@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using RestSharp;
+using System.Threading.Tasks;
 
 namespace Conductor.Client
 {
@@ -173,6 +174,23 @@ namespace Conductor.Client
             InterceptResponse(request, response);
             FormatHeaders(response);
             return (Object)response;
+        }
+
+        public async Task<object> CallApiAsync(
+            String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
+            Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
+            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
+            String contentType)
+        {
+            var request = PrepareRequest(
+                path, method, queryParams, postBody, headerParams, formParams, fileParams,
+                pathParams, contentType);
+
+            InterceptRequest(request);
+            var response = await RestClient.ExecuteAsync(request, method);
+            InterceptResponse(request, response);
+            FormatHeaders(response);
+            return (object)response;
         }
 
         /// <summary>
