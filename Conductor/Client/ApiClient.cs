@@ -1,3 +1,5 @@
+using Conductor.Client.Models;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -6,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -166,43 +169,48 @@ namespace Conductor.Client
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
             String contentType, Configuration configuration = null)
         {
+            int retryCount = 0;
+            RestResponse response = RetryRestClientCallApi(path, method, queryParams, postBody, headerParams,
+                formParams, fileParams, pathParams, contentType, configuration, ref retryCount);
+
+            return (Object)response;
+        }
+
+        private RestResponse RetryRestClientCallApi(String path, Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
+            Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
+            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
+            String contentType, Configuration configuration, ref int retryCount)
+        {
             RestResponse response = null;
-            bool isTokenRefreshed = false;
-            do
+            while (retryCount < Constants.MAX_TOKEN_REFRESH_RETRY_COUNT)
             {
+                bool isTokenRefreshed = false; // reset refreshStatusflag
+
                 var request = PrepareRequest(
                     path, method, queryParams, postBody, headerParams, formParams, fileParams,
                     pathParams, contentType);
 
-                response = ExecuteRestClientAPI(request, method);
+                InterceptRequest(request);
+                response = RestClient.Execute(request, method);
+                InterceptResponse(request, response);
+                FormatHeaders(response);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
                     var JsonContent = JsonConvert.DeserializeObject<JObject>(response.Content);
 
-                    if (JsonContent["error"].ToString() == "EXPIRED_TOKEN" && !isTokenRefreshed)
+                    if (JsonContent["error"].ToString() == "EXPIRED_TOKEN" && retryCount < Constants.MAX_TOKEN_REFRESH_RETRY_COUNT)
                     {
                         string refreshToken = configuration.GetRefreshToken();
                         headerParams["X-Authorization"] = refreshToken;
                         isTokenRefreshed = true;
+                        retryCount++;
                     }
-                    else
-                        isTokenRefreshed = false;
                 }
-                else
-                    isTokenRefreshed = false;
-            } while (isTokenRefreshed);
 
-            return (Object)response;
-        }
-
-        private RestResponse ExecuteRestClientAPI(RestRequest request, Method method)
-        {
-            InterceptRequest(request);
-            var response = RestClient.Execute(request, method);
-            InterceptResponse(request, response);
-            FormatHeaders(response);
-
+                if (!isTokenRefreshed)
+                    break;
+            }
             return response;
         }
 
