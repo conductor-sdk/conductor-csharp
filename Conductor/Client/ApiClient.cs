@@ -167,11 +167,9 @@ namespace Conductor.Client
             String contentType, Configuration configuration = null)
         {
             RestResponse response = null;
-            bool isRetried = false;
             bool isTokenRefreshed = false;
             do
             {
-                isRetried = false;
                 var request = PrepareRequest(
                     path, method, queryParams, postBody, headerParams, formParams, fileParams,
                     pathParams, contentType);
@@ -181,15 +179,19 @@ namespace Conductor.Client
                 if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
                     var JsonContent = JsonConvert.DeserializeObject<JObject>(response.Content);
+
                     if (JsonContent["error"].ToString() == "EXPIRED_TOKEN" && !isTokenRefreshed)
                     {
                         string refreshToken = configuration.GetRefreshToken();
                         headerParams["X-Authorization"] = refreshToken;
-                        isRetried = true;
                         isTokenRefreshed = true;
                     }
+                    else
+                        isTokenRefreshed = false;
                 }
-            } while (isRetried);
+                else
+                    isTokenRefreshed = false;
+            } while (isTokenRefreshed);
 
             return (Object)response;
         }
