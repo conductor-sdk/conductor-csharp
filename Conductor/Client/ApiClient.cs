@@ -184,11 +184,9 @@ namespace Conductor.Client
             RestResponse response = null;
             while (retryCount < Constants.MAX_TOKEN_REFRESH_RETRY_COUNT)
             {
-                bool isTokenRefreshed = false; // reset refreshStatusflag
-
                 var request = PrepareRequest(
-                    path, method, queryParams, postBody, headerParams, formParams, fileParams,
-                    pathParams, contentType);
+                path, method, queryParams, postBody, headerParams, formParams, fileParams,
+                pathParams, contentType);
 
                 InterceptRequest(request);
                 response = RestClient.Execute(request, method);
@@ -199,17 +197,17 @@ namespace Conductor.Client
                 {
                     var JsonContent = JsonConvert.DeserializeObject<JObject>(response.Content);
 
-                    if (JsonContent["error"].ToString() == "EXPIRED_TOKEN" && retryCount < Constants.MAX_TOKEN_REFRESH_RETRY_COUNT)
+                    if (JsonContent["error"].ToString() == "EXPIRED_TOKEN")
                     {
                         string refreshToken = configuration.GetRefreshToken();
                         headerParams["X-Authorization"] = refreshToken;
-                        isTokenRefreshed = true;
                         retryCount++;
                     }
                 }
-
-                if (!isTokenRefreshed)
+                else
+                {
                     break;
+                }
             }
             return response;
         }
