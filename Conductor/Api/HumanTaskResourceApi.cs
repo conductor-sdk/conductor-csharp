@@ -149,7 +149,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -302,7 +302,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -444,7 +444,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -587,7 +587,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -726,14 +726,13 @@ namespace Conductor.Api
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Authorization"] = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtqbVlNWThEV2VOU1lKZmZSSjFXNSJ9.eyJnaXZlbl9uYW1lIjoiSml0aGVzaCIsImZhbWlseV9uYW1lIjoiUG9vamFyeSIsIm5pY2tuYW1lIjoiaml0aGVzaHBvb2phcnkwNCIsIm5hbWUiOiJKaXRoZXNoIFBvb2phcnkiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jS05XLUVyUXlvZ0JGY25fZ1BFaEs5b1o1TldUU19JUlMxTHhJQURBRkJtcmp3PXM5Ni1jIiwibG9jYWxlIjoiZW4tR0IiLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMi0yMVQwNDoyNjo1Mi42MTdaIiwiZW1haWwiOiJqaXRoZXNocG9vamFyeTA0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2F1dGgub3JrZXMuaW8vIiwiYXVkIjoiczRITGRWYm5hSk1HdlBTZ3gyWUxweW5mSmxXN0dWMmUiLCJpYXQiOjE3MDg0ODk2MTQsImV4cCI6MTcwODUyNTYxNCwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDQ0NTAzNjIwODI1MjU1MDQ3NzgiLCJzaWQiOiI0QTlJdlJ0cWJwN05EQVNCMkkwN242VXROM3piajBtViIsIm5vbmNlIjoiZFdReE1FUjFXakkwVFhZNU1UQXlTVXc1VFZKSFJVUkpkVmRRZFd4MFNrMHlkMUprUlVaMFkxbG1UQT09In0.LHrepFFKeL97ERgYT-wx2sXMvnR6jRySFSFUJwtVW5iwdUPSAIaMwaYBjJD3zXWH5Xn0_13hr1oE_xk39J4uCfzT8s4zySn7ctnKXHCvdMLynBaG-QKYn6oG5f-ChLmLuEijTyd9-2mjjVZ0z7rSZ6-6bps2t2zPZIHSGzsIn3cSJ7jTBbJSy8Aa4RUuoWiKPkyWXKWxVUdtZnvNPz69VHbG_0Ga310X1Hu87wgKVUJjt4ErZ6BU2hP6ykgsedsJ7xSwjFUX2YGspuXEt9jOV6dk0CjROAVm-Ie2sTgqjJHZq9nOX_xzaqf-kREtBM7VHaDGHK4G5ydkgtfSgSUsmg";
-                //this.Configuration.AccessToken;
+                localVarHeaderParams["X-Authorization"] = this.Configuration.AccessToken;
             }
 
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -874,7 +873,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -1015,7 +1014,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -1162,7 +1161,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -1309,7 +1308,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -1462,7 +1461,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -1613,7 +1612,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -1763,7 +1762,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -1926,7 +1925,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -2086,7 +2085,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -2236,7 +2235,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -2393,7 +2392,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -2573,7 +2572,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
@@ -2740,7 +2739,7 @@ namespace Conductor.Api
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, this.Configuration);
 
             int localVarStatusCode = (int)localVarResponse.StatusCode;
 
