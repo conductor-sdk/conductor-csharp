@@ -167,7 +167,7 @@ namespace Conductor.Client
             String path, Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
             Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
-            String contentType, Configuration configuration = null)
+            String contentType, Configuration configuration)
         {
             int retryCount = 0;
             RestResponse response = RetryRestClientCallApi(path, method, queryParams, postBody, headerParams,
