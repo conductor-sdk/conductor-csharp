@@ -155,7 +155,27 @@ namespace Conductor.Client.Models
             /// Enum ValueSubjectNameStrategy for value: valueSubjectNameStrategy
             /// </summary>
             [EnumMember(Value = "valueSubjectNameStrategy")]
-            ValueSubjectNameStrategy = 27
+            ValueSubjectNameStrategy = 27,
+            /// <summary>
+            /// Enum File for value: file
+            /// </summary>
+            [EnumMember(Value = "file")]
+            File = 28,
+            /// <summary>
+            /// Enum JdbcDriver for value: jdbcDriver
+            /// </summary>
+            [EnumMember(Value = "jdbcDriver")]
+            JdbcDriver = 29,
+            /// <summary>
+            /// Enum DataSourceURL for value: datasourceURL
+            /// </summary>
+            [EnumMember(Value = "datasourceURL")]
+            DataSourceURL = 30,
+            /// <summary>
+            /// Enum Subscription for value: subscription
+            /// </summary>
+            [EnumMember(Value = "subscription")]
+            Subscription = 31
         }
 
         /// <summary>
@@ -184,7 +204,12 @@ namespace Conductor.Client.Models
             /// Enum PASSWORD for value: PASSWORD
             /// </summary>
             [EnumMember(Value = "PASSWORD")]
-            PASSWORD = 3
+            PASSWORD = 3,
+            /// <summary>
+            /// Enum FILE value: FILE
+            /// </summary>
+            [EnumMember(Value = "FILE")]
+            FILE = 4
         }
 
         /// <summary>

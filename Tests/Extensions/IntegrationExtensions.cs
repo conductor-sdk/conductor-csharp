@@ -11,7 +11,7 @@ namespace conductor_csharp.test.Extensions
     /// </summary>
     public static class IntegrationExtensions
     {
-        public static void CreateIntegration(IntegrationResourceApi integrationResourceApi, bool isPromptTemplate = false)
+        public static void CreateIntegration(this IntegrationResourceApi integrationResourceApi, bool isPromptTemplate = false)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace conductor_csharp.test.Extensions
             }
         }
 
-        public static void DeleteIntegration(IntegrationResourceApi integrationResourceApi, bool isPromptTemplate = false)
+        public static void DeleteIntegration(this IntegrationResourceApi integrationResourceApi, bool isPromptTemplate = false)
         {
             try
             {

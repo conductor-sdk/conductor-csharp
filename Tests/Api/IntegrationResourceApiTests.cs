@@ -27,7 +27,7 @@ namespace Conductor_csharp.test.Api
         /// </summary>
         public IntegrationResourceApiTests(ITestOutputHelper testOutputHelper)
         {
-            ////dev local testing
+            //dev local testing
             //_orkesApiClient = new OrkesApiClient(new Configuration(), new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             //_integrationResourceApi = _orkesApiClient.GetClient<IntegrationResourceApi>();
 
@@ -461,12 +461,12 @@ namespace Conductor_csharp.test.Api
         public void Dispose()
         {
             if (_performCleanup)
-                IntegrationExtensions.DeleteIntegration(_integrationResourceApi);
+                _integrationResourceApi.DeleteIntegration();
         }
 
         private void Setup()
         {
-            IntegrationExtensions.CreateIntegration(_integrationResourceApi);
+            _integrationResourceApi.CreateIntegration();
         }
     }
 }

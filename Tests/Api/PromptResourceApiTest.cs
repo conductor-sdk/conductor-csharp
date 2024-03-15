@@ -42,7 +42,7 @@ namespace Conductor_csharp.test.Api
         [Fact]
         public void CreatePromptTemplateTest()
         {
-            IntegrationExtensions.CreateIntegration(_integrationResourceApi, true);
+            Setup();
             string ModelName = IntegrationExtensions.GetModelName(TestConstants.IntegrationPromptName, TestConstants.ModelPromptName);
             List<string> model = new List<string>() { ModelName };
             Assert.Null(Record.Exception(() => _promptResourceApi.SaveMessageTemplate(TestConstants.TemplateBody, TestConstants.TemplateDescription, TestConstants.PromptName, model)));
@@ -55,7 +55,7 @@ namespace Conductor_csharp.test.Api
         [Fact]
         public async void CreatePromptTemplateAsyncTest()
         {
-            IntegrationExtensions.CreateIntegration(_integrationResourceApi, true);
+            Setup();
             string ModelName = IntegrationExtensions.GetModelName(TestConstants.IntegrationPromptName, TestConstants.ModelPromptName);
             List<string> model = new List<string>() { ModelName };
             var saveMessageTemplateException = await Record.ExceptionAsync(async () =>
@@ -70,7 +70,7 @@ namespace Conductor_csharp.test.Api
         [Fact]
         public void GetMessageTemplatesTest()
         {
-            IntegrationExtensions.CreateIntegration(_integrationResourceApi, true);
+            Setup();
             var response = _promptResourceApi.GetMessageTemplates();
             AssertExtensions.AssertModelResponse<List<MessageTemplate>>(response);
             _performCleanup = true;
@@ -82,7 +82,7 @@ namespace Conductor_csharp.test.Api
         [Fact]
         public async void GetMessageTemplatesAsyncTest()
         {
-            IntegrationExtensions.CreateIntegration(_integrationResourceApi, true);
+            Setup();
             var response = await _promptResourceApi.GetMessageTemplatesAsync();
             AssertExtensions.AssertModelResponse<List<MessageTemplate>>(response);
             _performCleanup = true;
@@ -94,7 +94,7 @@ namespace Conductor_csharp.test.Api
         [Fact]
         public void GetMessageTemplateTest()
         {
-            IntegrationExtensions.CreateIntegration(_integrationResourceApi, true);
+            Setup();
             var response = _promptResourceApi.GetMessageTemplate(TestConstants.PromptName);
             AssertExtensions.AssertModelResponse<MessageTemplate>(response);
             _performCleanup = true;
@@ -106,7 +106,7 @@ namespace Conductor_csharp.test.Api
         [Fact]
         public async void GetMessageTemplateAsyncTest()
         {
-            IntegrationExtensions.CreateIntegration(_integrationResourceApi, true);
+            Setup();
             var response = await _promptResourceApi.GetMessageTemplateAsync(TestConstants.PromptName);
             AssertExtensions.AssertModelResponse<MessageTemplate>(response);
             _performCleanup = true;
@@ -118,7 +118,7 @@ namespace Conductor_csharp.test.Api
         [Fact]
         public void DeleteMessageTemplateTest()
         {
-            IntegrationExtensions.CreateIntegration(_integrationResourceApi, true);
+            Setup();
             Assert.Null(Record.Exception(() => _promptResourceApi.DeleteMessageTemplate(TestConstants.PromptName)));
         }
 
@@ -128,7 +128,7 @@ namespace Conductor_csharp.test.Api
         [Fact]
         public async void DeleteMessageTemplateAsyncTest()
         {
-            IntegrationExtensions.CreateIntegration(_integrationResourceApi, true);
+            Setup();
             var deleteMessageTemplateException = await Record.ExceptionAsync(async () => await _promptResourceApi.DeleteMessageTemplateAsync(TestConstants.PromptName));
         }
 
@@ -226,7 +226,7 @@ namespace Conductor_csharp.test.Api
         {
             try
             {
-                IntegrationExtensions.CreateIntegration(_integrationResourceApi, true);
+                Setup();
                 var jsonObject = IntegrationExtensions.LoadIntegrationData();
                 string ModelName = IntegrationExtensions.GetModelName(TestConstants.IntegrationPromptName, TestConstants.ModelPromptName);
                 List<string> model = new List<string>() { ModelName };
@@ -239,6 +239,11 @@ namespace Conductor_csharp.test.Api
                 string errorMessage = $"Failed to create Prompt Template: {ex.Message}";
                 throw new Exception(errorMessage, ex);
             }
+        }
+
+        private void Setup()
+        {
+            _integrationResourceApi.CreateIntegration(true);
         }
     }
 }
