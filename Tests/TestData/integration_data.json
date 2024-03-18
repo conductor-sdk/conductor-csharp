@@ -1,0 +1,18 @@
+{
+  "integrationUpdate": {
+    "category": "API",
+    "description": "Test Description",
+    "enabled": true,
+    "type": "openai"
+  },
+  "integrationApiUpdate": {
+    "description": "Model Description",
+    "enabled": true
+  },
+  "tagUpdate": [
+    {
+      "key": "Intg07",
+      "value": "API"
+    }
+  ]
+}
