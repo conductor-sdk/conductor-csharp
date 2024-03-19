@@ -131,7 +131,42 @@ namespace Conductor.Client.Models
             /// Enum SETVARIABLE for value: SET_VARIABLE
             /// </summary>
             [EnumMember(Value = "SET_VARIABLE")]
-            SETVARIABLE = 22
+            SETVARIABLE = 22,
+            /// <summary>
+            /// Enum LLMCHATCOMPLETE for value: LLM_CHAT_COMPLETE
+            /// </summary>
+            [EnumMember(Value = "LLM_CHAT_COMPLETE")]
+            LLMCHATCOMPLETE = 23,
+            /// <summary>
+            /// Enum LLMGENERATEEMBEDDINGS for value: LLM_GENERATE_EMBEDDINGS
+            /// </summary>
+            [EnumMember(Value = "LLM_GENERATE_EMBEDDINGS")]
+            LLMGENERATEEMBEDDINGS = 24,
+            /// <summary>
+            /// Enum LLMINDEXDOCUMENT for value: LLM_INDEX_DOCUMENT
+            /// </summary>
+            [EnumMember(Value = "LLM_INDEX_DOCUMENT")]
+            LLMINDEXDOCUMENT = 25,
+            /// <summary>
+            /// Enum LLMINDEXTEXT for value: LLM_INDEX_TEXT
+            /// </summary>
+            [EnumMember(Value = "LLM_INDEX_TEXT")]
+            LLMINDEXTEXT = 26,
+            /// <summary>
+            /// Enum LLMGETEMBEDDINGS for value: LLM_GET_EMBEDDINGS
+            /// </summary>
+            [EnumMember(Value = "LLM_GET_EMBEDDINGS")]
+            LLMGETEMBEDDINGS = 27,
+            /// <summary>
+            /// Enum LLMSEARCHINDEX for value: LLM_SEARCH_INDEX
+            /// </summary>
+            [EnumMember(Value = "LLM_SEARCH_INDEX")]
+            LLMSEARCHINDEX = 28,
+            /// <summary>
+            /// Enum LLMINDEXTEXT for value: LLM_INDEX_TEXT
+            /// </summary>
+            [EnumMember(Value = "LLM_TEXT_COMPLETE")]
+            LLMTEXTCOMPLETE = 29
         }
         /// <summary>
         /// Gets or Sets WorkflowTaskType
