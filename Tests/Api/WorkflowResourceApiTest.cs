@@ -272,6 +272,8 @@ namespace conductor_csharp.test.Api
 
             workflow = _workflowClient.GetWorkflow(workflowId, true);
 
+            System.Threading.Thread.Sleep(5000);
+
             // There should be 3 tasks
             _testOutputHelper.WriteLine(
                 $"Number of tasks in workflow is {workflow.Tasks.Count} and last task is {workflow.Tasks.Last().ReferenceTaskName}");
@@ -281,7 +283,7 @@ namespace conductor_csharp.test.Api
             // Search for workflows
             var startTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
             var searchResults = _workflowClient.Search(start: 0, size: 10, freeText: "*",
-                query: $"correlationId = '{correlationId}' AND startTime > {startTime} AND startTime < {startTime + 86400000}");
+                query: $"correlationId = '{correlationId}'");
             _testOutputHelper.WriteLine(
                 $"Found {searchResults.Results.Count} execution with correlation_id '{correlationId}'");
             Assert.Single(searchResults.Results);
