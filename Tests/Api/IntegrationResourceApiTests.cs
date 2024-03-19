@@ -235,31 +235,6 @@ namespace Conductor_csharp.test.Api
             Assert.Null(exception);
             _performCleanup = false;
         }
-
-        /// <summary>
-        /// Test GetIntegrationProviderDefs
-        /// </summary>
-        [Fact]
-        public void GetIntegrationProviderDefs()
-        {
-            Setup();
-            var response = _integrationResourceApi.GetIntegrationProviderDefs();
-            AssertExtensions.AssertModelResponse<List<IntegrationDef>>(response);
-            _performCleanup = true;
-        }
-
-        /// <summary>
-        /// Test GetIntegrationProviderDefsAsync
-        /// </summary>
-        [Fact]
-        public async void GetIntegrationProviderDefsAsync()
-        {
-            Setup();
-            var response = await _integrationResourceApi.GetIntegrationProviderDefsAsync();
-            AssertExtensions.AssertModelResponse<List<IntegrationDef>>(response);
-            _performCleanup = true;
-        }
-
         /// <summary>
         /// Test DeleteIntegrationProvider
         /// </summary>

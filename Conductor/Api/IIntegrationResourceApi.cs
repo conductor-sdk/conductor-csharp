@@ -120,16 +120,6 @@ namespace conductor_csharp.Api
         Integration GetIntegrationProvider(string name);
 
         /// <summary>
-        /// Get Integration provider definitions
-        /// </summary>
-        /// <remarks>
-        ///
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List<IntegrationDef></returns>
-        List<IntegrationDef> GetIntegrationProviderDefs();
-
-        /// <summary>
         /// Get all Integrations Providers
         /// </summary>
         /// <remarks>
