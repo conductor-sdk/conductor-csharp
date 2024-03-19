@@ -120,16 +120,6 @@ namespace conductor_csharp.Api
         Integration GetIntegrationProvider(string name);
 
         /// <summary>
-        /// Get Integration provider definitions
-        /// </summary>
-        /// <remarks>
-        ///
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List<IntegrationDef></returns>
-        List<IntegrationDef> GetIntegrationProviderDefs();
-
-        /// <summary>
         /// Get all Integrations Providers
         /// </summary>
         /// <remarks>
@@ -395,16 +385,6 @@ namespace conductor_csharp.Api
         /// <param name="name"></param>
         /// <returns>Task of Integration</returns>
         ThreadTask.Task<Integration> GetIntegrationProviderAsync(string name);
-
-        /// <summary>
-        /// Get Integration provider definitions
-        /// </summary>
-        /// <remarks>
-        ///
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List<IntegrationDef></returns>
-        ThreadTask.Task<List<IntegrationDef>> GetIntegrationProviderDefsAsync();
 
         /// <summary>
         /// Get all Integrations Providers

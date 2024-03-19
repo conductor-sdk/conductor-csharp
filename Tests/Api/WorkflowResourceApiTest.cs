@@ -277,9 +277,11 @@ namespace conductor_csharp.test.Api
                 $"Number of tasks in workflow is {workflow.Tasks.Count} and last task is {workflow.Tasks.Last().ReferenceTaskName}");
             Assert.Equal(3, workflow.Tasks.Count);
 
+            _testOutputHelper.WriteLine("Searching for correlationId " + correlationId);
             // Search for workflows
-            var searchResults = _workflowClient.Search(start: 0, size: 100, freeText: "*",
-                query: $"correlationId = '{correlationId}'");
+            var startTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
+            var searchResults = _workflowClient.Search(start: 0, size: 10, freeText: "*",
+                query: $"correlationId = '{correlationId}' AND startTime > {startTime} AND startTime < {startTime + 86400000}");
             _testOutputHelper.WriteLine(
                 $"Found {searchResults.Results.Count} execution with correlation_id '{correlationId}'");
             Assert.Single(searchResults.Results);
