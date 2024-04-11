@@ -1,5 +1,3 @@
-using Conductor.Client.Models;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -8,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Mime;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -118,6 +115,7 @@ namespace Conductor.Client
             String contentType)
         {
             var request = new RestRequest(path, method);
+            request.AddHeader("Accept-Encoding", "gzip");
 
             // add path parameter, if any
             foreach (var param in pathParams)

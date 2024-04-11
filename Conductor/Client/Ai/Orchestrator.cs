@@ -127,9 +127,10 @@ namespace Conductor.Client.Ai
         /// <exception cref="Exception"></exception>
         public void AddAIIntegration(string aiIntegrationName, LLMProviderEnum provider, List<string> models, string description, IntegrationConfig config, bool overwrite = false)
         {
+            IntegrationUpdate details = null;
             try
             {
-                var details = new IntegrationUpdate();
+                details = new IntegrationUpdate();
                 details.Configuration = config.ToDictionary();
                 details.Type = provider.ToString();
                 details.Category = IntegrationUpdate.CategoryEnum.AIMODEL;
@@ -138,20 +139,20 @@ namespace Conductor.Client.Ai
                 var existingIntegration = _integrationResourceApi.GetIntegrationProvider(aiIntegrationName);
                 if (existingIntegration == null || overwrite)
                     _integrationResourceApi.SaveIntegrationProvider(details, aiIntegrationName);
-                foreach (var model in models)
-                {
-                    var apiDetails = new IntegrationApiUpdate();
-                    apiDetails.Enabled = true;
-                    apiDetails.Description = description;
-                    var existingIntegrationApi = _integrationResourceApi.GetIntegrationApi(aiIntegrationName, model);
-                    if (existingIntegrationApi == null || overwrite)
-                        _integrationResourceApi.SaveIntegrationApi(apiDetails, model, aiIntegrationName);
-                }
+                SaveIntegrationApis(aiIntegrationName, models, description, overwrite);
             }
             catch (Exception ex)
             {
-                string errorMessage = string.Format(Constants.ADD_AI_INTEGRATION_ERROR_MESSAGE, ex.Message);
-                throw new Exception(errorMessage, ex);
+                if (ex.Message.Contains("404") && details != null)
+                {
+                    _integrationResourceApi.SaveIntegrationProvider(details, aiIntegrationName);
+                    SaveIntegrationApis(aiIntegrationName, models, description, overwrite);
+                }
+                else
+                {
+                    string errorMessage = string.Format(Constants.ADD_AI_INTEGRATION_ERROR_MESSAGE, ex.Message);
+                    throw new Exception(errorMessage, ex);
+                }
             }
         }
 
@@ -231,6 +232,32 @@ namespace Conductor.Client.Ai
             {
                 string errorMessage = string.Format(Constants.GET_TOKEN_USED_BY_MODEL_ERROR_MESSAGE, ex.Message);
                 throw new Exception(errorMessage, ex);
+            }
+        }
+
+        /// <summary>
+        /// Method to save IntegrationApi's
+        /// </summary>
+        /// <param name="aiIntegrationName"></param>
+        /// <param name="models"></param>
+        /// <param name="description"></param>
+        /// <param name="overwrite"></param>
+        private void SaveIntegrationApis(string aiIntegrationName, List<string> models, string description, bool overwrite)
+        {
+            foreach (var model in models)
+            {
+                var apiDetails = new IntegrationApiUpdate
+                {
+                    Enabled = true,
+                    Description = description
+                };
+
+                var existingIntegrationApi = _integrationResourceApi.GetIntegrationApi(aiIntegrationName, model);
+
+                if (existingIntegrationApi == null || overwrite)
+                {
+                    _integrationResourceApi.SaveIntegrationApi(apiDetails, model, aiIntegrationName);
+                }
             }
         }
     }

@@ -5,6 +5,8 @@ using Conductor.Executor;
 using Conductor.Api;
 using Conductor.Client.Authentication;
 using Newtonsoft.Json;
+using Conductor.Examples;
+using Conductor.Examples.Copilot;
 
 namespace csharp_examples
 {
@@ -22,6 +24,27 @@ namespace csharp_examples
         private const string VARIABLE_NEW_VALUE_1 = "<REPLACE_WITH_OWNER_VALUE_1>";
         private const string VARIABLE_NAME_2 = "<REPLACE_WITH_VARIABLE_NAME_2>";
         private const string VARIABLE_NEW_VALUE_2 = "<REPLACE_WITH_OWNER_VALUE_2>";
+
+        //Method to tets dynamic workflow
+        public void TestDynamicWorkFlow()
+        {
+            DynamicWorkflow dynamicWorkflow = new DynamicWorkflow();
+            dynamicWorkflow.DynamicWorkFlowMain();
+        }
+
+        //Method to test greetings workflow
+        public void TestGreetingsWorkFlow()
+        {
+            GreetingsMain greetingsMain = new GreetingsMain();
+            greetingsMain.GreetingsMainMethod();
+        }
+
+        //Method to test OpenAICopilot example
+        public void TestOpenAICopilot()
+        {
+            OpenAICopilot openAICopilotTest = new OpenAICopilot();
+            openAICopilotTest.OpenAICopilotTest();
+        }
 
         public void RegisterWorkFlow()
         {

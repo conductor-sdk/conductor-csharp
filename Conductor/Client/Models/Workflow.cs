@@ -1,12 +1,12 @@
 
-using System.Linq;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
 
 namespace Conductor.Client.Models
 {
@@ -292,34 +292,34 @@ namespace Conductor.Client.Models
         {
             var sb = new StringBuilder();
             sb.Append("class Workflow {\n");
-            sb.Append("  CorrelationId: ").Append(CorrelationId).Append("\n");
-            sb.Append("  CreateTime: ").Append(CreateTime).Append("\n");
-            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
-            sb.Append("  EndTime: ").Append(EndTime).Append("\n");
-            sb.Append("  _Event: ").Append(_Event).Append("\n");
-            sb.Append("  ExternalInputPayloadStoragePath: ").Append(ExternalInputPayloadStoragePath).Append("\n");
-            sb.Append("  ExternalOutputPayloadStoragePath: ").Append(ExternalOutputPayloadStoragePath).Append("\n");
-            sb.Append("  FailedReferenceTaskNames: ").Append(FailedReferenceTaskNames).Append("\n");
-            sb.Append("  Input: ").Append(Input).Append("\n");
-            sb.Append("  LastRetriedTime: ").Append(LastRetriedTime).Append("\n");
-            sb.Append("  Output: ").Append(Output).Append("\n");
-            sb.Append("  OwnerApp: ").Append(OwnerApp).Append("\n");
-            sb.Append("  ParentWorkflowId: ").Append(ParentWorkflowId).Append("\n");
-            sb.Append("  ParentWorkflowTaskId: ").Append(ParentWorkflowTaskId).Append("\n");
-            sb.Append("  Priority: ").Append(Priority).Append("\n");
-            sb.Append("  ReRunFromWorkflowId: ").Append(ReRunFromWorkflowId).Append("\n");
-            sb.Append("  ReasonForIncompletion: ").Append(ReasonForIncompletion).Append("\n");
-            sb.Append("  StartTime: ").Append(StartTime).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  TaskToDomain: ").Append(TaskToDomain).Append("\n");
-            sb.Append("  Tasks: ").Append(Tasks).Append("\n");
-            sb.Append("  UpdateTime: ").Append(UpdateTime).Append("\n");
-            sb.Append("  UpdatedBy: ").Append(UpdatedBy).Append("\n");
-            sb.Append("  Variables: ").Append(Variables).Append("\n");
-            sb.Append("  WorkflowDefinition: ").Append(WorkflowDefinition).Append("\n");
-            sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
-            sb.Append("  WorkflowName: ").Append(WorkflowName).Append("\n");
-            sb.Append("  WorkflowVersion: ").Append(WorkflowVersion).Append("\n");
+            sb.Append(" CorrelationId: ").Append(CorrelationId).Append("\n");
+            sb.Append(" CreateTime: ").Append(CreateTime).Append("\n");
+            sb.Append(" CreatedBy: ").Append(CreatedBy).Append("\n");
+            sb.Append(" EndTime: ").Append(EndTime).Append("\n");
+            sb.Append(" _Event: ").Append(_Event).Append("\n");
+            sb.Append(" ExternalInputPayloadStoragePath: ").Append(ExternalInputPayloadStoragePath).Append("\n");
+            sb.Append(" ExternalOutputPayloadStoragePath: ").Append(ExternalOutputPayloadStoragePath).Append("\n");
+            sb.Append(" FailedReferenceTaskNames: ").Append(FailedReferenceTaskNames).Append("\n");
+            sb.Append(" Input: ").Append(Input).Append("\n");
+            sb.Append(" LastRetriedTime: ").Append(LastRetriedTime).Append("\n");
+            sb.Append(" Output: ").Append(Output).Append("\n");
+            sb.Append(" OwnerApp: ").Append(OwnerApp).Append("\n");
+            sb.Append(" ParentWorkflowId: ").Append(ParentWorkflowId).Append("\n");
+            sb.Append(" ParentWorkflowTaskId: ").Append(ParentWorkflowTaskId).Append("\n");
+            sb.Append(" Priority: ").Append(Priority).Append("\n");
+            sb.Append(" ReRunFromWorkflowId: ").Append(ReRunFromWorkflowId).Append("\n");
+            sb.Append(" ReasonForIncompletion: ").Append(ReasonForIncompletion).Append("\n");
+            sb.Append(" StartTime: ").Append(StartTime).Append("\n");
+            sb.Append(" Status: ").Append(Status).Append("\n");
+            sb.Append(" TaskToDomain: ").Append(TaskToDomain).Append("\n");
+            sb.Append(" Tasks: ").Append(Tasks).Append("\n");
+            sb.Append(" UpdateTime: ").Append(UpdateTime).Append("\n");
+            sb.Append(" UpdatedBy: ").Append(UpdatedBy).Append("\n");
+            sb.Append(" Variables: ").Append(Variables).Append("\n");
+            sb.Append(" WorkflowDefinition: ").Append(WorkflowDefinition).Append("\n");
+            sb.Append(" WorkflowId: ").Append(WorkflowId).Append("\n");
+            sb.Append(" WorkflowName: ").Append(WorkflowName).Append("\n");
+            sb.Append(" WorkflowVersion: ").Append(WorkflowVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -354,152 +354,152 @@ namespace Conductor.Client.Models
                 return false;
 
             return
-                (
-                    this.CorrelationId == input.CorrelationId ||
-                    (this.CorrelationId != null &&
-                    this.CorrelationId.Equals(input.CorrelationId))
-                ) &&
-                (
-                    this.CreateTime == input.CreateTime ||
-                    (this.CreateTime != null &&
-                    this.CreateTime.Equals(input.CreateTime))
-                ) &&
-                (
-                    this.CreatedBy == input.CreatedBy ||
-                    (this.CreatedBy != null &&
-                    this.CreatedBy.Equals(input.CreatedBy))
-                ) &&
-                (
-                    this.EndTime == input.EndTime ||
-                    (this.EndTime != null &&
-                    this.EndTime.Equals(input.EndTime))
-                ) &&
-                (
-                    this._Event == input._Event ||
-                    (this._Event != null &&
-                    this._Event.Equals(input._Event))
-                ) &&
-                (
-                    this.ExternalInputPayloadStoragePath == input.ExternalInputPayloadStoragePath ||
-                    (this.ExternalInputPayloadStoragePath != null &&
-                    this.ExternalInputPayloadStoragePath.Equals(input.ExternalInputPayloadStoragePath))
-                ) &&
-                (
-                    this.ExternalOutputPayloadStoragePath == input.ExternalOutputPayloadStoragePath ||
-                    (this.ExternalOutputPayloadStoragePath != null &&
-                    this.ExternalOutputPayloadStoragePath.Equals(input.ExternalOutputPayloadStoragePath))
-                ) &&
-                (
-                    this.FailedReferenceTaskNames == input.FailedReferenceTaskNames ||
-                    this.FailedReferenceTaskNames != null &&
-                    input.FailedReferenceTaskNames != null &&
-                    this.FailedReferenceTaskNames.SequenceEqual(input.FailedReferenceTaskNames)
-                ) &&
-                (
-                    this.Input == input.Input ||
-                    this.Input != null &&
-                    input.Input != null &&
-                    this.Input.SequenceEqual(input.Input)
-                ) &&
-                (
-                    this.LastRetriedTime == input.LastRetriedTime ||
-                    (this.LastRetriedTime != null &&
-                    this.LastRetriedTime.Equals(input.LastRetriedTime))
-                ) &&
-                (
-                    this.Output == input.Output ||
-                    this.Output != null &&
-                    input.Output != null &&
-                    this.Output.SequenceEqual(input.Output)
-                ) &&
-                (
-                    this.OwnerApp == input.OwnerApp ||
-                    (this.OwnerApp != null &&
-                    this.OwnerApp.Equals(input.OwnerApp))
-                ) &&
-                (
-                    this.ParentWorkflowId == input.ParentWorkflowId ||
-                    (this.ParentWorkflowId != null &&
-                    this.ParentWorkflowId.Equals(input.ParentWorkflowId))
-                ) &&
-                (
-                    this.ParentWorkflowTaskId == input.ParentWorkflowTaskId ||
-                    (this.ParentWorkflowTaskId != null &&
-                    this.ParentWorkflowTaskId.Equals(input.ParentWorkflowTaskId))
-                ) &&
-                (
-                    this.Priority == input.Priority ||
-                    (this.Priority != null &&
-                    this.Priority.Equals(input.Priority))
-                ) &&
-                (
-                    this.ReRunFromWorkflowId == input.ReRunFromWorkflowId ||
-                    (this.ReRunFromWorkflowId != null &&
-                    this.ReRunFromWorkflowId.Equals(input.ReRunFromWorkflowId))
-                ) &&
-                (
-                    this.ReasonForIncompletion == input.ReasonForIncompletion ||
-                    (this.ReasonForIncompletion != null &&
-                    this.ReasonForIncompletion.Equals(input.ReasonForIncompletion))
-                ) &&
-                (
-                    this.StartTime == input.StartTime ||
-                    (this.StartTime != null &&
-                    this.StartTime.Equals(input.StartTime))
-                ) &&
-                (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) &&
-                (
-                    this.TaskToDomain == input.TaskToDomain ||
-                    this.TaskToDomain != null &&
-                    input.TaskToDomain != null &&
-                    this.TaskToDomain.SequenceEqual(input.TaskToDomain)
-                ) &&
-                (
-                    this.Tasks == input.Tasks ||
-                    this.Tasks != null &&
-                    input.Tasks != null &&
-                    this.Tasks.SequenceEqual(input.Tasks)
-                ) &&
-                (
-                    this.UpdateTime == input.UpdateTime ||
-                    (this.UpdateTime != null &&
-                    this.UpdateTime.Equals(input.UpdateTime))
-                ) &&
-                (
-                    this.UpdatedBy == input.UpdatedBy ||
-                    (this.UpdatedBy != null &&
-                    this.UpdatedBy.Equals(input.UpdatedBy))
-                ) &&
-                (
-                    this.Variables == input.Variables ||
-                    this.Variables != null &&
-                    input.Variables != null &&
-                    this.Variables.SequenceEqual(input.Variables)
-                ) &&
-                (
-                    this.WorkflowDefinition == input.WorkflowDefinition ||
-                    (this.WorkflowDefinition != null &&
-                    this.WorkflowDefinition.Equals(input.WorkflowDefinition))
-                ) &&
-                (
-                    this.WorkflowId == input.WorkflowId ||
-                    (this.WorkflowId != null &&
-                    this.WorkflowId.Equals(input.WorkflowId))
-                ) &&
-                (
-                    this.WorkflowName == input.WorkflowName ||
-                    (this.WorkflowName != null &&
-                    this.WorkflowName.Equals(input.WorkflowName))
-                ) &&
-                (
-                    this.WorkflowVersion == input.WorkflowVersion ||
-                    (this.WorkflowVersion != null &&
-                    this.WorkflowVersion.Equals(input.WorkflowVersion))
-                );
+            (
+            this.CorrelationId == input.CorrelationId ||
+            (this.CorrelationId != null &&
+            this.CorrelationId.Equals(input.CorrelationId))
+            ) &&
+            (
+            this.CreateTime == input.CreateTime ||
+            (this.CreateTime != null &&
+            this.CreateTime.Equals(input.CreateTime))
+            ) &&
+            (
+            this.CreatedBy == input.CreatedBy ||
+            (this.CreatedBy != null &&
+            this.CreatedBy.Equals(input.CreatedBy))
+            ) &&
+            (
+            this.EndTime == input.EndTime ||
+            (this.EndTime != null &&
+            this.EndTime.Equals(input.EndTime))
+            ) &&
+            (
+            this._Event == input._Event ||
+            (this._Event != null &&
+            this._Event.Equals(input._Event))
+            ) &&
+            (
+            this.ExternalInputPayloadStoragePath == input.ExternalInputPayloadStoragePath ||
+            (this.ExternalInputPayloadStoragePath != null &&
+            this.ExternalInputPayloadStoragePath.Equals(input.ExternalInputPayloadStoragePath))
+            ) &&
+            (
+            this.ExternalOutputPayloadStoragePath == input.ExternalOutputPayloadStoragePath ||
+            (this.ExternalOutputPayloadStoragePath != null &&
+            this.ExternalOutputPayloadStoragePath.Equals(input.ExternalOutputPayloadStoragePath))
+            ) &&
+            (
+            this.FailedReferenceTaskNames == input.FailedReferenceTaskNames ||
+            this.FailedReferenceTaskNames != null &&
+            input.FailedReferenceTaskNames != null &&
+            this.FailedReferenceTaskNames.SequenceEqual(input.FailedReferenceTaskNames)
+            ) &&
+            (
+            this.Input == input.Input ||
+            this.Input != null &&
+            input.Input != null &&
+            this.Input.SequenceEqual(input.Input)
+            ) &&
+            (
+            this.LastRetriedTime == input.LastRetriedTime ||
+            (this.LastRetriedTime != null &&
+            this.LastRetriedTime.Equals(input.LastRetriedTime))
+            ) &&
+            (
+            this.Output == input.Output ||
+            this.Output != null &&
+            input.Output != null &&
+            this.Output.SequenceEqual(input.Output)
+            ) &&
+            (
+            this.OwnerApp == input.OwnerApp ||
+            (this.OwnerApp != null &&
+            this.OwnerApp.Equals(input.OwnerApp))
+            ) &&
+            (
+            this.ParentWorkflowId == input.ParentWorkflowId ||
+            (this.ParentWorkflowId != null &&
+            this.ParentWorkflowId.Equals(input.ParentWorkflowId))
+            ) &&
+            (
+            this.ParentWorkflowTaskId == input.ParentWorkflowTaskId ||
+            (this.ParentWorkflowTaskId != null &&
+            this.ParentWorkflowTaskId.Equals(input.ParentWorkflowTaskId))
+            ) &&
+            (
+            this.Priority == input.Priority ||
+            (this.Priority != null &&
+            this.Priority.Equals(input.Priority))
+            ) &&
+            (
+            this.ReRunFromWorkflowId == input.ReRunFromWorkflowId ||
+            (this.ReRunFromWorkflowId != null &&
+            this.ReRunFromWorkflowId.Equals(input.ReRunFromWorkflowId))
+            ) &&
+            (
+            this.ReasonForIncompletion == input.ReasonForIncompletion ||
+            (this.ReasonForIncompletion != null &&
+            this.ReasonForIncompletion.Equals(input.ReasonForIncompletion))
+            ) &&
+            (
+            this.StartTime == input.StartTime ||
+            (this.StartTime != null &&
+            this.StartTime.Equals(input.StartTime))
+            ) &&
+            (
+            this.Status == input.Status ||
+            (this.Status != null &&
+            this.Status.Equals(input.Status))
+            ) &&
+            (
+            this.TaskToDomain == input.TaskToDomain ||
+            this.TaskToDomain != null &&
+            input.TaskToDomain != null &&
+            this.TaskToDomain.SequenceEqual(input.TaskToDomain)
+            ) &&
+            (
+            this.Tasks == input.Tasks ||
+            this.Tasks != null &&
+            input.Tasks != null &&
+            this.Tasks.SequenceEqual(input.Tasks)
+            ) &&
+            (
+            this.UpdateTime == input.UpdateTime ||
+            (this.UpdateTime != null &&
+            this.UpdateTime.Equals(input.UpdateTime))
+            ) &&
+            (
+            this.UpdatedBy == input.UpdatedBy ||
+            (this.UpdatedBy != null &&
+            this.UpdatedBy.Equals(input.UpdatedBy))
+            ) &&
+            (
+            this.Variables == input.Variables ||
+            this.Variables != null &&
+            input.Variables != null &&
+            this.Variables.SequenceEqual(input.Variables)
+            ) &&
+            (
+            this.WorkflowDefinition == input.WorkflowDefinition ||
+            (this.WorkflowDefinition != null &&
+            this.WorkflowDefinition.Equals(input.WorkflowDefinition))
+            ) &&
+            (
+            this.WorkflowId == input.WorkflowId ||
+            (this.WorkflowId != null &&
+            this.WorkflowId.Equals(input.WorkflowId))
+            ) &&
+            (
+            this.WorkflowName == input.WorkflowName ||
+            (this.WorkflowName != null &&
+            this.WorkflowName.Equals(input.WorkflowName))
+            ) &&
+            (
+            this.WorkflowVersion == input.WorkflowVersion ||
+            (this.WorkflowVersion != null &&
+            this.WorkflowVersion.Equals(input.WorkflowVersion))
+            );
         }
 
         /// <summary>
@@ -579,6 +579,36 @@ namespace Conductor.Client.Models
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
+        }
+
+        /// <summary>
+        /// Returns the task
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="taskReferenceName"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public Task GetTask(string name = null, string taskReferenceName = null)
+        {
+            if (name == null && taskReferenceName == null)
+            {
+                throw new Exception("ONLY one of name or taskReferenceName MUST be provided. None were provided");
+            }
+            if (name != null && taskReferenceName != null)
+            {
+                throw new Exception("ONLY one of name or taskReferenceName MUST be provided. Both were provided");
+            }
+
+            Task current = null;
+            foreach (var task in Tasks)
+            {
+                if (task.TaskDefName == name || task.WorkflowTask.TaskReferenceName == taskReferenceName)
+                {
+                    current = task;
+                    break;
+                }
+            }
+            return current;
         }
     }
 }
