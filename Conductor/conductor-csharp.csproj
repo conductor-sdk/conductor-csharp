@@ -2,9 +2,12 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageIconUrl />
-    <RepositoryUrl>https://github.com/conductor-sdk/conductor-csharp</RepositoryUrl>
+<!--    <RepositoryUrl>https://github.com/conductor-sdk/conductor-csharp</RepositoryUrl>-->
     <Description>C# sdk for conductor</Description>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+<!--    <PackageReadmeFile>README.md</PackageReadmeFile>-->
+    <PackageId>ngsc-conductor-csharp</PackageId>
+    <Version>1.0.15</Version>
+    <Authors>NGSC Backend team</Authors>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JsonSubTypes" Version="2.0.1" />
@@ -17,6 +20,6 @@
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
 	<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="110.2.0" />
-    <None Include="/package/Conductor/README.md" Pack="true" PackagePath="/" />
+<!--    <None Include="/package/Conductor/README.md" Pack="true" PackagePath="/" />-->
   </ItemGroup>
 </Project>
