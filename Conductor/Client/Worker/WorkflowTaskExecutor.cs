@@ -4,7 +4,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using Conductor.Client.Models;
+using Task = Conductor.Client.Models.Task;
 
 namespace Conductor.Client.Worker
 {
@@ -50,7 +52,7 @@ namespace Conductor.Client.Worker
             if (token != CancellationToken.None)
                 token.ThrowIfCancellationRequested();
 
-            var thread = System.Threading.Tasks.Task.Run(() => Work4Ever(token));
+            var thread = System.Threading.Tasks.Task.Factory.StartNew(() => Work4Ever(token), TaskCreationOptions.LongRunning);
             _logger.LogInformation(
                 $"[{_workerSettings.WorkerId}] Started worker"
                 + $", taskName: {_worker.TaskType}"
