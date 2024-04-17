@@ -88,5 +88,39 @@ namespace Conductor.Definition
                 version: Version
             );
         }
+
+        /// <summary>
+        /// creates a json path for input parameters
+        /// </summary>
+        /// <param name="jsonPath"></param>
+        /// <returns></returns>
+        public string Input(string jsonPath)
+        {
+            if (jsonPath == null)
+            {
+                return "${" + "workflow.input" + "}";
+            }
+            else
+            {
+                return "${" + $"workflow.input.{jsonPath}" + "}";
+            }
+        }
+
+        /// <summary>
+        /// creates a json path for output parameters
+        /// </summary>
+        /// <param name="jsonPath"></param>
+        /// <returns></returns>
+        public string Output(string jsonPath = null)
+        {
+            if (jsonPath == null)
+            {
+                return "${" + "workflow.output" + "}";
+            }
+            else
+            {
+                return "${" + $"workflow.output.{jsonPath}" + "}";
+            }
+        }
     }
 }

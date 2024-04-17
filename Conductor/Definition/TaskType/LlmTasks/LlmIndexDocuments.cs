@@ -1,4 +1,5 @@
 ﻿using Conductor.Client;
+using Conductor.Definition.TaskType.LlmTasks.Utils;
 using System.Collections.Generic;
 
 namespace Conductor.Definition.TaskType.LlmTasks
@@ -36,7 +37,7 @@ namespace Conductor.Definition.TaskType.LlmTasks
         /// <summary>
         /// Gets or Sets EmbeddingModel
         /// </summary>
-        public string EmbeddingModel { get; set; }
+        public EmbeddingModel EmbeddingModel { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
@@ -66,7 +67,7 @@ namespace Conductor.Definition.TaskType.LlmTasks
         /// <summary>
         /// Gets or Sets DocId
         /// </summary>
-        public int? DocId { get; set; }
+        public string DocId { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskName
@@ -89,8 +90,8 @@ namespace Conductor.Definition.TaskType.LlmTasks
         /// <param name="docId"></param>
         /// <param name="taskName"></param>
         /// <param name="metaData"></param>
-        public LlmIndexDocuments(string taskReferenceName, string vectorDB, string nameSpace, string index, string embeddingModelProvider, string embeddingModel, string url,
-            string mediaType, int? chunkSize, int? chunkOverlap, int? docId, string taskName = null, Dictionary<string, object> metaData = null) : base(taskReferenceName, WorkflowTaskTypeEnum.LLMINDEXDOCUMENT)
+        public LlmIndexDocuments(string taskReferenceName = default(string), string vectorDB = default(string), string nameSpace = default(string), string index = default(string), string embeddingModelProvider = default(string), EmbeddingModel embeddingModel = default(EmbeddingModel), string url = default(string),
+        string mediaType = default(string), int? chunkSize = default(int?), int? chunkOverlap = default(int?), string docId = default(string), string taskName = null, Dictionary<string, object> metaData = null) : base(taskReferenceName, WorkflowTaskTypeEnum.LLMINDEXDOCUMENT)
         {
             TaskRefName = taskReferenceName;
             VectorDB = vectorDB;
@@ -124,7 +125,7 @@ namespace Conductor.Definition.TaskType.LlmTasks
                 WithInput(Constants.CHUNKOVERLAP, ChunkOverlap);
             }
 
-            if (DocId.HasValue)
+            if (!string.IsNullOrEmpty(DocId))
             {
                 WithInput(Constants.DOCID, DocId);
             }

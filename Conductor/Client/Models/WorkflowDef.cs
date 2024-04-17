@@ -1,12 +1,12 @@
-using System.Linq;
-using System.IO;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
 
 namespace Conductor.Client.Models
 {
@@ -232,26 +232,26 @@ namespace Conductor.Client.Models
         {
             var sb = new StringBuilder();
             sb.Append("class WorkflowDef {\n");
-            sb.Append("  CreateTime: ").Append(CreateTime).Append("\n");
-            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  FailureWorkflow: ").Append(FailureWorkflow).Append("\n");
-            sb.Append("  InputParameters: ").Append(InputParameters).Append("\n");
-            sb.Append("  InputTemplate: ").Append(InputTemplate).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  OutputParameters: ").Append(OutputParameters).Append("\n");
-            sb.Append("  OwnerApp: ").Append(OwnerApp).Append("\n");
-            sb.Append("  OwnerEmail: ").Append(OwnerEmail).Append("\n");
-            sb.Append("  Restartable: ").Append(Restartable).Append("\n");
-            sb.Append("  SchemaVersion: ").Append(SchemaVersion).Append("\n");
-            sb.Append("  Tasks: ").Append(Tasks).Append("\n");
-            sb.Append("  TimeoutPolicy: ").Append(TimeoutPolicy).Append("\n");
-            sb.Append("  TimeoutSeconds: ").Append(TimeoutSeconds).Append("\n");
-            sb.Append("  UpdateTime: ").Append(UpdateTime).Append("\n");
-            sb.Append("  UpdatedBy: ").Append(UpdatedBy).Append("\n");
-            sb.Append("  Variables: ").Append(Variables).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("  WorkflowStatusListenerEnabled: ").Append(WorkflowStatusListenerEnabled).Append("\n");
+            sb.Append(" CreateTime: ").Append(CreateTime).Append("\n");
+            sb.Append(" CreatedBy: ").Append(CreatedBy).Append("\n");
+            sb.Append(" Description: ").Append(Description).Append("\n");
+            sb.Append(" FailureWorkflow: ").Append(FailureWorkflow).Append("\n");
+            sb.Append(" InputParameters: ").Append(InputParameters).Append("\n");
+            sb.Append(" InputTemplate: ").Append(InputTemplate).Append("\n");
+            sb.Append(" Name: ").Append(Name).Append("\n");
+            sb.Append(" OutputParameters: ").Append(OutputParameters).Append("\n");
+            sb.Append(" OwnerApp: ").Append(OwnerApp).Append("\n");
+            sb.Append(" OwnerEmail: ").Append(OwnerEmail).Append("\n");
+            sb.Append(" Restartable: ").Append(Restartable).Append("\n");
+            sb.Append(" SchemaVersion: ").Append(SchemaVersion).Append("\n");
+            sb.Append(" Tasks: ").Append(Tasks).Append("\n");
+            sb.Append(" TimeoutPolicy: ").Append(TimeoutPolicy).Append("\n");
+            sb.Append(" TimeoutSeconds: ").Append(TimeoutSeconds).Append("\n");
+            sb.Append(" UpdateTime: ").Append(UpdateTime).Append("\n");
+            sb.Append(" UpdatedBy: ").Append(UpdatedBy).Append("\n");
+            sb.Append(" Variables: ").Append(Variables).Append("\n");
+            sb.Append(" Version: ").Append(Version).Append("\n");
+            sb.Append(" WorkflowStatusListenerEnabled: ").Append(WorkflowStatusListenerEnabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -286,111 +286,111 @@ namespace Conductor.Client.Models
                 return false;
 
             return
-                (
-                    this.CreateTime == input.CreateTime ||
-                    (this.CreateTime != null &&
-                    this.CreateTime.Equals(input.CreateTime))
-                ) &&
-                (
-                    this.CreatedBy == input.CreatedBy ||
-                    (this.CreatedBy != null &&
-                    this.CreatedBy.Equals(input.CreatedBy))
-                ) &&
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) &&
-                (
-                    this.FailureWorkflow == input.FailureWorkflow ||
-                    (this.FailureWorkflow != null &&
-                    this.FailureWorkflow.Equals(input.FailureWorkflow))
-                ) &&
-                (
-                    this.InputParameters == input.InputParameters ||
-                    this.InputParameters != null &&
-                    input.InputParameters != null &&
-                    this.InputParameters.SequenceEqual(input.InputParameters)
-                ) &&
-                (
-                    this.InputTemplate == input.InputTemplate ||
-                    this.InputTemplate != null &&
-                    input.InputTemplate != null &&
-                    this.InputTemplate.SequenceEqual(input.InputTemplate)
-                ) &&
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) &&
-                (
-                    this.OutputParameters == input.OutputParameters ||
-                    this.OutputParameters != null &&
-                    input.OutputParameters != null &&
-                    this.OutputParameters.SequenceEqual(input.OutputParameters)
-                ) &&
-                (
-                    this.OwnerApp == input.OwnerApp ||
-                    (this.OwnerApp != null &&
-                    this.OwnerApp.Equals(input.OwnerApp))
-                ) &&
-                (
-                    this.OwnerEmail == input.OwnerEmail ||
-                    (this.OwnerEmail != null &&
-                    this.OwnerEmail.Equals(input.OwnerEmail))
-                ) &&
-                (
-                    this.Restartable == input.Restartable ||
-                    (this.Restartable != null &&
-                    this.Restartable.Equals(input.Restartable))
-                ) &&
-                (
-                    this.SchemaVersion == input.SchemaVersion ||
-                    (this.SchemaVersion != null &&
-                    this.SchemaVersion.Equals(input.SchemaVersion))
-                ) &&
-                (
-                    this.Tasks == input.Tasks ||
-                    this.Tasks != null &&
-                    input.Tasks != null &&
-                    this.Tasks.SequenceEqual(input.Tasks)
-                ) &&
-                (
-                    this.TimeoutPolicy == input.TimeoutPolicy ||
-                    (this.TimeoutPolicy != null &&
-                    this.TimeoutPolicy.Equals(input.TimeoutPolicy))
-                ) &&
-                (
-                    this.TimeoutSeconds == input.TimeoutSeconds ||
-                    (this.TimeoutSeconds != null &&
-                    this.TimeoutSeconds.Equals(input.TimeoutSeconds))
-                ) &&
-                (
-                    this.UpdateTime == input.UpdateTime ||
-                    (this.UpdateTime != null &&
-                    this.UpdateTime.Equals(input.UpdateTime))
-                ) &&
-                (
-                    this.UpdatedBy == input.UpdatedBy ||
-                    (this.UpdatedBy != null &&
-                    this.UpdatedBy.Equals(input.UpdatedBy))
-                ) &&
-                (
-                    this.Variables == input.Variables ||
-                    this.Variables != null &&
-                    input.Variables != null &&
-                    this.Variables.SequenceEqual(input.Variables)
-                ) &&
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                ) &&
-                (
-                    this.WorkflowStatusListenerEnabled == input.WorkflowStatusListenerEnabled ||
-                    (this.WorkflowStatusListenerEnabled != null &&
-                    this.WorkflowStatusListenerEnabled.Equals(input.WorkflowStatusListenerEnabled))
-                );
+            (
+            this.CreateTime == input.CreateTime ||
+            (this.CreateTime != null &&
+            this.CreateTime.Equals(input.CreateTime))
+            ) &&
+            (
+            this.CreatedBy == input.CreatedBy ||
+            (this.CreatedBy != null &&
+            this.CreatedBy.Equals(input.CreatedBy))
+            ) &&
+            (
+            this.Description == input.Description ||
+            (this.Description != null &&
+            this.Description.Equals(input.Description))
+            ) &&
+            (
+            this.FailureWorkflow == input.FailureWorkflow ||
+            (this.FailureWorkflow != null &&
+            this.FailureWorkflow.Equals(input.FailureWorkflow))
+            ) &&
+            (
+            this.InputParameters == input.InputParameters ||
+            this.InputParameters != null &&
+            input.InputParameters != null &&
+            this.InputParameters.SequenceEqual(input.InputParameters)
+            ) &&
+            (
+            this.InputTemplate == input.InputTemplate ||
+            this.InputTemplate != null &&
+            input.InputTemplate != null &&
+            this.InputTemplate.SequenceEqual(input.InputTemplate)
+            ) &&
+            (
+            this.Name == input.Name ||
+            (this.Name != null &&
+            this.Name.Equals(input.Name))
+            ) &&
+            (
+            this.OutputParameters == input.OutputParameters ||
+            this.OutputParameters != null &&
+            input.OutputParameters != null &&
+            this.OutputParameters.SequenceEqual(input.OutputParameters)
+            ) &&
+            (
+            this.OwnerApp == input.OwnerApp ||
+            (this.OwnerApp != null &&
+            this.OwnerApp.Equals(input.OwnerApp))
+            ) &&
+            (
+            this.OwnerEmail == input.OwnerEmail ||
+            (this.OwnerEmail != null &&
+            this.OwnerEmail.Equals(input.OwnerEmail))
+            ) &&
+            (
+            this.Restartable == input.Restartable ||
+            (this.Restartable != null &&
+            this.Restartable.Equals(input.Restartable))
+            ) &&
+            (
+            this.SchemaVersion == input.SchemaVersion ||
+            (this.SchemaVersion != null &&
+            this.SchemaVersion.Equals(input.SchemaVersion))
+            ) &&
+            (
+            this.Tasks == input.Tasks ||
+            this.Tasks != null &&
+            input.Tasks != null &&
+            this.Tasks.SequenceEqual(input.Tasks)
+            ) &&
+            (
+            this.TimeoutPolicy == input.TimeoutPolicy ||
+            (this.TimeoutPolicy != null &&
+            this.TimeoutPolicy.Equals(input.TimeoutPolicy))
+            ) &&
+            (
+            this.TimeoutSeconds == input.TimeoutSeconds ||
+            (this.TimeoutSeconds != null &&
+            this.TimeoutSeconds.Equals(input.TimeoutSeconds))
+            ) &&
+            (
+            this.UpdateTime == input.UpdateTime ||
+            (this.UpdateTime != null &&
+            this.UpdateTime.Equals(input.UpdateTime))
+            ) &&
+            (
+            this.UpdatedBy == input.UpdatedBy ||
+            (this.UpdatedBy != null &&
+            this.UpdatedBy.Equals(input.UpdatedBy))
+            ) &&
+            (
+            this.Variables == input.Variables ||
+            this.Variables != null &&
+            input.Variables != null &&
+            this.Variables.SequenceEqual(input.Variables)
+            ) &&
+            (
+            this.Version == input.Version ||
+            (this.Version != null &&
+            this.Version.Equals(input.Version))
+            ) &&
+            (
+            this.WorkflowStatusListenerEnabled == input.WorkflowStatusListenerEnabled ||
+            (this.WorkflowStatusListenerEnabled != null &&
+            this.WorkflowStatusListenerEnabled.Equals(input.WorkflowStatusListenerEnabled))
+            );
         }
 
         /// <summary>
@@ -454,6 +454,16 @@ namespace Conductor.Client.Models
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
+        }
+
+        /// <summary>
+        /// Returns the dictionary representation of the WorkflowDef object.
+        /// </summary>
+        /// <returns>Dictionary representing the WorkflowDef object</returns>
+        public Dictionary<string, object> ToDictionary()
+        {
+            string json = JsonConvert.SerializeObject(this, Formatting.None);
+            return JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
         }
     }
 }
