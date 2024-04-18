@@ -1,12 +1,12 @@
-using System.Linq;
-using System.IO;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
 
 namespace Conductor.Client.Models
 {
@@ -166,7 +166,12 @@ namespace Conductor.Client.Models
             /// Enum LLMINDEXTEXT for value: LLM_INDEX_TEXT
             /// </summary>
             [EnumMember(Value = "LLM_TEXT_COMPLETE")]
-            LLMTEXTCOMPLETE = 29
+            LLMTEXTCOMPLETE = 29,
+            /// <summary>
+            /// Enum WAITFORWEBHOOK for value: WAIT_FOR_WEBHOOK
+            /// </summary>
+            [EnumMember(Value = "WAIT_FOR_WEBHOOK")]
+            WAITFORWEBHOOK = 30
         }
         /// <summary>
         /// Gets or Sets WorkflowTaskType
@@ -206,7 +211,7 @@ namespace Conductor.Client.Models
         /// <param name="taskReferenceName">taskReferenceName (required).</param>
         /// <param name="type">type.</param>
         /// <param name="workflowTaskType">workflowTaskType.</param>
-        public WorkflowTask(bool? asyncComplete = default(bool?), string caseExpression = default(string), string caseValueParam = default(string), Dictionary<string, List<WorkflowTask>> decisionCases = default(Dictionary<string, List<WorkflowTask>>), List<WorkflowTask> defaultCase = default(List<WorkflowTask>), List<string> defaultExclusiveJoinTask = default(List<string>), string description = default(string), string dynamicForkJoinTasksParam = default(string), string dynamicForkTasksInputParamName = default(string), string dynamicForkTasksParam = default(string), string dynamicTaskNameParam = default(string), string evaluatorType = default(string), string expression = default(string), List<List<WorkflowTask>> forkTasks = default(List<List<WorkflowTask>>), Dictionary<string, Object> inputParameters = default(Dictionary<string, Object>), List<string> joinOn = default(List<string>), string loopCondition = default(string), List<WorkflowTask> loopOver = default(List<WorkflowTask>), string name = default(string), bool? optional = default(bool?), bool? rateLimited = default(bool?), int? retryCount = default(int?), string scriptExpression = default(string), string sink = default(string), int? startDelay = default(int?), SubWorkflowParams subWorkflowParam = default(SubWorkflowParams), TaskDef taskDefinition = default(TaskDef), string taskReferenceName = default(string), string type = default(string), WorkflowTaskTypeEnum? workflowTaskType = default(WorkflowTaskTypeEnum?))
+        public WorkflowTask(bool? asyncComplete = default(bool?), string caseExpression = default(string), string caseValueParam = default(string), Dictionary<string, List<WorkflowTask>> decisionCases = default(Dictionary<string, List<WorkflowTask>>), List<WorkflowTask> defaultCase = default(List<WorkflowTask>), List<string> defaultExclusiveJoinTask = default(List<string>), string description = default(string), string dynamicForkJoinTasksParam = default(string), string dynamicForkTasksInputParamName = default(string), string dynamicForkTasksParam = default(string), string dynamicTaskNameParam = default(string), string evaluatorType = default(string), string expression = default(string), List<List<WorkflowTask>> forkTasks = default(List<List<WorkflowTask>>), Dictionary<string, Object> inputParameters = default(Dictionary<string, Object>), List<string> joinOn = default(List<string>), string loopCondition = default(string), List<WorkflowTask> loopOver = default(List<WorkflowTask>), string name = default(string), bool? optional = default(bool?), bool? rateLimited = default(bool?), int? retryCount = default(int?), string scriptExpression = default(string), string sink = default(string), int? startDelay = default(int?), SubWorkflowParams subWorkflowParam = default(SubWorkflowParams), TaskDef taskDefinition = default(TaskDef), string taskReferenceName = default(string), string type = default(string), WorkflowTaskTypeEnum? workflowTaskType = default(WorkflowTaskTypeEnum?), Dictionary<string, StateChangeConfig> onStateChange = default(Dictionary<string, StateChangeConfig>))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -254,6 +259,7 @@ namespace Conductor.Client.Models
             this.TaskDefinition = taskDefinition;
             this.Type = type;
             this.WorkflowTaskType = workflowTaskType;
+            this.OnStateChange = onStateChange;
         }
 
         /// <summary>
@@ -430,6 +436,11 @@ namespace Conductor.Client.Models
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
+        /// <summary>
+        /// Gets or Sets OnStateChange
+        /// </summary>
+        [DataMember(Name = "onStateChange", EmitDefaultValue = false)]
+        public Dictionary<string, StateChangeConfig> OnStateChange { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -439,36 +450,36 @@ namespace Conductor.Client.Models
         {
             var sb = new StringBuilder();
             sb.Append("class WorkflowTask {\n");
-            sb.Append("  AsyncComplete: ").Append(AsyncComplete).Append("\n");
-            sb.Append("  CaseExpression: ").Append(CaseExpression).Append("\n");
-            sb.Append("  CaseValueParam: ").Append(CaseValueParam).Append("\n");
-            sb.Append("  DecisionCases: ").Append(DecisionCases).Append("\n");
-            sb.Append("  DefaultCase: ").Append(DefaultCase).Append("\n");
-            sb.Append("  DefaultExclusiveJoinTask: ").Append(DefaultExclusiveJoinTask).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  DynamicForkJoinTasksParam: ").Append(DynamicForkJoinTasksParam).Append("\n");
-            sb.Append("  DynamicForkTasksInputParamName: ").Append(DynamicForkTasksInputParamName).Append("\n");
-            sb.Append("  DynamicForkTasksParam: ").Append(DynamicForkTasksParam).Append("\n");
-            sb.Append("  DynamicTaskNameParam: ").Append(DynamicTaskNameParam).Append("\n");
-            sb.Append("  EvaluatorType: ").Append(EvaluatorType).Append("\n");
-            sb.Append("  Expression: ").Append(Expression).Append("\n");
-            sb.Append("  ForkTasks: ").Append(ForkTasks).Append("\n");
-            sb.Append("  InputParameters: ").Append(InputParameters).Append("\n");
-            sb.Append("  JoinOn: ").Append(JoinOn).Append("\n");
-            sb.Append("  LoopCondition: ").Append(LoopCondition).Append("\n");
-            sb.Append("  LoopOver: ").Append(LoopOver).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Optional: ").Append(Optional).Append("\n");
-            sb.Append("  RateLimited: ").Append(RateLimited).Append("\n");
-            sb.Append("  RetryCount: ").Append(RetryCount).Append("\n");
-            sb.Append("  ScriptExpression: ").Append(ScriptExpression).Append("\n");
-            sb.Append("  Sink: ").Append(Sink).Append("\n");
-            sb.Append("  StartDelay: ").Append(StartDelay).Append("\n");
-            sb.Append("  SubWorkflowParam: ").Append(SubWorkflowParam).Append("\n");
-            sb.Append("  TaskDefinition: ").Append(TaskDefinition).Append("\n");
-            sb.Append("  TaskReferenceName: ").Append(TaskReferenceName).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  WorkflowTaskType: ").Append(WorkflowTaskType).Append("\n");
+            sb.Append(" AsyncComplete: ").Append(AsyncComplete).Append("\n");
+            sb.Append(" CaseExpression: ").Append(CaseExpression).Append("\n");
+            sb.Append(" CaseValueParam: ").Append(CaseValueParam).Append("\n");
+            sb.Append(" DecisionCases: ").Append(DecisionCases).Append("\n");
+            sb.Append(" DefaultCase: ").Append(DefaultCase).Append("\n");
+            sb.Append(" DefaultExclusiveJoinTask: ").Append(DefaultExclusiveJoinTask).Append("\n");
+            sb.Append(" Description: ").Append(Description).Append("\n");
+            sb.Append(" DynamicForkJoinTasksParam: ").Append(DynamicForkJoinTasksParam).Append("\n");
+            sb.Append(" DynamicForkTasksInputParamName: ").Append(DynamicForkTasksInputParamName).Append("\n");
+            sb.Append(" DynamicForkTasksParam: ").Append(DynamicForkTasksParam).Append("\n");
+            sb.Append(" DynamicTaskNameParam: ").Append(DynamicTaskNameParam).Append("\n");
+            sb.Append(" EvaluatorType: ").Append(EvaluatorType).Append("\n");
+            sb.Append(" Expression: ").Append(Expression).Append("\n");
+            sb.Append(" ForkTasks: ").Append(ForkTasks).Append("\n");
+            sb.Append(" InputParameters: ").Append(InputParameters).Append("\n");
+            sb.Append(" JoinOn: ").Append(JoinOn).Append("\n");
+            sb.Append(" LoopCondition: ").Append(LoopCondition).Append("\n");
+            sb.Append(" LoopOver: ").Append(LoopOver).Append("\n");
+            sb.Append(" Name: ").Append(Name).Append("\n");
+            sb.Append(" Optional: ").Append(Optional).Append("\n");
+            sb.Append(" RateLimited: ").Append(RateLimited).Append("\n");
+            sb.Append(" RetryCount: ").Append(RetryCount).Append("\n");
+            sb.Append(" ScriptExpression: ").Append(ScriptExpression).Append("\n");
+            sb.Append(" Sink: ").Append(Sink).Append("\n");
+            sb.Append(" StartDelay: ").Append(StartDelay).Append("\n");
+            sb.Append(" SubWorkflowParam: ").Append(SubWorkflowParam).Append("\n");
+            sb.Append(" TaskDefinition: ").Append(TaskDefinition).Append("\n");
+            sb.Append(" TaskReferenceName: ").Append(TaskReferenceName).Append("\n");
+            sb.Append(" Type: ").Append(Type).Append("\n");
+            sb.Append(" WorkflowTaskType: ").Append(WorkflowTaskType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -503,163 +514,163 @@ namespace Conductor.Client.Models
                 return false;
 
             return
-                (
-                    this.AsyncComplete == input.AsyncComplete ||
-                    (this.AsyncComplete != null &&
-                    this.AsyncComplete.Equals(input.AsyncComplete))
-                ) &&
-                (
-                    this.CaseExpression == input.CaseExpression ||
-                    (this.CaseExpression != null &&
-                    this.CaseExpression.Equals(input.CaseExpression))
-                ) &&
-                (
-                    this.CaseValueParam == input.CaseValueParam ||
-                    (this.CaseValueParam != null &&
-                    this.CaseValueParam.Equals(input.CaseValueParam))
-                ) &&
-                (
-                    this.DecisionCases == input.DecisionCases ||
-                    this.DecisionCases != null &&
-                    input.DecisionCases != null &&
-                    this.DecisionCases.SequenceEqual(input.DecisionCases)
-                ) &&
-                (
-                    this.DefaultCase == input.DefaultCase ||
-                    this.DefaultCase != null &&
-                    input.DefaultCase != null &&
-                    this.DefaultCase.SequenceEqual(input.DefaultCase)
-                ) &&
-                (
-                    this.DefaultExclusiveJoinTask == input.DefaultExclusiveJoinTask ||
-                    this.DefaultExclusiveJoinTask != null &&
-                    input.DefaultExclusiveJoinTask != null &&
-                    this.DefaultExclusiveJoinTask.SequenceEqual(input.DefaultExclusiveJoinTask)
-                ) &&
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) &&
-                (
-                    this.DynamicForkJoinTasksParam == input.DynamicForkJoinTasksParam ||
-                    (this.DynamicForkJoinTasksParam != null &&
-                    this.DynamicForkJoinTasksParam.Equals(input.DynamicForkJoinTasksParam))
-                ) &&
-                (
-                    this.DynamicForkTasksInputParamName == input.DynamicForkTasksInputParamName ||
-                    (this.DynamicForkTasksInputParamName != null &&
-                    this.DynamicForkTasksInputParamName.Equals(input.DynamicForkTasksInputParamName))
-                ) &&
-                (
-                    this.DynamicForkTasksParam == input.DynamicForkTasksParam ||
-                    (this.DynamicForkTasksParam != null &&
-                    this.DynamicForkTasksParam.Equals(input.DynamicForkTasksParam))
-                ) &&
-                (
-                    this.DynamicTaskNameParam == input.DynamicTaskNameParam ||
-                    (this.DynamicTaskNameParam != null &&
-                    this.DynamicTaskNameParam.Equals(input.DynamicTaskNameParam))
-                ) &&
-                (
-                    this.EvaluatorType == input.EvaluatorType ||
-                    (this.EvaluatorType != null &&
-                    this.EvaluatorType.Equals(input.EvaluatorType))
-                ) &&
-                (
-                    this.Expression == input.Expression ||
-                    (this.Expression != null &&
-                    this.Expression.Equals(input.Expression))
-                ) &&
-                (
-                    this.ForkTasks == input.ForkTasks ||
-                    this.ForkTasks != null &&
-                    input.ForkTasks != null &&
-                    this.ForkTasks.SequenceEqual(input.ForkTasks)
-                ) &&
-                (
-                    this.InputParameters == input.InputParameters ||
-                    this.InputParameters != null &&
-                    input.InputParameters != null &&
-                    this.InputParameters.SequenceEqual(input.InputParameters)
-                ) &&
-                (
-                    this.JoinOn == input.JoinOn ||
-                    this.JoinOn != null &&
-                    input.JoinOn != null &&
-                    this.JoinOn.SequenceEqual(input.JoinOn)
-                ) &&
-                (
-                    this.LoopCondition == input.LoopCondition ||
-                    (this.LoopCondition != null &&
-                    this.LoopCondition.Equals(input.LoopCondition))
-                ) &&
-                (
-                    this.LoopOver == input.LoopOver ||
-                    this.LoopOver != null &&
-                    input.LoopOver != null &&
-                    this.LoopOver.SequenceEqual(input.LoopOver)
-                ) &&
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) &&
-                (
-                    this.Optional == input.Optional ||
-                    (this.Optional != null &&
-                    this.Optional.Equals(input.Optional))
-                ) &&
-                (
-                    this.RateLimited == input.RateLimited ||
-                    (this.RateLimited != null &&
-                    this.RateLimited.Equals(input.RateLimited))
-                ) &&
-                (
-                    this.RetryCount == input.RetryCount ||
-                    (this.RetryCount != null &&
-                    this.RetryCount.Equals(input.RetryCount))
-                ) &&
-                (
-                    this.ScriptExpression == input.ScriptExpression ||
-                    (this.ScriptExpression != null &&
-                    this.ScriptExpression.Equals(input.ScriptExpression))
-                ) &&
-                (
-                    this.Sink == input.Sink ||
-                    (this.Sink != null &&
-                    this.Sink.Equals(input.Sink))
-                ) &&
-                (
-                    this.StartDelay == input.StartDelay ||
-                    (this.StartDelay != null &&
-                    this.StartDelay.Equals(input.StartDelay))
-                ) &&
-                (
-                    this.SubWorkflowParam == input.SubWorkflowParam ||
-                    (this.SubWorkflowParam != null &&
-                    this.SubWorkflowParam.Equals(input.SubWorkflowParam))
-                ) &&
-                (
-                    this.TaskDefinition == input.TaskDefinition ||
-                    (this.TaskDefinition != null &&
-                    this.TaskDefinition.Equals(input.TaskDefinition))
-                ) &&
-                (
-                    this.TaskReferenceName == input.TaskReferenceName ||
-                    (this.TaskReferenceName != null &&
-                    this.TaskReferenceName.Equals(input.TaskReferenceName))
-                ) &&
-                (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
-                ) &&
-                (
-                    this.WorkflowTaskType == input.WorkflowTaskType ||
-                    (this.WorkflowTaskType != null &&
-                    this.WorkflowTaskType.Equals(input.WorkflowTaskType))
-                );
+            (
+            this.AsyncComplete == input.AsyncComplete ||
+            (this.AsyncComplete != null &&
+            this.AsyncComplete.Equals(input.AsyncComplete))
+            ) &&
+            (
+            this.CaseExpression == input.CaseExpression ||
+            (this.CaseExpression != null &&
+            this.CaseExpression.Equals(input.CaseExpression))
+            ) &&
+            (
+            this.CaseValueParam == input.CaseValueParam ||
+            (this.CaseValueParam != null &&
+            this.CaseValueParam.Equals(input.CaseValueParam))
+            ) &&
+            (
+            this.DecisionCases == input.DecisionCases ||
+            this.DecisionCases != null &&
+            input.DecisionCases != null &&
+            this.DecisionCases.SequenceEqual(input.DecisionCases)
+            ) &&
+            (
+            this.DefaultCase == input.DefaultCase ||
+            this.DefaultCase != null &&
+            input.DefaultCase != null &&
+            this.DefaultCase.SequenceEqual(input.DefaultCase)
+            ) &&
+            (
+            this.DefaultExclusiveJoinTask == input.DefaultExclusiveJoinTask ||
+            this.DefaultExclusiveJoinTask != null &&
+            input.DefaultExclusiveJoinTask != null &&
+            this.DefaultExclusiveJoinTask.SequenceEqual(input.DefaultExclusiveJoinTask)
+            ) &&
+            (
+            this.Description == input.Description ||
+            (this.Description != null &&
+            this.Description.Equals(input.Description))
+            ) &&
+            (
+            this.DynamicForkJoinTasksParam == input.DynamicForkJoinTasksParam ||
+            (this.DynamicForkJoinTasksParam != null &&
+            this.DynamicForkJoinTasksParam.Equals(input.DynamicForkJoinTasksParam))
+            ) &&
+            (
+            this.DynamicForkTasksInputParamName == input.DynamicForkTasksInputParamName ||
+            (this.DynamicForkTasksInputParamName != null &&
+            this.DynamicForkTasksInputParamName.Equals(input.DynamicForkTasksInputParamName))
+            ) &&
+            (
+            this.DynamicForkTasksParam == input.DynamicForkTasksParam ||
+            (this.DynamicForkTasksParam != null &&
+            this.DynamicForkTasksParam.Equals(input.DynamicForkTasksParam))
+            ) &&
+            (
+            this.DynamicTaskNameParam == input.DynamicTaskNameParam ||
+            (this.DynamicTaskNameParam != null &&
+            this.DynamicTaskNameParam.Equals(input.DynamicTaskNameParam))
+            ) &&
+            (
+            this.EvaluatorType == input.EvaluatorType ||
+            (this.EvaluatorType != null &&
+            this.EvaluatorType.Equals(input.EvaluatorType))
+            ) &&
+            (
+            this.Expression == input.Expression ||
+            (this.Expression != null &&
+            this.Expression.Equals(input.Expression))
+            ) &&
+            (
+            this.ForkTasks == input.ForkTasks ||
+            this.ForkTasks != null &&
+            input.ForkTasks != null &&
+            this.ForkTasks.SequenceEqual(input.ForkTasks)
+            ) &&
+            (
+            this.InputParameters == input.InputParameters ||
+            this.InputParameters != null &&
+            input.InputParameters != null &&
+            this.InputParameters.SequenceEqual(input.InputParameters)
+            ) &&
+            (
+            this.JoinOn == input.JoinOn ||
+            this.JoinOn != null &&
+            input.JoinOn != null &&
+            this.JoinOn.SequenceEqual(input.JoinOn)
+            ) &&
+            (
+            this.LoopCondition == input.LoopCondition ||
+            (this.LoopCondition != null &&
+            this.LoopCondition.Equals(input.LoopCondition))
+            ) &&
+            (
+            this.LoopOver == input.LoopOver ||
+            this.LoopOver != null &&
+            input.LoopOver != null &&
+            this.LoopOver.SequenceEqual(input.LoopOver)
+            ) &&
+            (
+            this.Name == input.Name ||
+            (this.Name != null &&
+            this.Name.Equals(input.Name))
+            ) &&
+            (
+            this.Optional == input.Optional ||
+            (this.Optional != null &&
+            this.Optional.Equals(input.Optional))
+            ) &&
+            (
+            this.RateLimited == input.RateLimited ||
+            (this.RateLimited != null &&
+            this.RateLimited.Equals(input.RateLimited))
+            ) &&
+            (
+            this.RetryCount == input.RetryCount ||
+            (this.RetryCount != null &&
+            this.RetryCount.Equals(input.RetryCount))
+            ) &&
+            (
+            this.ScriptExpression == input.ScriptExpression ||
+            (this.ScriptExpression != null &&
+            this.ScriptExpression.Equals(input.ScriptExpression))
+            ) &&
+            (
+            this.Sink == input.Sink ||
+            (this.Sink != null &&
+            this.Sink.Equals(input.Sink))
+            ) &&
+            (
+            this.StartDelay == input.StartDelay ||
+            (this.StartDelay != null &&
+            this.StartDelay.Equals(input.StartDelay))
+            ) &&
+            (
+            this.SubWorkflowParam == input.SubWorkflowParam ||
+            (this.SubWorkflowParam != null &&
+            this.SubWorkflowParam.Equals(input.SubWorkflowParam))
+            ) &&
+            (
+            this.TaskDefinition == input.TaskDefinition ||
+            (this.TaskDefinition != null &&
+            this.TaskDefinition.Equals(input.TaskDefinition))
+            ) &&
+            (
+            this.TaskReferenceName == input.TaskReferenceName ||
+            (this.TaskReferenceName != null &&
+            this.TaskReferenceName.Equals(input.TaskReferenceName))
+            ) &&
+            (
+            this.Type == input.Type ||
+            (this.Type != null &&
+            this.Type.Equals(input.Type))
+            ) &&
+            (
+            this.WorkflowTaskType == input.WorkflowTaskType ||
+            (this.WorkflowTaskType != null &&
+            this.WorkflowTaskType.Equals(input.WorkflowTaskType))
+            );
         }
 
         /// <summary>

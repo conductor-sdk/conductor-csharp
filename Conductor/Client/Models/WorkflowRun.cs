@@ -1,11 +1,11 @@
-using System.Linq;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
 
 namespace Conductor.Client.Models
 {
@@ -320,6 +320,47 @@ namespace Conductor.Client.Models
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
+        }
+
+        /// <summary>
+        /// Get the tasks
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="taskReferenceName"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public Task GetTask(string name = null, string taskReferenceName = null)
+        {
+            if (name == null && taskReferenceName == null)
+            {
+                throw new Exception("ONLY one of name or taskReferenceName MUST be provided. None were provided");
+            }
+            if (name != null && taskReferenceName != null)
+            {
+                throw new Exception("ONLY one of name or taskReferenceName MUST be provided. Both were provided");
+            }
+
+            Task current = null;
+            foreach (var task in Tasks)
+            {
+                if (task.TaskDefName == name || task.WorkflowTask.TaskReferenceName == taskReferenceName)
+                {
+                    current = task;
+                    break;
+                }
+            }
+            return current;
+        }
+
+        /// <summary>
+        /// Returns the current task based on the status
+        /// </summary>
+        public Task CurrentTask
+        {
+            get
+            {
+                return Tasks.FirstOrDefault(task => task.Status == Task.StatusEnum.SCHEDULED || task.Status == Task.StatusEnum.INPROGRESS);
+            }
         }
     }
 }

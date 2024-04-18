@@ -4,6 +4,7 @@ using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Conductor.Executor;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Tests.Definition
@@ -64,6 +65,7 @@ namespace Tests.Definition
                     .WithTask(GetWaitTask())
                     .WithTask(GetSetVariableTask())
                     .WithTask(GetTerminateTask())
+                    .WithTask(GetWaitForWebhookTask())
             ;
         }
 
@@ -182,6 +184,13 @@ namespace Tests.Definition
             (
                 "variable", "${workflow.input." + WORKFLOW_INPUT_PARAMETER + "}"
             );
+        }
+
+        private WorkflowTask GetWaitForWebhookTask(string taskRefernceName = "wair_for_webhook_task_reference_name", Dictionary<string, object> matches = null)
+        {
+            return new WaitForWebHookTask(
+                taskReferenceName: taskRefernceName,
+                matches: matches ?? new Dictionary<string, object>());
         }
     }
 }

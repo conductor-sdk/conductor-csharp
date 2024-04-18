@@ -387,6 +387,16 @@ namespace conductor_csharp.Api
         ThreadTask.Task<Integration> GetIntegrationProviderAsync(string name);
 
         /// <summary>
+        /// Get Integration provider definitions
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of List<IntegrationDef></returns>
+        ThreadTask.Task<List<IntegrationDef>> GetIntegrationProviderDefsAsync();
+
+        /// <summary>
         /// Get all Integrations Providers
         /// </summary>
         /// <remarks>

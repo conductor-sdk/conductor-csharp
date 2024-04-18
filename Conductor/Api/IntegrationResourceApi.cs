@@ -1406,6 +1406,18 @@ namespace Conductor.Api
             localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
             (Integration)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Integration)));
         }
+
+        /// <summary>
+        /// Get Integration provider definitions
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List<IntegrationDef></returns>
+        public List<IntegrationDef> GetIntegrationProviderDefs()
+        {
+            ApiResponse<List<IntegrationDef>> localVarResponse = GetIntegrationProviderDefsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
         /// <summary>
         /// Get Integration provider definitions
         /// </summary>
@@ -1454,6 +1466,18 @@ namespace Conductor.Api
             return new ApiResponse<List<IntegrationDef>>(localVarStatusCode,
             localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
             (List<IntegrationDef>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<IntegrationDef>)));
+        }
+
+        /// <summary>
+        /// Get Integration provider definitions
+        /// </summary>
+        /// <exception cref="Conductor.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of List<IntegrationDef></returns>
+        public async System.Threading.Tasks.Task<List<IntegrationDef>> GetIntegrationProviderDefsAsync()
+        {
+            ApiResponse<List<IntegrationDef>> localVarResponse = await GetIntegrationProviderDefsAsyncWithHttpInfo();
+            return localVarResponse.Data;
+
         }
 
         /// <summary>
