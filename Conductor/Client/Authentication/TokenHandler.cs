@@ -21,12 +21,13 @@ namespace Conductor.Client.Authentication
 
         public string GetToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
         {
-            string token = (string)_memoryCache.Get(authenticationSettings);
-            if (token != null)
-            {
-                return token;
-            }
-            return RefreshToken(authenticationSettings, tokenClient);
+            string token = _memoryCache.GetOrCreate(authenticationSettings, entry => {
+
+                entry.AbsoluteExpiration = GetTokenExpiration();
+                return GetTokenFromServer(authenticationSettings, tokenClient);
+
+            });
+            return token;
         }
 
         public string RefreshToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
@@ -34,10 +35,14 @@ namespace Conductor.Client.Authentication
             lock (_lockObject)
             {
                 string token = GetTokenFromServer(authenticationSettings, tokenClient);
-                var expirationTime = System.DateTimeOffset.Now.AddMinutes(30);
+                var expirationTime = GetTokenExpiration();
                 _memoryCache.Set(authenticationSettings, token, expirationTime);
                 return token;
             }
+        }
+        private DateTimeOffset GetTokenExpiration()
+        {
+            return System.DateTimeOffset.Now.AddMinutes(30);
         }
 
         private string GetTokenFromServer(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
