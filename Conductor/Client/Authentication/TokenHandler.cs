@@ -10,6 +10,7 @@ namespace Conductor.Client.Authentication
     {
         private static int REFRESH_TOKEN_RETRY_COUNTER_LIMIT = 5;
         private static readonly object _lockObject = new object();
+        private static readonly object _getTokenlockObject = new object();
         private readonly MemoryCache _memoryCache;
         private static ILogger _logger;
 
@@ -18,16 +19,19 @@ namespace Conductor.Client.Authentication
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _logger = ApplicationLogging.CreateLogger<TokenHandler>();
         }
-
-        public string GetToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
+         public string GetToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
         {
-            string token = _memoryCache.GetOrCreate(authenticationSettings, entry => {
+            string token = (string)_memoryCache.Get(authenticationSettings);
+            if (token != null)
+            {
+                return token;
+            }
 
-                entry.AbsoluteExpiration = GetTokenExpiration();
-                return GetTokenFromServer(authenticationSettings, tokenClient);
-
-            });
-            return token;
+            lock (_getTokenlockObject)
+            {
+                token = (string)_memoryCache.Get(authenticationSettings);
+                return token != null ? token : RefreshToken(authenticationSettings, tokenClient);
+            }
         }
 
         public string RefreshToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
@@ -35,14 +39,10 @@ namespace Conductor.Client.Authentication
             lock (_lockObject)
             {
                 string token = GetTokenFromServer(authenticationSettings, tokenClient);
-                var expirationTime = GetTokenExpiration();
+                var expirationTime = System.DateTimeOffset.Now.AddMinutes(30);
                 _memoryCache.Set(authenticationSettings, token, expirationTime);
                 return token;
             }
-        }
-        private DateTimeOffset GetTokenExpiration()
-        {
-            return System.DateTimeOffset.Now.AddMinutes(30);
         }
 
         private string GetTokenFromServer(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
@@ -64,5 +64,50 @@ namespace Conductor.Client.Authentication
             }
             throw new Exception("Failed to refresh authentication token");
         }
+    //    public string GetToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
+    //    {
+    //        string token = _memoryCache.GetOrCreate(authenticationSettings, entry => {
+
+    //            entry.AbsoluteExpiration = GetTokenExpiration();
+    //            return GetTokenFromServer(authenticationSettings, tokenClient);
+
+    //        });
+    //        return token;
+    //    }
+
+    //    public string RefreshToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
+    //    {
+    //        lock (_lockObject)
+    //        {
+    //            string token = GetTokenFromServer(authenticationSettings, tokenClient);
+    //            var expirationTime = GetTokenExpiration();
+    //            _memoryCache.Set(authenticationSettings, token, expirationTime);
+    //            return token;
+    //        }
+    //    }
+    //    private DateTimeOffset GetTokenExpiration()
+    //    {
+    //        return System.DateTimeOffset.Now.AddMinutes(30);
+    //    }
+
+    //    private string GetTokenFromServer(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
+    //    {
+    //        var tokenRequest = new Client.Models.GenerateTokenRequest(
+    //            keyId: authenticationSettings.KeyId,
+    //            keySecret: authenticationSettings.KeySecret
+    //        );
+    //        for (int attempt = 0; attempt < REFRESH_TOKEN_RETRY_COUNTER_LIMIT; attempt += 1)
+    //        {
+    //            try
+    //            {
+    //                return tokenClient.GenerateToken(tokenRequest)._token;
+    //            }
+    //            catch (Exception e)
+    //            {
+    //                _logger.LogError($"Failed to refresh authentication token, attempt = {attempt}, error = {e.Message}");
+    //            }
+    //        }
+    //        throw new Exception("Failed to refresh authentication token");
+    //    }
     }
 }
