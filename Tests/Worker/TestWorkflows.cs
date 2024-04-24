@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace conductor_csharp.test.Worker
+namespace Test.Worker
 {
     public class TestWorkflows
     {

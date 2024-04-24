@@ -755,5 +755,22 @@ namespace Conductor.Client.Models
         {
             yield break;
         }
+        /// <summary>
+        /// Sets theDynamicForkJoinTasksParam
+        /// </summary>
+        /// <param name="dynamicForkTasksParam"></param>
+        public void SetDynamicForkJoinTasksParam(string dynamicForkTasksParam)
+        {
+            this.DynamicForkJoinTasksParam = dynamicForkTasksParam;
+        }
+
+        /// <summary>
+        /// Sets the dynamicForkTasksInputParamName
+        /// </summary>
+        /// <param name="dynamicForkTasksInputParamName"></param>
+        public void SetDynamicForkTasksInputParamName(string dynamicForkTasksInputParamName)
+        {
+            this.DynamicForkTasksInputParamName = dynamicForkTasksInputParamName;
+        }
     }
 }

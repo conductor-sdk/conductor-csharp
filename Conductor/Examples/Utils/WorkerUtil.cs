@@ -20,7 +20,7 @@ namespace Conductor.Examples.Utils
             {
                 var host = WorkflowTaskHost.CreateWorkerHost(Microsoft.Extensions.Logging.LogLevel.Information, workers);
                 await host.StartAsync();
-                Thread.Sleep(10000);
+                Thread.Sleep(20000);
                 waitHandle.Set();
                 await host.StopAsync();
                 return true;
