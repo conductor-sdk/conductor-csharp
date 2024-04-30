@@ -1,12 +1,11 @@
-using System.Linq;
-using System.IO;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
 
 namespace Conductor.Client.Models
 {
@@ -150,6 +149,15 @@ namespace Conductor.Client.Models
             sb.Append("  WorkflowInstanceId: ").Append(WorkflowInstanceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Method to set the value for callbackAfterSeconds
+        /// </summary>
+        /// <param name="callbackAfterSeconds"></param>
+        public void SetCallbackAfterSeconds(long callbackAfterSeconds)
+        {
+            this.CallbackAfterSeconds = callbackAfterSeconds;
         }
 
         /// <summary>
