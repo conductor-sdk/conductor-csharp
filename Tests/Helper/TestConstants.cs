@@ -13,5 +13,10 @@
         public const string DeleteIntegartionErrorMessage = "Failed to delete integration: {0}";
         public const string CreateIntegartionErrorMessage = "Failed to create integration: {0}";
         public const string DeserializingErrorMessage = "Error deserializing JSON: {0}";
+        public const string QuoteTaskName = "test-quote-task";
+        public const string Quote = "Mindset is everything";
+        public const string TaskDescription = "Test description";
+        public const string InputTaskName = "Test-input-task";
+        public const string TestAddTask = "Test-add-task";
     }
 }

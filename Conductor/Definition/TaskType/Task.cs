@@ -48,5 +48,64 @@ namespace Conductor.Definition.TaskType
                 return "${" + $"{this.TaskReferenceName}.output.{jsonPath}" + "}";
             }
         }
+
+        /// <summary>
+        /// Returns work flow tasks
+        /// </summary>
+        /// <returns></returns>
+        public List<WorkflowTask> GetWorkflowDefTasks()
+        {
+            List<WorkflowTask> workflowTasks = new List<WorkflowTask>();
+            workflowTasks.AddRange(GetParentTasks());
+            workflowTasks.Add(ToWorkflowTask());
+            workflowTasks.AddRange(GetChildrenTasks());
+            return workflowTasks;
+        }
+
+        /// <summary>
+        /// Returns a Work flow task
+        /// </summary>
+        /// <returns></returns>
+        protected WorkflowTask ToWorkflowTask()
+        {
+            WorkflowTask workflowTask = new WorkflowTask();
+            workflowTask.Name = Name;
+            workflowTask.Description = Description;
+            workflowTask.TaskReferenceName = TaskReferenceName;
+            workflowTask.WorkflowTaskType = WorkflowTaskType;
+            workflowTask.InputParameters = InputParameters;
+            workflowTask.StartDelay = StartDelay;
+            workflowTask.Optional = Optional;
+
+            // Let the sub-classes enrich the workflow task before returning back
+            UpdateWorkflowTask(workflowTask);
+            return workflowTask;
+        }
+
+        /// <summary>
+        /// Override this method when the sub-class should update the default WorkflowTask
+        /// </summary>
+        /// <param name="workflowTask"></param>
+        public virtual void UpdateWorkflowTask(WorkflowTask workflowTask) { }
+
+        /// <summary>
+        /// Override this method when sub-classes will generate multiple workflow tasks. Used by tasks
+        /// which have children tasks such as do_while, fork, etc.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual List<WorkflowTask> GetChildrenTasks()
+        {
+            return new List<WorkflowTask>();
+        }
+
+        /// <summary>
+        /// Override this method when sub-classes will generate multiple workflow tasks. Used by tasks
+        /// which have children tasks such as do_while, fork, etc.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual List<WorkflowTask> GetParentTasks()
+        {
+            return new List<WorkflowTask>();
+        }
     }
 }
