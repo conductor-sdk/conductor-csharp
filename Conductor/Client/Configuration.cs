@@ -76,7 +76,7 @@ namespace Conductor.Client
         private readonly TokenHandler _tokenHandler = new TokenHandler();
 
         private TokenResourceApi _tokenClient = null;
-        private int Timeout = 10000;
+        private int Timeout = 30000;
 
         #endregion Private Members
 
