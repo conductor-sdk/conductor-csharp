@@ -15,6 +15,7 @@ namespace Tests.Worker
     public class AnnotatedWorkerTest
     {
         private readonly MetadataResourceApi _metaDataClient;
+        private readonly WorkflowResourceApi _workflowClient;
         private readonly WorkflowExecutor _workflowExecutor;
 
         private const string WORKFLOW_NAME = "test-annotation";
@@ -24,12 +25,14 @@ namespace Tests.Worker
         public AnnotatedWorkerTest()
         {
             _metaDataClient = ApiExtensions.GetClient<MetadataResourceApi>();
+            _workflowClient = ApiExtensions.GetClient<WorkflowResourceApi>();
             var config = new Configuration();
             _workflowExecutor = new WorkflowExecutor(config);
 
             //dev local testing
-            //var _orkesApiClient = new OrkesApiClient(config, new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
+            // var _orkesApiClient = new OrkesApiClient(config, new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             //_metaDataClient = _orkesApiClient.GetClient<MetadataResourceApi>();
+            //_workflowClient = _orkesApiClient.GetClient<WorkflowResourceApi>();
         }
 
         [Fact]
@@ -115,7 +118,7 @@ namespace Tests.Worker
         }
 
         /// <summary>
-        /// Registers and starts a workflow 
+        /// Registers and starts a workflow
         /// </summary>
         /// <param name="workflow"></param>
         /// <param name="taskDefs"></param>
@@ -123,9 +126,9 @@ namespace Tests.Worker
         private void RegisterAndStartWorkflow(ConductorWorkflow workflow, List<TaskDef> taskDefs, Dictionary<string, object> inputData = default)
         {
             _metaDataClient.RegisterTaskDef(taskDefs);
-            _workflowExecutor.RegisterWorkflow(workflow, true);
+            _metaDataClient.UpdateWorkflowDefinitions(new List<WorkflowDef>(1) { workflow });
 
-            StartWorkflowRequest startWorkflow = new StartWorkflowRequest()
+            StartWorkflowRequest startWorkflowRequest = new StartWorkflowRequest()
             {
                 Name = workflow.Name,
                 Input = inputData,
@@ -134,7 +137,7 @@ namespace Tests.Worker
                 CreatedBy = Constants.OWNER_EMAIL
             };
 
-            _workflowExecutor.StartWorkflow(startWorkflow);
+            _workflowClient.StartWorkflow(startWorkflowRequest);
             var waitHandle = new ManualResetEvent(false);
             var backgroundTask = System.Threading.Tasks.Task.Run(async () => await Conductor.Examples.Utils.WorkerUtil.StartBackGroundTask(waitHandle));
             waitHandle.WaitOne();

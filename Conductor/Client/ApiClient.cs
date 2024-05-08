@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+.using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
@@ -149,7 +149,7 @@ namespace Conductor.Client
 
         /// <summary>
         /// Makes the HTTP request (Sync).
-        /// If the token is expired then retrying the api call with refreshed Token 
+        /// If the token is expired then retrying the api call with refreshed Token
         /// </summary>
         /// <param name="path">URL path.</param>
         /// <param name="method">HTTP method.</param>
@@ -200,12 +200,10 @@ namespace Conductor.Client
                         string refreshToken = configuration.GetRefreshToken();
                         headerParams["X-Authorization"] = refreshToken;
                         retryCount++;
+                        continue;
                     }
                 }
-                else
-                {
-                    break;
-                }
+                break;
             }
             return response;
         }
@@ -551,7 +549,7 @@ namespace Conductor.Client
         }
 
         /// <summary>
-        /// Convert params to key/value pairs. 
+        /// Convert params to key/value pairs.
         /// Use collectionFormat to properly format lists and collections.
         /// </summary>
         /// <param name="name">Key name.</param>
