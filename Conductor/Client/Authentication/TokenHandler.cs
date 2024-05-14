@@ -19,7 +19,7 @@ namespace Conductor.Client.Authentication
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _logger = ApplicationLogging.CreateLogger<TokenHandler>();
         }
-         public string GetToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
+        public string GetToken(OrkesAuthenticationSettings authenticationSettings, TokenResourceApi tokenClient)
         {
             string token = (string)_memoryCache.Get(authenticationSettings);
             if (token != null)
