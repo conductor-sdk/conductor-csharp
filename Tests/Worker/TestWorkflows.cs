@@ -5,31 +5,31 @@ using Conductor.Client.Extensions;
 using Conductor.Client.Models;
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
-using Conductor.Executor;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace conductor_csharp.test.Worker
+namespace Test.Worker
 {
     public class TestWorkflows
     {
         private readonly OrkesApiClient _orkesApiClient;
         private readonly WorkflowResourceApi workflowClient;
-        private readonly WorkflowExecutor _workflowExecutor;
+        private readonly MetadataResourceApi _metaDataClient;
         private ILogger _logger;
 
         public TestWorkflows()
         {
             var config = new Configuration();
-            _workflowExecutor = new WorkflowExecutor(config);
             workflowClient = ApiExtensions.GetClient<WorkflowResourceApi>();
+            _metaDataClient = ApiExtensions.GetClient<MetadataResourceApi>();
             _logger = ApplicationLogging.CreateLogger<TestWorkflows>();
 
             //For local testing
             //_orkesApiClient = new OrkesApiClient(config, new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             //workflowClient = _orkesApiClient.GetClient<WorkflowResourceApi>();
+            // _metaDataClient = _orkesApiClient.GetClient<MetadataResourceApi>();
         }
 
         [Fact]
@@ -71,7 +71,7 @@ new TaskMock{ ExecutionTime= 1, Status = TaskMock.StatusEnum.COMPLETED, QueueWai
 new TaskMock{ ExecutionTime= 1, Status = TaskMock.StatusEnum.COMPLETED, QueueWaitTime= 10, Output = new Dictionary<string, Object> {{"key", "http.output"}}}
 };
 
-            _workflowExecutor.RegisterWorkflow(workflow, true);
+            _metaDataClient.UpdateWorkflowDefinitions(new List<WorkflowDef>(1) { workflow });
 
             var testRequest = new WorkflowTestRequest(name: workflow.Name, version: workflow.Version, taskRefToMockOutput: taskRefToMockOutput, workflowDef: workflow);
             var run = workflowClient.TestWorkflow(testRequest);

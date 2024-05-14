@@ -67,5 +67,9 @@
         public const string PINECONEENDPOINT = "PINECONE_ENDPOINT";
         public const string PINECONEAPIKEY = "PINECONE_API_KEY";
         public const string OPENAIAPIKEY = "OPENAI_API_KEY";
+
+        //Annotation
+        public const string TOKENCANCELLATION = "Token Requested Cancel";
+        public const string RUNTIMEERROR = "Method failed with runtime error";
     }
 }
