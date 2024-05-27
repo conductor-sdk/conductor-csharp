@@ -43,28 +43,26 @@ namespace conductor_csharp.test.Api
         [Fact]
         public void GetEnvironmentVariableByKeyTest()
         {
-            CreateEnvironmentVariable(Constants.BODY, Constants.KEY);
-            var result = _environmentResourceApi.Get1(Constants.KEY);
+            CreateEnvironmentVariable(Helper.TestConstants.BODY, Helper.TestConstants.KEY);
+            var result = _environmentResourceApi.Get1(Helper.TestConstants.KEY);
             Assert.NotNull(result);
             Assert.NotEmpty(result);
-            DeleteEnvironmentVariable(Constants.KEY);
+            DeleteEnvironmentVariable(Helper.TestConstants.KEY);
         }
 
         [Fact]
         public void DeleteEnvironmentVariableByKeyTest()
         {
-            CreateEnvironmentVariable(Constants.BODY, Constants.KEY);
-            DeleteEnvironmentVariable(Constants.KEY);
+            CreateEnvironmentVariable(Helper.TestConstants.BODY, Helper.TestConstants.KEY);
+            DeleteEnvironmentVariable(Helper.TestConstants.KEY);
         }
 
         [Fact]
         public void CreateOrUpdateEnvVariable()
         {
-            CreateEnvironmentVariable(Constants.BODY, Constants.KEY);
-            DeleteEnvironmentVariable(Constants.KEY);
+            CreateEnvironmentVariable(Helper.TestConstants.BODY, Helper.TestConstants.KEY);
+            DeleteEnvironmentVariable(Helper.TestConstants.KEY);
         }
-
-
         private void CreateEnvironmentVariable(string body, string key)
         {
             _environmentResourceApi.CreateOrUpdateEnvVariable(body, key);

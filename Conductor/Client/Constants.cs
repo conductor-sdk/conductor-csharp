@@ -83,9 +83,5 @@ namespace Conductor.Client
         //Annotation
         public const string TOKENCANCELLATION = "Token Requested Cancel";
         public const string RUNTIMEERROR = "Method failed with runtime error";
-
-        //Environment Variable
-        public const string KEY = "TestKey";
-        public const string BODY = "TestBody";
     }
 }
