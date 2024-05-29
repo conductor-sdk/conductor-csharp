@@ -133,6 +133,13 @@ When you have to call a function return in the following valid JSON format that 
 ""type"": ""function"",
 ""function"": ""ACTUAL_.NET_FUNCTION_NAME_TO_CALL_WITHOUT_PARAMETERS""
 ""function_parameters"": ""PARAMETERS FOR THE FUNCTION as a JSON map with key as parameter name and value as parameter value""";
+
+        public const string GetEmail = "GetEmail";
+        public const string SendEmail = "SendEmail";
+        public const string GetEmailDescription = "Test Get email";
+        public const string SendEmailDescription = "Test send email";
+        public const string GreetDescription = "Greet Test";
+        public const string GreetTask = "Greet";
     }
 }
 

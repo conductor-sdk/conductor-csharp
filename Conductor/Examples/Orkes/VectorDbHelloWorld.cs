@@ -29,6 +29,7 @@ using System.Threading;
 
 namespace Conductor.Examples.Orkes
 {
+    [WorkerTask]
     public class VectorDBHelloWorld
     {
         private readonly Conductor.Client.Configuration _configuration;
@@ -53,7 +54,7 @@ namespace Conductor.Examples.Orkes
             //_workflowClient = _orkesApiClient.GetClient<WorkflowResourceApi>();
         }
 
-        [WorkerTask("get_friends_name", 5, "taskDomain", 200, "workerId")]
+        [WorkerTask(taskType: "get_friends_name", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
         public string GetFriendName()
         {
             string name = Environment.UserName;

@@ -1,16 +1,17 @@
 ﻿/*
- * Copyright 2024 Conductor Authors.
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
- */
+* Copyright 2024 Conductor Authors.
+* <p>
+* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+* the License. You may obtain a copy of the License at
+* <p>
+* http://www.apache.org/licenses/LICENSE-2.0
+* <p>
+* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+* an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+* specific language governing permissions and limitations under the License.
+*/
 using conductor.csharp.Client.Extensions;
+using conductor.Examples;
 using Conductor.Api;
 using Conductor.Client;
 using Conductor.Client.Ai;
@@ -28,6 +29,7 @@ using System.Threading;
 
 namespace Conductor.Examples
 {
+    [WorkerTask]
     public class WaitForWebhook
     {
         private readonly Client.Configuration _configuration;
@@ -39,8 +41,8 @@ namespace Conductor.Examples
         private readonly ILogger _logger;
 
         //Const
-        private const string WORKFLOWNAME = "dynamic_workflow";
-        private const string WORKFLOWDESC = "test_dynamic_workflow";
+        private const string WORKFLOWNAME = "wait_for_webHook";
+        private const string WORKFLOWDESC = "test_wait for webhook";
 
         public WaitForWebhook()
         {
@@ -56,13 +58,13 @@ namespace Conductor.Examples
             //_metaDataClient = _orkesApiClient.GetClient<MetadataResourceApi>();
         }
 
-        [WorkerTask(taskType: "GetEmail", 5, "taskDomain", 520, "workerId")]
+        [WorkerTask(taskType: ExampleConstants.GetEmail, batchSize: 5, pollIntervalMs: 520, workerId: "workerId")]
         public string GetUserEmail(string userId)
         {
             return $"{userId}@example.com";
         }
 
-        [WorkerTask(taskType: "SendEmail", 5, "taskDomain", 520, "workerId")]
+        [WorkerTask(taskType: ExampleConstants.SendEmail, batchSize: 5, pollIntervalMs: 520, workerId: "workerId")]
         public string SendEmail(string email, string subject, string body)
         {
             return $"sending email to {email} with subject {subject} and body {body}";
@@ -71,37 +73,37 @@ namespace Conductor.Examples
         public void WaitForWebhookTest()
         {
             ConductorWorkflow workflow = new ConductorWorkflow()
-                .WithName(WORKFLOWNAME)
-                .WithDescription(WORKFLOWDESC)
-                .WithVersion(1);
+            .WithName(WORKFLOWNAME)
+            .WithDescription(WORKFLOWDESC)
+            .WithVersion(1);
 
             workflow.WithInputParameter("userId");
 
-            //Update this line to use GetUserEmail() once the annotation is in place
-            var getEmailTask = new SimpleTask("GetEmail", "GetEmail").WithInput("userId", workflow.Input("userId"));
+            var getEmailTask = new SimpleTask(ExampleConstants.GetEmail, ExampleConstants.GetEmail).WithInput("userId", workflow.Input("userId"));
             getEmailTask.Description = "Test Get email";
 
             workflow.WithTask(getEmailTask);
 
-            ////Update this line to use SendEmail() once the annotation is in place
-            var SendEmailTask = new SimpleTask("SendEmail", "Send_Email_refTask")
-                .WithInput("email", getEmailTask.Output("userId"))
-                .WithInput("subject", "Hello from Orkes")
-                .WithInput("body", "Test Email");
+            var SendEmailTask = new SimpleTask("SendEmail", "SendEmail")
+            .WithInput("email", workflow.Input("email"))
+            .WithInput("subject", workflow.Input("subject"))
+            .WithInput("body", workflow.Input("body"));
 
             workflow.WithTask(SendEmailTask);
 
             var WaitForWebhookTask = new WaitForWebHookTask("wait_ref", new Dictionary<string, object> { { "type", "customer" }, { "id", workflow.Input("userId") } });
             workflow.WithTask(WaitForWebhookTask);
 
-            _workflowExecutor.RegisterWorkflow(workflow, true);
 
             var testInput = new Dictionary<string, object>
-            {
-                { "userId", "Test" }
-            };
+{
+{ "userId", "Test" },
+{"email","email test" },
+{"body","body test" },
+{"subject","subject test" }
+};
 
-            StartWorkflowRequest startWorkflow = new StartWorkflowRequest()
+            StartWorkflowRequest startWorkflowRequest = new StartWorkflowRequest()
             {
                 Name = workflow.Name,
                 Input = testInput,
@@ -110,9 +112,9 @@ namespace Conductor.Examples
                 CreatedBy = Constants.OWNER_EMAIL
             };
 
-            var workflowRun = _workflowClient.ExecuteWorkflow(startWorkflow, "1234", startWorkflow.Name, 1);
+            var workflowRun = _workflowClient.ExecuteWorkflow(startWorkflowRequest, "1234", startWorkflowRequest.Name, 1);
             var waitHandle = new ManualResetEvent(false);
-            var backgroundTask = System.Threading.Tasks.Task.Run(async () => await Utils.WorkerUtil.StartBackGroundTask(waitHandle, new DynamicWorker("GetEmail")));
+            var backgroundTask = System.Threading.Tasks.Task.Run(async () => await Utils.WorkerUtil.StartBackGroundTask(waitHandle));
             waitHandle.WaitOne();
             _logger.LogInformation($"\nworkflow execution {workflowRun.WorkflowId}\n");
         }

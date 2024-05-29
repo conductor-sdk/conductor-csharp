@@ -30,7 +30,7 @@ namespace Conductor.Examples.Utils
         {
             try
             {
-                var host = WorkflowTaskHost.CreateWorkerHost(Microsoft.Extensions.Logging.LogLevel.Information, workers);
+                var host = WorkflowTaskHost.CreateWorkerHost(Microsoft.Extensions.Logging.LogLevel.Information);
                 await host.StartAsync();
                 Thread.Sleep(20000);
                 waitHandle.Set();

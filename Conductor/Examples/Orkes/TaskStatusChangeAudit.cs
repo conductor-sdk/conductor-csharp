@@ -1,15 +1,15 @@
 ﻿/*
- * Copyright 2024 Conductor Authors.
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
- */
+* Copyright 2024 Conductor Authors.
+* <p>
+* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+* the License. You may obtain a copy of the License at
+* <p>
+* http://www.apache.org/licenses/LICENSE-2.0
+* <p>
+* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+* an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+* specific language governing permissions and limitations under the License.
+*/
 using conductor.csharp.Client.Extensions;
 using Conductor.Api;
 using Conductor.Client.Extensions;
@@ -23,6 +23,7 @@ using System.Threading;
 
 namespace csharp_examples
 {
+    [WorkerTask]
     public class TaskStatusChangeAudit
     {
         private readonly Conductor.Client.Configuration _configuration;
@@ -52,19 +53,19 @@ namespace csharp_examples
             //_metaDataClient = _orkesApiClient.GetClient<MetadataResourceApi>();
         }
 
-        [WorkerTask("audit_log", 5, "taskDomain", 200, "workerId")]
+        [WorkerTask(taskType: "audit_log", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
         public void AuditLog(object workflowInput, string status, string name)
         {
             _logger.LogInformation($"task {name} is in {status} status, with workflow input as {workflowInput}");
         }
 
-        [WorkerTask("simple_task_1", 5, "taskDomain", 200, "workerId")]
+        [WorkerTask(taskType: "simple_task_1", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
         public static string SimpleTask1(Task task)
         {
             return "OK";
         }
 
-        [WorkerTask("simple_task_2", 5, "taskDomain", 200, "workerId")]
+        [WorkerTask(taskType: "simple_task_2", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
         public static TaskResult SimpleTask2(Task task)
         {
             return new TaskResult { Status = TaskResult.StatusEnum.FAILEDWITHTERMINALERROR };
@@ -72,15 +73,15 @@ namespace csharp_examples
 
         public void TaskStatusChangeAuditTest()
         {
-            var workflowDef = new WorkflowDef() { Name = WORKFLOW_DEF_NAME, Version = 1 };
+            var workflowDef = new WorkflowDef() { Name = WORKFLOW_DEF_NAME, Version = 1, Description = "test" };
             // Create an instance of StateChangeEvent
             StateChangeEvent stateChangeEvent = new StateChangeEvent(
             type: TYPE,
             payload: new Dictionary<string, object>
             {
-                { "workflow_input", "${workflow.input}" },
-                { "status", "${simple_task_1_ref.status}" },
-                { "name", SIMPLE_TASK1_REF_NAME }
+{ "workflow_input", "${workflow.input}" },
+{ "status", "${simple_task_1_ref.status}" },
+{ "name", SIMPLE_TASK1_REF_NAME }
             });
 
             var task1 = new WorkflowTask()
@@ -89,10 +90,10 @@ namespace csharp_examples
                 Name = SIMPLETASK1,
                 TaskReferenceName = SIMPLE_TASK1_REF_NAME,
                 OnStateChange = new Dictionary<string, StateChangeConfig>(){
-                {
-                    "", new StateChangeConfig(eventType: new List<StateChangeEventType> { StateChangeEventType.OnStart }, events: new List<StateChangeEvent>() { stateChangeEvent })
-                }
-            }
+{
+"", new StateChangeConfig(eventType: new List<StateChangeEventType> { StateChangeEventType.OnStart }, events: new List<StateChangeEvent>() { stateChangeEvent })
+}
+}
             };
 
             var task_def = new TaskDef();
@@ -103,9 +104,9 @@ namespace csharp_examples
             type: TYPE,
             payload: new Dictionary<string, object>
             {
-                { "workflow_input", "${workflow.input}" },
-                { "status", "${simple_task_2_ref.status}" },
-                { "name", SIMPLE_TASK2_REF_NAME }
+{ "workflow_input", "${workflow.input}" },
+{ "status", "${simple_task_2_ref.status}" },
+{ "name", SIMPLE_TASK2_REF_NAME }
             });
             var task2 = new WorkflowTask()
             {
@@ -114,14 +115,14 @@ namespace csharp_examples
                 TaskReferenceName = SIMPLE_TASK2_REF_NAME,
                 TaskDefinition = task_def,
                 OnStateChange = new Dictionary<string, StateChangeConfig>(){
-                {
-                    "", new StateChangeConfig(eventType: new List<StateChangeEventType>(){
-                    StateChangeEventType.OnStart,
-                    StateChangeEventType.OnFailed,
-                    StateChangeEventType.OnScheduled,
-                },events: new List<StateChangeEvent>() { stateChangeEvent2 })
-            }
-            }
+{
+"", new StateChangeConfig(eventType: new List<StateChangeEventType>(){
+StateChangeEventType.OnStart,
+StateChangeEventType.OnFailed,
+StateChangeEventType.OnScheduled,
+},events: new List<StateChangeEvent>() { stateChangeEvent2 })
+}
+}
             };
 
             workflowDef.Tasks.Add(task1);
@@ -138,10 +139,10 @@ namespace csharp_examples
                 Name = workflowDef.Name,
                 Version = workflowDef.Version,
                 Input = {
-            { "a", "aa" },
-            { "b", "bb" },
-            { "c", 42 }
-            }
+{ "a", "aa" },
+{ "b", "bb" },
+{ "c", 42 }
+}
             };
 
             var workflowId = executor.StartWorkflow(startReq);
