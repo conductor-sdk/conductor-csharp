@@ -10,10 +10,13 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+using Conductor.Api;
 using Conductor.Client;
+using Conductor.Client.Extensions;
+using Conductor.Client.Models;
 using Conductor.Definition;
-using Conductor.Examples.Workers;
 using Conductor.Executor;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Conductor.Examples
@@ -21,16 +24,36 @@ namespace Conductor.Examples
     public class GreetingsMain
     {
         private readonly Configuration _configuration;
+        private readonly WorkflowResourceApi workflowClient;
+        private readonly MetadataResourceApi _metaDataClient;
+
         public GreetingsMain()
         {
-            _configuration = new Client.Configuration();
+            _metaDataClient = ApiExtensions.GetClient<MetadataResourceApi>();
+
+            //dev local testing
+            //_configuration = new Client.Configuration();
+            //var _orkesApiClient = new OrkesApiClient(_configuration, new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
+            //_metaDataClient = _orkesApiClient.GetClient<MetadataResourceApi>();
         }
         public (ConductorWorkflow, string workflowId) RegisterWorkflow(WorkflowExecutor workflowExecutor)
         {
             GreetingsWorkflow greetingsWorkflow = new GreetingsWorkflow();
             var workflow = greetingsWorkflow.CreateGreetingsWorkflow();
-            workflowExecutor.RegisterWorkflow(workflow, true);
-            var workflowId = workflowExecutor.StartWorkflow(workflow);
+            _metaDataClient.UpdateWorkflowDefinitions(new List<WorkflowDef>(1) { workflow });
+            var testInput = new Dictionary<string, object>
+{
+{ "name","test" }
+};
+            StartWorkflowRequest startWorkflowRequest = new StartWorkflowRequest()
+            {
+                Name = workflow.Name,
+                Input = testInput,
+                Version = workflow.Version,
+                WorkflowDef = workflow,
+                CreatedBy = Constants.OWNER_EMAIL
+            };
+            var workflowId = workflowExecutor.StartWorkflow(startWorkflowRequest);
             return (workflow, workflowId);
         }
 
@@ -40,8 +63,7 @@ namespace Conductor.Examples
             (ConductorWorkflow workflow, string workflowId) = RegisterWorkflow(workflowExecutor);
 
             var waitHandle = new ManualResetEvent(false);
-            //Remove DynamicWorker once the annotation is in place
-            var backgroundTask = System.Threading.Tasks.Task.Run(async () => await Utils.WorkerUtil.StartBackGroundTask(waitHandle, new DynamicWorker("greetings_task_test")));
+            var backgroundTask = System.Threading.Tasks.Task.Run(async () => await Utils.WorkerUtil.StartBackGroundTask(waitHandle));
             waitHandle.WaitOne();
         }
     }

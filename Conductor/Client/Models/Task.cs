@@ -801,6 +801,18 @@ namespace Conductor.Client.Models
             }
         }
 
+        // Method to convert Task to TaskResult
+        public TaskResult ToTaskResult(TaskResult.StatusEnum status = TaskResult.StatusEnum.COMPLETED)
+        {
+            return new TaskResult
+            {
+                TaskId = this.TaskId,
+                WorkflowInstanceId = this.WorkflowInstanceId,
+                WorkerId = this.WorkerId,
+                Status = status
+            };
+        }
+
         /// <summary>
         /// To validate all properties of the instance
         /// </summary>

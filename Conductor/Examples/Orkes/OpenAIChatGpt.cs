@@ -90,7 +90,6 @@ namespace Conductor.Examples.Orkes
             string collectorJs = ConversationCollector.GetConversation();
             var collect = new JavascriptTask(taskReferenceName: "collect_ref", script: collectorJs);
 
-            //we have to add collector collectHistoryTask once the annotation implementation is done
             WorkflowTask[] loopTasks = new WorkflowTask[] { chatComplete, followUpGen };
             var chatLoop = new LoopTask(taskReferenceName: "loop", iterations: 3, loopOver: loopTasks);
 

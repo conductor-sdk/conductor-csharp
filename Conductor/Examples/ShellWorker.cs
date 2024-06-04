@@ -19,80 +19,107 @@ using Conductor.Client.Worker;
 using Conductor.Definition;
 using Conductor.Definition.TaskType;
 using Conductor.Executor;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Text;
 using System.Threading;
 
 namespace Conductor.Examples
 {
     [WorkerTask]
-    public class DynamicWorkflow
+    public class ShellWorker
     {
         private readonly WorkflowResourceApi _workflowClient;
         private readonly MetadataResourceApi _metaDataClient;
         private readonly WorkflowExecutor _workflowExecutor;
 
         //const
-        private const string WorkflowName = "dynamic_workflow";
-        private const string WorkflowDescription = "test_dynamic_workflow";
+        private const string WorkflowName = "shellWorker";
+        private const string WorkflowDescription = "test_shell_worker";
 
-        public DynamicWorkflow()
+        public ShellWorker()
         {
-            var config = new Configuration();
-            _workflowExecutor = new WorkflowExecutor(config);
+            Configuration configuration = new Configuration();
             _workflowClient = ApiExtensions.GetClient<WorkflowResourceApi>();
             _metaDataClient = ApiExtensions.GetClient<MetadataResourceApi>();
 
             //For local testing
-            //var _orkesApiClient = new OrkesApiClient(config, new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
+            //var _orkesApiClient = new OrkesApiClient(configuration, new OrkesAuthenticationSettings(Constants.KEY_ID, Constants.KEY_SECRET));
             //_workflowClient = _orkesApiClient.GetClient<WorkflowResourceApi>();
             //_metaDataClient = _orkesApiClient.GetClient<MetadataResourceApi>();
         }
 
-        [WorkerTask(taskType: ExampleConstants.GetEmail, batchSize: 5, pollIntervalMs: 520, workerId: "workerId")]
-        public string GetUserEmail(string userId)
+        [WorkerTask(taskType: "ExecuteShell1", batchSize: 5, pollIntervalMs: 520, workerId: "workerId")]
+        public string Executeshell1(string command, string[] args)
         {
-            return $"{userId}@example.com";
+            if (command == null)
+            {
+                throw new ArgumentNullException(nameof(command), "Command cannot be null.");
+            }
+
+            if (args == null)
+            {
+                throw new ArgumentNullException(nameof(args), "Arguments cannot be null.");
+            }
+            var processStartInfo = new ProcessStartInfo
+            {
+                FileName = "",     // Add a application fileName based on OS. Ex: cmd.exe
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                Arguments = $"/c dir {string.Join(" ", args)}"
+            };
+
+            var process = new Process
+            {
+                StartInfo = processStartInfo
+            };
+
+            process.Start();
+
+            StringBuilder output = new StringBuilder();
+            while (!process.StandardOutput.EndOfStream)
+            {
+                output.AppendLine(process.StandardOutput.ReadLine());
+            }
+
+            return output.ToString();
         }
 
-        [WorkerTask(taskType: ExampleConstants.SendEmail, batchSize: 5, pollIntervalMs: 520, workerId: "workerId")]
-        public string SendEmail(string email, string subject, string body)
+        [WorkerTask(taskType: "ExecuteShell", batchSize: 5, pollIntervalMs: 520, workerId: "workerId")]
+        public string ExecuteShell()
         {
-            return $"sending email to {email} with subject {subject} and body {body}";
+            return "hello";
         }
 
-        public void DynamicWorkFlowMain()
+        public void ShellWorkerMain()
         {
             ConductorWorkflow workflow = new ConductorWorkflow()
             .WithName(WorkflowName)
             .WithDescription(WorkflowDescription)
             .WithVersion(1);
 
-            workflow.WithInputParameter("userId");
-
-            var getEmailTask = new SimpleTask(ExampleConstants.GetEmail, ExampleConstants.GetEmail).WithInput("userId", workflow.Input("userId"));
+            var getEmailTask = new SimpleTask("ExecuteShell1", "ExecuteShell1").WithInput("command", workflow.Input("command")).WithInput("args", workflow.Input("args"));
             getEmailTask.Description = ExampleConstants.GetEmailDescription;
             workflow.WithTask(getEmailTask);
 
-            var SendEmailTask = new SimpleTask(ExampleConstants.SendEmail, ExampleConstants.SendEmail).WithInput("email", workflow.Input("email")).WithInput("subject", workflow.Input("subject")).WithInput("body", workflow.Input("body"));
+            var SendEmailTask = new SimpleTask("ExecuteShell", "ExecuteShell");
             SendEmailTask.Description = ExampleConstants.SendEmailDescription;
             workflow.WithTask(SendEmailTask);
-
             List<TaskDef> taskDefs = new List<TaskDef>()
 {
-new TaskDef{Description = ExampleConstants.GetEmailDescription, Name = ExampleConstants.GetEmail },
-new TaskDef{Description = ExampleConstants.SendEmailDescription,Name = ExampleConstants.SendEmail}
+new TaskDef{Description = "test", Name = ExampleConstants.GetEmail },
+new TaskDef{Description = "test", Name = ExampleConstants.SendEmail }
+
 };
 
             _metaDataClient.RegisterTaskDef(taskDefs);
             _metaDataClient.UpdateWorkflowDefinitions(new List<WorkflowDef>(1) { workflow });
-
             var testInput = new Dictionary<string, object>
-{
-{ "userId", "Test" },
-{ "email", "email@gmail.com" },
-{ "subject", "SubjectTest" },
-{ "body" , "BodyDescription" }
-};
+            {
+                //{ "command", "ls" }, // uncomment this line and change the command according to the context.
+                //{ "args", new[] { "/c", "dir" } } // uncomment this line and change the args according to the given context.
+            };
 
             StartWorkflowRequest startWorkflowRequest = new StartWorkflowRequest()
             {
@@ -100,13 +127,13 @@ new TaskDef{Description = ExampleConstants.SendEmailDescription,Name = ExampleCo
                 Input = testInput,
                 Version = workflow.Version,
                 WorkflowDef = workflow,
-                CreatedBy = Constants.OWNER_EMAIL,
+                CreatedBy = Constants.OWNER_EMAIL
             };
 
             _workflowClient.StartWorkflow(startWorkflowRequest);
             var waitHandle = new ManualResetEvent(false);
 
-            var backgroundTask = System.Threading.Tasks.Task.Run(async () => await Utils.WorkerUtil.StartBackGroundTask(waitHandle));
+            var backgroundTask = System.Threading.Tasks.Task.Run(async () => await Conductor.Examples.Utils.WorkerUtil.StartBackGroundTask(waitHandle));
             waitHandle.WaitOne();
         }
     }

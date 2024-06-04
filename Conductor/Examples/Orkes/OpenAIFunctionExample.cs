@@ -31,6 +31,7 @@ using System.Threading;
 
 namespace Conductor.Examples.Orkes
 {
+    [WorkerTask]
     public class OpenAIFunctionExample
     {
         private readonly Client.Configuration _configuration;
@@ -65,13 +66,13 @@ namespace Conductor.Examples.Orkes
 
         }
 
-        [WorkerTask(taskType: "getWeather", batchSize: 5, domain: "taskDomain", pollIntervalMs: 200, workerId: "workerId")]
+        [WorkerTask(taskType: "getWeather", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
         public string GetWeather(string city)
         {
             return $"Weather in {city} today is rainy";
         }
 
-        [WorkerTask(taskType: "getPriceFromAmazon", batchSize: 5, domain: "taskDomain", pollIntervalMs: 200, workerId: "workerId")]
+        [WorkerTask(taskType: "getPriceFromAmazon", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
         public float GetPriceFromAmazon(string products)
         {
             return 42.42F;
@@ -123,7 +124,6 @@ new TaskDef() { Name = ExampleConstants.OPENAITASKDEFNAME, Description = TASKDEF
             functionCall.InputParameters["inputs"] = chatComplete.Output("function_parameters");
             functionCall.InputParameters[ExampleConstants.DYNAMICTASKINPUTPARAM] = ExampleConstants.INPUTS;
 
-            //we have to add collectHistoryTask once the annotation implementation is done
             WorkflowTask[] loop_tasks = new WorkflowTask[] { user_input, chatComplete, functionCall };
             var chat_loop = new LoopTask("loop", 3, loop_tasks);
 

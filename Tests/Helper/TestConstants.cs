@@ -30,5 +30,7 @@ namespace conductor_csharp.test.Helper
         public const string TaskDescription = "Test description";
         public const string InputTaskName = "Test-input-task";
         public const string TestAddTask = "Test-add-task";
+        public const string BODY = "EnvironmentTestBody";
+        public const string KEY = "EnvironmentTestKey";
     }
 }

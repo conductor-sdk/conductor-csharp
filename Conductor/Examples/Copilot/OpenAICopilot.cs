@@ -1,15 +1,15 @@
 ﻿/*
- * Copyright 2024 Conductor Authors.
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
- */
+* Copyright 2024 Conductor Authors.
+* <p>
+* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+* the License. You may obtain a copy of the License at
+* <p>
+* http://www.apache.org/licenses/LICENSE-2.0
+* <p>
+* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+* an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+* specific language governing permissions and limitations under the License.
+*/
 using conductor.csharp.Client.Extensions;
 using conductor.Examples;
 using Conductor.Api;
@@ -33,6 +33,7 @@ using Tasks = Conductor.Definition.TaskType.Task;
 
 namespace Conductor.Examples.Copilot
 {
+    [WorkerTask]
     public class OpenAICopilot
     {
         private readonly WorkflowResourceApi _workflowClient;
@@ -42,7 +43,6 @@ namespace Conductor.Examples.Copilot
         private readonly ILogger _logger;
 
         //consts
-
         public const string FUNCTIONCHATBOX = "my_function_chatbot";
         public const string FUNCTIONCHATBOXDESCRIPTION = "test_function_chatbot";
 
@@ -60,7 +60,7 @@ namespace Conductor.Examples.Copilot
             //_metaDataClient = _orkesApiClient.GetClient<MetadataResourceApi>();
         }
 
-        [WorkerTask("get_customer_list", 5, "taskDomain", 200, "workerId")]
+        [WorkerTask(taskType: "get_customer_list", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
         public List<Customer> GetCustomerList()
         {
             var customers = new List<Customer>();
@@ -80,7 +80,7 @@ namespace Conductor.Examples.Copilot
             return customers;
         }
 
-        [WorkerTask("get_top_n", 5, "taskDomain", 200, "workerId")]
+        [WorkerTask(taskType: "get_top_n", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
         public List<Customer> GetTopNCustomers(int n, List<Customer> customers)
         {
             var sortedCustomers = customers.OrderByDescending(c => c.AnnualSpend).ToList();
@@ -88,7 +88,7 @@ namespace Conductor.Examples.Copilot
             return sortedCustomers.GetRange(1, end - 1);
         }
 
-        [WorkerTask("generate_promo_code", 5, "taskDomain", 200, "workerId")]
+        [WorkerTask(taskType: "generate_promo_code", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
         public string GeneratePromoCode()
         {
             var random = new Random();
@@ -96,13 +96,13 @@ namespace Conductor.Examples.Copilot
             return promoCode;
         }
 
-        [WorkerTask("send_email", 5, "taskDomain", 200, "workerId")]
+        [WorkerTask(taskType: "send_email", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
         public string SendEmail(List<Customer> customers, string promoCode)
         {
             return $"Sent {promoCode} to {customers.Count} customers";
         }
 
-        [WorkerTask(taskType: "create_workflow", 5, "taskDomain", 520, "workerId")]
+        [WorkerTask(taskType: "create_workflow", batchSize: 5, pollIntervalMs: 520, workerId: "workerId")]
         public Dictionary<string, object> CreateWorkflow(List<string> steps, Dictionary<string, object> inputs)
         {
             var workflow = new ConductorWorkflow()
@@ -169,7 +169,6 @@ new TaskDef() { Description = "test", Name = ExampleConstants.OPENAITASKDEFNAME 
 
             Tasks subWorkFlow = new SubWorkflowTask("execute_workflow", new SubWorkflowParams(ExampleConstants.COPILOTEXECUTION));
 
-            //Pass task reference name once the annotation is in place
             var registerWorkFlow = CreateWorkflow(steps: new List<string> { chatComplete.Output("function_parameters.steps") }, inputs: new Dictionary<string, object>
 {
 { "step", "function_parameters.inputs" }
