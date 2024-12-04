@@ -14,7 +14,6 @@ using Conductor.Api;
 using Conductor.Executor;
 using Conductor.Client.Authentication;
 using System;
-using System.Diagnostics;
 
 namespace Conductor.Client.Extensions
 {
@@ -25,19 +24,24 @@ namespace Conductor.Client.Extensions
         private const string ENV_SECRET = "SECRET";
         private const int REST_CLIENT_REQUEST_TIME_OUT = 30 * 1000;
 
-        public static Configuration Configuration { get; set; }
-
-        static ApiExtensions()
-        {
-            Configuration = new Configuration(REST_CLIENT_REQUEST_TIME_OUT)
+        private static readonly Lazy<Configuration> _lazyConfiguration =
+            new Lazy<Configuration>(() => new Configuration(REST_CLIENT_REQUEST_TIME_OUT)
             {
                 BasePath = GetEnvironmentVariable(ENV_ROOT_URI),
                 AuthenticationSettings = new OrkesAuthenticationSettings(
-                GetEnvironmentVariable(ENV_KEY_ID),
-                GetEnvironmentVariable(ENV_SECRET)
-            )
-            };
+                    GetEnvironmentVariable(ENV_KEY_ID),
+                    GetEnvironmentVariable(ENV_SECRET)
+                )
+            });
+
+        private static Configuration _customConfiguration;
+
+        public static Configuration Configuration
+        {
+            get => _customConfiguration ?? _lazyConfiguration.Value;
+            set => _customConfiguration = value;
         }
+
 
         public static WorkflowExecutor GetWorkflowExecutor()
         {
@@ -66,9 +70,7 @@ namespace Conductor.Client.Extensions
 
         private static string GetEnvironmentVariable(string variable)
         {
-            string value = Environment.GetEnvironmentVariable(variable);
-            Debug.Assert(value != null);
-            return value;
+            return Environment.GetEnvironmentVariable(variable) ?? throw new InvalidOperationException($"Environment variable '{variable}' is not set.");
         }
     }
 }
