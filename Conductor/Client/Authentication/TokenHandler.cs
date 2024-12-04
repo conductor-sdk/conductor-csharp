@@ -62,7 +62,15 @@ namespace Conductor.Client.Authentication
             {
                 try
                 {
-                    return tokenClient.GenerateToken(tokenRequest)._token;
+                    var token = tokenClient.GenerateToken(tokenRequest);
+                    return token._token;
+                }
+                catch (ApiException e)
+                {
+                    if (e.ErrorCode == 405 || e.ErrorCode == 404)
+                    {
+                        throw new Exception($"Error while getting authentication token. Is the config BasePath correct? {tokenClient.Configuration.BasePath}");
+                    }
                 }
                 catch (Exception e)
                 {
