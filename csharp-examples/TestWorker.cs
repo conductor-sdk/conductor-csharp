@@ -23,14 +23,14 @@ public class TestWorker : IWorkflowTask
 
     private readonly Random rnd = new();
 
-    private readonly string _taskType;
+    private readonly string taskType;
 
     public TestWorker(string taskType)
     {
-        _taskType = taskType;
+        this.taskType = taskType;
     }
 
-    public string TaskType => _taskType;
+    public string TaskType => taskType;
     public WorkflowTaskExecutorConfiguration WorkerSettings { get; } = new WorkflowTaskExecutorConfiguration()
     {
         BatchSize = 20
