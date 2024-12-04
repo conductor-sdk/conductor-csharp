@@ -32,7 +32,7 @@ namespace Conductor.Examples.Utils
             {
                 var host = WorkflowTaskHost.CreateWorkerHost(Microsoft.Extensions.Logging.LogLevel.Information);
                 await host.StartAsync();
-                Thread.Sleep(20000);
+                Thread.Sleep(60000);
                 waitHandle.Set();
                 await host.StopAsync();
                 return true;
