@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Conductor\conductor-csharp.csproj" />
+    <ProjectReference Include="../Conductor/conductor-csharp.csproj" />
   </ItemGroup>
 
 </Project>
