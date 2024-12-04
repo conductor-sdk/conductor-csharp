@@ -18,11 +18,19 @@ using Task = Conductor.Client.Models.Task;
 
 namespace csharp.examples;
 
-public class TestWorker(string taskType) : IWorkflowTask
+public class TestWorker : IWorkflowTask
 {
+
     private readonly Random rnd = new();
 
-    public string TaskType { get; } = taskType;
+    private readonly string _taskType;
+
+    public TestWorker(string taskType)
+    {
+        _taskType = taskType;
+    }
+
+    public string TaskType => _taskType;
     public WorkflowTaskExecutorConfiguration WorkerSettings { get; } = new WorkflowTaskExecutorConfiguration()
     {
         BatchSize = 20
