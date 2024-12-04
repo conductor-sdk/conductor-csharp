@@ -597,9 +597,13 @@ namespace Conductor.Api
                 if (exception != null) throw exception;
             }
 
+            var list = (List<Dictionary<string, string>>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Dictionary<string, string>>));
+            var dictionary = list
+                .Where(item => item.ContainsKey("name") && item.ContainsKey("value"))
+                .ToDictionary(item => item["name"], item => item["value"]);
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
-            localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-            (Dictionary<string, string>)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                dictionary);
         }
 
         /// <summary>
