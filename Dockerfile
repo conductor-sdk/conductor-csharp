@@ -17,6 +17,7 @@ ARG CONDUCTOR_SERVER_URL
 ENV KEY=${KEY}
 ENV SECRET=${SECRET}
 ENV CONDUCTOR_SERVER_URL=${CONDUCTOR_SERVER_URL}
+COPY /csharp-examples /package/csharp-examples
 COPY /Tests /package/Tests
 WORKDIR /package/Tests
 RUN dotnet test -l "console;verbosity=normal"
