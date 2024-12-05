@@ -10,11 +10,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets"
+      Version="1.19.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="../Conductor/conductor-csharp.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(DefineConstants)' == 'EXCLUDE_EXAMPLE_WORKERS'">
+    <Compile Remove="Examples/**/*.cs" />
+    <Compile Remove="WorkflowExamples.cs" />
   </ItemGroup>
 
 </Project>

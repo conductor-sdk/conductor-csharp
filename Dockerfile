@@ -20,7 +20,7 @@ ENV CONDUCTOR_SERVER_URL=${CONDUCTOR_SERVER_URL}
 COPY /csharp-examples /package/csharp-examples
 COPY /Tests /package/Tests
 WORKDIR /package/Tests
-RUN dotnet test -l "console;verbosity=normal"
+RUN dotnet test -p:DefineConstants=EXCLUDE_EXAMPLE_WORKERS  -l "console;verbosity=normal"
 
 FROM build as pack_release
 ARG SDK_VERSION
