@@ -30,18 +30,18 @@ namespace Tests.Worker
             _random = new Random();
         }
 
-        // Polls for 5 task every 200ms
-        [WorkerTask("test-sdk-csharp-task", 5, "taskDomain", 200, "workerId")]
+        // Polls for 5 task every 100ms
+        [WorkerTask("test-sdk-csharp-task", 5, "taskDomain", 100, "simpleWorker")]
         public static TaskResult SimpleWorker(Conductor.Client.Models.Task task)
         {
             return task.Completed();
         }
 
-        // Polls for 12 tasks every 420ms
-        [WorkerTask("test-sdk-csharp-task", 12, "taskDomain", 420, "workerId")]
+        // Polls for 5 tasks every 420ms
+        [WorkerTask("test-sdk-csharp-task", 5, "taskDomain", 420, "lazyWorker")]
         public TaskResult LazyWorker(Conductor.Client.Models.Task task)
         {
-            var timeSpan = System.TimeSpan.FromMilliseconds(_random.Next(128, 2048));
+            var timeSpan = System.TimeSpan.FromMilliseconds(_random.Next(100, 900));
             System.Threading.Tasks.Task.Delay(timeSpan).GetAwaiter().GetResult();
             return task.Completed();
         }

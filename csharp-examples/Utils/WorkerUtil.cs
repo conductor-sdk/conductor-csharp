@@ -12,9 +12,6 @@
  */
 using Conductor.Client.Extensions;
 using Conductor.Client.Interfaces;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Conductor.Examples.Utils
 {
@@ -32,7 +29,7 @@ namespace Conductor.Examples.Utils
             {
                 var host = WorkflowTaskHost.CreateWorkerHost(Microsoft.Extensions.Logging.LogLevel.Information);
                 await host.StartAsync();
-                Thread.Sleep(20000);
+                Thread.Sleep(40000);
                 waitHandle.Set();
                 await host.StopAsync();
                 return true;

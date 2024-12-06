@@ -60,13 +60,13 @@ namespace csharp_examples
         }
 
         [WorkerTask(taskType: "simple_task_1", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
-        public static string SimpleTask1(Task task)
+        public static string SimpleTask1(Conductor.Client.Models.Task task)
         {
             return "OK";
         }
 
         [WorkerTask(taskType: "simple_task_2", batchSize: 5, pollIntervalMs: 200, workerId: "workerId")]
-        public static TaskResult SimpleTask2(Task task)
+        public static TaskResult SimpleTask2(Conductor.Client.Models.Task task)
         {
             return new TaskResult { Status = TaskResult.StatusEnum.FAILEDWITHTERMINALERROR };
         }
