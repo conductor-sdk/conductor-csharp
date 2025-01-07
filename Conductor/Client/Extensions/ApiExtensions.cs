@@ -19,19 +19,13 @@ namespace Conductor.Client.Extensions
 {
     public class ApiExtensions
     {
-        private const string ENV_ROOT_URI = "CONDUCTOR_SERVER_URL";
-        private const string ENV_KEY_ID = "KEY";
-        private const string ENV_SECRET = "SECRET";
         private const int REST_CLIENT_REQUEST_TIME_OUT = 30 * 1000;
 
         private static readonly Lazy<Configuration> _lazyConfiguration =
             new Lazy<Configuration>(() => new Configuration(REST_CLIENT_REQUEST_TIME_OUT)
             {
-                BasePath = GetEnvironmentVariable(ENV_ROOT_URI),
-                AuthenticationSettings = new OrkesAuthenticationSettings(
-                    GetEnvironmentVariable(ENV_KEY_ID),
-                    GetEnvironmentVariable(ENV_SECRET)
-                )
+                BasePath = GetBasePathFromEnv(),
+                AuthenticationSettings = GetAuthenticationSettingsFromEnv()
             });
 
         private static Configuration _customConfiguration;
@@ -68,9 +62,27 @@ namespace Conductor.Client.Extensions
             return $"{prefix}/execution/{workflowId}";
         }
 
-        private static string GetEnvironmentVariable(string variable)
+        private static string GetEnvVariableOrThrow(string variable)
         {
             return Environment.GetEnvironmentVariable(variable) ?? throw new InvalidOperationException($"Environment variable '{variable}' is not set.");
+        }
+
+        private static string GetBasePathFromEnv()
+        {
+            return GetEnvVariableOrThrow("CONDUCTOR_SERVER_URL");
+        }
+
+        private static OrkesAuthenticationSettings GetAuthenticationSettingsFromEnv()
+        {
+            // keeping KEY and SECRET for backwards compatibility
+            string keyId = Environment.GetEnvironmentVariable("CONDUCTOR_AUTH_KEY") ?? Environment.GetEnvironmentVariable("KEY");
+            string secret = Environment.GetEnvironmentVariable("CONDUCTOR_AUTH_SECRET") ?? Environment.GetEnvironmentVariable("SECRET");
+            if (!string.IsNullOrEmpty(keyId) && !string.IsNullOrEmpty(secret))
+            {
+                return new OrkesAuthenticationSettings(keyId, secret);
+            }
+
+            return null;
         }
     }
 }
