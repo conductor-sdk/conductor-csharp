@@ -50,7 +50,8 @@ namespace Test.Worker
             var workflow = new ConductorWorkflow()
             .WithName("unit_testing_example")
             .WithDescription("test unit test")
-            .WithVersion(1);
+            .WithVersion(1)
+            .WithOwner("exampleEmail@conductor.com");
             var task1 = new SimpleTask("hello_C_1", "hello_ref_C_1");
             var task2 = new SimpleTask("hello_C_2", "hello_ref_C_2");
             var task3 = new SimpleTask("hello_C_3", "hello_ref_C_3");
