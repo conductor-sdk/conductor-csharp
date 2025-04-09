@@ -31,10 +31,15 @@ namespace Conductor.Client.Models
         /// </summary>
         /// <param name="queryId">queryId.</param>
         /// <param name="results">results.</param>
-        public ScrollableSearchResultWorkflowSummary(string queryId = default(string), List<WorkflowSummary> results = default(List<WorkflowSummary>))
+        public ScrollableSearchResultWorkflowSummary(
+            string queryId = default(string),
+            List<WorkflowSummary> results = default(List<WorkflowSummary>),
+            long? totalHits = default(long?)
+        )
         {
             this.QueryId = queryId;
             this.Results = results;
+            this.TotalHits = totalHits;
         }
 
         /// <summary>
@@ -50,6 +55,12 @@ namespace Conductor.Client.Models
         public List<WorkflowSummary> Results { get; set; }
 
         /// <summary>
+        /// Gets or Sets TotalHits
+        /// </summary>
+        [DataMember(Name = "totalHits", EmitDefaultValue = false)]
+        public long? TotalHits { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -59,6 +70,7 @@ namespace Conductor.Client.Models
             sb.Append("class ScrollableSearchResultWorkflowSummary {\n");
             sb.Append("  QueryId: ").Append(QueryId).Append("\n");
             sb.Append("  Results: ").Append(Results).Append("\n");
+            sb.Append("  TotalHits: ").Append(TotalHits).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -103,6 +115,10 @@ namespace Conductor.Client.Models
                     this.Results != null &&
                     input.Results != null &&
                     this.Results.SequenceEqual(input.Results)
+                ) &&
+                (
+                    this.TotalHits == input.TotalHits ||
+                    this.TotalHits.Equals(input.TotalHits)
                 );
         }
 
@@ -119,6 +135,8 @@ namespace Conductor.Client.Models
                     hashCode = hashCode * 59 + this.QueryId.GetHashCode();
                 if (this.Results != null)
                     hashCode = hashCode * 59 + this.Results.GetHashCode();
+                if (this.TotalHits != null)
+                    hashCode = hashCode * 59 + this.TotalHits.GetHashCode();
                 return hashCode;
             }
         }
