@@ -32,5 +32,6 @@ namespace conductor_csharp.test.Helper
         public const string TestAddTask = "Test-add-task";
         public const string BODY = "EnvironmentTestBody";
         public const string KEY = "EnvironmentTestKey";
+        public const string OWNER_EMAIL = "test-sdk-csharp@conductor.com";
     }
 }

@@ -33,6 +33,7 @@ namespace Tests.Worker
         private const string WORKFLOW_NAME = "test-annotation";
         private const int WORKFLOW_VERSION = 1;
         private const string WORKFLOW_DESC = "test-annotation-desc";
+        private const string OWNER_EMAIL = "test-sdk-csharp@conductor.com";
 
         public AnnotatedWorkerTest()
         {
@@ -51,7 +52,7 @@ namespace Tests.Worker
         public void TestAnnotatedMethods()
         {
             var workflow = GetConductorWorkflow();
-            TaskDef taskDef = new TaskDef() { Description = TestConstants.TaskDescription, Name = TestConstants.QuoteTaskName };
+            TaskDef taskDef = new TaskDef() { Description = TestConstants.TaskDescription, Name = TestConstants.QuoteTaskName, OwnerEmail = TestConstants.OWNER_EMAIL };
             var getQuoteTask = new SimpleTask(TestConstants.QuoteTaskName, TestConstants.QuoteTaskName);
             getQuoteTask.Description = TestConstants.TaskDescription;
             workflow.WithTask(getQuoteTask);
@@ -63,7 +64,7 @@ namespace Tests.Worker
         public void TestAnnotationWithInputParam()
         {
             var workflow = GetConductorWorkflow();
-            TaskDef taskDef = new TaskDef() { Description = TestConstants.TaskDescription, Name = TestConstants.InputTaskName };
+            TaskDef taskDef = new TaskDef() { Description = TestConstants.TaskDescription, Name = TestConstants.InputTaskName, OwnerEmail = TestConstants.OWNER_EMAIL };
             var getInputValue = new SimpleTask(TestConstants.InputTaskName, TestConstants.InputTaskName).WithInput("userId", workflow.Input("userId")).WithInput("otp", workflow.Input("otp"));
             getInputValue.Description = TestConstants.TaskDescription;
             workflow.WithTask(getInputValue);
@@ -80,7 +81,7 @@ namespace Tests.Worker
         public void TestAnnotationWithMultipleInputParam()
         {
             var workflow = GetConductorWorkflow();
-            TaskDef taskDef = new TaskDef() { Description = TestConstants.TaskDescription, Name = TestConstants.TestAddTask };
+            TaskDef taskDef = new TaskDef() { Description = TestConstants.TaskDescription, Name = TestConstants.TestAddTask, OwnerEmail = TestConstants.OWNER_EMAIL };
             var getSumValue = new SimpleTask(TestConstants.TestAddTask, TestConstants.TestAddTask).WithInput("numberOne", workflow.Input("numberOne")).WithInput("numberTwo", workflow.Input("numberTwo"));
             getSumValue.Description = TestConstants.TaskDescription;
             workflow.WithTask(getSumValue);
@@ -98,8 +99,8 @@ namespace Tests.Worker
         {
             var workflow = GetConductorWorkflow();
             List<TaskDef> taskDefs = new List<TaskDef>() {
-                new TaskDef() { Description = TestConstants.TaskDescription, Name = TestConstants.TestAddTask },
-                new TaskDef() { Description = TestConstants.TaskDescription, Name = TestConstants.InputTaskName }
+                new TaskDef() { Description = TestConstants.TaskDescription, Name = TestConstants.TestAddTask, OwnerEmail = TestConstants.OWNER_EMAIL },
+                new TaskDef() { Description = TestConstants.TaskDescription, Name = TestConstants.InputTaskName, OwnerEmail = TestConstants.OWNER_EMAIL }
             };
             var getInputValue = new SimpleTask(TestConstants.InputTaskName, TestConstants.InputTaskName).WithInput("userId", workflow.Input("userId")).WithInput("otp", workflow.Input("otp"));
             getInputValue.Description = TestConstants.TaskDescription;
@@ -126,7 +127,9 @@ namespace Tests.Worker
             return new ConductorWorkflow()
                 .WithName(WORKFLOW_NAME)
                 .WithVersion(WORKFLOW_VERSION)
-                .WithDescription(WORKFLOW_DESC);
+                .WithDescription(WORKFLOW_DESC)
+                .WithOwner(OWNER_EMAIL);
+
         }
 
         /// <summary>
