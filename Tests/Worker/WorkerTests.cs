@@ -31,6 +31,7 @@ namespace Tests.Worker
         private const int WORKFLOW_VERSION = 1;
         private const string TASK_NAME = "test-sdk-csharp-task";
         private const string TASK_DOMAIN = "taskDomain";
+        private const string OWNER_EMAIL = "test-sdk-csharp@conductor.com";
 
         private readonly WorkflowResourceApi _workflowClient;
         private readonly ILogger _logger;
@@ -56,7 +57,8 @@ namespace Tests.Worker
             return new ConductorWorkflow()
                 .WithName(WORKFLOW_NAME)
                 .WithVersion(WORKFLOW_VERSION)
-                .WithTask(new SimpleTask(TASK_NAME, TASK_NAME));
+                .WithTask(new SimpleTask(TASK_NAME, TASK_NAME))
+                .WithOwner(OWNER_EMAIL);
         }
 
         private async System.Threading.Tasks.Task<ConcurrentBag<string>> StartWorkflows(ConductorWorkflow workflow, int quantity)
